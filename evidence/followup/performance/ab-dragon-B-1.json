@@ -1,0 +1,312 @@
+{
+  "case": "dragon",
+  "condition": "B",
+  "repeat": 1,
+  "client_wall_seconds": 30.01492223702371,
+  "status_wall_seconds": 29.990818,
+  "logical_elapsed_ms": 29991,
+  "timer_count": 429,
+  "timer_hz": 14.304378093321763,
+  "timer_callback_us_mean": 345.6596736596737,
+  "timer_work_us_mean": 52.52447552447553,
+  "status_publish_us_mean": 293.13519813519815,
+  "timer_interval_us_mean": 69860.40559440559,
+  "timer_interval_histogram": {
+    "upper_us": [
+      10000,
+      20000,
+      35000,
+      50000,
+      75000,
+      100000,
+      200000,
+      18446744073709551615
+    ],
+    "counts": [
+      0,
+      0,
+      1,
+      0,
+      370,
+      6,
+      52,
+      0
+    ]
+  },
+  "prepare_count": 429,
+  "prepare_us_mean": 28.794871794871796,
+  "draw_count": 429,
+  "draw_hz": 14.304378093321763,
+  "draw_us_mean": 12382.25641025641,
+  "draw_pixels": 98841600,
+  "surface": {
+    "width_min": 480,
+    "width_max": 480,
+    "height_min": 480,
+    "height_max": 480,
+    "prepare_us_max_session": 2210
+  },
+  "status_reads_in_window": 284,
+  "screenshots_in_window": 240,
+  "frame_info_before": {
+    "client_seconds": 0.005040007643401623,
+    "result": {
+      "damage": [
+        {
+          "x1": 0,
+          "x2": 480,
+          "y1": 0,
+          "y2": 480
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 1327,
+      "truncated": false
+    }
+  },
+  "frame_info_after": {
+    "client_seconds": 0.05450857197865844,
+    "result": {
+      "damage": [
+        {
+          "x1": 16,
+          "x2": 464,
+          "y1": 80,
+          "y2": 416
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 1674,
+      "truncated": false
+    }
+  },
+  "before": {
+    "case": "dragon",
+    "paused": false,
+    "ack": 55656630392175,
+    "draws": 1408,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 0,
+      "sequence": 1,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 0,
+      "last_seen_ms": 0,
+      "samples": 1
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 324172800,
+      "draw_us_total": 19271038,
+      "draw_us_max": 72295,
+      "prepare_us_total": 45216,
+      "prepares": 1422,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 10600,
+      "callback_us_total": 6382753,
+      "work_us_total": 269665,
+      "publish_us_total": 6113088,
+      "callback_us_max_session": 129635,
+      "interval_count": 10599,
+      "interval_us_total": 403142905,
+      "interval_us_max_session": 273074,
+      "completed_until_us": 2444906458143,
+      "published_us": 2444906490384,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        8702,
+        482,
+        1330,
+        31,
+        50,
+        4
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "after": {
+    "case": "dragon",
+    "paused": false,
+    "ack": 55656630392175,
+    "draws": 1837,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 29991,
+      "sequence": 224,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 29875,
+      "last_seen_ms": 26875,
+      "samples": 216
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 28325,
+      "observations": 164,
+      "notices": 4,
+      "blinks": 5,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.03137,
+      "next_blink_ms": 33004,
+      "pose": {
+        "gaze_x": -0.0499997884,
+        "gaze_y": 0.0350000858,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 423014400,
+      "draw_us_total": 24583026,
+      "draw_us_max": 72295,
+      "prepare_us_total": 57569,
+      "prepares": 1851,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 11029,
+      "callback_us_total": 6531041,
+      "work_us_total": 292198,
+      "publish_us_total": 6238843,
+      "callback_us_max_session": 129635,
+      "interval_count": 11028,
+      "interval_us_total": 433113019,
+      "interval_us_max_session": 273074,
+      "completed_until_us": 2444936428294,
+      "published_us": 2444936481202,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        8703,
+        482,
+        1700,
+        37,
+        102,
+        4
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "process_before": {
+    "load_average": [
+      5.0634765625,
+      9.275390625,
+      7.58544921875
+    ],
+    "processes": {
+      "simulator": {
+        "pid": 3801069,
+        "cpu_seconds": 34.19
+      },
+      "backend": {
+        "pid": 3801350,
+        "cpu_seconds": 21.81
+      }
+    }
+  },
+  "process_after": {
+    "load_average": [
+      3.935546875,
+      8.5947265625,
+      7.41162109375
+    ],
+    "processes": {
+      "simulator": {
+        "pid": 3801069,
+        "cpu_seconds": 48.13
+      },
+      "backend": {
+        "pid": 3801350,
+        "cpu_seconds": 27.3
+      }
+    }
+  },
+  "process_cpu_ratio": {
+    "simulator": 0.4644356527036033,
+    "backend": 0.18290901960852096
+  },
+  "bridge_present_timing": "frame_info commit seq/damage only; no public per-upload/per-present duration exposed; browser visible FPS not measured"
+}

@@ -11,23 +11,32 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <time.h>
 static struct {
     peek_ui_t view;peek_replay_t replay;void *timer;
     uint64_t logical_ms,wall_ms,ack;
+    uint64_t tick_calls,tick_us_total,tick_work_us_total,publish_us_total,tick_us_max;
+    uint64_t interval_count,interval_us_total,interval_us_max,last_tick_start_us,last_completed_us;
+    uint64_t interval_bins[8];
     unsigned case_index;int fd;
     const char *data_dir,*run_dir;
     char label[80],status[512],temporary[512],socket_path[108];
 } app={.fd=-1};
 static const char *cases[]={"empty","motion","multi","gaps","recorded","aging","dragon","idle"};
 #define CASE_COUNT (sizeof(cases)/sizeof(cases[0]))
+static uint64_t real_us(void){struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return (uint64_t)t.tv_sec*1000000+(uint64_t)t.tv_nsec/1000;}
 static void publish(void)
 {
     FILE *f=fopen(app.temporary,"w");if(!f){perror("status");app.view.error=ESP_GSP_FAIL;return;}
     fprintf(f,"{\"case\":\"%s\",\"paused\":%s,\"ack\":%" PRIu64 ",\"draws\":%" PRIu64 ",\"actions\":%" PRIu64 ",\"error\":%d,\"eof\":%s,\"result\":",cases[app.case_index],app.view.paused?"true":"false",app.ack,app.view.draws,app.view.actions,app.view.error,app.replay.eof?"true":"false");
     peek_write_result(f,&app.view.detector);
     const dragon_t *c=&app.view.dragon;
-    fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}}\n",
+    fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
         app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
+    fprintf(f,",\"host_timing\":{\"target_timer_ms\":33,\"completed_callbacks\":%" PRIu64 ",\"callback_us_total\":%" PRIu64 ",\"work_us_total\":%" PRIu64 ",\"publish_us_total\":%" PRIu64 ",\"callback_us_max_session\":%" PRIu64 ",\"interval_count\":%" PRIu64 ",\"interval_us_total\":%" PRIu64 ",\"interval_us_max_session\":%" PRIu64 ",\"completed_until_us\":%" PRIu64 ",\"published_us\":%" PRIu64 ",\"interval_bins_le_us\":[10000,20000,35000,50000,75000,100000,200000,18446744073709551615],\"interval_bins\":[",
+        app.tick_calls,app.tick_us_total,app.tick_work_us_total,app.publish_us_total,app.tick_us_max,app.interval_count,app.interval_us_total,app.interval_us_max,app.last_completed_us,real_us());
+    for(unsigned i=0;i<8;i++)fprintf(f,"%s%" PRIu64,i?",":"",app.interval_bins[i]);
+    fprintf(f,"]},\"surface\":{\"width_min\":%u,\"width_max\":%u,\"height_min\":%u,\"height_max\":%u,\"prepare_us_max_session\":%" PRIu64 "}}\n",app.view.surface_w_min,app.view.surface_w_max,app.view.surface_h_min,app.view.surface_h_max,app.view.prepare_us_max);
     bool failed=ferror(f);if(fclose(f)!=0)failed=true;
     if(failed||rename(app.temporary,app.status)!=0){perror("publish");app.view.error=ESP_GSP_FAIL;}
 }
@@ -62,6 +71,8 @@ static void control(peek_action_t action,void *ctx)
 static void tick(esp_gsp_handle_t ui,void *ctx)
 {
     (void)ui;(void)ctx;
+    uint64_t started=real_us(),interval=app.last_tick_start_us?started-app.last_tick_start_us:0;
+    app.last_tick_start_us=started;
     uint64_t wall=gsp_sim_bridge_time_ms();
     if(!app.view.paused){
         if(!pump(app.logical_ms+wall-app.wall_ms))app.view.error=ESP_GSP_FAIL;
@@ -92,7 +103,15 @@ static void tick(esp_gsp_handle_t ui,void *ctx)
         fprintf(stderr,"PEEK command=%s accepted=%d ",verb,accepted);peek_write_result(stderr,&app.view.detector);fputc('\n',stderr);
     }
     if(n<0&&errno!=EAGAIN&&errno!=EWOULDBLOCK)app.view.error=ESP_GSP_FAIL;
-    publish();
+    uint64_t before_publish=real_us();publish();uint64_t finished=real_us();
+    app.tick_calls++;app.tick_work_us_total+=before_publish-started;app.publish_us_total+=finished-before_publish;
+    app.tick_us_total+=finished-started;if(finished-started>app.tick_us_max)app.tick_us_max=finished-started;
+    app.last_completed_us=finished;
+    if(interval){
+        app.interval_count++;app.interval_us_total+=interval;if(interval>app.interval_us_max)app.interval_us_max=interval;
+        const uint64_t bounds[]={10000,20000,35000,50000,75000,100000,200000,UINT64_MAX};
+        unsigned bin=0;while(bin<7&&interval>bounds[bin])bin++;app.interval_bins[bin]++;
+    }
 }
 esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
 {
@@ -108,7 +127,7 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
     rc=peek_ui_set_view(&app.view,dragon);if(rc!=ESP_GSP_OK)return rc;
     app.view.paused=true;app.case_index=dragon?6:1;if(!load_case())return ESP_GSP_FAIL;
     app.timer=esp_gsp_timer_create(ui,33,tick,NULL);if(!app.timer)return ESP_GSP_ERR_NO_MEM;
-    publish();fprintf(stderr,"PEEK ready native C; initial motion/paused\n");return app.view.error;
+    publish();fprintf(stderr,"PEEK ready native C; case=%s view=%s paused\n",cases[app.case_index],dragon?"dragon":"diagnostic");return app.view.error;
 }
 void gsp_bridge_app_deinit(esp_gsp_handle_t ui)
 {

@@ -13,7 +13,8 @@ typedef struct {
     bool has_frame,paused,live,canvas_registered,event_registered,dragon_registered,dragon_view,dragon_prepared;
     float previous_blink;
     dragon_t dragon;dragon_renderer_t *renderer;
-    uint64_t draw_pixels,render_us_total,render_us_max,prepare_us_total,prepares;
+    uint64_t draw_pixels,render_us_total,render_us_max,prepare_us_total,prepares,prepare_us_max;
+    uint16_t surface_w_min,surface_w_max,surface_h_min,surface_h_max;
     const char *source;
     uint64_t draws,actions;
     esp_gsp_err_t error;

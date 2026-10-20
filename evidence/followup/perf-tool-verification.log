@@ -1,0 +1,4 @@
+idle A repeat1: draw=15.430Hz timer=15.430Hz draw=13081.5us polls=0 screenshots=0
+idle B repeat1: draw=15.026Hz timer=15.026Hz draw=12054.9us polls=11 screenshots=8
+dragon A repeat1: draw=15.426Hz timer=15.426Hz draw=11926.0us polls=0 screenshots=0
+dragon B repeat1: draw=15.056Hz timer=15.056Hz draw=12137.1us polls=11 screenshots=8

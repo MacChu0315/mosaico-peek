@@ -1,6 +1,6 @@
 # mosaico-peek — approved single dragon eye
 
-Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. No device firmware was written.
+Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. This mainline work performed no device operations; the independent hardware line is separate.
 
 ## Start
 
@@ -66,6 +66,21 @@ All eight cases are labelled synthetic except the32 retained recorded snapshots.
 
 [Handoff](docs/HANDOFF.md), [review response](docs/REVIEW_RESPONSE.md), [resource budget](evidence/phase2/resource-budget.json), [native artwork comparison](evidence/phase2/dragon/approved-vs-native.png), [live idle movie](evidence/phase2/dragon/idle-live.mp4), [live target-flow movie](evidence/phase2/dragon/dragon-live.mp4).
 
-The movies sample actual official GSP API pixels during wall-clock runs and encode at8fps; they are not direct screen recordings and their encoded rate does not establish runtime/device FPS. Separate state/time/callback/memory records establish what ran. Host callback throughput was about14.1–14.5Hz during capture, below the approximately30Hz goal. Firmware compiled but hardware frame rate, peak RAM, orientation, distance/FOV, continuous capture quality and long-term reliability remain unverified. No flash/recover/update or remote write occurred.
+The phase2 movies sample actual official GSP API pixels during wall-clock runs and encode at8fps; encoded rate does not establish runtime/browser/device FPS. The follow-up [A/B table](evidence/followup/performance/AB_COMPARISON.md) now separates normal connected preview (idle14.955Hz / flow14.914Hz draw callbacks) from screenshot/poll conditions (14.384 /14.122Hz). Host commit-sequence rates are separate; none are browser-visible FPS. The approximately30Hz goal remains unmet. Firmware compiled but hardware frame rate, peak RAM, orientation, distance/FOV, continuous capture quality and long-term reliability remain unverified. No flash/recover/update or remote write occurred.
 
 Create the review archive after commit with `python3 tools/package_review.py`; it retains exact commit/file hashes and excludes original large input movies, `.git`, dependencies, generated includes, build caches and intermediate captures.
+
+## Follow-up timing/build/performance checks
+
+The previous quiet-observation deadline is now evaluated **before** new capture evidence replaces it, then the new evidence is aged again. Eight latency/boundary/held/stop scenarios at30/60/120Hz pin this behavior. `python3 tests/test_asset_build.py` verifies9 ordinary-build/source-update cases, including source hashes and mtimes. Host and Release CTest now have8 tests.
+
+After starting preview and opening its browser URL, keep the same browser tab connected and avoid builds during windows:
+
+```sh
+python3 tools/benchmark_host.py --seconds 30 --repeats 2
+python3 tools/analyze_host_benchmark.py
+```
+
+A performs no screenshot/status sampling inside each window; B follows the API screenshot/15ms-loop-sleep method. Results retain actual read rates, wall/logical times, timer/prepare/draw counters and times, interval histograms, surfaces, process CPU/load and boundary `frame_info`. The public API does not isolate upload/present duration. No public dependency or texture was changed to chase30Hz. [Follow-up response](docs/FOLLOWUP_RESPONSE.md) records the scope and report-recovery detail.
+
+`python3 tools/report_budget.py --output evidence/followup/static-budget.json` refreshes target-ABI allocation estimates. `python3 tools/report_firmware.py --build-log evidence/followup/idf-build-raw.log --static-budget evidence/followup/static-budget.json` retains final image/ELF/map/config hashes, whitelisted config and section/symbol summaries. With XIP/RODATA-to-PSRAM enabled, linked read-only textures require PSRAM mapping/copy budget; no texture decoding does **not** mean zero runtime PSRAM. Device startup/residency/peak measurements belong to the separate hardware line and have not been performed by this mainline session.

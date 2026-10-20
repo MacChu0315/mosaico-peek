@@ -54,6 +54,10 @@ static void draw_eye(const esp_gsp_canvas_surface_t *surface,void *context)
     uint64_t elapsed=real_us()-start;s->render_us_total+=elapsed;
     if(elapsed>s->render_us_max)s->render_us_max=elapsed;
     s->draw_pixels+=(uint64_t)surface->width*surface->height;s->draws++;
+    if(!s->surface_w_min||surface->width<s->surface_w_min)s->surface_w_min=surface->width;
+    if(surface->width>s->surface_w_max)s->surface_w_max=surface->width;
+    if(!s->surface_h_min||surface->height<s->surface_h_min)s->surface_h_min=surface->height;
+    if(surface->height>s->surface_h_max)s->surface_h_max=surface->height;
 }
 void peek_ui_time(peek_ui_t *s,uint64_t now)
 {
@@ -84,7 +88,8 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
     if(s->dragon_view){
         uint64_t start=real_us();
         if(!dragon_renderer_prepare(s->renderer,&s->dragon.pose)){s->error=ESP_GSP_FAIL;return;}
-        s->prepare_us_total+=real_us()-start;s->prepares++;
+        uint64_t elapsed=real_us()-start;s->prepare_us_total+=elapsed;s->prepares++;
+        if(elapsed>s->prepare_us_max)s->prepare_us_max=elapsed;
         if(s->dragon_prepared && s->previous_blink==0 && s->dragon.pose.blink==0){
             /* Both open poses differ only in this tested eye/crease union.
              * A blink deforms the whole hood, so those transitions repaint all. */

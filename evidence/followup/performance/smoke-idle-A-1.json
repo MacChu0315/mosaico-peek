@@ -1,0 +1,274 @@
+{
+  "case": "idle",
+  "condition": "A",
+  "repeat": 1,
+  "client_wall_seconds": 1.0009417477995157,
+  "status_wall_seconds": 0.983932,
+  "logical_elapsed_ms": 984,
+  "timer_count": 14,
+  "timer_hz": 14.22862555542456,
+  "timer_callback_us_mean": 1741.5,
+  "timer_work_us_mean": 262.5,
+  "status_publish_us_mean": 1479.0,
+  "timer_interval_us_mean": 68328.21428571429,
+  "timer_interval_histogram": {
+    "upper_us": [
+      10000,
+      20000,
+      35000,
+      50000,
+      75000,
+      100000,
+      200000,
+      18446744073709551615
+    ],
+    "counts": [
+      0,
+      0,
+      0,
+      2,
+      6,
+      6,
+      0,
+      0
+    ]
+  },
+  "prepare_count": 14,
+  "prepare_us_mean": 210.0,
+  "draw_count": 14,
+  "draw_hz": 14.22862555542456,
+  "draw_us_mean": 41821.21428571428,
+  "draw_pixels": 3225600,
+  "surface": {
+    "width_min": 480,
+    "width_max": 480,
+    "height_min": 480,
+    "height_max": 480,
+    "prepare_us_max_session": 2210
+  },
+  "status_reads_in_window": 0,
+  "screenshots_in_window": 0,
+  "frame_info_before": {
+    "client_seconds": 0.022324450314044952,
+    "result": {
+      "damage": [
+        {
+          "x1": 0,
+          "x2": 480,
+          "y1": 0,
+          "y2": 480
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 15,
+      "truncated": false
+    }
+  },
+  "frame_info_after": {
+    "client_seconds": 0.009160530287772417,
+    "result": {
+      "damage": [
+        {
+          "x1": 16,
+          "x2": 464,
+          "y1": 80,
+          "y2": 416
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 29,
+      "truncated": false
+    }
+  },
+  "before": {
+    "case": "idle",
+    "paused": false,
+    "ack": 55458239696137,
+    "draws": 4,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 0,
+      "sequence": 1,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 0,
+      "last_seen_ms": 0,
+      "samples": 1
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 691200,
+      "draw_us_total": 113021,
+      "draw_us_max": 57291,
+      "prepare_us_total": 215,
+      "prepares": 5,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6117,
+      "callback_us_total": 4592311,
+      "work_us_total": 112010,
+      "publish_us_total": 4480301,
+      "callback_us_max_session": 129635,
+      "interval_count": 6116,
+      "interval_us_total": 204736635,
+      "interval_us_max_session": 152441,
+      "completed_until_us": 2444708053273,
+      "published_us": 2444708101313,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5746,
+        356,
+        9,
+        3,
+        2,
+        0
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 73
+    }
+  },
+  "after": {
+    "case": "idle",
+    "paused": false,
+    "ack": 55458239696137,
+    "draws": 18,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 984,
+      "sequence": 8,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 875,
+      "last_seen_ms": 0,
+      "samples": 8
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 3916800,
+      "draw_us_total": 698518,
+      "draw_us_max": 57291,
+      "prepare_us_total": 3155,
+      "prepares": 19,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6131,
+      "callback_us_total": 4616692,
+      "work_us_total": 115685,
+      "publish_us_total": 4501007,
+      "callback_us_max_session": 129635,
+      "interval_count": 6130,
+      "interval_us_total": 205693230,
+      "interval_us_max_session": 152441,
+      "completed_until_us": 2444709008875,
+      "published_us": 2444709085245,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5746,
+        358,
+        15,
+        9,
+        2,
+        0
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "bridge_present_timing": "frame_info commit seq/damage only; no public per-upload/per-present duration exposed; browser visible FPS not measured"
+}

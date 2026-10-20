@@ -1,0 +1,274 @@
+{
+  "case": "idle",
+  "condition": "B",
+  "repeat": 1,
+  "client_wall_seconds": 1.173622404690832,
+  "status_wall_seconds": 1.120786,
+  "logical_elapsed_ms": 1120,
+  "timer_count": 8,
+  "timer_hz": 7.137847903167955,
+  "timer_callback_us_mean": 1038.375,
+  "timer_work_us_mean": 119.5,
+  "status_publish_us_mean": 918.875,
+  "timer_interval_us_mean": 124322.25,
+  "timer_interval_histogram": {
+    "upper_us": [
+      10000,
+      20000,
+      35000,
+      50000,
+      75000,
+      100000,
+      200000,
+      18446744073709551615
+    ],
+    "counts": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      2,
+      2
+    ]
+  },
+  "prepare_count": 8,
+  "prepare_us_mean": 45.375,
+  "draw_count": 8,
+  "draw_hz": 7.137847903167955,
+  "draw_us_mean": 37501.625,
+  "draw_pixels": 1843200,
+  "surface": {
+    "width_min": 480,
+    "width_max": 480,
+    "height_min": 480,
+    "height_max": 480,
+    "prepare_us_max_session": 2210
+  },
+  "status_reads_in_window": 12,
+  "screenshots_in_window": 5,
+  "frame_info_before": {
+    "client_seconds": 0.006660650949925184,
+    "result": {
+      "damage": [
+        {
+          "x1": 0,
+          "x2": 480,
+          "y1": 0,
+          "y2": 480
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 32,
+      "truncated": false
+    }
+  },
+  "frame_info_after": {
+    "client_seconds": 0.059852791018784046,
+    "result": {
+      "damage": [
+        {
+          "x1": 16,
+          "x2": 464,
+          "y1": 80,
+          "y2": 416
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 41,
+      "truncated": false
+    }
+  },
+  "before": {
+    "case": "idle",
+    "paused": false,
+    "ack": 55459631698293,
+    "draws": 21,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 0,
+      "sequence": 1,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 0,
+      "last_seen_ms": 0,
+      "samples": 1
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 4608000,
+      "draw_us_total": 893479,
+      "draw_us_max": 72295,
+      "prepare_us_total": 3408,
+      "prepares": 24,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6140,
+      "callback_us_total": 4622768,
+      "work_us_total": 117122,
+      "publish_us_total": 4505646,
+      "callback_us_max_session": 129635,
+      "interval_count": 6139,
+      "interval_us_total": 206165858,
+      "interval_us_max_session": 152441,
+      "completed_until_us": 2444709481928,
+      "published_us": 2444709513289,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5751,
+        358,
+        17,
+        11,
+        2,
+        0
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "after": {
+    "case": "idle",
+    "paused": false,
+    "ack": 55459631698293,
+    "draws": 29,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 1120,
+      "sequence": 9,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 1000,
+      "last_seen_ms": 0,
+      "samples": 9
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 6451200,
+      "draw_us_total": 1193492,
+      "draw_us_max": 72295,
+      "prepare_us_total": 3771,
+      "prepares": 32,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6148,
+      "callback_us_total": 4631075,
+      "work_us_total": 118078,
+      "publish_us_total": 4512997,
+      "callback_us_max_session": 129635,
+      "interval_count": 6147,
+      "interval_us_total": 207160436,
+      "interval_us_max_session": 212122,
+      "completed_until_us": 2444710475923,
+      "published_us": 2444710634075,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5752,
+        358,
+        18,
+        13,
+        4,
+        2
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "bridge_present_timing": "frame_info commit seq/damage only; no public per-upload/per-present duration exposed; browser visible FPS not measured"
+}

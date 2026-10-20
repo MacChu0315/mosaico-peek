@@ -1,0 +1,7 @@
+{
+  "browser": "Chrome (existing work profile; new task tab)",
+  "url": "http://127.0.0.1:3222/",
+  "title": "ESP-GSP simulator",
+  "connection": "connected, artwork visually checked via browser screenshot before windows",
+  "policy": "same tab/view kept throughout A/B; no browser automation during measurement windows; browser visible FPS not instrumented"
+}

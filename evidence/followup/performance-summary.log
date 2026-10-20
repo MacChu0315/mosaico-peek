@@ -1,0 +1,16 @@
+# Host normal-preview vs screenshot/poll comparison
+
+Same running native backend+bundle, same33ms timer, one connected Chrome preview. A only boundary counters/frame_info; B8fps API screenshots and15ms loop sleep. No builds during windows. Two30s runs per scene/condition with reversal.
+
+A: no screenshot or status read inside the measured window. B: API screenshot target8fps with15ms loop sleep; actual read/sample rates below. Same browser preview connected, no browser automation or builds during windows. Each scene/condition has two30s runs with order reversal.
+
+| Scene | Mode | Draw Hz | Timer Hz | Commit seq Hz | C draw ms | Prepare ms | Timer callback ms | Status write ms | Screenshot Hz | Status read Hz |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| idle | A | 14.955 | 14.955 | 14.952 | 12.372 | 0.028 | 0.207 | 0.155 | 0.000 | 0.000 |
+| idle | B | 14.384 | 14.384 | 11.664 | 12.488 | 0.029 | 0.313 | 0.260 | 7.998 | 9.631 |
+| dragon | A | 14.914 | 14.914 | 14.919 | 12.594 | 0.029 | 0.249 | 0.195 | 0.000 | 0.000 |
+| dragon | B | 14.122 | 14.122 | 11.428 | 12.617 | 0.029 | 0.290 | 0.235 | 7.996 | 9.362 |
+
+Timer callbacks include prepare/core work and status-file publication. Counters are cumulative and published through the previous completed callback. Raw before/after snapshots retain exact clock values and interval histograms. All surface bounds and process CPU/load snapshots are retained. `frame_info` exposes commit seq/damage, not per-upload/present durations or browser display timing.
+
+The residual column in JSON is not assigned to a particular library. The visible browser frame rate and device FPS/RAM remain unmeasured. No public dependency, timer target or texture was changed to chase a number.

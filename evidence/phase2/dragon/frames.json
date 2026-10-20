@@ -4,8 +4,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51861864117404,
-      "draws": 4,
+      "ack": 56338968889148,
+      "draws": 3669,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -46,13 +46,53 @@
         }
       },
       "render": {
-        "pixels": 691200,
-        "draw_us_total": 37037,
-        "draw_us_max": 12894,
-        "prepare_us_total": 107,
-        "prepares": 4,
+        "pixels": 845107200,
+        "draw_us_total": 47788848,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111221,
+        "prepares": 3697,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28769,
+        "callback_us_total": 10475356,
+        "work_us_total": 593163,
+        "publish_us_total": 9882193,
+        "callback_us_max_session": 129635,
+        "interval_count": 28768,
+        "interval_us_total": 1085667248,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445588982429,
+        "published_us": 2445589015638,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24590,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -61,8 +101,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51862061073223,
-      "draws": 5,
+      "ack": 56339163848155,
+      "draws": 3670,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -103,13 +143,53 @@
         }
       },
       "render": {
-        "pixels": 921600,
-        "draw_us_total": 48704,
-        "draw_us_max": 12894,
-        "prepare_us_total": 134,
-        "prepares": 5,
+        "pixels": 845337600,
+        "draw_us_total": 47804554,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111248,
+        "prepares": 3698,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28775,
+        "callback_us_total": 10476947,
+        "work_us_total": 593856,
+        "publish_us_total": 9883091,
+        "callback_us_max_session": 129635,
+        "interval_count": 28774,
+        "interval_us_total": 1085865253,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445589180474,
+        "published_us": 2445589213677,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24596,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -118,8 +198,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51862233632402,
-      "draws": 6,
+      "ack": 56339371636241,
+      "draws": 3671,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -160,13 +240,53 @@
         }
       },
       "render": {
-        "pixels": 1152000,
-        "draw_us_total": 60650,
-        "draw_us_max": 12894,
-        "prepare_us_total": 174,
-        "prepares": 6,
+        "pixels": 845568000,
+        "draw_us_total": 47816044,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111276,
+        "prepares": 3699,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28781,
+        "callback_us_total": 10478159,
+        "work_us_total": 594236,
+        "publish_us_total": 9883923,
+        "callback_us_max_session": 129635,
+        "interval_count": 28780,
+        "interval_us_total": 1086063185,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445589378375,
+        "published_us": 2445589411559,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24602,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -175,8 +295,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51862439612269,
-      "draws": 7,
+      "ack": 56339559719583,
+      "draws": 3672,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -217,13 +337,53 @@
         }
       },
       "render": {
-        "pixels": 1382400,
-        "draw_us_total": 75387,
-        "draw_us_max": 14737,
-        "prepare_us_total": 201,
-        "prepares": 7,
+        "pixels": 845798400,
+        "draw_us_total": 47828194,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111303,
+        "prepares": 3700,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28787,
+        "callback_us_total": 10479553,
+        "work_us_total": 594756,
+        "publish_us_total": 9884797,
+        "callback_us_max_session": 129635,
+        "interval_count": 28786,
+        "interval_us_total": 1086261346,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445589576563,
+        "published_us": 2445589609753,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24608,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -232,8 +392,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51862627648363,
-      "draws": 8,
+      "ack": 56339765624997,
+      "draws": 3673,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -274,13 +434,53 @@
         }
       },
       "render": {
-        "pixels": 1612800,
-        "draw_us_total": 86572,
-        "draw_us_max": 14737,
-        "prepare_us_total": 228,
-        "prepares": 8,
+        "pixels": 846028800,
+        "draw_us_total": 47841115,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111330,
+        "prepares": 3701,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28793,
+        "callback_us_total": 10480910,
+        "work_us_total": 595280,
+        "publish_us_total": 9885630,
+        "callback_us_max_session": 129635,
+        "interval_count": 28792,
+        "interval_us_total": 1086459933,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445589775145,
+        "published_us": 2445589808310,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24614,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -289,8 +489,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51862836616480,
-      "draws": 9,
+      "ack": 56339981608592,
+      "draws": 3674,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -331,13 +531,53 @@
         }
       },
       "render": {
-        "pixels": 1843200,
-        "draw_us_total": 98356,
-        "draw_us_max": 14737,
-        "prepare_us_total": 256,
-        "prepares": 9,
+        "pixels": 846259200,
+        "draw_us_total": 47854152,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111357,
+        "prepares": 3702,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28801,
+        "callback_us_total": 10484111,
+        "work_us_total": 596000,
+        "publish_us_total": 9888111,
+        "callback_us_max_session": 129635,
+        "interval_count": 28800,
+        "interval_us_total": 1086726132,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445590041344,
+        "published_us": 2445590074529,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24622,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -346,8 +586,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863023607667,
-      "draws": 10,
+      "ack": 56340225599301,
+      "draws": 3675,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -388,13 +628,53 @@
         }
       },
       "render": {
-        "pixels": 2073600,
-        "draw_us_total": 109618,
-        "draw_us_max": 14737,
-        "prepare_us_total": 283,
-        "prepares": 10,
+        "pixels": 846489600,
+        "draw_us_total": 47870854,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111395,
+        "prepares": 3703,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28808,
+        "callback_us_total": 10486348,
+        "work_us_total": 597043,
+        "publish_us_total": 9889305,
+        "callback_us_max_session": 129635,
+        "interval_count": 28807,
+        "interval_us_total": 1086958777,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445590273999,
+        "published_us": 2445590306182,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24629,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -403,8 +683,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863193645505,
-      "draws": 11,
+      "ack": 56340452711431,
+      "draws": 3676,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -445,13 +725,53 @@
         }
       },
       "render": {
-        "pixels": 2304000,
-        "draw_us_total": 121068,
-        "draw_us_max": 14737,
-        "prepare_us_total": 310,
-        "prepares": 11,
+        "pixels": 846720000,
+        "draw_us_total": 47882765,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111426,
+        "prepares": 3704,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28813,
+        "callback_us_total": 10488963,
+        "work_us_total": 598696,
+        "publish_us_total": 9890267,
+        "callback_us_max_session": 129635,
+        "interval_count": 28812,
+        "interval_us_total": 1087123882,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445590439166,
+        "published_us": 2445590471344,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24634,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -460,8 +780,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863398623265,
-      "draws": 12,
+      "ack": 56340624654203,
+      "draws": 3677,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -502,13 +822,53 @@
         }
       },
       "render": {
-        "pixels": 2534400,
-        "draw_us_total": 133365,
-        "draw_us_max": 14737,
-        "prepare_us_total": 337,
-        "prepares": 12,
+        "pixels": 846950400,
+        "draw_us_total": 47896099,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111453,
+        "prepares": 3705,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28819,
+        "callback_us_total": 10490056,
+        "work_us_total": 598842,
+        "publish_us_total": 9891214,
+        "callback_us_max_session": 129635,
+        "interval_count": 28818,
+        "interval_us_total": 1087321610,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445590636827,
+        "published_us": 2445590670033,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24640,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -517,8 +877,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863584702216,
-      "draws": 13,
+      "ack": 56340835618025,
+      "draws": 3678,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -559,13 +919,53 @@
         }
       },
       "render": {
-        "pixels": 2764800,
-        "draw_us_total": 144876,
-        "draw_us_max": 14737,
-        "prepare_us_total": 364,
-        "prepares": 13,
+        "pixels": 847180800,
+        "draw_us_total": 47907845,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111480,
+        "prepares": 3706,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28825,
+        "callback_us_total": 10491401,
+        "work_us_total": 599063,
+        "publish_us_total": 9892338,
+        "callback_us_max_session": 129635,
+        "interval_count": 28824,
+        "interval_us_total": 1087519937,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445590835180,
+        "published_us": 2445590868351,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24646,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -574,8 +974,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863755613177,
-      "draws": 14,
+      "ack": 56341041614907,
+      "draws": 3679,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -616,13 +1016,53 @@
         }
       },
       "render": {
-        "pixels": 2995200,
-        "draw_us_total": 156412,
-        "draw_us_max": 14737,
-        "prepare_us_total": 391,
-        "prepares": 14,
+        "pixels": 847411200,
+        "draw_us_total": 47926613,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111529,
+        "prepares": 3707,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28831,
+        "callback_us_total": 10493777,
+        "work_us_total": 600049,
+        "publish_us_total": 9893728,
+        "callback_us_max_session": 129635,
+        "interval_count": 28830,
+        "interval_us_total": 1087719527,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445591034941,
+        "published_us": 2445591067138,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24652,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -631,8 +1071,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51863960631760,
-      "draws": 15,
+      "ack": 56341234664575,
+      "draws": 3680,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -673,13 +1113,53 @@
         }
       },
       "render": {
-        "pixels": 3225600,
-        "draw_us_total": 169079,
-        "draw_us_max": 14737,
-        "prepare_us_total": 421,
-        "prepares": 15,
+        "pixels": 847641600,
+        "draw_us_total": 47938560,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111564,
+        "prepares": 3708,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28837,
+        "callback_us_total": 10495184,
+        "work_us_total": 600291,
+        "publish_us_total": 9894893,
+        "callback_us_max_session": 129635,
+        "interval_count": 28836,
+        "interval_us_total": 1087917440,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445591232795,
+        "published_us": 2445591266011,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24658,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -688,8 +1168,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51864147699606,
-      "draws": 16,
+      "ack": 56341428675414,
+      "draws": 3681,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -730,13 +1210,53 @@
         }
       },
       "render": {
-        "pixels": 3456000,
-        "draw_us_total": 181810,
-        "draw_us_max": 14737,
-        "prepare_us_total": 448,
-        "prepares": 16,
+        "pixels": 847872000,
+        "draw_us_total": 47951086,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111592,
+        "prepares": 3709,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28843,
+        "callback_us_total": 10496593,
+        "work_us_total": 600644,
+        "publish_us_total": 9895949,
+        "callback_us_max_session": 129635,
+        "interval_count": 28842,
+        "interval_us_total": 1088116953,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445591432201,
+        "published_us": 2445591465388,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24664,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -745,8 +1265,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51864319584246,
-      "draws": 17,
+      "ack": 56341626633682,
+      "draws": 3682,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -787,13 +1307,53 @@
         }
       },
       "render": {
-        "pixels": 3686400,
-        "draw_us_total": 193325,
-        "draw_us_max": 14737,
-        "prepare_us_total": 475,
-        "prepares": 17,
+        "pixels": 848102400,
+        "draw_us_total": 47963681,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111619,
+        "prepares": 3710,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28849,
+        "callback_us_total": 10498076,
+        "work_us_total": 601244,
+        "publish_us_total": 9896832,
+        "callback_us_max_session": 129635,
+        "interval_count": 28848,
+        "interval_us_total": 1088315677,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445591630901,
+        "published_us": 2445591664087,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24670,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -802,8 +1362,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51864523625348,
-      "draws": 18,
+      "ack": 56341813608298,
+      "draws": 3683,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -844,13 +1404,53 @@
         }
       },
       "render": {
-        "pixels": 3916800,
-        "draw_us_total": 205270,
-        "draw_us_max": 14737,
-        "prepare_us_total": 502,
-        "prepares": 18,
+        "pixels": 848332800,
+        "draw_us_total": 47975707,
+        "draw_us_max": 72295,
+        "prepare_us_total": 111646,
+        "prepares": 3711,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28855,
+        "callback_us_total": 10499391,
+        "work_us_total": 601661,
+        "publish_us_total": 9897730,
+        "callback_us_max_session": 129635,
+        "interval_count": 28854,
+        "interval_us_total": 1088514744,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445591829974,
+        "published_us": 2445591862117,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24676,
+          506,
+          3388,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -859,8 +1459,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51866037878515,
-      "draws": 36,
+      "ack": 56343295190124,
+      "draws": 3701,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -901,13 +1501,53 @@
         }
       },
       "render": {
-        "pixels": 8064000,
-        "draw_us_total": 427496,
-        "draw_us_max": 16555,
-        "prepare_us_total": 1109,
-        "prepares": 40,
+        "pixels": 852480000,
+        "draw_us_total": 48258099,
+        "draw_us_max": 72295,
+        "prepare_us_total": 112386,
+        "prepares": 3733,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28890,
+        "callback_us_total": 10528956,
+        "work_us_total": 626480,
+        "publish_us_total": 9902476,
+        "callback_us_max_session": 129635,
+        "interval_count": 28889,
+        "interval_us_total": 1089999295,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445593314511,
+        "published_us": 2445593347694,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24701,
+          506,
+          3398,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -916,8 +1556,8 @@
     "state": {
       "case": "dragon",
       "paused": true,
-      "ack": 51866264597816,
-      "draws": 37,
+      "ack": 56343501629165,
+      "draws": 3702,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -958,13 +1598,53 @@
         }
       },
       "render": {
-        "pixels": 8294400,
-        "draw_us_total": 438455,
-        "draw_us_max": 16555,
-        "prepare_us_total": 1137,
-        "prepares": 41,
+        "pixels": 852710400,
+        "draw_us_total": 48268623,
+        "draw_us_max": 72295,
+        "prepare_us_total": 112413,
+        "prepares": 3734,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28896,
+        "callback_us_total": 10529934,
+        "work_us_total": 626601,
+        "publish_us_total": 9903333,
+        "callback_us_max_session": 129635,
+        "interval_count": 28895,
+        "interval_us_total": 1090198213,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445593513423,
+        "published_us": 2445593546607,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24707,
+          506,
+          3398,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -973,8 +1653,8 @@
     "state": {
       "case": "idle",
       "paused": true,
-      "ack": 51866476015301,
-      "draws": 39,
+      "ack": 56343731173286,
+      "draws": 3704,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -1015,13 +1695,53 @@
         }
       },
       "render": {
-        "pixels": 8755200,
-        "draw_us_total": 460105,
-        "draw_us_max": 16555,
-        "prepare_us_total": 1252,
-        "prepares": 44,
+        "pixels": 853171200,
+        "draw_us_total": 48291982,
+        "draw_us_max": 72295,
+        "prepare_us_total": 112491,
+        "prepares": 3737,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28901,
+        "callback_us_total": 10532901,
+        "work_us_total": 628992,
+        "publish_us_total": 9903909,
+        "callback_us_max_session": 129635,
+        "interval_count": 28900,
+        "interval_us_total": 1090402238,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445593717424,
+        "published_us": 2445593750621,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24711,
+          506,
+          3399,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   },
@@ -1030,8 +1750,8 @@
     "state": {
       "case": "idle",
       "paused": true,
-      "ack": 51866652715734,
-      "draws": 40,
+      "ack": 56343901638327,
+      "draws": 3705,
       "actions": 0,
       "error": 0,
       "eof": false,
@@ -1072,13 +1792,53 @@
         }
       },
       "render": {
-        "pixels": 8985600,
-        "draw_us_total": 475518,
-        "draw_us_max": 16555,
-        "prepare_us_total": 1312,
-        "prepares": 45,
+        "pixels": 853401600,
+        "draw_us_total": 48303286,
+        "draw_us_max": 72295,
+        "prepare_us_total": 112518,
+        "prepares": 3738,
         "renderer_heap_bytes": 12308,
         "assets_bytes": 651780
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 28907,
+        "callback_us_total": 10533903,
+        "work_us_total": 629116,
+        "publish_us_total": 9904787,
+        "callback_us_max_session": 129635,
+        "interval_count": 28906,
+        "interval_us_total": 1090600936,
+        "interval_us_max_session": 273074,
+        "completed_until_us": 2445593916170,
+        "published_us": 2445593949339,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          24717,
+          506,
+          3399,
+          57,
+          223,
+          4
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 2210
       }
     }
   }

@@ -1,0 +1,16 @@
+[  3%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[ 14%] Built target dragon
+[ 25%] Built target peek
+[ 32%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 39%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 50%] Built target test_ui_lifetime
+[ 57%] Built target peek_replay
+[ 64%] Built target test_event_aging
+[ 71%] Built target peek_replay_until
+[ 78%] Built target test_dragon
+[ 85%] Built target test_dragon_render
+[ 92%] Built target dragon_snapshot
+[100%] Built target test_dragon_timing

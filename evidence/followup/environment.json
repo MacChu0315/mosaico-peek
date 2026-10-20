@@ -1,0 +1,26 @@
+{
+  "idf": {
+    "commit": "7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe",
+    "status": []
+  },
+  "vibe": {
+    "commit": "95469e63b621fc6ece3b0e313af8c1ba59dcd066",
+    "status": []
+  },
+  "utils": {
+    "commit": "fc63d43f3ac72aa54e701b07b07fbed07a16b3ca",
+    "status": []
+  },
+  "bsp": {
+    "commit": "a2c985ad698b3f04a21c63e006b43e7e948bc1d7",
+    "status": []
+  },
+  "gspc": {
+    "version": "gspc 0.6.1",
+    "sha256": "26b35f9cfa0b9cf010b21ec92c81c8fd68c0c5eac5f53cf9c95546d4dd68dc26"
+  },
+  "sim": {
+    "version": "gsp_sim_host 1.5.1",
+    "sha256": "ab580b8cf1dbe84e430a7b92122046c42a71cb2eca79bf4209fb6ae2f1dfb0fb"
+  }
+}

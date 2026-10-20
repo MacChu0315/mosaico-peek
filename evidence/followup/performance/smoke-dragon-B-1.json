@@ -1,0 +1,274 @@
+{
+  "case": "dragon",
+  "condition": "B",
+  "repeat": 1,
+  "client_wall_seconds": 1.1658343826420605,
+  "status_wall_seconds": 1.156183,
+  "logical_elapsed_ms": 1156,
+  "timer_count": 9,
+  "timer_hz": 7.7842348486355535,
+  "timer_callback_us_mean": 1090.6666666666667,
+  "timer_work_us_mean": 143.0,
+  "status_publish_us_mean": 947.6666666666666,
+  "timer_interval_us_mean": 112860.77777777778,
+  "timer_interval_histogram": {
+    "upper_us": [
+      10000,
+      20000,
+      35000,
+      50000,
+      75000,
+      100000,
+      200000,
+      18446744073709551615
+    ],
+    "counts": [
+      0,
+      0,
+      1,
+      0,
+      3,
+      2,
+      1,
+      2
+    ]
+  },
+  "prepare_count": 9,
+  "prepare_us_mean": 40.111111111111114,
+  "draw_count": 9,
+  "draw_hz": 7.7842348486355535,
+  "draw_us_mean": 42078.88888888889,
+  "draw_pixels": 2073600,
+  "surface": {
+    "width_min": 480,
+    "width_max": 480,
+    "height_min": 480,
+    "height_max": 480,
+    "prepare_us_max_session": 2210
+  },
+  "status_reads_in_window": 18,
+  "screenshots_in_window": 4,
+  "frame_info_before": {
+    "client_seconds": 0.00940707977861166,
+    "result": {
+      "damage": [
+        {
+          "x1": 0,
+          "x2": 480,
+          "y1": 0,
+          "y2": 480
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 60,
+      "truncated": false
+    }
+  },
+  "frame_info_after": {
+    "client_seconds": 0.04776045400649309,
+    "result": {
+      "damage": [
+        {
+          "x1": 16,
+          "x2": 464,
+          "y1": 80,
+          "y2": 416
+        }
+      ],
+      "full": false,
+      "required_damage": 1,
+      "seq": 68,
+      "truncated": false
+    }
+  },
+  "before": {
+    "case": "dragon",
+    "paused": false,
+    "ack": 55462628799724,
+    "draws": 49,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 0,
+      "sequence": 1,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 0,
+      "last_seen_ms": 0,
+      "samples": 1
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500000007,
+        "gaze_y": 0.0350000001,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 11059200,
+      "draw_us_total": 2110187,
+      "draw_us_max": 72295,
+      "prepare_us_total": 6245,
+      "prepares": 56,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6182,
+      "callback_us_total": 4668326,
+      "work_us_total": 123488,
+      "publish_us_total": 4544838,
+      "callback_us_max_session": 129635,
+      "interval_count": 6181,
+      "interval_us_total": 209160746,
+      "interval_us_max_session": 212122,
+      "completed_until_us": 2444712476211,
+      "published_us": 2444712508730,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5765,
+        358,
+        30,
+        21,
+        5,
+        2
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "after": {
+    "case": "dragon",
+    "paused": false,
+    "ack": 55462628799724,
+    "draws": 58,
+    "actions": 0,
+    "error": 0,
+    "eof": false,
+    "result": {
+      "now_ms": 1156,
+      "sequence": 10,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0,
+      "last_valid_ms": 1125,
+      "last_seen_ms": 0,
+      "samples": 10
+    },
+    "view": "dragon",
+    "role": {
+      "mode": "IDLE",
+      "phase_ms": 0,
+      "observations": 0,
+      "notices": 0,
+      "blinks": 0,
+      "observation_held": false,
+      "stationary": false,
+      "speed_px_s": 0.0,
+      "next_blink_ms": 6020,
+      "pose": {
+        "gaze_x": -0.0500004366,
+        "gaze_y": 0.0349998698,
+        "blink": 0,
+        "squint": 0.689999998,
+        "pupil_width": 0.0719999969,
+        "tension": 0.159999996
+      }
+    },
+    "render": {
+      "pixels": 13132800,
+      "draw_us_total": 2488897,
+      "draw_us_max": 72295,
+      "prepare_us_total": 6606,
+      "prepares": 65,
+      "renderer_heap_bytes": 12308,
+      "assets_bytes": 651780
+    },
+    "host_timing": {
+      "target_timer_ms": 33,
+      "completed_callbacks": 6191,
+      "callback_us_total": 4678142,
+      "work_us_total": 124775,
+      "publish_us_total": 4553367,
+      "callback_us_max_session": 129635,
+      "interval_count": 6190,
+      "interval_us_total": 210176493,
+      "interval_us_max_session": 273074,
+      "completed_until_us": 2444713492768,
+      "published_us": 2444713664913,
+      "interval_bins_le_us": [
+        10000,
+        20000,
+        35000,
+        50000,
+        75000,
+        100000,
+        200000,
+        18446744073709551615
+      ],
+      "interval_bins": [
+        0,
+        0,
+        5766,
+        358,
+        33,
+        23,
+        6,
+        4
+      ]
+    },
+    "surface": {
+      "width_min": 480,
+      "width_max": 480,
+      "height_min": 480,
+      "height_max": 480,
+      "prepare_us_max_session": 2210
+    }
+  },
+  "bridge_present_timing": "frame_info commit seq/damage only; no public per-upload/per-present duration exposed; browser visible FPS not measured"
+}
