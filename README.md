@@ -76,6 +76,8 @@ The original eight cases are labelled synthetic except the32 retained sparse rec
 
 The phase2 movies sample actual official GSP API pixels during wall-clock runs and encode at8fps; encoded rate does not establish runtime/browser/device FPS. The follow-up [A/B table](evidence/followup/performance/AB_COMPARISON.md) now separates normal connected preview (idle14.955Hz / flow14.914Hz draw callbacks) from screenshot/poll conditions (14.384 /14.122Hz). Host commit-sequence rates are separate; none are browser-visible FPS. The approximately30Hz goal remains unmet. Those archived phase2 results preceded hardware installation. Current real-input installation, engine timing and available heap measurements are in the live-dragon handoff; physical screen FPS, orientation, labelled accuracy, distance/FOV and long-term reliability remain separate acceptance gaps. No remote write occurred.
 
+The review manifest may map byte-identical repeated native PNG captures to the retained phase2 golden PNG; their state logs and SHA256 provenance remain present. Source, temperature input and installed/restore firmware are retained directly.
+
 Create the review archive after commit with `python3 tools/package_review.py`; it retains exact commit/file hashes and excludes original large input movies, `.git`, dependencies, generated includes, build caches and intermediate captures.
 
 ## Follow-up timing/build/performance checks
