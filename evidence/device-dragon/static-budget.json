@@ -2,8 +2,8 @@
   "flash": {
     "images": {
       "peek.bin": {
-        "bytes": 1989040,
-        "sha256": "8dd87552e33d844b09ca4c3ad523c267d0134aeb463781cdf6c8129e43fed616"
+        "bytes": 1990048,
+        "sha256": "2af83135ddb2205d78d8ea00de9b5b80f52aa649769c56f4a5f16f6e3e032b6b"
       },
       "ui_apps.bin": {
         "bytes": 94480,

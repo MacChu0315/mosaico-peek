@@ -1,8 +1,9 @@
 {
-  "operation_id": "c4e2c69e-b7d4-4ebf-bd3f-bd12d98d95c8",
-  "boot_before": "10797131317395589199",
-  "boot_vibe": "11581501993617378655",
-  "boot_normal": "440679807784348376",
+  "operation_id": "4592d78b-b22b-4574-ba6b-0fcf1b712e48",
+  "source_commit": "49a7c57ecbb9ad46cdbf09684d0ca08427f6b4e2",
+  "boot_before": "6833660429632553496",
+  "boot_vibe": "16264124955038121665",
+  "boot_normal": "9951538894554427109",
   "healthy": true,
   "validated": true,
   "source_layout": "4f8786d12001684a3c02385f31ef167247827bd73b744801494a8c5851bc7231",
@@ -10,16 +11,12 @@
   "bootloader_unchanged": true,
   "retained_vibe_updated": false,
   "application": {
-    "actual": "9e048945374021a7c5ec2f1ec855f232ff570cb0efc07bec647c5c5b7cbfe7b9",
+    "actual": "e40635a2b39efacae0141f69f923485774145393d892e0174e080fef09622c34",
     "actual_field": "firmware_sha256",
-    "expected": "9e048945374021a7c5ec2f1ec855f232ff570cb0efc07bec647c5c5b7cbfe7b9",
+    "expected": "e40635a2b39efacae0141f69f923485774145393d892e0174e080fef09622c34",
     "expected_field": "elf_sha256",
     "mode": "elf_sha256"
   },
-  "bundle_sha256": "8bf58c494a202146ad7774a07c91476ed74d36b8ce0b6c18dfdcd93f3ed5d5e5",
-  "old_coredump_preserved": {
-    "bytes": 18464,
-    "path": "/home/zhuzhengming/.local/state/esp-mosaico/project-sessions/7a5f62006e4277cbb4caa5ebd129685a0f071340863383481686bfb7a226b5f1/state/artifacts/4553502d49524953010030eda0f452a0/20261020-194150-205970662-coredump-f848dcebbea6.bin",
-    "sha256": "f848dcebbea61de5f7f02e6512f60bf0683b92461d2898c6b7f63e80c1845b72"
-  }
+  "bundle_sha256": "a533d8db719695a9b0078c8bbeebe0fe881737143b2f4d38d8c0c2ea12ebfaa5",
+  "local_full_artifacts": "firmware-local/dragon-e40635a2b39efaca"
 }

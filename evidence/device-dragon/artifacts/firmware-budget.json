@@ -10,8 +10,8 @@
   "artifacts": {
     "peek.bin": {
       "path": "projects/peek/build/peek.bin",
-      "bytes": 1989040,
-      "sha256": "75a3577ec71949fd6453975831b0c7928a052b7b77004ae52bdb9d192a1b25ec"
+      "bytes": 1990048,
+      "sha256": "2af83135ddb2205d78d8ea00de9b5b80f52aa649769c56f4a5f16f6e3e032b6b"
     },
     "ui_apps.bin": {
       "path": "projects/peek/build/ui_apps.bin",
@@ -20,13 +20,13 @@
     },
     "peek.elf": {
       "path": "projects/peek/build/peek.elf",
-      "bytes": 15740892,
-      "sha256": "c772260d806fa4ba8a3555377ad034589654b422d5b3e10c42d988b7fd6601eb"
+      "bytes": 15757112,
+      "sha256": "e40635a2b39efacae0141f69f923485774145393d892e0174e080fef09622c34"
     },
     "peek.map": {
       "path": "projects/peek/build/peek.map",
-      "bytes": 7202712,
-      "sha256": "f00808b88abfa8086a52a6ce7c4d7667fb13da5799b122303ada6095b51d610a"
+      "bytes": 7203288,
+      "sha256": "fc99f974ebfff998a22a41c0eea8822afa5fd9ba9b96f481fa261b377ee4e33c"
     },
     "sdkconfig": {
       "path": "projects/peek/build/sdkconfig.dragon",
@@ -182,7 +182,7 @@
     "ui_apps_free_bytes": 954096,
     "normal_app_fits_ota_0": true,
     "ota_0_partition_bytes": 13565952,
-    "ota_0_free_bytes": 11576912,
+    "ota_0_free_bytes": 11575904,
     "retained_factory_partition_bytes": 1835008,
     "normal_app_fits_retained_factory": false,
     "retained_factory_warning": "App may exceed the retained factory slot; normal application update targets ota_0. This tool does not change partitions or authorize flashing.",
@@ -232,14 +232,14 @@
       "address": 788614528,
       "address_hex": "0x2f014d80",
       "file_offset": 93568,
-      "bytes": 25176,
+      "bytes": 25184,
       "flags": "WA"
     },
     {
       "name": ".noinit",
       "type": "NOBITS",
-      "address": 788639704,
-      "address_hex": "0x2f01afd8",
+      "address": 788639712,
+      "address_hex": "0x2f01afe0",
       "file_offset": 0,
       "bytes": 0,
       "flags": "WA"
@@ -249,7 +249,7 @@
       "type": "NOBITS",
       "address": 788639744,
       "address_hex": "0x2f01b000",
-      "file_offset": 118744,
+      "file_offset": 118752,
       "bytes": 21984,
       "flags": "WA"
     },
@@ -259,7 +259,7 @@
       "address": 1342177312,
       "address_hex": "0x50000020",
       "file_offset": 118816,
-      "bytes": 1027936,
+      "bytes": 1028832,
       "flags": "AX"
     },
     {
@@ -267,7 +267,7 @@
       "type": "NOBITS",
       "address": 1342177312,
       "address_hex": "0x50000020",
-      "file_offset": 1146912,
+      "file_offset": 1151008,
       "bytes": 1048576,
       "flags": "WA"
     },
@@ -276,7 +276,7 @@
       "type": "PROGBITS",
       "address": 1343225888,
       "address_hex": "0x50100020",
-      "file_offset": 1146912,
+      "file_offset": 1151008,
       "bytes": 256,
       "flags": "A"
     },
@@ -285,35 +285,35 @@
       "type": "PROGBITS",
       "address": 1343226144,
       "address_hex": "0x50100120",
-      "file_offset": 1147168,
-      "bytes": 850140,
+      "file_offset": 1151264,
+      "bytes": 850244,
       "flags": "WA"
     },
     {
       "name": ".flash.init_array",
       "type": "INIT_ARRAY",
-      "address": 1344076284,
-      "address_hex": "0x501cf9fc",
-      "file_offset": 1997308,
+      "address": 1344076388,
+      "address_hex": "0x501cfa64",
+      "file_offset": 2001508,
       "bytes": 68,
       "flags": "WA"
     },
     {
       "name": ".flash.tdata",
       "type": "PROGBITS",
-      "address": 1344076352,
-      "address_hex": "0x501cfa40",
-      "file_offset": 1997376,
+      "address": 1344076456,
+      "address_hex": "0x501cfaa8",
+      "file_offset": 2001576,
       "bytes": 16,
       "flags": "WAT"
     },
     {
       "name": ".flash.rodata_noload",
       "type": "NOBITS",
-      "address": 1344076368,
-      "address_hex": "0x501cfa50",
-      "file_offset": 1997392,
-      "bytes": 48,
+      "address": 1344076472,
+      "address_hex": "0x501cfab8",
+      "file_offset": 2001592,
+      "bytes": 72,
       "flags": "WA"
     },
     {
@@ -321,7 +321,7 @@
       "type": "NOBITS",
       "address": 1342177312,
       "address_hex": "0x50000020",
-      "file_offset": 1146912,
+      "file_offset": 1151008,
       "bytes": 1900512,
       "flags": "WA"
     },
@@ -330,7 +330,7 @@
       "type": "NOBITS",
       "address": 1344077824,
       "address_hex": "0x501d0000",
-      "file_offset": 1998848,
+      "file_offset": 2002944,
       "bytes": 6428,
       "flags": "WA"
     }
@@ -377,8 +377,8 @@
     },
     {
       "name": "_instruction_reserved_end",
-      "address": 1343205248,
-      "address_hex": "0x500faf80",
+      "address": 1343206144,
+      "address_hex": "0x500fb300",
       "bytes": null,
       "nm_type": "A",
       "sections_at_address": []
@@ -395,8 +395,8 @@
     },
     {
       "name": "_rodata_end",
-      "address": 1344076352,
-      "address_hex": "0x501cfa40",
+      "address": 1344076456,
+      "address_hex": "0x501cfaa8",
       "bytes": null,
       "nm_type": "A",
       "sections_at_address": [
@@ -405,8 +405,8 @@
     },
     {
       "name": "_rodata_reserved_end",
-      "address": 1344076416,
-      "address_hex": "0x501cfa80",
+      "address": 1344076544,
+      "address_hex": "0x501cfb00",
       "bytes": null,
       "nm_type": "B",
       "sections_at_address": []
@@ -433,8 +433,8 @@
     },
     {
       "name": "dragon_iris_indices",
-      "address": 1343392516,
-      "address_hex": "0x50128b04",
+      "address": 1343392620,
+      "address_hex": "0x50128b6c",
       "bytes": 409600,
       "nm_type": "d",
       "sections_at_address": [
@@ -443,8 +443,8 @@
     },
     {
       "name": "dragon_iris_palette",
-      "address": 1343392004,
-      "address_hex": "0x50128904",
+      "address": 1343392108,
+      "address_hex": "0x5012896c",
       "bytes": 512,
       "nm_type": "d",
       "sections_at_address": [
@@ -453,8 +453,8 @@
     },
     {
       "name": "dragon_pupil_q15",
-      "address": 1343383292,
-      "address_hex": "0x501266fc",
+      "address": 1343383396,
+      "address_hex": "0x50126764",
       "bytes": 514,
       "nm_type": "d",
       "sections_at_address": [
@@ -463,8 +463,8 @@
     },
     {
       "name": "dragon_sin_q15",
-      "address": 1343381244,
-      "address_hex": "0x50125efc",
+      "address": 1343381348,
+      "address_hex": "0x50125f64",
       "bytes": 2048,
       "nm_type": "d",
       "sections_at_address": [
@@ -473,8 +473,8 @@
     },
     {
       "name": "dragon_skin_indices",
-      "address": 1343802628,
-      "address_hex": "0x5018cd04",
+      "address": 1343802732,
+      "address_hex": "0x5018cd6c",
       "bytes": 230400,
       "nm_type": "d",
       "sections_at_address": [
@@ -483,8 +483,8 @@
     },
     {
       "name": "dragon_skin_palette",
-      "address": 1343802116,
-      "address_hex": "0x5018cb04",
+      "address": 1343802220,
+      "address_hex": "0x5018cb6c",
       "bytes": 512,
       "nm_type": "d",
       "sections_at_address": [
@@ -493,8 +493,8 @@
     },
     {
       "name": "dragon_sqrt_q15",
-      "address": 1343383808,
-      "address_hex": "0x50126900",
+      "address": 1343383912,
+      "address_hex": "0x50126968",
       "bytes": 8194,
       "nm_type": "d",
       "sections_at_address": [
@@ -503,8 +503,8 @@
     },
     {
       "name": "esp_psram_get_heap_size_to_protect",
-      "address": 1343187952,
-      "address_hex": "0x500f6bf0",
+      "address": 1343188796,
+      "address_hex": "0x500f6f3c",
       "bytes": 202,
       "nm_type": "T",
       "sections_at_address": [
@@ -577,8 +577,8 @@
   "dragon_asset_symbols": [
     {
       "name": "dragon_iris_indices",
-      "address": 1343392516,
-      "address_hex": "0x50128b04",
+      "address": 1343392620,
+      "address_hex": "0x50128b6c",
       "bytes": 409600,
       "nm_type": "d",
       "sections_at_address": [
@@ -587,8 +587,8 @@
     },
     {
       "name": "dragon_iris_palette",
-      "address": 1343392004,
-      "address_hex": "0x50128904",
+      "address": 1343392108,
+      "address_hex": "0x5012896c",
       "bytes": 512,
       "nm_type": "d",
       "sections_at_address": [
@@ -597,8 +597,8 @@
     },
     {
       "name": "dragon_pupil_q15",
-      "address": 1343383292,
-      "address_hex": "0x501266fc",
+      "address": 1343383396,
+      "address_hex": "0x50126764",
       "bytes": 514,
       "nm_type": "d",
       "sections_at_address": [
@@ -607,8 +607,8 @@
     },
     {
       "name": "dragon_sin_q15",
-      "address": 1343381244,
-      "address_hex": "0x50125efc",
+      "address": 1343381348,
+      "address_hex": "0x50125f64",
       "bytes": 2048,
       "nm_type": "d",
       "sections_at_address": [
@@ -617,8 +617,8 @@
     },
     {
       "name": "dragon_skin_indices",
-      "address": 1343802628,
-      "address_hex": "0x5018cd04",
+      "address": 1343802732,
+      "address_hex": "0x5018cd6c",
       "bytes": 230400,
       "nm_type": "d",
       "sections_at_address": [
@@ -627,8 +627,8 @@
     },
     {
       "name": "dragon_skin_palette",
-      "address": 1343802116,
-      "address_hex": "0x5018cb04",
+      "address": 1343802220,
+      "address_hex": "0x5018cb6c",
       "bytes": 512,
       "nm_type": "d",
       "sections_at_address": [
@@ -637,8 +637,8 @@
     },
     {
       "name": "dragon_sqrt_q15",
-      "address": 1343383808,
-      "address_hex": "0x50126900",
+      "address": 1343383912,
+      "address_hex": "0x50126968",
       "bytes": 8194,
       "nm_type": "d",
       "sections_at_address": [
@@ -651,8 +651,8 @@
     "rodata_to_psram_enabled": true,
     "instruction_fetch_from_psram_enabled": true,
     "dragon_assets_all_in_flash_rodata": true,
-    "linker_rodata_reserved_span_bytes": 850528,
-    "linker_instruction_reserved_span_bytes": 1027936,
+    "linker_rodata_reserved_span_bytes": 850656,
+    "linker_instruction_reserved_span_bytes": 1028832,
     "interpretation": "ELF section names beginning .flash describe linked image segments, not proof of flash-only runtime residency. If CONFIG_SPIRAM_RODATA and XIP are enabled, the configured boot path requires PSRAM mapping/copy budget for linked read-only textures/LUTs; instruction fetch configuration similarly requires code budget. These are configuration/linker deductions; successful startup, actual residency and free heap were not observed. Linker spans include alignment/reservations and are not measured heap consumption. Zero texture decoding allocation does not mean zero PSRAM cost.",
     "startup_free_heap_measured": false,
     "device_peak_RAM_measured": false,
@@ -665,16 +665,16 @@
   "build_warnings": {
     "logs": [
       {
-        "path": "evidence/device-dragon/idf-installed-final-raw.log",
-        "bytes": 2827,
-        "sha256": "e5b67ec6235d49ab3aa1893d414991f1c77d050371f9f5eea60bedb45f624f09"
+        "path": "evidence/device-dragon/idf-delivered-raw.log",
+        "bytes": 2396,
+        "sha256": "246973c6c0911cf4a3a893d6ff134a4322d95798260acadeb4cbceb0f6173034"
       }
     ],
     "matched_warning_lines": [
       {
-        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/device-dragon/idf-installed-final-raw.log",
-        "line": 20,
-        "text": "WARNING: 1/2 app partitions are too small for binary peek.bin size 0x1e59b0:"
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/device-dragon/idf-delivered-raw.log",
+        "line": 16,
+        "text": "WARNING: 1/2 app partitions are too small for binary peek.bin size 0x1e5da0:"
       }
     ],
     "scope": "Only supplied build logs; matches are lines, not distinct diagnostics. No log supplied does not mean a warning-free build.",
@@ -684,7 +684,7 @@
     "source": {
       "path": "evidence/device-dragon/static-budget.json",
       "bytes": 3711,
-      "sha256": "6a098ee4b59d2bfca69160113c452c06af38fdf82245f83a9ac4724b6a1db167"
+      "sha256": "b757b8fc0453186dac1bf70d1ddfa48bb28086dc06ad50f24995dc1de8153dc5"
     },
     "status": "Inherited report_budget.py estimate; not recompiled or device-measured by this read-only tool. texture_decode_to_RAM_bytes excludes XIP read-only residency and must not be used as total PSRAM usage.",
     "ram_static_estimate": {

@@ -1,0 +1,7 @@
+{
+  "physical_test_source": "9389137",
+  "requested_scene": "one slow left/right/up/down motion,4s holds, removal5s",
+  "user_report": "太卡太卡了。看不出来",
+  "accepted": false,
+  "interpretation": "Direction/follow/leave/idle are not user-verified from that observation. Subsequent2.33/2.665Hz revisions are not accepted smoothness. Current49a7c57 still about2.7Hz; quality choice pending."
+}

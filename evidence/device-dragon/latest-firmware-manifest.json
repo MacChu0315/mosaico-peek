@@ -1,20 +1,20 @@
 {
-  "source_commit": "e89cf730bc2664410212ef23b472e222a1511ad8",
+  "source_commit": "49a7c57ecbb9ad46cdbf09684d0ca08427f6b4e2",
   "version": "1.0.0-peek-dragon",
   "device_id": "4553502d49524953010030eda0f452a0",
   "hardware_mac": "30:ed:a0:f4:52:a0",
   "files": {
     "peek.bin": {
-      "bytes": 1989040,
-      "sha256": "75a3577ec71949fd6453975831b0c7928a052b7b77004ae52bdb9d192a1b25ec"
+      "bytes": 1990048,
+      "sha256": "2af83135ddb2205d78d8ea00de9b5b80f52aa649769c56f4a5f16f6e3e032b6b"
     },
     "peek.elf": {
-      "bytes": 15740892,
-      "sha256": "c772260d806fa4ba8a3555377ad034589654b422d5b3e10c42d988b7fd6601eb"
+      "bytes": 15757112,
+      "sha256": "e40635a2b39efacae0141f69f923485774145393d892e0174e080fef09622c34"
     },
     "peek.map": {
-      "bytes": 7202712,
-      "sha256": "f00808b88abfa8086a52a6ce7c4d7667fb13da5799b122303ada6095b51d610a"
+      "bytes": 7203288,
+      "sha256": "fc99f974ebfff998a22a41c0eea8822afa5fd9ba9b96f481fa261b377ee4e33c"
     },
     "ui_apps.bin": {
       "bytes": 94480,
