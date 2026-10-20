@@ -1,41 +1,55 @@
-# Phase 1 handoff
+# Phase2 handoff — approved dragon / native GSP
 
-Completed locally: shared Host/ESP-IDF hot-target detector, native GSP diagnostic UI, project-owned array replay, successful ESP32-S31 firmware build, deterministic synthetic cases, reuse of 32 real snapshots, reproducible checks and review material. Stop here for ChatGPT review; official character scenes/animations are not part of this phase.
+Baseline `60d57542e4f044392160a91c47ea11841dbf9e1e`. Work branch `feat/dragon-gsp`; first commit `adec718` independently fixes core/replay/evidence issues. The second commit adds only the approved single dragon, shared C behavior/rendering, native integration and acceptance material. Its exact hash is in Git and the archive's REVIEW_MANIFEST. Stop here for ChatGPT review; no hardware installation or remote write was performed.
 
-## Verified
+## Delivered
 
-- `cmake -S . -B build-host`, `cmake --build build-host`, `ctest --test-dir build-host --output-on-failure`: detector, device-adapter scheduling/cleanup stubs, and actual UI partial-registration cleanup tests pass (3/3).
-- `cmake -S . -B build-release -DCMAKE_BUILD_TYPE=Release`, build and CTest: 3/3 pass with assertions explicitly retained, avoiding a false PASS under `NDEBUG`.
-- `python3 tests/test_replay.py`: five cases run through production C; two runs of each are byte-identical. Empty, entering/moving/stationary/leaving, multi-source lock/reselection, duplicate input, short missing frames, invalid input, continuing outage and timeout assertions pass. Malformed files are rejected with line-number errors.
-- `python3 tools/generate_data.py`: all five `.peek` SHA-256 values remain unchanged; recorded input keeps the original sparse timestamp gaps. `data-regeneration.json` and `replay-verification.json` contain hashes/results.
-- `python3 tools/preview.py --headless` plus `python3 tests/test_gsp.py`: 96 native checks pass, including actual GSP pointer taps on CASE/PLAY/REPLAY, paused clock preservation, replay equality and detector state unchanged during repeated render frames. Tests use official simulator 1.5.1 plus C backend, not scene-only mode.
-- `python3 tools/build_idf.py`: doctor verifies the exact SDK revision and `>=6.2` constraint; low-noise ESP-IDF build succeeds for `esp32s31`. Actual compiler and versions are in `evidence/environment.json`; artifacts include `projects/peek/build/peek.bin` and `ui_apps.bin`. `evidence/idf-build-summary.log` and retained raw log/result document this build.
-- `python3 -m compileall -q tools tests`: Python syntax check passes. ASan/UBSan detector check passes with `ASAN_OPTIONS=detect_leaks=0`; LeakSanitizer cannot run under this environment's ptrace wrapper, so no leak-sanitizer claim is made.
+- Aged event results are consistent across direct CLI, `peek_replay_until` and native pump. Invalid/expired precedence and same-time tick are explicit. Strict unsigned token parsing rejects negative, overflow and suffix inputs. Original five datasets retain deterministic results.
+- Actual redraw requests increase draw count without altering input identity/timestamps/sample count/result. Offline diagnostic pixel checking now uses five retained PNGs and checks cross position.
+- `dragon.c` is shared by Host and ESP-IDF: sample-time velocity/stationary evidence; held distinct from stillness; IDLE/NOTICE/TRACKING/HOLD/LEAVE; seeded blinks; smooth reappearance without resetting gaze/velocity. New-sample gaps over300ms break stillness even before the detector's500ms hold expiry.
+- `dragon_render.c` is the same prepared-pose rasterizer on both platforms. It preserves the supplied scales/iris, sphere rotation, slit pupil, stretched textured hood and complete eyelid closure. Palette/RGB565/resampling/approximate shadow differ slightly from the approved offline reference; the retained comparison image makes this visible. Gemini contributes no runtime JS, approximate coordinates or replacement art.
+- The 480×480 dragon view has no telemetry/buttons. Original diagnosis is a separate Host startup/view option; firmware offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` (default n). Latest-only mailbox remains low latency; a transient error can be overwritten before delivery, so not every read failure is guaranteed visible.
 
-The independent code review found a queue/clock ordering race and asynchronous callback cleanup lifetime defects in the initial device adapter. Both were fixed and re-reviewed. The clock race was reproduced against the original source (`evidence/device-regression-before.log`); actual adapter and actual UI cleanup now have Host regression coverage. These stubs prove the selected order/error behavior, not physical hardware operation.
+## Actual verification
 
-## Review material
+| Command / check | Actual result |
+| --- | --- |
+| `cmake -S . -B build-host`, build, `ctest --test-dir build-host --output-on-failure` | 6/6 pass: detector, actual device-adapter scheduling/cleanup, actual UI lifecycle including new eye registration failures, event aging, behavior, raster pixels |
+| Release configure/build + CTest | 6/6 pass; assertions explicitly retained |
+| `python3 tests/test_replay.py` | Original five cases deterministic; aging CLI/replay_until equality; malformed integer cases rejected |
+| `python3 tests/test_gsp.py` | 100 checkpoint records, including80 motion samples (not100 independent scenarios), actual pointer controls, five redraws, native aging equivalence |
+| `python3 tests/test_dragon_gsp.py` | 27 controlled native checkpoints pass; >4s fresh HOLD, reappearance, INVALID/STALE/recovery, pause/step/replay purity, closed/extreme/reopen captures; additionally61.07s real-time idle and30.51s full-flow observation pass |
+| `python3 tools/verify_pixels.py` | Five retained diagnostic PNGs: cross presence and position agree |
+| `python3 tools/verify_dragon_pixels.py` | 19 retained actual GSP PNGs: all230400 RGB565 pixels per frame match full C raster of exported exact pose; independent aperture mask finds0 bright iris pixels outside; closed frames have0 bright iris pixels |
+| Shared behavior timing test | Same production8Hz input gives identical observation-time decisions at30/60/120Hz animation advancement; held, timeout, replay/seed and mapping tests pass |
+| Asset/data regeneration | Byte-identical; asset rebuild also passes without original review-inputs, using retained PNGs and metadata |
+| `python3 tools/build_idf.py` | Doctor verifies pinned SDK/target; ESP32-S31 firmware build succeeds. Final raw/result/summary retained in phase2 evidence |
+| Python compileall and sanitizer | Syntax pass; renderer ASan+UBSan passed independently with leak checking disabled due environment ptrace limitation; no device runtime claim |
 
-- Start with `README.md`, `src/peek.h`, `src/peek.c`, `src/peek_ui.c`, `projects/peek/main/device_thermal.c`, `docs/DESIGN.md`.
-- Inputs/provenance: `data/manifest.json`, `recorded-source.json`, `recorded.jsonl` and five `.peek` files. Actual detector outputs: `evidence/*-output.jsonl`. No precomputed centroid feeds the detector.
-- Dynamic evidence: `evidence/gsp-motion.mp4`, a 10-second sequence of **actual GSP API screenshots** stepped at exact 125 ms replay times and encoded at 8 fps. This is controlled replay video, not real-time performance evidence. Selected PNGs and `evidence/gsp/checks.json` show other states.
-- `evidence/gsp-host.log`, `gsp-backend.log`, `gsp-build.log`, `gsp-test.log` retain process/build/test evidence. The package's `REVIEW_MANIFEST.json` records its exact local commit and per-file SHA-256; `.git`, cached dependencies/builds and intermediate movie frames are excluded.
+Additional independent review reproduced the stale stationary-evidence boundary, which was fixed and pinned at300/301ms. Review also prompted firmware diagnosis selection and tests for partial eye registration/renderer cleanup. No remaining high-impact correctness defect was identified in that read-only review; this is not a substitute for the requested next ChatGPT review.
 
-## Failures encountered and disposition
+## Runtime evidence and performance
 
-- Sandboxed startup initially failed to bind loopback listeners (reported as occupied default ports). Running local GSP with socket permission and temporary listen addresses succeeded. Other running GSP/Gateway processes were preserved. Reproduce the intended startup with `python3 tools/preview.py`; if a sandbox blocks sockets it needs local listener permission.
-- First firmware attempts could not resolve GSPC / component registry under restricted network access. The explicit local pinned GSPC and registry read permission resolved them. Final component versions equal those in the previously validated Mondrian app (`evidence/dependency-versions.json`). No shared SDK/BSP/toolchain upgrade occurred.
-- LeakSanitizer reports “does not work under ptrace.” Address/undefined checks were rerun with leak detection disabled; ordinary debug and Release behavior tests pass.
+`evidence/phase2/dragon/{idle,dragon}-live.mp4` consists of **actual live GSP API screenshots** sampled on wall clock and encoded at8fps. The source capture timestamps are retained in `*-captures.json`; these are not direct screen recordings. The encoded rate does not prove30Hz animation or device FPS. `*-live.jsonl`, `live-metrics.json`, controlled `frames.json` and `checks.json` preserve actual source sequence, capture/update times, role decisions/pose and canvas counters.
 
-- Final shutdown inspection exposed the pinned sim_bridge select/EINTR behavior: direct external SIGTERM marked a healthy session failed. The project launcher now sends a local `quit` command; the native callback requests stop at a poll boundary, leaving the official host alive for cleanup. The original error log is retained as `evidence/gsp-signal-shutdown-before.log`; bounded shutdown smoke and final process log confirm clean cleanup. No dependency source was changed.
+During capture, the final native program delivered about **14.15 callbacks/s in idle and14.45/s in the flow**, averaging **12.65/12.40ms** per C draw callback; maximum session draw was30.349ms. The ~30Hz Host goal was **not reached**. Open-eye dirty updates preserve pixel parity, but this pinned native bridge still supplied full480×480 draw surfaces and the observed throughput gain was negligible. The remaining combined bridge/render/scheduling overhead is not isolated here; no device-rate conclusion follows.
 
-## Not verified / known limits
+Measured native process memory: backend RSS/HWM3860kB; simulator RSS about100600kB, HWM102400kB. These are different processes/runtime from ESP-IDF and are not device RAM measurements.
 
-- **No hardware writes or real hardware acceptance.** No flash, recover, firmware upgrade or mode change was performed. New device adapter I²C acquisition, actual screen/rotation/touch/timing, read failures, hotplug/reconnection, power and long-duration stability still need on-device testing with separate authorization.
-- Existing recorded temperatures are genuine but sparse, with no object/distance/scene ground truth. They validate import, orientation provenance and expiry, not continuous tracking or detection quality. Configuration is inferred from the archived source/defaults, not a per-frame configuration record.
-- FOV, useful distance and physical mounting direction remain unknown. Native `(0,0)` is the sensor array's top-left; user-facing left/right is not yet calibrated.
-- Spatial-median subtraction assumes a significant cooler background. Large hot coverage, weak contrast, reflective surfaces, changing ambient conditions and merging/crossing targets may fail or change associations. The selected target is a hot region, not a person or stable identity. Parameter defaults need real continuous labelled recordings.
-- Sensor driver defaults stay at 400 kHz, address 0x33, emissivity 0.95, reflected offset 8 °C, 16 Hz **subpage** rate (~8 full frames/s nominal). Both slots share I²C; use only one thermal board. Actual delivered rate remains unmeasured here.
-- The firmware intentionally labels replay controls SENSOR/LIVE/-- and keeps its acquisition clock advancing. Full replay/control testing is Host-side. On a rare failed teardown synchronization, contexts are retained until reboot to avoid dangling callbacks; repeated start is rejected.
+## Flash and RAM
 
-Next handoff: have ChatGPT review this package and its evidence. Then arrange a separately approved device test and continuous recorded cases before connecting official character UI. This phase does not authorize those later steps.
+Actual final images and SHA-256 are in `evidence/phase2/resource-budget.json`:
+
+- `ui_apps.bin`: **94,480 B /1,048,576 B**, free954,096 B.
+- `peek.bin`: **1,985,248 B**, includes **651,780 B** indexed textures/palettes/LUTs. The texture cost is not hidden by leaving the GSP partition small.
+- The app fits the unchanged `ota_0` capacity13,565,952 B. IDF emits a warning because the retained `factory` slot is only1,835,008 B. That slot contains retained Vibe Mode; the official `prepare_system_update.py` targets `ota_0` and direct IDF flashing is blocked by the application contract. No partition was enlarged or modified. No installation was performed.
+- Cross-compiler ABI sizing of actual structs: renderer12,308 B; device app13,560 B; each capture message3,104 B. App + three message buffers + renderer is35,180 B, plus8,192 B sensor-task stack and uncounted RTOS metadata. No additional app full-screen buffer or runtime texture decoding is used.
+- A480×480 RGB565 plane is460,800 B. Eye + diagnostic Canvas planes, if both cached, total681,984 B. GSP caches/scratch, font/scene allocations, presenter/DMA/framebuffer count and SDK heaps/stacks require separate accounting. **The device peak RAM is not measured**; the known allocations are not a claimed peak bound.
+
+Configuration also exposes upstream SDK CMake private-include warnings (esp_wifi/wpa_supplicant and lwIP), preserved in the initial phase2 build raw log. They were not patched in adjacent SDK sources. The final low-noise build's counted warning is the retained-factory size warning above.
+
+## Review material / remaining work
+
+Start with `README.md`, `docs/REVIEW_RESPONSE.md`, `docs/DRAGON_DESIGN.md`, `src/peek.c`, `src/dragon.c`, `src/dragon_render.c`, `src/peek_ui.c` and `projects/peek/main/device_thermal.c`. Approved-source and generated-asset hashes: `assets/dragon/metadata.json` and `evidence/phase2/input-provenance.json`. Dynamic/keyframe comparison and pixel report are under `evidence/phase2/dragon/`. The ZIP includes retained source assets, replay data/results and evidence, but not original large input videos, generated include files, dependencies, `.git`, build caches or intermediate live capture PNGs.
+
+No on-device acceptance: physical sensor-to-eye orientation, actual read rate, continuous target quality, FOV/distance, hand/warm-cup range, latency, device FPS/RAM/power, hotplug and long-term stability remain unverified. The32 existing recorded snapshots keep their original sparse ~254s span and inferred configuration provenance; they do not validate continuous8Hz tracking or labelled target accuracy. Palette/lighting differences and the unmet Host30Hz goal are explicit review items. The next step is review of this package, then a separately authorized hardware phase.

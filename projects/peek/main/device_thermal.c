@@ -10,6 +10,9 @@
 #include "freertos/queue.h"
 #include <stdlib.h>
 #include <inttypes.h>
+#ifdef ESP_PLATFORM
+#include "sdkconfig.h"
+#endif
 /* Sensor task owns the driver. Render-task timer, event and canvas callbacks
  * exclusively own view/detector. Queue copies immutable complete frames.
  * Latest-only mailbox may drop frames; it never duplicates them. */
@@ -84,6 +87,12 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
     esp_err_t rc=mosaico_module_mgr_init(NULL);
     if(rc!=ESP_OK)goto fail;
     rc=peek_ui_init(&app->view,ui,NULL,NULL);if(rc!=ESP_GSP_OK)goto fail_ui;
+#ifdef CONFIG_PEEK_DIAGNOSTIC_VIEW
+    rc=peek_ui_set_view(&app->view,false);
+#else
+    rc=peek_ui_set_view(&app->view,true);
+#endif
+    if(rc!=ESP_GSP_OK)goto fail_ui;
     app->view.live=true;app->view.source="LIVE / MLX90640 (native orientation)";
     app->timer=esp_gsp_timer_create(ui,33,refresh,consumer);
     if(!app->timer){rc=ESP_ERR_NO_MEM;goto fail_ui;}
@@ -102,5 +111,6 @@ fail_ui:
         }
     }
 fail:
+    peek_ui_release(&app->view);
     vQueueDelete(app->queue);free(producer);free(consumer);free(app);app=NULL;return rc;
 }

@@ -1,0 +1,31 @@
+[  3%] Generating dragon-generated/dragon_assets.inc
+Baked: textures 641024 bytes; LUTs 10756 bytes; total C data 651780 bytes
+[  3%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[  7%] Building C object CMakeFiles/dragon.dir/src/dragon_render.c.o
+[ 11%] Linking C static library libdragon.a
+[ 15%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 26%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 34%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 42%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 46%] Linking C executable test_ui_lifetime
+[ 53%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 61%] Built target peek_replay
+Consolidate compiler generated dependencies of target test_event_aging
+[ 69%] Built target test_event_aging
+Consolidate compiler generated dependencies of target peek_replay_until
+[ 76%] Built target peek_replay_until
+Consolidate compiler generated dependencies of target test_dragon
+[ 80%] Linking C executable test_dragon
+[ 84%] Built target test_dragon
+Consolidate compiler generated dependencies of target test_dragon_render
+[ 88%] Linking C executable test_dragon_render
+[ 92%] Built target test_dragon_render
+[ 96%] Building C object CMakeFiles/dragon_snapshot.dir/tools/dragon_snapshot.c.o
+[100%] Linking C executable dragon_snapshot
+[100%] Built target dragon_snapshot

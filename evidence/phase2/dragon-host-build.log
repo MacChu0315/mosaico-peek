@@ -1,0 +1,31 @@
+[  4%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[  8%] Building C object CMakeFiles/dragon.dir/src/dragon_render.c.o
+[ 12%] Linking C static library libdragon.a
+[ 16%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 29%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 37%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 41%] Building C object CMakeFiles/test_device_adapter.dir/tests/test_device_adapter.c.o
+[ 45%] Linking C executable test_device_adapter
+[ 45%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 50%] Building C object CMakeFiles/test_ui_lifetime.dir/tests/test_ui_lifetime.c.o
+[ 54%] Building C object CMakeFiles/test_ui_lifetime.dir/src/peek_ui.c.o
+[ 58%] Linking C executable test_ui_lifetime
+[ 58%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 66%] Built target peek_replay
+Consolidate compiler generated dependencies of target test_event_aging
+[ 75%] Built target test_event_aging
+Consolidate compiler generated dependencies of target peek_replay_until
+[ 83%] Built target peek_replay_until
+Consolidate compiler generated dependencies of target test_dragon
+[ 87%] Linking C executable test_dragon
+[ 91%] Built target test_dragon
+Consolidate compiler generated dependencies of target test_dragon_render
+[ 95%] Building C object CMakeFiles/test_dragon_render.dir/tests/test_dragon_render.c.o
+[100%] Linking C executable test_dragon_render
+[100%] Built target test_dragon_render

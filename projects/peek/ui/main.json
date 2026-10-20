@@ -7,8 +7,20 @@
   "default_font_size": 18,
   "objects": [
     {
-      "type": "label",
+      "type": "container",
       "parent": -1,
+      "name": "diagnostic",
+      "x": 0,
+      "y": 0,
+      "w": 480,
+      "h": 480,
+      "bg_color": "#101B28",
+      "bind": "diagnostic",
+      "bind_target": "visible"
+    },
+    {
+      "type": "label",
+      "parent": 0,
       "name": "title",
       "x": 24,
       "y": 12,
@@ -22,7 +34,7 @@
     },
     {
       "type": "label",
-      "parent": -1,
+      "parent": 0,
       "name": "source",
       "x": 24,
       "y": 44,
@@ -36,7 +48,7 @@
     },
     {
       "type": "image",
-      "parent": -1,
+      "parent": 0,
       "name": "heat",
       "x": 48,
       "y": 76,
@@ -48,7 +60,7 @@
     },
     {
       "type": "label",
-      "parent": -1,
+      "parent": 0,
       "name": "status",
       "x": 24,
       "y": 370,
@@ -62,7 +74,7 @@
     },
     {
       "type": "label",
-      "parent": -1,
+      "parent": 0,
       "name": "timing",
       "x": 24,
       "y": 398,
@@ -76,7 +88,7 @@
     },
     {
       "type": "button",
-      "parent": -1,
+      "parent": 0,
       "name": "case",
       "x": 24,
       "y": 436,
@@ -88,7 +100,7 @@
     },
     {
       "type": "button",
-      "parent": -1,
+      "parent": 0,
       "name": "play",
       "x": 176,
       "y": 436,
@@ -100,7 +112,7 @@
     },
     {
       "type": "button",
-      "parent": -1,
+      "parent": 0,
       "name": "restart",
       "x": 328,
       "y": 436,
@@ -112,7 +124,7 @@
     },
     {
       "type": "label",
-      "parent": 5,
+      "parent": 6,
       "name": "case_label",
       "x": 0,
       "y": 7,
@@ -127,7 +139,7 @@
     },
     {
       "type": "label",
-      "parent": 6,
+      "parent": 7,
       "name": "play_label",
       "x": 0,
       "y": 7,
@@ -142,7 +154,7 @@
     },
     {
       "type": "label",
-      "parent": 7,
+      "parent": 8,
       "name": "restart_label",
       "x": 0,
       "y": 7,
@@ -154,6 +166,31 @@
       "text_align": "center",
       "bind": "restart_label",
       "bind_target": "text"
+    },
+    {
+      "type": "container",
+      "parent": -1,
+      "name": "eye_layer",
+      "x": 0,
+      "y": 0,
+      "w": 480,
+      "h": 480,
+      "hidden": true,
+      "bg_color": "#000000",
+      "bind": "eye_layer",
+      "bind_target": "visible"
+    },
+    {
+      "type": "image",
+      "parent": 12,
+      "name": "eye",
+      "x": 0,
+      "y": 0,
+      "w": 480,
+      "h": 480,
+      "image": "eye.png",
+      "codec": "lossless",
+      "bind": "eye"
     }
   ],
   "font_charset": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

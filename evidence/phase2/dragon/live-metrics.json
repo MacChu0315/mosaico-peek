@@ -1,0 +1,46 @@
+[
+  {
+    "case": "idle",
+    "wall_seconds": 61.071610901970416,
+    "logical_ms": 61031,
+    "callback_count": 864,
+    "canvas_callback_hz": 14.147326183795226,
+    "equivalent_full_canvas_hz": 14.147326183795226,
+    "draw_us_mean": 12653.469907407407,
+    "draw_us_max_session": 30349,
+    "screenshot_count": 488,
+    "memory": {
+      "simulator": {
+        "VmHWM": "102400 kB",
+        "VmRSS": "100588 kB"
+      },
+      "backend": {
+        "VmHWM": "3860 kB",
+        "VmRSS": "3860 kB"
+      }
+    },
+    "evidence_method": "Live official GSP API screenshots, sampled on wall clock; encoded video does not independently establish real-time performance or device FPS."
+  },
+  {
+    "case": "dragon",
+    "wall_seconds": 30.511528295930475,
+    "logical_ms": 30050,
+    "callback_count": 441,
+    "canvas_callback_hz": 14.45355328395068,
+    "equivalent_full_canvas_hz": 14.45355328395068,
+    "draw_us_mean": 12404.931972789116,
+    "draw_us_max_session": 30349,
+    "screenshot_count": 244,
+    "memory": {
+      "simulator": {
+        "VmHWM": "102400 kB",
+        "VmRSS": "100600 kB"
+      },
+      "backend": {
+        "VmHWM": "3860 kB",
+        "VmRSS": "3860 kB"
+      }
+    },
+    "evidence_method": "Live official GSP API screenshots, sampled on wall clock; encoded video does not independently establish real-time performance or device FPS."
+  }
+]

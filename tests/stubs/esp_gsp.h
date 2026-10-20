@@ -23,3 +23,6 @@ esp_gsp_err_t esp_gsp_canvas_set_draw_cb(esp_gsp_handle_t,uint16_t,esp_gsp_canva
 esp_gsp_err_t esp_gsp_canvas_invalidate(esp_gsp_handle_t,uint16_t);
 esp_gsp_err_t esp_gsp_canvas_stop(esp_gsp_handle_t,uint16_t);
 esp_gsp_err_t esp_gsp_on_event(esp_gsp_handle_t,esp_gsp_event_cb_t,void *);
+
+typedef struct {int16_t x1,y1,x2,y2;} gsp_rect_t;
+esp_gsp_err_t esp_gsp_canvas_invalidate_dirty(esp_gsp_handle_t,uint16_t,gsp_rect_t);

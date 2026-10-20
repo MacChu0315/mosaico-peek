@@ -7,16 +7,17 @@ def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT,text=True).
 def main():
     if git('status','--porcelain'):raise RuntimeError('Commit reviewed task files before packaging; working tree must be clean')
     commit=git('rev-parse','HEAD');paths=git('ls-files','-z').strip('\0').split('\0')
-    forbidden={'.git','deps','managed_components','__pycache__','.run','.codex-runs'}
+    forbidden={'.git','deps','managed_components','__pycache__','.run','.codex-runs','review-inputs'}
     selected=[]
     for name in paths:
         parts=Path(name).parts
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
+        if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
         if name.startswith('evidence/gsp/motion/'):continue
         selected.append(name)
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in selected}
-    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'evidence':'GSP captures from the official simulator/native C; not hardware acceptance','excluded':['.git','build/cache','dependency copies','80 intermediate screenshots (MP4 + selected stills retained)']}
-    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-phase1-{commit[:8]}.zip'
+    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'evidence':'Phase2 native C/GSP dragon; live API screenshot sampling + measured callbacks, not hardware acceptance','excluded':['.git','build/cache','dependency copies','intermediate screenshots, ignored original review input and dependency caches']}
+    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-phase2-{commit[:8]}.zip'
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in selected:z.write(ROOT/name,'mosaico-peek/'+name)
         z.writestr('mosaico-peek/REVIEW_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')

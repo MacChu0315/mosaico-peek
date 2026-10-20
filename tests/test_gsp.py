@@ -26,7 +26,7 @@ def main():
             call('wait',{'frames':3});call('screenshot',{'path':str(EVIDENCE/(name+'.png')),'format':'png'})
         caps=call('capabilities');assert caps['runtime_version']=='1.5.1' and caps['width']==caps['height']==480
         (EVIDENCE/'capabilities.json').write_text(json.dumps(caps,indent=2)+'\n')
-        command('case 1');capture('initial');record('initial motion paused')
+        command('view diagnostic');command('case 1');capture('initial');record('initial motion paused')
         # Use actual GSP pointer events to exercise button callbacks.
         actions=state()['actions'];call('tap',{'x':240,'y':454})
         wait_for(lambda:state()['actions']==actions+1 and not state()['paused'])

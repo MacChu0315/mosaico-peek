@@ -1,0 +1,1 @@
+test_hold_gap: /tmp/peek-hold-gap-test.c:3: main: Assertion `!c.stationary&&c.mode==DRAGON_TRACKING' failed.

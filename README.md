@@ -1,81 +1,71 @@
-# mosaico-peek — phase 1
+# mosaico-peek — approved single dragon eye
 
-One shared C hot-target detector, native 480×480 GSP diagnostics, temperature-array replay and review evidence. No character artwork or identity recognition. No hardware firmware was written.
+Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. No device firmware was written.
 
-## Dependencies
+## Start
 
-Use the sibling `esp-mosaico-vibe` workspace and existing `.toolchains/`; no shared checkout is upgraded. All exact revisions and driver source hashes are in [dependencies.json](dependencies.json), resolved ESP-IDF components in [dependencies.lock](projects/peek/dependencies.lock).
-
-| Dependency | Verified version / revision |
-| --- | --- |
-| ESP-IDF / target | `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe` / `esp32s31` |
-| IDF version reporting | CMake `6.2.0` satisfies `>=6.2`; git reports `v6.1-dev-7333-g7b9cc1ac79f` (development checkout, not a stable release) |
-| Vibe / utils | `95469e63…` / `fc63d43f…` |
-| BSP | `a2c985ad…` (retained display/module-manager APIs) |
-| Thermal public driver | official BSP `5f88b91e…`, component `0.1.0`, unmodified C; dependency path relocated |
-| ESP-GSP / GSPC / simulator | `1.5.1` (`472207a3…`) / `0.6.1` / `1.5.1` |
-| RISC-V compiler | `riscv32-esp-elf-gcc 16.1.0`, `esp-16.1.0_20260609` |
-| Native tools | GCC 11.4.0, CMake 3.22.1, Python 3.10.14; FFmpeg for review video only |
-
-Layout: `projects/peek/` is the official `mosaico.py project init peek` app scaffold; `src/` is shared production C; `tests/` tests it; `data/` contains inputs/provenance; `evidence/` contains actual outputs. `deps/` and build directories are local, excluded from review archives. See [THIRD_PARTY.md](THIRD_PARTY.md) for source/licensing and offline dependency reuse.
-
-## Run locally
-
-From this directory, with the verified sibling dependencies available:
+From this directory, with the existing sibling dependencies and pinned tools:
 
 ```sh
 python3 tools/bootstrap.py
-cmake -S . -B build-host
-cmake --build build-host
-ctest --test-dir build-host --output-on-failure
-python3 tests/test_replay.py
-./build-host/peek_replay data/motion.peek
 python3 tools/preview.py
 ```
 
-The last command builds the native backend and prints/opens the actual official GSP URL. It starts on the motion case, **paused**. CASE cycles empty → motion → multi → gaps → recorded. PLAY/PAUSE freezes/resumes the injected replay clock; REPLAY resets file, time and detector, preserving play/pause. Case selection resets and pauses. EOF pauses. The simulator is not an MLX90640 physical simulation: this project reads arrays and calls the production detector.
-
-For automation, keep `python3 tools/preview.py --headless` running, then:
+This opens/prints the official native GSP URL, starting on the synthetic dragon case, paused. Controls stay **outside** the artwork:
 
 ```sh
-python3 tests/test_gsp.py
-python3 tools/control.py case 3
-python3 tools/control.py advance 6000
+python3 tools/control.py play
+python3 tools/control.py pause
+python3 tools/control.py step
+python3 tools/control.py replay
+python3 tools/control.py case idle
+python3 tools/control.py case dragon
+python3 tools/control.py view diagnostic
 python3 tools/control.py status
 python3 tools/stop_preview.py
 ```
 
-`advance` is a Host diagnostic operation that pauses and advances virtual milliseconds through every intervening input event. It never substitutes expected coordinates. Default GSP runner ports were occupied in this environment; `preview.py` uses the official simulator/native bridge with loopback temporary listeners. In restricted sandboxes, socket permission is required. No other simulator or Gateway is stopped. Only one Peek preview per working directory is supported.
+`python3 tools/preview.py --view diagnostic` starts the original heatmap/buttons. Cases: empty, motion, multi, gaps, recorded, aging, dragon, idle (or indexes0..7). CASE resets and pauses; REPLAY resets source/time/identity/detector/role/random seed while preserving play/pause; STEP pauses and processes the next input event. `advance MS` is a controlled replay operation. EOF pauses. Real acquisition continues monotonic time; firmware defaults to dragon and offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` under “Peek diagnostics” in menuconfig for a diagnostic build. No touchscreen input represents a thermal target.
 
-To override downloaded GSP locations set `ESP_GSP_COMPONENT_DIR`, `GSPC_EXECUTABLE`, `GSP_SIM_EXECUTABLE` to the pinned 1.5.1/0.6.1 tools. `python3 tools/build_idf.py` verifies the exact SDK commit, runs doctor and builds `projects/peek/build/peek.bin` and its GSP resource image. Set `IDF_PATH` only to that revision. It performs **no flash/update**. Full raw build logs live under `projects/peek/.codex-runs/idf-low-noise-build/`; selected logs are retained in `evidence/`.
+Only one preview per working directory is supported. Loopback socket permission is necessary in restricted sandboxes. The launcher uses temporary local listeners and a callback-boundary quit; it never stops another simulator/Gateway. GSP does not physically simulate MLX90640: this project's `.peek` arrays enter the real detector.
 
-## Interface and parameters
+## Build / verify
 
-`peek_frame_t` contains `sequence`, `captured_ms`, `complete`, `c[768]` and `valid[768]`. Temperatures are °C, `c[y*32+x]`; origin top left, x right, y down. All 768 pixels must be valid, finite and in [-40,300] °C. The BSP owns calibration, temperature calculation, bad-pixel correction and both-subpage assembly. The live adapter preserves native sensor orientation; physical mounting-to-screen direction remains unverified. Recorded replay uses its recorded rotation (already applied in `temperatures`).
+```sh
+cmake -S . -B build-host
+cmake --build build-host
+ctest --test-dir build-host --output-on-failure
+cmake -S . -B build-release -DCMAKE_BUILD_TYPE=Release
+cmake --build build-release
+ctest --test-dir build-release --output-on-failure
+python3 tests/test_replay.py
+python3 tools/build_idf.py
+```
 
-`peek_submit(detector, frame, now_ms)` accepts each strictly increasing sequence/capture timestamp once. `now_ms` and capture time share one injected monotonic epoch. Duplicate/older sequences never count or refresh last valid time, but elapsed time still ages the result. Future/non-increasing capture timestamps or invalid arrays are rejected. `peek_tick` only ages state; clock rollback returns false without changing state. Source restart/replay must call `peek_reset`. Every event API returns an already aged result; same-time `peek_tick` is idempotent. Expired previously valid data is STALE even when the new event is invalid/fault; before any valid capture a fault is INVALID. `peek_fault` marks acquisition failure without creating a sample or changing sequence/time-of-last-valid. The device calls it for consumed read-error messages; retained driver output is never resubmitted. The latest-only mailbox can overwrite a short failure with a later success before consumption, so individual failures are not all guaranteed visible; this low-latency policy is intentional.
+With preview running, `python3 tests/test_gsp.py` verifies original diagnostics and core/native equivalence. `python3 tests/test_dragon_gsp.py` performs controlled native checks plus61s idle and30.5s live full-flow observation. `tools/verify_pixels.py` checks five retained diagnostic PNGs and actual cross coordinates; `tools/verify_dragon_pixels.py` checks retained dragon PNGs against a full C raster and independent Bézier aperture geometry. Both work from the ZIP after Host build, without excluded intermediate movie frames. `tools/encode_live.py` recreates movies only when live screenshot intermediates are available in `.run/`.
 
-`peek_result_t` exposes `has_target`, smoothed sensor-coordinate `x/y`, selected `area`, qualifying `candidates`, `data`, `has_valid`, `last_valid_ms`, `last_seen_ms`, sequence and sample count. `has_valid` disambiguates timestamp zero from “never received.” `WAITING` means no input; `VALID` includes a valid empty scene; `INVALID` means acquisition/input failure; `STALE` means the last valid capture has reached expiry. Without a target x/y are -1. The most recent valid heatmap stays visible as history during invalid/stale data; the white cross is removed. Labels show current time, last valid capture time and age. Callers must use the state/target flags, not historic pixels alone.
+Dependencies are unchanged: ESP-IDF commit `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe`, target `esp32s31`; CMake version6.2.0 satisfies >=6.2 while git describes this development SDK as `v6.1-dev-7333-g7b9cc1ac79f`. ESP-GSP1.5.1 (`472207a3…`), GSPC0.6.1, simulator1.5.1, RISC-V GCC16.1.0, BSP `a2c985ad…`, utils `fc63d43f…`, Vibe `95469e63…`. The separately pinned official thermal driver is BSP `5f88b91e…`, unmodified C. Exact source hashes and versions: `dependencies.json` and `projects/peek/dependencies.lock`; [source/licensing](THIRD_PARTY.md).
 
-All defaults are centralized in `peek_default_config()`; callers can pass a validated `peek_config_t` to `peek_init`. Changing detection policy requires rerunning replay verification.
+Asset generation requires **Pillow10.4.0** for byte-identical output; this was already available in the Host Python. CMake generates the include inside each build tree. The build wrapper supplies that existing interpreter separately from ESP-IDF Python, without installing into/upgrading the shared SDK environment. `python3 tools/bake_dragon.py --check --output build-host/dragon-generated/dragon_assets.inc` verifies it. Retained source PNGs + provenance reproduce the assets even without `review-inputs/`. GSP tool paths can be overridden with `ESP_GSP_COMPONENT_DIR`, `GSPC_EXECUTABLE`, `GSP_SIM_EXECUTABLE`; the SDK revision remains checked.
 
-| Parameter | Default and meaning |
-| --- | --- |
-| Background | spatial median of current complete frame (no temporal adaptation) |
-| `enter_delta_c` / `keep_delta_c` | 3 / 2 °C above background; lower threshold while tracking |
-| `min_area` / `max_area` | 6 / 300 four-connected sensor pixels |
-| `acquire_frames` / `release_frames` | 3 consistent new frames / 2 valid absent frames |
-| `max_distance` | 5 sensor pixels for association and entry continuity |
-| `smoothing` | 0.5 per accepted tracked frame |
-| `continuity_ms` | 300 ms; larger input gaps reset acquisition confirmation |
-| `hold_ms` / `stale_ms` | 500 / 750 ms from last sighting / last valid capture |
+## Interface / behavior
 
-While tracked, the nearest qualifying region within the gate wins even if another source becomes hotter. Untracked selection maximizes summed temperature excess; ties use row-major discovery order. Distant replacements require release and fresh confirmations. This preserves stationary targets and limits source switching. Broad hot backgrounds, targets merging/crossing, or covering much of the image can defeat this simple approach; it is not person identification, classification or distance measurement.
+`peek_frame_t` has sequence, capture timestamp in injected monotonic **milliseconds**, complete flag, Celsius `c[768]` and per-pixel validity. Row-major `c[y*32+x]`, origin top-left, x right/y down. Every pixel must be valid, finite, within [-40,300]°C. Driver calibration, two-subpage assembly, bad-pixel correction and temperature calculation stay behind the BSP public API. Read failures never resubmit retained temperatures. The latest-only device mailbox can overwrite a short failure with a later success; consumed failures call `peek_fault`. Not every individual error is guaranteed visible.
 
-## Replay and evidence
+`peek_submit`, `peek_fault` and `peek_tick` return an already aged state: same-time tick is idempotent. Expired previously valid data is STALE even if the incoming event is invalid/fault; before any valid capture a fault is INVALID. Duplicate/older sequence never counts/refreshes last-valid time. Capture timestamps must strictly increase and not be in the future; clock rollback is rejected unchanged. Reset the detector and role on source epoch change. `peek_result_t` exposes data state WAITING/VALID/INVALID/STALE, target/held, x/y (-1 without target), area/candidates, last-valid/last-seen times, sequence and sample count. `has_valid` disambiguates timestamp zero from “never”.
 
-`python3 tools/generate_data.py` reproducibly regenerates `.peek` inputs from seed 90640 and the archived recorded JSONL. `.peek` contains `F now_ms sequence captured_ms complete` plus 768 Celsius values, or `P now_ms` to advance time without a new sample. Parser errors are reported with line numbers. `data/manifest.json` describes expected scenarios; `evidence/*-output.jsonl` are **actual C results**. `data/recorded-source.json` retains source hash, capture configuration and limitations. Thirty-two real temperature snapshots are reused, with original inter-frame gaps; no ground truth labels exist and their sparse timing cannot validate tracking continuity.
+Defaults stay centralized in `peek_default_config`: spatial-median background; enter/keep contrast3/2°C; four-connected area6..300; acquisition3 new consistent frames; release2 valid absent frames; association5 pixels; smoothing0.5; continuity300ms; target hold500ms; data stale750ms. While tracked, nearest qualifying region in the gate wins even over a hotter distant source. Untracked selection maximizes summed temperature excess; ties follow row-major discovery. No identity recognition/classification/distance claim.
 
-[Handoff](docs/HANDOFF.md) records passed/failed/unverified items. [GSP video](evidence/gsp-motion.mp4) shows the real native simulator rendering 80 input frames at 8 fps, including entry, movement, stationary hold and exit. It is assembled from simulator API captures at exact 125 ms replay steps, not a real-time screen recording or hardware capture. `evidence/gsp/checks.json`, captures, process logs and test scripts make the run reproducible. Optional `python3 tools/verify_pixels.py` checks the captured cross against native state (Pillow; already available in this environment).
+`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. Physical orientation is uncalibrated.
 
-Create a small review archive after committing with `python3 tools/package_review.py`. It includes tracked source, dependency manifests, replay inputs/results and evidence; excludes `.git`, build/cache files, raw 80-frame intermediates and reacquirable dependency copies.
+Draw reads a prepared pose only. Open-eye dirty updates request the tested `(16,80)..(464,416)` union; blink transitions request the full textured hood. Native GSP currently still supplies full draw surfaces, so this request produced no substantial measured throughput gain. The full-frame parity test prevents stale pixels from being hidden by partial updates.
+
+## Evidence / limits
+
+All eight cases are labelled synthetic except the32 retained recorded snapshots. Original recorded capture gaps (roughly254s total) are preserved; there is no scene/target ground truth or continuous8Hz recording. `tools/generate_data.py` and `tools/generate_dragon_data.py` reproduce the inputs. `.peek`: `F now sequence captured complete` +768 Celsius tokens, or `P now`. Unsigned fields strictly reject signs, overflow and suffixes; malformed input reports line number. Actual C output is retained separately; no prefilled centroid drives the role.
+
+[Handoff](docs/HANDOFF.md), [review response](docs/REVIEW_RESPONSE.md), [resource budget](evidence/phase2/resource-budget.json), [native artwork comparison](evidence/phase2/dragon/approved-vs-native.png), [live idle movie](evidence/phase2/dragon/idle-live.mp4), [live target-flow movie](evidence/phase2/dragon/dragon-live.mp4).
+
+The movies sample actual official GSP API pixels during wall-clock runs and encode at8fps; they are not direct screen recordings and their encoded rate does not establish runtime/device FPS. Separate state/time/callback/memory records establish what ran. Host callback throughput was about14.1–14.5Hz during capture, below the approximately30Hz goal. Firmware compiled but hardware frame rate, peak RAM, orientation, distance/FOV, continuous capture quality and long-term reliability remain unverified. No flash/recover/update or remote write occurred.
+
+Create the review archive after commit with `python3 tools/package_review.py`; it retains exact commit/file hashes and excludes original large input movies, `.git`, dependencies, generated includes, build caches and intermediate captures.

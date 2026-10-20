@@ -20,6 +20,20 @@
     "recorded": {
       "kind": "recorded",
       "expected": "no labelled target ground truth; preserve sparse capture gaps, stale between snapshots; continuous tracking is not validated"
+    },
+    "aging": {
+      "kind": "synthetic",
+      "expected": "delayed 600ms captures; expired target never exposed; CLI/replay_until/native pump equivalent"
+    },
+    "dragon": {
+      "kind": "synthetic",
+      "generator": "tools/generate_dragon_data.py",
+      "expected": "30s idle, enter, x/y movement, >=4s still, leave/reappear, INVALID, recover, outage, recover and leave"
+    },
+    "idle": {
+      "kind": "synthetic",
+      "generator": "tools/generate_dragon_data.py",
+      "expected": "70s uniform22C complete8Hz inputs; no target; autonomous idle/blinks"
     }
   },
   "synthetic": {

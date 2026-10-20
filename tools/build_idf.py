@@ -9,7 +9,7 @@ def main():
     if revision!='7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe':raise RuntimeError('Wrong ESP-IDF revision; shared SDK was not changed')
     runner=ROOT.parent/'esp-mosaico-vibe/submodule/esp-mosaico-utils/mosaico-tools/skills/idf-low-noise-build/scripts/idf_low_noise_build.py'
     compiler=Path(os.environ.get('GSPC_EXECUTABLE',ROOT.parent/'.toolchains/gspc-0.6.1/gspc')).resolve()
-    env=dict(os.environ,GSPC_EXECUTABLE=str(compiler))
+    env=dict(os.environ,GSPC_EXECUTABLE=str(compiler),PEEK_ASSET_PYTHON=sys.executable)
     command=[sys.executable,str(runner),'--project',str(ROOT/'projects/peek'),'--idf-path',str(idf)]
     subprocess.run(command+['doctor'],env=env,cwd=ROOT,check=True)
     subprocess.run(command+['build'],env=env,cwd=ROOT,check=True)

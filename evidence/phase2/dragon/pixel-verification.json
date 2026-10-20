@@ -1,0 +1,154 @@
+[
+  {
+    "name": "native-rest",
+    "blink": 0,
+    "bright_iris_pixels": 38184,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "notice",
+    "blink": 0,
+    "bright_iris_pixels": 36502,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "track-left",
+    "blink": 0,
+    "bright_iris_pixels": 36625,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "track-right",
+    "blink": 0,
+    "bright_iris_pixels": 33340,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "track-up",
+    "blink": 0.92785114,
+    "bright_iris_pixels": 91,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "track-down",
+    "blink": 0,
+    "bright_iris_pixels": 27324,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "hold-start",
+    "blink": 0,
+    "bright_iris_pixels": 25307,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "held",
+    "blink": 0,
+    "bright_iris_pixels": 25254,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "leave",
+    "blink": 0,
+    "bright_iris_pixels": 27343,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "reappear",
+    "blink": 0,
+    "bright_iris_pixels": 37985,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "invalid",
+    "blink": 0,
+    "bright_iris_pixels": 32589,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "recover-pending",
+    "blink": 0,
+    "bright_iris_pixels": 38697,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "recover",
+    "blink": 0,
+    "bright_iris_pixels": 36476,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "stale",
+    "blink": 0,
+    "bright_iris_pixels": 37909,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "recover-again",
+    "blink": 0,
+    "bright_iris_pixels": 37826,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "extreme-closed",
+    "blink": 1,
+    "bright_iris_pixels": 0,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "extreme-reopen",
+    "blink": 0.620902717,
+    "bright_iris_pixels": 8427,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "native-closed",
+    "blink": 1,
+    "bright_iris_pixels": 0,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  },
+  {
+    "name": "native-reopen",
+    "blink": 0.620902717,
+    "bright_iris_pixels": 13425,
+    "bright_outside_aperture": 0,
+    "RGB565_pixels_differing_from_full_C_raster": 0,
+    "note": "nine-digit exported C float pose; all230400 RGB565 pixels must match"
+  }
+]

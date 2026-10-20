@@ -10,6 +10,8 @@ esp_gsp_err_t esp_gsp_canvas_set_draw_cb(esp_gsp_handle_t ui,uint16_t bind,esp_g
 esp_gsp_err_t esp_gsp_canvas_invalidate(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(void)bind;return ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_stop(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(void)bind;stops++;return fail_stop?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_on_event(esp_gsp_handle_t ui,esp_gsp_event_cb_t cb,void *ctx){(void)ui;(void)ctx;if(!cb){unregisters++;return fail_unregister?ESP_GSP_FAIL:ESP_GSP_OK;}return fail_event?ESP_GSP_FAIL:ESP_GSP_OK;}
+esp_gsp_err_t mock_visible(esp_gsp_handle_t ui,bool visible){(void)ui;(void)visible;return ESP_GSP_OK;}
+esp_gsp_err_t esp_gsp_canvas_invalidate_dirty(esp_gsp_handle_t ui,uint16_t bind,gsp_rect_t rect){(void)rect;return esp_gsp_canvas_invalidate(ui,bind);}
 static void reset(void){fail_canvas=fail_event=fail_stop=fail_unregister=fail_text=false;stops=unregisters=0;}
 int main(void){
     reset();fail_canvas=true;assert(peek_ui_init(&view,(void *)1,NULL,NULL)!=ESP_GSP_OK);
@@ -25,5 +27,15 @@ int main(void){
     assert(view.canvas_registered && view.event_registered);
     fail_stop=fail_unregister=false;assert(peek_ui_deinit(&view)==ESP_GSP_OK);
     assert(!view.canvas_registered && !view.event_registered && stops==2 && unregisters==2);
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
+    fail_canvas=true;assert(peek_ui_set_view(&view,true)!=ESP_GSP_OK);
+    assert(view.renderer && !view.dragon_registered);
+    assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);assert(!view.renderer);
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
+    assert(peek_ui_set_view(&view,true)==ESP_GSP_OK && view.dragon_registered && view.renderer);
+    fail_stop=true;assert(peek_ui_deinit(&view)!=ESP_GSP_OK);
+    assert(view.dragon_registered && view.renderer);
+    fail_stop=false;assert(peek_ui_deinit(&view)==ESP_GSP_OK && !view.dragon_registered);
+    peek_ui_release(&view);assert(!view.renderer);
     puts("PASS actual UI: partial registration, teardown errors retain ownership, retry detaches");
 }

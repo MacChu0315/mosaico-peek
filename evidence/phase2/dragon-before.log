@@ -1,0 +1,10 @@
+tests/test_dragon.c: In function ‘main’:
+tests/test_dragon.c:43:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   43 |     for(unsigned i=0;i<100;i++)assert(dragon_update(&c,&r,0));assert(c.observations==1&&c.notices==1);
+      |     ^~~
+In file included from tests/test_dragon.c:3:
+tests/test_dragon.c:43:63: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   43 |     for(unsigned i=0;i<100;i++)assert(dragon_update(&c,&r,0));assert(c.observations==1&&c.notices==1);
+      |                                                               ^~~~~~
+cc1: fatal error: src/dragon.c: 没有那个文件或目录
+compilation terminated.

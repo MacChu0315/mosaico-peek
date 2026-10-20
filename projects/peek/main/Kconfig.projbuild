@@ -1,0 +1,9 @@
+menu "Peek diagnostics"
+config PEEK_DIAGNOSTIC_VIEW
+    bool "Start firmware in thermal diagnostic view"
+    default n
+    help
+        Keep the production detector and acquisition unchanged, but show the
+        thermal diagnostic screen instead of the approved single dragon eye.
+        Host preview selects its view separately with --view diagnostic.
+endmenu

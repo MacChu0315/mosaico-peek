@@ -2,6 +2,10 @@
 #pragma once
 #include "esp_gsp.h"
 #define GSP_BIND_HEAT 1
+#define GSP_BIND_EYE 2
+esp_gsp_err_t mock_visible(esp_gsp_handle_t,bool);
+#define gsp_peek_diagnostic_set_visible mock_visible
+#define gsp_peek_eye_layer_set_visible mock_visible
 esp_gsp_err_t mock_text(esp_gsp_handle_t,const char *);
 #define gsp_peek_status_set_text mock_text
 #define gsp_peek_timing_set_text mock_text
