@@ -1,12 +1,20 @@
 {
-  "src/peek.c": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
-  "src/peek.h": "b68abcdeb179486aa3e4150f6ddf16f43c286bd7983fdc1f66239a2be7920f67",
-  "src/dragon.c": "5b050490be267bcdaa941c7a5a476fef84f8101ab727451c3975b61b02244383",
-  "src/dragon_render.c": "857e525f1730cbcc150d918269c80e37ce5f173ef61ae33a64a9d6aa7db444b4",
-  "assets/dragon/skin.png": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
-  "assets/dragon/iris.png": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
-  "assets/dragon/metadata.json": "f7b81043c56ebaa39b3cc0e15f0777716b944e60b39c30be7c3470ad235b42c6",
-  "projects/peek/partitions.csv": "e3846a03e7ff8991f1971ff62c81d4bdcf75f47b7f9255aabb49a8039a023bee",
-  "dependencies.json": "c58d335f010837c997e15b1b5472058025866944d5439572e03f478bfa4d2711",
-  "projects/peek/dependencies.lock": "59ce57abafe3a1edf012cc6e57b7f76a463410e11cad0983de517e20ff5a00e1"
+  "baseline": "f278cfd",
+  "scope": "Current unchanged production policy/art/partition/dependencies; renderer source intentionally optimized with exact pixel parity",
+  "files": {
+    "src/peek.c": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
+    "src/peek.h": "b68abcdeb179486aa3e4150f6ddf16f43c286bd7983fdc1f66239a2be7920f67",
+    "src/dragon.c": "5b050490be267bcdaa941c7a5a476fef84f8101ab727451c3975b61b02244383",
+    "assets/dragon/skin.png": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
+    "assets/dragon/iris.png": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
+    "assets/dragon/metadata.json": "f7b81043c56ebaa39b3cc0e15f0777716b944e60b39c30be7c3470ad235b42c6",
+    "projects/peek/partitions.csv": "e3846a03e7ff8991f1971ff62c81d4bdcf75f47b7f9255aabb49a8039a023bee",
+    "dependencies.json": "c58d335f010837c997e15b1b5472058025866944d5439572e03f478bfa4d2711",
+    "projects/peek/dependencies.lock": "59ce57abafe3a1edf012cc6e57b7f76a463410e11cad0983de517e20ff5a00e1"
+  },
+  "renderer": {
+    "same_source": false,
+    "current_sha256": "05aa1e1815db445843eeb16f7a97d1ea43ed7f952a656515b2d8485776488ccf",
+    "pixel_evidence": "../device-dragon/render-parity.json"
+  }
 }

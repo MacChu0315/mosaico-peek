@@ -45,6 +45,6 @@ def main():
     report=dict(device=DEVICE,boot_id=str(boot),version=d['app_version'],source_revision=last['source_revision'],sampled_device_seconds=seconds,rates_hz=rates,
         draw_mean_us=(last['draw_us']-first['draw_us'])/max(1,draw_count),gsp_render_mean_us=(last['render_busy_us']-first['render_busy_us'])/max(1,frames),gsp_raster_mean_us=(last['raster_us']-first['raster_us'])/max(1,frames),gsp_submit_mean_us=(last['submit_us']-first['submit_us'])/max(1,frames),
         roles=sorted({s['state']['role'] for s in samples}),data_states=sorted({s['state']['data'] for s in samples}),heap={k:after['device'][k] for k in ['free_internal','free_spiram','min_free_internal','min_free_spiram','total_internal','total_spiram']},
-        physical_panel_fps=None,note='Actual sensor/role firmware. Callback/surface/render counters are distinct; no physical panel scan or visible FPS measured. Snapshots and CLI polling can affect rates. No scene labels inferred.')
+        cores=dict(gsp=last.get('render_core'),sensor=last.get('sensor_core')),sequence_equals_accepted_samples=all(x['state']['sequence']==x['state']['samples'] for x in samples),physical_panel_fps=None,note='Actual sensor/role firmware. Callback/surface/render counters are distinct; no physical panel scan or visible FPS measured. Snapshots and CLI polling can affect rates. No scene labels inferred.')
     (out/'summary.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

@@ -80,7 +80,10 @@ static color_t over(color_t under, color_t upper, int alpha)
 }
 
 /* Four palette lookups interpolate color, never the palette indices. */
-static color_t sample(const uint8_t *indices, const uint16_t *palette,
+#if defined(__GNUC__)
+__attribute__((always_inline))
+#endif
+static inline color_t sample(const uint8_t *indices, const uint16_t *palette,
                       unsigned size, int32_t u, int32_t v)
 {
     const int32_t maximum = (int32_t)(size - 1) * Q16;

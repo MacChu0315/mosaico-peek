@@ -56,3 +56,28 @@ only after its exact PID/cwd/no-children state was verified. The independent
 standalone cache low-noise build succeeded; original failure/result and
 `build-process-note.json` remain retained. No device or shared process was
 stopped to resolve this local build client.
+
+## Owner placement and compiler boundary
+
+The cache-only install (`e89cf73`) measured about2.665 engine frames/s and7.854
+accepted samples/s, with9,919,632 bytes free PSRAM. It is still visibly slow;
+cache-only performance is not declared accepted.
+
+Draw and engine timers are elapsed wall times, including preemption; they do
+not isolate shader CPU usage. The pinned SDK enables two HP cores and may make
+floating-point tasks core-affine. Baseline core placement was not recorded,
+so no same-core root-cause claim is made from those timings. Application startup
+now observes GSP's first completed timer callback, waits at most1000ms for its
+actual core, and creates the acquisition/detector/role task on the other core.
+Unknown core or task creation failure fails initialization and follows the
+existing detach/flush cleanup; single-core fallback remains the old path.
+Read-only RPC records both actual core IDs for verification. Host fixtures
+exercise both core selections and bounded unknown-core failure.
+
+The target object also showed an out-of-line12-byte color result for palette
+sampling. The shared sampler is explicitly inlined for GCC-compatible compilers
+with a standard-inline fallback. This preserves the same arithmetic/pixels and
+lets caller constants remove redundant coordinate and structure-return work.
+No SDK/library code or global RTOS scheduling policy is changed. Final device
+measurements cover both changes together and must not be attributed to either
+one alone.

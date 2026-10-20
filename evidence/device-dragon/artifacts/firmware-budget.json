@@ -10,8 +10,8 @@
   "artifacts": {
     "peek.bin": {
       "path": "projects/peek/build/peek.bin",
-      "bytes": 1987504,
-      "sha256": "07db1438983a51b1a040b1f3332d024a2cd6685dc9c9cda68b2340d465d484cb"
+      "bytes": 1989040,
+      "sha256": "75a3577ec71949fd6453975831b0c7928a052b7b77004ae52bdb9d192a1b25ec"
     },
     "ui_apps.bin": {
       "path": "projects/peek/build/ui_apps.bin",
@@ -20,13 +20,13 @@
     },
     "peek.elf": {
       "path": "projects/peek/build/peek.elf",
-      "bytes": 15725616,
-      "sha256": "1c6d1c202956d0f7d20e641528b60c55d020d902665386f0460c778f09f7b15e"
+      "bytes": 15740892,
+      "sha256": "c772260d806fa4ba8a3555377ad034589654b422d5b3e10c42d988b7fd6601eb"
     },
     "peek.map": {
       "path": "projects/peek/build/peek.map",
-      "bytes": 7202474,
-      "sha256": "0dbe6f5dc42a24ffa5c4a99f944f766930c149e154185e72afa0cf64b4f6de7a"
+      "bytes": 7202712,
+      "sha256": "f00808b88abfa8086a52a6ce7c4d7667fb13da5799b122303ada6095b51d610a"
     },
     "sdkconfig": {
       "path": "projects/peek/build/sdkconfig.dragon",
@@ -182,7 +182,7 @@
     "ui_apps_free_bytes": 954096,
     "normal_app_fits_ota_0": true,
     "ota_0_partition_bytes": 13565952,
-    "ota_0_free_bytes": 11578448,
+    "ota_0_free_bytes": 11576912,
     "retained_factory_partition_bytes": 1835008,
     "normal_app_fits_retained_factory": false,
     "retained_factory_warning": "App may exceed the retained factory slot; normal application update targets ota_0. This tool does not change partitions or authorize flashing.",
@@ -259,7 +259,7 @@
       "address": 1342177312,
       "address_hex": "0x50000020",
       "file_offset": 118816,
-      "bytes": 1026400,
+      "bytes": 1027936,
       "flags": "AX"
     },
     {
@@ -377,8 +377,8 @@
     },
     {
       "name": "_instruction_reserved_end",
-      "address": 1343203712,
-      "address_hex": "0x500fa980",
+      "address": 1343205248,
+      "address_hex": "0x500faf80",
       "bytes": null,
       "nm_type": "A",
       "sections_at_address": []
@@ -503,8 +503,8 @@
     },
     {
       "name": "esp_psram_get_heap_size_to_protect",
-      "address": 1343186316,
-      "address_hex": "0x500f658c",
+      "address": 1343187952,
+      "address_hex": "0x500f6bf0",
       "bytes": 202,
       "nm_type": "T",
       "sections_at_address": [
@@ -652,7 +652,7 @@
     "instruction_fetch_from_psram_enabled": true,
     "dragon_assets_all_in_flash_rodata": true,
     "linker_rodata_reserved_span_bytes": 850528,
-    "linker_instruction_reserved_span_bytes": 1026400,
+    "linker_instruction_reserved_span_bytes": 1027936,
     "interpretation": "ELF section names beginning .flash describe linked image segments, not proof of flash-only runtime residency. If CONFIG_SPIRAM_RODATA and XIP are enabled, the configured boot path requires PSRAM mapping/copy budget for linked read-only textures/LUTs; instruction fetch configuration similarly requires code budget. These are configuration/linker deductions; successful startup, actual residency and free heap were not observed. Linker spans include alignment/reservations and are not measured heap consumption. Zero texture decoding allocation does not mean zero PSRAM cost.",
     "startup_free_heap_measured": false,
     "device_peak_RAM_measured": false,
@@ -663,16 +663,28 @@
     ]
   },
   "build_warnings": {
-    "logs": [],
-    "matched_warning_lines": [],
+    "logs": [
+      {
+        "path": "evidence/device-dragon/idf-installed-final-raw.log",
+        "bytes": 2827,
+        "sha256": "e5b67ec6235d49ab3aa1893d414991f1c77d050371f9f5eea60bedb45f624f09"
+      }
+    ],
+    "matched_warning_lines": [
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/device-dragon/idf-installed-final-raw.log",
+        "line": 20,
+        "text": "WARNING: 1/2 app partitions are too small for binary peek.bin size 0x1e59b0:"
+      }
+    ],
     "scope": "Only supplied build logs; matches are lines, not distinct diagnostics. No log supplied does not mean a warning-free build.",
-    "matched_line_count": null
+    "matched_line_count": 1
   },
   "prior_static_RAM_estimate": {
     "source": {
       "path": "evidence/device-dragon/static-budget.json",
-      "bytes": 3668,
-      "sha256": "dabac55db3c81ddcb3775d10ef1f67612ae63c783401622664604ebb6b5f8b1d"
+      "bytes": 3711,
+      "sha256": "6a098ee4b59d2bfca69160113c452c06af38fdf82245f83a9ac4724b6a1db167"
     },
     "status": "Inherited report_budget.py estimate; not recompiled or device-measured by this read-only tool. texture_decode_to_RAM_bytes excludes XIP read-only residency and must not be used as total PSRAM usage.",
     "ram_static_estimate": {
@@ -684,11 +696,12 @@
         "shared_ui": 9696,
         "display_snapshot": 9576,
         "device_app": 9712,
-        "renderer": 12308,
-        "acquisition_owner": 16520
+        "renderer": 12312,
+        "acquisition_owner": 16520,
+        "renderer_fixed_cache": 3225600
       },
-      "renderer_heap_bytes": 12308,
-      "device_app_plus_producer_consumer_queue_and_renderer_bytes": 57692,
+      "renderer_heap_bytes": 3237912,
+      "device_app_plus_producer_consumer_queue_and_renderer_bytes": 3283296,
       "sensor_task_stack_bytes": 8192,
       "single_RGB565_plane_bytes": 460800,
       "eye_plus_diagnostic_canvas_planes_if_both_cached_bytes": 681984,

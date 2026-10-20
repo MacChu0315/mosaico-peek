@@ -8,7 +8,7 @@
 .dram0.data: address=0x2f014d80 bytes=25176 type=PROGBITS flags=WA
 .noinit: address=0x2f01afd8 bytes=0 type=NOBITS flags=WA
 .dram0.bss: address=0x2f01b000 bytes=21984 type=NOBITS flags=WA
-.flash.text: address=0x50000020 bytes=1026400 type=PROGBITS flags=AX
+.flash.text: address=0x50000020 bytes=1027936 type=PROGBITS flags=AX
 .flash_rodata_dummy: address=0x50000020 bytes=1048576 type=NOBITS flags=WA
 .flash.appdesc: address=0x50100020 bytes=256 type=PROGBITS flags=A
 .flash.rodata: address=0x50100120 bytes=850140 type=PROGBITS flags=WA
@@ -49,9 +49,9 @@ dragon_sqrt_q15: address=0x50126900 bytes=8194 sections=.flash.rodata
 .dram0.data     0x2f014d80     0x6258
 .noinit         0x2f01afd8        0x0
 .dram0.bss      0x2f01b000     0x55e0
-.flash.text     0x50000020    0xfa960
+.flash.text     0x50000020    0xfaf60
                 0x50000020                        _instruction_reserved_start = ABSOLUTE (.)
-                0x500fa980                        _instruction_reserved_end = ABSOLUTE (.)
+                0x500faf80                        _instruction_reserved_end = ABSOLUTE (.)
 .flash_rodata_dummy
                 0x50000020   0x100000
 .flash.appdesc  0x50100020      0x100

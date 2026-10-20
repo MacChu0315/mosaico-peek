@@ -111,7 +111,22 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
     app->view.live=true;app->view.source="LIVE / MLX90640 (native orientation)";
     app->timer=esp_gsp_timer_create(ui,33,refresh,consumer);
     if(!app->timer){rc=ESP_ERR_NO_MEM;goto fail_ui;}
+#if defined(ESP_PLATFORM) && CONFIG_FREERTOS_NUMBER_OF_CORES > 1
+    /* A task doing floating-point work may become core-affine in this SDK.
+     * Observe the initialized GSP owner after its first callback, then create
+     * the sensor owner on the other core. No driver/GSP implementation edit. */
+    int render_core=-1;
+    for(unsigned waited=0;waited<1000 && render_core<0;waited+=10){
+        render_core=device_status_render_core();
+        if(render_core<0)vTaskDelay(pdMS_TO_TICKS(10));
+    }
+    if(render_core<0 || render_core>1){rc=ESP_ERR_TIMEOUT;goto fail_ui;}
+    int capture_core=1-render_core;
+    if(xTaskCreatePinnedToCore(sensor_task,"peek_capture",8192,producer,5,NULL,capture_core)!=pdPASS){rc=ESP_ERR_NO_MEM;goto fail_ui;}
+    ESP_LOGI(TAG,"owners: GSP core=%d; MLX90640/detector/role core=%d",render_core,capture_core);
+#else
     if(xTaskCreate(sensor_task,"peek_capture",8192,producer,5,NULL)!=pdPASS){rc=ESP_ERR_NO_MEM;goto fail_ui;}
+#endif
     return ESP_OK;
 fail_ui:
     {

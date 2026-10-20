@@ -7,13 +7,18 @@
 #include <string.h>
 #include "peek_ui.h"
 static unsigned freed,flushes,detached,deleted;
+static int fake_render_core,created_core;
+static unsigned core_queries,waited_ms;
+static void *producer_context;
 static int ui_failure,timer_failure,task_failure,flush_failure;
 static bool queue_has_frame;
 static int64_t fake_us;
 static void *timer_context;
 static void checked_free(void *p){if(p)freed++;free(p);}
 #define free checked_free
+#define ESP_PLATFORM 1
 #include "../projects/peek/main/device_thermal.c"
+#undef ESP_PLATFORM
 #undef free
 const char *esp_err_to_name(esp_err_t e){(void)e;return "stub";}
 int64_t esp_timer_get_time(void){return fake_us;}
@@ -30,7 +35,11 @@ int xQueueReceive(QueueHandle_t q,void *out,unsigned t){
 }
 int xQueueOverwrite(QueueHandle_t q,const void *m){(void)q;(void)m;return pdTRUE;}
 int xTaskCreate(void (*fn)(void *),const char *n,unsigned stack,void *ctx,unsigned pri,void *out){(void)fn;(void)n;(void)stack;(void)ctx;(void)pri;(void)out;return task_failure?0:pdPASS;}
-void vTaskDelay(unsigned ms){(void)ms;}
+void vTaskDelay(unsigned ms){waited_ms+=ms;}
+int device_status_render_core(void){core_queries++;return fake_render_core;}
+void device_status_capture(bool ok){(void)ok;}
+void device_status_publish(const peek_ui_t *s,uint64_t now){(void)s;(void)now;}
+int xTaskCreatePinnedToCore(void (*fn)(void *),const char *n,unsigned stack,void *ctx,unsigned pri,void *out,int core){created_core=core;producer_context=ctx;assert(core==1-fake_render_core);return xTaskCreate(fn,n,stack,ctx,pri,out);}
 void vTaskDelete(void *p){(void)p;}
 esp_err_t mosaico_module_mgr_init(void *c){(void)c;return ESP_OK;}
 esp_err_t mosaico_module_mgr_claim(const mosaico_module_mgr_claim_config_t *c,mosaico_module_lease_t *l){(void)c;(void)l;return ESP_FAIL;}
@@ -48,7 +57,7 @@ esp_gsp_err_t peek_ui_deinit(peek_ui_t *s){(void)s;detached++;return ESP_OK;}
 void *esp_gsp_timer_create(esp_gsp_handle_t ui,uint32_t p,esp_gsp_timer_cb_t cb,void *ctx){(void)ui;(void)p;(void)cb;timer_context=ctx;return timer_failure?NULL:(void *)2;}
 esp_gsp_err_t esp_gsp_timer_delete(esp_gsp_handle_t ui,void *timer){(void)ui;(void)timer;deleted++;return ESP_OK;}
 esp_gsp_err_t esp_gsp_flush(esp_gsp_handle_t ui,uint32_t timeout){(void)ui;(void)timeout;assert(detached);assert(freed==0);flushes++;return flush_failure?ESP_FAIL:ESP_OK;}
-static void reset_stubs(void){freed=flushes=detached=deleted=0;ui_failure=timer_failure=task_failure=flush_failure=0;timer_context=NULL;}
+static void reset_stubs(void){freed=flushes=detached=deleted=0;ui_failure=timer_failure=task_failure=flush_failure=0;timer_context=NULL;producer_context=NULL;fake_render_core=0;created_core=-1;core_queries=waited_ms=0;}
 int main(void){
     reset_stubs();app=calloc(1,sizeof(*app));assert(peek_init(&app->view.detector,NULL));
     peek_live_t message={0};fake_us=1000000;queue_has_frame=true;refresh((void *)1,&message);
@@ -60,6 +69,14 @@ int main(void){
         assert(app==NULL && flushes==1 && detached==1 && freed==3);
         if(failure==2)assert(deleted==1);
     }
+    for(int core=0;core<2;core++){
+        reset_stubs();fake_render_core=core;
+        assert(device_thermal_start((void *)1)==ESP_OK && created_core==1-core && core_queries==1);
+        free(producer_context);free(timer_context);free(app);app=NULL;
+    }
+    reset_stubs();fake_render_core=-1;
+    assert(device_thermal_start((void *)1)==ESP_ERR_TIMEOUT);
+    assert(app==NULL && created_core==-1 && waited_ms==1000 && core_queries==100 && freed==3);
     reset_stubs();task_failure=flush_failure=1;
     assert(device_thermal_start((void *)1)!=ESP_OK);
     assert(app!=NULL && flushes==1 && freed==1); /* only unused producer freed */
