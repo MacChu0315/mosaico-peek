@@ -1,0 +1,32 @@
+{
+  "before": {
+    "assets/dragon/skin.png": {
+      "sha256": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
+      "mtime_ns": 1792484484215026478
+    },
+    "assets/dragon/iris.png": {
+      "sha256": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
+      "mtime_ns": 1792484484216026478
+    },
+    "assets/dragon/metadata.json": {
+      "sha256": "f7b81043c56ebaa39b3cc0e15f0777716b944e60b39c30be7c3470ad235b42c6",
+      "mtime_ns": 1792484484218026477
+    }
+  },
+  "after": {
+    "assets/dragon/skin.png": {
+      "sha256": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
+      "mtime_ns": 1792484484215026478
+    },
+    "assets/dragon/iris.png": {
+      "sha256": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
+      "mtime_ns": 1792484484216026478
+    },
+    "assets/dragon/metadata.json": {
+      "sha256": "f7b81043c56ebaa39b3cc0e15f0777716b944e60b39c30be7c3470ad235b42c6",
+      "mtime_ns": 1792484484218026477
+    }
+  },
+  "unchanged": true,
+  "include_sha256": "e0c0a4c5c8fa4d7c2c9feb47d2e51430bb339ccd980e3067bb92e9fb32d1e3e0"
+}

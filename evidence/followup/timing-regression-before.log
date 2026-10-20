@@ -1,0 +1,1 @@
+test_dragon_timing: tests/test_dragon_timing.c:46: equal: Assertion `a->mode==b->mode && a->quiet==b->quiet && a->stationary==b->stationary && a->held==b->held' failed.

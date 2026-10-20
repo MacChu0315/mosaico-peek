@@ -1,0 +1,25 @@
+scenario=0 hz=30 capture=2000 receive=2000 mode=HOLD stationary=1 quiet_since=375
+scenario=0 hz=60 capture=2000 receive=2000 mode=HOLD stationary=1 quiet_since=375
+scenario=0 hz=120 capture=2000 receive=2000 mode=HOLD stationary=1 quiet_since=375
+scenario=1 hz=30 capture=2000 receive=2125 mode=HOLD stationary=1 quiet_since=375
+scenario=1 hz=60 capture=2000 receive=2125 mode=HOLD stationary=1 quiet_since=375
+scenario=1 hz=120 capture=2000 receive=2125 mode=HOLD stationary=1 quiet_since=375
+scenario=2 hz=30 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=2 hz=60 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=2 hz=120 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=3 hz=30 capture=2000 receive=2175 mode=HOLD stationary=1 quiet_since=375
+scenario=3 hz=60 capture=2000 receive=2175 mode=HOLD stationary=1 quiet_since=375
+scenario=3 hz=120 capture=2000 receive=2175 mode=HOLD stationary=1 quiet_since=375
+scenario=4 hz=30 capture=2000 receive=2176 mode=TRACKING stationary=0 quiet_since=2000
+scenario=4 hz=60 capture=2000 receive=2176 mode=TRACKING stationary=0 quiet_since=2000
+scenario=4 hz=120 capture=2000 receive=2176 mode=TRACKING stationary=0 quiet_since=2000
+scenario=5 hz=30 capture=2000 receive=2301 mode=TRACKING stationary=0 quiet_since=2000
+scenario=5 hz=60 capture=2000 receive=2301 mode=TRACKING stationary=0 quiet_since=2000
+scenario=5 hz=120 capture=2000 receive=2301 mode=TRACKING stationary=0 quiet_since=2000
+scenario=6 hz=30 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=6 hz=60 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=6 hz=120 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=7 hz=30 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=7 hz=60 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+scenario=7 hz=120 capture=2000 receive=2200 mode=TRACKING stationary=0 quiet_since=2000
+PASS capture/receive timing:8 latency/boundary/held scenarios at30/60/120Hz, stopped stream and same-time idempotence

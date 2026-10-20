@@ -39,6 +39,13 @@ static void idle_goal(uint64_t now,float *x,float *y)
     float amount=ease((t-at[i-1])/(at[i]-at[i-1]));
     *x=gx[i-1]+(gx[i]-gx[i-1])*amount;*y=gy[i-1]+(gy[i]-gy[i-1])*amount;
 }
+static void expire_stillness(dragon_t *c,uint64_t now)
+{
+    if(c->target_active&&c->has_observation&&now-c->last_capture_ms>300){
+        c->quiet=c->stationary=false;
+        if(c->mode==DRAGON_HOLD)enter(c,DRAGON_TRACKING,c->last_capture_ms+301);
+    }
+}
 bool dragon_update(dragon_t *c,const peek_result_t *r,uint64_t now)
 {
     if(!c||!r||(c->started&&now<c->now_ms))return false;
@@ -49,6 +56,10 @@ bool dragon_update(dragon_t *c,const peek_result_t *r,uint64_t now)
     c->now_ms=now;c->started=true;
     if(c->mode==DRAGON_NOTICE&&now-c->phase_ms>=320)enter(c,DRAGON_TRACKING,c->phase_ms+320);
     if(c->mode==DRAGON_LEAVE&&now-c->phase_ms>=1200)enter(c,DRAGON_IDLE,c->phase_ms+1200);
+    /* Catch up the previous observation's deadline before a newly received
+     * capture can overwrite it. Missing an animation tick must not preserve
+     * quiet evidence that expired between capture and receipt. */
+    expire_stillness(c,now);
     float mapped_x=0,mapped_y=0;
     bool active=r->data==PEEK_VALID && r->has_valid && r->has_target && r->last_valid_ms<=now && dragon_map(&c->mapping,r->x,r->y,&mapped_x,&mapped_y);
     c->observation_held=active&&r->held;
@@ -76,10 +87,7 @@ bool dragon_update(dragon_t *c,const peek_result_t *r,uint64_t now)
     }
     /* Stillness is evidence from fresh captures, not a timer on cached
      * coordinates. Break it at a fixed deadline even before core hold expiry. */
-    if(active&&c->has_observation&&now-c->last_capture_ms>300){
-        c->quiet=c->stationary=false;
-        if(c->mode==DRAGON_HOLD)enter(c,DRAGON_TRACKING,c->last_capture_ms+301);
-    }
+    expire_stillness(c,now);
     if(active){
         c->goal_x=mapped_x;c->goal_y=mapped_y;
         if(c->mode==DRAGON_HOLD){c->goal_x+=.003f*sinf((float)(now%6000)*.0010472f);c->goal_y+=.002f*sinf((float)(now%7000)*.0008976f);}

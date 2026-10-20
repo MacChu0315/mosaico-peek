@@ -46,3 +46,8 @@ target_compile_options(test_dragon_render PRIVATE -UNDEBUG -Wall -Wextra -Werror
 add_test(NAME dragon_pixels COMMAND test_dragon_render)
 add_executable(dragon_snapshot tools/dragon_snapshot.c)
 target_link_libraries(dragon_snapshot PRIVATE dragon)
+add_executable(test_dragon_timing tests/test_dragon_timing.c)
+target_link_libraries(test_dragon_timing PRIVATE peek dragon)
+target_compile_options(test_dragon_timing PRIVATE -UNDEBUG -Wall -Wextra -Werror)
+add_test(NAME dragon_receive_timing COMMAND test_dragon_timing)
+add_test(NAME asset_build_readonly COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_asset_build.py")

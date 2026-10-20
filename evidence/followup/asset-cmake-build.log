@@ -1,0 +1,13 @@
+-- The C compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /home/zhuzhengming/anaconda3/envs/py310/bin/python3.10 (found version "3.10.14") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-asset-readonly
+[100%] Generating dragon-generated/dragon_assets.inc
+Baked: textures 641024 bytes; LUTs 10756 bytes; total C data 651780 bytes
+[100%] Built target peek_dragon_assets

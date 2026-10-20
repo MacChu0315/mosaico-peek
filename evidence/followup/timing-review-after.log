@@ -1,0 +1,21 @@
+delay=0 hz=30 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=0 hz=30 capture=2000 receive=2000 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=15 speed=0.000000 data=VALID held=0
+delay=0 hz=30 capture=2125 receive=2125 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=16 speed=0.000000 data=VALID held=0
+delay=0 hz=60 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=0 hz=60 capture=2000 receive=2000 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=15 speed=0.000000 data=VALID held=0
+delay=0 hz=60 capture=2125 receive=2125 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=16 speed=0.000000 data=VALID held=0
+delay=0 hz=120 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=0 hz=120 capture=2000 receive=2000 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=15 speed=0.000000 data=VALID held=0
+delay=0 hz=120 capture=2125 receive=2125 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=16 speed=0.000000 data=VALID held=0
+delay=200 hz=30 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=200 hz=30 capture=2000 receive=2200 mode=TRACKING quiet=1 stationary=0 quiet_since=2000 observations=15 speed=0.000000 data=VALID held=0
+delay=200 hz=30 capture=2125 receive=2325 mode=TRACKING quiet=1 stationary=0 quiet_since=2125 observations=16 speed=0.000000 data=VALID held=0
+delay=200 hz=60 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=200 hz=60 capture=2000 receive=2200 mode=TRACKING quiet=1 stationary=0 quiet_since=2000 observations=15 speed=0.000000 data=VALID held=0
+delay=200 hz=60 capture=2125 receive=2325 mode=TRACKING quiet=1 stationary=0 quiet_since=2125 observations=16 speed=0.000000 data=VALID held=0
+delay=200 hz=120 capture=1875 receive=1875 mode=HOLD quiet=1 stationary=1 quiet_since=375 observations=14 speed=0.000000 data=VALID held=0
+delay=200 hz=120 capture=2000 receive=2200 mode=TRACKING quiet=1 stationary=0 quiet_since=2000 observations=15 speed=0.000000 data=VALID held=0
+delay=200 hz=120 capture=2125 receive=2325 mode=TRACKING quiet=1 stationary=0 quiet_since=2125 observations=16 speed=0.000000 data=VALID held=0
+PASS: zero-delay 8 Hz capture/delivery gives identical sample-time modes at 30/60/120 Hz.
+NO DIVERGENCE: identical 8 Hz captures with 200 ms receive delay from t=2000 gives 30 Hz=TRACKING, 60 Hz=TRACKING, 120 Hz=TRACKING at receive=2200.
+PASS: this narrow delayed-observation deadline case matches the stated contract.
