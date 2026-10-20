@@ -22,8 +22,10 @@ void vQueueDelete(QueueHandle_t q){(void)q;}
 int xQueueReceive(QueueHandle_t q,void *out,unsigned t){
     (void)q;(void)t;if(!queue_has_frame)return 0;queue_has_frame=false;
     /* Producer completes after a hypothetical pre-receive clock read. */
-    fake_us=1002000;capture_t *m=out;memset(m,0,sizeof(*m));m->ok=true;m->sequence=1;m->ms=1001;
-    for(unsigned i=0;i<768;i++)m->raw.pixels[i]=22;
+    fake_us=1002000;peek_live_t *m=out;assert(peek_live_init(m));
+    peek_frame_t f={.sequence=1,.captured_ms=1001,.complete=true};
+    for(unsigned i=0;i<768;i++){f.c[i]=22;f.valid[i]=1;}
+    assert(peek_live_event(m,&f,false,1001));
     return pdTRUE;
 }
 int xQueueOverwrite(QueueHandle_t q,const void *m){(void)q;(void)m;return pdTRUE;}
@@ -49,7 +51,7 @@ esp_gsp_err_t esp_gsp_flush(esp_gsp_handle_t ui,uint32_t timeout){(void)ui;(void
 static void reset_stubs(void){freed=flushes=detached=deleted=0;ui_failure=timer_failure=task_failure=flush_failure=0;timer_context=NULL;}
 int main(void){
     reset_stubs();app=calloc(1,sizeof(*app));assert(peek_init(&app->view.detector,NULL));
-    capture_t message={0};fake_us=1000000;queue_has_frame=true;refresh((void *)1,&message);
+    peek_live_t message={0};fake_us=1000000;queue_has_frame=true;refresh((void *)1,&message);
     assert(app->view.detector.result.accepted_samples==1 && app->view.detector.result.data==PEEK_VALID);
     free(app);app=NULL;
     for(unsigned failure=0;failure<3;failure++){

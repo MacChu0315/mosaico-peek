@@ -1,6 +1,7 @@
 /* SPDX-License-Identifier: Apache-2.0 */
 #include "device_thermal.h"
 #include "peek_ui.h"
+#include "peek_live.h"
 #include "mosaico_module_thermal.h"
 #include "mosaico_module_mgr.h"
 #include "esp_timer.h"
@@ -14,19 +15,32 @@
 #include "sdkconfig.h"
 #include "device_status.h"
 #endif
-/* Sensor task owns the driver. Render-task timer, event and canvas callbacks
- * exclusively own view/detector. Queue copies immutable complete frames.
- * Latest-only mailbox may drop frames; it never duplicates them. */
+/* Sensor task owns driver, detector and role observation history. Render task
+ * owns its independent view/canvas state. Latest-only mailbox drops display
+ * snapshots, never complete samples before detection. */
 static struct {
     QueueHandle_t queue;peek_ui_t view;void *timer;
-    peek_frame_t incoming;
 } *app;
-typedef struct {bool ok;uint64_t sequence,ms;mosaico_thermal_frame_t raw;} capture_t;
+typedef struct {peek_live_t live;peek_frame_t incoming;mosaico_thermal_frame_t raw;} producer_t;
+static void publish_input(producer_t *p,bool ok,uint64_t sequence,uint64_t now){
+    peek_frame_t *f=&p->incoming;
+    if(ok){
+        f->sequence=sequence;f->captured_ms=now;f->complete=true;
+        for(unsigned i=0;i<768;i++){f->c[i]=p->raw.pixels[i];f->valid[i]=1;}
+    }
+    if(!peek_live_event(&p->live,ok?f:NULL,!ok,now)){
+        ESP_LOGE("peek_thermal","live state clock failure");return;
+    }
+#ifdef ESP_PLATFORM
+    device_status_capture(ok);
+#endif
+    xQueueOverwrite(app->queue,&p->live);
+}
 static const char *TAG="peek_thermal";
 static uint64_t now_ms(void){return (uint64_t)esp_timer_get_time()/1000;}
 static void sensor_task(void *ctx)
 {
-    capture_t *message=ctx;uint64_t sequence=0;
+    producer_t *producer=ctx;uint64_t sequence=0;
     mosaico_module_lease_t lease={0};mosaico_thermal_handle_t sensor=NULL;
     for(;;){
         if(!sensor){
@@ -47,40 +61,29 @@ static void sensor_task(void *ctx)
                     esp_err_t release=mosaico_module_mgr_release(&lease);
                     if(release!=ESP_OK){ESP_LOGE(TAG,"slot release: %s",esp_err_to_name(release));vTaskDelete(NULL);return;}
                 }
-                message->ok=false;message->ms=now_ms();
-#ifdef ESP_PLATFORM
-                device_status_capture(false);
-#endif
-                xQueueOverwrite(app->queue,message);
+                publish_input(producer,false,sequence,now_ms());
                 vTaskDelay(pdMS_TO_TICKS(500));continue;
             }
             ESP_LOGI(TAG,"MLX90640 slot=%u I2C=0x33/400000Hz subpage=16Hz full-frame~=8Hz",lease.slot);
         }
-        esp_err_t error=mosaico_thermal_read(sensor,&message->raw,1000);
-        message->ok=error==ESP_OK;message->ms=now_ms();
-        if(message->ok)message->sequence=++sequence;
+        esp_err_t error=mosaico_thermal_read(sensor,&producer->raw,1000);
+        uint64_t captured=now_ms();
+        if(error==ESP_OK)sequence++;
         else ESP_LOGW(TAG,"complete-frame read failed: %s; previous pixels not resubmitted",esp_err_to_name(error));
-#ifdef ESP_PLATFORM
-        device_status_capture(message->ok);
-#endif
-        xQueueOverwrite(app->queue,message);
+        publish_input(producer,error==ESP_OK,sequence,captured);
         if(error!=ESP_OK)vTaskDelay(pdMS_TO_TICKS(20));
     }
 }
 static void refresh(esp_gsp_handle_t ui,void *ctx)
 {
-    (void)ui;capture_t *message=ctx;
-    bool received=xQueueReceive(app->queue,message,0)==pdTRUE;
-    /* Read processing time after dequeue: another core can publish a frame
-     * between a pre-dequeue clock read and the queue operation. */
+    (void)ui;peek_live_t *snapshot=ctx;
+    bool received=xQueueReceive(app->queue,snapshot,0)==pdTRUE;
     uint64_t now=now_ms();
     if(received){
-        if(message->ok){
-            peek_frame_t *f=&app->incoming;
-            f->sequence=message->sequence;f->captured_ms=message->ms;f->complete=true;
-            for(unsigned i=0;i<768;i++){f->c[i]=message->raw.pixels[i];f->valid[i]=1;}
-            (void)peek_ui_submit(&app->view,f,now);
-        }else (void)peek_fault(&app->view.detector,now);
+        /* Detection and role evidence already consumed every complete frame
+         * on the acquisition task. Render owns this independent copy. */
+        app->view.detector=snapshot->detector;app->view.dragon=snapshot->dragon;
+        app->view.displayed=snapshot->displayed;app->view.has_frame=snapshot->has_frame;
     }
     peek_ui_refresh(&app->view,now);
 #ifdef ESP_PLATFORM
@@ -91,10 +94,11 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
 {
     if(!ui)return ESP_ERR_INVALID_ARG;
     if(app)return ESP_ERR_INVALID_STATE;
-    app=calloc(1,sizeof(*app));capture_t *producer=calloc(1,sizeof(*producer)),*consumer=calloc(1,sizeof(*consumer));
+    app=calloc(1,sizeof(*app));producer_t *producer=calloc(1,sizeof(*producer));peek_live_t *consumer=calloc(1,sizeof(*consumer));
     if(!app||!producer||!consumer){free(app);app=NULL;free(producer);free(consumer);return ESP_ERR_NO_MEM;}
-    app->queue=xQueueCreate(1,sizeof(capture_t));
+    app->queue=xQueueCreate(1,sizeof(peek_live_t));
     if(!app->queue){free(producer);free(consumer);free(app);app=NULL;return ESP_ERR_NO_MEM;}
+    if(!peek_live_init(&producer->live)){vQueueDelete(app->queue);free(producer);free(consumer);free(app);app=NULL;return ESP_ERR_INVALID_STATE;}
     esp_err_t rc=mosaico_module_mgr_init(NULL);
     if(rc!=ESP_OK)goto fail;
     rc=peek_ui_init(&app->view,ui,NULL,NULL);if(rc!=ESP_GSP_OK)goto fail_ui;

@@ -14,7 +14,13 @@ Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/p
 
 `python3 tools/build_idf.py` selects a separate build-tree `sdkconfig.dragon`, version `1.0.0-peek-dragon`, dragon view and2048-byte RPC body. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
 
-Read-only RPC service `0x504c`, method1, empty request returns source commit/version, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. Official `iris memory` supplies live heap readings separately.
+Read-only RPC service `0x504c`, method1, empty request returns source commit/version, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. On this retained firmware, `iris memory` returns HTTP501 (task memory observation unavailable); live `iris device-status` still supplies free/minimum internal RAM and PSRAM.
+
+## Slow-device-render isolation
+
+The first physical build (`d27bc7f`) exposed a scheduling defect:18s observation measured7.923 complete captures/s but1.664 detector samples/s and render callbacks/s. Full GSP frames take about588ms (about557ms raster +32ms submit). Rendering supplied tiled canvas callbacks (~17.64/s), which are not full frames. The latest-only mailbox used to discard complete frames **before** detection; the resulting600ms sample intervals exceed the unchanged300ms continuity requirement.
+
+`src/peek_live.c` now owns acquisition-side detector + role observations. `device_thermal.c` processes every successful complete frame/fault before the latest-only display mailbox. Whole independent state copies cross that mailbox; rendering ages/animates its own copy and never writes history back. No detector parameter/art/render algorithm change. A Host regression renders only every750ms while8Hz samples still acquire and remain HOLD; copy aging cannot mutate source state. Original recorded events also traverse this exact portable wrapper in `peek_role_replay`. No physical FPS improvement is claimed from this scheduling fix.
 
 ## Target and recovery
 
@@ -26,7 +32,7 @@ Restore only when intentional, from this project directory, through the same off
 
 ```sh
 python3 ../esp-mosaico-vibe/mosaico.py iris device-status --workspace . --project projects/peek --device-id 4553502d49524953010030eda0f452a0 --json
-python3 ../esp-mosaico-vibe/mosaico.py iris system-update --workspace . --project projects/peek --device-id 4553502d49524953010030eda0f452a0 --bundle evidence/device-dragon/restore/diagnostic.irisfw --json
+python3 ../esp-mosaico-vibe/mosaico.py iris system-update --workspace . --device-id 4553502d49524953010030eda0f452a0 --bundle evidence/device-dragon/restore/diagnostic.irisfw --json
 ```
 
 This retains the existing `ota_0`/immutable prefix/Vibe Mode contract. Never use direct IDF/esptool writes, whole-flash erase or change partitions to accommodate the factory-size warning. After restore verify the same Device ID, a new Boot ID, expected diagnostic ELF/version, healthy normal mode and live MLX90640. If update fails, inspect its original operation; do not start a competing write. ROM/base-firmware recovery is outside this task's authorization.

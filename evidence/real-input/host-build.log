@@ -1,17 +1,20 @@
 [  3%] Built target peek_dragon_assets
-[ 13%] Built target dragon
-[ 23%] Built target peek
+[ 12%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 24%] Built target peek
 [ 30%] Built target test_detector
-[ 33%] Building C object CMakeFiles/test_device_adapter.dir/tests/test_device_adapter.c.o
-[ 36%] Linking C executable test_device_adapter
+Consolidate compiler generated dependencies of target test_device_adapter
 [ 36%] Built target test_device_adapter
-[ 46%] Built target test_ui_lifetime
-[ 53%] Built target peek_replay
-[ 60%] Built target test_event_aging
-[ 66%] Built target peek_replay_until
-[ 73%] Built target test_dragon
-[ 80%] Built target test_dragon_render
-[ 86%] Built target dragon_snapshot
-[ 93%] Built target test_dragon_timing
-Consolidate compiler generated dependencies of target peek_role_replay
-[100%] Built target peek_role_replay
+[ 45%] Built target test_ui_lifetime
+[ 51%] Built target peek_replay
+[ 57%] Built target test_event_aging
+[ 63%] Built target peek_replay_until
+[ 69%] Built target test_dragon
+[ 75%] Built target test_dragon_render
+[ 81%] Built target dragon_snapshot
+[ 87%] Built target test_dragon_timing
+[ 90%] Building C object CMakeFiles/peek_role_replay.dir/tools/role_replay.c.o
+[ 93%] Linking C executable peek_role_replay
+[ 93%] Built target peek_role_replay
+Consolidate compiler generated dependencies of target test_live_logic
+[100%] Built target test_live_logic
