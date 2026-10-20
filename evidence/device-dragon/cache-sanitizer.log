@@ -1,0 +1,1 @@
+PASS renderer cache:32 cached/uncached full frames identical; immutable cache and both allocation failures release correctly

@@ -33,6 +33,8 @@ Only one preview per working directory is supported. Loopback socket permission 
 
 `python3 tools/control.py case live` then `python3 tools/control.py play` runs all511 recorded temperature arrays and655 original submit/fault/tick events through the production C detector and role. `data/live/20261020-complete-window/` is copied unchanged from diagnostic handoff63c0799; successful-frame span65.074s, unlabelled scene. Processing/capture/fault times are preserved, no interpolation or prefilled focus. `python3 tools/import_live.py` regenerates `data/live.peek`; `E now` is an additive fault event, not a sample. `python3 tests/test_real_replay.py` checks every recorded C result and deterministic role output. `python3 tools/validate_real_gsp.py` records the wall-clock native run; [actual native movie](evidence/real-input/recorded-native.mp4). No HOLD is triggered by this recorded scene under the unchanged quietness threshold.
 
+Current lossless renderer caches3,225,600 bytes of invariant geometry/static colors in explicit device PSRAM; its workspace+cache total3,237,912 bytes is reported separately from textures and framebuffer memory. [Device rendering investigation](docs/DEVICE_PERFORMANCE.md) retains exact pixel/ownership evidence and actual runtime rates.
+
 The normal firmware build selects `build/sdkconfig.dragon`, version `1.0.0-peek-dragon`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
 
 ## Build / verify

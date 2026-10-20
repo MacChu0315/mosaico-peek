@@ -18,3 +18,41 @@ Verification:
 - Target relocation sites for `__divdi3` fall from6 to1. This is static code inspection, not a runtime operation count or a measured speedup.
 
 Final installed source/ELF, physical timing/RAM and remaining acceptance gaps are recorded in HANDOFF and `evidence/device-dragon/` after actual installation. GSP engine-render rates, tiled draw callbacks and physical screen FPS remain different quantities. Neither movie encoding nor a callback counter proves panel-visible FPS.
+
+## Fixed-pixel cache follow-up
+
+The first exact-arithmetic install (`6e968b1`) reached only about2.33 GSP rendered
+frames/s; it remains an insufficient result, not accepted smoothness. The user
+requested investigating Echoy, whose invariant/raster reuse technique is also
+applicable here.
+
+The next renderer allocates an immutable fixed-pixel table containing sphere
+normals/light/vignette and exact terminal body/open-hood RGB565 values. Device
+allocation uses `MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT` explicitly and never falls back
+to internal RAM. Renderer creation propagates either allocation failure. It
+allocates no buffers during draw. Conservative exact geometry predicates reuse
+terminal background colors only where no eye/lip/shadow/stroke contributes;
+all other pixels retain the original compositing order. Dynamic gaze, pupil,
+lid contours, blinks and texture sampling are not quantized or downsampled.
+The final remaining iris64-bit division is replaced by an exact reciprocal
+estimate bounded low by at most1 and a single exact correction.
+
+The table is3,225,600 bytes on the target; renderer workspace + table are
+3,237,912 bytes. This is an explicit additional PSRAM cost, replacing repeated
+calculations. The observed pre-cache role firmware had about13.2MB free PSRAM;
+final actual free/minimum values must be measured after installation. Static
+budget totals do not replace that measurement.
+
+All43 retained old full frames still match byte for byte. An additional32-pose
+cached-vs-uncached full-frame regression verifies both allocations, cleanup and
+cache immutability. Host Debug/Release now have11 tests. Native/runtime results
+are recorded separately before declaring this follow-up accepted.
+
+Cache lifetime also passes ASan+UBSan with leak checking disabled because of the
+retained environment's ptrace limitation; explicit allocation counters cover
+both failure points and matching frees. The previous final6e968b1 low-noise
+client remained in ep_poll after its child build completed and was interrupted
+only after its exact PID/cwd/no-children state was verified. The independent
+standalone cache low-noise build succeeded; original failure/result and
+`build-process-note.json` remain retained. No device or shared process was
+stopped to resolve this local build client.

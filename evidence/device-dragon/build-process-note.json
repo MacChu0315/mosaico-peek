@@ -1,0 +1,6 @@
+{
+  "source": "this session low-noise run20261020-195426-build-128",
+  "symptom": "idf.py waited in ep_poll with no children after Ninja binary/size checks completed; concurrent official system-update build had already completed independently",
+  "action": "SIGINT only to verified owned idle idf.py; no device/Gateway/other process stopped",
+  "verification": "Subsequent standalone low-noise cache build reports OK; official install validated expected ELF. Original run and raw log retained."
+}

@@ -2,8 +2,8 @@
   "flash": {
     "images": {
       "peek.bin": {
-        "bytes": 1987504,
-        "sha256": "07db1438983a51b1a040b1f3332d024a2cd6685dc9c9cda68b2340d465d484cb"
+        "bytes": 1989040,
+        "sha256": "8dd87552e33d844b09ca4c3ad523c267d0134aeb463781cdf6c8129e43fed616"
       },
       "ui_apps.bin": {
         "bytes": 94480,
@@ -29,11 +29,12 @@
       "shared_ui": 9696,
       "display_snapshot": 9576,
       "device_app": 9712,
-      "renderer": 12308,
-      "acquisition_owner": 16520
+      "renderer": 12312,
+      "acquisition_owner": 16520,
+      "renderer_fixed_cache": 3225600
     },
-    "renderer_heap_bytes": 12308,
-    "device_app_plus_producer_consumer_queue_and_renderer_bytes": 57692,
+    "renderer_heap_bytes": 3237912,
+    "device_app_plus_producer_consumer_queue_and_renderer_bytes": 3283296,
     "sensor_task_stack_bytes": 8192,
     "single_RGB565_plane_bytes": 460800,
     "eye_plus_diagnostic_canvas_planes_if_both_cached_bytes": 681984,

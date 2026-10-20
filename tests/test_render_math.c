@@ -20,6 +20,13 @@ static color_t old_gloss(color_t c,int32_t x,int32_t y){
     return c;
 }
 int main(void){
+    uint32_t seed=90640,divisor=IRIS_RADIUS_Q15*IRIS_RADIUS_Q15;
+    for(unsigned i=0;i<1000000;i++){
+        seed=seed*1664525u+1013904223u;uint32_t n=i<2?i:seed%divisor;
+        assert(iris_radius_scaled(n)==((uint64_t)n<<30)/divisor);
+    }
+    assert(iris_radius_scaled(divisor-1)==((uint64_t)(divisor-1)<<30)/divisor);
+
     for(int alpha=-1;alpha<=257;alpha++)for(int v=0;v<256;v+=7){
         color_t a={v,255-v,v/2},b={255-v,v,(v*3)%256};
         int k=clamp_int(alpha,0,256);

@@ -15,5 +15,7 @@
       "projects/echoy/main/echoy_art.c"
     ]
   },
-  "source_sha256": "8cb6149796664d2c7655939f2dadb8132e662197925c1fda3d0e0ff1e675fd46"
+  "source_sha256": "8cb6149796664d2c7655939f2dadb8132e662197925c1fda3d0e0ff1e675fd46",
+  "fixed_pixel_cache_bytes": 3225600,
+  "fixed_cache_only_in_psram_on_device": true
 }

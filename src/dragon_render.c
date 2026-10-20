@@ -2,6 +2,9 @@
 
 #include <math.h>
 #include <stdlib.h>
+#ifdef ESP_PLATFORM
+#include "esp_heap_caps.h"
+#endif
 
 #include "dragon_assets.inc"
 
@@ -19,7 +22,16 @@
 
 typedef struct { int r, g, b; } color_t;
 
+typedef struct {
+    int16_t nx, ny, nz; /* nz=-1 is outside the sphere. */
+    uint16_t light;
+    uint16_t body, hood;
+    uint8_t vignette;
+} dragon_fixed_pixel_t;
+#define FIXED_PIXELS (FRAME_SIZE*FRAME_SIZE)
+
 struct dragon_renderer {
+    dragon_fixed_pixel_t *fixed_pixels;
     bool ready;
     dragon_pose_t pose;
     int32_t cy, sy, cp, sp;
@@ -172,13 +184,28 @@ static int stroke(int32_t distance_q16, int half_width_q16, int alpha)
     return coverage(half_width_q16-d) * alpha >> 8;
 }
 
-static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
+/* Exact bounded normalization, n<d<2^31. The reciprocal estimate is low
+ * by less than1, so one exact correction replaces software64-bit division. */
+static uint32_t iris_radius_scaled(uint32_t n){
+    const uint32_t divisor=IRIS_RADIUS_Q15*IRIS_RADIUS_Q15;
+    const uint32_t reciprocal=(uint32_t)((UINT64_C(1)<<61)/divisor);
+    uint32_t scaled=(uint32_t)(((uint64_t)n*reciprocal)>>31);
+    if((uint64_t)(scaled+1)*divisor<=((uint64_t)n<<30))scaled++;
+    return scaled;
+}
+
+static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y, const dragon_fixed_pixel_t *fixed)
 {
-    int nx = x / (233 * 2);
-    int ny = y / (233 * 2);
-    int64_t r2 = (int64_t)nx*nx + (int64_t)ny*ny;
-    if (r2 >= (int64_t)Q15*Q15) return (color_t){0,0,0};
-    int nz = root_q15((int64_t)Q15*Q15-r2);
+    int nx,ny,nz;
+    if(fixed){
+        if(fixed->nz<0)return (color_t){0,0,0};
+        nx=fixed->nx;ny=fixed->ny;nz=fixed->nz;
+    }else{
+        nx=x/(233*2);ny=y/(233*2);
+        int64_t r2=(int64_t)nx*nx+(int64_t)ny*ny;
+        if(r2>=(int64_t)Q15*Q15)return (color_t){0,0,0};
+        nz=root_q15((int64_t)Q15*Q15-r2);
+    }
     int lx = (r->cy*nx-r->sy*nz) >> 15;
     int az = (r->sy*nx+r->cy*nz) >> 15;
     int ly = (r->cp*ny-r->sp*az) >> 15;
@@ -190,7 +217,7 @@ static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
         int32_t v = 320*Q16 + (int32_t)(ly*61000/82);
         c = sample(dragon_iris_indices, dragon_iris_palette, 640, u, v);
         if (radial2 * 10000 > iris2 * 7744) {
-            int radial = root_q15(radial2*Q15*Q15/iris2);
+            int radial = root_q15(iris_radius_scaled((uint32_t)radial2));
             int limbus = Q15 - ((radial-28836)*13763)/3932;
             limbus = clamp_int(limbus, 19005, Q15);
             c.r = c.r*limbus >> 15; c.g = c.g*limbus >> 15; c.b = c.b*limbus >> 15;
@@ -212,7 +239,7 @@ static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
         c = over(c, (color_t){2,3,2}, alpha);
     }
     int dot = (nx*-9503+ny*-12452+nz*28803) >> 15;
-    int light = 9830 + ((dot > 0 ? dot : 0)*24576 >> 15);
+    int light = fixed?fixed->light:9830 + ((dot > 0 ? dot : 0)*24576 >> 15);
     int rim = Q15-nz;
     rim = (int)(((int64_t)rim*rim) >> 15);
     rim = (int)(((int64_t)rim*(Q15-nz)*563) >> 38);
@@ -278,7 +305,7 @@ static color_t render_pixel(const dragon_renderer_t *r, unsigned sx, unsigned sy
     int32_t py = ((int32_t)sy-247)*Q16+Q16/2;
     int32_t x = (int32_t)(((int64_t)px*32349-(int64_t)py*5221) >> 15);
     int32_t y = (int32_t)(((int64_t)px*5221+(int64_t)py*32349) >> 15);
-    color_t c = over(skin((int32_t)sx*Q16, (int32_t)sy*Q16), (color_t){5,3,10}, 72);
+    const dragon_fixed_pixel_t *fixed=r->fixed_pixels?r->fixed_pixels+sy*FRAME_SIZE+sx:NULL;
     int32_t upper = edge_at(r->upper, x), lower = edge_at(r->lower, x);
     int us = edge_normal(r->upper_normal,x), ls = edge_normal(r->lower_normal,x);
     int32_t du = (int32_t)(((int64_t)(y-upper)*us) >> 15);
@@ -288,6 +315,17 @@ static color_t render_pixel(const dragon_renderer_t *r, unsigned sx, unsigned sy
     if (x > 214*Q16) hood_edge = -8*Q16-(int32_t)((int64_t)(x-214*Q16)*272/56);
     int hood_alpha = coverage(hood_edge-y);
     if (x < -280*Q16 || x > 270*Q16 || y < -280*Q16) hood_alpha = 0;
+    if(fixed){
+        bool outside=x < -217*Q16 || x > 217*Q16;
+        if(hood_alpha==0 && (outside ||
+           (dl < -26*Q16 && du > 9*Q16 && y > edge_at(r->lower_outer,x)+Q16)))
+            return unpack(fixed->body);
+        if(r->pose.blink==0 && hood_alpha==256 && (outside ||
+           (du < -26*Q16 && du < r->crease_offset-3*Q16 && dl > 9*Q16 &&
+            y < edge_at(r->upper_outer,x)-Q16 && y < lower-Q16)))
+            return unpack(fixed->hood);
+    }
+    color_t c = over(skin((int32_t)sx*Q16, (int32_t)sy*Q16), (color_t){5,3,10}, 72);
     if (hood_alpha) {
         int32_t v = (int32_t)(((int64_t)(y+247*Q16)*r->hood_v_scale) >> 16);
         int32_t u = x+240*Q16;
@@ -309,7 +347,7 @@ static color_t render_pixel(const dragon_renderer_t *r, unsigned sx, unsigned sy
         }
         int alpha = coverage(inside);
         if (alpha) {
-            color_t eye = eyeball(r,x,y);
+            color_t eye = eyeball(r,x,y,fixed);
             eye = over(eye, (color_t){0,4,0}, stroke(du-2*Q16,15*Q16,87));
             eye = over(eye, (color_t){0,4,0}, stroke(du-2*Q16,11*Q16/2,64));
             eye = over(eye, (color_t){1,3,1}, stroke(dl-Q16,7*Q16,115));
@@ -341,7 +379,7 @@ static color_t render_pixel(const dragon_renderer_t *r, unsigned sx, unsigned sy
     int vx = (int)sx-240, vy = (int)sy-244;
     unsigned distance2 = (unsigned)(vx*vx+vy*vy);
     unsigned at = distance2 >> 8, frac = distance2 & 255;
-    int a = r->vignette[at] + ((int)(r->vignette[at+1]-r->vignette[at])*(int)frac >> 8);
+    int a = fixed?fixed->vignette:r->vignette[at] + ((int)(r->vignette[at+1]-r->vignette[at])*(int)frac >> 8);
     return over(c,(color_t){0,0,0},a);
 }
 
@@ -355,10 +393,46 @@ dragon_renderer_t *dragon_renderer_create(void)
                       t < 1 ? .26f+(t-.6f)*.49f/.4f : .75f;
         r->vignette[i] = (uint16_t)lroundf(alpha*256);
     }
+#ifdef ESP_PLATFORM
+    r->fixed_pixels=heap_caps_calloc(FIXED_PIXELS,sizeof(*r->fixed_pixels),MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT);
+#else
+    r->fixed_pixels=calloc(FIXED_PIXELS,sizeof(*r->fixed_pixels));
+#endif
+    if(!r->fixed_pixels){free(r);return NULL;}
+    for(unsigned sy=0;sy<FRAME_SIZE;sy++)for(unsigned sx=0;sx<FRAME_SIZE;sx++){
+        dragon_fixed_pixel_t *f=r->fixed_pixels+sy*FRAME_SIZE+sx;
+        int32_t px=((int32_t)sx-240)*Q16+Q16/2,py=((int32_t)sy-247)*Q16+Q16/2;
+        int32_t x=(int32_t)(((int64_t)px*32349-(int64_t)py*5221)>>15);
+        int32_t y=(int32_t)(((int64_t)px*5221+(int64_t)py*32349)>>15);
+        int nx=x/(233*2),ny=y/(233*2);int64_t r2=(int64_t)nx*nx+(int64_t)ny*ny;
+        if(r2>=(int64_t)Q15*Q15)f->nz=-1;
+        else{
+            f->nx=(int16_t)nx;f->ny=(int16_t)ny;f->nz=(int16_t)root_q15((int64_t)Q15*Q15-r2);
+            int dot=(nx*-9503+ny*-12452+f->nz*28803)>>15;
+            f->light=(uint16_t)(9830+((dot>0?dot:0)*24576>>15));
+        }
+        int vx=(int)sx-240,vy=(int)sy-244;unsigned distance2=(unsigned)(vx*vx+vy*vy);
+        unsigned at=distance2>>8,frac=distance2&255;
+        f->vignette=(uint8_t)(r->vignette[at]+((int)(r->vignette[at+1]-r->vignette[at])*(int)frac>>8));
+        color_t body=over(skin((int32_t)sx*Q16,(int32_t)sy*Q16),(color_t){5,3,10},72),hood=body;
+        int32_t u=x+240*Q16,v=y+247*Q16;
+        if(u>=0 && u<480*Q16 && v>=0 && v<480*Q16)hood=skin(u,v);
+        hood=over(hood,(color_t){4,2,9},79);
+        f->body=pack(over(body,(color_t){0,0,0},f->vignette));
+        f->hood=pack(over(hood,(color_t){0,0,0},f->vignette));
+    }
     return r;
 }
 
-void dragon_renderer_destroy(dragon_renderer_t *r) { free(r); }
+void dragon_renderer_destroy(dragon_renderer_t *r) {
+    if(!r)return;
+#ifdef ESP_PLATFORM
+    heap_caps_free(r->fixed_pixels);
+#else
+    free(r->fixed_pixels);
+#endif
+    free(r);
+}
 
 bool dragon_renderer_prepare(dragon_renderer_t *r, const dragon_pose_t *p)
 {
@@ -415,7 +489,7 @@ bool dragon_renderer_draw(const dragon_renderer_t *r, uint16_t *pixels,
     return true;
 }
 
-size_t dragon_renderer_heap_bytes(void) { return sizeof(dragon_renderer_t); }
+size_t dragon_renderer_heap_bytes(void) { return sizeof(dragon_renderer_t)+FIXED_PIXELS*sizeof(dragon_fixed_pixel_t); }
 size_t dragon_renderer_asset_bytes(void)
 {
     return sizeof(dragon_skin_indices)+sizeof(dragon_iris_indices)+

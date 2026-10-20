@@ -22,7 +22,8 @@ bool dragon_renderer_prepare(dragon_renderer_t *renderer,
 bool dragon_renderer_draw(const dragon_renderer_t *renderer, uint16_t *pixels,
                           size_t stride_bytes, unsigned x, unsigned y,
                           unsigned width, unsigned height);
-/* Requested allocation size per instance, excluding allocator bookkeeping. */
+/* Workspace plus immutable fixed-pixel cache per instance, excluding allocator
+ * bookkeeping. The device cache uses explicit PSRAM; creation fails if absent. */
 size_t dragon_renderer_heap_bytes(void);
 /* Includes indexed textures, RGB565 palettes, and immutable numeric tables. */
 size_t dragon_renderer_asset_bytes(void);

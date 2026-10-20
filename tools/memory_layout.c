@@ -3,5 +3,5 @@
 #include "../projects/peek/main/device_thermal.c"
 #include "../src/dragon_render.c"
 const uint32_t peek_memory_layout[] __attribute__((used,section(".rodata.peek_layout")))={
-    sizeof(peek_detector_t),sizeof(peek_frame_t),sizeof(dragon_t),sizeof(peek_ui_t),sizeof(peek_live_t),sizeof(*app),sizeof(dragon_renderer_t),sizeof(producer_t)
+    sizeof(peek_detector_t),sizeof(peek_frame_t),sizeof(dragon_t),sizeof(peek_ui_t),sizeof(peek_live_t),sizeof(*app),sizeof(dragon_renderer_t),sizeof(producer_t),FIXED_PIXELS*sizeof(dragon_fixed_pixel_t)
 };
