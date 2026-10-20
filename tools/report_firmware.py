@@ -149,6 +149,8 @@ def main():
     prefix = compiler.name[:-3]
     nm, readelf = compiler.with_name(prefix + "nm"), compiler.with_name(prefix + "readelf")
     files = {name: build / name for name in ("peek.bin", "ui_apps.bin", "peek.elf", "peek.map", "sdkconfig")}
+    description=json.loads((build/'project_description.json').read_text())
+    files['sdkconfig']=Path(description['config_file'])
     artifacts = {name: fingerprint(path) for name, path in files.items()}
     config = read_config(files["sdkconfig"])
     sections = read_sections(readelf, files["peek.elf"])

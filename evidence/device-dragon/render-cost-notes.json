@@ -1,0 +1,19 @@
+{
+  "reference_source": "93891375a80aeaafc34318e965361e38564c53f0",
+  "reference_static_divdi3_callsites": 6,
+  "current_static_divdi3_callsites": 1,
+  "meaning": "Static target object relocation sites, not dynamic operation counts or a measured speedup.",
+  "inspiration": {
+    "project": "Echoy",
+    "commit": "5c9ae92f28df64173e97dbf3c29394ee149a91d6",
+    "license": "MIT, Copyright (c) 2026 MacChu0315",
+    "read_only": true,
+    "code_copied": false,
+    "paths": [
+      "docs/verification/performance/README.md",
+      ".agents/skills/mosaico-runtime-performance/SKILL.md",
+      "projects/echoy/main/echoy_art.c"
+    ]
+  },
+  "source_sha256": "8cb6149796664d2c7655939f2dadb8132e662197925c1fda3d0e0ff1e675fd46"
+}

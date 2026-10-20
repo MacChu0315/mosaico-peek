@@ -38,3 +38,7 @@ python3 ../esp-mosaico-vibe/mosaico.py iris system-update --workspace . --device
 This retains the existing `ota_0`/immutable prefix/Vibe Mode contract. Never use direct IDF/esptool writes, whole-flash erase or change partitions to accommodate the factory-size warning. After restore verify the same Device ID, a new Boot ID, expected diagnostic ELF/version, healthy normal mode and live MLX90640. If update fails, inspect its original operation; do not start a competing write. ROM/base-firmware recovery is outside this task's authorization.
 
 Runtime results and remaining limits are recorded in `docs/HANDOFF.md` and `evidence/device-dragon/` after actual installation.
+
+The user's physical choppiness report and the subsequent pixel-equivalent
+rendering work are retained in [device performance](DEVICE_PERFORMANCE.md).
+This does not alter the detector parameters or approved artwork.

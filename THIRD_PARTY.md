@@ -19,3 +19,15 @@ The dependency lock was seeded from the already validated Mondrian app, then re-
 ## Phase2 approved dragon art
 
 `assets/dragon/skin.png` and `iris.png` are resized RGB source assets derived from the user-approved `approved-dragon` input, retaining the original dimensions/hashes and preprocessed pixel/file hashes in `metadata.json`. The supplied source README identifies these as new imagegen assets for this project, with no copied reference-project art/code. This records supplied provenance, not an additional public licensing grant. The full input ZIP, reference movies and Node dependencies are excluded. `evidence/phase2/input-provenance.json` preserves the source ZIP and all51 input hashes. `dragon_render.c` is a shared C reconstruction using that approved renderer/timeline as the project reference; lookup/palette data is regenerated, not hand-edited. No Gemini artwork or JavaScript runtime was imported.
+
+## Consulted local performance work
+
+At the user's request, the existing sibling `Echoy` was read only at commit
+`5c9ae92f28df64173e97dbf3c29394ee149a91d6`: its performance verification README,
+`mosaico-runtime-performance` skill and art renderer informed the use of
+conservative invisible-region bounds, invariant work elimination and exact pixel
+comparison. Echoy declares MIT, Copyright (c) 2026 MacChu0315. No Echoy source,
+artwork, dependencies, device configuration or hardware permissions were copied.
+Peek's bounded integer/highlight implementation remains its own shared C code.
+Exact consulted paths and provenance are retained in
+`evidence/device-dragon/render-cost-notes.json`.

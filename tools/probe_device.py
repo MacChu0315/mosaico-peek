@@ -22,7 +22,7 @@ def payload(value):
     return None
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=35);p.add_argument('--label',default='live');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=35);p.add_argument('--label',default='live');p.add_argument('--no-screens',action='store_true');a=p.parse_args()
     if not a.label.replace('-','').isalnum() or not 0<a.seconds<=300:p.error('invalid bounded probe')
     out=ROOT/'evidence/device-dragon'/a.label;out.mkdir(exist_ok=False)
     before=command(['device-status']);d=before['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version']=='1.0.0-peek-dragon' and d['firmware_mode']=='normal' and not d['stale']
@@ -32,7 +32,7 @@ def main():
             value=command(['rpc','20556','1']);raw=payload(value);assert raw is not None
             state=json.loads(raw);assert state['source']=='LIVE MLX90640' and state['error']==0
             sample=dict(host_wall_s=time.monotonic()-begin,state=state,cli=value);samples.append(sample);f.write(json.dumps(sample)+'\n');f.flush()
-            if sample['host_wall_s']>=next_screen:
+            if not a.no_screens and sample['host_wall_s']>=next_screen:
                 capture=command(['screenshot',str(out/f'frame-{len(samples):03d}.png')]);assert capture['boot_id']==boot
                 (out/f'frame-{len(samples):03d}.json').write_text(json.dumps(capture,indent=2)+'\n');next_screen+=15
             time.sleep(.5)

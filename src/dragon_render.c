@@ -59,7 +59,8 @@ static uint16_t pack(color_t c)
 
 static color_t over(color_t under, color_t upper, int alpha)
 {
-    alpha = clamp_int(alpha, 0, 256);
+    if (alpha <= 0) return under;
+    if (alpha >= 256) return upper;
     color_t c = {under.r + ((upper.r - under.r) * alpha >> 8),
                  under.g + ((upper.g - under.g) * alpha >> 8),
                  under.b + ((upper.b - under.b) * alpha >> 8)};
@@ -77,7 +78,9 @@ static color_t sample(const uint8_t *indices, const uint16_t *palette,
     unsigned x1 = x + (x + 1 < size), y1 = y + (y + 1 < size);
     int fx = (u & 65535) >> 8, fy = (v & 65535) >> 8;
     color_t a = unpack(palette[indices[y * size + x]]);
+    if (!fx && !fy) return a;
     color_t b = unpack(palette[indices[y * size + x1]]);
+    if (!fy) return over(a,b,fx);
     color_t c = unpack(palette[indices[y1 * size + x]]);
     color_t d = unpack(palette[indices[y1 * size + x1]]);
     return over(over(a, b, fx), over(c, d, fx), fy);
@@ -171,8 +174,8 @@ static int stroke(int32_t distance_q16, int half_width_q16, int alpha)
 
 static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
 {
-    int nx = (int)(((int64_t)x * Q15) / (233 * Q16));
-    int ny = (int)(((int64_t)y * Q15) / (233 * Q16));
+    int nx = x / (233 * 2);
+    int ny = y / (233 * 2);
     int64_t r2 = (int64_t)nx*nx + (int64_t)ny*ny;
     if (r2 >= (int64_t)Q15*Q15) return (color_t){0,0,0};
     int nz = root_q15((int64_t)Q15*Q15-r2);
@@ -183,12 +186,12 @@ static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
     const int64_t iris2 = (int64_t)IRIS_RADIUS_Q15*IRIS_RADIUS_Q15;
     color_t c;
     if (radial2 < iris2) {
-        int32_t u = 320*Q16 + (int32_t)((int64_t)lx*61000/82);
-        int32_t v = 320*Q16 + (int32_t)((int64_t)ly*61000/82);
+        int32_t u = 320*Q16 + (int32_t)(lx*61000/82);
+        int32_t v = 320*Q16 + (int32_t)(ly*61000/82);
         c = sample(dragon_iris_indices, dragon_iris_palette, 640, u, v);
         if (radial2 * 10000 > iris2 * 7744) {
             int radial = root_q15(radial2*Q15*Q15/iris2);
-            int limbus = Q15 - (int)(((int64_t)(radial-28836)*13763)/3932);
+            int limbus = Q15 - ((radial-28836)*13763)/3932;
             limbus = clamp_int(limbus, 19005, Q15);
             c.r = c.r*limbus >> 15; c.g = c.g*limbus >> 15; c.b = c.b*limbus >> 15;
         }
@@ -222,21 +225,31 @@ static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y)
 static color_t gloss(color_t c, int32_t x, int32_t y)
 {
     int32_t dx = (x+71*Q16) >> 8, dy = (y+57*Q16) >> 8;
-    int64_t d2 = (int64_t)dx*dx + (int64_t)dy*dy;
-    const int64_t radius2 = (int64_t)48*48*65536;
-    if (d2 < radius2) {
-        int radius = root_q15(d2*Q15*Q15/radius2);
-        c = over(c, (color_t){230,242,192}, (Q15-radius)*36 >> 15);
+    /* Exact conservative support bounds: invisible pixels never need division.
+     * Positive numerators below are bounded to uint32_t, avoiding software
+     * 64-bit divides on the S31. The channel/blend math stays unchanged. */
+    if (dx > -12288 && dx < 12288 && dy > -12288 && dy < 12288) {
+        uint32_t d2 = (uint32_t)(dx*dx+dy*dy);
+        if (d2 < 150994944u) {
+            /* d2*Q15^2/(48^2*65536) == floor(d2*64/9). */
+            uint32_t scaled = (d2/9)*64 + (d2%9)*64/9;
+            int radius = root_q15(scaled);
+            c = over(c, (color_t){230,242,192}, (Q15-radius)*36 >> 15);
+        }
     }
-    /* First ellipse is rotated -0.28 radians in eye-local coordinates. */
     dx = (x+76*Q16) >> 8; dy = (y+51*Q16) >> 8;
     int ex = (int)(((int64_t)dx*31492-(int64_t)dy*9056) >> 15);
     int ey = (int)(((int64_t)dx*9056+(int64_t)dy*31492) >> 15);
-    int64_t ellipse = (int64_t)ex*ex*1024/3030384 + (int64_t)ey*ey*1024/629801;
-    if (ellipse < 1152) c = over(c, (color_t){250,250,218}, clamp_int((1152-(int)ellipse),0,256)*123 >> 8);
+    /* Each axis bound is floor(sqrt((1152*denominator-1)/1024)). */
+    if (ex >= -1846 && ex <= 1846 && ey >= -841 && ey <= 841) {
+        uint32_t ellipse = (uint32_t)(ex*ex)*1024u/3030384u + (uint32_t)(ey*ey)*1024u/629801u;
+        if (ellipse < 1152) c = over(c, (color_t){250,250,218}, clamp_int((1152-(int)ellipse),0,256)*123 >> 8);
+    }
     dx = (x+64*Q16) >> 8; dy = (y+46*Q16) >> 8;
-    ellipse = (int64_t)dx*dx*1024/317194 + (int64_t)dy*dy*1024/110756;
-    if (ellipse < 1152) c = over(c, (color_t){243,245,202}, clamp_int((1152-(int)ellipse),0,256)*59 >> 8);
+    if (dx >= -597 && dx <= 597 && dy >= -352 && dy <= 352) {
+        uint32_t ellipse = (uint32_t)(dx*dx)*1024u/317194u + (uint32_t)(dy*dy)*1024u/110756u;
+        if (ellipse < 1152) c = over(c, (color_t){243,245,202}, clamp_int((1152-(int)ellipse),0,256)*59 >> 8);
+    }
     return c;
 }
 
