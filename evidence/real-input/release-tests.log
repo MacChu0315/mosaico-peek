@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+    Start 1: detector
+1/8 Test #1: detector .........................   Passed    0.01 sec
+    Start 2: device_adapter
+2/8 Test #2: device_adapter ...................   Passed    0.00 sec
+    Start 3: ui_lifetime
+3/8 Test #3: ui_lifetime ......................   Passed    0.00 sec
+    Start 4: event_aging
+4/8 Test #4: event_aging ......................   Passed    0.00 sec
+    Start 5: dragon_behavior
+5/8 Test #5: dragon_behavior ..................   Passed    0.01 sec
+    Start 6: dragon_pixels
+6/8 Test #6: dragon_pixels ....................   Passed    0.10 sec
+    Start 7: dragon_receive_timing
+7/8 Test #7: dragon_receive_timing ............   Passed    0.02 sec
+    Start 8: asset_build_readonly
+8/8 Test #8: asset_build_readonly .............   Passed    5.01 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =   5.15 sec

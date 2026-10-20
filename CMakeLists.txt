@@ -51,3 +51,7 @@ target_link_libraries(test_dragon_timing PRIVATE peek dragon)
 target_compile_options(test_dragon_timing PRIVATE -UNDEBUG -Wall -Wextra -Werror)
 add_test(NAME dragon_receive_timing COMMAND test_dragon_timing)
 add_test(NAME asset_build_readonly COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_asset_build.py")
+
+add_executable(peek_role_replay tools/role_replay.c)
+target_link_libraries(peek_role_replay PRIVATE peek dragon)
+target_compile_options(peek_role_replay PRIVATE -Wall -Wextra -Werror)

@@ -14,10 +14,11 @@ def main():
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
         if name.startswith('evidence/gsp/motion/'):continue
+        if name.endswith('.mp4') and not name.startswith('evidence/real-input/'):continue
         selected.append(name)
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in selected}
-    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'evidence':'Phase2 native C/GSP dragon; live API screenshot sampling + measured callbacks, not hardware acceptance','excluded':['.git','build/cache','dependency copies','intermediate screenshots, ignored original review input and dependency caches']}
-    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-followup-{commit[:8]}.zip'
+    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'evidence':'Live dragon: exact recorded-temperature native replay and separately retained physical-device acceptance; see docs/HANDOFF.md','excluded':['.git','build/cache','dependency copies','intermediate screenshots, old historical MP4s, ignored original review input and dependency caches, full local ELF/map/config backup']}
+    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-live-dragon-{commit[:8]}.zip'
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in selected:z.write(ROOT/name,'mosaico-peek/'+name)
         z.writestr('mosaico-peek/REVIEW_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')

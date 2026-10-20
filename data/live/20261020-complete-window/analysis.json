@@ -1,0 +1,69 @@
+{
+  "source": "real MLX90640, unlabelled scene",
+  "record_schema": 1,
+  "raw_records": 512,
+  "complete_temperature_frames": 511,
+  "pixels_per_frame": 768,
+  "raw_fault_records": 1,
+  "raw_faults": [
+    {
+      "id": 1,
+      "sequence": 0,
+      "captured_ms": 2306,
+      "error": 263,
+      "slot": 0
+    }
+  ],
+  "missing_capture_ids": [],
+  "event_records": 655,
+  "missing_event_positions": [],
+  "missing_event_inputs": [],
+  "submitted_capture_records": 511,
+  "unconsumed_successful_captures": 0,
+  "fault_events": 1,
+  "tick_events": 143,
+  "target_events": 523,
+  "held_events": 5,
+  "data_state_events": {
+    "0": 9,
+    "1": 632,
+    "2": 14,
+    "3": 0
+  },
+  "first_capture_ms": 3022,
+  "last_capture_ms": 68096,
+  "first_event_ms": 1861,
+  "last_event_ms": 68141,
+  "measured_capture_hz": 7.837231459569106,
+  "interval_ms": {
+    "min": 119,
+    "median": 130.0,
+    "max": 190
+  },
+  "read_call_ms": {
+    "mean": 126.91580039138942,
+    "max": 189.37699999999995
+  },
+  "capture_to_C_processing_ms": {
+    "mean": 51.70645792563601,
+    "median": 55,
+    "max": 105
+  },
+  "temperature_range_c": [
+    24.180021286010742,
+    36.477210998535156
+  ],
+  "nonfinite_values": 0,
+  "outside_core_range_values": 0,
+  "files": {
+    "captures.bin": {
+      "bytes": 1593344,
+      "sha256": "9d53d3fd00d173494f1840c4da53ce364c4e41a183d4bee4a3b95d4d044d0c02"
+    },
+    "events.bin": {
+      "bytes": 57640,
+      "sha256": "f4dec078bdb861eb374dd859af95ea1390f58e1f89d004bbdc677a001bd98ebf"
+    }
+  },
+  "limits": "No scene/identity ground truth or physical latency/accuracy claim; timings describe read completion and C processing only."
+}

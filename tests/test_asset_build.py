@@ -136,10 +136,21 @@ class AssetBuildTests(unittest.TestCase):
         self.assertEqual(self.source_state(), before)
 
     def test_explicit_update_requires_originals(self):
+        # Exercise missing-original validation independently of host Pillow.
         before = self.source_state()
-        result = self.run_bake("--update-assets", "--output", str(self.output))
+        result = self.run_bake("--update-assets", "--output", str(self.output),
+                               pillow_version="10.4.0")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("approved source", result.stderr.lower())
+        self.assertEqual(self.source_state(), before)
+        self.assertFalse(self.output.exists())
+
+    def test_explicit_update_rejects_unpinned_pillow_before_writing(self):
+        before = self.source_state()
+        result = self.run_bake("--update-assets", "--output", str(self.output),
+                               pillow_version="other-version")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("requires Pillow 10.4.0", result.stderr)
         self.assertEqual(self.source_state(), before)
         self.assertFalse(self.output.exists())
 

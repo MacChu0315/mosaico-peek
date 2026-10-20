@@ -32,9 +32,9 @@ bool peek_replay_next(peek_replay_t *r)
         if(r->line[0]=='#'||r->line[0]=='\n')continue;
         if(!strchr(r->line,'\n')&&!feof(r->file))return fail(r,"line too long");
         char kind=r->line[0],*p=r->line+1;uint64_t now;
-        if((kind!='P' && kind!='F') || !isspace((unsigned char)*p) || !decimal(&p,UINT64_MAX,&now))return fail(r,"expected F/P and unsigned decimal time");
+        if((kind!='P' && kind!='F' && kind!='E') || !isspace((unsigned char)*p) || !decimal(&p,UINT64_MAX,&now))return fail(r,"expected F/P/E and unsigned decimal time");
         if(r->line_number>1&&now<previous)return fail(r,"event clock rollback");
-        r->due_ms=now;r->sample=kind=='F';
+        r->due_ms=now;r->sample=kind=='F';r->fault=kind=='E';
         if(r->sample){
             uint64_t complete;
             if(!decimal(&p,UINT64_MAX,&r->frame.sequence) || !decimal(&p,UINT64_MAX,&r->frame.captured_ms) || !decimal(&p,1,&complete))return fail(r,"invalid unsigned frame header or complete (0/1)");
@@ -63,7 +63,7 @@ bool peek_replay_open(peek_replay_t *r,const char *path)
 bool peek_replay_until(peek_replay_t *r,peek_detector_t *d,uint64_t now)
 {
     while(r->ready && r->due_ms<=now){
-        if(r->sample)(void)peek_submit(d,&r->frame,r->due_ms);else if(!peek_tick(d,r->due_ms))return false;
+        if(r->sample)(void)peek_submit(d,&r->frame,r->due_ms);else if(r->fault)(void)peek_fault(d,r->due_ms);else if(!peek_tick(d,r->due_ms))return false;
         if(!peek_replay_next(r))return false;
     }
     return peek_tick(d,now);

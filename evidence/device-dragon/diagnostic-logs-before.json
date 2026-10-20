@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "command": "iris logs --snapshot",
+  "returned_log_records": 0,
+  "note": "Empty retained log snapshot, not proof that no historical error occurred; current status has crash_count=0."
+}

@@ -1,0 +1,27 @@
+{
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "elapsed_s": 189.135,
+  "captured_records": 512,
+  "detector_events": 655,
+  "fault_records": 1,
+  "request_errors": [],
+  "complete": true,
+  "frozen_frames": 512,
+  "frozen_events": 655,
+  "device_boot_id": "2187646616958253656",
+  "download_wall_s": 167.20105013018474,
+  "acquisition_calls_before": 527,
+  "acquisition_calls_after": 1839,
+  "capture_faults_after": 1,
+  "host_tool_sha256": "d273299dcb51e05cd0d9f9a03762d444818ac5224cb8c3061ae8cdafd9744fc8",
+  "files": {
+    "captures.bin": {
+      "bytes": 1593344,
+      "sha256": "9d53d3fd00d173494f1840c4da53ce364c4e41a183d4bee4a3b95d4d044d0c02"
+    },
+    "events.bin": {
+      "bytes": 57640,
+      "sha256": "f4dec078bdb861eb374dd859af95ea1390f58e1f89d004bbdc677a001bd98ebf"
+    }
+  }
+}

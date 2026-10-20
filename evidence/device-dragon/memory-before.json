@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "reason": "Official iris memory returned HTTP501 task memory observation is unavailable. Live device-status heap fields remain available.",
+  "raw_log": "memory-before-error.log"
+}

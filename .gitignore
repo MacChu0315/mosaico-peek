@@ -16,3 +16,5 @@ __pycache__/
 /src/dragon_assets.inc
 
 /.codex-runs/
+
+/firmware-local/

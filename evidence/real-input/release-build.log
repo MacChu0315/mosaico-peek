@@ -1,0 +1,42 @@
+[  3%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[ 13%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 16%] Building C object CMakeFiles/peek.dir/src/replay.c.o
+[ 20%] Linking C static library libpeek.a
+[ 23%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 26%] Linking C executable test_detector
+[ 30%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 33%] Building C object CMakeFiles/test_device_adapter.dir/tests/test_device_adapter.c.o
+[ 36%] Linking C executable test_device_adapter
+[ 36%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 40%] Linking C executable test_ui_lifetime
+[ 46%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 50%] Building C object CMakeFiles/peek_replay.dir/tools/replay.c.o
+[ 53%] Linking C executable peek_replay
+[ 53%] Built target peek_replay
+Consolidate compiler generated dependencies of target test_event_aging
+[ 56%] Building C object CMakeFiles/test_event_aging.dir/tests/test_event_aging.c.o
+[ 60%] Linking C executable test_event_aging
+[ 60%] Built target test_event_aging
+Consolidate compiler generated dependencies of target peek_replay_until
+[ 63%] Building C object CMakeFiles/peek_replay_until.dir/tools/replay_until.c.o
+[ 66%] Linking C executable peek_replay_until
+[ 66%] Built target peek_replay_until
+Consolidate compiler generated dependencies of target test_dragon
+[ 70%] Linking C executable test_dragon
+[ 73%] Built target test_dragon
+Consolidate compiler generated dependencies of target test_dragon_render
+[ 80%] Built target test_dragon_render
+Consolidate compiler generated dependencies of target dragon_snapshot
+[ 86%] Built target dragon_snapshot
+Consolidate compiler generated dependencies of target test_dragon_timing
+[ 90%] Linking C executable test_dragon_timing
+[ 93%] Built target test_dragon_timing
+[ 96%] Building C object CMakeFiles/peek_role_replay.dir/tools/role_replay.c.o
+[100%] Linking C executable peek_role_replay
+[100%] Built target peek_role_replay

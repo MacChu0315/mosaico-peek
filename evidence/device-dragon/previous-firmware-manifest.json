@@ -1,0 +1,118 @@
+{
+  "source_commit": "1dd860d52ab3e5dff0f60bf6125f0f11745191dc",
+  "main_baseline": "463a358887bb2ebeb3e1978b49865ac4fcd8db98",
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "hardware_mac": "30:ed:a0:f4:52:a0",
+  "version": "1.0.0-peek-diag",
+  "sdk_commit": "7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe",
+  "target": "esp32s31",
+  "buffers_psram_bytes": 1773568,
+  "files": {
+    "peek.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/build/peek.bin",
+      "bytes": 1988976,
+      "sha256": "e21c5be0439ed495478f7f42f719f0e38a7bdacbaaee58aa992409e41b61f955"
+    },
+    "peek.elf": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/build/peek.elf",
+      "bytes": 15735544,
+      "sha256": "f80b7d6f47b5ddad9dc7576fcfd2324a54c86eede2e69147821ddcf16c02dbab"
+    },
+    "ui_apps.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/build/ui_apps.bin",
+      "bytes": 94480,
+      "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+    },
+    "peek-system-update.irisfw": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/build/peek-system-update.irisfw",
+      "bytes": 1390274,
+      "sha256": "71492e296c7e7b3aad5af93602cf6aad2db194580cfbb34597bd60e2b4820729"
+    },
+    "partition-table.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/build/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "8b516eb3fff9b33cdf188e95bbb008cb853a5793883117b6e72dd572ea8fa6f4"
+    },
+    "partitions.csv": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/partitions.csv",
+      "bytes": 413,
+      "sha256": "e3846a03e7ff8991f1971ff62c81d4bdcf75f47b7f9255aabb49a8039a023bee"
+    },
+    "dependencies.lock": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/projects/peek/dependencies.lock",
+      "bytes": 15314,
+      "sha256": "59ce57abafe3a1edf012cc6e57b7f76a463410e11cad0983de517e20ff5a00e1"
+    },
+    "dependencies.json": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/dependencies.json",
+      "bytes": 3079,
+      "sha256": "c58d335f010837c997e15b1b5472058025866944d5439572e03f478bfa4d2711"
+    },
+    "peek.c": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/src/peek.c",
+      "bytes": 6453,
+      "sha256": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d"
+    },
+    "peek.h": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/src/peek.h",
+      "bytes": 2076,
+      "sha256": "b68abcdeb179486aa3e4150f6ddf16f43c286bd7983fdc1f66239a2be7920f67"
+    }
+  },
+  "local_archive": {
+    "peek.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/peek.bin",
+      "bytes": 1988976,
+      "sha256": "e21c5be0439ed495478f7f42f719f0e38a7bdacbaaee58aa992409e41b61f955"
+    },
+    "peek.elf": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/peek.elf",
+      "bytes": 15735544,
+      "sha256": "f80b7d6f47b5ddad9dc7576fcfd2324a54c86eede2e69147821ddcf16c02dbab"
+    },
+    "peek.map": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/peek.map",
+      "bytes": 7204525,
+      "sha256": "09b8c0e221df6a002970926583fc118f69906a6d72eb357acfb1162babc4ac5e"
+    },
+    "ui_apps.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/ui_apps.bin",
+      "bytes": 94480,
+      "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+    },
+    "peek-system-update.irisfw": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/peek-system-update.irisfw",
+      "bytes": 1390274,
+      "sha256": "71492e296c7e7b3aad5af93602cf6aad2db194580cfbb34597bd60e2b4820729"
+    },
+    "partition-table.bin": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "8b516eb3fff9b33cdf188e95bbb008cb853a5793883117b6e72dd572ea8fa6f4"
+    },
+    "sdkconfig": {
+      "path": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek-device/firmware-local/f80b7d6f47b5ddad/sdkconfig",
+      "bytes": 136784,
+      "sha256": "62b85c109c998536b2b131770c29a2c1694374362491d1454593c52b65ca0d4a"
+    }
+  },
+  "installation": {
+    "operation_id": "0ca83bf9-47e4-4a10-b5c1-e73d760f1901",
+    "status": "succeeded",
+    "healthy": true,
+    "boot_id": "2187646616958253656",
+    "previous_boot_id": "17306131401131065692",
+    "writer_boot_id": "17306131401131065692",
+    "source_layout_sha256": "4f8786d12001684a3c02385f31ef167247827bd73b744801494a8c5851bc7231",
+    "target_layout_sha256": "4f8786d12001684a3c02385f31ef167247827bd73b744801494a8c5851bc7231",
+    "source_bootloader_sha256": "d3cc31fc9e8f3df9c8ca3beece23fbcb97019f59cb87933266f8ddc47efadbcc",
+    "target_bootloader_sha256": "d3cc31fc9e8f3df9c8ca3beece23fbcb97019f59cb87933266f8ddc47efadbcc"
+  },
+  "recording": {
+    "directory": "data/live/20261020-complete-window",
+    "analysis": "data/live/20261020-complete-window/analysis.json",
+    "replay": "data/live/20261020-complete-window/c-replay-verification.json",
+    "bounded": true,
+    "ground_truth": "unlabelled scene"
+  }
+}

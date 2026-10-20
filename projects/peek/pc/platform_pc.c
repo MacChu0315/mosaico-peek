@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <time.h>
 static struct {
-    peek_ui_t view;peek_replay_t replay;void *timer;
+    peek_ui_t view;peek_replay_t replay;void *timer;FILE *trace;
     uint64_t logical_ms,wall_ms,ack;
     uint64_t tick_calls,tick_us_total,tick_work_us_total,publish_us_total,tick_us_max;
     uint64_t interval_count,interval_us_total,interval_us_max,last_tick_start_us,last_completed_us;
@@ -22,7 +22,7 @@ static struct {
     const char *data_dir,*run_dir;
     char label[80],status[512],temporary[512],socket_path[108];
 } app={.fd=-1};
-static const char *cases[]={"empty","motion","multi","gaps","recorded","aging","dragon","idle"};
+static const char *cases[]={"empty","motion","multi","gaps","recorded","aging","dragon","idle","live"};
 #define CASE_COUNT (sizeof(cases)/sizeof(cases[0]))
 static uint64_t real_us(void){struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return (uint64_t)t.tv_sec*1000000+(uint64_t)t.tv_nsec/1000;}
 static void publish(void)
@@ -44,7 +44,12 @@ static bool pump(uint64_t until)
 {
     while(app.replay.ready&&app.replay.due_ms<=until){
         if(app.replay.sample)(void)peek_ui_submit(&app.view,&app.replay.frame,app.replay.due_ms);
-        else {peek_ui_time(&app.view,app.replay.due_ms);if(app.view.error!=ESP_GSP_OK)return false;}
+        else {if(app.replay.fault)(void)peek_fault(&app.view.detector,app.replay.due_ms);peek_ui_time(&app.view,app.replay.due_ms);if(app.view.error!=ESP_GSP_OK)return false;}
+        if(app.trace){
+            fputs("{\"result\":",app.trace);peek_write_result(app.trace,&app.view.detector);
+            fprintf(app.trace,",\"role\":\"%s\",\"stationary\":%s,\"observations\":%" PRIu64 ",\"gaze_x\":%.9g,\"gaze_y\":%.9g}\n",dragon_mode_name(app.view.dragon.mode),app.view.dragon.stationary?"true":"false",app.view.dragon.observations,app.view.dragon.pose.gaze_x,app.view.dragon.pose.gaze_y);
+            fflush(app.trace);
+        }
         if(!peek_replay_next(&app.replay)){fprintf(stderr,"replay error: %s\n",app.replay.error);return false;}
     }
     app.logical_ms=until;peek_ui_refresh(&app.view,until);return true;
@@ -55,7 +60,10 @@ static bool load_case(void)
     if(n<0||n>=(int)sizeof(path))return false;
     peek_replay_close(&app.replay);
     if(!peek_replay_open(&app.replay,path)){fprintf(stderr,"%s\n",app.replay.error);return false;}
-    snprintf(app.label,sizeof(app.label),"%s / %s",app.case_index==4?"RECORDED (sparse)":"SYNTHETIC",cases[app.case_index]);
+    snprintf(app.label,sizeof(app.label),"%s / %s",app.case_index==4?"RECORDED (sparse)":app.case_index==8?"RECORDED (complete window)":"SYNTHETIC",cases[app.case_index]);
+    if(app.trace)fclose(app.trace);
+    app.trace=NULL;
+    if(app.case_index==8){char path[512];snprintf(path,sizeof(path),"%s/live-events.jsonl",app.run_dir);app.trace=fopen(path,"w");if(!app.trace)return false;}
     peek_ui_reset(&app.view,app.label);app.logical_ms=0;app.wall_ms=gsp_sim_bridge_time_ms();
     return pump(0);
 }
@@ -132,6 +140,7 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
 void gsp_bridge_app_deinit(esp_gsp_handle_t ui)
 {
     if(app.timer){esp_gsp_err_t rc=esp_gsp_timer_delete(ui,app.timer);if(rc!=ESP_GSP_OK)fprintf(stderr,"timer delete=%d\n",rc);}
+    if(app.trace)fclose(app.trace);
     peek_ui_deinit(&app.view);peek_ui_release(&app.view);peek_replay_close(&app.replay);
     if(app.fd>=0){close(app.fd);unlink(app.socket_path);}
     fprintf(stderr,"PEEK stopped draws=%" PRIu64 " actions=%" PRIu64 " error=%d\n",app.view.draws,app.view.actions,app.view.error);

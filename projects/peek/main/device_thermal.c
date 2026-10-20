@@ -12,6 +12,7 @@
 #include <inttypes.h>
 #ifdef ESP_PLATFORM
 #include "sdkconfig.h"
+#include "device_status.h"
 #endif
 /* Sensor task owns the driver. Render-task timer, event and canvas callbacks
  * exclusively own view/detector. Queue copies immutable complete frames.
@@ -46,7 +47,11 @@ static void sensor_task(void *ctx)
                     esp_err_t release=mosaico_module_mgr_release(&lease);
                     if(release!=ESP_OK){ESP_LOGE(TAG,"slot release: %s",esp_err_to_name(release));vTaskDelete(NULL);return;}
                 }
-                message->ok=false;message->ms=now_ms();xQueueOverwrite(app->queue,message);
+                message->ok=false;message->ms=now_ms();
+#ifdef ESP_PLATFORM
+                device_status_capture(false);
+#endif
+                xQueueOverwrite(app->queue,message);
                 vTaskDelay(pdMS_TO_TICKS(500));continue;
             }
             ESP_LOGI(TAG,"MLX90640 slot=%u I2C=0x33/400000Hz subpage=16Hz full-frame~=8Hz",lease.slot);
@@ -55,6 +60,9 @@ static void sensor_task(void *ctx)
         message->ok=error==ESP_OK;message->ms=now_ms();
         if(message->ok)message->sequence=++sequence;
         else ESP_LOGW(TAG,"complete-frame read failed: %s; previous pixels not resubmitted",esp_err_to_name(error));
+#ifdef ESP_PLATFORM
+        device_status_capture(message->ok);
+#endif
         xQueueOverwrite(app->queue,message);
         if(error!=ESP_OK)vTaskDelay(pdMS_TO_TICKS(20));
     }
@@ -75,6 +83,9 @@ static void refresh(esp_gsp_handle_t ui,void *ctx)
         }else (void)peek_fault(&app->view.detector,now);
     }
     peek_ui_refresh(&app->view,now);
+#ifdef ESP_PLATFORM
+    device_status_publish(&app->view,now);
+#endif
 }
 esp_err_t device_thermal_start(esp_gsp_handle_t ui)
 {

@@ -1,6 +1,6 @@
 # mosaico-peek — approved single dragon eye
 
-Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. This mainline work performed no device operations; the independent hardware line is separate.
+Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
 
 ## Start
 
@@ -25,9 +25,15 @@ python3 tools/control.py status
 python3 tools/stop_preview.py
 ```
 
-`python3 tools/preview.py --view diagnostic` starts the original heatmap/buttons. Cases: empty, motion, multi, gaps, recorded, aging, dragon, idle (or indexes0..7). CASE resets and pauses; REPLAY resets source/time/identity/detector/role/random seed while preserving play/pause; STEP pauses and processes the next input event. `advance MS` is a controlled replay operation. EOF pauses. Real acquisition continues monotonic time; firmware defaults to dragon and offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` under “Peek diagnostics” in menuconfig for a diagnostic build. No touchscreen input represents a thermal target.
+`python3 tools/preview.py --view diagnostic` starts the original heatmap/buttons. Cases: empty, motion, multi, gaps, recorded, aging, dragon, idle, live (or indexes0..8). CASE resets and pauses; REPLAY resets source/time/identity/detector/role/random seed while preserving play/pause; STEP pauses and processes the next input event. `advance MS` is a controlled replay operation. EOF pauses. Real acquisition continues monotonic time; firmware defaults to dragon and offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` under “Peek diagnostics” in menuconfig for a diagnostic build. No touchscreen input represents a thermal target.
 
 Only one preview per working directory is supported. Loopback socket permission is necessary in restricted sandboxes. The launcher uses temporary local listeners and a callback-boundary quit; it never stops another simulator/Gateway. GSP does not physically simulate MLX90640: this project's `.peek` arrays enter the real detector.
+
+## Complete recorded input / live dragon
+
+`python3 tools/control.py case live` then `python3 tools/control.py play` runs all511 recorded temperature arrays and655 original submit/fault/tick events through the production C detector and role. `data/live/20261020-complete-window/` is copied unchanged from diagnostic handoff63c0799; successful-frame span65.074s, unlabelled scene. Processing/capture/fault times are preserved, no interpolation or prefilled focus. `python3 tools/import_live.py` regenerates `data/live.peek`; `E now` is an additive fault event, not a sample. `python3 tests/test_real_replay.py` checks every recorded C result and deterministic role output. `python3 tools/validate_real_gsp.py` records the wall-clock native run; [actual native movie](evidence/real-input/recorded-native.mp4). No HOLD is triggered by this recorded scene under the unchanged quietness threshold.
+
+The normal firmware build selects `build/sdkconfig.dragon`, version `1.0.0-peek-dragon`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
 
 ## Build / verify
 
@@ -72,7 +78,7 @@ Create the review archive after commit with `python3 tools/package_review.py`; i
 
 ## Follow-up timing/build/performance checks
 
-The previous quiet-observation deadline is now evaluated **before** new capture evidence replaces it, then the new evidence is aged again. Eight latency/boundary/held/stop scenarios at30/60/120Hz pin this behavior. `python3 tests/test_asset_build.py` verifies9 ordinary-build/source-update cases, including source hashes and mtimes. Host and Release CTest now have8 tests.
+The previous quiet-observation deadline is now evaluated **before** new capture evidence replaces it, then the new evidence is aged again. Eight latency/boundary/held/stop scenarios at30/60/120Hz pin this behavior. `python3 tests/test_asset_build.py` verifies10 ordinary-build/source-update cases, including source hashes and mtimes. Host and Release CTest now have8 tests.
 
 After starting preview and opening its browser URL, keep the same browser tab connected and avoid builds during windows:
 
