@@ -1,0 +1,10 @@
+{
+  "deterministic": true,
+  "sha256": {
+    "recorded.peek": "6adcc99e03dc27208ab6b3b006e0cb4bcdeeb5cbe042a4caa6af766fa4535cc8",
+    "motion.peek": "63621fcbdaa59c335abf568c8fa48643741d4a44c452ec5437e2ef5a675c13b9",
+    "gaps.peek": "735efc1b36b1c7ed680fc0a8c45784daf39fc08d5399039873ac216da3477192",
+    "empty.peek": "deeaf67da5f293116355d6cb3b2365177ddbd3d563880a0d0e8dc235fea66cde",
+    "multi.peek": "f33d16cebbe0cfc9ee02ff9e8da241980b1a00610c7960461b79f73fe6050ed2"
+  }
+}

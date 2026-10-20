@@ -1,0 +1,8 @@
+[ 25%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 41%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 58%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 83%] Built target test_ui_lifetime
+[100%] Built target peek_replay

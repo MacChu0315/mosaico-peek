@@ -1,0 +1,57 @@
+{
+  "idf": {
+    "commit": "7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe",
+    "requires": ">=6.2",
+    "target": "esp32s31"
+  },
+  "vibe": {
+    "repository": "https://github.com/esp-mosaico/esp-mosaico-vibe",
+    "commit": "95469e63b621fc6ece3b0e313af8c1ba59dcd066"
+  },
+  "bsp": {
+    "repository": "https://github.com/esp-mosaico/esp-mosaico-bsp",
+    "commit": "a2c985ad698b3f04a21c63e006b43e7e948bc1d7"
+  },
+  "utils": {
+    "repository": "https://github.com/esp-mosaico/esp-mosaico-utils",
+    "commit": "fc63d43f3ac72aa54e701b07b07fbed07a16b3ca"
+  },
+  "gsp": {
+    "version": "1.5.1",
+    "commit": "472207a3d4892706a16f6bafee6c6e0384645d85",
+    "gspc": "0.6.1",
+    "sim": "1.5.1"
+  },
+  "thermal": {
+    "repository": "https://github.com/esp-mosaico/esp-mosaico-bsp",
+    "commit": "5f88b91e1be055d1d3674364123b2779a1758377",
+    "files_sha256": {
+      "CMakeLists.txt": "1e7d0392372deb6bfae15cc6d067aaa08950fa8fbc68812b53db552eddd493c4",
+      "MLX90640_API.c": "3b78abb83918df6adaa55a78c4c70efb713659f445fb7d70729a3970335b9c3a",
+      "MLX90640_I2C_Driver.c": "890dc828da6fd3bd92297314e07f82efda1535ec6615d0fe831e6ca5089b1650",
+      "README.md": "fb1a68aea4c474f705f8454acf7ec42b55c0fe6adc045dd3e372c82aace4fcf9",
+      "idf_component.yml": "794e2bb16979380dbf7f30552312d6660bba34e2d6dd8be6001b78951277161d",
+      "include/mosaico_module_thermal.h": "9784f533a49811db858d5c746aa69076fa3700f31364eb785cde39f99f63709f",
+      "mosaico_thermal.c": "755fa21bc21ae56f4d2e64ec06ec7038227ec30adb9ffff1f174c80570e00b6c",
+      "private/MLX90640_API.h": "16a7f4e6f88dadbecbccebe24387058604cbe02180224feed5381b0a0a5e8b18",
+      "private/MLX90640_I2C_Driver.h": "88ba6cfbfed48392d1fb1992c4762623ccc3a0f96aa384d685987477549e90a9",
+      "private/mlx90640_io.h": "9846da76b153ca028c5b3cfe0c46e958c519bb432f6fa120d890c33a0f886492",
+      "test/run.sh": "dc4b9f26bea6d26f4a3e7c806e6305f1d24c1dd97a508982792b1865da83822a",
+      "test/stubs/bsp/power.h": "8aaed181ea1030339287585a640f5d557a47236ee9a35c3a7caedc10986cd019",
+      "test/stubs/bsp/subboard.h": "4ac40efd26f961dd1a717002eaa6fc9a83479e625dec3670f28684008aeb14c4",
+      "test/stubs/driver/i2c_master.h": "4c373b68d1bf185a63cd3240d9b5b4c970a0a2a31461d27e6cf21e139f21429c",
+      "test/stubs/esp_log.h": "dfc2f236ca32b54a88dd178005c45705889eff47113d0cb5c8174f20f07b7a87",
+      "test/stubs/esp_timer.h": "69cf054346d58cc2982553893682c89ad3fc474f272c05c5ec94830726f5d786",
+      "test/stubs/freertos/FreeRTOS.h": "88b9a15ed3438da41e705f01f6d3d8e6b843e678531293bed1e5fbdaf612348e",
+      "test/stubs/freertos/task.h": "3147c8816f7dd58fc2d25dd3fd7ec267532ad578c4c1e4081c57f73ad05268bc",
+      "test/test_driver.c": "43ee2f4256b92e3b2d468d8c7e1fff97f075d39267f41a12f83cfeeaf7906bd8"
+    },
+    "local_changes": {
+      "idf_component.yml": "Only override_path relocated to the existing workspace-pinned BSP. No upstream C source changes."
+    }
+  },
+  "esp_iris": {
+    "commit": "fc63d43f3ac72aa54e701b07b07fbed07a16b3ca",
+    "path_in_utils": "ESP-Iris (committed inside the utils tree, not a separate Git checkout)"
+  }
+}

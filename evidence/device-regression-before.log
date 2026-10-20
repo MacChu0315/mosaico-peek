@@ -1,0 +1,1 @@
+test_device_adapter: tests/test_device_adapter.c:51: main: Assertion `app->view.detector.result.accepted_samples==1 && app->view.detector.result.data==PEEK_VALID' failed.

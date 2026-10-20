@@ -1,0 +1,9 @@
+{
+  "python": "3.10.14",
+  "native_cc": "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "cmake": "cmake version 3.22.1",
+  "idf_revision": "7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe",
+  "cross_compiler": "riscv32-esp-elf-gcc (crosstool-NG esp-16.1.0_20260609) 16.1.0",
+  "gspc": "gspc 0.6.1",
+  "sim": "gsp_sim_host 1.5.1"
+}

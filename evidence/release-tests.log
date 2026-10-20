@@ -1,0 +1,12 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+    Start 1: detector
+1/3 Test #1: detector .........................   Passed    0.01 sec
+    Start 2: device_adapter
+2/3 Test #2: device_adapter ...................   Passed    0.00 sec
+    Start 3: ui_lifetime
+3/3 Test #3: ui_lifetime ......................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   0.02 sec

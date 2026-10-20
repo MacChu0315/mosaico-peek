@@ -1,0 +1,32 @@
+[
+  {
+    "frame": 0,
+    "target": false,
+    "heatmap_white_pixels": 0
+  },
+  {
+    "frame": 12,
+    "target": true,
+    "heatmap_white_pixels": 153
+  },
+  {
+    "frame": 30,
+    "target": true,
+    "heatmap_white_pixels": 153
+  },
+  {
+    "frame": 52,
+    "target": true,
+    "heatmap_white_pixels": 153
+  },
+  {
+    "frame": 60,
+    "target": false,
+    "heatmap_white_pixels": 0
+  },
+  {
+    "frame": 79,
+    "target": false,
+    "heatmap_white_pixels": 0
+  }
+]

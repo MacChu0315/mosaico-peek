@@ -1,0 +1,32 @@
+{
+  "format": "PEEK1",
+  "cases": {
+    "empty": {
+      "kind": "synthetic",
+      "expected": "VALID with no target throughout"
+    },
+    "motion": {
+      "kind": "synthetic",
+      "expected": "empty 0..875ms; acquire by 1250ms; move then stationary at x=19.5,y=9.5 through 6875ms; release by 7125ms"
+    },
+    "multi": {
+      "kind": "synthetic",
+      "expected": "acquire left; retain left when a hotter right source appears at 2000ms; left leaves at 6000ms; reacquire right after release and 3 confirmations"
+    },
+    "gaps": {
+      "kind": "synthetic",
+      "expected": "2 missing samples; duplicate at 2500ms; invalid complete flag at 3500ms; recover with 3 samples; continuous outage from 5000ms -> STALE at 5625ms"
+    },
+    "recorded": {
+      "kind": "recorded",
+      "expected": "no labelled target ground truth; preserve sparse capture gaps, stale between snapshots; continuous tracking is not validated"
+    }
+  },
+  "synthetic": {
+    "seed": 90640,
+    "generator": "tools/generate_data.py",
+    "full_frame_interval_ms": 125,
+    "background_c": 22,
+    "noise_c": 0.12
+  }
+}

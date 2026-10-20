@@ -1,0 +1,23 @@
+{
+  "kind": "recorded",
+  "source_project": "Mondrian",
+  "source_commit": "e17feef6d25dbd66c1bbeace19c63b5f3654dd5f",
+  "source_path": "evidence/hardware/recording-02/frames.jsonl",
+  "source_sha256": "7c637765417bc40b91a2820a9db772c09833df5edec99777ce196b59f00cb8e9",
+  "frames": 32,
+  "configuration": {
+    "sensor": "MLX90640",
+    "i2c_address": "0x33",
+    "i2c_hz": 400000,
+    "subpage_hz": 16,
+    "emissivity": 0.95,
+    "reflected_offset_c": 8,
+    "adc_bits": 17,
+    "mode": "chess",
+    "complete_frame_hz_nominal": 8
+  },
+  "scene": "Archived Mondrian thermal observations; object identity, distance, FOV and scene labels were not recorded. No target ground truth. Sparse manually requested snapshots, NOT a continuous 8 Hz capture.",
+  "orientation": "temperatures are already rotated by the recorded rotation relative to raw_temperatures",
+  "replay": "Subtract first acquisition_end_us, floor to milliseconds. Preserve all inter-frame gaps. Never duplicate snapshots to imply new sensor frames.",
+  "configuration_evidence": "Configuration inferred from archived Mondrian source: device_thermal.c calls mosaico_thermal_new(..., NULL, ...); driver default is 400kHz, refresh code 5, emissivity .95, reflected offset 8.0. No separate per-snapshot configuration block was recorded."
+}

@@ -1,0 +1,12 @@
+/build*/
+/.run/
+/review/
+/.playwright-cli/
+__pycache__/
+*.pyc
+/deps/
+/projects/*/build*/
+/projects/*/managed_components/
+/projects/*/.codex-runs/
+/projects/*/sdkconfig
+/evidence/gsp/motion/

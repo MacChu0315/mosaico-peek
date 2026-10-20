@@ -1,0 +1,107 @@
+{
+  "empty": {
+    "rows": 80,
+    "sha256": "1dfe248b3899b52f8b723638765f82c3e2ef19cc6876e74635de7393ec57e523",
+    "deterministic": true,
+    "last": {
+      "now_ms": 9875,
+      "sequence": 80,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 22.0014,
+      "last_valid_ms": 9875,
+      "last_seen_ms": 0,
+      "samples": 80
+    }
+  },
+  "motion": {
+    "rows": 80,
+    "sha256": "6fc1835fb71adf119cfac0c0d774508f1e1e7e449e3ff7dcedff0a4c726bdd9a",
+    "deterministic": true,
+    "last": {
+      "now_ms": 9875,
+      "sequence": 80,
+      "data": "VALID",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 21.998,
+      "last_valid_ms": 9875,
+      "last_seen_ms": 6875,
+      "samples": 80
+    }
+  },
+  "multi": {
+    "rows": 80,
+    "sha256": "057094b3d92baca056502a498dbc450dd6092912ccad0ca8ab31b75349c4cd3a",
+    "deterministic": true,
+    "last": {
+      "now_ms": 9875,
+      "sequence": 80,
+      "data": "VALID",
+      "has_valid": true,
+      "target": true,
+      "held": false,
+      "x": 25.99965,
+      "y": 16.99979,
+      "area": 25,
+      "candidates": 1,
+      "background_c": 22.01415,
+      "last_valid_ms": 9875,
+      "last_seen_ms": 9875,
+      "samples": 80
+    }
+  },
+  "gaps": {
+    "rows": 80,
+    "sha256": "a9e2b5fbcdc50061a3d6358531636e240726f414e2002b6b6d7f7e34d5a5ad39",
+    "deterministic": true,
+    "last": {
+      "now_ms": 9875,
+      "sequence": 37,
+      "data": "STALE",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 1,
+      "background_c": 22.0039,
+      "last_valid_ms": 4875,
+      "last_seen_ms": 4875,
+      "samples": 36
+    }
+  },
+  "recorded": {
+    "rows": 2052,
+    "sha256": "002cb0fe16d899c21b5d75d25546868d122ae4a460eba1ee44cdbb778d72887a",
+    "deterministic": true,
+    "last": {
+      "now_ms": 255125,
+      "sequence": 158,
+      "data": "STALE",
+      "has_valid": true,
+      "target": false,
+      "held": false,
+      "x": -1.0,
+      "y": -1.0,
+      "area": 0,
+      "candidates": 0,
+      "background_c": 31.21468,
+      "last_valid_ms": 254000,
+      "last_seen_ms": 0,
+      "samples": 32
+    }
+  }
+}

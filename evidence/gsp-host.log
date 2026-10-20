@@ -1,0 +1,6 @@
+I (gsp_deployable): Opened deployable GSPB: scenes=1 content=0x0e8c8fb6
+gsp_sim_host: browser preview listening at http://127.0.0.1:3223/
+2026-10-20T04:09:38.863758Z  INFO application backend TCP endpoint listening endpoint=127.0.0.1:8685
+2026-10-20T04:09:38.864363Z  INFO application backend endpoint listening endpoint="tcp://127.0.0.1:0"
+2026-10-20T04:09:38.864664Z  INFO API control TCP endpoint listening endpoint=127.0.0.1:8267
+2026-10-20T04:09:38.864936Z  INFO API control channel active (Content-Length framed JSON-RPC 2.0) endpoint="tcp://127.0.0.1:0"
