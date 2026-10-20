@@ -10,3 +10,5 @@ __pycache__/
 /projects/*/.codex-runs/
 /projects/*/sdkconfig
 /evidence/gsp/motion/
+
+/review-inputs/

@@ -30,8 +30,13 @@ def main():
             assert rows[45]['data']=='STALE' and not rows[45]['target']
             assert all(r['data']=='STALE' and not r['target'] for r in rows[45:])
         if case=='recorded':assert any(r['data']=='STALE' for r in rows) and rows[-1]['samples']==32
+    rows=[json.loads(l) for l in subprocess.check_output([str(EXE),str(ROOT/'data/aging.peek')],text=True).splitlines()]
+    until=[json.loads(l) for l in subprocess.check_output([str(ROOT/'build-host/peek_replay_until'),str(ROOT/'data/aging.peek')],text=True).splitlines()]
+    assert {r['now_ms']:r for r in rows}=={r['now_ms']:r for r in until}
+    assert not rows[2]['target'] and rows[3]['data']=='STALE' and rows[3]==rows[4]
+    (ROOT/'evidence/phase2/aging-cli-output.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
     # Reject malformed packets rather than silently truncate the array.
-    for text in ['F 0 1 0 1 22\n','F 0 1 0 1 '+'22 '*768+'extra\n','P 100\nP 99\n']:
+    for text in ['P -1\n','P +1\n','P 18446744073709551616\n','F 0 -1 0 1 '+'22 '*768+'\n','F 0 18446744073709551616 0 1 '+'22 '*768+'\n','F 0 1 0 4294967297 '+'22 '*768+'\n','F 0 1 -1 1 '+'22 '*768+'\n','F 0 1 0 01 '+'22 '*768+' extra\n','F 0 1 0 1 22\n','F 0 1 0 1 '+'22 '*768+'extra\n','P 100\nP 99\n']:
         with tempfile.NamedTemporaryFile(mode='w',suffix='.peek') as f:
             f.write(text);f.flush();p=subprocess.run([str(EXE),f.name],capture_output=True)
             assert p.returncode!=0 and b'line' in p.stderr

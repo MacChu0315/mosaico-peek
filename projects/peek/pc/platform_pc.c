@@ -18,7 +18,8 @@ static struct {
     const char *data_dir,*run_dir;
     char label[80],status[512],temporary[512],socket_path[108];
 } app={.fd=-1};
-static const char *cases[]={"empty","motion","multi","gaps","recorded"};
+static const char *cases[]={"empty","motion","multi","gaps","recorded","aging"};
+#define CASE_COUNT (sizeof(cases)/sizeof(cases[0]))
 static void publish(void)
 {
     FILE *f=fopen(app.temporary,"w");if(!f){perror("status");app.view.error=ESP_GSP_FAIL;return;}
@@ -49,7 +50,7 @@ static bool load_case(void)
 static void control(peek_action_t action,void *ctx)
 {
     (void)ctx;
-    if(action==PEEK_ACTION_CASE){app.case_index=(app.case_index+1)%5;app.view.paused=true;if(!load_case())app.view.error=ESP_GSP_FAIL;}
+    if(action==PEEK_ACTION_CASE){app.case_index=(app.case_index+1)%CASE_COUNT;app.view.paused=true;if(!load_case())app.view.error=ESP_GSP_FAIL;}
     else if(action==PEEK_ACTION_RESTART){if(!load_case())app.view.error=ESP_GSP_FAIL;}
     else {app.view.paused=!app.view.paused;app.wall_ms=gsp_sim_bridge_time_ms();}
     peek_ui_refresh(&app.view,app.logical_ms);publish();
@@ -69,11 +70,12 @@ static void tick(esp_gsp_handle_t ui,void *ctx)
         msg[n]=0;unsigned long long id,delta;char verb[20];unsigned index;
         if(sscanf(msg,"%llu %19s",&id,verb)!=2)continue;
         bool accepted=true;
-        if(!strcmp(verb,"case")&&sscanf(msg,"%llu %19s %u",&id,verb,&index)==3&&index<5){app.case_index=(index+4)%5;control(PEEK_ACTION_CASE,NULL);}
+        if(!strcmp(verb,"case")&&sscanf(msg,"%llu %19s %u",&id,verb,&index)==3&&index<CASE_COUNT){app.case_index=(index+CASE_COUNT-1)%CASE_COUNT;control(PEEK_ACTION_CASE,NULL);}
         else if(!strcmp(verb,"replay"))control(PEEK_ACTION_RESTART,NULL);
         else if(!strcmp(verb,"pause")){app.view.paused=true;peek_ui_refresh(&app.view,app.logical_ms);}
         else if(!strcmp(verb,"play")){app.view.paused=false;app.wall_ms=wall;peek_ui_refresh(&app.view,app.logical_ms);}
         else if(!strcmp(verb,"advance")&&sscanf(msg,"%llu %19s %llu",&id,verb,&delta)==3&&delta<=600000){app.view.paused=true;if(!pump(app.logical_ms+(uint64_t)delta))app.view.error=ESP_GSP_FAIL;}
+        else if(!strcmp(verb,"draw")){peek_ui_refresh(&app.view,app.logical_ms);}
         else if(!strcmp(verb,"quit")){app.view.paused=true;raise(SIGTERM);}
         else accepted=false;
         if(!accepted)app.view.error=ESP_GSP_ERR_INVALID_ARG;

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Exercise the running OFFICIAL GSP + native C backend. Never writes UI state via API."""
-import json,os,sys,time
+import json,os,sys,time,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 component=Path(os.environ.get('ESP_GSP_COMPONENT_DIR',ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp'))
@@ -55,10 +55,23 @@ def main():
         command('advance 1500');s=record('sustained outage invalidates');assert s['result']['data']=='STALE' and not s['result']['target'];capture('stale')
         command('case 1');command('advance 3000');one=state()['result'];command('replay');command('advance 3000');two=state()['result'];assert one==two;record('native replay deterministic')
         # Paused redraws must not add samples, confirmations or sample timestamps.
-        before=state();call('wait',{'frames':30});time.sleep(.1);after=state()
+        before=state()
+        for _ in range(5):
+            command('draw');call('wait',{'frames':3})
+        time.sleep(.1);after=state()
+        assert after['draws']>=before['draws']+5,(before,after)
         assert before['result']==after['result'];record('redraw leaves detector unchanged')
         command('case 4');command('advance 1000');s=record('recorded sparse gap preserved');assert s['result']['data']=='STALE';capture('recorded-sparse')
         command('case 0');command('advance 9875');s=record('empty stays empty');assert s['result']['data']=='VALID' and not s['result']['target'];capture('empty')
+        # CLI, replay_until and native pump must expose the same aged result.
+        expected=[json.loads(line) for line in subprocess.check_output([str(ROOT/'build-host/peek_replay'),str(ROOT/'data/aging.peek')],text=True).splitlines()]
+        until=[json.loads(line) for line in subprocess.check_output([str(ROOT/'build-host/peek_replay_until'),str(ROOT/'data/aging.peek')],text=True).splitlines()]
+        assert {r['now_ms']:r for r in expected}=={r['now_ms']:r for r in until}
+        command('case 5');previous=0
+        for target in (600,725,850,1000):
+            command(f'advance {target-previous}');previous=target
+            s=record(f'aging equivalence at {target}')
+            assert s['result']==next(r for r in expected if r['now_ms']==target),(s,expected)
         command('case 1');command('advance 4000');capture('handoff-stationary')
     (EVIDENCE/'checks.json').write_text(json.dumps(records,indent=2)+'\n')
     print(f'PASS GSP: {len(records)} checks; pointer controls, pause/replay, native detection and actual rendered frames')

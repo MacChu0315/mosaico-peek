@@ -1,2 +1,4 @@
 # Preserve raw tool logs, including their original line-end whitespace.
 evidence/*.log -whitespace
+
+evidence/**/*.log -whitespace

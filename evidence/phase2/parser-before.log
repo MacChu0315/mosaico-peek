@@ -1,0 +1,8 @@
+negative_sequence.peek: returncode=0; {"now_ms":0,"sequence":18446744073709551615,"data":"VALID","has_valid":true,"target":false,"held":false,"x":-1.00000,"y":-1.00000,"area":0,"candidates":0,"background_c":22.00000,"last_valid_ms":0,"last_seen_ms":0,"samples":1}
+{"now_ms":125,"sequence"
+negative_time.peek: returncode=0; {"now_ms":18446744073709551615,"sequence":0,"data":"WAITING","has_valid":false,"target":false,"held":false,"x":-1.00000,"y":-1.00000,"area":0,"candidates":0,"background_c":0.00000,"last_valid_ms":0,"last_seen_ms":0,"samples":0}
+
+overflow_complete.peek: returncode=0; {"now_ms":0,"sequence":1,"data":"VALID","has_valid":true,"target":false,"held":false,"x":-1.00000,"y":-1.00000,"area":0,"candidates":0,"background_c":22.00000,"last_valid_ms":0,"last_seen_ms":0,"samples":1}
+
+overflow_sequence.peek: returncode=0; {"now_ms":0,"sequence":18446744073709551615,"data":"VALID","has_valid":true,"target":false,"held":false,"x":-1.00000,"y":-1.00000,"area":0,"candidates":0,"background_c":22.00000,"last_valid_ms":0,"last_seen_ms":0,"samples":1}
+

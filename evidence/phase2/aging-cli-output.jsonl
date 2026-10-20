@@ -1,0 +1,5 @@
+{"now_ms": 600, "sequence": 1, "data": "VALID", "has_valid": true, "target": false, "held": false, "x": -1.0, "y": -1.0, "area": 0, "candidates": 1, "background_c": 22.0, "last_valid_ms": 0, "last_seen_ms": 0, "samples": 1}
+{"now_ms": 725, "sequence": 2, "data": "VALID", "has_valid": true, "target": false, "held": false, "x": -1.0, "y": -1.0, "area": 0, "candidates": 1, "background_c": 22.0, "last_valid_ms": 125, "last_seen_ms": 0, "samples": 2}
+{"now_ms": 850, "sequence": 3, "data": "VALID", "has_valid": true, "target": false, "held": false, "x": -1.0, "y": -1.0, "area": 0, "candidates": 1, "background_c": 22.0, "last_valid_ms": 250, "last_seen_ms": 250, "samples": 3}
+{"now_ms": 1000, "sequence": 4, "data": "STALE", "has_valid": true, "target": false, "held": false, "x": -1.0, "y": -1.0, "area": 0, "candidates": 1, "background_c": 22.0, "last_valid_ms": 250, "last_seen_ms": 250, "samples": 3}
+{"now_ms": 1000, "sequence": 4, "data": "STALE", "has_valid": true, "target": false, "held": false, "x": -1.0, "y": -1.0, "area": 0, "candidates": 1, "background_c": 22.0, "last_valid_ms": 250, "last_seen_ms": 250, "samples": 3}

@@ -1,0 +1,26 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+Consolidate compiler generated dependencies of target peek
+[  6%] Building C object CMakeFiles/peek.dir/src/peek.c.o
+[ 12%] Building C object CMakeFiles/peek.dir/src/replay.c.o
+[ 18%] Linking C static library libpeek.a
+[ 18%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 25%] Linking C executable test_detector
+[ 31%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 37%] Linking C executable test_device_adapter
+[ 43%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 50%] Linking C executable test_ui_lifetime
+[ 62%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 68%] Linking C executable peek_replay
+[ 75%] Built target peek_replay
+[ 81%] Building C object CMakeFiles/test_event_aging.dir/tests/test_event_aging.c.o
+[ 87%] Linking C executable test_event_aging
+[ 87%] Built target test_event_aging
+[ 93%] Building C object CMakeFiles/peek_replay_until.dir/tools/replay_until.c.o
+[100%] Linking C executable peek_replay_until
+[100%] Built target peek_replay_until

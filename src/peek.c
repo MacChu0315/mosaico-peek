@@ -54,11 +54,11 @@ static peek_submit_t invalid(peek_detector_t *d)
 bool peek_fault(peek_detector_t *d,uint64_t now)
 {
     if(!peek_tick(d,now))return false;
-    invalid(d);return true;
+    invalid(d);return peek_tick(d,now);
 }
-peek_submit_t peek_submit(peek_detector_t *d,const peek_frame_t *f,uint64_t now)
+static peek_submit_t submit_event(peek_detector_t *d,const peek_frame_t *f,uint64_t now)
 {
-    if(!d||!f||!peek_tick(d,now))return PEEK_REJECTED;
+    if(!f)return invalid(d);
     if(d->has_input && f->sequence<=d->last_input_sequence)return PEEK_DUPLICATE;
     if(f->captured_ms>now || (d->has_input && f->captured_ms<=d->last_input_ms))return invalid(d);
     d->has_input=true;d->last_input_sequence=f->sequence;d->last_input_ms=f->captured_ms;
@@ -125,6 +125,16 @@ peek_submit_t peek_submit(peek_detector_t *d,const peek_frame_t *f,uint64_t now)
         d->result.last_seen_ms=f->captured_ms;d->hits=0;
     }
     return PEEK_ACCEPTED;
+}
+peek_submit_t peek_submit(peek_detector_t *d,const peek_frame_t *f,uint64_t now)
+{
+    if(!d || !peek_tick(d,now))return PEEK_REJECTED;
+    peek_submit_t result=submit_event(d,f,now);
+    /* Event processing may change last_valid/last_seen or set INVALID. Normalize
+     * every exit at the same clock: expired last-valid data takes precedence
+     * over INVALID; a delayed acquisition cannot resurrect an expired target. */
+    (void)peek_tick(d,now);
+    return result;
 }
 const char *peek_data_name(peek_data_t data)
 {
