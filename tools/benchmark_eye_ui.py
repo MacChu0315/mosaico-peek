@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Normal connected preview: boundary-only reads, active versus sleeping."""
-import hashlib,json,sys,time
+import hashlib,json,sys,time,os
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/eye-ui'
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui'));OUT.mkdir(parents=True,exist_ok=True)
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());rows=[]
     artifacts=[ROOT/'build-sim/peek_backend',ROOT/'build-sim/peek_backend_assets/app.gspb'];digest=lambda:{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in artifacts};before_hash=digest()
@@ -24,7 +24,7 @@ def main():
                 n=after['draws']-before['draws'];a,b=before['render'],after['render'];p=b['prepares']-a['prepares'];wall=(after['host_timing']['published_us']-before['host_timing']['published_us'])/1e6
                 rows.append(dict(theme=theme,scene=scene,seconds=elapsed,native_status_seconds=wall,callback_hz=n/wall,full_canvas_pixel_equivalents_hz=(b['pixels']-a['pixels'])/230400/wall,GSP_committed_frame_sequence_hz=(frame_after['seq']-frame_before['seq'])/elapsed,draw_ms_mean=(b['draw_us_total']-a['draw_us_total'])/max(1,n)/1000,prepare_ms_mean=(b['prepare_us_total']-a['prepare_us_total'])/max(1,p)/1000,before=before,after=after,frame_before=frame_before,frame_after=frame_after,screenshots_during_window=0,status_reads_during_window=0));print(theme,scene,rows[-1]['callback_hz'],flush=True)
     assert digest()==before_hash,'Artifacts changed during benchmark'
-    report=dict(method='One connected Chrome native preview.5s per theme/state; no screenshots, status polls, browser automation or builds inside windows. Boundary frame_info and cumulative counters retained. Active window contains moving gaze/blinks; closed idle separate. One short observation per condition, not statistical device acceptance.',artifacts=before_hash,physical_panel_FPS=None,browser_visible_FPS=None,results=rows)
+    report=dict(method='One native GSP API connection; browser presence is not asserted.5s per theme/state; no screenshots, status polls, browser automation or builds inside windows. Boundary frame_info and cumulative counters retained. Active window contains moving gaze/blinks; closed idle separate. One short observation per condition, not statistical device acceptance.',artifacts=before_hash,physical_panel_FPS=None,browser_visible_FPS=None,results=rows)
     (OUT/'host-performance.json').write_text(json.dumps(report,indent=2)+'\n')
     lines=['| Theme | State | Canvas callbacks/s | GSP commit seq/s | C draw ms | Prepare ms |','| --- | --- | ---: | ---: | ---: | ---: |']
     for r in rows:lines.append(f"| {r['theme']} | {r['scene']} | {r['callback_hz']:.2f} | {r['GSP_committed_frame_sequence_hz']:.2f} | {r['draw_ms_mean']:.2f} | {r['prepare_ms_mean']:.3f} |")

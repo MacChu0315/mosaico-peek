@@ -1,0 +1,9 @@
+{
+  "bundle_sha256": "aa41815c833b745fdb6158196557be85093799cc87102336a3ade7eef0abc78c",
+  "elf_sha256": "543337f9a5fab62621b94c5ee01d443e8af582543e7558a20ac24d3ab5e6084b",
+  "layout_unchanged": true,
+  "UI_unchanged": true,
+  "recovery_component": false,
+  "source": "#define PEEK_SOURCE_REVISION \"fd637cc133b132fe2a3f81661a577377beba57ed\"\n",
+  "note": "First local check incorrectly compared3072-byte raw partition table against4096-byte packaged hash. Corrected by checking exact official FF padding; payload equals historical layout. No device write occurred during that failed check."
+}

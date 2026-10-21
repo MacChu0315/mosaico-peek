@@ -36,5 +36,16 @@
     "free_spiram": 2058852,
     "min_free_spiram": 1591580
   },
-  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison.",
+  "canvas_callback_hz": 29.965753424657535,
+  "full_canvas_pixel_equivalent_hz": 1.997716894977169,
+  "observed_pose": {
+    "sleeping": false,
+    "waking": false,
+    "modes": [
+      "HOLD",
+      "TRACKING"
+    ]
+  },
+  "physical_panel_FPS": null
 }

@@ -21,6 +21,8 @@ def main():
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
         if args.eye_ui and name.startswith('evidence/') and not name.startswith('evidence/eye-ui/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl'):continue
+        if args.eye_ui and name.endswith('.irisfw') and name not in ('evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/performance/device-install/eye-fast.irisfw'):continue
+        if args.eye_ui and name.startswith('evidence/eye-ui/native/') and name.endswith('.mp4'):continue
         if name.startswith('evidence/gsp/motion/'):continue
         if name.endswith('.mp4') and not (name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4' or name.startswith('evidence/eye-ui/')):continue
         if name.endswith('.png') and name.startswith(('evidence/real-input/synthetic-regression/','evidence/device-dragon/cache-native/')):

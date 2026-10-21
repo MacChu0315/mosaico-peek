@@ -8,15 +8,19 @@ replacing tiny±10..20/±8..12px translations. Neutral visible pixels match1.0.5
 exactly; original handoff assets and dragon shader/behavior remain unchanged.
 [Current correction and validation](EYE_MOTION.md).
 
-Last installed firmware is1.0.5-peek-fast, source34ae08b, ELF
-`dfa99df79efdea11c49343870631809f7451f9d5d6948adcfb67351d4001f9d0`.
-Successful operation63c50b3a-7bc0-44ec-8573-9b461b945f9f,
-Boot14769927073946096952. Mechanical active-open engine rate8.333Hz versus
-prior2.009Hz; live scenes differ, physical panel FPS unmeasured.
-[Actual measurements](../evidence/eye-ui/performance/COMPARISON.md).
+Installed1.0.6-peek-motion, sourcefd637cc133b132fe2a3f81661a577377beba57ed,
+ELF`543337f9a5fab62621b94c5ee01d443e8af582543e7558a20ac24d3ab5e6084b`.
+Operation`b5fe1381-1fc4-4bee-912d-a43dbbe8a099` succeeded, healthy/validated,
+new Boot11818992348187344414. Normal mode, crash_count0, runtime error0 and
+both flip flags false were verified on the device. Default dragon.
+[Exact installed package and checks](../evidence/eye-ui/motion/device-install/README.md).
+
+Prior1.0.5 mechanical active-open engine rate8.333Hz versus1.0.4's2.009Hz;
+live scenes differ, physical panel FPS unmeasured. These do not establish the
+new sphere-rendering cost. [Earlier measurements](../evidence/eye-ui/performance/COMPARISON.md).
 One earlier1.0.5 update outcome remained unknown after a retained Recovery writer
-watchdog reset; read-only reconciliation and an idle new Recovery boot preceded
-the single successful retry. [Exact history](../evidence/eye-ui/performance/device-install/README.md).
+watchdog reset; reconciliation and an idle new Recovery boot preceded the
+successful retry. It did not recur in1.0.6. [History](../evidence/eye-ui/performance/device-install/README.md).
 
 Standing user authorization covers subsequent official System Updates only for
 MAC30:ed:a0:f4:52:a0 / Device ID4553502d49524953010030eda0f452a0,
@@ -27,11 +31,26 @@ No ROM recover, erase, shared dependency update or remote write is authorized.
 Tap/left swipe/AI single click next; right swipe previous. Source detector/role,
 time and mapping survive artwork switches. Only active large renderer caches
 are retained. If replacement allocation fails, the display enters a reported
-error; old-renderer rollback is not promised. Current1.0.6 installation and
-physical direction/range acceptance are pending at this source checkpoint.
+error; old-renderer rollback is not promised. Current1.0.6 installation is verified;
+the user confirmed the original dragon now tracks correctly on BOTH physical
+axes. The user accepted the wider range but rejected the synthesized hidden texture.
+Artwork replacement is pending; see EYE_ART_HANDOFF.md.
 Prior1.0.5/1.0.4/1.0.3/1.0.2 bundles remain retained separately. No use of
 wip/dragon-packed-color as a verified baseline. Current work stays on the local
 feat/eye-ui-trio branch; no remote is configured or written.
+
+
+## Installed1.0.6 performance
+
+[65s mixed-view observation](../evidence/eye-ui/performance/motion-live/README.md)
+includes40.99s mechanical: mixed6.904 engine Hz, active-open7.095Hz,
+raster98.53ms/frame, submit32.87ms/frame;322 fresh thermal samples, zero faults.
+This costs more than1.0.5's small translation (8.333Hz active-open), while the
+original1.0.4 was2.009Hz. Scenes differ; no controlled percentage claim.
+Before screenshot, internal free247763B and PSRAM free5116384B. No panel FPS,
+largest-block or complete peak-memory claim. Physical HOLD observed; no sustained
+physical closed/sleep window. All three new views ran error-free in this window;
+other per-theme timing segments are short. Native closed-eye timing is separate.
 
 The following section preserves the prior installed-device handoff verbatim.
 

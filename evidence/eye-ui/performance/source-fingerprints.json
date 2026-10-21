@@ -1,0 +1,7 @@
+{
+  "src/eye_pack.c": "997f0548e411b2cbb6bff142e98d1f9364ead2d812cb6a4dae68516cb971ea9f",
+  "src/peek.c": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
+  "src/dragon.c": "7d49316d6c0c572da0b154b229b71c3bea48f64c9ac6e95390bca2664624aa43",
+  "src/peek_ui.c": "b48fbce514e59b12b621bbc2a4fd8193e3c40e38626581f777aecaa962a5aa34",
+  "tests/reference/eye_pack_v104.c": "8df8808bfd4016d1fa6d311d3e3d8d8074561d8444a28e8cdcc2ef712459f2ca"
+}

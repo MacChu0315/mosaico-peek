@@ -1,12 +1,12 @@
 {
-  "source_revision": "6eff674aee069d0012bdfe3356be8f3d38fc0ed0",
+  "source_revision": "34ae08b028dea84715a434494f82c7b07306a5c5",
   "version": "1.0.5-peek-fast",
   "sdkconfig": "sdkconfig.eye-fast",
   "flash": {
     "images": {
       "peek.bin": {
         "bytes": 6513776,
-        "sha256": "ef0da2003bf63deb163ec8a6ee994adec187a9626a3eb1ac6230f940b0b3c759"
+        "sha256": "e5dabb7f8b628bde772020398392232166bb4c34c78c6d15b375bef5e1dcdb15"
       },
       "ui_apps.bin": {
         "bytes": 94480,
@@ -14,7 +14,7 @@
       },
       "peek.elf": {
         "bytes": 20403104,
-        "sha256": "f077a6037c29ffab5c1ce1513f5f41db06e1110fc28a0437831c4033412efc71"
+        "sha256": "dfa99df79efdea11c49343870631809f7451f9d5d6948adcfb67351d4001f9d0"
       },
       "peek.map": {
         "bytes": 7221702,

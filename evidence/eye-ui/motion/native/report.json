@@ -1,0 +1,60 @@
+{
+  "checkpoints": 66,
+  "movies": [
+    {
+      "theme": "night_owl",
+      "case": "dragon",
+      "wall_s": 30.09715259820223,
+      "movie_s": 30.12,
+      "frames": 116,
+      "file": "night_owl-dragon-realtime.mp4"
+    },
+    {
+      "theme": "night_owl",
+      "case": "sleep",
+      "wall_s": 34.05916714994237,
+      "movie_s": 34.08,
+      "frames": 132,
+      "file": "night_owl-sleep-realtime.mp4"
+    },
+    {
+      "theme": "deep_sea",
+      "case": "dragon",
+      "wall_s": 30.076669589150697,
+      "movie_s": 30.12,
+      "frames": 116,
+      "file": "deep_sea-dragon-realtime.mp4"
+    },
+    {
+      "theme": "deep_sea",
+      "case": "sleep",
+      "wall_s": 34.0869578323327,
+      "movie_s": 34.12,
+      "frames": 131,
+      "file": "deep_sea-sleep-realtime.mp4"
+    },
+    {
+      "theme": "mechanical",
+      "case": "dragon",
+      "wall_s": 30.07632493879646,
+      "movie_s": 30.12,
+      "frames": 117,
+      "file": "mechanical-dragon-realtime.mp4"
+    },
+    {
+      "theme": "mechanical",
+      "case": "sleep",
+      "wall_s": 34.085678034927696,
+      "movie_s": 34.12,
+      "frames": 133,
+      "file": "mechanical-sleep-realtime.mp4"
+    }
+  ],
+  "artifacts": {
+    "build-sim/peek_backend": "1fa930f6aa26a74cd6943beaeef671f1f3fe22d94745f93773abcffa09afef11",
+    "build-sim/peek_backend_assets/app.gspb": "d98d721136a5fb8f4533a69e0e1a2f34f02857e1a60ecc9f06e311cdf965111b",
+    "build-sim/peek_backend_assets/bundle_gsp.api.json": "07d17add42fd3da714a66607e3749e1a230dbe080a99af11a9e34cead8c48d93"
+  },
+  "physical_device_operated": false,
+  "note": "Actual native C/GSP; all synthetic complete temperature arrays pass unchanged production detector. Screenshot sampling is not display FPS."
+}

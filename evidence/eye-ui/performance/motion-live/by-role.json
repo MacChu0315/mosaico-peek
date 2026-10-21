@@ -1,0 +1,61 @@
+{
+  "groups": [
+    {
+      "view": "dragon",
+      "role": "NOTICE",
+      "ms": 1180,
+      "frames": 9,
+      "raster_us": 811818,
+      "samples": 9,
+      "faults": 0,
+      "engine_hz": 7.627118644067797,
+      "raster_ms_frame": 90.202
+    },
+    {
+      "view": "night_owl",
+      "role": "TRACKING",
+      "ms": 6460,
+      "frames": 47,
+      "raster_us": 4272277,
+      "samples": 51,
+      "faults": 0,
+      "engine_hz": 7.275541795665634,
+      "raster_ms_frame": 90.89951063829787
+    },
+    {
+      "view": "deep_sea",
+      "role": "TRACKING",
+      "ms": 5500,
+      "frames": 39,
+      "raster_us": 3478391,
+      "samples": 43,
+      "faults": 0,
+      "engine_hz": 7.090909090909091,
+      "raster_ms_frame": 89.18951282051283
+    },
+    {
+      "view": "mechanical",
+      "role": "TRACKING",
+      "ms": 24730,
+      "frames": 171,
+      "raster_us": 16831129,
+      "samples": 194,
+      "faults": 0,
+      "engine_hz": 6.914678528103518,
+      "raster_ms_frame": 98.42765497076024
+    },
+    {
+      "view": "mechanical",
+      "role": "HOLD",
+      "ms": 990,
+      "frames": 7,
+      "raster_us": 684368,
+      "samples": 7,
+      "faults": 0,
+      "engine_hz": 7.070707070707071,
+      "raster_ms_frame": 97.76685714285715
+    }
+  ],
+  "sleeping_observed": false,
+  "note": "Only adjacent observed samples with the same view and role. Sampling cannot rule out intermediate transitions. HOLD is production fresh-stillness, not a ground-truth physical motion annotation; blink may occur. Short groups are not sustained benchmarks."
+}

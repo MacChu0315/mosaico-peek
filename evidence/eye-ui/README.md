@@ -3,7 +3,14 @@
 This evidence belongs to the appended night owl/deep sea/mechanical views.
 The initial review did not operate hardware. A subsequent user-authorized
 installation of the exact reviewed artifact is recorded in [device-install](device-install/README.md).
-It defaults to dragon; new-theme hardware rendering remains unverified.
+That1.0.3 default-dragon run did not verify new-theme hardware rendering.
+Current1.0.6 installation and motion evidence is in [motion](motion/),
+including all three themes running on device; latest measured performance is
+in [motion-live](performance/motion-live/README.md). The user confirmed BOTH
+physical dragon directions correct. The wider range is accepted; synthesized hidden areas are rejected and awaiting
+replacement artwork (docs/EYE_ART_HANDOFF.md).
+The following18-test/source-translation results describe the initial integration,
+not the later23-test sphere-motion correction.
 No remote writes. Current installed identity is in docs/HANDOFF.md.
 
 - Host Debug and Release CTest18/18. Logs: ctest-debug.log / ctest-release.log.

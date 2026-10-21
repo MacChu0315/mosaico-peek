@@ -4,7 +4,9 @@ The user confirmed that both physical directions were reversed in1.0.5 and
 that the new eyes moved much less than dragon. Current build disables both
 source mapping flips and widens new-eye motion. No raw temperature rearrangement,
 detector parameter, role timing, dragon art/shader or approved240 sampling change.
-Physical direction/range acceptance remains separate from software verification.
+The user confirmed BOTH physical directions correct after1.0.6 installation.
+The user accepted the wider range and rejected the synthesized hidden surface
+(the newly exposed “eye white”) as visually ugly. Keep the range; replace artwork.
 
 ## Motion and immutable sources
 
@@ -85,13 +87,33 @@ while explicit allocation/free counts cover partial failures.
 Native16 input checks and four pixel captures pass. Same87-temperature-sample
 checkpoint preserves detector result/phase/other pose channels, while both gaze
 signs change from negative to positive. This checks software mapping, not the
-physical mount. Complete motion/sleep native run results and real-time movies
+physical mount. All66 native pixel checkpoints and six complete real-time movement/sleep runs
+pass, covering HOLD/loss/INVALID/STALE, sleep/wake, pause/redraw and replay.
+Complete motion/sleep native run results and real-time movies
 are under`evidence/eye-ui/motion/native/`; original screenshot intervals are
 retained and encoded duration checked. Movie FPS is not physical panel FPS.
 
 IDF build passes pinned7b9cc1a / ESP32-S31, no SDK change. The existing retained-
 factory capacity warning remains; application belongs in ota_0. Actual1.0.6
-installation and hardware measurements will be recorded in the handoff and
-motion device-install directory. Earlier1.0.5 measurements do not establish
-current sphere-rendering cost. Physical direction, appearance and maximum
-range still require observation; device panel FPS/largest blocks remain unknown.
+installation succeeded (sourcefd637cc); normal/crash0/error0/both flips false
+were verified. Exact operation/identity and any hardware measurements are in
+the handoff and motion device-install directory. Earlier1.0.5 measurements do not establish
+current sphere-rendering cost. Physical direction is user-confirmed; the wider range is user-accepted, while the synthesized hidden surface is
+user-rejected and needs authored replacement. Device panel FPS/largest blocks remain unknown.
+
+## Installed1.0.6 performance
+
+[65s mixed-view observation](../evidence/eye-ui/performance/motion-live/README.md)
+includes40.99s mechanical: mixed6.904 engine Hz, active-open7.095Hz,
+raster98.53ms/frame, submit32.87ms/frame;322 fresh thermal samples, zero faults.
+This costs more than1.0.5's small translation (8.333Hz active-open), while the
+original1.0.4 was2.009Hz. Scenes differ; no controlled percentage claim.
+Before screenshot, internal free247763B and PSRAM free5116384B. No panel FPS,
+largest-block or complete peak-memory claim. Physical HOLD observed; no sustained
+physical closed/sleep window. All three new views ran error-free in this window;
+other per-theme timing segments are short. Native closed-eye timing is separate.
+
+Native Host timing separately measured5s per theme/condition without screenshots
+or polling inside the window: active C draw1.55..1.73ms, sleeping0.66..0.70ms;
+Host commits about20.18Hz. [Host timing](../evidence/eye-ui/motion/host-performance.md).
+This controlled Host comparison does not establish physical closed-eye FPS.

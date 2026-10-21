@@ -1,0 +1,50 @@
+{
+  "clips": [
+    {
+      "file": "rejected-proof/deep_sea/synthetic-material-check.mp4",
+      "seconds": 8.0
+    },
+    {
+      "file": "rejected-proof/mechanical/synthetic-material-check.mp4",
+      "seconds": 8.0
+    },
+    {
+      "file": "rejected-proof/night_owl/synthetic-material-check.mp4",
+      "seconds": 8.0
+    }
+  ],
+  "technical": {
+    "technical_checks": "passed",
+    "visual_approved": false,
+    "reference_only": true,
+    "input": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/review/eye-surface-art-handoff-v1/rejected",
+    "themes": [
+      {
+        "theme": "night_owl",
+        "sha256": "50c0c51d53ef26c6fa7f76be136f42453cc72dcc27f7b69d51ad4f017467983e",
+        "locked_pixels": 68776,
+        "locked_changed": 0,
+        "fully_opaque": true,
+        "visual_approved": false
+      },
+      {
+        "theme": "deep_sea",
+        "sha256": "4cbc14a3e5fa50416ce0f2cc058923f564cd4aaed5c79251fdee2ace818521a6",
+        "locked_pixels": 67241,
+        "locked_changed": 0,
+        "fully_opaque": true,
+        "visual_approved": false
+      },
+      {
+        "theme": "mechanical",
+        "sha256": "cb01daf5bf807224b11581b5bb02c74e5990918910dc1c7230096068f5d66d1a",
+        "locked_pixels": 75876,
+        "locked_changed": 0,
+        "fully_opaque": true,
+        "visual_approved": false
+      }
+    ],
+    "note": "Synthetic pose material reference only; no thermal detector, native GSP, device performance or visual approval claim."
+  },
+  "visual_approved": false
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "theme": "night_owl",
+    "eye_size": [
+      480,
+      480
+    ],
+    "eye_origin": [
+      0,
+      0
+    ],
+    "projected_center_excursion_px": [
+      120,
+      80
+    ],
+    "neutral_exact": true,
+    "nine_grid_sphere_uv_covered": true
+  },
+  {
+    "theme": "deep_sea",
+    "eye_size": [
+      480,
+      480
+    ],
+    "eye_origin": [
+      0,
+      0
+    ],
+    "projected_center_excursion_px": [
+      120,
+      80
+    ],
+    "neutral_exact": true,
+    "nine_grid_sphere_uv_covered": true
+  },
+  {
+    "theme": "mechanical",
+    "eye_size": [
+      480,
+      480
+    ],
+    "eye_origin": [
+      0,
+      0
+    ],
+    "projected_center_excursion_px": [
+      120,
+      80
+    ],
+    "neutral_exact": true,
+    "nine_grid_sphere_uv_covered": true
+  }
+]

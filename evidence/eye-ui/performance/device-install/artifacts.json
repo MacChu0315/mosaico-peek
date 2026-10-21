@@ -1,0 +1,24 @@
+{
+  "version": "1.0.5-peek-fast",
+  "source_revision": "34ae08b028dea84715a434494f82c7b07306a5c5",
+  "bundle": "evidence/eye-ui/performance/device-install/eye-fast.irisfw",
+  "bundle_sha256": "c66b7d17b88d834237aa5623cce8b50b2dc57be335d6944f346be46f19786702",
+  "images": {
+    "peek.bin": {
+      "bytes": 6513776,
+      "sha256": "e5dabb7f8b628bde772020398392232166bb4c34c78c6d15b375bef5e1dcdb15"
+    },
+    "ui_apps.bin": {
+      "bytes": 94480,
+      "sha256": "97d48a61cfbe44182b6794e6d0a74dc6a8a5406e0f8670dbd58c081cab6bc8e7"
+    },
+    "peek.elf": {
+      "bytes": 20403104,
+      "sha256": "dfa99df79efdea11c49343870631809f7451f9d5d6948adcfb67351d4001f9d0"
+    },
+    "peek.map": {
+      "bytes": 7221702,
+      "sha256": "075b4cb77ed6672770d33095dac2bf7a2c9363c2da58be9de0202f4e6a8caf93"
+    }
+  }
+}

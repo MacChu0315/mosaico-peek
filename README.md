@@ -10,8 +10,11 @@ New art remains full480 with lossless RGBA sources and blended lids. Current
 build is1.0.6-peek-motion (`sdkconfig.eye-motion`): both gaze flips disabled per
 latest user feedback, new eyes use sphere rotation with120/80px pure-axis center
 travel. [Motion change and validation](docs/EYE_MOTION.md).
-Installed1.0.5-peek-fast improved observed mechanical active-open engine rate
-from2.009 to8.333Hz in separate live scenes;1.0.6 installation status is in
+The user accepted direction/range but rejected the synthesized newly exposed
+surface. [Standalone artwork replacement handoff](docs/EYE_ART_HANDOFF.md).
+Installed1.0.6-peek-motion corrects mapping and motion. The prior1.0.5 improved
+observed mechanical active-open engine rate
+from2.009 to8.333Hz in separate live scenes; current installation status is in
 [handoff](docs/HANDOFF.md). Physical panel FPS is not measured.
 
  Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
@@ -88,7 +91,7 @@ Asset generation requires **Pillow10.4.0** for byte-identical output; this was a
 
 Defaults stay centralized in `peek_default_config`: spatial-median background; enter/keep contrast3/2°C; four-connected area6..300; acquisition3 new consistent frames; release2 valid absent frames; association5 pixels; smoothing0.5; continuity300ms; target hold500ms; data stale750ms. While tracked, nearest qualifying region in the gate wins even over a hotter distant source. Untracked selection maximizes summed temperature excess; ties follow row-major discovery. No identity recognition/classification/distance claim.
 
-`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks for10s after entry, then closes over450ms and stays shut. A newly acquired production target wakes it over150ms; faults or pending candidates do not wake it. Ordinary blinks resume after waking (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. Latest user feedback confirmed both axes reversed with both flips enabled;1.0.6 disables both. Physical acceptance of this correction is pending.
+`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks for10s after entry, then closes over450ms and stays shut. A newly acquired production target wakes it over150ms; faults or pending candidates do not wake it. Ordinary blinks resume after waking (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. Latest user feedback confirmed both axes reversed with both flips enabled;1.0.6 disables both. The user confirmed both physical directions correct on1.0.6.
 
 Draw reads a prepared pose only. Open-eye dirty updates request the tested `(16,80)..(464,416)` union; blink transitions request the full textured hood. Native GSP currently still supplies full draw surfaces, so this request produced no substantial measured throughput gain. The full-frame parity test prevents stale pixels from being hidden by partial updates.
 
