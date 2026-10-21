@@ -9,5 +9,5 @@ add_custom_command(OUTPUT "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc"
     BYPRODUCTS "${PEEK_EYE_GENERATED_DIR}/eye_pack.json"
     COMMAND "${Python3_EXECUTABLE}" "${PEEK_ROOT}/tools/bake_eye_pack.py"
         --output "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc"
-    DEPENDS "${PEEK_ROOT}/tools/bake_eye_pack.py" ${PEEK_EYE_INPUTS} VERBATIM)
+    DEPENDS "${PEEK_ROOT}/tools/bake_eye_pack.py" "${PEEK_ROOT}/assets/eye_motion.json" ${PEEK_EYE_INPUTS} VERBATIM)
 add_custom_target(peek_eye_assets DEPENDS "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc")

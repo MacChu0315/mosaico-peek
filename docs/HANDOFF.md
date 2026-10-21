@@ -1,52 +1,37 @@
-# Peek handoff — installed switching / bitmap performance work (2026-10-21)
+# Peek handoff — direction and motion correction (2026-10-21)
 
-Installed1.0.4-peek-switch (sourcef77ccb2) adds tap/left-swipe/AI-single-click
-next and right-swipe previous. Official operation5035ab3d-9288-4286-bf1f-b4bc77ac57c4
-succeeded, healthy/validated; Boot ID7741114184892852755; ELF SHA
-7e40991933f7d50794ef0d82f97de0dd4a09fe0b18069526e625d8a1e2dd0f0e.
-[Installation record](../evidence/eye-ui/switching/device-install/README.md).
-The user explicitly authorized subsequent firmware updates for this project on
-this same board without repeated approval; AGENTS preserves the exact scope.
+Current source targets1.0.6-peek-motion, default dragon. Latest user feedback
+confirmed BOTH axes reversed with1.0.5's two flips enabled. Both flags are now
+false, before source acquisition; raw arrays/detector coordinates are unchanged.
+New eyes use full480 sphere rotation with pure-axis center travel±120/±80px,
+replacing tiny±10..20/±8..12px translations. Neutral visible pixels match1.0.5
+exactly; original handoff assets and dragon shader/behavior remain unchanged.
+[Current correction and validation](EYE_MOTION.md).
 
-The user reports severe stutter in the new artworks. Mechanical measured2.0
-engine frames/s,452ms raster/frame, while thermal input stayed7.8Hz/zero faults.
-[Full480 exact-output optimization](EYE_PERFORMANCE.md) is being prepared as
-1.0.5-peek-fast; native/physical evidence remains separately labelled.
+Last installed firmware is1.0.5-peek-fast, source34ae08b, ELF
+`dfa99df79efdea11c49343870631809f7451f9d5d6948adcfb67351d4001f9d0`.
+Successful operation63c50b3a-7bc0-44ec-8573-9b461b945f9f,
+Boot14769927073946096952. Mechanical active-open engine rate8.333Hz versus
+prior2.009Hz; live scenes differ, physical panel FPS unmeasured.
+[Actual measurements](../evidence/eye-ui/performance/COMPARISON.md).
+One earlier1.0.5 update outcome remained unknown after a retained Recovery writer
+watchdog reset; read-only reconciliation and an idle new Recovery boot preceded
+the single successful retry. [Exact history](../evidence/eye-ui/performance/device-install/README.md).
 
-The user subsequently authorized burning ("允许烧录"). The prior reviewed
-1.0.3-peek-eyes artifact, source9da7987, was installed on30:ed:a0:f4:52:a0
-(Device ID4553502d49524953010030eda0f452a0), default dragon. Official operation
-7e197546-0fab-4d38-9f77-15947a70594c succeeded; healthy/validated, new Boot ID
-18113205708322532055, ELF SHA
-b46699a95d376eef4db145a33170d86598bed8a1aed076b48f34c152b755ef94.
-Bootloader/partition hashes remain identical; Recovery was not replaced.
-[Exact package, installation and runtime observations](../evidence/eye-ui/device-install/README.md).
-The prior sleep trial remains retained as a restore bundle. A34.18s read-only
-window confirms VALID input at7.841 samples/s, zero faults and no new crashes;
-free PSRAM4699668B before screenshot. This default-dragon installation does not
-exercise the three new bitmap renderers. No remote writes.
-Reviewed9a25653 was the clean starting point; independent branchfeat/eye-ui-trio.
+Standing user authorization covers subsequent official System Updates only for
+MAC30:ed:a0:f4:52:a0 / Device ID4553502d49524953010030eda0f452a0,
+including required update reboots/retained-Recovery transitions. Recheck exact
+artifact/layout/identity; reconcile uncertain outcomes before any further write.
+No ROM recover, erase, shared dependency update or remote write is authorized.
 
-Night owl, deep sea and mechanical now use the existing production detector,
-source-owned C behavior and native GSP Canvas. Dragon art, detector parameters,
-acquisition-before-mailbox, snapshot ownership and both physical mapping flips
-are preserved. New artwork stays full480, lossless RGBA, blended adjacent lids.
-Host `--view` / `control.py view` selects each; firmware Kconfig selects startup.
-The prior1.0.3 had no physical switching. Installed1.0.4 implements it, defaults
-to dragon and changes no partition layout.
-
-[Commands, source provenance, implementation and limits](EYE_UI.md).
-[New verification/evidence](../evidence/eye-ui/README.md).
-Host Debug/Release18/18, independent57 full480 composition checks, native66
-pixel checkpoints and six wall-time movies pass. Complete recorded511 arrays/
-655 events pass all three theme replays and live switching without detector/role
-mode mismatches. Original native diagnostics and dragon are checked separately.
-Target image fits existingota_0; the retained-factory capacity warning remains.
-New ROM decode execution, physical appearance/direction, full-screen FPS,
-allocator peaks/largest blocks and actual PSRAM bandwidth remain unverified.
-Subsequent same-project/same-device firmware updates are authorized by the user
-on2026-10-21. Other devices, ROM recover/whole-flash erase and remote writes are
-not included.
+Tap/left swipe/AI single click next; right swipe previous. Source detector/role,
+time and mapping survive artwork switches. Only active large renderer caches
+are retained. If replacement allocation fails, the display enters a reported
+error; old-renderer rollback is not promised. Current1.0.6 installation and
+physical direction/range acceptance are pending at this source checkpoint.
+Prior1.0.5/1.0.4/1.0.3/1.0.2 bundles remain retained separately. No use of
+wip/dragon-packed-color as a verified baseline. Current work stays on the local
+feat/eye-ui-trio branch; no remote is configured or written.
 
 The following section preserves the prior installed-device handoff verbatim.
 

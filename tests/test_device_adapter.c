@@ -80,10 +80,10 @@ int main(void){
         reset_stubs();fake_render_core=core;
         assert(device_thermal_start((void *)1)==ESP_OK && created_core==1-core && core_queries==1);
         producer_t *p=producer_context;
-        assert(p->live.dragon.mapping.flip_x && p->live.dragon.mapping.flip_y);
-        assert(app->view.dragon.mapping.flip_x && app->view.dragon.mapping.flip_y);
+        assert(!p->live.dragon.mapping.flip_x && !p->live.dragon.mapping.flip_y);
+        assert(!app->view.dragon.mapping.flip_x && !app->view.dragon.mapping.flip_y);
         queue_has_frame=true;refresh((void *)1,timer_context);
-        assert(app->view.dragon.mapping.flip_x && app->view.dragon.mapping.flip_y);
+        assert(!app->view.dragon.mapping.flip_x && !app->view.dragon.mapping.flip_y);
         free(producer_context);free(timer_context);free(app);app=NULL;
     }
     reset_stubs();fake_render_core=-1;

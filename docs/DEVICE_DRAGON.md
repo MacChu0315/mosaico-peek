@@ -1,7 +1,7 @@
 # Live dragon integration
 
-Current installation: reviewed1.0.4-peek-switch, sourcef77ccb2, default dragon.
-See [installation record](../evidence/eye-ui/switching/device-install/README.md) and HANDOFF.
+Current installation/status is maintained in [HANDOFF](HANDOFF.md); current
+source1.0.6 corrects both gaze flips and widens new-eye motion (EYE_MOTION.md).
 The earlier trials and restore bundles below are historical context.
 
 Scope: mainline `feat/dragon-gsp` from `f278cfd`; diagnostic handoff `63c0799` is read-only. No algorithm candidate, dependency upgrade, partition change or remote write.
@@ -12,11 +12,11 @@ Scope: mainline `feat/dragon-gsp` from `f278cfd`; diagnostic handoff `63c0799` i
 
 The complete recorded PKF1/PKE1 data is retained under `data/live/20261020-complete-window/`. `python3 tools/import_live.py` converts every original event to `data/live.peek`, preserving all655 processing times,511 capture timestamps/sequences and float32 arrays (9-digit roundtrip verified). `E now` is an additive fault opcode calling production `peek_fault`; `P` remains a tick, `F` a complete frame. No retiming/interpolation or prefilled detector coordinates. Read-beginµs/fault times remain in original binaries and `evidence/real-input/input-timeline.json`. Old replay files retain their meaning.
 
-Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/preview.py --flip-x --flip-y`, then `python3 tools/control.py case live` and `python3 tools/control.py play`. `python3 tools/validate_real_gsp.py` performs the complete wall-clock run with actual native screenshots, event/core/role comparison and replay checks. Screenshot movies are encoded4fps, not a measured screen rate. Recorded scene has no labels; unchanged production quietness threshold does not trigger HOLD in this window.
+Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/preview.py`, then `python3 tools/control.py case live` and `python3 tools/control.py play`. `python3 tools/validate_real_gsp.py` performs the complete wall-clock run with actual native screenshots, event/core/role comparison and replay checks. Screenshot movies are encoded4fps, not a measured screen rate. Recorded scene has no labels; unchanged production quietness threshold does not trigger HOLD in this window.
 
 ## Firmware and read-only observations
 
-The historical sleep build used `sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, dragon view and2048-byte RPC body. Current `python3 tools/build_idf.py` builds the uninstalled `sdkconfig.eye-fast`, version `1.0.5-peek-fast`, with the same default view/RPC capacity. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
+The historical sleep build used `sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, dragon view and2048-byte RPC body. Current `python3 tools/build_idf.py` builds `sdkconfig.eye-motion`, version `1.0.6-peek-motion`, with the same default view/RPC capacity. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
 
 Read-only RPC service `0x504c`, method1, empty request returns source commit/version, actual `flip_x`/`flip_y`, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. On this retained firmware, `iris memory` returns HTTP501 (task memory observation unavailable); live `iris device-status` still supplies free/minimum internal RAM and PSRAM.
 

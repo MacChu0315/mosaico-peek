@@ -66,10 +66,14 @@ void peek_ui_time(peek_ui_t *s,uint64_t now)
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
 {
     if(!dragon)peek_input_cancel(&s->input);
+    /* UI owner only: release the inactive cache before replacement. Failure
+     * propagates to the caller's display error; this is not an atomic rollback. */
     if(dragon && s->character){
+        dragon_renderer_destroy(s->renderer);s->renderer=NULL;
         if(!s->eye_pack){s->eye_pack=eye_pack_create();if(!s->eye_pack)return ESP_GSP_ERR_NO_MEM;}
         if(!eye_pack_select(s->eye_pack,s->character-1)||!eye_pack_prepare(s->eye_pack,&s->dragon.pose))return ESP_GSP_FAIL;
     }
+    if(dragon&&!s->character){eye_pack_destroy(s->eye_pack);s->eye_pack=NULL;}
     if(dragon&&!s->character&&!s->renderer){
         s->renderer=dragon_renderer_create();if(!s->renderer)return ESP_GSP_ERR_NO_MEM;
         if(!(s->character ? eye_pack_prepare(s->eye_pack,&s->dragon.pose) : dragon_renderer_prepare(s->renderer,&s->dragon.pose)))return ESP_GSP_FAIL;

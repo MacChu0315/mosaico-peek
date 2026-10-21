@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: Apache-2.0 */
-/* Compare optimized production output against the frozen1.0.4 C renderer. */
+/* Compare optimized production output against scalar1.0.4 arithmetic with the current asset geometry. */
 #include "eye_pack.h"
 #include <assert.h>
 #include <math.h>

@@ -124,12 +124,18 @@ target_include_directories(test_device_buttons PRIVATE tests/stubs)
 target_compile_options(test_device_buttons PRIVATE -UNDEBUG -Wall -Wextra -Werror)
 target_link_libraries(test_device_buttons PRIVATE pthread)
 add_test(NAME device_ai_button_handoff COMMAND test_device_buttons)
-# Frozen pre-optimization renderer is test-only, with isolated symbols.
-set_source_files_properties(tests/reference/eye_pack_v104.c PROPERTIES COMPILE_DEFINITIONS
+# Scalar pre-optimization arithmetic with current asset geometry; test-only.
+set_source_files_properties(tests/reference/eye_pack_scalar.c PROPERTIES COMPILE_DEFINITIONS
     "eye_pack=eye_reference;eye_pack_t=eye_ref_t;eye_pack_create=eye_ref_create;eye_pack_destroy=eye_ref_destroy;eye_pack_select=eye_ref_select;eye_pack_prepare=eye_ref_prepare;eye_pack_draw=eye_ref_draw;eye_pack_heap_bytes=eye_ref_heap_bytes;eye_pack_asset_bytes=eye_ref_asset_bytes;eye_pack_name=eye_ref_name")
-add_executable(test_eye_exact tests/test_eye_exact.c tests/reference/eye_pack_v104.c)
+add_executable(test_eye_exact tests/test_eye_exact.c tests/reference/eye_pack_scalar.c)
 add_dependencies(test_eye_exact peek_eye_assets)
 target_include_directories(test_eye_exact PRIVATE src "${PEEK_EYE_GENERATED_DIR}")
 target_compile_options(test_eye_exact PRIVATE -UNDEBUG -Wall -Wextra -Werror -ffp-contract=off)
 target_link_libraries(test_eye_exact PRIVATE eye_pack)
 add_test(NAME eye_pack_exact_reference COMMAND test_eye_exact)
+add_executable(test_eye_projection tests/test_eye_projection.c)
+target_include_directories(test_eye_projection PRIVATE src)
+target_compile_options(test_eye_projection PRIVATE -UNDEBUG -Wall -Wextra -Werror -ffp-contract=off)
+target_link_libraries(test_eye_projection PRIVATE m)
+add_test(NAME wide_eye_projection COMMAND test_eye_projection)
+add_test(NAME wide_eye_assets COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_eye_motion_assets.py" "${CMAKE_BINARY_DIR}")

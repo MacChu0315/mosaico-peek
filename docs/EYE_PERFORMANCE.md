@@ -58,9 +58,29 @@ is never linked against it.
 - Official native GSP input/pixel regression and exact versioned IDF build are
   retained under evidence/eye-ui/performance/ before installation.
 
-Build candidate1.0.5-peek-fast with `python3 tools/build_idf.py`, using isolated
-sdkconfig.eye-fast. Preserve1.0.4 and1.0.3 bundles. The user's standing same-device
+The historical1.0.5-peek-fast build used isolated sdkconfig.eye-fast.
+The current build command now targets1.0.6-peek-motion. Preserve1.0.4 and1.0.3 bundles. The user's standing same-device
 installation permission applies; verify artifact/identity before each update.
 Physical before/after measurements must distinguish active-open, closed/static,
 Canvas tile callbacks, completed engine frames and physical panel FPS. Different
 live hand-played scenes do not support a controlled percentage-speedup claim.
+
+## Installed result and subsequent motion change
+
+1.0.5-peek-fast (source34ae08b) is installed and measured. Mechanical active-open
+engine rate was8.333Hz over27.24s/227 frames, mixed8.061Hz over34.24s;
+raster75.66ms/frame and submit32.98ms/frame. Baseline1.0.4 was2.009Hz active-open,
+raster452.34ms/frame. Both runs had about7.8 fresh thermal samples/s, zero faults.
+These were different live scenes; no controlled percentage-speedup or physical
+panel FPS claim. [Measurement table](../evidence/eye-ui/performance/COMPARISON.md).
+
+The first1.0.5 update returned outcome_unknown after the retained Recovery writer
+watchdog reset. Evidence/reconciliation was preserved; after confirming a new
+idle Recovery boot, one same-bundle retry succeeded. This is not rewritten as a
+successful first operation. [Installation history](../evidence/eye-ui/performance/device-install/README.md).
+
+The current1.0.6 geometry intentionally changes off-center motion; frozen1.0.4
+exact-output claims above apply to1.0.5 only. New geometry compares optimized
+colors against adapted scalar composition, plus exact neutral1.0.5 snapshots.
+Its sphere depth cache adds460800B PSRAM; only the active artwork now keeps large
+buffers. [Current motion, resources and validation](EYE_MOTION.md).

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Actual native C/GSP; synthetic Celsius arrays, never target injection."""
-import io,json,subprocess,sys,time,hashlib
+import io,json,subprocess,sys,time,hashlib,os
 from pathlib import Path
 from PIL import Image,ImageChops
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/eye-ui/native';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui/native'));OUT.mkdir(parents=True,exist_ok=True)
 THEMES=['night_owl','deep_sea','mechanical']
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[];movies=[]

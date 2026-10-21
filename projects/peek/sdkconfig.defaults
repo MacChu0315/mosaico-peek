@@ -73,5 +73,5 @@ CONFIG_ESP_IRIS_RPC_BODY_BYTES=2048
 CONFIG_PEEK_EYE_SAMPLE_STEP=2
 
 # User-verified physical mount; raw thermal coordinates remain native.
-CONFIG_PEEK_GAZE_FLIP_X=y
-CONFIG_PEEK_GAZE_FLIP_Y=y
+# CONFIG_PEEK_GAZE_FLIP_X is not set
+# CONFIG_PEEK_GAZE_FLIP_Y is not set

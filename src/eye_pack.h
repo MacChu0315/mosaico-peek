@@ -8,7 +8,8 @@ typedef struct eye_pack eye_pack_t;
 /* Three retained themes, ordered night_owl, deep_sea, mechanical. Only call
  * select/prepare on the UI owner; draw reads prepared data, never samples/time.
  * Gaze uses existing bounded +/-0.78, +/-0.58 pose after physical mapping.
- * Full-resolution bilinear eye translation; lid is [0,1] weighted premultiplied
+ * Full-resolution bilinear sphere rotation (+/-120px horizontal, +/-80px
+ * vertical center travel on pure axes); lid is [0,1] weighted premultiplied
  * RGBA, then source-over black/eye/lid/frame; RGB565 rounded only at output. */
 eye_pack_t *eye_pack_create(void);
 void eye_pack_destroy(eye_pack_t *r);

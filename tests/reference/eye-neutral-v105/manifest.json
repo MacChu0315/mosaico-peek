@@ -1,0 +1,9 @@
+{
+  "source": "Existing1.0.5 Release C renderer, before widened backing. RGB565 output preserves pre-existing PNG alpha quantization.",
+  "executable_sha256": "1dcfd04dba309c300fd4924d5e9ebf499a754410087fef264383cf0db93555a5",
+  "frames": {
+    "night_owl": "d5cba0160b8e6ce22b738d6c675e55e058e7118d74934d3d3dafb4d4f40c4cde",
+    "deep_sea": "8a0f3e6633a04fc56b81a167136805d0ac17cf9867936d196f8f5b636cf170d5",
+    "mechanical": "6b5024020040eebc485117ed261448a36871b78aedacf173333fec6ad9bbee05"
+  }
+}

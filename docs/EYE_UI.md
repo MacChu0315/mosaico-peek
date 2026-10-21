@@ -12,7 +12,7 @@ writes, shared SDK changes or detector/dragon-art changes.
 cmake -S . -B build-host
 cmake --build build-host -j4
 ctest --test-dir build-host --output-on-failure
-python3 tools/preview.py --view night_owl --flip-x --flip-y
+python3 tools/preview.py --view night_owl
 python3 tools/control.py view deep_sea
 python3 tools/control.py view mechanical
 python3 tools/control.py view dragon
@@ -29,22 +29,22 @@ python3 tools/control.py play
 
 One preview per working directory. Selection controls are the external Host CLI,
 not embedded in the480 artwork. `--sample-step` still controls only dragon;
-new eyes always render all480×480 output pixels. Both flips reproduce the
-existing physical mount; arrays and detector coordinates stay unmodified.
+new eyes always render all480×480 output pixels. Both flips are now disabled after the user confirmed both axes were reversed;
+arrays and detector coordinates stay unmodified.
 Selecting a character/diagnostic does not reset the input epoch, controller,
 phase, seed or mapping. Replay/case selection resets all source/model time and
 identity together, preserving selection and mapping. Pause freezes logical time.
 No browser animation is used by the native preview.
 
 Firmware uses the same `eye_pack.c`, `peek_ui.c`, `dragon.c`, `peek.c`.
-`python3 tools/build_idf.py` builds isolated `build/sdkconfig.eye-fast`, version
-`1.0.5-peek-fast`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
+`python3 tools/build_idf.py` builds isolated `build/sdkconfig.eye-motion`, version
+`1.0.6-peek-motion`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
 night owl/deep sea/mechanical at startup using Kconfig. The baseline
 `sdkconfig.dragon240-sleep` is separate. The wrapper asserts the default-dragon
 review configuration; a deliberately configured alternative needs its own
 explicit config assertion. All three renderers/resources are linked in this
 review firmware. Installed1.0.4 adds [touch/AI switching](CHARACTER_SWITCHING.md).
-The user reports slow new-art rendering; actual mechanical timing and the pending
+The user reports slow new-art rendering; actual mechanical timing and the installed
 1.0.5 optimization are recorded in [performance work](EYE_PERFORMANCE.md).
 No physical panel FPS or sustained multi-theme memory-peak claim is made.
 
@@ -85,24 +85,27 @@ allocates, changes pose or submits a detector observation.
 ## Geometry / layers / motion
 
 480×480 black canvas; origin top-left, +x right, +y down. PNG alpha is straight.
-Draw translated eye → weighted premultiplied adjacent lids → fixed frame.
+Draw sphere-rotated eye → weighted premultiplied adjacent lids → fixed frame.
 RGB565 rounding occurs only at output; no palette or downsampling. Bilinear
-translation interpolates premultiplied colors/alpha; lids mix once before
+sampling interpolates premultiplied colors/alpha; lids mix once before
 source-over, avoiding the dark overlap of two independent source-over draws.
 
-| Theme | Eye / each lid size | Eye/lid origin | Center | Maximum translation |
+| Theme | Derived eye | Each original lid / origin | Center | Pure-axis center travel |
 | --- | --- | --- | --- | --- |
-| night_owl |489×272|(-7,113)|(240,250)|±18 / ±12px|
-| deep_sea |507×269|(-13,123)|(240,250)|±20 / ±12px|
-| mechanical |485×271|(1,109)|(240,245)|±10 / ±8px|
+| night_owl |480×480 at(0,0)|489×272 /(-7,113)|(240,250)|±120 / ±80px|
+| deep_sea |480×480 at(0,0)|507×269 /(-13,123)|(240,250)|±120 / ±80px|
+| mechanical |480×480 at(0,0)|485×271 /(1,109)|(240,245)|±120 / ±80px|
 
-Frame is480×480 at(0,0), always last, occluding eye/lid edges. Negative origins
-are retained, clipped only at output. Source masks/neutral images are comparison
-inputs, not additional runtime layers. Full source specs remain in the pack.
+Frame is480×480 at(0,0), always last. Original negative lid origins remain;
+clip only at output. The radius233 globe uses inverse yaw/pitch rotation and
+bilinear texture sampling. Newly exposed hidden regions are derived from visible
+iris sectors at matching radius; original visible neutral pixels are restored
+exactly. This intentional motion extension is separate from immutable supplied
+PNG sources. [Recipe, limits and exact-neutral tests](EYE_MOTION.md).
 
 Production `dragon.c` remains the shared behavior controller for all characters.
 The existing pose's bounded gaze ±0.78/±0.58 is normalized to each theme's full
-translation amplitude; `blink` in[0,1] selects/interpolates lid00..08. Other dragon
+sphere angle; `blink` in[0,1] selects/interpolates lid00..08. Other dragon
 shader parameters (`squint`, pupil width, tension) do not deform the new bitmap
 art. This is an explicit native adaptation of the reference, not a claim to port
 its separate JS behavior model or re-use dragon's procedural shapes.
@@ -117,8 +120,10 @@ stillness, leaving and unavailable input use the unchanged detector's continuity
 hold and stale semantics (README). Loops use the existing seed/time rules;
 there is no second character detector, timer task or sensor coordinate flip.
 Selecting a different artwork shows the current phase immediately; hidden artwork
-is not rendered. This shares the current global behavior while resource buffers
-remain lazy/retained until callback detach and release.
+is not rendered. This shares the current global behavior while only the active artwork keeps its large renderer buffers. Dragon↔bitmap
+switches release the old renderer before allocating the new one. Diagnostics
+retain the last renderer. Allocation failures return a sticky display error;
+they do not promise a working old-picture rollback.
 
 ## Verification / evidence
 
@@ -153,8 +158,9 @@ native checkpoints cover it. No video encoding rate is a physical FPS claim.
 `resource-budget.json` contains exact target ABI allocations, image/ELF/map
 hashes and effective memory selectors. `host-performance.md` separates active
 and sleeping normal preview callbacks, equivalent full Canvas pixels and Host
-GSP committed frames. No device heap peak, largest block, ROM decoder execution,
-PSRAM bandwidth, physical screen FPS or new physical appearance/direction check
-can be established without an authorized device run. These remain unverified.
+GSP committed frames. Device1.0.5 executed ROM decode and all three new views; mechanical timing is
+recorded in EYE_PERFORMANCE.md. Heap peaks/largest block, PSRAM bandwidth and
+physical panel FPS remain unmeasured. Current motion/physical-direction
+acceptance is tracked separately in EYE_MOTION.md.
 Existing factory-capacity warning is retained: the normal app belongs in ota_0;
 partition layout is unchanged. No additional visual reduction is authorized here.
