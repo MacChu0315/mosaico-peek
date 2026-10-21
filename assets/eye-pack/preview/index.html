@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>ESP-Mosaico · 三种角色目光参考</title>
+  <style>
+    :root{--bg:#0d1215;--surface:#151d21;--surface-2:#1a252a;--line:#2a383e;--ink:#edf4f1;--muted:#9aaeb5;--accent:#a4d9ca;--soft:#c8bca1;--warning:#e5be85}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif}button,select,input{font:inherit}button,select{color:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.45}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:4px}button,select{border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}button:hover:not(:disabled){border-color:#62887f;background:#24363b}button:active:not(:disabled){transform:translateY(1px)}button{padding:9px 14px;transition:background .15s,border-color .15s}select{padding:9px 32px 9px 12px;width:100%}.wrap{max-width:1136px;margin:0 auto;padding:36px 28px 24px}.masthead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:25px}.eyebrow{font-size:11px;letter-spacing:.19em;color:var(--accent);margin-bottom:8px;font-weight:650}h1{font-size:clamp(23px,3vw,34px);letter-spacing:-.035em;line-height:1.22;margin:0 0 10px;font-weight:620}.intro{margin:0;color:var(--muted);max-width:680px}.simulated{display:inline-flex;align-items:center;white-space:nowrap;gap:8px;color:var(--accent);border:1px solid #36554d;border-radius:30px;padding:7px 12px;font-size:10px;letter-spacing:.1em;background:#142822}.simulated::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}.theme-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.theme{display:flex;align-items:center;gap:9px;min-width:152px;text-align:left;padding:10px 15px}.theme[aria-pressed=true]{background:#253832;border-color:var(--accent)}.theme i{display:block;height:12px;width:12px;border-radius:50%;background:#b9a17a}.theme[data-theme=deep_sea] i{background:#6dc9cb}.theme[data-theme=mechanical] i{background:#b1b8be}.theme small{color:var(--muted);font-size:10px;letter-spacing:.03em}.workspace{display:grid;grid-template-columns:minmax(0,536px) minmax(300px,1fr);align-items:start;gap:20px}.stage-panel,.inspector,.transport{border:1px solid var(--line);border-radius:15px;background:var(--surface)}.stage-panel{padding:20px 27px 18px}.stage-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.stage-heading span:first-child{font-size:12px;color:var(--muted)}.resolution{font:11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#7f959e}.screen-box{background:#000;line-height:0;aspect-ratio:1/1;box-shadow:0 16px 38px #0004}canvas{display:block;width:100%;height:auto;aspect-ratio:1/1;background:#000}.stage-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;min-height:26px}.state-chip{font:11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.05em;color:var(--accent);border:1px solid #36554d;border-radius:5px;padding:3px 7px}.visibility{font-size:11px;color:var(--muted)}.visibility.hidden{color:var(--warning)}.inspector{padding:21px 22px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}h2{font-size:14px;font-weight:600;margin:0}.tiny{font-size:10px;letter-spacing:.1em;color:var(--muted)}.description{font-size:12px;color:var(--muted);margin:8px 0 18px;min-height:39px}.field-label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px}.block{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;margin:0}.fields div{min-width:0}.fields dt{font-size:10px;letter-spacing:.02em;color:var(--muted)}.fields dd{margin:3px 0 0;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.ok{color:var(--accent)}.warn{color:var(--warning)}.note{min-height:65px;margin:16px 0 0;color:#c0d0d3;font-size:12px;padding:12px 13px;background:#10191d;border-left:2px solid #537c70;border-radius:0 7px 7px 0}.lifecycle{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.lifecycle button{font-size:11px;padding:8px}.checkline{display:flex;gap:7px;align-items:center;color:var(--muted);font-size:11px;margin-top:15px}.checkline input{accent-color:var(--accent)}.transport{padding:17px 21px;margin-top:20px}.transport-top{display:flex;justify-content:space-between;align-items:center;gap:14px}.transport-buttons{display:flex;gap:8px}.primary{background:var(--accent);color:#10251f;border-color:var(--accent);font-weight:600;min-width:96px}.primary:hover:not(:disabled){background:#bcebdd;border-color:#bcebdd}.timecode{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap}.timecode span{color:var(--muted)}.speed{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)}.speed select{font-size:12px;min-width:75px;padding:7px 22px 7px 10px}.scrubber{width:100%;display:block;accent-color:var(--accent);margin:18px 0 7px;height:18px;cursor:pointer}.timeline-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}.footer{margin-top:20px;display:flex;justify-content:space-between;gap:20px;color:#81969e;font-size:11px}.footer p{margin:0;max-width:800px}.footer a{color:var(--muted);text-decoration:none;white-space:nowrap}.footer a:hover{color:var(--accent)}.error{color:var(--warning);padding:14px 0}.loading{color:var(--muted)}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:920px){.wrap{max-width:650px;padding:25px 18px}.workspace{grid-template-columns:1fr}.stage-panel{padding:20px;max-width:522px;margin:auto;width:100%}.inspector{width:100%}.masthead{display:block}.simulated{margin-top:15px}.theme{flex:1;min-width:130px}.description{min-height:0}.note{min-height:0}.fields{grid-template-columns:repeat(3,1fr)}.footer{display:block}.footer a{display:inline-block;margin-top:9px}}
+    @media(max-width:480px){.wrap{padding:18px 12px}.stage-panel{padding:12px}.theme{min-width:0;flex:1;padding:9px}.theme small{display:none}.theme-bar{gap:5px}.theme i{height:8px;width:8px}.transport{padding:14px}.transport-top{flex-wrap:wrap}.speed{margin-left:auto}.fields{grid-template-columns:1fr 1fr}.masthead{margin-bottom:20px}.stage-heading{margin-bottom:10px}}
+    @media(prefers-reduced-motion:reduce){button{transition:none}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="masthead">
+      <div><div class="eyebrow">ESP-MOSAICO / CHARACTER STUDY 01</div><h1>三种角色，一套目光语言。</h1><p class="intro">480 × 480 角色画面与离线动作参考。确认、状态与时间均由演示脚本注入。</p></div>
+      <div class="simulated">模拟输入 · SIMULATED INPUT</div>
+    </header>
+
+    <nav class="theme-bar" aria-label="角色主题">
+      <button class="theme" data-theme="night_owl" aria-pressed="true"><i aria-hidden="true"></i><span>夜枭 <small>NIGHT OWL</small></span></button>
+      <button class="theme" data-theme="deep_sea" aria-pressed="false"><i aria-hidden="true"></i><span>深海 <small>DEEP SEA</small></span></button>
+      <button class="theme" data-theme="mechanical" aria-pressed="false"><i aria-hidden="true"></i><span>机械 <small>MECHANICAL</small></span></button>
+    </nav>
+
+    <div class="workspace">
+      <section class="stage-panel" aria-label="纯角色画面">
+        <div class="stage-heading"><span id="theme-name">夜枭</span><span class="resolution">480 × 480 / CANVAS</span></div>
+        <div class="screen-box"><canvas id="screen" width="480" height="480" aria-label="角色动作参考画面"></canvas></div>
+        <div class="stage-caption"><span class="state-chip" id="role-state">IDLE</span><span class="visibility" id="visibility">加载离线图像…</span></div>
+      </section>
+
+      <aside class="inspector" aria-label="参考输入与场景控制">
+        <div class="section-title"><h2>参考输入</h2><span class="tiny">INJECTED / NOT A DETECTOR</span></div>
+        <label class="field-label" for="scenario">演示场景</label>
+        <select id="scenario" aria-describedby="scenario-description"></select>
+        <p class="description" id="scenario-description"></p>
+        <dl class="fields">
+          <div><dt>角色状态 / role_state</dt><dd id="input-state">IDLE</dd></div>
+          <div><dt>状态进入 / state_entered_ms</dt><dd id="input-entered">0</dd></div>
+          <div><dt>目标已确认 / target_confirmed</dt><dd id="input-confirmed">false</dd></div>
+          <div><dt>候选存在 / candidate_present</dt><dd id="input-candidate">false</dd></div>
+          <div><dt>数据有效 / data_valid</dt><dd id="input-valid">true</dd></div>
+          <div><dt>页面可见 / ui_visible</dt><dd id="input-visible">true</dd></div>
+          <div><dt>目标坐标 / target (x, y)</dt><dd id="input-target">—</dd></div>
+          <div><dt>目光坐标 / gaze (x, y)</dt><dd id="pose-gaze">0.00, 0.00</dd></div>
+          <div><dt>lid / 眼睑闭合量</dt><dd id="pose-lid">0.000</dd></div>
+          <div><dt>失效输入回退</dt><dd id="pose-fallback">none</dd></div>
+        </dl>
+        <p class="note" id="note" aria-live="polite">等待图像加载。</p>
+        <div class="block">
+          <label class="field-label" for="chapter">完整演示 · 章节定位</label>
+          <select id="chapter"></select>
+          <div class="lifecycle" aria-label="页面生命周期参考时点">
+            <button data-jump="27150">动作中切出</button>
+            <button data-jump="28400">重入 · 当前目标</button>
+            <button data-jump="34200">重入 · 无目标</button>
+            <button data-jump="38200">重入 · 已睡眠</button>
+          </div>
+          <label class="checkline"><input type="checkbox" id="low-mode">低资源参考：眼睑使用最近一帧</label>
+        </div>
+      </aside>
+    </div>
+
+    <section class="transport" aria-label="参考时间线播放器">
+      <div class="transport-top">
+        <div class="transport-buttons"><button class="primary" id="play" disabled aria-label="播放参考时间线">播放</button><button id="replay" disabled>从头重播</button></div>
+        <div class="timecode"><output id="current-time">00.000</output> <span>/ <span id="duration">48.000</span> s</span></div>
+        <label class="speed">速度 <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+      </div>
+      <label for="scrub" class="visually-hidden">参考时间，毫秒</label><input id="scrub" class="scrubber" type="range" min="0" max="48000" step="1" value="0">
+      <div class="timeline-meta"><span id="chapter-label">空闲</span><span>固定种子 · 60 Hz 参考步进 · 可重复定位</span></div>
+    </section>
+
+    <footer class="footer"><p>所有时长是参考建议。主项目负责目标确认、角色状态、睡眠／唤醒及全局导航；此页面不包含检测器。页面切出时角色模型冻结，返回时使用当前注入状态。控件始终位于角色方形画面之外。</p><a href="../README.md">查看交接说明 ↗</a></footer>
+    <p id="load-error" class="error" hidden></p>
+  </main>
+  <script src="assets-data.js"></script>
+  <script src="timeline.js"></script>
+  <script src="model.js"></script>
+  <script src="renderer.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    var $ = function (id) { return document.getElementById(id); };
+    var currentTheme = 'night_owl', currentScenario = 'full', currentTime = 0;
+    var playing = false, ready = false, raf = null, lastClock = null;
+    var decoded = {}, lastResult = null, lastNote = '', playbackCursor = null;
+    var names = { night_owl: '夜枭', deep_sea: '深海', mechanical: '机械' };
+    var ctx = $('screen').getContext('2d', { alpha: false });
+    var painter = PreviewRenderer.createRenderer(function (width, height) {
+      var canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height; return canvas;
+    });
+    var scenarioSelect = $('scenario'), chapterSelect = $('chapter');
+    Object.keys(PreviewTimeline.SCENARIOS).forEach(function (key) {
+      var option = document.createElement('option'); option.value = key; option.textContent = PreviewTimeline.SCENARIOS[key].name;
+      scenarioSelect.appendChild(option);
+    });
+    PreviewTimeline.MARKERS.forEach(function (marker) {
+      var option = document.createElement('option'); option.value = marker.timeMs;
+      option.textContent = (marker.timeMs / 1000).toFixed(2) + ' s · ' + marker.label;
+      chapterSelect.appendChild(option);
+    });
+
+    function loadImage(src) {
+      return new Promise(function (resolve, reject) {
+        if (typeof src !== 'string' || src.indexOf('data:image/') !== 0) {
+          reject(new Error('运行图像须为 assets-data.js 内置 data:image URI。')); return;
+        }
+        var image = new Image();
+        image.onload = function () { resolve(image); };
+        image.onerror = function () { reject(new Error('离线图像解码失败。')); };
+        image.src = src;
+      });
+    }
+    function format(value) { return typeof value === 'number' && Number.isFinite(value) ? value.toFixed(2) : value === null || value === undefined ? '—' : String(value); }
+    function timeText(ms) { return (ms / 1000).toFixed(3).padStart(6, '0'); }
+    function booleanField(id, value, positive) {
+      var node = $(id); node.textContent = String(value);
+      node.className = value === positive ? 'ok' : '';
+    }
+    function pause() {
+      playing = false; lastClock = null;
+      if (raf !== null) cancelAnimationFrame(raf);
+      raf = null;
+      $('play').textContent = '播放'; $('play').setAttribute('aria-label', '播放参考时间线');
+    }
+    function updateUI(result) {
+      var sample = result.sample, pose = result.pose;
+      $('theme-name').textContent = names[currentTheme];
+      $('role-state').textContent = pose.visible ? pose.roleState : 'SUSPENDED';
+      $('visibility').textContent = pose.visible ? '角色可见 · 参考渲染' : '模拟切出 · 角色模型冻结';
+      $('visibility').className = 'visibility' + (pose.visible ? '' : ' hidden');
+      $('input-state').textContent = sample.role_state;
+      $('input-entered').textContent = String(Math.round(sample.state_entered_ms));
+      booleanField('input-confirmed', sample.target_confirmed, true);
+      booleanField('input-candidate', sample.candidate_present, false);
+      booleanField('input-valid', sample.data_valid, true);
+      booleanField('input-visible', sample.ui_visible, true);
+      $('input-target').textContent = format(sample.target_x) + ', ' + format(sample.target_y);
+      $('pose-gaze').textContent = format(pose.gazeX) + ', ' + format(pose.gazeY);
+      $('pose-lid').textContent = pose.lid.toFixed(3);
+      $('pose-fallback').textContent = pose.fallbackMode;
+      $('pose-fallback').className = pose.fallbackMode === 'none' ? '' : 'warn';
+      if (sample.note !== lastNote) { $('note').textContent = sample.note; lastNote = sample.note; }
+      $('current-time').textContent = timeText(currentTime);
+      $('scrub').value = currentTime;
+      $('duration').textContent = timeText(PreviewTimeline.SCENARIOS[currentScenario].durationMs);
+      $('scrub').max = PreviewTimeline.SCENARIOS[currentScenario].durationMs;
+      $('scenario-description').textContent = PreviewTimeline.SCENARIOS[currentScenario].description;
+      scenarioSelect.value = currentScenario;
+      document.querySelectorAll('[data-theme]').forEach(function (button) { button.setAttribute('aria-pressed', String(button.dataset.theme === currentTheme)); });
+      var activeMarker = PreviewTimeline.MARKERS[0];
+      PreviewTimeline.MARKERS.forEach(function (marker) { if (marker.timeMs <= currentTime) activeMarker = marker; });
+      $('chapter-label').textContent = currentScenario === 'full' ? activeMarker.label : PreviewTimeline.SCENARIOS[currentScenario].name;
+      chapterSelect.value = activeMarker.timeMs;
+      chapterSelect.disabled = currentScenario !== 'full';
+    }
+    function displayAt(ms) {
+      var result = PreviewModel.advanceTo(playbackCursor, ms, currentScenario, currentTheme);
+      playbackCursor = result.cursor;
+      delete result.cursor;
+      currentTime = result.timeMs;
+      result.render = painter.render(ctx, decoded[currentTheme], result.pose, { lowMode: $('low-mode').checked });
+      result.theme = currentTheme;
+      lastResult = result;
+      updateUI(result);
+      return result;
+    }
+    function tick(clock) {
+      if (!playing) return;
+      if (lastClock === null) lastClock = clock;
+      var elapsed = Math.max(0, Math.min(100, clock - lastClock)); lastClock = clock;
+      var duration = PreviewTimeline.SCENARIOS[currentScenario].durationMs;
+      displayAt(Math.min(duration, currentTime + elapsed * Number($('speed').value)));
+      if (currentTime >= duration) { pause(); return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function play() {
+      if (!ready) return;
+      if (currentTime >= PreviewTimeline.SCENARIOS[currentScenario].durationMs) displayAt(0);
+      playing = true; lastClock = null;
+      $('play').textContent = '暂停'; $('play').setAttribute('aria-label', '暂停参考时间线');
+      raf = requestAnimationFrame(tick);
+    }
+
+    /* Screenshot contract: pauses the transport, resolves after assets decode,
+     * seeks deterministically, and returns the exact sample / pose / render data.
+     * Optional third argument selects a direct-entry fixture. */
+    window.setPreviewTime = function (ms, theme, scenario) {
+      return window.previewReady.then(function () {
+        pause();
+        if (theme && Object.prototype.hasOwnProperty.call(decoded, theme)) currentTheme = theme;
+        if (scenario && Object.prototype.hasOwnProperty.call(PreviewTimeline.SCENARIOS, scenario)) currentScenario = scenario;
+        return displayAt(ms);
+      });
+    };
+    window.setPreviewScenario = function (scenario, ms) { return window.setPreviewTime(ms || 0, currentTheme, scenario); };
+    window.getPreviewSnapshot = function () { return lastResult; };
+
+    $('play').addEventListener('click', function () { if (playing) pause(); else play(); });
+    $('replay').addEventListener('click', function () { pause(); displayAt(0); play(); });
+    $('scrub').addEventListener('input', function () { if (ready) { pause(); displayAt(Number(this.value)); } });
+    $('low-mode').addEventListener('change', function () { if (ready) displayAt(currentTime); });
+    scenarioSelect.addEventListener('change', function () { if (ready) window.setPreviewScenario(this.value, 0); });
+    chapterSelect.addEventListener('change', function () { if (ready) window.setPreviewTime(Number(this.value), currentTheme, 'full'); });
+    document.querySelectorAll('[data-theme]').forEach(function (button) {
+      button.addEventListener('click', function () { if (ready) { currentTheme = this.dataset.theme; displayAt(currentTime); } });
+    });
+    document.querySelectorAll('[data-jump]').forEach(function (button) {
+      button.addEventListener('click', function () { if (ready) window.setPreviewTime(Number(this.dataset.jump), currentTheme, 'full'); });
+    });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); });
+    window.addEventListener('pagehide', pause);
+
+    window.previewReady = (async function () {
+      if (!window.EYE_ASSETS || !EYE_ASSETS.themes) throw new Error('未找到离线 assets-data.js；请完整解压交接包后打开 preview/index.html。');
+      await Promise.all(Object.keys(names).map(async function (theme) {
+        var source = EYE_ASSETS.themes[theme];
+        if (!source || !Array.isArray(source.lids) || source.lids.length !== 9) throw new Error('缺少角色或眼睑资产：' + theme);
+        var images = await Promise.all([loadImage(source.eye), loadImage(source.frame)].concat(source.lids.map(loadImage)));
+        decoded[theme] = { eye: images[0], frame: images[1], lids: images.slice(2),
+          maxGazeX: source.maxGazeX, maxGazeY: source.maxGazeY,
+          eyeOrigin: source.eyeOrigin || [0, 0], lidOrigin: source.lidOrigin || [0, 0] };
+      }));
+      ready = true; $('play').disabled = false; $('replay').disabled = false;
+      return displayAt(0);
+    })();
+    window.previewReady.catch(function (error) {
+      var message = error && error.message ? error.message : String(error);
+      $('load-error').hidden = false; $('load-error').textContent = message;
+      $('visibility').textContent = '加载失败'; $('visibility').className = 'visibility hidden';
+      $('note').textContent = message;
+    });
+  })();
+  </script>
+</body>
+</html>

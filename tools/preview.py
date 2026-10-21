@@ -4,7 +4,7 @@ import argparse,json,os,signal,socket,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--flip-x',action='store_true');p.add_argument('--flip-y',action='store_true');p.add_argument('--sample-step',type=int,choices=[1,2],default=2);p.add_argument('--view',choices=['dragon','diagnostic'],default='dragon');p.add_argument('--headless',action='store_true');p.add_argument('--duration',type=float,default=0);p.add_argument('--no-build',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--flip-x',action='store_true');p.add_argument('--flip-y',action='store_true');p.add_argument('--sample-step',type=int,choices=[1,2],default=2);p.add_argument('--view',choices=['dragon','night_owl','deep_sea','mechanical','diagnostic'],default='dragon');p.add_argument('--headless',action='store_true');p.add_argument('--duration',type=float,default=0);p.add_argument('--no-build',action='store_true');args=p.parse_args()
     component=Path(os.environ.get('ESP_GSP_COMPONENT_DIR',ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp')).resolve()
     compiler=Path(os.environ.get('GSPC_EXECUTABLE',ROOT.parent/'.toolchains/gspc-0.6.1/gspc')).resolve()
     sim=Path(os.environ.get('GSP_SIM_EXECUTABLE',ROOT.parent/'.toolchains/gsp-sim-1.5.1/sim')).resolve()

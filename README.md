@@ -1,6 +1,18 @@
-# mosaico-peek — approved single dragon eye
+# mosaico-peek — thermal eye characters
 
-Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork. Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
+Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
+
+New native views: **night_owl / deep_sea / mechanical**, alongside the retained
+dragon and diagnostics. [Current three-theme integration, commands and limits](docs/EYE_UI.md).
+Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
+`python3 tools/preview.py --view night_owl --flip-x --flip-y` starts directly.
+New art remains full480 with lossless RGBA sources and blended lids. Current
+uninstalled firmware builds use `sdkconfig.eye-trio`, version1.0.3-peek-eyes,
+default dragon. **The physical device remains the previously accepted sleep
+trial.** The dragon-specific measurements and installed/restore descriptions
+below are retained baseline context; they do not validate the new art on device.
+
+ Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
 
 ## Start
 
@@ -33,7 +45,7 @@ Only one preview per working directory is supported. Loopback socket permission 
 
 The user accepted the displayed240-vs480 detail tradeoff on2026-10-21. Device and native startup use `sample_step=2`: evaluate the same C shader at `(x|1,y|1)` and replicate globally aligned2x2 cells into the unchanged480×480 RGB565 Canvas. Sensor32×24 input, detector/role parameters, texture PNGs and geometry remain unchanged. Odd tile origins, padded strides and edge pixels are covered by `render_sampling`; the scalar renderer still defaults to lossless step1 for references. `python3 tools/preview.py --sample-step 1` retains the old native quality. Neither mode changes detector counts.
 
-Firmware version is `1.0.2-peek-sleep`; build uses isolated `build/sdkconfig.dragon240-sleep` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
+Retained installed baseline firmware version is `1.0.2-peek-sleep`; its build uses isolated `build/sdkconfig.dragon240-sleep` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
 
 ## Complete recorded input / live dragon
 
@@ -41,7 +53,7 @@ Firmware version is `1.0.2-peek-sleep`; build uses isolated `build/sdkconfig.dra
 
 The renderer retains its full invariant cache of3,225,600 bytes for invariant geometry/static colors in explicit device PSRAM; its workspace plus both caches total3,929,120 bytes is reported separately from textures and framebuffer memory. [Device rendering investigation](docs/DEVICE_PERFORMANCE.md) retains exact pixel/ownership evidence and actual runtime rates.
 
-The normal firmware build selects `build/sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
+The retained installed dragon build selected `build/sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
 
 ## Build / verify
 

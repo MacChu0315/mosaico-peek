@@ -1,0 +1,47 @@
+许可适用范围 / License scope
+============================
+
+本许可仅适用于本交接包中新增的原创软件源代码和原创文字文档，
+并仅在贡献者拥有相关可许可权利的范围内授予权限。
+本包使用 AI 辅助编写，未将其冒称为 ESP-Mosaico 维护者的官方作品。
+
+本许可不覆盖任何图像资产（包括 AI 原图、AI 派生图、处理后的位图）、
+包含这些图像的截图或视频、以及代码/数据文件中嵌入的图像字节。
+本许可也不覆盖任何第三方材料，不作 AI 生成内容的权利归属、
+独占版权或商用适格性声明。图像来源与使用边界见
+assets/SOURCES_AND_LICENSES.md。
+
+This license applies only to original software source code and original written
+documentation created for this handoff package, to the extent the contributors
+hold licensable rights in those materials. AI assistance is disclosed; this
+package is not represented as an official work of the ESP-Mosaico maintainers.
+
+It excludes all image assets, including AI originals, AI-derived images and
+processed bitmaps; screenshots or videos containing those images; and embedded
+image bytes in source or data files. It also excludes third-party materials.
+It does not determine ownership, exclusivity or commercial suitability of
+AI-generated content. See assets/SOURCES_AND_LICENSES.md for provenance and
+the image-use boundaries.
+
+MIT License
+===========
+
+Copyright (c) 2026 Contributors to mosaico-eye-ui-handoff-v1
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

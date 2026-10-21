@@ -1,3 +1,32 @@
+# Peek handoff — three new native eye views (2026-10-21)
+
+New work is local and **uninstalled**. The device described below remains on the
+accepted1.0.2-peek-sleep trial; no hardware operations or remote writes occurred.
+Reviewed9a25653 was the clean starting point; independent branchfeat/eye-ui-trio.
+
+Night owl, deep sea and mechanical now use the existing production detector,
+source-owned C behavior and native GSP Canvas. Dragon art, detector parameters,
+acquisition-before-mailbox, snapshot ownership and both physical mapping flips
+are preserved. New artwork stays full480, lossless RGBA, blended adjacent lids.
+Host `--view` / `control.py view` selects each; firmware Kconfig selects startup.
+Physical swipe/tap/AI selection remains unimplemented. Current new firmware:
+1.0.3-peek-eyes, isolatedsdkconfig.eye-trio, default dragon, no partition change.
+
+[Commands, source provenance, implementation and limits](EYE_UI.md).
+[New verification/evidence](../evidence/eye-ui/README.md).
+Host Debug/Release18/18, independent57 full480 composition checks, native66
+pixel checkpoints and six wall-time movies pass. Complete recorded511 arrays/
+655 events pass all three theme replays and live switching without detector/role
+mode mismatches. Original native diagnostics and dragon are checked separately.
+Target image fits existingota_0; the retained-factory capacity warning remains.
+New ROM decode execution, physical appearance/direction, full-screen FPS,
+allocator peaks/largest blocks and actual PSRAM bandwidth remain unverified.
+Stop at local review; no installation, reboot, Recovery, push or merge.
+
+The following section preserves the prior installed-device handoff verbatim.
+
+---
+
 # Peek live dragon handoff — stopped at user-accepted trial (2026-10-21)
 
 The user said “可以，就先这样吧”. Keep the current device running; stop further

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Archive committed review material with an exact source commit and file hashes."""
-import hashlib,json,subprocess,zipfile
+import argparse,hashlib,json,subprocess,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT,text=True).strip()
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument("--eye-ui",action="store_true",help="compact current eye-UI source and evidence, excluding historical firmware/movies")
+    args=parser.parse_args()
     if git('status','--porcelain'):raise RuntimeError('Commit reviewed task files before packaging; working tree must be clean')
     commit=git('rev-parse','HEAD');paths=git('ls-files','-z').strip('\0').split('\0')
     forbidden={'.git','deps','managed_components','__pycache__','.run','.codex-runs','review-inputs'}
@@ -18,8 +20,9 @@ def main():
         parts=Path(name).parts
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
+        if args.eye_ui and name.startswith('evidence/') and not name.startswith('evidence/eye-ui/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl'):continue
         if name.startswith('evidence/gsp/motion/'):continue
-        if name.endswith('.mp4') and not (name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4'):continue
+        if name.endswith('.mp4') and not (name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4' or name.startswith('evidence/eye-ui/')):continue
         if name.endswith('.png') and name.startswith(('evidence/real-input/synthetic-regression/','evidence/device-dragon/cache-native/')):
             digest=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
             if digest in golden:
@@ -27,10 +30,11 @@ def main():
                 continue
         selected.append(name)
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in selected}
-    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'identical_evidence_aliases':aliases,'evidence':'Live dragon: exact recorded-temperature native replay and separately retained physical-device acceptance; see docs/HANDOFF.md','excluded':['.git','build/cache','dependency copies','intermediate screenshots, old historical MP4s, ignored original review input and dependency caches, full local ELF/map/config backup']}
-    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-live-dragon-{commit[:8]}.zip'
+    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'identical_evidence_aliases':aliases,'evidence':('New three-theme shared-C/native-GSP acceptance only; no new physical-device validation. See docs/EYE_UI.md and docs/HANDOFF.md' if args.eye_ui else 'Live dragon: exact recorded-temperature native replay and separately retained physical-device acceptance; see docs/HANDOFF.md'),'excluded':['.git','build/cache','dependency copies','intermediate screenshots, old historical MP4s, ignored original review input and dependency caches, full local ELF/map/config backup']}
+    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-{"eye-ui" if args.eye_ui else "live-dragon"}-{commit[:8]}.zip'
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in selected:z.write(ROOT/name,'mosaico-peek/'+name)
+        if args.eye_ui:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Current eye UI source, retained source PNG/provenance, data and new evidence. Historical firmware/verification binaries and movies are excluded; historical document links can refer to the full checkout. No generated includes, dependencies or build caches. Build instructions: docs/EYE_UI.md.\n')
         z.writestr('mosaico-peek/REVIEW_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
     with zipfile.ZipFile(archive) as z:
         assert z.testzip() is None

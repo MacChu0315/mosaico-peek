@@ -18,3 +18,4 @@ __pycache__/
 /.codex-runs/
 
 /firmware-local/
+/evidence/eye-ui/baseline-native/motion/

@@ -2,6 +2,7 @@
 #include "peek_ui.h"
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 static peek_ui_t view;
 static bool fail_canvas,fail_event,fail_stop,fail_unregister,fail_text;
 static unsigned stops,unregisters;
@@ -37,5 +38,18 @@ int main(void){
     assert(view.dragon_registered && view.renderer);
     fail_stop=false;assert(peek_ui_deinit(&view)==ESP_GSP_OK && !view.dragon_registered);
     peek_ui_release(&view);assert(!view.renderer);
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
+    view.dragon.mapping.flip_x=true;view.dragon.mapping.flip_y=true;
+    peek_ui_time(&view,12000);dragon_t before=view.dragon;peek_detector_t detector=view.detector;
+    for(unsigned pass=0;pass<2;pass++)for(unsigned c=0;c<4;c++){
+        assert(peek_ui_set_character(&view,c)==ESP_GSP_OK);
+        peek_ui_refresh(&view,12000);
+        assert(!memcmp(&before,&view.dragon,sizeof(before)));
+        assert(!memcmp(&detector,&view.detector,sizeof(detector)));
+        assert(peek_ui_set_view(&view,false)==ESP_GSP_OK);
+        assert(peek_ui_set_character(&view,c)==ESP_GSP_OK);
+    }
+    assert(peek_ui_set_character(&view,4)==ESP_GSP_ERR_INVALID_ARG && view.character==3);
+    assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);assert(!view.eye_pack && !view.renderer);
     puts("PASS actual UI: partial registration, teardown errors retain ownership, retry detaches");
 }

@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(Path(os.environ.get('ESP_GSP_COMPONENT_DIR',ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp'))/'tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/phase2/dragon';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/phase2/dragon'));OUT.mkdir(parents=True,exist_ok=True)
 checks=[]
 frames=[]
 def checked(label):

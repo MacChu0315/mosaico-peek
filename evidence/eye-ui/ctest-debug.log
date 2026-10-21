@@ -1,0 +1,42 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-host
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-host
+      Start  1: detector
+ 1/18 Test  #1: detector .........................   Passed    0.01 sec
+      Start  2: device_adapter
+ 2/18 Test  #2: device_adapter ...................   Passed    0.00 sec
+      Start  3: ui_lifetime
+ 3/18 Test  #3: ui_lifetime ......................   Passed    0.16 sec
+      Start  4: event_aging
+ 4/18 Test  #4: event_aging ......................   Passed    0.00 sec
+      Start  5: dragon_behavior
+ 5/18 Test  #5: dragon_behavior ..................   Passed    0.01 sec
+      Start  6: dragon_pixels
+ 6/18 Test  #6: dragon_pixels ....................   Passed    0.24 sec
+      Start  7: dragon_receive_timing
+ 7/18 Test  #7: dragon_receive_timing ............   Passed    0.02 sec
+      Start  8: asset_build_readonly
+ 8/18 Test  #8: asset_build_readonly .............   Passed    5.86 sec
+      Start  9: live_render_isolation
+ 9/18 Test  #9: live_render_isolation ............   Passed    0.00 sec
+      Start 10: render_integer_equivalence
+10/18 Test #10: render_integer_equivalence .......   Passed    0.03 sec
+      Start 11: render_fixed_cache
+11/18 Test #11: render_fixed_cache ...............   Passed    2.07 sec
+      Start 12: render_sampling
+12/18 Test #12: render_sampling ..................   Passed    0.19 sec
+      Start 13: dragon_idle_sleep
+13/18 Test #13: dragon_idle_sleep ................   Passed    0.00 sec
+      Start 14: render_prepared_geometry
+14/18 Test #14: render_prepared_geometry .........   Passed    0.92 sec
+      Start 15: device_open_frame_telemetry
+15/18 Test #15: device_open_frame_telemetry ......   Passed    0.00 sec
+      Start 16: eye_pack_layers
+16/18 Test #16: eye_pack_layers ..................   Passed    0.42 sec
+      Start 17: eye_pack_source_readonly
+17/18 Test #17: eye_pack_source_readonly .........   Passed    2.26 sec
+      Start 18: eye_pack_allocation_failure
+18/18 Test #18: eye_pack_allocation_failure ......   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 18
+
+Total Test time (real) =  12.22 sec

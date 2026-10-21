@@ -1,0 +1,575 @@
+{
+  "checks": [
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0,
+        0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        -0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        -0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        -0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.0,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.0,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.0,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 3
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.0625,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 3
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.13,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 3
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.25,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 3
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.49,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 2
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.5,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 2
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.75,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 1
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.93,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "night_owl",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 1,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0,
+        0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        -0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        -0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        -0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.0,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.0,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.0,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 3
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.0625,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.13,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 1
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.25,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.49,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.5,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.75,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.93,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 1
+    },
+    {
+      "theme": "deep_sea",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 1,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0,
+        0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        -0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        -0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        -0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.0,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.0,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.0,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.78,
+        -0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.78,
+        0.0
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.78,
+        0.58
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.0625,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.13,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.25,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.49,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.5,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.75,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 0.93,
+      "max_rgb565_channel_delta": 1,
+      "different_channels": 1
+    },
+    {
+      "theme": "mechanical",
+      "gaze": [
+        0.253,
+        -0.217
+      ],
+      "lid": 1,
+      "max_rgb565_channel_delta": 0,
+      "different_channels": 0
+    }
+  ],
+  "note": "Independent float64 oracle; <=1 RGB565 channel code only at rounding boundaries versus C float32. No palette/downsample."
+}

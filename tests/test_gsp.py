@@ -7,7 +7,7 @@ component=Path(os.environ.get('ESP_GSP_COMPONENT_DIR',ROOT.parent/'.toolchains/e
 sys.path[:0]=[str(component/'tools/sim_bridge'),str(ROOT/'tools')]
 from rpc_client import connect
 from control import command,state
-EVIDENCE=ROOT/'evidence/gsp';EVIDENCE.mkdir(exist_ok=True)
+EVIDENCE=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/gsp'));EVIDENCE.mkdir(parents=True,exist_ok=True)
 records=[]
 def record(label):
     s=state();assert s['error']==0,s;records.append(dict(check=label,**s));return s

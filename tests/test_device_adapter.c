@@ -50,6 +50,7 @@ esp_err_t mosaico_thermal_read(mosaico_thermal_handle_t h,mosaico_thermal_frame_
 esp_err_t mosaico_thermal_del(mosaico_thermal_handle_t h){(void)h;return ESP_OK;}
 esp_gsp_err_t peek_ui_init(peek_ui_t *s,esp_gsp_handle_t ui,peek_control_fn fn,void *ctx){memset(s,0,sizeof(*s));s->ui=ui;s->control=fn;s->context=ctx;assert(peek_init(&s->detector,NULL));return ui_failure?ESP_FAIL:ESP_OK;}
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon){(void)s;(void)dragon;return ESP_GSP_OK;}
+esp_gsp_err_t peek_ui_set_character(peek_ui_t *s,unsigned character){(void)s;assert(character==0);return ESP_GSP_OK;}
 void peek_ui_release(peek_ui_t *s){(void)s;}
 void peek_ui_reset(peek_ui_t *s,const char *name){(void)name;peek_reset(&s->detector);}
 peek_submit_t peek_ui_submit(peek_ui_t *s,const peek_frame_t *f,uint64_t now){return peek_submit(&s->detector,f,now);}

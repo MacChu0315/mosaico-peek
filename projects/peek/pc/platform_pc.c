@@ -33,7 +33,8 @@ static void publish(void)
     fprintf(f,",\"sample_step\":%u,\"flip_x\":%s,\"flip_y\":%s",app.view.sample_step,app.view.dragon.mapping.flip_x?"true":"false",app.view.dragon.mapping.flip_y?"true":"false");
     const dragon_t *c=&app.view.dragon;
     fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"sleeping\":%s,\"waking\":%s,\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"geometry_cached\":%s,\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
-        app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->sleeping?"true":"false",c->waking?"true":"false",c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_geometry_cached(app.view.renderer)?"true":"false",dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
+        app.view.dragon_view?peek_ui_character_name(&app.view):"diagnostic",dragon_mode_name(c->mode),c->sleeping?"true":"false",c->waking?"true":"false",c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_geometry_cached(app.view.renderer)?"true":"false",dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
+    fprintf(f,",\"eye_pack\":{\"detail\":480,\"allocated_bytes\":%zu,\"assets_bytes\":%zu}",app.view.eye_pack?eye_pack_heap_bytes():0,eye_pack_asset_bytes());
     fprintf(f,",\"host_timing\":{\"target_timer_ms\":33,\"completed_callbacks\":%" PRIu64 ",\"callback_us_total\":%" PRIu64 ",\"work_us_total\":%" PRIu64 ",\"publish_us_total\":%" PRIu64 ",\"callback_us_max_session\":%" PRIu64 ",\"interval_count\":%" PRIu64 ",\"interval_us_total\":%" PRIu64 ",\"interval_us_max_session\":%" PRIu64 ",\"completed_until_us\":%" PRIu64 ",\"published_us\":%" PRIu64 ",\"interval_bins_le_us\":[10000,20000,35000,50000,75000,100000,200000,18446744073709551615],\"interval_bins\":[",
         app.tick_calls,app.tick_us_total,app.tick_work_us_total,app.publish_us_total,app.tick_us_max,app.interval_count,app.interval_us_total,app.interval_us_max,app.last_completed_us,real_us());
     for(unsigned i=0;i<8;i++)fprintf(f,"%s%" PRIu64,i?",":"",app.interval_bins[i]);
@@ -101,8 +102,9 @@ static void tick(esp_gsp_handle_t ui,void *ctx)
         else if(!strcmp(verb,"step")){app.view.paused=true;if(app.replay.ready&&!pump(app.replay.due_ms))app.view.error=ESP_GSP_FAIL;}
         else if(!strcmp(verb,"view")){
             char which[20];
-            if(sscanf(msg,"%llu %19s %19s",&id,verb,which)!=3 || (strcmp(which,"dragon")&&strcmp(which,"diagnostic")))accepted=false;
-            else {esp_gsp_err_t rc=peek_ui_set_view(&app.view,!strcmp(which,"dragon"));if(rc!=ESP_GSP_OK)app.view.error=rc;peek_ui_refresh(&app.view,app.logical_ms);}
+            if(sscanf(msg,"%llu %19s %19s",&id,verb,which)!=3 || (strcmp(which,"dragon")&&strcmp(which,"night_owl")&&strcmp(which,"deep_sea")&&strcmp(which,"mechanical")&&strcmp(which,"diagnostic")))accepted=false;
+            else {unsigned character=!strcmp(which,"night_owl")?1:!strcmp(which,"deep_sea")?2:!strcmp(which,"mechanical")?3:0;
+                esp_gsp_err_t rc=!strcmp(which,"diagnostic")?peek_ui_set_view(&app.view,false):peek_ui_set_character(&app.view,character);if(rc!=ESP_GSP_OK)app.view.error=rc;peek_ui_refresh(&app.view,app.logical_ms);}
         }
         else if(!strcmp(verb,"draw")){peek_ui_refresh(&app.view,app.logical_ms);}
         else if(!strcmp(verb,"quit")){app.view.paused=true;raise(SIGTERM);}
@@ -139,7 +141,8 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
     if((fx&&strcmp(fx,"0")&&strcmp(fx,"1"))||(fy&&strcmp(fy,"0")&&strcmp(fy,"1")))return ESP_GSP_ERR_INVALID_ARG;
     app.mapping=(dragon_mapping_t){.flip_x=fx&&!strcmp(fx,"1"),.flip_y=fy&&!strcmp(fy,"1")};
     const char *view=getenv("PEEK_VIEW");bool dragon=!view||strcmp(view,"diagnostic");
-    rc=peek_ui_set_view(&app.view,dragon);if(rc!=ESP_GSP_OK)return rc;
+    unsigned character=view&&!strcmp(view,"night_owl")?1:view&&!strcmp(view,"deep_sea")?2:view&&!strcmp(view,"mechanical")?3:0;
+    rc=dragon?peek_ui_set_character(&app.view,character):peek_ui_set_view(&app.view,false);if(rc!=ESP_GSP_OK)return rc;
     app.view.paused=true;app.case_index=dragon?6:1;if(!load_case())return ESP_GSP_FAIL;
     app.timer=esp_gsp_timer_create(ui,33,tick,NULL);if(!app.timer)return ESP_GSP_ERR_NO_MEM;
     publish();fprintf(stderr,"PEEK ready native C; case=%s view=%s paused\n",cases[app.case_index],dragon?"dragon":"diagnostic");return app.view.error;

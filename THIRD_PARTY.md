@@ -31,3 +31,22 @@ artwork, dependencies, device configuration or hardware permissions were copied.
 Peek's bounded integer/highlight implementation remains its own shared C code.
 Exact consulted paths and provenance are retained in
 `evidence/device-dragon/render-cost-notes.json`.
+
+## Supplied three-theme eye art / reference
+
+`assets/eye-pack/` is the retained non-evidence source subset of the user-supplied
+`mosaico-eye-ui-handoff-v1.zip`; original ZIP SHA256 is retained separately.
+Original AI PNGs, closed-eye AI edits, transparent layers, original provenance,
+manifest and source instructions are preserved byte-for-byte. Follow its
+`assets/SOURCES_AND_LICENSES.md`, `assets/GENERATION.md` and `LICENSE`. The pack's
+MIT notice covers its original software/documentation; it expressly excludes
+images and image-derived screenshots/movies/data URI contents. No CC0, exclusive
+rights or additional image permission is asserted. Supplied Canvas-only evidence
+is omitted from the source subset; new native evidence has separate labels.
+New Apache-2.0 C adapter code does not relicense the supplied reference or art.
+
+Host lossless decompression links the installed system zlib (its existing zlib
+license). Device decompression uses the pinned ESP-IDF's ROM miniz public header
+and ROM symbols, without copying a library or upgrading a dependency. NumPy and
+Pillow are existing Host verification/build tools; no dependency copies are
+included. FFmpeg is used only for local evidence encoding and is not bundled.

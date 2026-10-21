@@ -32,5 +32,13 @@ int main(void){
     assert(strstr((char *)out,"\"open_frames\":3") && strstr((char *)out,"\"sleeping\":false"));
     assert(!memcmp(&snapshot,&before,sizeof(snapshot)));
     assert(rpc(&q,out,32,&n,NULL)==ESP_ERR_INVALID_SIZE);q.payload_size=1;assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_ERR_INVALID_ARG);
+    v.dragon_view=true;
+    for(unsigned character=1;character<=3;character++){
+        v.character=character;publish(&v,700+100*character);
+        assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_ERR_INVALID_ARG);q.payload_size=0;
+        assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK);
+        assert(strstr((char *)out,eye_pack_name(character-1)) && strstr((char *)out,"\"sample_step\":1"));
+        q.payload_size=1;
+    }
     puts("PASS device telemetry: previous generation classification, sleep/closing excluded, open timing exact,2048B body and RPC purity");
 }

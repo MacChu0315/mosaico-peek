@@ -117,7 +117,11 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
 #ifdef CONFIG_PEEK_DIAGNOSTIC_VIEW
     rc=peek_ui_set_view(&app->view,false);
 #else
+    #ifdef ESP_PLATFORM
+    rc=peek_ui_set_character(&app->view,CONFIG_PEEK_CHARACTER);
+#else
     rc=peek_ui_set_view(&app->view,true);
+#endif
 #endif
     if(rc!=ESP_GSP_OK)goto fail_ui;
     app->view.live=true;app->view.source="LIVE / MLX90640 (native orientation)";
