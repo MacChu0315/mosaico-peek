@@ -4,13 +4,13 @@ import argparse,json,os,signal,socket,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--view',choices=['dragon','diagnostic'],default='dragon');p.add_argument('--headless',action='store_true');p.add_argument('--duration',type=float,default=0);p.add_argument('--no-build',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--sample-step',type=int,choices=[1,2],default=2);p.add_argument('--view',choices=['dragon','diagnostic'],default='dragon');p.add_argument('--headless',action='store_true');p.add_argument('--duration',type=float,default=0);p.add_argument('--no-build',action='store_true');args=p.parse_args()
     component=Path(os.environ.get('ESP_GSP_COMPONENT_DIR',ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp')).resolve()
     compiler=Path(os.environ.get('GSPC_EXECUTABLE',ROOT.parent/'.toolchains/gspc-0.6.1/gspc')).resolve()
     sim=Path(os.environ.get('GSP_SIM_EXECUTABLE',ROOT.parent/'.toolchains/gsp-sim-1.5.1/sim')).resolve()
     run=ROOT/'.run';run.mkdir(exist_ok=True)
     # A fixed socket intentionally fails rather than taking over another Peek instance.
-    env=dict(os.environ,PEEK_DATA_DIR=str(ROOT/'data'),PEEK_RUN_DIR=str(run),PEEK_VIEW=args.view,PEEK_ASSET_PYTHON=sys.executable)
+    env=dict(os.environ,PEEK_DATA_DIR=str(ROOT/'data'),PEEK_RUN_DIR=str(run),PEEK_VIEW=args.view,PEEK_EYE_SAMPLE_STEP=str(args.sample_step),PEEK_ASSET_PYTHON=sys.executable)
     if not args.no_build:subprocess.run([sys.executable,str(component/'tools/sim_bridge/build.py'),'--project',str(ROOT/'projects/peek/pc'),'--build-dir',str(ROOT/'build-sim'),'--component-dir',str(component),'--gspc',str(compiler)],env=env,cwd=ROOT,check=True)
     manifest=json.loads((ROOT/'build-sim/peek_backend-Release.json').read_text())
     if (run/'control.sock').exists():raise RuntimeError('Peek control.sock exists; stop its owner before a new preview. Do not remove a live socket.')

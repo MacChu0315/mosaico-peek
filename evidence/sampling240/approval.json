@@ -1,0 +1,8 @@
+{
+  "approved_by_user": "2026-10-21: 接受的。当前帧率完全完全不能接受",
+  "policy": "240x240 unique odd-center samples, nearest2x2 replication into480x480 output",
+  "unchanged": "32x24 thermal input, detector/role parameters, source art,480 display, partitions and dependencies",
+  "reference": "evidence/device-dragon/quality-options/comparison.png",
+  "previous_live_source": "49a7c57ecbb9ad46cdbf09684d0ca08427f6b4e2",
+  "previous_engine_hz": 2.6928343222272932
+}

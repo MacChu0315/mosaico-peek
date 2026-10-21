@@ -1,2 +1,3 @@
 #pragma once
 #define CONFIG_FREERTOS_NUMBER_OF_CORES 2
+#define CONFIG_PEEK_EYE_SAMPLE_STEP 2

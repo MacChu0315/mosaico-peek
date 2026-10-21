@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 #ifdef ESP_PLATFORM
 #include "esp_heap_caps.h"
 #endif
@@ -33,6 +34,7 @@ typedef struct {
 struct dragon_renderer {
     dragon_fixed_pixel_t *fixed_pixels;
     bool ready;
+    unsigned sample_step;
     dragon_pose_t pose;
     int32_t cy, sy, cp, sp;
     int32_t pupil_half_width;
@@ -390,6 +392,7 @@ dragon_renderer_t *dragon_renderer_create(void)
 {
     dragon_renderer_t *r = calloc(1,sizeof(*r));
     if (!r) return NULL;
+    r->sample_step=1;
     for (unsigned i = 0; i < 512; ++i) {
         float t = (sqrtf((float)i*256)-157)/176;
         float alpha = t <= 0 ? 0 : t < .6f ? t*.26f/.6f :
@@ -425,6 +428,11 @@ dragon_renderer_t *dragon_renderer_create(void)
         f->hood=pack(over(hood,(color_t){0,0,0},f->vignette));
     }
     return r;
+}
+
+bool dragon_renderer_set_sample_step(dragon_renderer_t *r,unsigned step){
+    if(!r || (step!=1 && step!=2))return false;
+    r->sample_step=step;return true;
 }
 
 void dragon_renderer_destroy(dragon_renderer_t *r) {
@@ -486,8 +494,21 @@ bool dragon_renderer_draw(const dragon_renderer_t *r, uint16_t *pixels,
         return false;
     for (unsigned row = 0; row < height; ++row) {
         uint16_t *out = (uint16_t *)((uint8_t *)pixels+row*stride_bytes);
-        for (unsigned col = 0; col < width; ++col)
-            out[col] = pack(render_pixel(r,x+col,y+row));
+        if(r->sample_step==2){
+            /* Anchor to canvas coordinates, not tile origin. Odd first rows
+             * and columns must still work without reading outside a surface. */
+            if(((y+row)&1u) && row){
+                memcpy(out,(const uint8_t *)out-stride_bytes,width*sizeof(*out));
+                continue;
+            }
+            for(unsigned col=0;col<width;col++){
+                if(((x+col)&1u) && col)out[col]=out[col-1];
+                else out[col]=pack(render_pixel(r,(x+col)|1u,(y+row)|1u));
+            }
+        }else{
+            for (unsigned col = 0; col < width; ++col)
+                out[col] = pack(render_pixel(r,x+col,y+row));
+        }
     }
     return true;
 }

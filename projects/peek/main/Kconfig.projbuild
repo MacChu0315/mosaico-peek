@@ -6,4 +6,11 @@ config PEEK_DIAGNOSTIC_VIEW
         Keep the production detector and acquisition unchanged, but show the
         thermal diagnostic screen instead of the approved single dragon eye.
         Host preview selects its view separately with --view diagnostic.
+config PEEK_EYE_SAMPLE_STEP
+    int "Dragon eye sample step (1=480,2=240 samples with480 output)"
+    range 1 2
+    default 2
+    help
+        Step2 is the user-approved2x2 sampling/replication mode. It affects
+        eye pixels only. Complete thermal frames and detection stay unchanged.
 endmenu

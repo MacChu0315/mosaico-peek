@@ -102,6 +102,9 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
     esp_err_t rc=mosaico_module_mgr_init(NULL);
     if(rc!=ESP_OK)goto fail;
     rc=peek_ui_init(&app->view,ui,NULL,NULL);if(rc!=ESP_GSP_OK)goto fail_ui;
+#ifdef ESP_PLATFORM
+    app->view.sample_step=CONFIG_PEEK_EYE_SAMPLE_STEP;
+#endif
 #ifdef CONFIG_PEEK_DIAGNOSTIC_VIEW
     rc=peek_ui_set_view(&app->view,false);
 #else

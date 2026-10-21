@@ -69,6 +69,7 @@ esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
         s->renderer=dragon_renderer_create();if(!s->renderer)return ESP_GSP_ERR_NO_MEM;
         if(!dragon_renderer_prepare(s->renderer,&s->dragon.pose))return ESP_GSP_FAIL;
     }
+    if(dragon && !dragon_renderer_set_sample_step(s->renderer,s->sample_step))return ESP_GSP_ERR_INVALID_ARG;
     if(dragon&&!s->dragon_registered){
         esp_gsp_err_t rc=esp_gsp_canvas_set_draw_cb(s->ui,GSP_BIND_EYE,draw_eye,s);
         if(rc!=ESP_GSP_OK)return rc;
@@ -132,7 +133,7 @@ static void event(esp_gsp_handle_t ui,const esp_gsp_event_t *e,void *ctx)
 }
 esp_gsp_err_t peek_ui_init(peek_ui_t *s,esp_gsp_handle_t ui,peek_control_fn control,void *ctx)
 {
-    memset(s,0,sizeof(*s));s->ui=ui;s->control=control;s->context=ctx;
+    memset(s,0,sizeof(*s));s->sample_step=1;s->ui=ui;s->control=control;s->context=ctx;
     if(!peek_init(&s->detector,NULL))return ESP_GSP_ERR_INVALID_ARG;
     peek_ui_reset(s,"WAITING");
     esp_gsp_err_t rc=esp_gsp_canvas_set_draw_cb(ui,GSP_BIND_HEAT,draw,s);

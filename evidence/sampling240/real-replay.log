@@ -1,0 +1,2 @@
+PASS import: 511 exact float32 arrays / 655 original events; no resampling
+PASS: 655 exact real events / 511 arrays; zero device/core field mismatches; deterministic role; explicit fault aging

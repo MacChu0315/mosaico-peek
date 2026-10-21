@@ -71,3 +71,7 @@ target_include_directories(test_render_cache PRIVATE src "${PEEK_GENERATED_DIR}"
 target_compile_options(test_render_cache PRIVATE -UNDEBUG -Wall -Wextra -Werror -ffp-contract=off)
 target_link_libraries(test_render_cache PRIVATE m)
 add_test(NAME render_fixed_cache COMMAND test_render_cache)
+add_executable(test_render_sampling tests/test_render_sampling.c)
+target_link_libraries(test_render_sampling PRIVATE dragon)
+target_compile_options(test_render_sampling PRIVATE -UNDEBUG -Wall -Wextra -Werror)
+add_test(NAME render_sampling COMMAND test_render_sampling)

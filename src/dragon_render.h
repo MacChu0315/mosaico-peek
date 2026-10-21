@@ -12,6 +12,9 @@ typedef struct dragon_renderer dragon_renderer_t;
  * Serialize prepare/destroy against draw; all regions of a repaint must use
  * the same prepared generation. Draw allocates nothing and mutates no state. */
 dragon_renderer_t *dragon_renderer_create(void);
+/* Serialize with prepare/draw.1 preserves original pixel output;2 samples at
+ * (x|1,y|1) and replicates globally aligned2x2 cells into480x480 output. */
+bool dragon_renderer_set_sample_step(dragon_renderer_t *renderer,unsigned step);
 void dragon_renderer_destroy(dragon_renderer_t *renderer);
 bool dragon_renderer_prepare(dragon_renderer_t *renderer,
                              const dragon_pose_t *pose);

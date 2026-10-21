@@ -18,8 +18,8 @@ def main():
     value='#define PEEK_SOURCE_REVISION "'+source_revision+'"\n'
     if not header.exists() or header.read_text()!=value:header.write_text(value)
     subprocess.run(command+['build'],env=env,cwd=ROOT,check=True)
-    config=(ROOT/'projects/peek/build/sdkconfig.dragon').read_text().splitlines()
-    for line in ('CONFIG_APP_PROJECT_VER="1.0.0-peek-dragon"','CONFIG_ESP_IRIS_RPC_BODY_BYTES=2048','# CONFIG_PEEK_DIAGNOSTIC_VIEW is not set'):
+    config=(ROOT/'projects/peek/build/sdkconfig.dragon240').read_text().splitlines()
+    for line in ('CONFIG_APP_PROJECT_VER="1.0.1-peek-dragon240"','CONFIG_ESP_IRIS_RPC_BODY_BYTES=2048','CONFIG_PEEK_EYE_SAMPLE_STEP=2','# CONFIG_PEEK_DIAGNOSTIC_VIEW is not set'):
         if line not in config:raise RuntimeError('Dragon build configuration missing: '+line)
     print('PASS actual dragon firmware configuration; no installation performed')
 if __name__=='__main__':main()

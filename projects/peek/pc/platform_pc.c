@@ -30,6 +30,7 @@ static void publish(void)
     FILE *f=fopen(app.temporary,"w");if(!f){perror("status");app.view.error=ESP_GSP_FAIL;return;}
     fprintf(f,"{\"case\":\"%s\",\"paused\":%s,\"ack\":%" PRIu64 ",\"draws\":%" PRIu64 ",\"actions\":%" PRIu64 ",\"error\":%d,\"eof\":%s,\"result\":",cases[app.case_index],app.view.paused?"true":"false",app.ack,app.view.draws,app.view.actions,app.view.error,app.replay.eof?"true":"false");
     peek_write_result(f,&app.view.detector);
+    fprintf(f,",\"sample_step\":%u",app.view.sample_step);
     const dragon_t *c=&app.view.dragon;
     fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
         app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
@@ -131,6 +132,9 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
     struct sockaddr_un addr={.sun_family=AF_UNIX};strcpy(addr.sun_path,app.socket_path);
     if(bind(app.fd,(struct sockaddr *)&addr,sizeof(addr))!=0){perror("bind");close(app.fd);app.fd=-1;return ESP_GSP_FAIL;}
     esp_gsp_err_t rc=peek_ui_init(&app.view,ui,control,NULL);if(rc!=ESP_GSP_OK)return rc;
+    const char *step=getenv("PEEK_EYE_SAMPLE_STEP");
+    if(step && strcmp(step,"1") && strcmp(step,"2"))return ESP_GSP_ERR_INVALID_ARG;
+    app.view.sample_step=step?(unsigned)(step[0]-'0'):2;
     const char *view=getenv("PEEK_VIEW");bool dragon=!view||strcmp(view,"diagnostic");
     rc=peek_ui_set_view(&app.view,dragon);if(rc!=ESP_GSP_OK)return rc;
     app.view.paused=true;app.case_index=dragon?6:1;if(!load_case())return ESP_GSP_FAIL;
