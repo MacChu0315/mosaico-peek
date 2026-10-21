@@ -1,0 +1,33 @@
+{
+  "source_commit": "c31684387504e5ff31652923602c6a6a55d9e022",
+  "version": "1.0.1-peek-dragon240",
+  "sample_step": 2,
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "hardware_mac": "30:ed:a0:f4:52:a0",
+  "files": {
+    "peek.bin": {
+      "bytes": 1990320,
+      "sha256": "f901ccde45c9cfcd19af45c4135267d76fdfb8ffca6609bea816f4ceba087218"
+    },
+    "peek.elf": {
+      "bytes": 15759904,
+      "sha256": "eca9bd8aea7049feab377222331ea36297ba216cb1052750a00a1027b2eb17f1"
+    },
+    "peek.map": {
+      "bytes": 7203759,
+      "sha256": "e3f316b0c7ee3d31e6e8d47bad2e786bc587caf356fc96af2c6be67edcbe4f45"
+    },
+    "ui_apps.bin": {
+      "bytes": 94480,
+      "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+    },
+    "sdkconfig.dragon240": {
+      "bytes": 136748,
+      "sha256": "ef5ecd24afe5043cbdbd5257717c716b288647fcfe93a0cd54d3f660790f81b8"
+    },
+    "partition-table.bin": {
+      "bytes": 3072,
+      "sha256": "8b516eb3fff9b33cdf188e95bbb008cb853a5793883117b6e72dd572ea8fa6f4"
+    }
+  }
+}

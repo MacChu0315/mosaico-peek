@@ -1,0 +1,1 @@
+test_device_adapter: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_device_adapter.c:77: main: Assertion `p->live.dragon.mapping.flip_x && p->live.dragon.mapping.flip_y' failed.

@@ -81,3 +81,17 @@ lets caller constants remove redundant coordinate and structure-return work.
 No SDK/library code or global RTOS scheduling policy is changed. Final device
 measurements cover both changes together and must not be attributed to either
 one alone.
+
+## Approved240 detail and physical mount
+
+The user accepted2x2 replication after rejecting the previous frame rate.
+Shared C/native/device startup selects sample_step2 while the additive renderer
+API still defaults to the retained480 reference. No further detail reduction.
+See SAMPLING240.md for exact pixels/odd tile edges and policy evidence.
+Final source ba98632 with both user-requested gaze flips measured7.546 engine
+frames/s,77.684 tiled Canvas callbacks/s and7.829 accepted samples/s over24.78s.
+Mean engine121.86ms, raster90.98ms, submit30.76ms; GSP1/sensor0. The preceding
+480 source49a7c57 measured2.693 engine frames/s in a different scene.
+Internal free237,955B/min196,784B; PSRAM free/min9,918,228B before screenshots.
+Panel-visible FPS and post-flip physical acceptance remain unmeasured/pending.
+No30Hz or smoothness-pass claim. Exact runtime and recovery evidence: HANDOFF.

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_native_mapping.py", line 42, in <module>
+    if __name__=='__main__':main()
+  File "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_native_mapping.py", line 32, in main
+    assert max(errors.values())<.002,(physical['result']['now_ms'],errors)
+AssertionError: (3200, {'gaze_x': 0.0023241940000000016, 'gaze_y': 0.000259860128})

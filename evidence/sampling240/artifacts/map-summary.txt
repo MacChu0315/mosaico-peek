@@ -1,0 +1,91 @@
+# Existing ELF/map memory summary (bytes; not measured runtime RAM)
+# ELF/map/sdkconfig SHA-256 and sizes are in firmware-budget.json.
+# .flash.rodata names do not imply flash-only runtime residency with PSRAM XIP.
+.rtc.force_slow: address=0x2e000000 bytes=36 type=PROGBITS flags=WA
+.rtc_reserved: address=0x2e007fe8 bytes=24 type=NOBITS flags=WA
+.iram0.text: address=0x2f000000 bytes=85298 type=PROGBITS flags=AX
+.iram0.text_end: address=0x2f014d32 bytes=78 type=NOBITS flags=WA
+.dram0.data: address=0x2f014d80 bytes=25184 type=PROGBITS flags=WA
+.noinit: address=0x2f01afe0 bytes=0 type=NOBITS flags=WA
+.dram0.bss: address=0x2f01b000 bytes=21984 type=NOBITS flags=WA
+.flash.text: address=0x50000020 bytes=1029088 type=PROGBITS flags=AX
+.flash_rodata_dummy: address=0x50000020 bytes=1048576 type=NOBITS flags=WA
+.flash.appdesc: address=0x50100020 bytes=256 type=PROGBITS flags=A
+.flash.rodata: address=0x50100120 bytes=850260 type=PROGBITS flags=WA
+.flash.init_array: address=0x501cfa74 bytes=68 type=INIT_ARRAY flags=WA
+.flash.tdata: address=0x501cfab8 bytes=16 type=PROGBITS flags=WAT
+.flash.rodata_noload: address=0x501cfac8 bytes=56 type=NOBITS flags=WA
+.ext_ram.dummy: address=0x50000020 bytes=1900512 type=NOBITS flags=WA
+.ext_ram.bss: address=0x501d0000 bytes=6428 type=NOBITS flags=WA
+
+# Dragon textures/palettes/LUTs (local static symbols included by nm -a -S)
+dragon_iris_indices: address=0x50128b7c bytes=409600 sections=.flash.rodata
+dragon_iris_palette: address=0x5012897c bytes=512 sections=.flash.rodata
+dragon_pupil_q15: address=0x50126774 bytes=514 sections=.flash.rodata
+dragon_sin_q15: address=0x50125f74 bytes=2048 sections=.flash.rodata
+dragon_skin_indices: address=0x5018cd7c bytes=230400 sections=.flash.rodata
+dragon_skin_palette: address=0x5018cb7c bytes=512 sections=.flash.rodata
+dragon_sqrt_q15: address=0x50126978 bytes=8194 sections=.flash.rodata
+
+# Selected actual linker map lines
+.rtc.text       0x2e000000        0x0
+.rtc.force_fast
+                0x2e000000        0x0
+.rtc.data       0x2e000000        0x0
+.rtc.bss        0x2e000000        0x0
+.rtc_noinit     0x2e000000        0x0
+.rtc.force_slow
+                0x2e000000       0x24
+.rtc_reserved   0x2e007fe8       0x18
+.iram0.text     0x2f000000    0x14d32
+.iram0.text_end
+                0x2f014d32       0x4e
+.iram0.data     0x2f014d80        0x0
+.iram0.bss      0x2f014d80        0x0
+.iram0.end      0x2f014d80        0x0
+.dram0.dummy    0x2f014d80        0x0
+.dram0.data_start
+                0x2f014d80        0x0
+.dram0.data     0x2f014d80     0x6260
+.noinit         0x2f01afe0        0x0
+.dram0.bss      0x2f01b000     0x55e0
+.flash.text     0x50000020    0xfb3e0
+                0x50000020                        _instruction_reserved_start = ABSOLUTE (.)
+                0x500fb400                        _instruction_reserved_end = ABSOLUTE (.)
+.flash_rodata_dummy
+                0x50000020   0x100000
+.flash.appdesc  0x50100020      0x100
+                0x50100020                        _rodata_reserved_start = ABSOLUTE (.)
+                0x50100020                        _rodata_start = ABSOLUTE (.)
+.flash.rodata   0x50100120    0xcf954
+ .rodata.dragon_mode_name.str1.4
+                0x50125ee7        0x0 esp-idf/main/libmain.a(dragon.c.obj)
+ .rodata.dragon_sin_q15
+                0x50125f74      0x800 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_pupil_q15
+                0x50126774      0x202 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_sqrt_q15
+                0x50126978     0x2002 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_iris_palette
+                0x5012897c      0x200 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_iris_indices
+                0x50128b7c    0x64000 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_skin_palette
+                0x5018cb7c      0x200 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_skin_indices
+                0x5018cd7c    0x38400 esp-idf/main/libmain.a(dragon_render.c.obj)
+.flash.init_array
+                0x501cfa74       0x44
+                0x501cfab8                        _rodata_end = ABSOLUTE (.)
+.flash.tdata    0x501cfab8       0x10
+.flash.tbss     0x501cfac8        0x0
+.flash.rodata_noload
+                0x501cfac8       0x38
+                0x501cfb00                        _rodata_reserved_end = .
+.ext_ram.dummy  0x50000020   0x1cffe0
+                0x50000021                        _ext_ram_on_same_bus = (ORIGIN (ext_ram_seg) == ORIGIN (flash_rodata_seg))
+.ext_ram.bss    0x501d0000     0x191c
+                0x501d0000                        _ext_ram_bss_start = ABSOLUTE (.)
+                0x501d191c                        _ext_ram_bss_end = ABSOLUTE (.)
+.dram0.heap_start
+                0x2f0205e0        0x0

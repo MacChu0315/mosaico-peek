@@ -1,0 +1,12 @@
+{
+  "equal_to_reviewed_f278cfd": {
+    "src/peek.c": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
+    "src/peek.h": "b68abcdeb179486aa3e4150f6ddf16f43c286bd7983fdc1f66239a2be7920f67",
+    "src/dragon.c": "5b050490be267bcdaa941c7a5a476fef84f8101ab727451c3975b61b02244383",
+    "assets/dragon/skin.png": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
+    "assets/dragon/iris.png": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
+    "projects/peek/partitions.csv": "e3846a03e7ff8991f1971ff62c81d4bdcf75f47b7f9255aabb49a8039a023bee",
+    "dependencies.json": "c58d335f010837c997e15b1b5472058025866944d5439572e03f478bfa4d2711"
+  },
+  "detector_matches_readonly_diagnostic_63c0799": true
+}

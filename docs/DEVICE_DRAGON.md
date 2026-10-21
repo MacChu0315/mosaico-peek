@@ -8,13 +8,13 @@ Scope: mainline `feat/dragon-gsp` from `f278cfd`; diagnostic handoff `63c0799` i
 
 The complete recorded PKF1/PKE1 data is retained under `data/live/20261020-complete-window/`. `python3 tools/import_live.py` converts every original event to `data/live.peek`, preserving all655 processing times,511 capture timestamps/sequences and float32 arrays (9-digit roundtrip verified). `E now` is an additive fault opcode calling production `peek_fault`; `P` remains a tick, `F` a complete frame. No retiming/interpolation or prefilled detector coordinates. Read-beginµs/fault times remain in original binaries and `evidence/real-input/input-timeline.json`. Old replay files retain their meaning.
 
-Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/preview.py`, then `python3 tools/control.py case live` and `python3 tools/control.py play`. `python3 tools/validate_real_gsp.py` performs the complete wall-clock run with actual native screenshots, event/core/role comparison and replay checks. Screenshot movies are encoded4fps, not a measured screen rate. Recorded scene has no labels; unchanged production quietness threshold does not trigger HOLD in this window.
+Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/preview.py --flip-x --flip-y`, then `python3 tools/control.py case live` and `python3 tools/control.py play`. `python3 tools/validate_real_gsp.py` performs the complete wall-clock run with actual native screenshots, event/core/role comparison and replay checks. Screenshot movies are encoded4fps, not a measured screen rate. Recorded scene has no labels; unchanged production quietness threshold does not trigger HOLD in this window.
 
 ## Firmware and read-only observations
 
-`python3 tools/build_idf.py` selects a separate build-tree `sdkconfig.dragon`, version `1.0.0-peek-dragon`, dragon view and2048-byte RPC body. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
+`python3 tools/build_idf.py` selects a separate build-tree `sdkconfig.dragon240`, version `1.0.1-peek-dragon240`, dragon view and2048-byte RPC body. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
 
-Read-only RPC service `0x504c`, method1, empty request returns source commit/version, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. On this retained firmware, `iris memory` returns HTTP501 (task memory observation unavailable); live `iris device-status` still supplies free/minimum internal RAM and PSRAM.
+Read-only RPC service `0x504c`, method1, empty request returns source commit/version, actual `flip_x`/`flip_y`, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. On this retained firmware, `iris memory` returns HTTP501 (task memory observation unavailable); live `iris device-status` still supplies free/minimum internal RAM and PSRAM.
 
 ## Slow-device-render isolation
 
@@ -42,3 +42,13 @@ Runtime results and remaining limits are recorded in `docs/HANDOFF.md` and `evid
 The user's physical choppiness report and the subsequent pixel-equivalent
 rendering work are retained in [device performance](DEVICE_PERFORMANCE.md).
 This does not alter the detector parameters or approved artwork.
+
+The user-confirmed physical mount reverses both target-to-gaze axes; detector
+coordinates and the temperature array remain native. Source and display owners
+start with these flags, and acquisition snapshots carry the source mapping.
+Native replay uses explicit `--flip-x --flip-y` and reapplies flags on reset.
+Current runtime, source/ELF, accepted observations and remaining physical checks
+are in HANDOFF. Installed bundles for240 and final flipped240 are retained
+under evidence/sampling240/installed/ and evidence/orientation/installed/.
+To restore one of these instead of diagnostics, substitute its bundle path in
+the documented restore command; do not combine `--bundle` with `--project`.

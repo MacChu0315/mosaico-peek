@@ -1,0 +1,10 @@
+{
+  "report": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/orientation/artifacts/firmware-budget.json",
+  "peek_bin_bytes": 1990480,
+  "ui_apps_bin_bytes": 94480,
+  "dragon_asset_bytes": 651780,
+  "fits_ota_0": true,
+  "fits_ui_apps": true,
+  "xip_from_psram": true,
+  "rodata_to_psram": true
+}

@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "now_ms": 3200,
+      "reflection_residual": {
+        "gaze_x": 0.0023241940000000016,
+        "gaze_y": 0.000259860128
+      }
+    },
+    {
+      "now_ms": 4800,
+      "reflection_residual": {
+        "gaze_x": 3.0000000039720476e-08,
+        "gaze_y": 1.827471064e-09
+      }
+    },
+    {
+      "now_ms": 6250,
+      "reflection_residual": {
+        "gaze_x": 0.0,
+        "gaze_y": 0.0
+      }
+    },
+    {
+      "now_ms": 8750,
+      "reflection_residual": {
+        "gaze_x": 0.0,
+        "gaze_y": 0.0
+      }
+    },
+    {
+      "now_ms": 13000,
+      "reflection_residual": {
+        "gaze_x": 0.003892421999999951,
+        "gaze_y": 0.0036470889999999923
+      }
+    }
+  ],
+  "replay_mapping_preserved": true,
+  "pause_is_pure": true,
+  "detector_results_identical": true
+}

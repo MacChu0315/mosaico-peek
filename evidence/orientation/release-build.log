@@ -1,0 +1,42 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+[  2%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[ 10%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 20%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 25%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 28%] Building C object CMakeFiles/test_device_adapter.dir/tests/test_device_adapter.c.o
+[ 30%] Linking C executable test_device_adapter
+[ 30%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 38%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 43%] Built target peek_replay
+Consolidate compiler generated dependencies of target test_event_aging
+[ 48%] Built target test_event_aging
+Consolidate compiler generated dependencies of target peek_replay_until
+[ 53%] Built target peek_replay_until
+Consolidate compiler generated dependencies of target test_dragon
+[ 56%] Building C object CMakeFiles/test_dragon.dir/tests/test_dragon.c.o
+[ 58%] Linking C executable test_dragon
+[ 58%] Built target test_dragon
+Consolidate compiler generated dependencies of target test_dragon_render
+[ 64%] Built target test_dragon_render
+Consolidate compiler generated dependencies of target dragon_snapshot
+[ 69%] Built target dragon_snapshot
+Consolidate compiler generated dependencies of target test_dragon_timing
+[ 74%] Built target test_dragon_timing
+Consolidate compiler generated dependencies of target peek_role_replay
+[ 79%] Built target peek_role_replay
+Consolidate compiler generated dependencies of target test_live_logic
+[ 84%] Built target test_live_logic
+Consolidate compiler generated dependencies of target test_render_math
+[ 89%] Built target test_render_math
+Consolidate compiler generated dependencies of target test_render_cache
+[ 94%] Built target test_render_cache
+Consolidate compiler generated dependencies of target test_render_sampling
+[100%] Built target test_render_sampling

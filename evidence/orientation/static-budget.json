@@ -1,0 +1,100 @@
+{
+  "flash": {
+    "images": {
+      "peek.bin": {
+        "bytes": 1990480,
+        "sha256": "5e1500d01ef527860e9ad71c571df77e7c2735d1ebbc660be9c8c1721e6791aa"
+      },
+      "ui_apps.bin": {
+        "bytes": 94480,
+        "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+      }
+    },
+    "ui_apps_partition_bytes": 1048576,
+    "ui_apps_free_bytes": 954096,
+    "ota_0_partition_bytes": 13565952,
+    "normal_app_fits_ota_0": true,
+    "factory_partition_bytes": 1835008,
+    "normal_app_fits_retained_factory": false,
+    "indexed_textures_and_LUT_bytes_in_app": 651780,
+    "texture_cost_is_included_in_peek_bin": true,
+    "partition_layout_changed": false
+  },
+  "ram_static_estimate": {
+    "target_abi": "ESP32-S31 GCC16.1.0, compile-only actual device structs; GSP handles stubbed as identical opaque pointers",
+    "struct_bytes": {
+      "detector": 5544,
+      "input_frame": 3864,
+      "role_controller": 160,
+      "shared_ui": 9696,
+      "display_snapshot": 9576,
+      "device_app": 9712,
+      "renderer": 12316,
+      "acquisition_owner": 16520,
+      "renderer_fixed_cache": 3225600
+    },
+    "renderer_heap_bytes": 3237916,
+    "device_app_plus_producer_consumer_queue_and_renderer_bytes": 3283300,
+    "sensor_task_stack_bytes": 8192,
+    "single_RGB565_plane_bytes": 460800,
+    "eye_plus_diagnostic_canvas_planes_if_both_cached_bytes": 681984,
+    "app_temperature_storage_note": "Acquisition owner and display snapshot include complete temperature arrays; counted in struct totals above.",
+    "texture_decode_to_RAM_bytes": 0,
+    "additional_not_measured": [
+      "FreeRTOS queue/task control metadata",
+      "GSP Canvas caches and native draw surfaces",
+      "GSP scene/font/image caches and scratch",
+      "display-presenter framebuffer count, DMA buffers, driver memory",
+      "global SDK heaps/stacks and peak allocation overlaps"
+    ],
+    "device_peak_RAM_measured": false,
+    "warning": "Known allocations are not a measured device RAM peak; native process RSS includes a different runtime."
+  },
+  "native_live_measurements": [
+    {
+      "case": "idle",
+      "wall_seconds": 61.071610901970416,
+      "logical_ms": 61031,
+      "callback_count": 864,
+      "canvas_callback_hz": 14.147326183795226,
+      "equivalent_full_canvas_hz": 14.147326183795226,
+      "draw_us_mean": 12653.469907407407,
+      "draw_us_max_session": 30349,
+      "screenshot_count": 488,
+      "memory": {
+        "simulator": {
+          "VmHWM": "102400 kB",
+          "VmRSS": "100588 kB"
+        },
+        "backend": {
+          "VmHWM": "3860 kB",
+          "VmRSS": "3860 kB"
+        }
+      },
+      "evidence_method": "Live official GSP API screenshots, sampled on wall clock; encoded video does not independently establish real-time performance or device FPS."
+    },
+    {
+      "case": "dragon",
+      "wall_seconds": 30.511528295930475,
+      "logical_ms": 30050,
+      "callback_count": 441,
+      "canvas_callback_hz": 14.45355328395068,
+      "equivalent_full_canvas_hz": 14.45355328395068,
+      "draw_us_mean": 12404.931972789116,
+      "draw_us_max_session": 30349,
+      "screenshot_count": 244,
+      "memory": {
+        "simulator": {
+          "VmHWM": "102400 kB",
+          "VmRSS": "100600 kB"
+        },
+        "backend": {
+          "VmHWM": "3860 kB",
+          "VmRSS": "3860 kB"
+        }
+      },
+      "evidence_method": "Live official GSP API screenshots, sampled on wall clock; encoded video does not independently establish real-time performance or device FPS."
+    }
+  ],
+  "native_live_measurements_note": "Archived phase2 screenshot/poll runs; current paired A/B measurements are in evidence/followup/performance/"
+}

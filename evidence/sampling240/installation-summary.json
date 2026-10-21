@@ -1,0 +1,21 @@
+{
+  "operation_id": "2671befd-da27-4f13-a8ca-d8e678852dad",
+  "version": "1.0.1-peek-dragon240",
+  "source_commit": "c31684387504e5ff31652923602c6a6a55d9e022",
+  "previous_boot": "9951538894554427109",
+  "vibe_boot": "3893920628606919550",
+  "normal_boot": "11489681611554254480",
+  "healthy": true,
+  "validated": true,
+  "layout_sha256": "4f8786d12001684a3c02385f31ef167247827bd73b744801494a8c5851bc7231",
+  "bootloader_sha256": "d3cc31fc9e8f3df9c8ca3beece23fbcb97019f59cb87933266f8ddc47efadbcc",
+  "vibe_updated": false,
+  "application": {
+    "actual": "eca9bd8aea7049feab377222331ea36297ba216cb1052750a00a1027b2eb17f1",
+    "actual_field": "firmware_sha256",
+    "expected": "eca9bd8aea7049feab377222331ea36297ba216cb1052750a00a1027b2eb17f1",
+    "expected_field": "elf_sha256",
+    "mode": "elf_sha256"
+  },
+  "bundle_sha256": "ee8c01cd0909feddadb6893c2b9eada877b0d8e65eb6f9f7b9531552a3aa6936"
+}

@@ -1,0 +1,7 @@
+{
+  "installed_source": "c31684387504e5ff31652923602c6a6a55d9e022",
+  "feedback": "能体现出跟随，不过方向不很一致。方向在上下和左右两个方向都要翻转一下。\n另外，好奇，当画面中同时存在冷热对象，当前算法会跟踪热的那个是么",
+  "scope": "Flip only physical target-to-gaze mapping on both axes; raw temperatures and detector coordinates remain native. Smoothness/hold/leave acceptance not inferred.",
+  "post_flip_reply": "待机是什么样的？瞳孔更高频次的眨眼和左右张望吗？",
+  "post_flip_physical_acceptance": "Not confirmed: reply asks about idle behavior rather than reporting direction/hold/removal/smoothness."
+}

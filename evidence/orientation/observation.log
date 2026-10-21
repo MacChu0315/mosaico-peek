@@ -1,0 +1,46 @@
+{
+  "device": "4553502d49524953010030eda0f452a0",
+  "boot_id": "408941243312734824",
+  "version": "1.0.1-peek-dragon240",
+  "sample_step": 2,
+  "source_revision": "ba98632f38233c2af20009a3a088b5328316f35d",
+  "gaze_mapping": {
+    "flip_x": true,
+    "flip_y": true
+  },
+  "sampled_device_seconds": 59.54,
+  "rates_hz": {
+    "captures": 7.860262008733624,
+    "faults": 0.0,
+    "callbacks": 7.423580786026201,
+    "draws": 77.76284850520659,
+    "prepares": 7.423580786026201,
+    "render_frames": 7.423580786026201,
+    "samples": 7.843466577091031
+  },
+  "draw_mean_us": 8771.963066954644,
+  "gsp_render_mean_us": 123834.30769230769,
+  "gsp_raster_mean_us": 92904.2036199095,
+  "gsp_submit_mean_us": 30817.382352941175,
+  "roles": [
+    "IDLE"
+  ],
+  "data_states": [
+    "VALID"
+  ],
+  "heap": {
+    "free_internal": 237955,
+    "free_spiram": 9918228,
+    "min_free_internal": 196784,
+    "min_free_spiram": 9447112,
+    "total_internal": 453459,
+    "total_spiram": 14890852
+  },
+  "cores": {
+    "gsp": 1,
+    "sensor": 0
+  },
+  "sequence_equals_accepted_samples": true,
+  "physical_panel_fps": null,
+  "note": "Actual sensor/role firmware. Callback/surface/render counters are distinct; no physical panel scan or visible FPS measured. Snapshots and CLI polling can affect rates. No scene labels inferred."
+}
