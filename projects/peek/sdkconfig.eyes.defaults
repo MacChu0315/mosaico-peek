@@ -1,3 +1,3 @@
 # New uninstalled UI build; retained dragon config remains separate.
-CONFIG_APP_PROJECT_VER="1.0.4-peek-switch"
+CONFIG_APP_PROJECT_VER="1.0.5-peek-fast"
 CONFIG_PEEK_CHARACTER=0

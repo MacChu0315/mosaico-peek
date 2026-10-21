@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/peek_switch_device_verify.py", line 58, in <module>
+    current=order[(order.index(current)-1)%4];gesture('right',current)
+  File "/tmp/peek_switch_device_verify.py", line 43, in gesture
+    assert process.returncode==0,process.stderr or process.stdout
+AssertionError: esp_iris.py: error: Cannot connect to host 127.0.0.1:42295 ssl:False [Connect call failed ('127.0.0.1', 42295)]
+

@@ -1,0 +1,1730 @@
+[
+  {
+    "label": "tap advances",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 6,
+      "actions": 1,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "night_owl",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 1152000,
+        "draw_us_total": 10120,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4697,
+        "prepares": 6,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2835,
+        "callback_us_total": 569755,
+        "work_us_total": 94839,
+        "publish_us_total": 474916,
+        "callback_us_max_session": 82146,
+        "interval_count": 2834,
+        "interval_us_total": 93928037,
+        "interval_us_max_session": 133988,
+        "completed_until_us": 2528086695239,
+        "published_us": 2528086746196,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2829,
+          3,
+          0,
+          0,
+          2,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "tap jitter advances",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 7,
+      "actions": 2,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "deep_sea",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 1382400,
+        "draw_us_total": 11471,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4699,
+        "prepares": 7,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2850,
+        "callback_us_total": 573256,
+        "work_us_total": 94900,
+        "publish_us_total": 478356,
+        "callback_us_max_session": 82146,
+        "interval_count": 2849,
+        "interval_us_total": 94566035,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528087333232,
+        "published_us": 2528087366426,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2841,
+          3,
+          2,
+          0,
+          3,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "left swipe advances once",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 8,
+      "actions": 3,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 1612800,
+        "draw_us_total": 12850,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4702,
+        "prepares": 8,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2865,
+        "callback_us_total": 576211,
+        "work_us_total": 94961,
+        "publish_us_total": 481250,
+        "callback_us_max_session": 82146,
+        "interval_count": 2864,
+        "interval_us_total": 95151024,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528087918227,
+        "published_us": 2528087969134,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2855,
+          3,
+          2,
+          0,
+          4,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "duplicate up ignored",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 8,
+      "actions": 3,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 1612800,
+        "draw_us_total": 12850,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4702,
+        "prepares": 8,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2876,
+        "callback_us_total": 578064,
+        "work_us_total": 94995,
+        "publish_us_total": 483069,
+        "callback_us_max_session": 82146,
+        "interval_count": 2875,
+        "interval_us_total": 95533253,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528088300451,
+        "published_us": 2528088333667,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2865,
+          3,
+          3,
+          0,
+          4,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "right swipe goes back",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 9,
+      "actions": 4,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "deep_sea",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 1843200,
+        "draw_us_total": 14177,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4705,
+        "prepares": 9,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2897,
+        "callback_us_total": 582226,
+        "work_us_total": 95070,
+        "publish_us_total": 487156,
+        "callback_us_max_session": 82146,
+        "interval_count": 2896,
+        "interval_us_total": 96321023,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528089088222,
+        "published_us": 2528089121413,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2884,
+          3,
+          4,
+          0,
+          5,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "tap3",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 10,
+      "actions": 5,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2073600,
+        "draw_us_total": 15665,
+        "draw_us_max": 3005,
+        "prepare_us_total": 4707,
+        "prepares": 10,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2902,
+        "callback_us_total": 583155,
+        "work_us_total": 95084,
+        "publish_us_total": 488071,
+        "callback_us_max_session": 82146,
+        "interval_count": 2901,
+        "interval_us_total": 96589028,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528089356244,
+        "published_us": 2528089407195,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2888,
+          3,
+          4,
+          0,
+          6,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "forward wrap",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 11,
+      "actions": 6,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "dragon",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2304000,
+        "draw_us_total": 16458,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5783,
+        "prepares": 11,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2909,
+        "callback_us_total": 584539,
+        "work_us_total": 95099,
+        "publish_us_total": 489440,
+        "callback_us_max_session": 82146,
+        "interval_count": 2908,
+        "interval_us_total": 96957034,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528089724229,
+        "published_us": 2528089757486,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2892,
+          4,
+          5,
+          0,
+          7,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "backward wrap",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 12,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2534400,
+        "draw_us_total": 17902,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5785,
+        "prepares": 12,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2932,
+        "callback_us_total": 588242,
+        "work_us_total": 95170,
+        "publish_us_total": 493072,
+        "callback_us_max_session": 82146,
+        "interval_count": 2931,
+        "interval_us_total": 97817027,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528090584237,
+        "published_us": 2528090635154,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2914,
+          4,
+          5,
+          0,
+          8,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "vertical drag ignored",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 12,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2534400,
+        "draw_us_total": 17902,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5785,
+        "prepares": 12,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2942,
+        "callback_us_total": 590612,
+        "work_us_total": 95213,
+        "publish_us_total": 495399,
+        "callback_us_max_session": 82146,
+        "interval_count": 2941,
+        "interval_us_total": 98167420,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528090934962,
+        "published_us": 2528090967329,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2923,
+          4,
+          6,
+          0,
+          8,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "drag return is not tap",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 12,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2534400,
+        "draw_us_total": 17902,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5785,
+        "prepares": 12,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2955,
+        "callback_us_total": 593935,
+        "work_us_total": 95262,
+        "publish_us_total": 498673,
+        "callback_us_max_session": 82146,
+        "interval_count": 2954,
+        "interval_us_total": 98597962,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528091365240,
+        "published_us": 2528091398440,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2936,
+          4,
+          6,
+          0,
+          8,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "long hold ignored",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138836608527049,
+      "draws": 12,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "mechanical",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2534400,
+        "draw_us_total": 17902,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5785,
+        "prepares": 12,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2985,
+        "callback_us_total": 598935,
+        "work_us_total": 95375,
+        "publish_us_total": 503560,
+        "callback_us_max_session": 82146,
+        "interval_count": 2984,
+        "interval_us_total": 99589582,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528092356798,
+        "published_us": 2528092390014,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2966,
+          4,
+          6,
+          0,
+          8,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "view change cancels old touch",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138842671481861,
+      "draws": 13,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "deep_sea",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2764800,
+        "draw_us_total": 19178,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5787,
+        "prepares": 13,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 2994,
+        "callback_us_total": 671323,
+        "work_us_total": 166455,
+        "publish_us_total": 504868,
+        "callback_us_max_session": 82146,
+        "interval_count": 2993,
+        "interval_us_total": 99975596,
+        "interval_us_max_session": 138059,
+        "completed_until_us": 2528092742800,
+        "published_us": 2528092776005,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2974,
+          4,
+          6,
+          0,
+          9,
+          0
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "hidden diagnostic click cannot reset source",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138843423475476,
+      "draws": 15,
+      "actions": 7,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "dragon",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 2995200,
+        "draw_us_total": 20130,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5788,
+        "prepares": 14,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 3002,
+        "callback_us_total": 1112376,
+        "work_us_total": 605597,
+        "publish_us_total": 506779,
+        "callback_us_max_session": 372137,
+        "interval_count": 3001,
+        "interval_us_total": 100712965,
+        "interval_us_max_session": 420894,
+        "completed_until_us": 2528093480408,
+        "published_us": 2528093513341,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2980,
+          4,
+          6,
+          0,
+          10,
+          1
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "shared next command",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138843676215477,
+      "draws": 16,
+      "actions": 8,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "night_owl",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 3225600,
+        "draw_us_total": 21964,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5792,
+        "prepares": 15,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 3004,
+        "callback_us_total": 1181690,
+        "work_us_total": 674077,
+        "publish_us_total": 507613,
+        "callback_us_max_session": 372137,
+        "interval_count": 3003,
+        "interval_us_total": 100779771,
+        "interval_us_max_session": 420894,
+        "completed_until_us": 2528093615690,
+        "published_us": 2528093665564,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2982,
+          4,
+          6,
+          0,
+          10,
+          1
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "shared previous command",
+    "state": {
+      "case": "dragon",
+      "paused": true,
+      "ack": 138843818814772,
+      "draws": 16,
+      "actions": 9,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10750,
+        "sequence": 87,
+        "data": "VALID",
+        "has_valid": true,
+        "target": true,
+        "held": false,
+        "x": 29.5,
+        "y": 21.49991,
+        "area": 16,
+        "candidates": 1,
+        "background_c": 22.0,
+        "last_valid_ms": 10750,
+        "last_seen_ms": 10750,
+        "samples": 87
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "dragon",
+      "role": {
+        "mode": "HOLD",
+        "sleeping": false,
+        "waking": false,
+        "phase_ms": 10500,
+        "observations": 69,
+        "notices": 1,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": true,
+        "speed_px_s": 0.00075,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.68427521,
+          "gaze_y": -0.483325988,
+          "blink": 0,
+          "squint": 0.74855119,
+          "pupil_width": 0.0618551187,
+          "tension": 0.462897599
+        }
+      },
+      "render": {
+        "pixels": 3225600,
+        "draw_us_total": 21964,
+        "draw_us_max": 3005,
+        "prepare_us_total": 5793,
+        "prepares": 16,
+        "geometry_cached": true,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 3005,
+        "callback_us_total": 1182161,
+        "work_us_total": 674085,
+        "publish_us_total": 508076,
+        "callback_us_max_session": 372137,
+        "interval_count": 3004,
+        "interval_us_total": 100898353,
+        "interval_us_max_session": 420894,
+        "completed_until_us": 2528093665879,
+        "published_us": 2528093798206,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2982,
+          4,
+          6,
+          0,
+          11,
+          1
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  },
+  {
+    "label": "tap changes artwork without waking sleep",
+    "state": {
+      "case": "sleep",
+      "paused": true,
+      "ack": 138843996209427,
+      "draws": 20,
+      "actions": 10,
+      "error": 0,
+      "eof": false,
+      "result": {
+        "now_ms": 10450,
+        "sequence": 84,
+        "data": "VALID",
+        "has_valid": true,
+        "target": false,
+        "held": false,
+        "x": -1.0,
+        "y": -1.0,
+        "area": 0,
+        "candidates": 0,
+        "background_c": 22.0,
+        "last_valid_ms": 10375,
+        "last_seen_ms": 0,
+        "samples": 84
+      },
+      "sample_step": 2,
+      "flip_x": true,
+      "flip_y": true,
+      "view": "night_owl",
+      "role": {
+        "mode": "IDLE",
+        "sleeping": true,
+        "waking": false,
+        "phase_ms": 0,
+        "observations": 0,
+        "notices": 0,
+        "blinks": 1,
+        "observation_held": false,
+        "stationary": false,
+        "speed_px_s": 0.0,
+        "next_blink_ms": 11943,
+        "pose": {
+          "gaze_x": -0.0500000007,
+          "gaze_y": 0.0350000001,
+          "blink": 1,
+          "squint": 0.689999998,
+          "pupil_width": 0.0719999969,
+          "tension": 0.159999996
+        }
+      },
+      "render": {
+        "pixels": 4147200,
+        "draw_us_total": 29430,
+        "draw_us_max": 3213,
+        "prepare_us_total": 7067,
+        "prepares": 20,
+        "geometry_cached": false,
+        "renderer_heap_bytes": 3929128,
+        "assets_bytes": 651780
+      },
+      "eye_pack": {
+        "detail": 480,
+        "allocated_bytes": 2582280,
+        "assets_bytes": 4508301
+      },
+      "host_timing": {
+        "target_timer_ms": 33,
+        "completed_callbacks": 3012,
+        "callback_us_total": 1288005,
+        "work_us_total": 777937,
+        "publish_us_total": 510068,
+        "callback_us_max_session": 372137,
+        "interval_count": 3011,
+        "interval_us_total": 101387043,
+        "interval_us_max_session": 420894,
+        "completed_until_us": 2528094154305,
+        "published_us": 2528094187273,
+        "interval_bins_le_us": [
+          10000,
+          20000,
+          35000,
+          50000,
+          75000,
+          100000,
+          200000,
+          18446744073709551615
+        ],
+        "interval_bins": [
+          0,
+          0,
+          2983,
+          6,
+          8,
+          0,
+          13,
+          1
+        ]
+      },
+      "surface": {
+        "width_min": 480,
+        "width_max": 480,
+        "height_min": 480,
+        "height_max": 480,
+        "prepare_us_max_session": 4653
+      }
+    }
+  }
+]

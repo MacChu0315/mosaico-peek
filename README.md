@@ -7,16 +7,16 @@ dragon and diagnostics. [Current three-theme integration, commands and limits](d
 Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
 `python3 tools/preview.py --view night_owl --flip-x --flip-y` starts directly.
 New art remains full480 with lossless RGBA sources and blended lids. Current
-candidate builds use `sdkconfig.eye-switch`, version1.0.4-peek-switch (not installed),
-default dragon. **The user-authorized1.0.3-peek-eyes build is now installed on
-30:ed:a0:f4:52:a0, displaying dragon.** [Installation evidence](evidence/eye-ui/device-install/README.md). The dragon-specific measurements and installed/restore descriptions
+candidate builds use `sdkconfig.eye-fast`, version1.0.5-peek-fast (not installed),
+default dragon. **The user-authorized1.0.4-peek-switch build is now installed on
+30:ed:a0:f4:52:a0, displaying dragon.** [Installation evidence](evidence/eye-ui/switching/device-install/README.md). The dragon-specific measurements and installed/restore descriptions
 below are retained baseline context; they do not validate the new art on device.
 
  Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
 
 [Tap/swipe/AI switching and verification](docs/CHARACTER_SWITCHING.md): tap or left
-swipe advances, right swipe goes back, AI single click advances. The device still
-runs the prior1.0.3 image until a separately authorized update.
+swipe advances, right swipe goes back, AI single click advances. Switching is installed in1.0.4. [Full480 rendering optimization](docs/EYE_PERFORMANCE.md)
+is being validated as1.0.5; subsequent same-device firmware updates are authorized.
 
 ## Start
 

@@ -1,7 +1,8 @@
 # Input switching acceptance — candidate1.0.4-peek-switch
 
-No physical device operation this turn. Installed1.0.3 and its previous evidence
-remain unchanged. This candidate is prepared for a separately authorized update.
+This section retains the pre-installation tests. The user subsequently authorized
+and completed installation of the exact1.0.4 artifact; see device-install/.
+Its observed bitmap stutter is measured and addressed under ../performance/.
 
 - Host Debug/Release CTest20/20: retained18 tests plus gesture boundary cases and
   actual BSP adapter callback/count tests. UI lifetime fixture also exercises

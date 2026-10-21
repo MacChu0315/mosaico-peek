@@ -1,0 +1,8 @@
+{
+  "source_commit": "6eff674a",
+  "source_file": "src/eye_pack.c",
+  "retained_file": "tests/reference/eye_pack_v104.c",
+  "sha256": "8df8808bfd4016d1fa6d311d3e3d8d8074561d8444a28e8cdcc2ef712459f2ca",
+  "skill_repository": "https://github.com/MacChu0315/mosaico-dev-skills",
+  "skill_local_and_remote_HEAD": "c5ab8a45fdbd41cb841caef1331e11af2f7d197c"
+}

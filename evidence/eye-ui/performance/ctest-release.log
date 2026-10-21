@@ -1,0 +1,48 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+      Start  1: detector
+ 1/21 Test  #1: detector .........................   Passed    0.01 sec
+      Start  2: device_adapter
+ 2/21 Test  #2: device_adapter ...................   Passed    0.00 sec
+      Start  3: ui_lifetime
+ 3/21 Test  #3: ui_lifetime ......................   Passed    0.09 sec
+      Start  4: event_aging
+ 4/21 Test  #4: event_aging ......................   Passed    0.00 sec
+      Start  5: dragon_behavior
+ 5/21 Test  #5: dragon_behavior ..................   Passed    0.01 sec
+      Start  6: dragon_pixels
+ 6/21 Test  #6: dragon_pixels ....................   Passed    0.06 sec
+      Start  7: dragon_receive_timing
+ 7/21 Test  #7: dragon_receive_timing ............   Passed    0.02 sec
+      Start  8: asset_build_readonly
+ 8/21 Test  #8: asset_build_readonly .............   Passed    4.38 sec
+      Start  9: live_render_isolation
+ 9/21 Test  #9: live_render_isolation ............   Passed    0.00 sec
+      Start 10: render_integer_equivalence
+10/21 Test #10: render_integer_equivalence .......   Passed    0.01 sec
+      Start 11: render_fixed_cache
+11/21 Test #11: render_fixed_cache ...............   Passed    0.51 sec
+      Start 12: render_sampling
+12/21 Test #12: render_sampling ..................   Passed    0.05 sec
+      Start 13: dragon_idle_sleep
+13/21 Test #13: dragon_idle_sleep ................   Passed    0.00 sec
+      Start 14: render_prepared_geometry
+14/21 Test #14: render_prepared_geometry .........   Passed    0.24 sec
+      Start 15: device_open_frame_telemetry
+15/21 Test #15: device_open_frame_telemetry ......   Passed    0.00 sec
+      Start 16: eye_pack_layers
+16/21 Test #16: eye_pack_layers ..................   Passed    0.11 sec
+      Start 17: eye_pack_source_readonly
+17/21 Test #17: eye_pack_source_readonly .........   Passed    2.28 sec
+      Start 18: eye_pack_allocation_failure
+18/21 Test #18: eye_pack_allocation_failure ......   Passed    0.01 sec
+      Start 19: character_gesture_sequences
+19/21 Test #19: character_gesture_sequences ......   Passed    0.00 sec
+      Start 20: device_ai_button_handoff
+20/21 Test #20: device_ai_button_handoff .........   Passed    0.00 sec
+      Start 21: eye_pack_exact_reference
+21/21 Test #21: eye_pack_exact_reference .........   Passed    2.99 sec
+
+100% tests passed, 0 tests failed out of 21
+
+Total Test time (real) =  10.78 sec

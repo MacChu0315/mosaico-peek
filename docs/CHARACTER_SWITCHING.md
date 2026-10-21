@@ -1,4 +1,4 @@
-# Character switching —1.0.4-peek-switch (not installed)
+# Character switching — introduced and installed in1.0.4-peek-switch
 
 Four artworks cycle in this order: dragon → night_owl → deep_sea → mechanical
 → dragon. The diagnostic screen is a development tool, outside this cycle.
@@ -73,7 +73,7 @@ python3 tools/build_idf.py
 python3 tools/report_eye_budget.py --output-dir evidence/eye-ui/switching
 ```
 
-Current candidate version1.0.4-peek-switch uses isolated
+The installed switching artifact version1.0.4-peek-switch used isolated
 `projects/peek/build/sdkconfig.eye-switch`, preserving installed1.0.3 config and
 its exact restore bundle at`evidence/eye-ui/device-install/eye-trio.irisfw`.
 All dependency revisions and partition layout stay pinned. Evidence is in
@@ -83,7 +83,11 @@ partial-init cleanup and concurrent atomic count handoff. Native checks cover
 both wrap directions and exact pixels of all four selected artworks, with
 unchanged detector/role/time/seed/mapping; original diagnostic controls rerun.
 
-Physical touch/AI response and new-theme device rendering remain unverified.
-This local change is not on the device yet. The earlier single installation
-permission was already used for1.0.3; installing this candidate requires a new
-explicit device-write authorization. No device operations were made this turn.
+Version1.0.4 is installed; the user reports the three new artworks stutter.
+Actual device mechanical rendering and sustained input are measured in
+[performance work](EYE_PERFORMANCE.md), which preserves this input implementation.
+The standard pointer/v1 remote RPC is unregistered; failed remote-gesture
+attempts are retained in installation evidence and do not count as input tests.
+Exact physical finger/AI electrical-path acceptance remains separately scoped.
+The user authorized future same-project/same-device firmware updates without
+repeated confirmation; see AGENTS/HANDOFF. Current build candidate is1.0.5.

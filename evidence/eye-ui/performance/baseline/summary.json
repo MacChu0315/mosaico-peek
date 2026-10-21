@@ -1,0 +1,40 @@
+{
+  "version": "1.0.4-peek-switch",
+  "ELF_sha256": "7e40991933f7d50794ef0d82f97de0dd4a09fe0b18069526e625d8a1e2dd0f0e",
+  "boot_id": "7741114184892852755",
+  "views": [
+    "mechanical"
+  ],
+  "samples": 32,
+  "groups": [
+    {
+      "view": "mechanical",
+      "condition": "active-or-transition",
+      "ms": 35040,
+      "frames": 70,
+      "draw_us": 31558896,
+      "raster_us": 31663771,
+      "submit_us": 2402210,
+      "prepare_us": 344939,
+      "prepares": 70,
+      "samples": 274,
+      "faults": 0,
+      "open_frames": 66,
+      "open_ms": 32850,
+      "open_raster_us": 29855225,
+      "open_submit_us": 2267990,
+      "engine_hz": 1.9977168949771689,
+      "raster_ms_frame": 452.3395857142857,
+      "submit_ms_frame": 34.31728571428572,
+      "prepare_ms_mean": 4.9277,
+      "active_open_hz": 2.009132420091324
+    }
+  ],
+  "heap": {
+    "free_internal": 237179,
+    "min_free_internal": 196064,
+    "free_spiram": 2058852,
+    "min_free_spiram": 1591580
+  },
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+}

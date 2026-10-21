@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/peek_switch_device_verify.py", line 59, in <module>
+    current=order[(order.index(current)-1)%4];gesture('right',current)
+  File "/tmp/peek_switch_device_verify.py", line 44, in gesture
+    assert process.returncode==0,process.stderr or process.stdout
+AssertionError: esp_iris.py: error: HTTP 409: {"code": "device_request_failed", "message": "device error 0x00000105"}
+

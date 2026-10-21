@@ -1,0 +1,1 @@
+PASS 384 full480 frames bit-identical; exact fractional gaze/lids, bounds, opaque edges, tiles. Host draw CPU fast=2.866s reference=9.541s (not device FPS)

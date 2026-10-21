@@ -1,14 +1,20 @@
-# Peek handoff — pending input switching / installed eye UI (2026-10-21)
+# Peek handoff — installed switching / bitmap performance work (2026-10-21)
 
-Local candidate1.0.4-peek-switch (sourcef77ccb2) adds tap/left-swipe/AI-single-click next and
-right-swipe previous across the four artworks. Shared pointer release handling
-prevents swipe+click duplication; AI callback only counts events for the UI
-owner. [Implementation and acceptance](CHARACTER_SWITCHING.md). Candidate uses
-isolatedsdkconfig.eye-switch and has not been installed. The device below
-continues running the exact authorized1.0.3 artifact.
+Installed1.0.4-peek-switch (sourcef77ccb2) adds tap/left-swipe/AI-single-click
+next and right-swipe previous. Official operation5035ab3d-9288-4286-bf1f-b4bc77ac57c4
+succeeded, healthy/validated; Boot ID7741114184892852755; ELF SHA
+7e40991933f7d50794ef0d82f97de0dd4a09fe0b18069526e625d8a1e2dd0f0e.
+[Installation record](../evidence/eye-ui/switching/device-install/README.md).
+The user explicitly authorized subsequent firmware updates for this project on
+this same board without repeated approval; AGENTS preserves the exact scope.
 
-The user subsequently authorized burning ("允许烧录"). The exact reviewed
-1.0.3-peek-eyes artifact, source9da7987, is now installed on30:ed:a0:f4:52:a0
+The user reports severe stutter in the new artworks. Mechanical measured2.0
+engine frames/s,452ms raster/frame, while thermal input stayed7.8Hz/zero faults.
+[Full480 exact-output optimization](EYE_PERFORMANCE.md) is being prepared as
+1.0.5-peek-fast; native/physical evidence remains separately labelled.
+
+The user subsequently authorized burning ("允许烧录"). The prior reviewed
+1.0.3-peek-eyes artifact, source9da7987, was installed on30:ed:a0:f4:52:a0
 (Device ID4553502d49524953010030eda0f452a0), default dragon. Official operation
 7e197546-0fab-4d38-9f77-15947a70594c succeeded; healthy/validated, new Boot ID
 18113205708322532055, ELF SHA
@@ -26,9 +32,8 @@ source-owned C behavior and native GSP Canvas. Dragon art, detector parameters,
 acquisition-before-mailbox, snapshot ownership and both physical mapping flips
 are preserved. New artwork stays full480, lossless RGBA, blended adjacent lids.
 Host `--view` / `control.py view` selects each; firmware Kconfig selects startup.
-The installed1.0.3-peek-eyes has no physical switching. The new uninstalled
-1.0.4-peek-switch candidate implements it, defaults to dragon and changes no
-partition layout.
+The prior1.0.3 had no physical switching. Installed1.0.4 implements it, defaults
+to dragon and changes no partition layout.
 
 [Commands, source provenance, implementation and limits](EYE_UI.md).
 [New verification/evidence](../evidence/eye-ui/README.md).
@@ -39,8 +44,9 @@ mode mismatches. Original native diagnostics and dragon are checked separately.
 Target image fits existingota_0; the retained-factory capacity warning remains.
 New ROM decode execution, physical appearance/direction, full-screen FPS,
 allocator peaks/largest blocks and actual PSRAM bandwidth remain unverified.
-The single authorized installation is complete. No further installation, restart,
-Recovery, push or merge is authorized by that completed operation.
+Subsequent same-project/same-device firmware updates are authorized by the user
+on2026-10-21. Other devices, ROM recover/whole-flash erase and remote writes are
+not included.
 
 The following section preserves the prior installed-device handoff verbatim.
 

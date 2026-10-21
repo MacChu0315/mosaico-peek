@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/tmp/peek_switch_device_verify.py", line 54, in <module>
+    assert state('initial')['view']=='dragon';observe('dragon')
+AssertionError

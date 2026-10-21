@@ -1,7 +1,7 @@
 {
   "source_revision": "f77ccb2151e33547d5a0f56d0b52eda0d8abc221",
   "version": "1.0.4-peek-switch",
-  "installed": false,
+  "installed": true,
   "bundle": {
     "path": "evidence/eye-ui/switching/eye-switch.irisfw",
     "bytes": 5891862,
@@ -27,5 +27,6 @@
   },
   "target_device_if_authorized": "4553502d49524953010030eda0f452a0",
   "existing_device_version": "1.0.3-peek-eyes",
-  "partition_layout_unchanged": true
+  "partition_layout_unchanged": true,
+  "installation_record": "device-install/install-result.json"
 }

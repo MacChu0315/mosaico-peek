@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Real GSP pointer routing; the native app remains driven by temperature arrays."""
-import hashlib,io,json,subprocess,sys,time
+import hashlib,io,json,os,subprocess,sys,time
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/eye-ui/switching';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui/switching'));OUT.mkdir(parents=True,exist_ok=True)
 THEMES=['dragon','night_owl','deep_sea','mechanical']
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[]
