@@ -42,3 +42,9 @@ waits for its click-sequence decision; rapid double click and long press do not
 switch. Multi-contact gestures are not an application feature. Lifecycle cancel
 means a view/epoch change or outside input; the observer API has no separate
 hardware touch-cancel event. No physical FPS claim is made.
+
+Final candidate is built from committed sourcef77ccb2. `candidate.json` and
+`bundle-inspect.json` identify `eye-switch.irisfw`, version1.0.4-peek-switch,
+unchanged partition layout and matching app/UI image hashes. It has not been
+submitted to a device. The source commit includes tests/evidence; the following
+delivery commit only updates exact committed-build/package records.

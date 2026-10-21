@@ -1,12 +1,12 @@
 {
-  "source_revision": "0a06ada709a48a23363205ba37447e2ba5de7c9d",
+  "source_revision": "f77ccb2151e33547d5a0f56d0b52eda0d8abc221",
   "version": "1.0.4-peek-switch",
   "sdkconfig": "sdkconfig.eye-switch",
   "flash": {
     "images": {
       "peek.bin": {
         "bytes": 6513136,
-        "sha256": "5c3fde6fc24383ad297e2f1e2361bb614ca12ea8d674f6eea7a8a08aa5a92874"
+        "sha256": "1b5411555b8d2c1f794b38a58a21901d0edbf93579df21af5df8b06413e50240"
       },
       "ui_apps.bin": {
         "bytes": 94480,
@@ -14,7 +14,7 @@
       },
       "peek.elf": {
         "bytes": 20400728,
-        "sha256": "61324a315324e25e23e4239886ffd2b2d9e8170981f2901988e25bf8a84b6539"
+        "sha256": "7e40991933f7d50794ef0d82f97de0dd4a09fe0b18069526e625d8a1e2dd0f0e"
       },
       "peek.map": {
         "bytes": 7221614,

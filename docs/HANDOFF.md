@@ -1,6 +1,6 @@
 # Peek handoff — pending input switching / installed eye UI (2026-10-21)
 
-Local candidate1.0.4-peek-switch adds tap/left-swipe/AI-single-click next and
+Local candidate1.0.4-peek-switch (sourcef77ccb2) adds tap/left-swipe/AI-single-click next and
 right-swipe previous across the four artworks. Shared pointer release handling
 prevents swipe+click duplication; AI callback only counts events for the UI
 owner. [Implementation and acceptance](CHARACTER_SWITCHING.md). Candidate uses

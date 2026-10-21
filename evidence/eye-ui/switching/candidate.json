@@ -1,0 +1,31 @@
+{
+  "source_revision": "f77ccb2151e33547d5a0f56d0b52eda0d8abc221",
+  "version": "1.0.4-peek-switch",
+  "installed": false,
+  "bundle": {
+    "path": "evidence/eye-ui/switching/eye-switch.irisfw",
+    "bytes": 5891862,
+    "sha256": "327a8b0a2239a70f0a061e8fcee47eb746a6112169264c609585ee0daaf7c3bf"
+  },
+  "images": {
+    "peek.bin": {
+      "bytes": 6513136,
+      "sha256": "1b5411555b8d2c1f794b38a58a21901d0edbf93579df21af5df8b06413e50240"
+    },
+    "ui_apps.bin": {
+      "bytes": 94480,
+      "sha256": "97d48a61cfbe44182b6794e6d0a74dc6a8a5406e0f8670dbd58c081cab6bc8e7"
+    },
+    "peek.elf": {
+      "bytes": 20400728,
+      "sha256": "7e40991933f7d50794ef0d82f97de0dd4a09fe0b18069526e625d8a1e2dd0f0e"
+    },
+    "peek.map": {
+      "bytes": 7221614,
+      "sha256": "9b6cf11eca36cf07c804075b266b948053fce9e9526f7627fc668620527d7182"
+    }
+  },
+  "target_device_if_authorized": "4553502d49524953010030eda0f452a0",
+  "existing_device_version": "1.0.3-peek-eyes",
+  "partition_layout_unchanged": true
+}
