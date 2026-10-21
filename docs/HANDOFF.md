@@ -1,4 +1,11 @@
-# Peek handoff — three new native eye views (2026-10-21)
+# Peek handoff — pending input switching / installed eye UI (2026-10-21)
+
+Local candidate1.0.4-peek-switch adds tap/left-swipe/AI-single-click next and
+right-swipe previous across the four artworks. Shared pointer release handling
+prevents swipe+click duplication; AI callback only counts events for the UI
+owner. [Implementation and acceptance](CHARACTER_SWITCHING.md). Candidate uses
+isolatedsdkconfig.eye-switch and has not been installed. The device below
+continues running the exact authorized1.0.3 artifact.
 
 The user subsequently authorized burning ("允许烧录"). The exact reviewed
 1.0.3-peek-eyes artifact, source9da7987, is now installed on30:ed:a0:f4:52:a0
@@ -19,8 +26,9 @@ source-owned C behavior and native GSP Canvas. Dragon art, detector parameters,
 acquisition-before-mailbox, snapshot ownership and both physical mapping flips
 are preserved. New artwork stays full480, lossless RGBA, blended adjacent lids.
 Host `--view` / `control.py view` selects each; firmware Kconfig selects startup.
-Physical swipe/tap/AI selection remains unimplemented. Current new firmware:
-1.0.3-peek-eyes, isolatedsdkconfig.eye-trio, default dragon, no partition change.
+The installed1.0.3-peek-eyes has no physical switching. The new uninstalled
+1.0.4-peek-switch candidate implements it, defaults to dragon and changes no
+partition layout.
 
 [Commands, source provenance, implementation and limits](EYE_UI.md).
 [New verification/evidence](../evidence/eye-ui/README.md).

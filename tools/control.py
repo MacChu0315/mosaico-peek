@@ -19,6 +19,6 @@ def command(text):
         time.sleep(.01)
     raise TimeoutError(text)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('command',nargs='+',help='case NAME/0..9 | view dragon/night_owl/deep_sea/mechanical/diagnostic | pause | play | step | replay | advance MS | draw | status');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('command',nargs='+',help='case NAME/0..9 | view dragon/night_owl/deep_sea/mechanical/diagnostic | next | previous | pause | play | step | replay | advance MS | draw | status');a=p.parse_args()
     print(json.dumps(state() if a.command==['status'] else command(' '.join(a.command)),indent=2))
 if __name__=='__main__':main()

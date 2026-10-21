@@ -7,6 +7,7 @@
 #include "esp_log.h"
 #include "device_thermal.h"
 #include "device_status.h"
+#include "device_buttons.h"
 #include "iris_screen_mirror.h"
 #include "iris_ota_support.h"
 #include "nvs_flash.h"
@@ -50,6 +51,7 @@ void app_main(void)
     ESP_ERROR_CHECK(iris_screen_mirror_attach(ui));
     ESP_ERROR_CHECK(device_status_start());
     ESP_ERROR_CHECK(device_thermal_start(ui));
+    ESP_ERROR_CHECK(device_buttons_start());
 
     ESP_LOGI(TAG, "Live dragon GSP ready at %dx%d RGB565",
              BSP_LCD_H_RES, BSP_LCD_V_RES);

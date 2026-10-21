@@ -26,3 +26,6 @@ esp_gsp_err_t esp_gsp_on_event(esp_gsp_handle_t,esp_gsp_event_cb_t,void *);
 
 typedef struct {int16_t x1,y1,x2,y2;} gsp_rect_t;
 esp_gsp_err_t esp_gsp_canvas_invalidate_dirty(esp_gsp_handle_t,uint16_t,gsp_rect_t);
+
+typedef void (*esp_gsp_pointer_observer_cb_t)(esp_gsp_handle_t,int32_t,int32_t,bool,void *);
+esp_gsp_err_t esp_gsp_set_pointer_observer(esp_gsp_handle_t,esp_gsp_pointer_observer_cb_t,void *);

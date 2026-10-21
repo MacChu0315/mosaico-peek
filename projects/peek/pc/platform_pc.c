@@ -106,6 +106,9 @@ static void tick(esp_gsp_handle_t ui,void *ctx)
             else {unsigned character=!strcmp(which,"night_owl")?1:!strcmp(which,"deep_sea")?2:!strcmp(which,"mechanical")?3:0;
                 esp_gsp_err_t rc=!strcmp(which,"diagnostic")?peek_ui_set_view(&app.view,false):peek_ui_set_character(&app.view,character);if(rc!=ESP_GSP_OK)app.view.error=rc;peek_ui_refresh(&app.view,app.logical_ms);}
         }
+        else if(!strcmp(verb,"next")||!strcmp(verb,"previous")){
+            esp_gsp_err_t rc=peek_ui_cycle_character(&app.view,!strcmp(verb,"next")?1:-1);if(rc!=ESP_GSP_OK)app.view.error=rc;
+        }
         else if(!strcmp(verb,"draw")){peek_ui_refresh(&app.view,app.logical_ms);}
         else if(!strcmp(verb,"quit")){app.view.paused=true;raise(SIGTERM);}
         else accepted=false;

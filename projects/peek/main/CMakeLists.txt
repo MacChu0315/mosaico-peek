@@ -1,7 +1,7 @@
 include("../../../cmake/dragon_assets.cmake")
 include("../../../cmake/eye_pack.cmake")
 idf_component_register(
-    SRCS "../../../src/eye_pack.c" "../../../src/peek_live.c" "device_status.c" "../../../src/dragon.c" "../../../src/dragon_render.c" "main.c" "device_thermal.c" "../../../src/peek.c" "../../../src/peek_ui.c" "board_display.c"
+    SRCS "device_buttons.c" "../../../src/peek_input.c" "../../../src/eye_pack.c" "../../../src/peek_live.c" "device_status.c" "../../../src/dragon.c" "../../../src/dragon_render.c" "main.c" "device_thermal.c" "../../../src/peek.c" "../../../src/peek_ui.c" "board_display.c"
     INCLUDE_DIRS "." "../../../src" "${PEEK_GENERATED_DIR}" "${PEEK_EYE_GENERATED_DIR}"
     REQUIRES esp_iris esp-mosaico-bsp esp_mosaico_app_recovery
         mosaico_module_thermal mosaico_module_mgr esp_mosaico_gsp_bundle esp_mosaico_gsp_iris freertos nvs_flash

@@ -65,6 +65,7 @@ void peek_ui_time(peek_ui_t *s,uint64_t now)
 }
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
 {
+    if(!dragon)peek_input_cancel(&s->input);
     if(dragon && s->character){
         if(!s->eye_pack){s->eye_pack=eye_pack_create();if(!s->eye_pack)return ESP_GSP_ERR_NO_MEM;}
         if(!eye_pack_select(s->eye_pack,s->character-1)||!eye_pack_prepare(s->eye_pack,&s->dragon.pose))return ESP_GSP_FAIL;
@@ -91,7 +92,21 @@ esp_gsp_err_t peek_ui_set_character(peek_ui_t *s,unsigned character){
     unsigned previous=s->character;s->character=character;
     esp_gsp_err_t rc=peek_ui_set_view(s,true);
     if(rc!=ESP_GSP_OK){s->character=previous;return rc;}
-    s->dragon_prepared=false;return ESP_GSP_OK;
+    s->dragon_prepared=false;peek_input_cancel(&s->input);return ESP_GSP_OK;
+}
+esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){
+    unsigned next=(unsigned)((int)s->character+4+delta%4)%4;
+    if(!delta)return ESP_GSP_OK;
+    esp_gsp_err_t rc=peek_ui_set_character(s,next);
+    if(rc!=ESP_GSP_OK){remember(s,rc);return rc;}
+    s->actions++;
+    /* Paused Host input still paints, using exactly the existing logical time. */
+    peek_ui_refresh(s,s->detector.now_ms);return s->error;
+}
+static void pointer(esp_gsp_handle_t ui,int32_t x,int32_t y,bool pressed,void *ctx){
+    (void)ui;peek_ui_t *s=ctx;
+    int delta=peek_input_update(&s->input,x,y,pressed,s->dragon_view,real_us()/1000);
+    if(delta)remember(s,peek_ui_cycle_character(s,delta));
 }
 void peek_ui_release(peek_ui_t *s){dragon_renderer_destroy(s->renderer);s->renderer=NULL;eye_pack_destroy(s->eye_pack);s->eye_pack=NULL;}
 void peek_ui_refresh(peek_ui_t *s,uint64_t now)
@@ -125,7 +140,7 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
 }
 void peek_ui_reset(peek_ui_t *s,const char *source)
 {
-    peek_reset(&s->detector);dragon_reset(&s->dragon,90640);s->dragon_prepared=false;s->has_frame=false;s->source=source;
+    peek_input_cancel(&s->input);peek_reset(&s->detector);dragon_reset(&s->dragon,90640);s->dragon_prepared=false;s->has_frame=false;s->source=source;
 }
 peek_submit_t peek_ui_submit(peek_ui_t *s,const peek_frame_t *f,uint64_t now)
 {
@@ -137,6 +152,7 @@ peek_submit_t peek_ui_submit(peek_ui_t *s,const peek_frame_t *f,uint64_t now)
 static void event(esp_gsp_handle_t ui,const esp_gsp_event_t *e,void *ctx)
 {
     (void)ui;peek_ui_t *s=ctx;peek_action_t action;
+    if(s->dragon_view)return; /* Ignore queued diagnostic clicks after a view change. */
     if(gsp_peek_event_is_case(e))action=PEEK_ACTION_CASE;
     else if(gsp_peek_event_is_play(e))action=PEEK_ACTION_PLAY;
     else if(gsp_peek_event_is_restart(e))action=PEEK_ACTION_RESTART;
@@ -154,11 +170,18 @@ esp_gsp_err_t peek_ui_init(peek_ui_t *s,esp_gsp_handle_t ui,peek_control_fn cont
     rc=esp_gsp_on_event(ui,event,s);
     if(rc!=ESP_GSP_OK){remember(s,rc);return rc;}
     s->event_registered=true;
+    rc=esp_gsp_set_pointer_observer(ui,pointer,s);
+    if(rc!=ESP_GSP_OK){remember(s,rc);return rc;}
+    s->pointer_registered=true;
     peek_ui_refresh(s,0);return s->error;
 }
 esp_gsp_err_t peek_ui_deinit(peek_ui_t *s)
 {
     esp_gsp_err_t result=ESP_GSP_OK,rc;
+    if(s->pointer_registered){
+        rc=esp_gsp_set_pointer_observer(s->ui,NULL,NULL);
+        if(rc==ESP_GSP_OK){s->pointer_registered=false;peek_input_cancel(&s->input);}else result=rc;
+    }
     if(s->event_registered){
         rc=esp_gsp_on_event(s->ui,NULL,NULL);
         if(rc==ESP_GSP_OK)s->event_registered=false;else result=rc;

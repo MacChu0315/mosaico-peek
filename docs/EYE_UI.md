@@ -37,18 +37,16 @@ identity together, preserving selection and mapping. Pause freezes logical time.
 No browser animation is used by the native preview.
 
 Firmware uses the same `eye_pack.c`, `peek_ui.c`, `dragon.c`, `peek.c`.
-`python3 tools/build_idf.py` builds isolated `build/sdkconfig.eye-trio`, version
-`1.0.3-peek-eyes`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
+`python3 tools/build_idf.py` builds isolated `build/sdkconfig.eye-switch`, version
+`1.0.4-peek-switch`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
 night owl/deep sea/mechanical at startup using Kconfig. The baseline
 `sdkconfig.dragon240-sleep` is separate. The wrapper asserts the default-dragon
 review configuration; a deliberately configured alternative needs its own
 explicit config assertion. All three renderers/resources are linked in this
-review firmware. **No physical touch/AI-key switching was added**; the pack's
-proposed swipe/click/AI semantics are reference suggestions, not an existing
-BSP input contract. Host selection is implemented and native-tested. The reviewed
-default-dragon artifact is now installed through the official System Update path.
-Installation/startup/live-dragon observations do not validate the three new themes
-on hardware: their runtime selection and ROM decode remain untested.
+review firmware. The current uninstalled candidate adds [touch/AI switching](CHARACTER_SWITCHING.md).
+The previously installed1.0.3 artifact remains default dragon without this input
+support. Installation/startup/live-dragon observations do not validate the three
+new themes on hardware: their runtime selection and ROM decode remain untested.
 
 ## Retained sources / reproducibility
 

@@ -1,0 +1,10 @@
+{
+  "src/peek_input.c": "986c52a2428ebe1b4fadaa9cc00cf63fbcd01d650b569892d8d5c93174eab2cc",
+  "src/peek_input.h": "271a553b5ac3496f6877c4c4e8509735473b33e7089f16ec8492010af3ab2e6e",
+  "src/peek_ui.c": "b48fbce514e59b12b621bbc2a4fd8193e3c40e38626581f777aecaa962a5aa34",
+  "src/peek_ui.h": "1165ca6d33ff91359c01dd151e6968c030cc29c3d4ef86c577a73903a10e4d43",
+  "projects/peek/main/device_buttons.c": "38a8078f973bd9b1dcb2e6e8d7dbfc7e6f5a6fccdde889eeb838f6440965b10a",
+  "projects/peek/main/device_buttons.h": "8351eceab03bd8e9749f45f0ad711dcddfb5de4ea9dd53ef3365582c18e8fff2",
+  "projects/peek/main/device_thermal.c": "8a757f885c9b9ac10b95bb0da8ff2097b4eb94e61097c9dc01141b0e08b95820",
+  "projects/peek/ui/main.json": "a50b690e86d98678afd926674713f6ee91c94e8dcdf9bde93b5ea7edf7da90f7"
+}

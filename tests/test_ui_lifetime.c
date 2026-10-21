@@ -6,6 +6,12 @@
 static peek_ui_t view;
 static bool fail_canvas,fail_event,fail_stop,fail_unregister,fail_text;
 static unsigned stops,unregisters;
+static esp_gsp_pointer_observer_cb_t pointer_callback;
+static bool fail_pointer,fail_pointer_stop;
+esp_gsp_err_t esp_gsp_set_pointer_observer(esp_gsp_handle_t ui,esp_gsp_pointer_observer_cb_t cb,void *ctx){
+    (void)ui;(void)ctx;if((cb&&fail_pointer)||(!cb&&fail_pointer_stop))return ESP_GSP_FAIL;
+    pointer_callback=cb;return ESP_GSP_OK;
+}
 esp_gsp_err_t mock_text(esp_gsp_handle_t ui,const char *text){(void)ui;(void)text;return fail_text?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_set_draw_cb(esp_gsp_handle_t ui,uint16_t bind,esp_gsp_canvas_draw_cb_t cb,void *ctx){(void)ui;(void)bind;(void)cb;assert(ctx==&view);return fail_canvas?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_invalidate(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(void)bind;return ESP_GSP_OK;}
@@ -13,7 +19,7 @@ esp_gsp_err_t esp_gsp_canvas_stop(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(v
 esp_gsp_err_t esp_gsp_on_event(esp_gsp_handle_t ui,esp_gsp_event_cb_t cb,void *ctx){(void)ui;(void)ctx;if(!cb){unregisters++;return fail_unregister?ESP_GSP_FAIL:ESP_GSP_OK;}return fail_event?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t mock_visible(esp_gsp_handle_t ui,bool visible){(void)ui;(void)visible;return ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_invalidate_dirty(esp_gsp_handle_t ui,uint16_t bind,gsp_rect_t rect){(void)rect;return esp_gsp_canvas_invalidate(ui,bind);}
-static void reset(void){fail_canvas=fail_event=fail_stop=fail_unregister=fail_text=false;stops=unregisters=0;}
+static void reset(void){fail_canvas=fail_event=fail_stop=fail_unregister=fail_text=false;stops=unregisters=0;fail_pointer=fail_pointer_stop=false;}
 int main(void){
     reset();fail_canvas=true;assert(peek_ui_init(&view,(void *)1,NULL,NULL)!=ESP_GSP_OK);
     assert(peek_ui_deinit(&view)==ESP_GSP_OK && !stops && !unregisters);
@@ -51,5 +57,21 @@ int main(void){
     }
     assert(peek_ui_set_character(&view,4)==ESP_GSP_ERR_INVALID_ARG && view.character==3);
     assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);assert(!view.eye_pack && !view.renderer);
+    reset();fail_pointer=true;assert(peek_ui_init(&view,(void *)1,NULL,NULL)!=ESP_GSP_OK);
+    assert(!view.pointer_registered && view.event_registered);assert(peek_ui_deinit(&view)==ESP_GSP_OK);
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);assert(pointer_callback);
+    assert(peek_ui_set_character(&view,0)==ESP_GSP_OK);
+    before=view.dragon;detector=view.detector;
+    pointer_callback(view.ui,300,200,true,&view);pointer_callback(view.ui,100,200,true,&view);
+    assert(view.character==0);pointer_callback(view.ui,100,200,false,&view);assert(view.character==1);
+    pointer_callback(view.ui,100,200,false,&view);assert(view.character==1);
+    assert(!memcmp(&before,&view.dragon,sizeof(before)) && !memcmp(&detector,&view.detector,sizeof(detector)));
+    pointer_callback(view.ui,200,200,true,&view);assert(peek_ui_set_character(&view,3)==ESP_GSP_OK);
+    pointer_callback(view.ui,200,200,false,&view);assert(view.character==3);
+    assert(peek_ui_cycle_character(&view,1)==ESP_GSP_OK && view.character==0);
+    assert(peek_ui_cycle_character(&view,-1)==ESP_GSP_OK && view.character==3);
+    fail_pointer_stop=true;assert(peek_ui_deinit(&view)!=ESP_GSP_OK && view.pointer_registered);
+    fail_pointer_stop=false;assert(peek_ui_deinit(&view)==ESP_GSP_OK && !view.pointer_registered);
+    peek_ui_release(&view);
     puts("PASS actual UI: partial registration, teardown errors retain ownership, retry detaches");
 }

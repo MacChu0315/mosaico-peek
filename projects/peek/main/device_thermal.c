@@ -14,6 +14,7 @@
 #ifdef ESP_PLATFORM
 #include "sdkconfig.h"
 #include "device_status.h"
+#include "device_buttons.h"
 #endif
 /* Sensor task owns driver, detector and role observation history. Render task
  * owns its independent view/canvas state. Latest-only mailbox drops display
@@ -85,6 +86,12 @@ static void refresh(esp_gsp_handle_t ui,void *ctx)
         app->view.detector=snapshot->detector;app->view.dragon=snapshot->dragon;
         app->view.displayed=snapshot->displayed;app->view.has_frame=snapshot->has_frame;
     }
+#ifdef ESP_PLATFORM
+    uint32_t presses=device_buttons_take_presses();
+    /* Preserve the net result of all presses while avoiding repeated decode
+     * during one display step. The sensor owner keeps processing independently. */
+    if(presses){esp_gsp_err_t rc=peek_ui_cycle_character(&app->view,(int)(presses%4));if(rc!=ESP_GSP_OK)app->view.error=rc;}
+#endif
     peek_ui_refresh(&app->view,now);
 #ifdef ESP_PLATFORM
     device_status_publish(&app->view,now);

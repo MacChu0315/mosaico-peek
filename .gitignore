@@ -19,3 +19,4 @@ __pycache__/
 
 /firmware-local/
 /evidence/eye-ui/baseline-native/motion/
+/evidence/eye-ui/switching/diagnostic-regression/motion/
