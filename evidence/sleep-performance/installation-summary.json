@@ -1,0 +1,21 @@
+{
+  "operation_id": "663a7636-cf9b-47c1-818a-79daa08f7741",
+  "version": "1.0.2-peek-sleep",
+  "source_commit": "f8845c5c03794b97bb6c146b87a36d8327092519",
+  "previous_boot": "408941243312734824",
+  "vibe_boot": "13794236171265812015",
+  "normal_boot": "3345998236476284272",
+  "healthy": true,
+  "validated": true,
+  "layout_sha256": "4f8786d12001684a3c02385f31ef167247827bd73b744801494a8c5851bc7231",
+  "bootloader_sha256": "d3cc31fc9e8f3df9c8ca3beece23fbcb97019f59cb87933266f8ddc47efadbcc",
+  "vibe_updated": false,
+  "application": {
+    "actual": "23bb5c540f2f480614a0771e939e4d30429bc1f74853a695f396d6543b34eebb",
+    "actual_field": "firmware_sha256",
+    "expected": "23bb5c540f2f480614a0771e939e4d30429bc1f74853a695f396d6543b34eebb",
+    "expected_field": "elf_sha256",
+    "mode": "elf_sha256"
+  },
+  "bundle_sha256": "aa0b58c6a98f386741e3f76dd15063a5a5a746f685fee1a09312b57e1784af62"
+}

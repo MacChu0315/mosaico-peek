@@ -5,17 +5,17 @@
   "device_core_mismatches": 0,
   "native_core_mismatches": 0,
   "native_role_mode_mismatches": 0,
-  "logical_end_ms": 68160,
-  "wall_s": 68.53121871873736,
+  "logical_end_ms": 68156,
+  "wall_s": 68.53644966008142,
   "original_successful_capture_span_s": 65.074,
   "pause_redraw_pure": true,
   "replay_consistent": true,
   "hold_observed": false,
   "note": "Unlabelled scene. No fresh quiet interval meets production HOLD threshold; do not infer physical stillness. Encoded4fps is screenshot sampling, not screen FPS.",
+  "native_source_commit": "f8845c5c03794b97bb6c146b87a36d8327092519",
   "gaze_mapping": {
     "flip_x": true,
     "flip_y": true
   },
-  "sample_step": 2,
-  "native_source_commit": "ba98632f38233c2af20009a3a088b5328316f35d"
+  "sample_step": 2
 }

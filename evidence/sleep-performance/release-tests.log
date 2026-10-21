@@ -1,0 +1,36 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+      Start  1: detector
+ 1/15 Test  #1: detector .........................   Passed    0.01 sec
+      Start  2: device_adapter
+ 2/15 Test  #2: device_adapter ...................   Passed    0.01 sec
+      Start  3: ui_lifetime
+ 3/15 Test  #3: ui_lifetime ......................   Passed    0.03 sec
+      Start  4: event_aging
+ 4/15 Test  #4: event_aging ......................   Passed    0.00 sec
+      Start  5: dragon_behavior
+ 5/15 Test  #5: dragon_behavior ..................   Passed    0.01 sec
+      Start  6: dragon_pixels
+ 6/15 Test  #6: dragon_pixels ....................   Passed    0.07 sec
+      Start  7: dragon_receive_timing
+ 7/15 Test  #7: dragon_receive_timing ............   Passed    0.02 sec
+      Start  8: asset_build_readonly
+ 8/15 Test  #8: asset_build_readonly .............   Passed    6.60 sec
+      Start  9: live_render_isolation
+ 9/15 Test  #9: live_render_isolation ............   Passed    0.00 sec
+      Start 10: render_integer_equivalence
+10/15 Test #10: render_integer_equivalence .......   Passed    0.01 sec
+      Start 11: render_fixed_cache
+11/15 Test #11: render_fixed_cache ...............   Passed    0.54 sec
+      Start 12: render_sampling
+12/15 Test #12: render_sampling ..................   Passed    0.05 sec
+      Start 13: dragon_idle_sleep
+13/15 Test #13: dragon_idle_sleep ................   Passed    0.00 sec
+      Start 14: render_prepared_geometry
+14/15 Test #14: render_prepared_geometry .........   Passed    0.25 sec
+      Start 15: device_open_frame_telemetry
+15/15 Test #15: device_open_frame_telemetry ......   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 15
+
+Total Test time (real) =   7.60 sec

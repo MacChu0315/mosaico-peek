@@ -1,0 +1,3 @@
+pose0 static/interior/scalar 40479/13926/3195 host100frames scalar 0.20617s cache 0.08287s ratio 2.488 (not device FPS)
+pose1 static/interior/scalar 40479/13926/3195 host100frames scalar 0.20283s cache 0.07721s ratio 2.627 (not device FPS)
+pose2 static/interior/scalar 57600/0/0 host100frames scalar 0.20489s cache 0.01102s ratio 18.588 (not device FPS)

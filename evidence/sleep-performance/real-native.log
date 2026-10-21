@@ -1,0 +1,15 @@
+{
+  "source": "recorded",
+  "events": 655,
+  "samples": 511,
+  "device_core_mismatches": 0,
+  "native_core_mismatches": 0,
+  "native_role_mode_mismatches": 0,
+  "logical_end_ms": 68156,
+  "wall_s": 68.53644966008142,
+  "original_successful_capture_span_s": 65.074,
+  "pause_redraw_pure": true,
+  "replay_consistent": true,
+  "hold_observed": false,
+  "note": "Unlabelled scene. No fresh quiet interval meets production HOLD threshold; do not infer physical stillness. Encoded4fps is screenshot sampling, not screen FPS."
+}

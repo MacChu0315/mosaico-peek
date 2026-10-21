@@ -1,120 +1,123 @@
-# Peek mainline — live dragon handoff (2026-10-21)
+# Peek live dragon handoff — stopped at user-accepted trial (2026-10-21)
 
-Reviewed baseline `f278cfd`; branch `feat/dragon-gsp`. The device remains running
-`1.0.1-peek-dragon240`, application source **ba98632f38233c2af20009a3a088b5328316f35d**,
-ELF SHA `1b1f39a4176c2d4d2e1b15b6080180656ee2958d7a011b85c925b24c8d23ebbd`.
-MAC `30:ed:a0:f4:52:a0`, Device ID `4553502d49524953010030eda0f452a0`,
-Boot ID `408941243312734824`. Official update operation
-`0dbfa8e7-686a-4b28-8eb0-a8e07da5c3fd` completed healthy/validated through
-existing Vibe Mode; identical bootloader/layout, ota_0 retained, no recovery
-firmware update. No other device, adjacent checkout modification, algorithm A/B,
-dependency upgrade or remote write.
+The user said “可以，就先这样吧”. Keep the current device running; stop further
+optimization/installation and hand off. **The roughly15Hz doubling goal is not
+achieved.** This is acceptance of the current stopping point, not a measured
+15Hz pass or a specific physical closed/wake test result.
 
-## Delivered behavior
+## Current device / source
 
-- Acquisition processes every successful complete768-temperature frame/fault
-  through production C detection and role before the latest-only display mailbox.
-  Display owns an independent copy; a slow renderer cannot drop detector samples.
-- User explicitly approved240 unique eye samples replicated2x2 into480 output.
-  Source textures/shape/color and full fixed-pixel PSRAM cache remain retained.
-  Step1 remains the pixel-equivalent480 reference. See SAMPLING240.md and
-  DEVICE_PERFORMANCE.md for earlier rejected exact-output optimizations.
-- User confirmed visible follow on c316843 but requested both axes reversed.
-  Device source-owned mapping now flips x/y before target-to-gaze conversion;
-  raw thermal arrays and detector coordinates remain native. Both runtime flags
-  are confirmed true by read-only RPC. Host can reproduce the mount with
-  `python3 tools/preview.py --sample-step 2 --flip-x --flip-y`.
-  The two flags are reapplied on replay reset; pause never creates observations.
-- Detector source/parameters and shared dragon behavior remain byte-identical to
-  reviewed f278cfd. Detector/header also match read-only diagnostic63c0799.
-  Area/contrast/continuity rules still track significant **hot** regions, not cold
-  objects, identity, classification or distance. Existing targets retain priority
-  within the association gate; initial selection uses summed temperature excess.
-- IDLE retains authored calm10s gaze holds and seeded blinks, approximately4–8s
-  apart. It does not increase blink frequency. LEAVE returns over1200ms once
-  the core removes the target. Other persistent hot regions may prevent IDLE.
+- MAC `30:ed:a0:f4:52:a0`, Device ID `4553502d49524953010030eda0f452a0`.
+- Version `1.0.2-peek-sleep`; source **f8845c5c03794b97bb6c146b87a36d8327092519**.
+- ELF SHA `23bb5c540f2f480614a0771e939e4d30429bc1f74853a695f396d6543b34eebb`.
+- Boot ID `3345998236476284272`; official operation
+  `663a7636-cf9b-47c1-818a-79daa08f7741` succeeded, healthy/validated.
+- Final official status/RPC/screenshot verify same MAC/Boot/ELF, normal mode,
+  zero crash count, both gaze flips true and continuous live input. No reboot
+  or install after the user's stop. Device remains running the dragon.
 
-## Actual verification
+Only this board was operated. Existing ota_0, bootloader and partition layout
+retained; target_recovery=null, so Vibe Mode was not overwritten. No algorithm
+A/B, adjacent checkout modification, shared dependency upgrade or remote write.
 
-- Debug and Release CTest **12/12**; original5 replay cases and complete real
-  replay pass. Asset tests keep ordinary builds read-only and no longer make the
-  missing-original assertion depend on the host Pillow version.
-- New regression failed before the fix, then passed: both physical mapping flags
-  are initialized in source and display owners and survive the display snapshot.
-  Shared mapper checks exact reflection at all768 sensor centers.
-- Native GSP compares identical inputs with and without mount flips: detector
-  results and role decisions identical, material gaze excursions reverse on both
-  axes, replay/pause pure. Authored idle offsets and HOLD micro-motion are not
-  mirrored, so transient poses are intentionally not exact negative images.
-  An initial test assumption of near-exact inverse transient poses failed;
-  that failure and the corrected direction-focused checks are both retained.
-- **27** actual native role checkpoints pass; **19** actual PNGs match every
-  RGB565 output pixel to the approved2x2 policy, including closed-eye/aperture
-  checks. Retained step1 reference parity evidence remains separate.
-- Latest native wall run:68.53s, all511 original arrays/655 events from the
- 65.074s successful capture window, original capture/receive/fault timeline,
-  zero detector/role-mode mismatches. Latest movie uses both flips. No resampling
-  or recorded focus drives detection. See evidence/real-input/ and
-  evidence/orientation/. The unlabelled recording does not trigger HOLD;
-  synthetic regression covers HOLD independently.
-- Pinned IDF doctor/build passes for ESP32-S31. First incremental build retained
-  old Kconfig; the wrapper rejected missing flip flags and it was **not installed**.
-  Touching the project CMakeLists.txt forced local reconfiguration; the subsequent
-  build passed all config assertions. Reproduction/error logs retained under
-  evidence/orientation/. One existing retained-factory size warning remains;
-  app1,990,480B fits unchanged ota_0. No fullclean/shared upgrade.
-- Official device screenshot was inspected; approved single textured eye runs
-  with continuous live sensor data. Healthy matching ELF and unchanged crash
-  count were checked separately from simulator results.
+## Implemented
 
-## Measured device performance and remaining acceptance
+Shared production C detection and source-owned role process every complete frame
+before the latest-only display mailbox. No repeated old temperatures on read
+failure; independent render snapshots cannot lose detection samples or change
+acquisition history. Detector/header match read-only diagnostic63c0799 and
+reviewed f278cfd; thresholds remain unchanged. Significant hot regions are
+selected; cold objects do not compete. Current physical mount flips both target-
+to-gaze axes, leaving native32x24 temperatures/detector coordinates unchanged.
 
-Latest24.78s read-only steady window (before screenshot): **7.829 accepted
-samples/s**, **7.546 GSP engine frames/s**, **77.684 tiled Canvas callbacks/s**.
-Every observed sequence equals accepted sample count; zero read faults in that
-window. GSP mean121.86ms/frame, raster90.98ms, submit30.76ms. Observed cores:
-GSP1, capture/detector/role0. These are elapsed wall times, not CPU-only timings.
-**Physical panel-visible FPS is not measured.** Historical49a7c57 engine rate
-was2.693Hz; scenes differ, so this is not a controlled identical-pose speedup.
-Host30Hz remains unmet and was not investigated further.
+User-approved240 odd-center sampling remains replicated2x2 into480 output.
+Original textures/shape/color and scalar480 reference are retained. Prepared
+exact-geometry reuse accelerates static eyelids and pure eye interiors while
+boundary pixels retain the scalar compositor. Gaze/pupil remain dynamic; no
+additional downsampling or pose quantization. See SLEEP_RENDER.md. Explicit
+PSRAM caches: fixed3,225,600B plus prepared691,200B; target renderer total
+**3,929,120B**, not a complete application peak. Allocation failures propagate.
 
-Internal free237,955B/min196,784B; PSRAM free/min9,918,228B in this window.
-These allocator values are not a complete application peak/largest-block
-measurement. Screenshot workload can lower subsequent boot-wide minimum. The separate59.54s
-unlabelled observation afterwards stayed IDLE/VALID throughout, with7.423 engine
-frames/s,7.843 samples/s and no faults; PSRAM minimum after screenshot was9,447,112B.
-This proves a physical live IDLE state was observed, not that a labelled cup
-removal caused it.
-`iris memory` task observation remains unavailable (HTTP501); status heaps work.
+IDLE now calmly looks for10s after entry, closes over450ms, stays closed, and
+opens over150ms only when production detection confirms a target. Pending
+candidates/faults do not wake it. LEAVE/reentry resets the10s clock. Seeded,
+injected-time replay and same-time idempotence remain. Diagnostic RPC exposes
+sleeping/waking/cache state and separate active-open render counters, without
+creating observations. All animation behavior stays shared C.
 
-User confirmed visible follow before the flip, then asked what IDLE looks like
-rather than confirming the post-flip trial. **Post-flip physical direction,
-stationary review/removal-to-IDLE and perceived smoothness remain unaccepted**;
-software/native checks and runtime flags do not replace that observation.
-Original pre-flip motion evidence and exact feedback are retained. FOV/range,
-labelled accuracy/temperature calibration, panel FPS, long-term reliability and
-hotplug remain unverified. No failed acceptance is rewritten as passed.
+## Actual results
 
-## Reproduce / restore / review
+Latest94.74s physical window:7.843 accepted samples/s, zero read faults, every
+observed sequence equals sample count. All rendered states averaged9.975 engine
+frames/s; **active, fully open target-follow averaged10.336 engine frames/s**
+over86.882s/898 frames. Active-open mean84.62ms, raster53.19ms, submit31.32ms.
+This includes cache misses and excludes closed-eye frames.53/87 sampled states
+had reusable geometry; TRACKING/HOLD changes can invalidate it. Historical
+ba98632 was about7.546 engine frames/s in a different scene. No controlled
+same-scene percentage-speedup claim. **Physical panel-visible FPS is unmeasured**;
+Canvas tiled callbacks103.072/s are not full screen frames. Host30Hz remains
+unmet and was not a new investigation target.
 
-Build/test commands are in README. Use `tools/control.py case live` then `play`
-for the full recording in the native preview. `tests/test_native_mapping.py`
-requires an unflipped baseline run with `--record-baseline`, then a flipped run.
-`tools/probe_device.py` is read-only and uses only the exact selected device.
-Evidence directories distinguish historical480, approved240, and final flipped
-runtime; telemetry summaries explicitly separate callback/engine/panel rates.
+Observed cores GSP1/sensor0. Internal free237,891B/min196,720B; PSRAM
+free/min9,211,008B before screenshot. These are allocator readings, not largest
+blocks or complete workload peaks; screenshots can lower later minima. Task
+memory through iris memory remains unavailable (HTTP501); status heaps work.
 
-Current bundle: `evidence/orientation/installed/dragon240-flipped.irisfw`.
-Previous240: `evidence/sampling240/installed/dragon240.irisfw`.
-Previous480: `evidence/sampling240/restore-480/dragon480.irisfw`.
-Exact diagnostic restore: `evidence/device-dragon/restore/diagnostic.irisfw`.
-Restore through the official command documented in DEVICE_DRAGON.md, selecting
-one intended bundle and the same Device ID; no restore is performed at handoff.
-Full known local BIN/ELF/map/config/resource backups remain under firmware-local/
-(excluded from the small review ZIP). No device readback/full-flash backup claim.
+The physical window showed TRACKING/HOLD, no IDLE/sleep/wake. Final read-only
+state remained TRACKING. **Do not claim physical sleep/wake timing was observed**;
+user chose to stop at the current experience. Software/native evidence confirms
+the behavior; orientation after flip, labelled target accuracy, exact latency,
+FOV/range/temperature calibration, panel FPS and long-term/hotplug remain gaps.
 
-`python3 tools/package_review.py` produces the clean-commit review ZIP and hash
-under review/, excluding .git, caches and retrievable dependency copies. Its
-manifest retains source hashes and aliases only byte-identical duplicate PNGs.
-The latest native movie is screenshot-sampled4fps; it is dynamic evidence, not a
-screen-rate measurement. Device stays running the final dragon for user trial.
+## Verification
+
+- Debug and Release CTest **15/15**; final mainline checkout rebuilt/tested after
+  preserving the uninstalled candidate. Original5 replay cases pass.
+- All511 original float32 arrays/655 events from the65.074s successful capture
+  window preserve capture/receive/fault timing. Production C results have zero
+  mismatches. Latest native68.54s wall replay passes core/role-mode, pause and
+  replay checks. This unlabelled recording does not trigger HOLD; synthetic
+  cases cover it. No resampling or prefilled focus. Latest real movie is retained.
+- Native GSP **27** original role checkpoints plus **10** sleep/wake checkpoints
+  and34.05s wall run pass.29 actual PNGs match every RGB565 output pixel to the
+  scalar shader/approved2x2 policy, including full closure and aperture checks.
+  The sleep movie preserves original screenshot wall-time intervals. Movie
+  sampling is dynamic evidence, not a runtime/physical FPS measurement.
+-80 full sampled cache/scalar frames, dynamic gaze/pupil and all cache classes;
+  all3 allocation failures;43 unchanged full480 reference frames; ASan/UBSan
+  passes. Existing ptrace limitation keeps leak sanitizer off; explicit free
+  counts run. Source sprite/provenance builds remain read-only.
+- Actual firmware doctor/build passes pinned ESP-IDF7b9cc1a for ESP32-S31;
+  app1,993,584B fits unchanged ota_0. One retained-factory capacity warning
+  remains. No fullclean/dependency upgrade. Logs, exact manifest and install
+  result are in evidence/sleep-performance/.
+- A missing-key typo in the new budget reporter was fixed and rerun. Earlier
+  screenshot ack/commit synchronization and old FFmpeg option failures are
+  retained with successful reproductions; none is rewritten as a pass.
+
+## Start / restore / review
+
+`python3 tools/preview.py --sample-step 2 --flip-x --flip-y` starts native GSP.
+Use `python3 tools/control.py case sleep` then `play` for the new synthetic
+scenario, or `case live` for the complete real window. Host controls and build/
+verify commands: README; exact role/cache details: SLEEP_RENDER.md.
+
+Installed bundle: `evidence/sleep-performance/installed/dragon-sleep.irisfw`.
+Exact prior flipped240: `evidence/orientation/installed/dragon240-flipped.irisfw`.
+Prior240 and480 plus original diagnostic bundles remain retained. Full known
+local BIN/ELF/map/config/resource backups are in firmware-local/ (excluded from
+review ZIP); no device readback/full-flash backup claim. Restore through the
+same official command in DEVICE_DRAGON.md, selecting the intended bundle and
+exact Device ID; never combine --bundle with --project. No restore at handoff.
+
+Uninstalled experimental work is preserved separately on local branch
+`wip/dragon-packed-color`, **a6a0fb1**, explicitly WIP. It has Host15/15 but no
+IDF build/install/device speed measurement. Current mainline/firmware do not
+contain it. Its patch and exploratory compiler/Host logs are labelled under
+packed/; concurrent exploratory timings are not controlled device comparisons.
+
+`python3 tools/package_review.py` creates the clean-commit ZIP/hash under review/:
+source, dependencies/provenance, full original temperature input, actual outputs,
+latest native movie and installed/restore bundles. Excludes .git, build/cache,
+retrievable dependency copies and full local ELF/config backups. Final delivery
+commit may include documentation/evidence tools beyond installed sourcef8845c5.

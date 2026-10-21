@@ -1,0 +1,135 @@
+[
+  {
+    "name": "native-rest",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 38104
+  },
+  {
+    "name": "notice",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 36648
+  },
+  {
+    "name": "track-left",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 36396
+  },
+  {
+    "name": "track-right",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 33460
+  },
+  {
+    "name": "track-up",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 392
+  },
+  {
+    "name": "track-down",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 26696
+  },
+  {
+    "name": "hold-start",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 22112
+  },
+  {
+    "name": "held",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 22344
+  },
+  {
+    "name": "leave",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 24200
+  },
+  {
+    "name": "reappear",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 34164
+  },
+  {
+    "name": "invalid",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 27808
+  },
+  {
+    "name": "recover-pending",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 37504
+  },
+  {
+    "name": "recover",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 33260
+  },
+  {
+    "name": "stale",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 35444
+  },
+  {
+    "name": "recover-again",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 36256
+  },
+  {
+    "name": "extreme-closed",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  },
+  {
+    "name": "extreme-reopen",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 11236
+  },
+  {
+    "name": "native-closed",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  },
+  {
+    "name": "native-reopen",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 13484
+  }
+]

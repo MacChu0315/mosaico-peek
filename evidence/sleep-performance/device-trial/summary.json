@@ -1,0 +1,59 @@
+{
+  "device": "4553502d49524953010030eda0f452a0",
+  "boot_id": "3345998236476284272",
+  "version": "1.0.2-peek-sleep",
+  "sample_step": 2,
+  "source_revision": "f8845c5c03794b97bb6c146b87a36d8327092519",
+  "gaze_mapping": {
+    "flip_x": true,
+    "flip_y": true
+  },
+  "sampled_device_seconds": 94.74,
+  "rates_hz": {
+    "captures": 7.8530715642811915,
+    "faults": 0.0,
+    "callbacks": 9.974667511082965,
+    "draws": 103.07156428119063,
+    "prepares": 9.974667511082965,
+    "render_frames": 9.974667511082965,
+    "samples": 7.842516360565759
+  },
+  "draw_mean_us": 5386.166717869944,
+  "gsp_render_mean_us": 88210.58518518519,
+  "gsp_raster_mean_us": 56646.24867724867,
+  "gsp_submit_mean_us": 31454.295238095237,
+  "roles": [
+    "HOLD",
+    "TRACKING"
+  ],
+  "data_states": [
+    "VALID"
+  ],
+  "heap": {
+    "free_internal": 237891,
+    "free_spiram": 9211008,
+    "min_free_internal": 196720,
+    "min_free_spiram": 9211008,
+    "total_internal": 453395,
+    "total_spiram": 14887780
+  },
+  "cores": {
+    "gsp": 1,
+    "sensor": 0
+  },
+  "sequence_equals_accepted_samples": true,
+  "physical_panel_fps": null,
+  "note": "Actual sensor/role firmware. Callback/surface/render counters are distinct; no physical panel scan or visible FPS measured. Snapshots and CLI polling can affect rates. No scene labels inferred.",
+  "active_open_render": {
+    "frames": 898,
+    "device_ms": 86882,
+    "engine_frames_hz": 10.335857830160448,
+    "engine_mean_us": 84621.89532293986,
+    "raster_mean_us": 53190.851893095765,
+    "submit_mean_us": 31320.90868596882,
+    "note": "Completed previous generations classified as target_active, blink==0, not sleeping/waking. Includes cache misses. Excludes closed-eye frames; still not physical panel FPS."
+  },
+  "sleeping_observed": false,
+  "waking_observed": false,
+  "geometry_cached_fraction": 0.6091954022988506
+}

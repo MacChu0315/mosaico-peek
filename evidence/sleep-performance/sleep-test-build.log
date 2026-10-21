@@ -1,0 +1,11 @@
+[ 10%] Building C object CMakeFiles/peek.dir/src/peek_live.c.o
+[ 20%] Linking C static library libpeek.a
+[ 40%] Built target peek
+[ 50%] Built target peek_dragon_assets
+[ 60%] Building C object CMakeFiles/dragon.dir/src/dragon.c.o
+[ 70%] Linking C static library libdragon.a
+[ 80%] Built target dragon
+Consolidate compiler generated dependencies of target test_dragon_sleep
+[ 90%] Building C object CMakeFiles/test_dragon_sleep.dir/tests/test_dragon_sleep.c.o
+[100%] Linking C executable test_dragon_sleep
+[100%] Built target test_dragon_sleep

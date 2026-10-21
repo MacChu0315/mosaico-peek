@@ -1,0 +1,169 @@
+[
+  {
+    "variant": "base",
+    "optimization": "-O2",
+    "text_bytes": 11288,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "edge_at": 66,
+      "normals": 210,
+      "contour": 520,
+      "skin": 562,
+      "gloss": 642,
+      "dragon_renderer_draw": 750,
+      "dragon_renderer_create": 1306,
+      "eyeball": 1808,
+      "dragon_renderer_prepare": 2300,
+      "render_pixel": 3016
+    },
+    "stacks": [
+      "/tmp/peek-color-base.c:264:16:gloss\t0\tstatic",
+      "/tmp/peek-color-base.c:209:16:eyeball\t64\tstatic",
+      "/tmp/peek-color-base.c:312:16:render_pixel\t208\tstatic",
+      "/tmp/peek-color-base.c:560:6:dragon_renderer_draw\t144\tstatic"
+    ]
+  },
+  {
+    "variant": "base",
+    "optimization": "-O3",
+    "text_bytes": 12026,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "normals": 240,
+      "contour": 520,
+      "skin": 562,
+      "gloss": 642,
+      "dragon_renderer_draw": 872,
+      "dragon_renderer_create": 1310,
+      "eyeball": 1808,
+      "dragon_renderer_prepare": 2586,
+      "render_pixel": 3378
+    },
+    "stacks": [
+      "/tmp/peek-color-base.c:264:16:gloss\t0\tstatic",
+      "/tmp/peek-color-base.c:209:16:eyeball\t64\tstatic",
+      "/tmp/peek-color-base.c:312:16:render_pixel\t208\tstatic",
+      "/tmp/peek-color-base.c:560:6:dragon_renderer_draw\t160\tstatic"
+    ]
+  },
+  {
+    "variant": "rgb10",
+    "optimization": "-O2",
+    "text_bytes": 10494,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "unpack": 50,
+      "edge_at": 66,
+      "over": 110,
+      "normals": 210,
+      "skin": 314,
+      "contour": 520,
+      "gloss": 542,
+      "dragon_renderer_draw": 708,
+      "dragon_renderer_create": 1348,
+      "eyeball": 1766,
+      "dragon_renderer_prepare": 2306,
+      "render_pixel": 2446
+    },
+    "stacks": [
+      "/tmp/peek-color-rgb10.c:264:16:gloss\t32\tstatic",
+      "/tmp/peek-color-rgb10.c:209:16:eyeball\t112\tstatic",
+      "/tmp/peek-color-rgb10.c:312:16:render_pixel\t96\tstatic",
+      "/tmp/peek-color-rgb10.c:560:6:dragon_renderer_draw\t80\tstatic"
+    ]
+  },
+  {
+    "variant": "rgb10",
+    "optimization": "-O3",
+    "text_bytes": 13792,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "normals": 240,
+      "contour": 520,
+      "skin": 732,
+      "gloss": 782,
+      "dragon_renderer_draw": 894,
+      "dragon_renderer_create": 1480,
+      "eyeball": 2290,
+      "dragon_renderer_prepare": 2592,
+      "render_pixel": 4154
+    },
+    "stacks": [
+      "/tmp/peek-color-rgb10.c:264:16:gloss\t0\tstatic",
+      "/tmp/peek-color-rgb10.c:209:16:eyeball\t96\tstatic",
+      "/tmp/peek-color-rgb10.c:312:16:render_pixel\t96\tstatic",
+      "/tmp/peek-color-rgb10.c:560:6:dragon_renderer_draw\t96\tstatic"
+    ]
+  },
+  {
+    "variant": "rgb16",
+    "optimization": "-O2",
+    "text_bytes": 11728,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "edge_at": 66,
+      "normals": 210,
+      "contour": 520,
+      "skin": 574,
+      "gloss": 674,
+      "dragon_renderer_draw": 776,
+      "dragon_renderer_create": 1384,
+      "eyeball": 1876,
+      "dragon_renderer_prepare": 2310,
+      "render_pixel": 3230
+    },
+    "stacks": [
+      "/tmp/peek-color-rgb16.c:264:16:gloss\t32\tstatic",
+      "/tmp/peek-color-rgb16.c:209:16:eyeball\t80\tstatic",
+      "/tmp/peek-color-rgb16.c:312:16:render_pixel\t144\tstatic",
+      "/tmp/peek-color-rgb16.c:560:6:dragon_renderer_draw\t128\tstatic"
+    ]
+  },
+  {
+    "variant": "rgb16",
+    "optimization": "-O3",
+    "text_bytes": 12506,
+    "functions": {
+      "dragon_renderer_geometry_cached": 8,
+      "dragon_renderer_asset_bytes": 10,
+      "dragon_renderer_heap_bytes": 10,
+      "dragon_renderer_set_sample_step": 32,
+      "dragon_renderer_destroy": 48,
+      "normals": 240,
+      "contour": 520,
+      "skin": 574,
+      "gloss": 674,
+      "dragon_renderer_draw": 894,
+      "dragon_renderer_create": 1390,
+      "eyeball": 1868,
+      "dragon_renderer_prepare": 2598,
+      "render_pixel": 3640
+    },
+    "stacks": [
+      "/tmp/peek-color-rgb16.c:264:16:gloss\t32\tstatic",
+      "/tmp/peek-color-rgb16.c:209:16:eyeball\t80\tstatic",
+      "/tmp/peek-color-rgb16.c:312:16:render_pixel\t144\tstatic",
+      "/tmp/peek-color-rgb16.c:560:6:dragon_renderer_draw\t128\tstatic"
+    ]
+  }
+]

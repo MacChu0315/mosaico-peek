@@ -1,0 +1,66 @@
+Consolidate compiler generated dependencies of target peek
+[ 40%] Built target peek
+[ 50%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[ 80%] Built target dragon
+[ 90%] Building C object CMakeFiles/test_dragon_sleep.dir/tests/test_dragon_sleep.c.o
+In file included from /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:3:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c: In function ‘run’:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:11:31: error: ‘dragon_t’ has no member named ‘sleeping’
+   11 |         if(now<10000)assert(!c.sleeping);
+      |                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:11:31: error: ‘dragon_t’ has no member named ‘sleeping’
+   11 |         if(now<10000)assert(!c.sleeping);
+      |                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:12:31: error: ‘dragon_t’ has no member named ‘sleeping’
+   12 |         if(now>=10450)assert(c.sleeping && c.pose.blink==1 && c.mode==DRAGON_IDLE);
+      |                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:12:31: error: ‘dragon_t’ has no member named ‘sleeping’
+   12 |         if(now>=10450)assert(c.sleeping && c.pose.blink==1 && c.mode==DRAGON_IDLE);
+      |                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:18:49: error: ‘dragon_t’ has no member named ‘sleeping’
+   18 |     assert(dragon_update(&c,&r,12200));assert(!c.sleeping && c.waking && c.mode==DRAGON_NOTICE && c.pose.blink==1);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:18:63: error: ‘dragon_t’ has no member named ‘waking’
+   18 |     assert(dragon_update(&c,&r,12200));assert(!c.sleeping && c.waking && c.mode==DRAGON_NOTICE && c.pose.blink==1);
+      |                                                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:18:49: error: ‘dragon_t’ has no member named ‘sleeping’
+   18 |     assert(dragon_update(&c,&r,12200));assert(!c.sleeping && c.waking && c.mode==DRAGON_NOTICE && c.pose.blink==1);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:18:63: error: ‘dragon_t’ has no member named ‘waking’
+   18 |     assert(dragon_update(&c,&r,12200));assert(!c.sleeping && c.waking && c.mode==DRAGON_NOTICE && c.pose.blink==1);
+      |                                                               ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:20:49: error: ‘dragon_t’ has no member named ‘waking’
+   20 |     assert(dragon_update(&c,&r,12350));assert(!c.waking && c.pose.blink==0 && c.observations==count);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:20:49: error: ‘dragon_t’ has no member named ‘waking’
+   20 |     assert(dragon_update(&c,&r,12350));assert(!c.waking && c.pose.blink==0 && c.observations==count);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:22:72: error: ‘dragon_t’ has no member named ‘sleeping’
+   22 |     assert(dragon_update(&c,&r,13600));assert(c.mode==DRAGON_IDLE && !c.sleeping);
+      |                                                                        ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:22:72: error: ‘dragon_t’ has no member named ‘sleeping’
+   22 |     assert(dragon_update(&c,&r,13600));assert(c.mode==DRAGON_IDLE && !c.sleeping);
+      |                                                                        ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:23:49: error: ‘dragon_t’ has no member named ‘sleeping’
+   23 |     assert(dragon_update(&c,&r,23599));assert(!c.sleeping);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:23:49: error: ‘dragon_t’ has no member named ‘sleeping’
+   23 |     assert(dragon_update(&c,&r,23599));assert(!c.sleeping);
+      |                                                 ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:24:48: error: ‘dragon_t’ has no member named ‘sleeping’
+   24 |     assert(dragon_update(&c,&r,24050));assert(c.sleeping && c.pose.blink==1);
+      |                                                ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:24:48: error: ‘dragon_t’ has no member named ‘sleeping’
+   24 |     assert(dragon_update(&c,&r,24050));assert(c.sleeping && c.pose.blink==1);
+      |                                                ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:27:48: error: ‘dragon_t’ has no member named ‘waking’
+   27 |     assert(dragon_update(&c,&r,15000));assert(c.waking && c.pose.blink==1);
+      |                                                ^
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_dragon_sleep.c:27:48: error: ‘dragon_t’ has no member named ‘waking’
+   27 |     assert(dragon_update(&c,&r,15000));assert(c.waking && c.pose.blink==1);
+      |                                                ^
+gmake[3]: *** [CMakeFiles/test_dragon_sleep.dir/build.make:76：CMakeFiles/test_dragon_sleep.dir/tests/test_dragon_sleep.c.o] 错误 1
+gmake[2]: *** [CMakeFiles/Makefile2:593：CMakeFiles/test_dragon_sleep.dir/all] 错误 2
+gmake[1]: *** [CMakeFiles/Makefile2:600：CMakeFiles/test_dragon_sleep.dir/rule] 错误 2
+gmake: *** [Makefile:368：test_dragon_sleep] 错误 2

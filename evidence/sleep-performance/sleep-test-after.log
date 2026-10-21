@@ -1,0 +1,1 @@
+PASS idle sleep:10s idle,450ms close,150ms acquired-target wake, stale stays closed, same-time pure, reentry resets deadline

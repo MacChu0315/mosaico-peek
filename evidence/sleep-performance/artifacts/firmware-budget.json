@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only inspection of existing local artifacts. No build, flash, installation or device measurement.",
+  "toolchain": {
+    "compiler": "/home/zhuzhengming/.espressif/tools/riscv32-esp-elf/esp-16.1.0_20260609/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+    "compiler_version": "riscv32-esp-elf-gcc (crosstool-NG esp-16.1.0_20260609) 16.1.0",
+    "readelf": "/home/zhuzhengming/.espressif/tools/riscv32-esp-elf/esp-16.1.0_20260609/riscv32-esp-elf/bin/riscv32-esp-elf-readelf",
+    "nm": "/home/zhuzhengming/.espressif/tools/riscv32-esp-elf/esp-16.1.0_20260609/riscv32-esp-elf/bin/riscv32-esp-elf-nm"
+  },
+  "artifacts": {
+    "peek.bin": {
+      "path": "projects/peek/build/peek.bin",
+      "bytes": 1993584,
+      "sha256": "f196cbc0567f3d2ea3fd2a5ce5c784b68f3f4b27916943ad94bb7fa0bec53182"
+    },
+    "ui_apps.bin": {
+      "path": "projects/peek/build/ui_apps.bin",
+      "bytes": 94480,
+      "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+    },
+    "peek.elf": {
+      "path": "projects/peek/build/peek.elf",
+      "bytes": 15780388,
+      "sha256": "23bb5c540f2f480614a0771e939e4d30429bc1f74853a695f396d6543b34eebb"
+    },
+    "peek.map": {
+      "path": "projects/peek/build/peek.map",
+      "bytes": 7204267,
+      "sha256": "d84f804395d2fc969c74c4606c27b0632aee6aee457bc0315ecf0ce7f2588a42"
+    },
+    "sdkconfig": {
+      "path": "projects/peek/build/sdkconfig.dragon240-sleep",
+      "bytes": 136796,
+      "sha256": "0d5c382b4674a7a58d04ed20486790c41438ab7db3b26486d84a70ff0cd085c1"
+    },
+    "partition-table.bin": {
+      "path": "projects/peek/build/partition_table/partition-table.bin",
+      "bytes": 3072,
+      "sha256": "8b516eb3fff9b33cdf188e95bbb008cb853a5793883117b6e72dd572ea8fa6f4"
+    }
+  },
+  "final_sdkconfig_allowlisted": {
+    "CONFIG_IDF_TARGET_ARCH_RISCV": "y",
+    "CONFIG_IDF_TARGET_ARCH": "\"riscv\"",
+    "CONFIG_IDF_TARGET": "\"esp32s31\"",
+    "CONFIG_IDF_TARGET_ESP32S31": "y",
+    "CONFIG_ESPTOOLPY_FLASHMODE_QIO": "y",
+    "CONFIG_ESPTOOLPY_FLASHMODE_QOUT": "n",
+    "CONFIG_ESPTOOLPY_FLASHMODE_DIO": "n",
+    "CONFIG_ESPTOOLPY_FLASHMODE_DOUT": "n",
+    "CONFIG_ESPTOOLPY_FLASHMODE": "\"dio\"",
+    "CONFIG_ESPTOOLPY_FLASHMODE_VAL": "1",
+    "CONFIG_ESPTOOLPY_FLASHFREQ_80M": "y",
+    "CONFIG_ESPTOOLPY_FLASHFREQ_40M": "n",
+    "CONFIG_ESPTOOLPY_FLASHFREQ_20M": "n",
+    "CONFIG_ESPTOOLPY_FLASHFREQ_VAL": "80",
+    "CONFIG_ESPTOOLPY_FLASHFREQ": "\"80m\"",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_1MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_2MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_4MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_8MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_16MB": "y",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_32MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_64MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE_128MB": "n",
+    "CONFIG_ESPTOOLPY_FLASHSIZE": "\"16MB\"",
+    "CONFIG_PARTITION_TABLE_CUSTOM": "y",
+    "CONFIG_PARTITION_TABLE_CUSTOM_FILENAME": "\"partitions.csv\"",
+    "CONFIG_PARTITION_TABLE_FILENAME": "\"partitions.csv\"",
+    "CONFIG_PARTITION_TABLE_OFFSET": "0x8000",
+    "CONFIG_PEEK_DIAGNOSTIC_VIEW": "n",
+    "CONFIG_PEEK_EYE_SAMPLE_STEP": "2",
+    "CONFIG_PEEK_GAZE_FLIP_X": "y",
+    "CONFIG_PEEK_GAZE_FLIP_Y": "y",
+    "CONFIG_SPIRAM": "y",
+    "CONFIG_SPIRAM_MODE_OCT": "y",
+    "CONFIG_SPIRAM_SPEED_250M": "y",
+    "CONFIG_SPIRAM_SPEED_200M": "n",
+    "CONFIG_SPIRAM_SPEED_100M": "n",
+    "CONFIG_SPIRAM_SPEED_40M": "n",
+    "CONFIG_SPIRAM_SPEED": "250",
+    "CONFIG_SPIRAM_FETCH_INSTRUCTIONS": "y",
+    "CONFIG_SPIRAM_RODATA": "y",
+    "CONFIG_SPIRAM_XIP_FROM_PSRAM": "y",
+    "CONFIG_SPIRAM_FLASH_LOAD_TO_PSRAM": "y",
+    "CONFIG_SPIRAM_ECC_ENABLE": "n",
+    "CONFIG_SPIRAM_BOOT_HW_INIT": "y",
+    "CONFIG_SPIRAM_BOOT_INIT": "y",
+    "CONFIG_SPIRAM_PRE_CONFIGURE_MEMORY_PROTECTION": "y",
+    "CONFIG_SPIRAM_USE_MEMMAP": "n",
+    "CONFIG_SPIRAM_USE_CAPS_ALLOC": "n",
+    "CONFIG_SPIRAM_USE_MALLOC": "y",
+    "CONFIG_SPIRAM_MEMTEST": "n",
+    "CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL": "16384",
+    "CONFIG_SPIRAM_TRY_ALLOCATE_WIFI_LWIP": "n",
+    "CONFIG_SPIRAM_MALLOC_RESERVE_INTERNAL": "32768",
+    "CONFIG_SPIRAM_ALLOW_BSS_SEG_EXTERNAL_MEMORY": "y",
+    "CONFIG_SPIRAM_ALLOW_NOINIT_SEG_EXTERNAL_MEMORY": "n",
+    "CONFIG_SPIRAM_ENC_EXEMPT": "n",
+    "CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ": "320",
+    "CONFIG_CACHE_L1_ICACHE_SIZE": "0x4000",
+    "CONFIG_CACHE_L1_DCACHE_SIZE": "0x10000",
+    "CONFIG_CACHE_L1_ICACHE_LINE_SIZE": "64",
+    "CONFIG_CACHE_L1_DCACHE_LINE_SIZE": "64",
+    "CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE": "2304",
+    "CONFIG_ESP_MAIN_TASK_STACK_SIZE": "20480",
+    "CONFIG_FREERTOS_UNICORE": "n",
+    "CONFIG_FREERTOS_HZ": "100",
+    "CONFIG_FREERTOS_IDLE_TASK_STACKSIZE": "1536",
+    "CONFIG_FREERTOS_TASK_CREATE_ALLOW_EXT_MEM": "y",
+    "CONFIG_HEAP_POISONING_DISABLED": "y",
+    "CONFIG_HEAP_POISONING_LIGHT": "n",
+    "CONFIG_HEAP_POISONING_COMPREHENSIVE": "n",
+    "CONFIG_HEAP_TRACING_OFF": "y",
+    "CONFIG_HEAP_TRACING_STANDALONE": "n",
+    "CONFIG_HEAP_TRACING_TOHOST": "n",
+    "CONFIG_HEAP_USE_HOOKS": "n",
+    "CONFIG_HEAP_TASK_TRACKING": "n",
+    "CONFIG_HEAP_ABORT_WHEN_ALLOCATION_FAILS": "n",
+    "CONFIG_HEAP_TLSF_USE_ROM_IMPL": "y",
+    "CONFIG_HEAP_PLACE_FUNCTION_INTO_FLASH": "n",
+    "CONFIG_SPIRAM_ALLOW_STACK_EXTERNAL_MEMORY": "y"
+  },
+  "flash": {
+    "partitions_from_built_binary": {
+      "otadata": {
+        "offset": 36864,
+        "bytes": 8192,
+        "type": 1,
+        "subtype": 0,
+        "flags": 0
+      },
+      "phy_init": {
+        "offset": 45056,
+        "bytes": 4096,
+        "type": 1,
+        "subtype": 1,
+        "flags": 0
+      },
+      "sysmeta": {
+        "offset": 49152,
+        "bytes": 81920,
+        "type": 1,
+        "subtype": 2,
+        "flags": 0
+      },
+      "factory": {
+        "offset": 131072,
+        "bytes": 1835008,
+        "type": 0,
+        "subtype": 0,
+        "flags": 0
+      },
+      "coredump": {
+        "offset": 1966080,
+        "bytes": 131072,
+        "type": 1,
+        "subtype": 3,
+        "flags": 0
+      },
+      "nvs": {
+        "offset": 2097152,
+        "bytes": 65536,
+        "type": 1,
+        "subtype": 2,
+        "flags": 0
+      },
+      "ota_0": {
+        "offset": 2162688,
+        "bytes": 13565952,
+        "type": 0,
+        "subtype": 16,
+        "flags": 0
+      },
+      "ui_apps": {
+        "offset": 15728640,
+        "bytes": 1048576,
+        "type": 1,
+        "subtype": 64,
+        "flags": 0
+      }
+    },
+    "ui_apps_partition_bytes": 1048576,
+    "ui_apps_partition_is_1MiB": true,
+    "ui_apps_free_bytes": 954096,
+    "normal_app_fits_ota_0": true,
+    "ota_0_partition_bytes": 13565952,
+    "ota_0_free_bytes": 11572368,
+    "retained_factory_partition_bytes": 1835008,
+    "normal_app_fits_retained_factory": false,
+    "retained_factory_warning": "App may exceed the retained factory slot; normal application update targets ota_0. This tool does not change partitions or authorize flashing.",
+    "indexed_textures_palettes_LUT_bytes_in_app": 651780,
+    "texture_cost_is_included_in_peek_bin": true
+  },
+  "elf_allocated_sections": [
+    {
+      "name": ".rtc.force_slow",
+      "type": "PROGBITS",
+      "address": 771751936,
+      "address_hex": "0x2e000000",
+      "file_offset": 4096,
+      "bytes": 36,
+      "flags": "WA"
+    },
+    {
+      "name": ".rtc_reserved",
+      "type": "NOBITS",
+      "address": 771784680,
+      "address_hex": "0x2e007fe8",
+      "file_offset": 8168,
+      "bytes": 24,
+      "flags": "WA"
+    },
+    {
+      "name": ".iram0.text",
+      "type": "PROGBITS",
+      "address": 788529152,
+      "address_hex": "0x2f000000",
+      "file_offset": 8192,
+      "bytes": 85298,
+      "flags": "AX"
+    },
+    {
+      "name": ".iram0.text_end",
+      "type": "NOBITS",
+      "address": 788614450,
+      "address_hex": "0x2f014d32",
+      "file_offset": 93490,
+      "bytes": 78,
+      "flags": "WA"
+    },
+    {
+      "name": ".dram0.data",
+      "type": "PROGBITS",
+      "address": 788614528,
+      "address_hex": "0x2f014d80",
+      "file_offset": 93568,
+      "bytes": 25184,
+      "flags": "WA"
+    },
+    {
+      "name": ".noinit",
+      "type": "NOBITS",
+      "address": 788639712,
+      "address_hex": "0x2f01afe0",
+      "file_offset": 0,
+      "bytes": 0,
+      "flags": "WA"
+    },
+    {
+      "name": ".dram0.bss",
+      "type": "NOBITS",
+      "address": 788639744,
+      "address_hex": "0x2f01b000",
+      "file_offset": 118752,
+      "bytes": 22048,
+      "flags": "WA"
+    },
+    {
+      "name": ".flash.text",
+      "type": "PROGBITS",
+      "address": 1342177312,
+      "address_hex": "0x50000020",
+      "file_offset": 118816,
+      "bytes": 1032160,
+      "flags": "AX"
+    },
+    {
+      "name": ".flash_rodata_dummy",
+      "type": "NOBITS",
+      "address": 1342177312,
+      "address_hex": "0x50000020",
+      "file_offset": 1151008,
+      "bytes": 1048576,
+      "flags": "WA"
+    },
+    {
+      "name": ".flash.appdesc",
+      "type": "PROGBITS",
+      "address": 1343225888,
+      "address_hex": "0x50100020",
+      "file_offset": 1151008,
+      "bytes": 256,
+      "flags": "A"
+    },
+    {
+      "name": ".flash.rodata",
+      "type": "PROGBITS",
+      "address": 1343226144,
+      "address_hex": "0x50100120",
+      "file_offset": 1151264,
+      "bytes": 850444,
+      "flags": "WA"
+    },
+    {
+      "name": ".flash.init_array",
+      "type": "INIT_ARRAY",
+      "address": 1344076588,
+      "address_hex": "0x501cfb2c",
+      "file_offset": 2001708,
+      "bytes": 68,
+      "flags": "WA"
+    },
+    {
+      "name": ".flash.tdata",
+      "type": "PROGBITS",
+      "address": 1344076656,
+      "address_hex": "0x501cfb70",
+      "file_offset": 2001776,
+      "bytes": 16,
+      "flags": "WAT"
+    },
+    {
+      "name": ".ext_ram.dummy",
+      "type": "NOBITS",
+      "address": 1342177312,
+      "address_hex": "0x50000020",
+      "file_offset": 1151008,
+      "bytes": 1900512,
+      "flags": "WA"
+    },
+    {
+      "name": ".ext_ram.bss",
+      "type": "NOBITS",
+      "address": 1344077824,
+      "address_hex": "0x501d0000",
+      "file_offset": 2002944,
+      "bytes": 6428,
+      "flags": "WA"
+    }
+  ],
+  "elf_map_memory_sections_match": true,
+  "memory_symbols": [
+    {
+      "name": "_ext_ram_bss_end",
+      "address": 1344084252,
+      "address_hex": "0x501d191c",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "_ext_ram_bss_start",
+      "address": 1344077824,
+      "address_hex": "0x501d0000",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".ext_ram.bss"
+      ]
+    },
+    {
+      "name": "_flash_rodata_dummy_start",
+      "address": 1342177312,
+      "address_hex": "0x50000020",
+      "bytes": null,
+      "nm_type": "B",
+      "sections_at_address": [
+        ".flash.text"
+      ]
+    },
+    {
+      "name": "_flash_rodata_start",
+      "address": 1343226144,
+      "address_hex": "0x50100120",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "_instruction_reserved_end",
+      "address": 1343209472,
+      "address_hex": "0x500fc000",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "_instruction_reserved_start",
+      "address": 1342177312,
+      "address_hex": "0x50000020",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".flash.text"
+      ]
+    },
+    {
+      "name": "_rodata_end",
+      "address": 1344076656,
+      "address_hex": "0x501cfb70",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".flash.tdata"
+      ]
+    },
+    {
+      "name": "_rodata_reserved_end",
+      "address": 1344076672,
+      "address_hex": "0x501cfb80",
+      "bytes": null,
+      "nm_type": "?",
+      "sections_at_address": []
+    },
+    {
+      "name": "_rodata_reserved_start",
+      "address": 1343225888,
+      "address_hex": "0x50100020",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".flash.appdesc"
+      ]
+    },
+    {
+      "name": "_rodata_start",
+      "address": 1343225888,
+      "address_hex": "0x50100020",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": [
+        ".flash.appdesc"
+      ]
+    },
+    {
+      "name": "dragon_iris_indices",
+      "address": 1343392816,
+      "address_hex": "0x50128c30",
+      "bytes": 409600,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_iris_palette",
+      "address": 1343392304,
+      "address_hex": "0x50128a30",
+      "bytes": 512,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_pupil_q15",
+      "address": 1343383592,
+      "address_hex": "0x50126828",
+      "bytes": 514,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_sin_q15",
+      "address": 1343381544,
+      "address_hex": "0x50126028",
+      "bytes": 2048,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_skin_indices",
+      "address": 1343802928,
+      "address_hex": "0x5018ce30",
+      "bytes": 230400,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_skin_palette",
+      "address": 1343802416,
+      "address_hex": "0x5018cc30",
+      "bytes": 512,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_sqrt_q15",
+      "address": 1343384108,
+      "address_hex": "0x50126a2c",
+      "bytes": 8194,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "esp_psram_get_heap_size_to_protect",
+      "address": 1343192180,
+      "address_hex": "0x500f7c74",
+      "bytes": 202,
+      "nm_type": "T",
+      "sections_at_address": [
+        ".flash.text"
+      ]
+    },
+    {
+      "name": "esp_psram_impl_get_available_size",
+      "address": 788589104,
+      "address_hex": "0x2f00ea30",
+      "bytes": 32,
+      "nm_type": "T",
+      "sections_at_address": [
+        ".iram0.text"
+      ]
+    },
+    {
+      "name": "esp_psram_impl_get_physical_size",
+      "address": 788589072,
+      "address_hex": "0x2f00ea10",
+      "bytes": 32,
+      "nm_type": "T",
+      "sections_at_address": [
+        ".iram0.text"
+      ]
+    },
+    {
+      "name": "flash2spiram_instruction_offset",
+      "address": 796919532,
+      "address_hex": "0x2f8006ec",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "flash2spiram_rodata_offset",
+      "address": 796919536,
+      "address_hex": "0x2f8006f0",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "flash_instr_rodata_end_page",
+      "address": 796919544,
+      "address_hex": "0x2f8006f8",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "flash_instr_rodata_start_page",
+      "address": 796919540,
+      "address_hex": "0x2f8006f4",
+      "bytes": null,
+      "nm_type": "A",
+      "sections_at_address": []
+    },
+    {
+      "name": "s_psram_size",
+      "address": 788661056,
+      "address_hex": "0x2f020340",
+      "bytes": 4,
+      "nm_type": "b",
+      "sections_at_address": [
+        ".dram0.bss"
+      ]
+    }
+  ],
+  "dragon_asset_symbols": [
+    {
+      "name": "dragon_iris_indices",
+      "address": 1343392816,
+      "address_hex": "0x50128c30",
+      "bytes": 409600,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_iris_palette",
+      "address": 1343392304,
+      "address_hex": "0x50128a30",
+      "bytes": 512,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_pupil_q15",
+      "address": 1343383592,
+      "address_hex": "0x50126828",
+      "bytes": 514,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_sin_q15",
+      "address": 1343381544,
+      "address_hex": "0x50126028",
+      "bytes": 2048,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_skin_indices",
+      "address": 1343802928,
+      "address_hex": "0x5018ce30",
+      "bytes": 230400,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_skin_palette",
+      "address": 1343802416,
+      "address_hex": "0x5018cc30",
+      "bytes": 512,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    },
+    {
+      "name": "dragon_sqrt_q15",
+      "address": 1343384108,
+      "address_hex": "0x50126a2c",
+      "bytes": 8194,
+      "nm_type": "d",
+      "sections_at_address": [
+        ".flash.rodata"
+      ]
+    }
+  ],
+  "psram": {
+    "xip_from_psram_enabled": true,
+    "rodata_to_psram_enabled": true,
+    "instruction_fetch_from_psram_enabled": true,
+    "dragon_assets_all_in_flash_rodata": true,
+    "linker_rodata_reserved_span_bytes": 850784,
+    "linker_instruction_reserved_span_bytes": 1032160,
+    "interpretation": "ELF section names beginning .flash describe linked image segments, not proof of flash-only runtime residency. If CONFIG_SPIRAM_RODATA and XIP are enabled, the configured boot path requires PSRAM mapping/copy budget for linked read-only textures/LUTs; instruction fetch configuration similarly requires code budget. These are configuration/linker deductions; successful startup, actual residency and free heap were not observed. Linker spans include alignment/reservations and are not measured heap consumption. Zero texture decoding allocation does not mean zero PSRAM cost.",
+    "startup_free_heap_measured": false,
+    "device_peak_RAM_measured": false,
+    "additional_not_measured": [
+      "startup segment copying and MMU/alignment overhead",
+      "GSP caches, Canvas surfaces, fonts and scratch",
+      "presenter/DMA/framebuffers and task/SDK allocation overlaps"
+    ]
+  },
+  "build_warnings": {
+    "logs": [
+      {
+        "path": "evidence/sleep-performance/idf-raw.log",
+        "bytes": 64480,
+        "sha256": "a39304e6353a28aa2b03c7a5ed7f713970ca0069336a2541d66738046df1e1f3"
+      }
+    ],
+    "matched_warning_lines": [
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 114,
+        "text": "CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):"
+      },
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 129,
+        "text": "CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):"
+      },
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 144,
+        "text": "CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):"
+      },
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 159,
+        "text": "CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):"
+      },
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 174,
+        "text": "CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):"
+      },
+      {
+        "log": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/evidence/sleep-performance/idf-raw.log",
+        "line": 449,
+        "text": "WARNING: 1/2 app partitions are too small for binary peek.bin size 0x1e6b70:"
+      }
+    ],
+    "scope": "Only supplied build logs; matches are lines, not distinct diagnostics. No log supplied does not mean a warning-free build.",
+    "matched_line_count": 6
+  },
+  "prior_static_RAM_estimate": {
+    "source": {
+      "path": "evidence/sleep-performance/static-budget.json",
+      "bytes": 3752,
+      "sha256": "721a2b85e8d2010cd23d1347803077b7edca56efaf26cfba8d92fe8636bbd071"
+    },
+    "status": "Inherited report_budget.py estimate; not recompiled or device-measured by this read-only tool. texture_decode_to_RAM_bytes excludes XIP read-only residency and must not be used as total PSRAM usage.",
+    "ram_static_estimate": {
+      "target_abi": "ESP32-S31 GCC16.1.0, compile-only actual device structs; GSP handles stubbed as identical opaque pointers",
+      "struct_bytes": {
+        "detector": 5544,
+        "input_frame": 3864,
+        "role_controller": 176,
+        "shared_ui": 9712,
+        "display_snapshot": 9592,
+        "device_app": 9728,
+        "renderer": 12320,
+        "acquisition_owner": 16536,
+        "renderer_fixed_cache": 3225600,
+        "renderer_geometry_cache": 691200
+      },
+      "renderer_heap_bytes": 3929120,
+      "device_app_plus_producer_consumer_queue_and_renderer_bytes": 3974568,
+      "sensor_task_stack_bytes": 8192,
+      "single_RGB565_plane_bytes": 460800,
+      "eye_plus_diagnostic_canvas_planes_if_both_cached_bytes": 681984,
+      "app_temperature_storage_note": "Acquisition owner and display snapshot include complete temperature arrays; counted in struct totals above.",
+      "texture_decode_to_RAM_bytes": 0,
+      "additional_not_measured": [
+        "FreeRTOS queue/task control metadata",
+        "GSP Canvas caches and native draw surfaces",
+        "GSP scene/font/image caches and scratch",
+        "display-presenter framebuffer count, DMA buffers, driver memory",
+        "global SDK heaps/stacks and peak allocation overlaps"
+      ],
+      "device_peak_RAM_measured": false,
+      "warning": "Known allocations are not a measured device RAM peak; native process RSS includes a different runtime."
+    }
+  }
+}

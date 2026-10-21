@@ -95,3 +95,18 @@ Mean engine121.86ms, raster90.98ms, submit30.76ms; GSP1/sensor0. The preceding
 Internal free237,955B/min196,784B; PSRAM free/min9,918,228B before screenshots.
 Panel-visible FPS and post-flip physical acceptance remain unmeasured/pending.
 No30Hz or smoothness-pass claim. Exact runtime and recovery evidence: HANDOFF.
+
+## Sleep/geometry-cache stopping point
+
+Sourcef8845c5 adds the requested10s IDLE/450ms close/150ms wake and exact240
+prepared-geometry reuse. Active-open device counters classify the completed
+previous generation, excluding sleeping/partial blink frames. Host fixture
+checks the transition accounting.94.74s observation measured10.336 active-open
+engine frames/s over898 frames/86.882s, including misses; raster53.19ms and
+submit31.32ms per active-open frame. Global engine9.975Hz, tiled callbacks
+103.072Hz, samples7.843Hz; no panel-visible FPS claim. Cache-ready states53/87;
+TRACKING/HOLD geometry changes reduce reuse. Internal free237,891B/min196,720B;
+PSRAM free/min9,211,008B before screenshots. User said “可以，就先这样吧”;
+stop at this version.15Hz remains unmet. Uninstalled packed-color/O3 WIPa6a0fb1
+is separate, with no hardware speed claim. Exact current source/ELF/recovery and
+physical sleep/wake observation gap: HANDOFF.

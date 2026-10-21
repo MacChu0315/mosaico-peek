@@ -1,1367 +1,1367 @@
 [
   {
     "file": "0000.png",
-    "wall_s": 0.07239115983247757,
+    "wall_s": 0.05132331419736147,
     "logical_ms": 0
   },
   {
     "file": "0001.png",
-    "wall_s": 0.3169063120149076,
-    "logical_ms": 275
+    "wall_s": 0.29213922098279,
+    "logical_ms": 257
   },
   {
     "file": "0002.png",
-    "wall_s": 0.5600902889855206,
-    "logical_ms": 486
+    "wall_s": 0.5700884112156928,
+    "logical_ms": 515
   },
   {
     "file": "0003.png",
-    "wall_s": 0.8042562548071146,
-    "logical_ms": 763
+    "wall_s": 0.8337102262303233,
+    "logical_ms": 744
   },
   {
     "file": "0004.png",
-    "wall_s": 1.0475637670606375,
-    "logical_ms": 973
+    "wall_s": 1.0665145921520889,
+    "logical_ms": 995
   },
   {
     "file": "0005.png",
-    "wall_s": 1.3102106028236449,
-    "logical_ms": 1250
+    "wall_s": 1.3136641173623502,
+    "logical_ms": 1238
   },
   {
     "file": "0006.png",
-    "wall_s": 1.55586520396173,
-    "logical_ms": 1513
+    "wall_s": 1.601117832120508,
+    "logical_ms": 1521
   },
   {
     "file": "0007.png",
-    "wall_s": 1.7988439737819135,
-    "logical_ms": 1725
+    "wall_s": 1.7878293083049357,
+    "logical_ms": 1762
   },
   {
     "file": "0008.png",
-    "wall_s": 2.0412459056824446,
-    "logical_ms": 2001
+    "wall_s": 2.0469264653511345,
+    "logical_ms": 2023
   },
   {
     "file": "0009.png",
-    "wall_s": 2.3004084387794137,
-    "logical_ms": 2260
+    "wall_s": 2.2809570683166385,
+    "logical_ms": 2253
   },
   {
     "file": "0010.png",
-    "wall_s": 2.542468389030546,
-    "logical_ms": 2469
+    "wall_s": 2.541855574119836,
+    "logical_ms": 2500
   },
   {
     "file": "0011.png",
-    "wall_s": 2.803356744814664,
-    "logical_ms": 2745
+    "wall_s": 2.801776200067252,
+    "logical_ms": 2761
   },
   {
     "file": "0012.png",
-    "wall_s": 3.046360816806555,
-    "logical_ms": 3007
+    "wall_s": 3.074509060010314,
+    "logical_ms": 2970
   },
   {
     "file": "0013.png",
-    "wall_s": 3.3057384989224374,
-    "logical_ms": 3265
+    "wall_s": 3.2849061340093613,
+    "logical_ms": 3227
   },
   {
     "file": "0014.png",
-    "wall_s": 3.5504053980112076,
-    "logical_ms": 3474
+    "wall_s": 3.548840153031051,
+    "logical_ms": 3487
   },
   {
     "file": "0015.png",
-    "wall_s": 3.79344833875075,
-    "logical_ms": 3753
+    "wall_s": 3.810996543150395,
+    "logical_ms": 3720
   },
   {
     "file": "0016.png",
-    "wall_s": 4.054196952842176,
-    "logical_ms": 4012
+    "wall_s": 4.039318706374615,
+    "logical_ms": 4015
   },
   {
     "file": "0017.png",
-    "wall_s": 4.298055198974907,
-    "logical_ms": 4223
+    "wall_s": 4.298151780385524,
+    "logical_ms": 4275
   },
   {
     "file": "0018.png",
-    "wall_s": 4.549590076785535,
-    "logical_ms": 4502
+    "wall_s": 4.541001388337463,
+    "logical_ms": 4501
   },
   {
     "file": "0019.png",
-    "wall_s": 4.784646579995751,
-    "logical_ms": 4753
+    "wall_s": 4.800562450196594,
+    "logical_ms": 4760
   },
   {
     "file": "0020.png",
-    "wall_s": 5.057486467063427,
-    "logical_ms": 5007
+    "wall_s": 5.042910711374134,
+    "logical_ms": 4969
   },
   {
     "file": "0021.png",
-    "wall_s": 5.304784671869129,
-    "logical_ms": 5261
+    "wall_s": 5.303256581071764,
+    "logical_ms": 5246
   },
   {
     "file": "0022.png",
-    "wall_s": 5.557223608717322,
-    "logical_ms": 5507
+    "wall_s": 5.545691219158471,
+    "logical_ms": 5506
   },
   {
     "file": "0023.png",
-    "wall_s": 5.786155167967081,
-    "logical_ms": 5761
+    "wall_s": 5.8080496322363615,
+    "logical_ms": 5748
   },
   {
     "file": "0024.png",
-    "wall_s": 6.050267389975488,
-    "logical_ms": 6005
+    "wall_s": 6.050786362029612,
+    "logical_ms": 6010
   },
   {
     "file": "0025.png",
-    "wall_s": 6.293984716758132,
+    "wall_s": 6.292996515054256,
     "logical_ms": 6220
   },
   {
     "file": "0026.png",
-    "wall_s": 6.562923227902502,
-    "logical_ms": 6497
+    "wall_s": 6.552938153967261,
+    "logical_ms": 6495
   },
   {
     "file": "0027.png",
-    "wall_s": 6.801108605694026,
-    "logical_ms": 6761
+    "wall_s": 6.794721895363182,
+    "logical_ms": 6755
   },
   {
     "file": "0028.png",
-    "wall_s": 7.0477600349113345,
-    "logical_ms": 6970
+    "wall_s": 7.054791385307908,
+    "logical_ms": 7013
   },
   {
     "file": "0029.png",
-    "wall_s": 7.2920325067825615,
-    "logical_ms": 7251
+    "wall_s": 7.297910460270941,
+    "logical_ms": 7257
   },
   {
     "file": "0030.png",
-    "wall_s": 7.552902386058122,
-    "logical_ms": 7512
+    "wall_s": 7.5412719920277596,
+    "logical_ms": 7466
   },
   {
     "file": "0031.png",
-    "wall_s": 7.800365399103612,
-    "logical_ms": 7722
+    "wall_s": 7.8021002393215895,
+    "logical_ms": 7744
   },
   {
     "file": "0032.png",
-    "wall_s": 8.028386055957526,
-    "logical_ms": 8003
+    "wall_s": 8.04483858635649,
+    "logical_ms": 8004
   },
   {
     "file": "0033.png",
-    "wall_s": 8.295445543713868,
-    "logical_ms": 8266
+    "wall_s": 8.306575815193355,
+    "logical_ms": 8263
   },
   {
     "file": "0034.png",
-    "wall_s": 8.570991171058267,
-    "logical_ms": 8498
+    "wall_s": 8.549186315387487,
+    "logical_ms": 8510
   },
   {
     "file": "0035.png",
-    "wall_s": 8.81913808779791,
-    "logical_ms": 8774
+    "wall_s": 8.79229160118848,
+    "logical_ms": 8718
   },
   {
     "file": "0036.png",
-    "wall_s": 9.051116556860507,
-    "logical_ms": 9023
+    "wall_s": 9.053664602339268,
+    "logical_ms": 8995
   },
   {
     "file": "0037.png",
-    "wall_s": 9.298255269881338,
-    "logical_ms": 9220
+    "wall_s": 9.296045653056353,
+    "logical_ms": 9256
   },
   {
     "file": "0038.png",
-    "wall_s": 9.529634535778314,
-    "logical_ms": 9502
+    "wall_s": 9.555572828277946,
+    "logical_ms": 9515
   },
   {
     "file": "0039.png",
-    "wall_s": 9.80238862382248,
-    "logical_ms": 9749
+    "wall_s": 9.799001662991941,
+    "logical_ms": 9725
   },
   {
     "file": "0040.png",
-    "wall_s": 10.037059647962451,
-    "logical_ms": 10006
+    "wall_s": 10.042304125148803,
+    "logical_ms": 10001
   },
   {
     "file": "0041.png",
-    "wall_s": 10.296794824767858,
-    "logical_ms": 10256
+    "wall_s": 10.30383694730699,
+    "logical_ms": 10244
   },
   {
     "file": "0042.png",
-    "wall_s": 10.557212892919779,
-    "logical_ms": 10515
+    "wall_s": 10.546927977353334,
+    "logical_ms": 10506
   },
   {
     "file": "0043.png",
-    "wall_s": 10.811515339650214,
-    "logical_ms": 10726
+    "wall_s": 10.8078947593458,
+    "logical_ms": 10767
   },
   {
     "file": "0044.png",
-    "wall_s": 11.065563018899411,
-    "logical_ms": 11014
+    "wall_s": 11.052544656209648,
+    "logical_ms": 11010
   },
   {
     "file": "0045.png",
-    "wall_s": 11.30906094191596,
-    "logical_ms": 11268
+    "wall_s": 11.296076497994363,
+    "logical_ms": 11255
   },
   {
     "file": "0046.png",
-    "wall_s": 11.552101890090853,
-    "logical_ms": 11478
+    "wall_s": 11.55559131829068,
+    "logical_ms": 11515
   },
   {
     "file": "0047.png",
-    "wall_s": 11.79682203894481,
-    "logical_ms": 11756
+    "wall_s": 11.798359561245888,
+    "logical_ms": 11724
   },
   {
     "file": "0048.png",
-    "wall_s": 12.056024390738457,
-    "logical_ms": 12017
+    "wall_s": 12.04238722100854,
+    "logical_ms": 12001
   },
   {
     "file": "0049.png",
-    "wall_s": 12.299283374100924,
-    "logical_ms": 12225
+    "wall_s": 12.302736031357199,
+    "logical_ms": 12261
   },
   {
     "file": "0050.png",
-    "wall_s": 12.541926261037588,
-    "logical_ms": 12502
+    "wall_s": 12.545784962363541,
+    "logical_ms": 12471
   },
   {
     "file": "0051.png",
-    "wall_s": 12.802326661068946,
-    "logical_ms": 12761
+    "wall_s": 12.806638309266418,
+    "logical_ms": 12749
   },
   {
     "file": "0052.png",
-    "wall_s": 13.045429126825184,
-    "logical_ms": 12971
+    "wall_s": 13.049476287327707,
+    "logical_ms": 13009
   },
   {
     "file": "0053.png",
-    "wall_s": 13.308919416740537,
-    "logical_ms": 13248
+    "wall_s": 13.291892932262272,
+    "logical_ms": 13218
   },
   {
     "file": "0054.png",
-    "wall_s": 13.555422415025532,
-    "logical_ms": 13511
+    "wall_s": 13.55296907108277,
+    "logical_ms": 13494
   },
   {
     "file": "0055.png",
-    "wall_s": 13.799259054940194,
-    "logical_ms": 13758
+    "wall_s": 13.798039460089058,
+    "logical_ms": 13756
   },
   {
     "file": "0056.png",
-    "wall_s": 14.041654163971543,
-    "logical_ms": 13968
+    "wall_s": 14.040949049405754,
+    "logical_ms": 13966
   },
   {
     "file": "0057.png",
-    "wall_s": 14.30813865782693,
-    "logical_ms": 14244
+    "wall_s": 14.300909923389554,
+    "logical_ms": 14243
   },
   {
     "file": "0058.png",
-    "wall_s": 14.550801436882466,
-    "logical_ms": 14511
+    "wall_s": 14.542957839090377,
+    "logical_ms": 14503
   },
   {
     "file": "0059.png",
-    "wall_s": 14.794141555670649,
-    "logical_ms": 14719
+    "wall_s": 14.80305100325495,
+    "logical_ms": 14762
   },
   {
     "file": "0060.png",
-    "wall_s": 15.06182294106111,
-    "logical_ms": 14998
+    "wall_s": 15.045633503235877,
+    "logical_ms": 14971
   },
   {
     "file": "0061.png",
-    "wall_s": 15.306289135012776,
-    "logical_ms": 15265
+    "wall_s": 15.307110232301056,
+    "logical_ms": 15248
   },
   {
     "file": "0062.png",
-    "wall_s": 15.552595377899706,
-    "logical_ms": 15475
+    "wall_s": 15.550472490955144,
+    "logical_ms": 15509
   },
   {
     "file": "0063.png",
-    "wall_s": 15.795536406803876,
-    "logical_ms": 15756
+    "wall_s": 15.792677617166191,
+    "logical_ms": 15719
   },
   {
     "file": "0064.png",
-    "wall_s": 16.054938507732004,
-    "logical_ms": 16014
+    "wall_s": 16.052186385262758,
+    "logical_ms": 15994
   },
   {
     "file": "0065.png",
-    "wall_s": 16.297818871680647,
-    "logical_ms": 16224
+    "wall_s": 16.294846514239907,
+    "logical_ms": 16255
   },
   {
     "file": "0066.png",
-    "wall_s": 16.54047191608697,
-    "logical_ms": 16501
+    "wall_s": 16.55529184732586,
+    "logical_ms": 16513
   },
   {
     "file": "0067.png",
-    "wall_s": 16.79992724303156,
-    "logical_ms": 16760
+    "wall_s": 16.798097969964147,
+    "logical_ms": 16724
   },
   {
     "file": "0068.png",
-    "wall_s": 17.042278348002583,
-    "logical_ms": 16969
+    "wall_s": 17.042059880215675,
+    "logical_ms": 17001
   },
   {
     "file": "0069.png",
-    "wall_s": 17.30237861769274,
-    "logical_ms": 17244
+    "wall_s": 17.302073114085943,
+    "logical_ms": 17261
   },
   {
     "file": "0070.png",
-    "wall_s": 17.544233174994588,
-    "logical_ms": 17505
+    "wall_s": 17.54414672823623,
+    "logical_ms": 17471
   },
   {
     "file": "0071.png",
-    "wall_s": 17.802788777742535,
-    "logical_ms": 17763
+    "wall_s": 17.806287616025656,
+    "logical_ms": 17748
   },
   {
     "file": "0072.png",
-    "wall_s": 18.044940419960767,
-    "logical_ms": 17971
+    "wall_s": 18.04884124500677,
+    "logical_ms": 18008
   },
   {
     "file": "0073.png",
-    "wall_s": 18.304087799973786,
-    "logical_ms": 18247
+    "wall_s": 18.291262915357947,
+    "logical_ms": 18217
   },
   {
     "file": "0074.png",
-    "wall_s": 18.546395708806813,
-    "logical_ms": 18506
+    "wall_s": 18.552318619098514,
+    "logical_ms": 18493
   },
   {
     "file": "0075.png",
-    "wall_s": 18.805300612933934,
-    "logical_ms": 18765
+    "wall_s": 18.795709033031017,
+    "logical_ms": 18755
   },
   {
     "file": "0076.png",
-    "wall_s": 19.047324628103524,
-    "logical_ms": 18974
+    "wall_s": 19.055635725148022,
+    "logical_ms": 19014
   },
   {
     "file": "0077.png",
-    "wall_s": 19.307313311845064,
-    "logical_ms": 19249
+    "wall_s": 19.297851173207164,
+    "logical_ms": 19224
   },
   {
     "file": "0078.png",
-    "wall_s": 19.550168280955404,
-    "logical_ms": 19510
+    "wall_s": 19.540611510165036,
+    "logical_ms": 19500
   },
   {
     "file": "0079.png",
-    "wall_s": 19.79342274973169,
-    "logical_ms": 19719
+    "wall_s": 19.799704837147146,
+    "logical_ms": 19759
   },
   {
     "file": "0080.png",
-    "wall_s": 20.053997264709324,
-    "logical_ms": 19996
+    "wall_s": 20.043278445955366,
+    "logical_ms": 19968
   },
   {
     "file": "0081.png",
-    "wall_s": 20.297289059963077,
-    "logical_ms": 20256
+    "wall_s": 20.305179551243782,
+    "logical_ms": 20245
   },
   {
     "file": "0082.png",
-    "wall_s": 20.55623989365995,
-    "logical_ms": 20516
+    "wall_s": 20.54883943218738,
+    "logical_ms": 20508
   },
   {
     "file": "0083.png",
-    "wall_s": 20.799472485668957,
-    "logical_ms": 20725
+    "wall_s": 20.791620186064392,
+    "logical_ms": 20718
   },
   {
     "file": "0084.png",
-    "wall_s": 21.043552073650062,
-    "logical_ms": 21002
+    "wall_s": 21.053879911080003,
+    "logical_ms": 20994
   },
   {
     "file": "0085.png",
-    "wall_s": 21.302802144084126,
-    "logical_ms": 21263
+    "wall_s": 21.295363014098257,
+    "logical_ms": 21255
   },
   {
     "file": "0086.png",
-    "wall_s": 21.54508723784238,
-    "logical_ms": 21471
+    "wall_s": 21.554339402355254,
+    "logical_ms": 21514
   },
   {
     "file": "0087.png",
-    "wall_s": 21.804849134758115,
-    "logical_ms": 21747
+    "wall_s": 21.796683910302818,
+    "logical_ms": 21723
   },
   {
     "file": "0088.png",
-    "wall_s": 22.047393323853612,
-    "logical_ms": 22007
+    "wall_s": 22.058179235085845,
+    "logical_ms": 21999
   },
   {
     "file": "0089.png",
-    "wall_s": 22.306151136755943,
-    "logical_ms": 22266
+    "wall_s": 22.301097953226417,
+    "logical_ms": 22261
   },
   {
     "file": "0090.png",
-    "wall_s": 22.548355218954384,
-    "logical_ms": 22474
+    "wall_s": 22.54310411727056,
+    "logical_ms": 22469
   },
   {
     "file": "0091.png",
-    "wall_s": 22.791800940874964,
-    "logical_ms": 22751
+    "wall_s": 22.80674362834543,
+    "logical_ms": 22745
   },
   {
     "file": "0092.png",
-    "wall_s": 23.050709662027657,
+    "wall_s": 23.05111218895763,
     "logical_ms": 23010
   },
   {
     "file": "0093.png",
-    "wall_s": 23.297973005101085,
+    "wall_s": 23.292963057290763,
     "logical_ms": 23219
   },
   {
     "file": "0094.png",
-    "wall_s": 23.557213010732085,
-    "logical_ms": 23501
+    "wall_s": 23.553046595305204,
+    "logical_ms": 23495
   },
   {
     "file": "0095.png",
-    "wall_s": 23.801236818078905,
-    "logical_ms": 23759
+    "wall_s": 23.79539150511846,
+    "logical_ms": 23755
   },
   {
     "file": "0096.png",
-    "wall_s": 24.043412456754595,
-    "logical_ms": 23970
+    "wall_s": 24.054821736179292,
+    "logical_ms": 24014
   },
   {
     "file": "0097.png",
-    "wall_s": 24.30336168408394,
-    "logical_ms": 24246
+    "wall_s": 24.297592038288713,
+    "logical_ms": 24223
   },
   {
     "file": "0098.png",
-    "wall_s": 24.546827209647745,
-    "logical_ms": 24506
+    "wall_s": 24.55891458131373,
+    "logical_ms": 24500
   },
   {
     "file": "0099.png",
-    "wall_s": 24.80892204400152,
-    "logical_ms": 24766
+    "wall_s": 24.80110465036705,
+    "logical_ms": 24761
   },
   {
     "file": "0100.png",
-    "wall_s": 25.061435435898602,
-    "logical_ms": 24978
+    "wall_s": 25.04306805226952,
+    "logical_ms": 24970
   },
   {
     "file": "0101.png",
-    "wall_s": 25.305233288090676,
-    "logical_ms": 25264
+    "wall_s": 25.30440617306158,
+    "logical_ms": 25245
   },
   {
     "file": "0102.png",
-    "wall_s": 25.548091480974108,
-    "logical_ms": 25474
+    "wall_s": 25.546852277126163,
+    "logical_ms": 25507
   },
   {
     "file": "0103.png",
-    "wall_s": 25.790757844690233,
-    "logical_ms": 25751
+    "wall_s": 25.80564964329824,
+    "logical_ms": 25765
   },
   {
     "file": "0104.png",
-    "wall_s": 26.049543962813914,
-    "logical_ms": 26010
+    "wall_s": 26.049718514084816,
+    "logical_ms": 25974
   },
   {
     "file": "0105.png",
-    "wall_s": 26.291556701995432,
-    "logical_ms": 26218
+    "wall_s": 26.29170030914247,
+    "logical_ms": 26252
   },
   {
     "file": "0106.png",
-    "wall_s": 26.55161370197311,
-    "logical_ms": 26494
+    "wall_s": 26.55029273731634,
+    "logical_ms": 26510
   },
   {
     "file": "0107.png",
-    "wall_s": 26.794500099029392,
-    "logical_ms": 26754
+    "wall_s": 26.792670615017414,
+    "logical_ms": 26720
   },
   {
     "file": "0108.png",
-    "wall_s": 27.053358694072813,
-    "logical_ms": 27013
+    "wall_s": 27.051448928192258,
+    "logical_ms": 26995
   },
   {
     "file": "0109.png",
-    "wall_s": 27.295492332894355,
-    "logical_ms": 27222
+    "wall_s": 27.29400830436498,
+    "logical_ms": 27253
   },
   {
     "file": "0110.png",
-    "wall_s": 27.55508193280548,
-    "logical_ms": 27498
+    "wall_s": 27.552647312171757,
+    "logical_ms": 27513
   },
   {
     "file": "0111.png",
-    "wall_s": 27.799844007007778,
-    "logical_ms": 27757
+    "wall_s": 27.795430497266352,
+    "logical_ms": 27721
   },
   {
     "file": "0112.png",
-    "wall_s": 28.043058787006885,
-    "logical_ms": 27969
+    "wall_s": 28.058928122278303,
+    "logical_ms": 27999
   },
   {
     "file": "0113.png",
-    "wall_s": 28.30324871884659,
-    "logical_ms": 28245
+    "wall_s": 28.287184776272625,
+    "logical_ms": 28263
   },
   {
     "file": "0114.png",
-    "wall_s": 28.545558682642877,
-    "logical_ms": 28505
+    "wall_s": 28.550178510136902,
+    "logical_ms": 28523
   },
   {
     "file": "0115.png",
-    "wall_s": 28.80510332575068,
-    "logical_ms": 28764
+    "wall_s": 28.793892714194953,
+    "logical_ms": 28719
   },
   {
     "file": "0116.png",
-    "wall_s": 29.047875185962766,
-    "logical_ms": 28974
+    "wall_s": 29.053639577236027,
+    "logical_ms": 28996
   },
   {
     "file": "0117.png",
-    "wall_s": 29.277487582992762,
-    "logical_ms": 29253
+    "wall_s": 29.29745486797765,
+    "logical_ms": 29256
   },
   {
     "file": "0118.png",
-    "wall_s": 29.53651640890166,
-    "logical_ms": 29513
+    "wall_s": 29.557953514158726,
+    "logical_ms": 29500
   },
   {
     "file": "0119.png",
-    "wall_s": 29.795842995867133,
-    "logical_ms": 29739
+    "wall_s": 29.801169021055102,
+    "logical_ms": 29761
   },
   {
     "file": "0120.png",
-    "wall_s": 30.05665922164917,
-    "logical_ms": 29998
+    "wall_s": 30.04361989116296,
+    "logical_ms": 29970
   },
   {
     "file": "0121.png",
-    "wall_s": 30.299145373981446,
-    "logical_ms": 30259
+    "wall_s": 30.30344411311671,
+    "logical_ms": 30246
   },
   {
     "file": "0122.png",
-    "wall_s": 30.541622089687735,
-    "logical_ms": 30468
+    "wall_s": 30.546738220378757,
+    "logical_ms": 30505
   },
   {
     "file": "0123.png",
-    "wall_s": 30.802458869758993,
-    "logical_ms": 30744
+    "wall_s": 30.807653431314975,
+    "logical_ms": 30766
   },
   {
     "file": "0124.png",
-    "wall_s": 31.053165497723967,
-    "logical_ms": 31005
+    "wall_s": 31.050392193254083,
+    "logical_ms": 31010
   },
   {
     "file": "0125.png",
-    "wall_s": 31.304550306871533,
-    "logical_ms": 31256
+    "wall_s": 31.29257963830605,
+    "logical_ms": 31219
   },
   {
     "file": "0126.png",
-    "wall_s": 31.555275135673583,
-    "logical_ms": 31507
+    "wall_s": 31.552398063242435,
+    "logical_ms": 31495
   },
   {
     "file": "0127.png",
-    "wall_s": 31.805951066780835,
-    "logical_ms": 31758
+    "wall_s": 31.795975444372743,
+    "logical_ms": 31756
   },
   {
     "file": "0128.png",
-    "wall_s": 32.039034199900925,
-    "logical_ms": 32009
+    "wall_s": 32.05958452820778,
+    "logical_ms": 32015
   },
   {
     "file": "0129.png",
-    "wall_s": 32.30078794481233,
-    "logical_ms": 32258
+    "wall_s": 32.30212679738179,
+    "logical_ms": 32262
   },
   {
     "file": "0130.png",
-    "wall_s": 32.543735223822296,
-    "logical_ms": 32503
+    "wall_s": 32.547048597130924,
+    "logical_ms": 32471
   },
   {
     "file": "0131.png",
-    "wall_s": 32.802599594928324,
-    "logical_ms": 32763
+    "wall_s": 32.797062451951206,
+    "logical_ms": 32750
   },
   {
     "file": "0132.png",
-    "wall_s": 33.04511552490294,
-    "logical_ms": 32971
+    "wall_s": 33.06083619501442,
+    "logical_ms": 33001
   },
   {
     "file": "0133.png",
-    "wall_s": 33.304517089854926,
-    "logical_ms": 33249
+    "wall_s": 33.31217561708763,
+    "logical_ms": 33264
   },
   {
     "file": "0134.png",
-    "wall_s": 33.54805210605264,
-    "logical_ms": 33507
+    "wall_s": 33.54108298616484,
+    "logical_ms": 33517
   },
   {
     "file": "0135.png",
-    "wall_s": 33.78998224483803,
-    "logical_ms": 33716
+    "wall_s": 33.80242536496371,
+    "logical_ms": 33777
   },
   {
     "file": "0136.png",
-    "wall_s": 34.04937894502655,
-    "logical_ms": 33992
+    "wall_s": 34.04500183230266,
+    "logical_ms": 33970
   },
   {
     "file": "0137.png",
-    "wall_s": 34.29242831002921,
-    "logical_ms": 34252
+    "wall_s": 34.30734599707648,
+    "logical_ms": 34248
   },
   {
     "file": "0138.png",
-    "wall_s": 34.551577453967184,
-    "logical_ms": 34511
+    "wall_s": 34.5517909033224,
+    "logical_ms": 34509
   },
   {
     "file": "0139.png",
-    "wall_s": 34.793804231099784,
+    "wall_s": 34.79478218127042,
     "logical_ms": 34720
   },
   {
     "file": "0140.png",
-    "wall_s": 35.052871458698064,
-    "logical_ms": 34996
+    "wall_s": 35.05441518640146,
+    "logical_ms": 34997
   },
   {
     "file": "0141.png",
-    "wall_s": 35.294961425010115,
-    "logical_ms": 35255
+    "wall_s": 35.298040367197245,
+    "logical_ms": 35256
   },
   {
     "file": "0142.png",
-    "wall_s": 35.55311361094937,
-    "logical_ms": 35514
+    "wall_s": 35.54030333226547,
+    "logical_ms": 35466
   },
   {
     "file": "0143.png",
-    "wall_s": 35.79525758093223,
-    "logical_ms": 35721
+    "wall_s": 35.80192280514166,
+    "logical_ms": 35743
   },
   {
     "file": "0144.png",
-    "wall_s": 36.054232890717685,
-    "logical_ms": 35997
+    "wall_s": 36.046489706262946,
+    "logical_ms": 36005
   },
   {
     "file": "0145.png",
-    "wall_s": 36.29693700792268,
-    "logical_ms": 36257
+    "wall_s": 36.288799309171736,
+    "logical_ms": 36215
   },
   {
     "file": "0146.png",
-    "wall_s": 36.55600574379787,
-    "logical_ms": 36516
+    "wall_s": 36.54941900400445,
+    "logical_ms": 36491
   },
   {
     "file": "0147.png",
-    "wall_s": 36.798147063702345,
-    "logical_ms": 36725
+    "wall_s": 36.79303429834545,
+    "logical_ms": 36753
   },
   {
     "file": "0148.png",
-    "wall_s": 37.040873364079744,
-    "logical_ms": 37000
+    "wall_s": 37.05228680698201,
+    "logical_ms": 37012
   },
   {
     "file": "0149.png",
-    "wall_s": 37.29985049366951,
-    "logical_ms": 37260
+    "wall_s": 37.302192945964634,
+    "logical_ms": 37222
   },
   {
     "file": "0150.png",
-    "wall_s": 37.54262002091855,
-    "logical_ms": 37468
+    "wall_s": 37.53216502536088,
+    "logical_ms": 37505
   },
   {
     "file": "0151.png",
-    "wall_s": 37.80300423875451,
-    "logical_ms": 37745
+    "wall_s": 37.7919136621058,
+    "logical_ms": 37770
   },
   {
     "file": "0152.png",
-    "wall_s": 38.04538716189563,
-    "logical_ms": 38005
+    "wall_s": 38.053489124402404,
+    "logical_ms": 37994
   },
   {
     "file": "0153.png",
-    "wall_s": 38.30410122079775,
-    "logical_ms": 38264
+    "wall_s": 38.29645076720044,
+    "logical_ms": 38256
   },
   {
     "file": "0154.png",
-    "wall_s": 38.54611868876964,
-    "logical_ms": 38473
+    "wall_s": 38.55817031301558,
+    "logical_ms": 38515
   },
   {
     "file": "0155.png",
-    "wall_s": 38.80672725383192,
-    "logical_ms": 38748
+    "wall_s": 38.80187876522541,
+    "logical_ms": 38726
   },
   {
     "file": "0156.png",
-    "wall_s": 39.05187926487997,
-    "logical_ms": 39009
+    "wall_s": 39.04545897804201,
+    "logical_ms": 39005
   },
   {
     "file": "0157.png",
-    "wall_s": 39.29452354507521,
-    "logical_ms": 39220
+    "wall_s": 39.30960479006171,
+    "logical_ms": 39264
   },
   {
     "file": "0158.png",
-    "wall_s": 39.55375825893134,
-    "logical_ms": 39497
+    "wall_s": 39.552775075193495,
+    "logical_ms": 39512
   },
   {
     "file": "0159.png",
-    "wall_s": 39.79613222274929,
-    "logical_ms": 39756
+    "wall_s": 39.79660814534873,
+    "logical_ms": 39721
   },
   {
     "file": "0160.png",
-    "wall_s": 40.055249453987926,
-    "logical_ms": 40015
+    "wall_s": 40.05699642235413,
+    "logical_ms": 40000
   },
   {
     "file": "0161.png",
-    "wall_s": 40.29797154199332,
-    "logical_ms": 40224
+    "wall_s": 40.28616322297603,
+    "logical_ms": 40260
   },
   {
     "file": "0162.png",
-    "wall_s": 40.54046490602195,
-    "logical_ms": 40500
+    "wall_s": 40.54508672328666,
+    "logical_ms": 40505
   },
   {
     "file": "0163.png",
-    "wall_s": 40.80016149394214,
-    "logical_ms": 40759
+    "wall_s": 40.80790091725066,
+    "logical_ms": 40765
   },
   {
     "file": "0164.png",
-    "wall_s": 41.04493941506371,
-    "logical_ms": 40970
+    "wall_s": 41.05048559233546,
+    "logical_ms": 41011
   },
   {
     "file": "0165.png",
-    "wall_s": 41.30848857574165,
-    "logical_ms": 41250
+    "wall_s": 41.293254954274744,
+    "logical_ms": 41219
   },
   {
     "file": "0166.png",
-    "wall_s": 41.54539455473423,
-    "logical_ms": 41513
+    "wall_s": 41.554184697102755,
+    "logical_ms": 41496
   },
   {
     "file": "0167.png",
-    "wall_s": 41.81443639006466,
-    "logical_ms": 41765
+    "wall_s": 41.79763386398554,
+    "logical_ms": 41757
   },
   {
     "file": "0168.png",
-    "wall_s": 42.04908099770546,
-    "logical_ms": 42017
+    "wall_s": 42.05827719718218,
+    "logical_ms": 42016
   },
   {
     "file": "0169.png",
-    "wall_s": 42.291858131065965,
-    "logical_ms": 42218
+    "wall_s": 42.30053669633344,
+    "logical_ms": 42260
   },
   {
     "file": "0170.png",
-    "wall_s": 42.55318707181141,
-    "logical_ms": 42495
+    "wall_s": 42.54356562811881,
+    "logical_ms": 42469
   },
   {
     "file": "0171.png",
-    "wall_s": 42.796542555093765,
-    "logical_ms": 42755
+    "wall_s": 42.80553280003369,
+    "logical_ms": 42746
   },
   {
     "file": "0172.png",
-    "wall_s": 43.0557233938016,
-    "logical_ms": 43016
+    "wall_s": 43.04965190729126,
+    "logical_ms": 43008
   },
   {
     "file": "0173.png",
-    "wall_s": 43.29846548475325,
-    "logical_ms": 43224
+    "wall_s": 43.29507102910429,
+    "logical_ms": 43252
   },
   {
     "file": "0174.png",
-    "wall_s": 43.54051349963993,
-    "logical_ms": 43501
+    "wall_s": 43.5563456742093,
+    "logical_ms": 43498
   },
   {
     "file": "0175.png",
-    "wall_s": 43.79969630809501,
+    "wall_s": 43.79902759427205,
     "logical_ms": 43759
   },
   {
     "file": "0176.png",
-    "wall_s": 44.04228939907625,
-    "logical_ms": 43968
+    "wall_s": 44.04434974724427,
+    "logical_ms": 43969
   },
   {
     "file": "0177.png",
-    "wall_s": 44.30281056277454,
-    "logical_ms": 44244
+    "wall_s": 44.314491773955524,
+    "logical_ms": 44247
   },
   {
     "file": "0178.png",
-    "wall_s": 44.553444331046194,
-    "logical_ms": 44505
+    "wall_s": 44.55837481608614,
+    "logical_ms": 44517
   },
   {
     "file": "0179.png",
-    "wall_s": 44.79700315883383,
-    "logical_ms": 44756
+    "wall_s": 44.803044400177896,
+    "logical_ms": 44728
   },
   {
     "file": "0180.png",
-    "wall_s": 45.064970368053764,
-    "logical_ms": 45016
+    "wall_s": 45.04774924740195,
+    "logical_ms": 45005
   },
   {
     "file": "0181.png",
-    "wall_s": 45.307850593701005,
-    "logical_ms": 45269
+    "wall_s": 45.307227544952184,
+    "logical_ms": 45268
   },
   {
     "file": "0182.png",
-    "wall_s": 45.549863141961396,
-    "logical_ms": 45477
+    "wall_s": 45.5509735820815,
+    "logical_ms": 45476
   },
   {
     "file": "0183.png",
-    "wall_s": 45.7935123918578,
-    "logical_ms": 45752
+    "wall_s": 45.79873350216076,
+    "logical_ms": 45754
   },
   {
     "file": "0184.png",
-    "wall_s": 46.05251264292747,
-    "logical_ms": 46012
+    "wall_s": 46.041568535380065,
+    "logical_ms": 45966
   },
   {
     "file": "0185.png",
-    "wall_s": 46.2946914518252,
-    "logical_ms": 46221
+    "wall_s": 46.30168791906908,
+    "logical_ms": 46244
   },
   {
     "file": "0186.png",
-    "wall_s": 46.55509046372026,
-    "logical_ms": 46497
+    "wall_s": 46.547272108029574,
+    "logical_ms": 46504
   },
   {
     "file": "0187.png",
-    "wall_s": 46.79821770405397,
-    "logical_ms": 46757
+    "wall_s": 46.80642383219674,
+    "logical_ms": 46767
   },
   {
     "file": "0188.png",
-    "wall_s": 47.04081180691719,
-    "logical_ms": 46967
+    "wall_s": 47.04984553903341,
+    "logical_ms": 46975
   },
   {
     "file": "0189.png",
-    "wall_s": 47.30065523367375,
-    "logical_ms": 47244
+    "wall_s": 47.2931574950926,
+    "logical_ms": 47253
   },
   {
     "file": "0190.png",
-    "wall_s": 47.54337576404214,
-    "logical_ms": 47503
+    "wall_s": 47.55292813107371,
+    "logical_ms": 47512
   },
   {
     "file": "0191.png",
-    "wall_s": 47.80344453500584,
-    "logical_ms": 47762
+    "wall_s": 47.79532054532319,
+    "logical_ms": 47721
   },
   {
     "file": "0192.png",
-    "wall_s": 48.04541946388781,
-    "logical_ms": 47972
+    "wall_s": 48.055805465206504,
+    "logical_ms": 47998
   },
   {
     "file": "0193.png",
-    "wall_s": 48.30438940785825,
-    "logical_ms": 48248
+    "wall_s": 48.298015899024904,
+    "logical_ms": 48258
   },
   {
     "file": "0194.png",
-    "wall_s": 48.54738349793479,
-    "logical_ms": 48507
+    "wall_s": 48.54151768423617,
+    "logical_ms": 48466
   },
   {
     "file": "0195.png",
-    "wall_s": 48.80693517299369,
-    "logical_ms": 48766
+    "wall_s": 48.8016761103645,
+    "logical_ms": 48743
   },
   {
     "file": "0196.png",
-    "wall_s": 49.050737130921334,
-    "logical_ms": 48976
+    "wall_s": 49.04543412197381,
+    "logical_ms": 49004
   },
   {
     "file": "0197.png",
-    "wall_s": 49.293451827950776,
-    "logical_ms": 49254
+    "wall_s": 49.30536372913048,
+    "logical_ms": 49266
   },
   {
     "file": "0198.png",
-    "wall_s": 49.55288443900645,
-    "logical_ms": 49512
+    "wall_s": 49.551385251339525,
+    "logical_ms": 49474
   },
   {
     "file": "0199.png",
-    "wall_s": 49.79506415268406,
-    "logical_ms": 49722
+    "wall_s": 49.80438336310908,
+    "logical_ms": 49754
   },
   {
     "file": "0200.png",
-    "wall_s": 50.05418949807063,
-    "logical_ms": 49997
+    "wall_s": 50.04686354333535,
+    "logical_ms": 50007
   },
   {
     "file": "0201.png",
-    "wall_s": 50.29633110295981,
-    "logical_ms": 50257
+    "wall_s": 50.316709977108985,
+    "logical_ms": 50267
   },
   {
     "file": "0202.png",
-    "wall_s": 50.55497560603544,
-    "logical_ms": 50515
+    "wall_s": 50.559046384412795,
+    "logical_ms": 50519
   },
   {
     "file": "0203.png",
-    "wall_s": 50.79769087675959,
-    "logical_ms": 50724
+    "wall_s": 50.80209820903838,
+    "logical_ms": 50727
   },
   {
     "file": "0204.png",
-    "wall_s": 51.057653416879475,
-    "logical_ms": 51000
+    "wall_s": 51.04499139031395,
+    "logical_ms": 51005
   },
   {
     "file": "0205.png",
-    "wall_s": 51.30012423591688,
-    "logical_ms": 51260
+    "wall_s": 51.30477128410712,
+    "logical_ms": 51264
   },
   {
     "file": "0206.png",
-    "wall_s": 51.54299531504512,
-    "logical_ms": 51469
+    "wall_s": 51.54905000003055,
+    "logical_ms": 51475
   },
   {
     "file": "0207.png",
-    "wall_s": 51.803212051745504,
-    "logical_ms": 51745
+    "wall_s": 51.79201725823805,
+    "logical_ms": 51752
   },
   {
     "file": "0208.png",
-    "wall_s": 52.04653940908611,
-    "logical_ms": 52006
+    "wall_s": 52.052011396270245,
+    "logical_ms": 52011
   },
   {
     "file": "0209.png",
-    "wall_s": 52.307797028683126,
-    "logical_ms": 52266
+    "wall_s": 52.295567912980914,
+    "logical_ms": 52221
   },
   {
     "file": "0210.png",
-    "wall_s": 52.554387303069234,
-    "logical_ms": 52477
+    "wall_s": 52.55795416701585,
+    "logical_ms": 52498
   },
   {
     "file": "0211.png",
-    "wall_s": 52.79824794270098,
-    "logical_ms": 52757
+    "wall_s": 52.801139056216925,
+    "logical_ms": 52760
   },
   {
     "file": "0212.png",
-    "wall_s": 53.040814561769366,
-    "logical_ms": 52967
+    "wall_s": 53.04400862706825,
+    "logical_ms": 52970
   },
   {
     "file": "0213.png",
-    "wall_s": 53.30171283800155,
-    "logical_ms": 53243
+    "wall_s": 53.303205335047096,
+    "logical_ms": 53246
   },
   {
     "file": "0214.png",
-    "wall_s": 53.544708714820445,
-    "logical_ms": 53504
+    "wall_s": 53.53605458326638,
+    "logical_ms": 53508
   },
   {
     "file": "0215.png",
-    "wall_s": 53.80420046206564,
-    "logical_ms": 53764
+    "wall_s": 53.79608651436865,
+    "logical_ms": 53755
   },
   {
     "file": "0216.png",
-    "wall_s": 54.04716419475153,
-    "logical_ms": 53973
+    "wall_s": 54.04166283039376,
+    "logical_ms": 53965
   },
   {
     "file": "0217.png",
-    "wall_s": 54.3076141490601,
-    "logical_ms": 54249
+    "wall_s": 54.302862025331706,
+    "logical_ms": 54244
   },
   {
     "file": "0218.png",
-    "wall_s": 54.550502952653915,
-    "logical_ms": 54510
+    "wall_s": 54.553032332099974,
+    "logical_ms": 54506
   },
   {
     "file": "0219.png",
-    "wall_s": 54.792664183769375,
-    "logical_ms": 54719
+    "wall_s": 54.79474221402779,
+    "logical_ms": 54755
   },
   {
     "file": "0220.png",
-    "wall_s": 55.052612295839936,
-    "logical_ms": 54995
+    "wall_s": 55.0544120692648,
+    "logical_ms": 55013
   },
   {
     "file": "0221.png",
-    "wall_s": 55.30500529007986,
-    "logical_ms": 55255
+    "wall_s": 55.29697489505634,
+    "logical_ms": 55223
   },
   {
     "file": "0222.png",
-    "wall_s": 55.55919421464205,
-    "logical_ms": 55509
+    "wall_s": 55.556280695367604,
+    "logical_ms": 55499
   },
   {
     "file": "0223.png",
-    "wall_s": 55.802233427762985,
-    "logical_ms": 55762
+    "wall_s": 55.79885685117915,
+    "logical_ms": 55758
   },
   {
     "file": "0224.png",
-    "wall_s": 56.044312082696706,
-    "logical_ms": 55971
+    "wall_s": 56.04094144422561,
+    "logical_ms": 55967
   },
   {
     "file": "0225.png",
-    "wall_s": 56.30475077871233,
-    "logical_ms": 56246
+    "wall_s": 56.30046250903979,
+    "logical_ms": 56243
   },
   {
     "file": "0226.png",
-    "wall_s": 56.54798596398905,
-    "logical_ms": 56507
+    "wall_s": 56.54227772494778,
+    "logical_ms": 56502
   },
   {
     "file": "0227.png",
-    "wall_s": 56.7901014117524,
-    "logical_ms": 56717
+    "wall_s": 56.802558998111635,
+    "logical_ms": 56761
   },
   {
     "file": "0228.png",
-    "wall_s": 57.05009809369221,
-    "logical_ms": 56993
+    "wall_s": 57.04529855027795,
+    "logical_ms": 56972
   },
   {
     "file": "0229.png",
-    "wall_s": 57.29294072370976,
-    "logical_ms": 57252
+    "wall_s": 57.304915708024055,
+    "logical_ms": 57247
   },
   {
     "file": "0230.png",
-    "wall_s": 57.55222228076309,
-    "logical_ms": 57512
+    "wall_s": 57.54930868325755,
+    "logical_ms": 57507
   },
   {
     "file": "0231.png",
-    "wall_s": 57.79490427067503,
-    "logical_ms": 57721
+    "wall_s": 57.79226606711745,
+    "logical_ms": 57718
   },
   {
     "file": "0232.png",
-    "wall_s": 58.056266848929226,
-    "logical_ms": 57997
+    "wall_s": 58.053010205272585,
+    "logical_ms": 57995
   },
   {
     "file": "0233.png",
-    "wall_s": 58.29966125683859,
-    "logical_ms": 58260
+    "wall_s": 58.29629551619291,
+    "logical_ms": 58256
   },
   {
     "file": "0234.png",
-    "wall_s": 58.5422956678085,
-    "logical_ms": 58468
+    "wall_s": 58.55754789430648,
+    "logical_ms": 58516
   },
   {
     "file": "0235.png",
-    "wall_s": 58.801713848952204,
-    "logical_ms": 58745
+    "wall_s": 58.799525673966855,
+    "logical_ms": 58759
   },
   {
     "file": "0236.png",
-    "wall_s": 59.04473574785516,
-    "logical_ms": 59004
+    "wall_s": 59.05266005406156,
+    "logical_ms": 58972
   },
   {
     "file": "0237.png",
-    "wall_s": 59.30432901298627,
-    "logical_ms": 59264
+    "wall_s": 59.29591223131865,
+    "logical_ms": 59255
   },
   {
     "file": "0238.png",
-    "wall_s": 59.54719727905467,
-    "logical_ms": 59473
+    "wall_s": 59.55808117426932,
+    "logical_ms": 59515
   },
   {
     "file": "0239.png",
-    "wall_s": 59.807325422763824,
-    "logical_ms": 59749
+    "wall_s": 59.785734792239964,
+    "logical_ms": 59761
   },
   {
     "file": "0240.png",
-    "wall_s": 60.05066569102928,
-    "logical_ms": 60010
+    "wall_s": 60.05696693714708,
+    "logical_ms": 60021
   },
   {
     "file": "0241.png",
-    "wall_s": 60.299582104664296,
-    "logical_ms": 60220
+    "wall_s": 60.301655104383826,
+    "logical_ms": 60227
   },
   {
     "file": "0242.png",
-    "wall_s": 60.54503515874967,
-    "logical_ms": 60502
+    "wall_s": 60.5297228153795,
+    "logical_ms": 60506
   },
   {
     "file": "0243.png",
-    "wall_s": 60.80531608965248,
-    "logical_ms": 60764
+    "wall_s": 60.79003184195608,
+    "logical_ms": 60766
   },
   {
     "file": "0244.png",
-    "wall_s": 61.04830553708598,
-    "logical_ms": 60974
+    "wall_s": 61.06202226225287,
+    "logical_ms": 60993
   },
   {
     "file": "0245.png",
-    "wall_s": 61.2914775297977,
-    "logical_ms": 61250
+    "wall_s": 61.30566912610084,
+    "logical_ms": 61265
   },
   {
     "file": "0246.png",
-    "wall_s": 61.551154975779355,
-    "logical_ms": 61510
+    "wall_s": 61.55072512105107,
+    "logical_ms": 61474
   },
   {
     "file": "0247.png",
-    "wall_s": 61.79418634669855,
-    "logical_ms": 61720
+    "wall_s": 61.799444338306785,
+    "logical_ms": 61753
   },
   {
     "file": "0248.png",
-    "wall_s": 62.05576250003651,
-    "logical_ms": 61997
+    "wall_s": 62.04595190426335,
+    "logical_ms": 62000
   },
   {
     "file": "0249.png",
-    "wall_s": 62.30069943377748,
-    "logical_ms": 62258
+    "wall_s": 62.30702900327742,
+    "logical_ms": 62249
   },
   {
     "file": "0250.png",
-    "wall_s": 62.54349084198475,
-    "logical_ms": 62469
+    "wall_s": 62.555306429974735,
+    "logical_ms": 62511
   },
   {
     "file": "0251.png",
-    "wall_s": 62.805222457740456,
-    "logical_ms": 62746
+    "wall_s": 62.803482027258724,
+    "logical_ms": 62758
   },
   {
     "file": "0252.png",
-    "wall_s": 63.04892482282594,
-    "logical_ms": 63007
+    "wall_s": 63.034193880390376,
+    "logical_ms": 63009
   },
   {
     "file": "0253.png",
-    "wall_s": 63.29236688790843,
-    "logical_ms": 63219
+    "wall_s": 63.45717172836885,
+    "logical_ms": 63253
   },
   {
     "file": "0254.png",
-    "wall_s": 63.552816609852016,
-    "logical_ms": 63495
+    "wall_s": 63.550418843049556,
+    "logical_ms": 63484
   },
   {
     "file": "0255.png",
-    "wall_s": 63.79557042103261,
-    "logical_ms": 63755
+    "wall_s": 63.79262035805732,
+    "logical_ms": 63736
   },
   {
     "file": "0256.png",
-    "wall_s": 64.05552448099479,
-    "logical_ms": 64014
+    "wall_s": 64.07166140107438,
+    "logical_ms": 63995
   },
   {
     "file": "0257.png",
-    "wall_s": 64.29903661785647,
+    "wall_s": 64.28253772621974,
     "logical_ms": 64224
   },
   {
     "file": "0258.png",
-    "wall_s": 64.54149168403819,
-    "logical_ms": 64501
+    "wall_s": 64.59052090998739,
+    "logical_ms": 64489
   },
   {
     "file": "0259.png",
-    "wall_s": 64.80126214772463,
-    "logical_ms": 64760
+    "wall_s": 64.81841856520623,
+    "logical_ms": 64751
   },
   {
     "file": "0260.png",
-    "wall_s": 65.0433963406831,
-    "logical_ms": 64970
+    "wall_s": 65.07324989326298,
+    "logical_ms": 65021
   },
   {
     "file": "0261.png",
-    "wall_s": 65.3038983377628,
-    "logical_ms": 65246
+    "wall_s": 65.29472247511148,
+    "logical_ms": 65229
   },
   {
     "file": "0262.png",
-    "wall_s": 65.5468887980096,
-    "logical_ms": 65506
+    "wall_s": 65.55421139998361,
+    "logical_ms": 65498
   },
   {
     "file": "0263.png",
-    "wall_s": 65.807544299867,
-    "logical_ms": 65766
+    "wall_s": 65.7934725759551,
+    "logical_ms": 65768
   },
   {
     "file": "0264.png",
-    "wall_s": 66.05025006877258,
-    "logical_ms": 65976
+    "wall_s": 66.06041551427916,
+    "logical_ms": 65999
   },
   {
     "file": "0265.png",
-    "wall_s": 66.29405380878597,
-    "logical_ms": 66253
+    "wall_s": 66.30863062432036,
+    "logical_ms": 66264
   },
   {
     "file": "0266.png",
-    "wall_s": 66.55494512384757,
-    "logical_ms": 66513
+    "wall_s": 66.56746369134635,
+    "logical_ms": 66482
   },
   {
     "file": "0267.png",
-    "wall_s": 66.79835136793554,
-    "logical_ms": 66723
+    "wall_s": 66.81440508831292,
+    "logical_ms": 66771
   },
   {
     "file": "0268.png",
-    "wall_s": 67.04182698763907,
-    "logical_ms": 67002
+    "wall_s": 67.06109570804983,
+    "logical_ms": 67017
   },
   {
     "file": "0269.png",
-    "wall_s": 67.30220253672451,
-    "logical_ms": 67261
+    "wall_s": 67.31309334235266,
+    "logical_ms": 67264
   },
   {
     "file": "0270.png",
-    "wall_s": 67.54598669009283,
-    "logical_ms": 67471
+    "wall_s": 67.56141579337418,
+    "logical_ms": 67518
   },
   {
     "file": "0271.png",
-    "wall_s": 67.79611313389614,
-    "logical_ms": 67751
+    "wall_s": 67.79872307600453,
+    "logical_ms": 67768
   },
   {
     "file": "0272.png",
-    "wall_s": 68.05673991004005,
-    "logical_ms": 67999
+    "wall_s": 68.05446874722838,
+    "logical_ms": 67968
   }
 ]

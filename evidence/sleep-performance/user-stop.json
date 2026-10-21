@@ -1,0 +1,10 @@
+{
+  "request": "的确是这样。\n我觉得当前有两个事情可以做，然后才算是跟踪算法验证和龙眼UI验收通过（其中我觉得跟踪算法没啥大问题了）。\n第一是：期待帧率能翻倍\n第二是：丰富 IDLE 状态。当龙眼缓慢张望一段时间（比如十秒）后，让它闭上。当再有热源被跟踪时，再快速睁开眼",
+  "reply": "可以，就先这样吧",
+  "decision": "Keep installed f8845c5, stop further installs/optimization, finish review handoff. Approx15Hz target not achieved. No specific physical sleep/wake result inferred from the reply.",
+  "uninstalled_wip": {
+    "branch": "wip/dragon-packed-color",
+    "commit": "a6a0fb1",
+    "status": "Host15/15 only; no IDF build/install/hardware performance validation. Not current mainline or delivered firmware."
+  }
+}

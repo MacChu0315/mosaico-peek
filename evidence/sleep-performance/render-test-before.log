@@ -1,0 +1,49 @@
+[ 33%] Built target peek_dragon_assets
+[ 66%] Building C object CMakeFiles/test_render_pose_cache.dir/tests/test_render_pose_cache.c.o
+In file included from /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:3:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c: In function ‘main’:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:14:56: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   14 |         assert(dragon_renderer_prepare(r,&p));assert(!r->fast_cache_valid);
+      |                                                        ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:14:56: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   14 |         assert(dragon_renderer_prepare(r,&p));assert(!r->fast_cache_valid);
+      |                                                        ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:15:55: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   15 |         assert(dragon_renderer_prepare(r,&p));assert(r->fast_cache_valid);
+      |                                                       ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:15:55: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   15 |         assert(dragon_renderer_prepare(r,&p));assert(r->fast_cache_valid);
+      |                                                       ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:16:28: error: ‘FAST_PIXELS’ undeclared (first use in this function); did you mean ‘FIXED_PIXELS’?
+   16 |         for(unsigned j=0;j<FAST_PIXELS;j++)kinds[r->fast_pixels[j].kind]++;
+      |                            ^~~~~~~~~~~
+      |                            FIXED_PIXELS
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:16:28: note: each undeclared identifier is reported only once for each function it appears in
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:16:53: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_pixels’; did you mean ‘fixed_pixels’?
+   16 |         for(unsigned j=0;j<FAST_PIXELS;j++)kinds[r->fast_pixels[j].kind]++;
+      |                                                     ^~~~~~~~~~~
+      |                                                     fixed_pixels
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:18:10: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   18 |         r->fast_cache_valid=false;assert(dragon_renderer_draw(r,b,960,0,0,480,480));
+      |          ^~
+In file included from /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:3:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:23:55: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   23 |         assert(dragon_renderer_prepare(r,&p));assert(r->fast_cache_valid);
+      |                                                       ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:23:55: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   23 |         assert(dragon_renderer_prepare(r,&p));assert(r->fast_cache_valid);
+      |                                                       ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:25:10: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   25 |         r->fast_cache_valid=false;assert(dragon_renderer_draw(r,b,960,0,0,480,480));assert(!memcmp(a,b,480*480*2));
+      |          ^~
+In file included from /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:3:
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:26:63: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   26 |         assert(dragon_renderer_set_sample_step(r,1));assert(!r->fast_cache_valid);
+      |                                                               ^~
+/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_render_pose_cache.c:26:63: error: ‘dragon_renderer_t’ {aka ‘struct dragon_renderer’} has no member named ‘fast_cache_valid’
+   26 |         assert(dragon_renderer_set_sample_step(r,1));assert(!r->fast_cache_valid);
+      |                                                               ^~
+gmake[3]: *** [CMakeFiles/test_render_pose_cache.dir/build.make:76：CMakeFiles/test_render_pose_cache.dir/tests/test_render_pose_cache.c.o] 错误 1
+gmake[2]: *** [CMakeFiles/Makefile2:621：CMakeFiles/test_render_pose_cache.dir/all] 错误 2
+gmake[1]: *** [CMakeFiles/Makefile2:628：CMakeFiles/test_render_pose_cache.dir/rule] 错误 2
+gmake: *** [Makefile:381：test_render_pose_cache] 错误 2

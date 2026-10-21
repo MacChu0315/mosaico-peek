@@ -1,0 +1,10 @@
+{
+  "checkpoints": 10,
+  "wall_s": 34.048945964779705,
+  "all_complete_arrays": true,
+  "pause_pure": true,
+  "replay_identical": true,
+  "screenshot_count": 214,
+  "note": "Actual native C/GSP pixels from synthetic temperature arrays. Movie preserves original screenshot wall-time intervals; screenshot sampling does not measure physical FPS.",
+  "movie_seconds": 34.08
+}

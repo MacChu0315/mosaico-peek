@@ -7,6 +7,18 @@ sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-g
 from control import command,state
 from rpc_client import connect
 OUT=ROOT/'evidence/sleep-performance/native';OUT.mkdir(parents=True,exist_ok=True)
+def encode_movie(captures,duration,live):
+    # Preserve capture wall time; fixed-rate encoding would speed up a busy
+    # screenshot session and misrepresent the10s idle/150ms wake timing.
+    lines=['ffconcat version 1.0']
+    for i,c in enumerate(captures):
+        path=(live/c['file']).as_posix().replace("'", "'\\''")
+        until=captures[i+1]['wall_s'] if i+1<len(captures) else duration
+        lines.extend(["file '"+path+"'",'duration '+str(max(.001,until-c['wall_s']))])
+    lines.append("file '"+(live/captures[-1]['file']).as_posix().replace("'", "'\\''")+"'")
+    concat=live/'timeline.ffconcat';concat.write_text('\n'.join(lines)+'\n')
+    subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(concat),'-vsync','vfr','-c:v','libx264','-crf','24','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'sleep-live.mp4')],check=True)
+
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[];frames=[]
     with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
@@ -37,8 +49,8 @@ def main():
             time.sleep(.025)
         assert s['eof'];assert any(r['role']['sleeping'] for r in records) and any(r['role']['waking'] for r in records)
         assert any(r['result']['target'] and not r['role']['sleeping'] for r in records)
-        report=dict(checkpoints=len(checks),wall_s=time.monotonic()-start,all_complete_arrays=True,pause_pure=True,replay_identical=True,screenshot_count=len(captures),note='Actual native C/GSP pixels from synthetic temperature arrays. Encoded8fps is presentation of sampled screenshots, not runtime or physical FPS.')
+        report=dict(checkpoints=len(checks),wall_s=time.monotonic()-start,all_complete_arrays=True,pause_pure=True,replay_identical=True,screenshot_count=len(captures),note='Actual native C/GSP pixels from synthetic temperature arrays. Movie preserves screenshot wall-time intervals; screenshot sampling does not measure physical FPS.')
         for name,v in [('checks.json',checks),('frames.json',frames),('live-states.json',records),('live-captures.json',captures),('report.json',report)]: (OUT/name).write_text(json.dumps(v,indent=2)+'\n')
-        subprocess.run(['ffmpeg','-v','error','-y','-framerate','8','-i',str(live/'%04d.png'),'-frames:v',str(len(captures)),'-c:v','libx264','-crf','24','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'sleep-live.mp4')],check=True)
+        encode_movie(captures,report['wall_s'],live)
         print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

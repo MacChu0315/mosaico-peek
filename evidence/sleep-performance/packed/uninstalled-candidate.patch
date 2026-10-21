@@ -1,0 +1,69 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2add76..f7a5e00 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -93,3 +93,6 @@ target_include_directories(test_device_status PRIVATE tests/stubs)
+ target_compile_options(test_device_status PRIVATE -UNDEBUG -Wall -Wextra -Werror)
+ target_link_libraries(test_device_status PRIVATE peek dragon)
+ add_test(NAME device_open_frame_telemetry COMMAND test_device_status)
++
++# Optimize the raster only; retain strict floating-point/role settings.
++set_source_files_properties(src/dragon_render.c PROPERTIES COMPILE_OPTIONS "-O3")
+diff --git a/projects/peek/main/CMakeLists.txt b/projects/peek/main/CMakeLists.txt
+index 2104878..e01c74d 100644
+--- a/projects/peek/main/CMakeLists.txt
++++ b/projects/peek/main/CMakeLists.txt
+@@ -14,3 +14,6 @@ add_dependencies(${COMPONENT_LIB} peek_dragon_assets)
+ execute_process(COMMAND git rev-parse HEAD WORKING_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../../.." OUTPUT_VARIABLE PEEK_SOURCE_REVISION OUTPUT_STRIP_TRAILING_WHITESPACE COMMAND_ERROR_IS_FATAL ANY)
+ file(WRITE "${CMAKE_BINARY_DIR}/peek_build_revision.h" "#define PEEK_SOURCE_REVISION \"${PEEK_SOURCE_REVISION}\"\n")
+ target_include_directories(${COMPONENT_LIB} PRIVATE "${CMAKE_BINARY_DIR}")
++
++# Optimize the raster only; retain strict floating-point/role settings.
++set_source_files_properties(../../../src/dragon_render.c PROPERTIES COMPILE_OPTIONS "-O3")
+diff --git a/projects/peek/pc/CMakeLists.txt b/projects/peek/pc/CMakeLists.txt
+index 389f627..bbaaf76 100644
+--- a/projects/peek/pc/CMakeLists.txt
++++ b/projects/peek/pc/CMakeLists.txt
+@@ -14,3 +14,6 @@ target_compile_options(peek_backend PRIVATE -Wall -Wextra -Werror -ffp-contract=
+ target_link_libraries(peek_backend PRIVATE m)
+ 
+ add_dependencies(peek_backend peek_dragon_assets)
++
++# Optimize the raster only; retain strict floating-point/role settings.
++set_source_files_properties(../../../src/dragon_render.c PROPERTIES COMPILE_OPTIONS "-O3")
+diff --git a/src/dragon_render.c b/src/dragon_render.c
+index 95d7b15..55abe2f 100644
+--- a/src/dragon_render.c
++++ b/src/dragon_render.c
+@@ -21,7 +21,13 @@
+ #define IRIS_RADIUS_Q15 26870
+ #define PUPIL_HEIGHT_Q15 15401
+ 
+-typedef struct { int r, g, b; } color_t;
++/* Palette channels are0..255. Even the component-wise loose light bound
++ * gives light<=47899 and rim<=2, so all composed channels stay0..374.
++ * Ten bits retain that HDR headroom without clipping. Integer promotion of
++ * these bitfields is signed int. A4-byte color returns in one S31 register,
++ * avoiding the old12-byte indirect results and per-pixel stack copies. */
++typedef struct { unsigned r:10, g:10, b:10; } color_t;
++_Static_assert(sizeof(color_t)==4,"color must fit one32-bit return register");
+ 
+ typedef struct {
+     int16_t nx, ny, nz; /* nz=-1 is outside the sphere. */
+diff --git a/tests/test_render_math.c b/tests/test_render_math.c
+index fe53642..2f90864 100644
+--- a/tests/test_render_math.c
++++ b/tests/test_render_math.c
+@@ -33,6 +33,12 @@ int main(void){
+         color_t old={a.r+((b.r-a.r)*k>>8),a.g+((b.g-a.g)*k>>8),a.b+((b.b-a.b)*k>>8)},fast=over(a,b,alpha);
+         assert(old.r==fast.r&&old.g==fast.g&&old.b==fast.b);
+     }
++    /* Packed storage must preserve every HDR blend, not clip to8 bits. */
++    for(int under=0;under<=374;under++)for(int upper=0;upper<=374;upper+=17)for(int alpha=0;alpha<=256;alpha++){
++        color_t c=over((color_t){under,under,under},(color_t){upper,upper,upper},alpha);
++        int expected=under+((upper-under)*alpha>>8);
++        assert(c.r==expected && c.g==expected && c.b==expected);
++    }
+     for(unsigned sy=0;sy<480;sy++)for(unsigned sx=0;sx<480;sx++){
+         int32_t px=((int32_t)sx-240)*Q16+Q16/2,py=((int32_t)sy-247)*Q16+Q16/2;
+         int32_t x=(int32_t)(((int64_t)px*32349-(int64_t)py*5221)>>15);

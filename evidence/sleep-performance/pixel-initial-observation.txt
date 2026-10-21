@@ -1,0 +1,1 @@
+First controlled screenshot comparison failed for closing:127244 pixels,15216 bright outside the new aperture. The control ack preceded native frame commit; this new test omitted the existing native test helper wait(frames=2). Fix the evidence capture synchronization, retain shader/cache code, rerun the entire controlled/live test and pixel comparison.

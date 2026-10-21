@@ -1,0 +1,72 @@
+[
+  {
+    "name": "awake-idle",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 38104
+  },
+  {
+    "name": "closing",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 19648
+  },
+  {
+    "name": "asleep",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  },
+  {
+    "name": "candidate-not-acquired",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  },
+  {
+    "name": "wake-start",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  },
+  {
+    "name": "opening",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 19380
+  },
+  {
+    "name": "awake-follow",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 38040
+  },
+  {
+    "name": "held-follow",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 38712
+  },
+  {
+    "name": "idle-again",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 38152
+  },
+  {
+    "name": "asleep-again",
+    "pixels": 230400,
+    "RGB565_mismatches": 0,
+    "bright_outside_sampled_aperture": 0,
+    "bright_pixels": 0
+  }
+]

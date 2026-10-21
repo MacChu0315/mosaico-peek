@@ -1,0 +1,1 @@
+Reencoded retained native screenshot samples with original wall-time durations so34s of actions does not appear as26.75s at fixed8fps. The installed FFmpeg does not support -fps_mode; used its supported -vsync vfr instead. No shared tools upgraded.

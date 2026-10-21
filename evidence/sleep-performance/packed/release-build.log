@@ -1,0 +1,64 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+[  2%] Built target peek_dragon_assets
+Consolidate compiler generated dependencies of target dragon
+[  4%] Building C object CMakeFiles/dragon.dir/src/dragon.c.o
+[  6%] Building C object CMakeFiles/dragon.dir/src/dragon_render.c.o
+[  8%] Linking C static library libdragon.a
+[  8%] Built target dragon
+Consolidate compiler generated dependencies of target peek
+[ 17%] Built target peek
+Consolidate compiler generated dependencies of target test_detector
+[ 22%] Built target test_detector
+Consolidate compiler generated dependencies of target test_device_adapter
+[ 24%] Linking C executable test_device_adapter
+[ 26%] Built target test_device_adapter
+Consolidate compiler generated dependencies of target test_ui_lifetime
+[ 28%] Linking C executable test_ui_lifetime
+[ 33%] Built target test_ui_lifetime
+Consolidate compiler generated dependencies of target peek_replay
+[ 37%] Built target peek_replay
+Consolidate compiler generated dependencies of target test_event_aging
+[ 42%] Built target test_event_aging
+Consolidate compiler generated dependencies of target peek_replay_until
+[ 46%] Built target peek_replay_until
+Consolidate compiler generated dependencies of target test_dragon
+[ 48%] Linking C executable test_dragon
+[ 51%] Built target test_dragon
+Consolidate compiler generated dependencies of target test_dragon_render
+[ 53%] Linking C executable test_dragon_render
+[ 55%] Built target test_dragon_render
+Consolidate compiler generated dependencies of target dragon_snapshot
+[ 57%] Linking C executable dragon_snapshot
+[ 60%] Built target dragon_snapshot
+Consolidate compiler generated dependencies of target test_dragon_timing
+[ 62%] Linking C executable test_dragon_timing
+[ 64%] Built target test_dragon_timing
+Consolidate compiler generated dependencies of target peek_role_replay
+[ 66%] Linking C executable peek_role_replay
+[ 68%] Built target peek_role_replay
+Consolidate compiler generated dependencies of target test_live_logic
+[ 71%] Linking C executable test_live_logic
+[ 73%] Built target test_live_logic
+Consolidate compiler generated dependencies of target test_render_math
+[ 75%] Building C object CMakeFiles/test_render_math.dir/tests/test_render_math.c.o
+[ 77%] Linking C executable test_render_math
+[ 77%] Built target test_render_math
+Consolidate compiler generated dependencies of target test_render_cache
+[ 80%] Building C object CMakeFiles/test_render_cache.dir/tests/test_render_cache.c.o
+[ 82%] Linking C executable test_render_cache
+[ 82%] Built target test_render_cache
+Consolidate compiler generated dependencies of target test_render_sampling
+[ 84%] Linking C executable test_render_sampling
+[ 86%] Built target test_render_sampling
+Consolidate compiler generated dependencies of target test_dragon_sleep
+[ 88%] Linking C executable test_dragon_sleep
+[ 91%] Built target test_dragon_sleep
+Consolidate compiler generated dependencies of target test_render_pose_cache
+[ 93%] Building C object CMakeFiles/test_render_pose_cache.dir/tests/test_render_pose_cache.c.o
+[ 95%] Linking C executable test_render_pose_cache
+[ 95%] Built target test_render_pose_cache
+Consolidate compiler generated dependencies of target test_device_status
+[ 97%] Linking C executable test_device_status
+[100%] Built target test_device_status
