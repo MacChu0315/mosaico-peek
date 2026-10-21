@@ -1,9 +1,10 @@
 {
+  "source_revision": "9da7987c7c39436402252b8cf6e3fd7e03fc883a",
   "flash": {
     "images": {
       "peek.bin": {
         "bytes": 6504384,
-        "sha256": "d5f2f0959d4a8f5fd06a1e64447e3547d4599d24598e46039ade5ed9f426365f"
+        "sha256": "81c415a3b205e91793d02becc938b098f5b70a91f1cfa7f67b55b85829c25fea"
       },
       "ui_apps.bin": {
         "bytes": 94480,
@@ -11,7 +12,7 @@
       },
       "peek.elf": {
         "bytes": 20318224,
-        "sha256": "0d6fbb319ce703141622e7b0fd8c1428e176557bb9363d89bc79f7106e294c9f"
+        "sha256": "b46699a95d376eef4db145a33170d86598bed8a1aed076b48f34c152b755ef94"
       },
       "peek.map": {
         "bytes": 7214242,
@@ -200,6 +201,7 @@
       "shared_UI_struct": 9720,
       "texture_descriptors_RODATA": 588
     },
+    "shared_UI_growth_from_9a25653_bytes": 8,
     "new_renderer_explicit_PSRAM": 2587440,
     "dragon_renderer_retained_if_selected_bytes": 3929120,
     "framebuffer_RGB565_one_plane": 460800,

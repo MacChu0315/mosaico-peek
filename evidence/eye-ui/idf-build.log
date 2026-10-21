@@ -11,12 +11,12 @@ target_supported: yes
 idf_revision: 7b9cc1ac79f8
 idf_python: /home/zhuzhengming/.espressif/python_env/idf6.2_py3.10_env/bin/python | Python 3.10.14
 IDF LOW-NOISE BUILD: OK
-run_id: 20261021-153010-build-125
-duration_seconds: 37.9
+run_id: 20261021-153940-build-137
+duration_seconds: 7.2
 exit_code: 0
 target: esp32s31
 warnings: 1
-artifact: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/ota_data_initial.bin (8192 bytes)
-log: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/.codex-runs/idf-low-noise-build/20261021-153010-build-125/raw.log
-result: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/.codex-runs/idf-low-noise-build/20261021-153010-build-125/result.json
+artifact: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/eye-memory.bin (24 bytes)
+log: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/.codex-runs/idf-low-noise-build/20261021-153940-build-137/raw.log
+result: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/.codex-runs/idf-low-noise-build/20261021-153940-build-137/result.json
 PASS actual four-character firmware configuration; no installation performed

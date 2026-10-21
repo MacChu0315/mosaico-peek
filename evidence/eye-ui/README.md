@@ -40,7 +40,7 @@ Current installed dragon trial is retained separately in docs/HANDOFF.md.
   warning; no partition or Recovery image change. Final source-commit rebuild
   can update image hashes/bytes in the budget without changing these boundaries.
 - PSRAM renderer:2587440B bulk (921600 frame +1654848 eye/two-lid capacity +10992
-  ROM inflate workspace) plus52B renderer state on target. All themes share this
+  ROM inflate workspace) plus52B renderer state on target; shared UI grows8B from the baseline. All themes share this
   capacity. Dragon renderer3929120B is lazy/retained if selected, additional to
   the new renderer. RODATA/text PSRAM reservations, framebuffers, sensor state,
   SDK heaps/stacks/queue and overlap are additional. See exact ELF sections and
@@ -77,3 +77,9 @@ The full imported-source check reports trailing whitespace in the supplied
 FONT_LICENSE.txt and extra final blank lines in two supplied CJS tools. These
 three source-package formatting warnings are intentionally retained byte-for-byte
 so the original source/license checksums remain valid; they are not edited away.
+
+Final firmware source revision:9da7987 (the implementation/evidence commit).
+The final documentation/budget commit contains no additional firmware logic.
+Host status `render.renderer_heap_bytes` is the retained dragon renderer capacity,
+not evidence that a lazy dragon renderer was allocated; the target budget above
+separately accounts for optional coexistence and the new eye renderer.
