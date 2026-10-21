@@ -13,4 +13,10 @@ config PEEK_EYE_SAMPLE_STEP
     help
         Step2 is the user-approved2x2 sampling/replication mode. It affects
         eye pixels only. Complete thermal frames and detection stay unchanged.
+config PEEK_GAZE_FLIP_X
+    bool "Flip horizontal target-to-gaze mapping for the physical mount"
+    default y
+config PEEK_GAZE_FLIP_Y
+    bool "Flip vertical target-to-gaze mapping for the physical mount"
+    default y
 endmenu

@@ -18,7 +18,7 @@ static struct {
     uint64_t tick_calls,tick_us_total,tick_work_us_total,publish_us_total,tick_us_max;
     uint64_t interval_count,interval_us_total,interval_us_max,last_tick_start_us,last_completed_us;
     uint64_t interval_bins[8];
-    unsigned case_index;int fd;
+    unsigned case_index;int fd;dragon_mapping_t mapping;
     const char *data_dir,*run_dir;
     char label[80],status[512],temporary[512],socket_path[108];
 } app={.fd=-1};
@@ -30,7 +30,7 @@ static void publish(void)
     FILE *f=fopen(app.temporary,"w");if(!f){perror("status");app.view.error=ESP_GSP_FAIL;return;}
     fprintf(f,"{\"case\":\"%s\",\"paused\":%s,\"ack\":%" PRIu64 ",\"draws\":%" PRIu64 ",\"actions\":%" PRIu64 ",\"error\":%d,\"eof\":%s,\"result\":",cases[app.case_index],app.view.paused?"true":"false",app.ack,app.view.draws,app.view.actions,app.view.error,app.replay.eof?"true":"false");
     peek_write_result(f,&app.view.detector);
-    fprintf(f,",\"sample_step\":%u",app.view.sample_step);
+    fprintf(f,",\"sample_step\":%u,\"flip_x\":%s,\"flip_y\":%s",app.view.sample_step,app.view.dragon.mapping.flip_x?"true":"false",app.view.dragon.mapping.flip_y?"true":"false");
     const dragon_t *c=&app.view.dragon;
     fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
         app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
@@ -65,7 +65,7 @@ static bool load_case(void)
     if(app.trace)fclose(app.trace);
     app.trace=NULL;
     if(app.case_index==8){char path[512];snprintf(path,sizeof(path),"%s/live-events.jsonl",app.run_dir);app.trace=fopen(path,"w");if(!app.trace)return false;}
-    peek_ui_reset(&app.view,app.label);app.logical_ms=0;app.wall_ms=gsp_sim_bridge_time_ms();
+    peek_ui_reset(&app.view,app.label);app.view.dragon.mapping=app.mapping;app.logical_ms=0;app.wall_ms=gsp_sim_bridge_time_ms();
     return pump(0);
 }
 static void control(peek_action_t action,void *ctx)
@@ -135,6 +135,9 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
     const char *step=getenv("PEEK_EYE_SAMPLE_STEP");
     if(step && strcmp(step,"1") && strcmp(step,"2"))return ESP_GSP_ERR_INVALID_ARG;
     app.view.sample_step=step?(unsigned)(step[0]-'0'):2;
+    const char *fx=getenv("PEEK_GAZE_FLIP_X"),*fy=getenv("PEEK_GAZE_FLIP_Y");
+    if((fx&&strcmp(fx,"0")&&strcmp(fx,"1"))||(fy&&strcmp(fy,"0")&&strcmp(fy,"1")))return ESP_GSP_ERR_INVALID_ARG;
+    app.mapping=(dragon_mapping_t){.flip_x=fx&&!strcmp(fx,"1"),.flip_y=fy&&!strcmp(fy,"1")};
     const char *view=getenv("PEEK_VIEW");bool dragon=!view||strcmp(view,"diagnostic");
     rc=peek_ui_set_view(&app.view,dragon);if(rc!=ESP_GSP_OK)return rc;
     app.view.paused=true;app.case_index=dragon?6:1;if(!load_case())return ESP_GSP_FAIL;

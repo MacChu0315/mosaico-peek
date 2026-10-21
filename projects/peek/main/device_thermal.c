@@ -99,11 +99,20 @@ esp_err_t device_thermal_start(esp_gsp_handle_t ui)
     app->queue=xQueueCreate(1,sizeof(peek_live_t));
     if(!app->queue){free(producer);free(consumer);free(app);app=NULL;return ESP_ERR_NO_MEM;}
     if(!peek_live_init(&producer->live)){vQueueDelete(app->queue);free(producer);free(consumer);free(app);app=NULL;return ESP_ERR_INVALID_STATE;}
+    /* Physical mount accepted on30:ed:a0:f4:52:a0. Keep the detector's native
+     * array coordinates; transform only target-to-gaze in the source owner. */
+#ifdef CONFIG_PEEK_GAZE_FLIP_X
+    producer->live.dragon.mapping.flip_x=true;
+#endif
+#ifdef CONFIG_PEEK_GAZE_FLIP_Y
+    producer->live.dragon.mapping.flip_y=true;
+#endif
     esp_err_t rc=mosaico_module_mgr_init(NULL);
     if(rc!=ESP_OK)goto fail;
     rc=peek_ui_init(&app->view,ui,NULL,NULL);if(rc!=ESP_GSP_OK)goto fail_ui;
 #ifdef ESP_PLATFORM
     app->view.sample_step=CONFIG_PEEK_EYE_SAMPLE_STEP;
+    app->view.dragon.mapping=producer->live.dragon.mapping;
 #endif
 #ifdef CONFIG_PEEK_DIAGNOSTIC_VIEW
     rc=peek_ui_set_view(&app->view,false);

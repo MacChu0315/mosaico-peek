@@ -37,6 +37,12 @@ int main(void){
     assert(dragon_map(&mapping,15.5f,11.5f,&x,&y)&&fabsf(x)<.0001f&&fabsf(y)<.0001f);
     assert(dragon_map(&mapping,31,23,&x,&y)&&x>0&&y>0);
     mapping.flip_x=true;assert(dragon_map(&mapping,31,23,&x,&y)&&x<0&&y>0);
+    for(unsigned sy=0;sy<24;sy++)for(unsigned sx=0;sx<32;sx++){
+        float native_x,native_y;dragon_mapping_t native={0},physical={.flip_x=true,.flip_y=true};
+        assert(dragon_map(&native,sx,sy,&native_x,&native_y));
+        assert(dragon_map(&physical,sx,sy,&x,&y));
+        assert(x==-native_x && y==-native_y);
+    }
     mapping.rotation=90;assert(dragon_map(&mapping,0,0,&x,&y));
     dragon_reset(&c,90640);peek_result_t r={.data=PEEK_VALID,.has_valid=true,.has_target=true,.x=10,.y=10,.last_valid_ms=0,.last_seen_ms=0,.accepted_samples=1};
     assert(dragon_update(&c,&r,0));assert(c.mode==DRAGON_NOTICE&&c.notices==1);

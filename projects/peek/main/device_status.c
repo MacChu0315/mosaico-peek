@@ -36,11 +36,11 @@ static esp_err_t rpc(const esp_iris_rpc_request_t *request,uint8_t *out,size_t c
     const peek_result_t *r=&s.result;const dragon_t *c=&s.role;
     int n=snprintf((char *)out,capacity,
         "{\"schema\":1,\"source_revision\":\"%s\",\"version\":\"%s\",\"source\":\"LIVE MLX90640\",\"view\":\"dragon\",\"now_ms\":%"PRIu64","
-        "\"sample_step\":%u,\"render_core\":%d,\"sensor_core\":%d,\"captures\":%"PRIu32",\"faults\":%"PRIu32",\"callbacks\":%"PRIu64",\"draws\":%"PRIu64",\"draw_us\":%"PRIu64",\"draw_max_us\":%"PRIu64",\"pixels\":%"PRIu64","
+        "\"sample_step\":%u,\"flip_x\":%s,\"flip_y\":%s,\"render_core\":%d,\"sensor_core\":%d,\"captures\":%"PRIu32",\"faults\":%"PRIu32",\"callbacks\":%"PRIu64",\"draws\":%"PRIu64",\"draw_us\":%"PRIu64",\"draw_max_us\":%"PRIu64",\"pixels\":%"PRIu64","
         "\"prepares\":%"PRIu64",\"prepare_us\":%"PRIu64",\"render_frames\":%"PRIu32",\"render_busy_us\":%"PRIu64",\"raster_us\":%"PRIu64",\"submit_us\":%"PRIu64",\"error\":%d,"
         "\"sequence\":%"PRIu64",\"samples\":%"PRIu64",\"last_valid_ms\":%"PRIu64",\"data\":\"%s\",\"target\":%s,\"held\":%s,\"x\":%.5f,\"y\":%.5f,"
         "\"role\":\"%s\",\"stationary\":%s,\"observations\":%"PRIu64",\"gaze_x\":%.5f,\"gaze_y\":%.5f,\"blink\":%.5f,\"speed_px_s\":%.5f}",
-        PEEK_SOURCE_REVISION,esp_app_get_description()->version,s.now,s.sample_step,atomic_load(&render_core),atomic_load(&sensor_core),
+        PEEK_SOURCE_REVISION,esp_app_get_description()->version,s.now,s.sample_step,c->mapping.flip_x?"true":"false",c->mapping.flip_y?"true":"false",atomic_load(&render_core),atomic_load(&sensor_core),
         (uint32_t)atomic_load(&captures),(uint32_t)atomic_load(&faults),s.callbacks,s.draws,s.draw_us,s.draw_max,s.pixels,s.prepares,s.prepare_us,s.frames,s.render_busy_us,s.raster_us,s.submit_us,s.error,
         r->sequence,r->accepted_samples,r->last_valid_ms,peek_data_name(r->data),r->has_target?"true":"false",r->held?"true":"false",r->x,r->y,
         dragon_mode_name(c->mode),c->stationary?"true":"false",c->observations,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->speed_px_s);

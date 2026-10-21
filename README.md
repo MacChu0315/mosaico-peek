@@ -100,3 +100,12 @@ python3 tools/analyze_host_benchmark.py
 A performs no screenshot/status sampling inside each window; B follows the API screenshot/15ms-loop-sleep method. Results retain actual read rates, wall/logical times, timer/prepare/draw counters and times, interval histograms, surfaces, process CPU/load and boundary `frame_info`. The public API does not isolate upload/present duration. No public dependency or texture was changed to chase30Hz. [Follow-up response](docs/FOLLOWUP_RESPONSE.md) records the scope and report-recovery detail.
 
 `python3 tools/report_budget.py --output evidence/followup/static-budget.json` refreshes target-ABI allocation estimates. `python3 tools/report_firmware.py --build-log evidence/followup/idf-build-raw.log --static-budget evidence/followup/static-budget.json` retains final image/ELF/map/config hashes, whitelisted config and section/symbol summaries. With XIP/RODATA-to-PSRAM enabled, linked read-only textures require PSRAM mapping/copy budget; no texture decoding does **not** mean zero runtime PSRAM. Device startup/residency/peak measurements belong to the separate hardware line and have not been performed by this mainline session.
+
+Physical mount: the installed board uses `CONFIG_PEEK_GAZE_FLIP_X=y` and
+`CONFIG_PEEK_GAZE_FLIP_Y=y`, based on the user's2026-10-21 motion observation.
+Only `dragon_map` transforms the target into gaze; thermal arrays/coordinates
+remain native. Reproduce this mount with
+`python3 tools/preview.py --sample-step 2 --flip-x --flip-y`.
+Omit the two flags for the retained unmounted synthetic/reference convention.
+Mapping is reapplied on every replay/source reset; pause never changes it.
+Device RPC and Host status expose `flip_x`/`flip_y`.
