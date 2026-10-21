@@ -1,8 +1,10 @@
 # Three additional eye UIs — native integration
 
 Appended `night_owl`, `deep_sea`, `mechanical`; `dragon` and `diagnostic` remain.
-Start from reviewed9a25653 on an independent local branch. No device operations,
-remote writes, shared SDK changes or detector/dragon-art changes in this work.
+Started from reviewed9a25653 on an independent local branch. The initial review
+was followed by a user-authorized installation of the exact reviewed artifact;
+see [device evidence](../evidence/eye-ui/device-install/README.md). No remote
+writes, shared SDK changes or detector/dragon-art changes.
 
 ## Start / select / replay
 
@@ -43,8 +45,10 @@ review configuration; a deliberately configured alternative needs its own
 explicit config assertion. All three renderers/resources are linked in this
 review firmware. **No physical touch/AI-key switching was added**; the pack's
 proposed swipe/click/AI semantics are reference suggestions, not an existing
-BSP input contract. Host selection is implemented and native-tested. No device
-installation, reboot, Recovery or hardware validation was performed.
+BSP input contract. Host selection is implemented and native-tested. The reviewed
+default-dragon artifact is now installed through the official System Update path.
+Installation/startup/live-dragon observations do not validate the three new themes
+on hardware: their runtime selection and ROM decode remain untested.
 
 ## Retained sources / reproducibility
 

@@ -1,8 +1,10 @@
 # New three-theme native acceptance (2026-10-21)
 
 This evidence belongs to the appended night owl/deep sea/mechanical views.
-No device writes, restart, Recovery, remote writes or physical validation.
-Current installed dragon trial is retained separately in docs/HANDOFF.md.
+The initial review did not operate hardware. A subsequent user-authorized
+installation of the exact reviewed artifact is recorded in [device-install](device-install/README.md).
+It defaults to dragon; new-theme hardware rendering remains unverified.
+No remote writes. Current installed identity is in docs/HANDOFF.md.
 
 - Host Debug and Release CTest18/18. Logs: ctest-debug.log / ctest-release.log.
   Existing detector, timing, sleep, fixed/prepared cache and lifetime tests remain;

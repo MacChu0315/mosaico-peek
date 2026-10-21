@@ -1,5 +1,9 @@
 # Live dragon integration
 
+Current installation: reviewed1.0.3-peek-eyes, source9da7987, default dragon.
+See [installation record](../evidence/eye-ui/device-install/README.md) and HANDOFF.
+The earlier trials and restore bundles below are historical context.
+
 Scope: mainline `feat/dragon-gsp` from `f278cfd`; diagnostic handoff `63c0799` is read-only. No algorithm candidate, dependency upgrade, partition change or remote write.
 
 ## Replay and compatibility
@@ -12,7 +16,7 @@ Run `python3 tests/test_real_replay.py` after Host build. Start `python3 tools/p
 
 ## Firmware and read-only observations
 
-`python3 tools/build_idf.py` selects a separate build-tree `sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, dragon view and2048-byte RPC body. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
+The historical sleep build used `sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, dragon view and2048-byte RPC body. Current `python3 tools/build_idf.py` selects `sdkconfig.eye-trio`, version `1.0.3-peek-eyes`, with the same default view/RPC capacity. The default detector/art/33ms timer remain unchanged. No full-temperature recorder is allocated in this role firmware.
 
 Read-only RPC service `0x504c`, method1, empty request returns source commit/version, actual `flip_x`/`flip_y`, capture/fault counters, consumed samples, core/role/gaze, timer callback count, canvas draws/pixels/times and official GSP render/raster/submit counters. GSP task alone reads mutable UI; it publishes a fixed snapshot under a short cross-core lock, RPC copies then formats outside the lock. Sensor counters are atomic. Counters do not create samples. A callback/surface can be a tile, and an engine-render count is not a physical panel scan count. No panel-visible FPS claim without separate measurement. On this retained firmware, `iris memory` returns HTTP501 (task memory observation unavailable); live `iris device-status` still supplies free/minimum internal RAM and PSRAM.
 
@@ -53,7 +57,7 @@ under evidence/sampling240/installed/ and evidence/orientation/installed/.
 To restore one of these instead of diagnostics, substitute its bundle path in
 the documented restore command; do not combine `--bundle` with `--project`.
 
-The current installed sleep trial is sourcef8845c5/version1.0.2-peek-sleep.
-Current bundle: evidence/sleep-performance/installed/dragon-sleep.irisfw.
+The prior accepted sleep trial was sourcef8845c5/version1.0.2-peek-sleep.
+Its retained bundle: evidence/sleep-performance/installed/dragon-sleep.irisfw.
 The user chose to retain it after active-open engine measurements of10.336Hz;
 the15Hz target is not declared achieved. Restore older bundles only intentionally.

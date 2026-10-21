@@ -1,0 +1,39 @@
+{
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "hardware_mac": "30:ed:a0:f4:52:a0",
+  "boot_id": "18113205708322532055",
+  "old_boot_id": "3345998236476284272",
+  "version": "1.0.3-peek-eyes",
+  "source_revision": "9da7987c7c39436402252b8cf6e3fd7e03fc883a",
+  "ELF_sha256": "b46699a95d376eef4db145a33170d86598bed8a1aed076b48f34c152b755ef94",
+  "view": "dragon",
+  "logical_seconds": 34.18,
+  "rates_hz": {
+    "captures": 7.840842598010533,
+    "faults": 0.0,
+    "samples": 7.840842598010533,
+    "draws": 293.15389116442367,
+    "render_frames": 19.57284961966062
+  },
+  "all_sequences_equal_samples": true,
+  "data_states": [
+    "VALID"
+  ],
+  "roles": [
+    "IDLE",
+    "TRACKING"
+  ],
+  "active_open_engine_frames_hz": 7.017543859649122,
+  "sleeping_observed": true,
+  "waking_observed": false,
+  "heap": {
+    "free_internal": 237499,
+    "min_free_internal": 196328,
+    "free_spiram": 4699668,
+    "min_free_spiram": 4699668,
+    "total_internal": 453395,
+    "total_spiram": 10376932
+  },
+  "physical_panel_FPS": null,
+  "limitations": "Reviewed artifact defaults to dragon. New three themes are linked but not selected on device; their ROM decode/rendering remain unverified. RPC polling affects observed timing; this is not physical panel FPS or peak RAM."
+}

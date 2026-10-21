@@ -1,0 +1,26 @@
+{
+  "evidence/eye-ui/device-install/eye-trio.irisfw": {
+    "bytes": 5887193,
+    "sha256": "47cd717e4b2a4ba96c123e957d0fac706bcc4e7c59e3fba0ff6d1eaebe7ad420"
+  },
+  "evidence/sleep-performance/installed/dragon-sleep.irisfw": {
+    "bytes": 1393666,
+    "sha256": "aa0b58c6a98f386741e3f76dd15063a5a5a746f685fee1a09312b57e1784af62"
+  },
+  "projects/peek/build/peek.bin": {
+    "bytes": 6504384,
+    "sha256": "81c415a3b205e91793d02becc938b098f5b70a91f1cfa7f67b55b85829c25fea"
+  },
+  "projects/peek/build/peek.elf": {
+    "bytes": 20318224,
+    "sha256": "b46699a95d376eef4db145a33170d86598bed8a1aed076b48f34c152b755ef94"
+  },
+  "projects/peek/build/ui_apps.bin": {
+    "bytes": 94480,
+    "sha256": "8cf9cc8baf606c333b37c5e744493463a63bd9f48f1b14b422a622c9becae842"
+  },
+  "projects/peek/build/partition_table/partition-table.bin": {
+    "bytes": 3072,
+    "sha256": "8b516eb3fff9b33cdf188e95bbb008cb853a5793883117b6e72dd572ea8fa6f4"
+  }
+}

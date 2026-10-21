@@ -7,9 +7,9 @@ dragon and diagnostics. [Current three-theme integration, commands and limits](d
 Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
 `python3 tools/preview.py --view night_owl --flip-x --flip-y` starts directly.
 New art remains full480 with lossless RGBA sources and blended lids. Current
-uninstalled firmware builds use `sdkconfig.eye-trio`, version1.0.3-peek-eyes,
-default dragon. **The physical device remains the previously accepted sleep
-trial.** The dragon-specific measurements and installed/restore descriptions
+firmware builds use `sdkconfig.eye-trio`, version1.0.3-peek-eyes,
+default dragon. **The user-authorized1.0.3-peek-eyes build is now installed on
+30:ed:a0:f4:52:a0, displaying dragon.** [Installation evidence](evidence/eye-ui/device-install/README.md). The dragon-specific measurements and installed/restore descriptions
 below are retained baseline context; they do not validate the new art on device.
 
  Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.

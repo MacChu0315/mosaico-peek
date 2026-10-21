@@ -1,7 +1,17 @@
 # Peek handoff — three new native eye views (2026-10-21)
 
-New work is local and **uninstalled**. The device described below remains on the
-accepted1.0.2-peek-sleep trial; no hardware operations or remote writes occurred.
+The user subsequently authorized burning ("允许烧录"). The exact reviewed
+1.0.3-peek-eyes artifact, source9da7987, is now installed on30:ed:a0:f4:52:a0
+(Device ID4553502d49524953010030eda0f452a0), default dragon. Official operation
+7e197546-0fab-4d38-9f77-15947a70594c succeeded; healthy/validated, new Boot ID
+18113205708322532055, ELF SHA
+b46699a95d376eef4db145a33170d86598bed8a1aed076b48f34c152b755ef94.
+Bootloader/partition hashes remain identical; Recovery was not replaced.
+[Exact package, installation and runtime observations](../evidence/eye-ui/device-install/README.md).
+The prior sleep trial remains retained as a restore bundle. A34.18s read-only
+window confirms VALID input at7.841 samples/s, zero faults and no new crashes;
+free PSRAM4699668B before screenshot. This default-dragon installation does not
+exercise the three new bitmap renderers. No remote writes.
 Reviewed9a25653 was the clean starting point; independent branchfeat/eye-ui-trio.
 
 Night owl, deep sea and mechanical now use the existing production detector,
@@ -21,7 +31,8 @@ mode mismatches. Original native diagnostics and dragon are checked separately.
 Target image fits existingota_0; the retained-factory capacity warning remains.
 New ROM decode execution, physical appearance/direction, full-screen FPS,
 allocator peaks/largest blocks and actual PSRAM bandwidth remain unverified.
-Stop at local review; no installation, reboot, Recovery, push or merge.
+The single authorized installation is complete. No further installation, restart,
+Recovery, push or merge is authorized by that completed operation.
 
 The following section preserves the prior installed-device handoff verbatim.
 
