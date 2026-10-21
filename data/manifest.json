@@ -33,7 +33,12 @@
     "idle": {
       "kind": "synthetic",
       "generator": "tools/generate_dragon_data.py",
-      "expected": "70s uniform22C complete8Hz inputs; no target; autonomous idle/blinks"
+      "expected": "70s uniform22C complete8Hz inputs; no target; calm idle/blinks for10s,450ms close then sleep"
+    },
+    "sleep": {
+      "kind": "synthetic",
+      "generator": "tools/generate_dragon_data.py",
+      "expected": "10s idle then450ms close, fresh acquired target at12.25s starts150ms wake, motion/hold, leave and repeat idle sleep"
     }
   },
   "synthetic": {

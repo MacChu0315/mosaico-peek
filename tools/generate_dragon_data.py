@@ -33,10 +33,12 @@ def scenario(t):
     return None,False
 if __name__=='__main__':
     write('dragon',30,scenario);write('idle',70,lambda t:(None,False))
+    write('sleep',34,lambda t:((2+min(18,(t-12000)//250),8) if 12000<=t<18000 else None,False))
     manifest=ROOT/'data/manifest.json';data=json.loads(manifest.read_text())
     data['cases'].update({
         'aging':{'kind':'synthetic','expected':'delayed 600ms captures; expired target never exposed; CLI/replay_until/native pump equivalent'},
         'dragon':{'kind':'synthetic','generator':'tools/generate_dragon_data.py','expected':'30s idle, enter, x/y movement, >=4s still, leave/reappear, INVALID, recover, outage, recover and leave'},
-        'idle':{'kind':'synthetic','generator':'tools/generate_dragon_data.py','expected':'70s uniform22C complete8Hz inputs; no target; autonomous idle/blinks'}})
+        'sleep':{'kind':'synthetic','generator':'tools/generate_dragon_data.py','expected':'10s idle then450ms close, fresh acquired target at12.25s starts150ms wake, motion/hold, leave and repeat idle sleep'},
+        'idle':{'kind':'synthetic','generator':'tools/generate_dragon_data.py','expected':'70s uniform22C complete8Hz inputs; no target; calm idle/blinks for10s,450ms close then sleep'}})
     manifest.write_text(json.dumps(data,indent=2)+'\n')
     print('Generated synthetic dragon 30s / idle 70s arrays at 8Hz')

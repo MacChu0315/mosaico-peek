@@ -12,11 +12,11 @@ def main():
     obj=ROOT/'build-host/memory-layout.o';binary=obj.with_suffix('.bin')
     subprocess.run([str(compiler),'-std=c11','-c','-Isrc','-Itests/stubs','-Ibuild-host/dragon-generated','tools/memory_layout.c','-o',str(obj)],cwd=ROOT,check=True)
     subprocess.run([str(objcopy),'--dump-section','.rodata.peek_layout='+str(binary),str(obj)],check=True)
-    names=['detector','input_frame','role_controller','shared_ui','display_snapshot','device_app','renderer','acquisition_owner','renderer_fixed_cache']
-    sizes=dict(zip(names,struct.unpack('<9I',binary.read_bytes())))
+    names=['detector','input_frame','role_controller','shared_ui','display_snapshot','device_app','renderer','acquisition_owner','renderer_fixed_cache','renderer_geometry_cache']
+    sizes=dict(zip(names,struct.unpack('<10I',binary.read_bytes())))
     assets=json.loads((ROOT/'assets/dragon/metadata.json').read_text())['generated_include']['total_data_bytes']
     # Source implementation sizeof(renderer), also independently asserted by its native pixel test.
-    renderer=sizes['renderer']+sizes['renderer_fixed_cache']
+    renderer=sizes['renderer']+sizes['renderer_fixed_cache','renderer_geometry_cache']
     allocated=sizes['device_app']+2*sizes['display_snapshot']+sizes['acquisition_owner']+renderer
     images={name:{'bytes':(build/name).stat().st_size,'sha256':hashlib.sha256((build/name).read_bytes()).hexdigest()} for name in ['peek.bin','ui_apps.bin']}
     assert images['ui_apps.bin']['bytes']<=0x100000 and images['peek.bin']['bytes']<=0xcf0000

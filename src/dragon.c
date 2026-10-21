@@ -63,6 +63,14 @@ bool dragon_update(dragon_t *c,const peek_result_t *r,uint64_t now)
     float mapped_x=0,mapped_y=0;
     bool active=r->data==PEEK_VALID && r->has_valid && r->has_target && r->last_valid_ms<=now && dragon_map(&c->mapping,r->x,r->y,&mapped_x,&mapped_y);
     c->observation_held=active&&r->held;
+    /* Advance the previous idle deadline before acquisition, even when no
+     * animation callback ran during the close. Faults cannot wake the eye. */
+    bool idle_closing=c->mode==DRAGON_IDLE && now-c->phase_ms>=10000;
+    float sleep_blink=idle_closing?ease((float)(now-c->phase_ms-10000)/450):0;
+    if(active&&!c->target_active && idle_closing && sleep_blink>0){
+        c->wake_ms=now;c->wake_blink=sleep_blink;c->waking=true;
+        c->next_blink_ms=now+3500+random_next(c)%4500;
+    }
     if(active&&!c->target_active){enter(c,DRAGON_NOTICE,now);c->notices++;c->has_observation=c->quiet=c->stationary=false;}
     if(!active&&c->target_active){enter(c,DRAGON_LEAVE,now);c->has_observation=c->quiet=c->stationary=false;}
     c->target_active=active;
@@ -99,9 +107,17 @@ bool dragon_update(dragon_t *c,const peek_result_t *r,uint64_t now)
     float alpha=1-expf(-dt*7);
     c->pose.squint+=(squint-c->pose.squint)*alpha;c->pose.pupil_width+=(pupil-c->pose.pupil_width)*alpha;c->pose.tension+=(tension-c->pose.tension)*alpha;
     /* Blinks use injected time and seeded intervals, unrelated to render dt. */
-    while(now>=c->next_blink_ms+410){c->blinks++;c->next_blink_ms+=410+3500+random_next(c)%4500;}
+    while(now>=c->next_blink_ms+410){if(!idle_closing&&!c->waking)c->blinks++;c->next_blink_ms+=410+3500+random_next(c)%4500;}
     c->pose.blink=0;
     if(now>=c->next_blink_ms){uint64_t age=now-c->next_blink_ms;c->pose.blink=age<140?ease((float)age/140):age<180?1:1-ease((float)(age-180)/230);}
+    c->sleeping=c->mode==DRAGON_IDLE && now-c->phase_ms>=10000;
+    if(c->sleeping){
+        c->pose.blink=ease((float)(now-c->phase_ms-10000)/450);c->waking=false;
+    }else if(c->waking){
+        uint64_t age=now-c->wake_ms;
+        c->pose.blink=c->wake_blink*(1-ease((float)age/150));
+        if(age>=150)c->waking=false;
+    }
     c->pose.gaze_x=clamp(c->pose.gaze_x,-.85f,.85f);c->pose.gaze_y=clamp(c->pose.gaze_y,-.65f,.65f);
     return true;
 }

@@ -22,7 +22,7 @@ static struct {
     const char *data_dir,*run_dir;
     char label[80],status[512],temporary[512],socket_path[108];
 } app={.fd=-1};
-static const char *cases[]={"empty","motion","multi","gaps","recorded","aging","dragon","idle","live"};
+static const char *cases[]={"empty","motion","multi","gaps","recorded","aging","dragon","idle","live","sleep"};
 #define CASE_COUNT (sizeof(cases)/sizeof(cases[0]))
 static uint64_t real_us(void){struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return (uint64_t)t.tv_sec*1000000+(uint64_t)t.tv_nsec/1000;}
 static void publish(void)
@@ -32,8 +32,8 @@ static void publish(void)
     peek_write_result(f,&app.view.detector);
     fprintf(f,",\"sample_step\":%u,\"flip_x\":%s,\"flip_y\":%s",app.view.sample_step,app.view.dragon.mapping.flip_x?"true":"false",app.view.dragon.mapping.flip_y?"true":"false");
     const dragon_t *c=&app.view.dragon;
-    fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
-        app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
+    fprintf(f,",\"view\":\"%s\",\"role\":{\"mode\":\"%s\",\"sleeping\":%s,\"waking\":%s,\"phase_ms\":%" PRIu64 ",\"observations\":%" PRIu64 ",\"notices\":%" PRIu64 ",\"blinks\":%" PRIu64 ",\"observation_held\":%s,\"stationary\":%s,\"speed_px_s\":%.5f,\"next_blink_ms\":%" PRIu64 ",\"pose\":{\"gaze_x\":%.9g,\"gaze_y\":%.9g,\"blink\":%.9g,\"squint\":%.9g,\"pupil_width\":%.9g,\"tension\":%.9g}},\"render\":{\"pixels\":%" PRIu64 ",\"draw_us_total\":%" PRIu64 ",\"draw_us_max\":%" PRIu64 ",\"prepare_us_total\":%" PRIu64 ",\"prepares\":%" PRIu64 ",\"geometry_cached\":%s,\"renderer_heap_bytes\":%zu,\"assets_bytes\":%zu}",
+        app.view.dragon_view?"dragon":"diagnostic",dragon_mode_name(c->mode),c->sleeping?"true":"false",c->waking?"true":"false",c->phase_ms,c->observations,c->notices,c->blinks,c->observation_held?"true":"false",c->stationary?"true":"false",c->speed_px_s,c->next_blink_ms,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->pose.squint,c->pose.pupil_width,c->pose.tension,app.view.draw_pixels,app.view.render_us_total,app.view.render_us_max,app.view.prepare_us_total,app.view.prepares,dragon_renderer_geometry_cached(app.view.renderer)?"true":"false",dragon_renderer_heap_bytes(),dragon_renderer_asset_bytes());
     fprintf(f,",\"host_timing\":{\"target_timer_ms\":33,\"completed_callbacks\":%" PRIu64 ",\"callback_us_total\":%" PRIu64 ",\"work_us_total\":%" PRIu64 ",\"publish_us_total\":%" PRIu64 ",\"callback_us_max_session\":%" PRIu64 ",\"interval_count\":%" PRIu64 ",\"interval_us_total\":%" PRIu64 ",\"interval_us_max_session\":%" PRIu64 ",\"completed_until_us\":%" PRIu64 ",\"published_us\":%" PRIu64 ",\"interval_bins_le_us\":[10000,20000,35000,50000,75000,100000,200000,18446744073709551615],\"interval_bins\":[",
         app.tick_calls,app.tick_us_total,app.tick_work_us_total,app.publish_us_total,app.tick_us_max,app.interval_count,app.interval_us_total,app.interval_us_max,app.last_completed_us,real_us());
     for(unsigned i=0;i<8;i++)fprintf(f,"%s%" PRIu64,i?",":"",app.interval_bins[i]);

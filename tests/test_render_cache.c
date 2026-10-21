@@ -16,7 +16,8 @@ static float random_unit(void){seed^=seed<<13;seed^=seed>>17;seed^=seed<<5;retur
 int main(void){
     allocations=frees=0;fail_at=1;assert(!dragon_renderer_create()&&frees==0);
     allocations=frees=0;fail_at=2;assert(!dragon_renderer_create()&&frees==1);
-    allocations=frees=fail_at=0;dragon_renderer_t *r=dragon_renderer_create();assert(r&&allocations==2);
+    allocations=frees=0;fail_at=3;assert(!dragon_renderer_create()&&frees==2);
+    allocations=frees=fail_at=0;dragon_renderer_t *r=dragon_renderer_create();assert(r&&allocations==3);
     dragon_fixed_pixel_t *cache=r->fixed_pixels;
     size_t bytes=FIXED_PIXELS*sizeof(*cache);void *original=malloc(bytes);assert(original);memcpy(original,cache,bytes);
     uint16_t *a=malloc(480*480*2),*b=malloc(480*480*2);assert(a&&b);
@@ -27,7 +28,7 @@ int main(void){
         assert(!memcmp(a,b,480*480*2));
     }
     assert(!memcmp(original,cache,bytes));
-    dragon_renderer_destroy(r);assert(frees==2);dragon_renderer_destroy(NULL);
+    dragon_renderer_destroy(r);assert(frees==3);dragon_renderer_destroy(NULL);
     free(original);free(a);free(b);
-    puts("PASS renderer cache:32 cached/uncached full frames identical; immutable cache and both allocation failures release correctly");
+    puts("PASS renderer cache:32 cached/uncached full frames identical; immutable cache and all three allocation failures release correctly");
 }

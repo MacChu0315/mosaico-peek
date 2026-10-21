@@ -19,7 +19,7 @@ def main():
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
         if name.startswith('evidence/gsp/motion/'):continue
-        if name.endswith('.mp4') and not name.startswith('evidence/real-input/'):continue
+        if name.endswith('.mp4') and not (name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4'):continue
         if name.endswith('.png') and name.startswith(('evidence/real-input/synthetic-regression/','evidence/device-dragon/cache-native/')):
             digest=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
             if digest in golden:

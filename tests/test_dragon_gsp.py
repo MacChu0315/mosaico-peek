@@ -80,7 +80,7 @@ def main():
                 command('pause');after=state();elapsed=time.monotonic()-start
                 metrics={'case':case,'wall_seconds':elapsed,'logical_ms':after['result']['now_ms'],'callback_count':after['draws']-before['draws'],'canvas_callback_hz':(after['draws']-before['draws'])/elapsed,'equivalent_full_canvas_hz':(after['render']['pixels']-before['render']['pixels'])/(480*480)/elapsed,'draw_us_mean':(after['render']['draw_us_total']-before['render']['draw_us_total'])/max(1,after['draws']-before['draws']),'draw_us_max_session':after['render']['draw_us_max'],'screenshot_count':len(captures),'memory':memory(),'evidence_method':'Live official GSP API screenshots, sampled on wall clock; encoded video does not independently establish real-time performance or device FPS.'}
                 (OUT/f'{case}-live.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in records));(OUT/f'{case}-captures.json').write_text(json.dumps(captures,indent=2)+'\n')
-                if case=='idle':assert after['role']['blinks']>=5 and elapsed>=60 and after['result']['samples']>470
+                if case=='idle':assert after['role']['sleeping'] and after['role']['pose']['blink']==1 and elapsed>=60 and after['result']['samples']>470
                 else:
                     modes={r['role']['mode'] for r in records};assert {'IDLE','NOTICE','TRACKING','HOLD','LEAVE'}<=modes
                     assert any(r['result']['data']=='INVALID' for r in records) and any(r['result']['data']=='STALE' for r in records)

@@ -8,6 +8,9 @@ typedef struct {
     dragon_pose_t pose;
     dragon_mode_t mode;
     dragon_mapping_t mapping;
+    bool sleeping,waking;
+    float wake_blink;
+    uint64_t wake_ms;
     bool started,target_active,observation_held,stationary,has_observation,quiet;
     uint64_t now_ms,phase_ms,last_samples,last_capture_ms,quiet_since_ms,next_blink_ms;
     uint64_t observations,notices,blinks,transitions;

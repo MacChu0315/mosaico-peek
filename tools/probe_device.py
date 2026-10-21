@@ -25,7 +25,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=35);p.add_argument('--label',default='live');p.add_argument('--no-screens',action='store_true');a=p.parse_args()
     if not a.label.replace('-','').isalnum() or not 0<a.seconds<=300:p.error('invalid bounded probe')
     out=ROOT/'evidence/device-dragon'/a.label;out.mkdir(exist_ok=False)
-    before=command(['device-status']);d=before['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version'] in ('1.0.0-peek-dragon','1.0.1-peek-dragon240') and d['firmware_mode']=='normal' and not d['stale']
+    before=command(['device-status']);d=before['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version'] in ('1.0.0-peek-dragon','1.0.1-peek-dragon240','1.0.2-peek-sleep') and d['firmware_mode']=='normal' and not d['stale']
     (out/'before.json').write_text(json.dumps(before,indent=2)+'\n');boot=before['boot_id'];begin=time.monotonic();samples=[];next_screen=0
     with (out/'samples.jsonl').open('w') as f:
         while time.monotonic()-begin<a.seconds:
@@ -46,5 +46,16 @@ def main():
         draw_mean_us=(last['draw_us']-first['draw_us'])/max(1,draw_count),gsp_render_mean_us=(last['render_busy_us']-first['render_busy_us'])/max(1,frames),gsp_raster_mean_us=(last['raster_us']-first['raster_us'])/max(1,frames),gsp_submit_mean_us=(last['submit_us']-first['submit_us'])/max(1,frames),
         roles=sorted({s['state']['role'] for s in samples}),data_states=sorted({s['state']['data'] for s in samples}),heap={k:after['device'][k] for k in ['free_internal','free_spiram','min_free_internal','min_free_spiram','total_internal','total_spiram']},
         cores=dict(gsp=last.get('render_core'),sensor=last.get('sensor_core')),sequence_equals_accepted_samples=all(x['state']['sequence']==x['state']['samples'] for x in samples),physical_panel_fps=None,note='Actual sensor/role firmware. Callback/surface/render counters are distinct; no physical panel scan or visible FPS measured. Snapshots and CLI polling can affect rates. No scene labels inferred.')
+    if 'open_frames' in last:
+        frames=last['open_frames']-first['open_frames'];elapsed=last['open_elapsed_ms']-first['open_elapsed_ms']
+        report['active_open_render']=dict(frames=frames,device_ms=elapsed,
+            engine_frames_hz=frames*1000/elapsed if elapsed else None,
+            engine_mean_us=(last['open_busy_us']-first['open_busy_us'])/frames if frames else None,
+            raster_mean_us=(last['open_raster_us']-first['open_raster_us'])/frames if frames else None,
+            submit_mean_us=(last['open_submit_us']-first['open_submit_us'])/frames if frames else None,
+            note='Completed previous generations classified as target_active, blink==0, not sleeping/waking. Includes cache misses. Excludes closed-eye frames; still not physical panel FPS.')
+        report['sleeping_observed']=any(s['state'].get('sleeping') for s in samples)
+        report['waking_observed']=any(s['state'].get('waking') for s in samples)
+        report['geometry_cached_fraction']=sum(s['state'].get('geometry_cached',False) for s in samples)/len(samples)
     (out/'summary.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

@@ -30,9 +30,16 @@ typedef struct {
     uint8_t vignette;
 } dragon_fixed_pixel_t;
 #define FIXED_PIXELS (FRAME_SIZE*FRAME_SIZE)
+/* The approved240 raster has57600 globally aligned sample centers. This
+ * prepared geometry cache is owned by prepare; draw only reads it. */
+#define FAST_PIXELS (240U*240U)
+typedef struct {int32_t x,y;uint16_t pixel;uint8_t kind;} dragon_fast_pixel_t;
+enum {FAST_STATIC,FAST_INTERIOR,FAST_SCALAR};
 
 struct dragon_renderer {
     dragon_fixed_pixel_t *fixed_pixels;
+    dragon_fast_pixel_t *fast_pixels;
+    bool fast_cache_valid;
     bool ready;
     unsigned sample_step;
     dragon_pose_t pose;
@@ -388,6 +395,50 @@ static color_t render_pixel(const dragon_renderer_t *r, unsigned sx, unsigned sy
     return over(c,(color_t){0,0,0},a);
 }
 
+/* No approximation: cache only regions whose compositing can be proven
+ * independent of gaze/pupil, or an interior with every border layer absent.
+ * Near contours retain the complete scalar compositor. */
+static void prepare_geometry(dragon_renderer_t *r){
+    for(unsigned gy=0;gy<240;gy++)for(unsigned gx=0;gx<240;gx++){
+        unsigned sx=gx*2+1,sy=gy*2+1;
+        dragon_fast_pixel_t *f=&r->fast_pixels[gy*240+gx];
+        int32_t px=((int32_t)sx-240)*Q16+Q16/2,py=((int32_t)sy-247)*Q16+Q16/2;
+        int32_t x=(int32_t)(((int64_t)px*32349-(int64_t)py*5221)>>15);
+        int32_t y=(int32_t)(((int64_t)px*5221+(int64_t)py*32349)>>15);
+        int32_t upper=edge_at(r->upper,x),lower=edge_at(r->lower,x);
+        int32_t du=(int32_t)(((int64_t)(y-upper)*edge_normal(r->upper_normal,x))>>15);
+        int32_t dl=(int32_t)(((int64_t)(lower-y)*edge_normal(r->lower_normal,x))>>15);
+        int alpha=coverage(du<dl?du:dl);f->x=x;f->y=y;f->kind=FAST_SCALAR;
+        if(r->pose.blink==1 || x < -214*Q16 || x > 214*Q16 || !alpha){
+            f->kind=FAST_STATIC;f->pixel=pack(render_pixel(r,sx,sy));continue;
+        }
+        int32_t outer=edge_at(r->upper_outer,x);
+        int32_t d=y-outer < upper-y?y-outer:upper-y;
+        if(coverage(d))continue;
+        outer=edge_at(r->lower_outer,x);d=outer-y < y-lower?outer-y:y-lower;
+        if(coverage(d))continue;
+        if(alpha==256 &&
+           !stroke(du-2*Q16,15*Q16,87) && !stroke(du-2*Q16,11*Q16/2,64) &&
+           !stroke(dl-Q16,7*Q16,115) && !stroke(du+Q16,3*Q16,225) &&
+           !stroke(du+4*Q16,72090,174) && !stroke(dl+Q16,5*Q16/2,202) &&
+           !stroke(dl+5*Q16,39322,67) && !stroke(du-r->crease_offset,3*Q16/2,67))
+            f->kind=FAST_INTERIOR;
+    }
+    r->fast_cache_valid=true;
+}
+static uint16_t sampled_pixel(const dragon_renderer_t *r,unsigned sx,unsigned sy){
+    if(r->fast_cache_valid){
+        const dragon_fast_pixel_t *f=&r->fast_pixels[(sy/2)*240+sx/2];
+        if(f->kind==FAST_STATIC)return f->pixel;
+        if(f->kind==FAST_INTERIOR){
+            const dragon_fixed_pixel_t *fixed=&r->fixed_pixels[sy*FRAME_SIZE+sx];
+            color_t eye=gloss(eyeball(r,f->x,f->y,fixed),f->x,f->y);
+            return pack(over(eye,(color_t){0,0,0},fixed->vignette));
+        }
+    }
+    return pack(render_pixel(r,sx,sy));
+}
+
 dragon_renderer_t *dragon_renderer_create(void)
 {
     dragon_renderer_t *r = calloc(1,sizeof(*r));
@@ -427,19 +478,35 @@ dragon_renderer_t *dragon_renderer_create(void)
         f->body=pack(over(body,(color_t){0,0,0},f->vignette));
         f->hood=pack(over(hood,(color_t){0,0,0},f->vignette));
     }
+#ifdef ESP_PLATFORM
+    r->fast_pixels=heap_caps_calloc(FAST_PIXELS,sizeof(*r->fast_pixels),MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT);
+#else
+    r->fast_pixels=calloc(FAST_PIXELS,sizeof(*r->fast_pixels));
+#endif
+    if(!r->fast_pixels){
+#ifdef ESP_PLATFORM
+        heap_caps_free(r->fixed_pixels);
+#else
+        free(r->fixed_pixels);
+#endif
+        free(r);return NULL;
+    }
     return r;
 }
 
 bool dragon_renderer_set_sample_step(dragon_renderer_t *r,unsigned step){
     if(!r || (step!=1 && step!=2))return false;
+    if(r->sample_step!=step)r->fast_cache_valid=false;
     r->sample_step=step;return true;
 }
 
 void dragon_renderer_destroy(dragon_renderer_t *r) {
     if(!r)return;
 #ifdef ESP_PLATFORM
+    heap_caps_free(r->fast_pixels);
     heap_caps_free(r->fixed_pixels);
 #else
+    free(r->fast_pixels);
     free(r->fixed_pixels);
 #endif
     free(r);
@@ -454,6 +521,9 @@ bool dragon_renderer_prepare(dragon_renderer_t *r, const dragon_pose_t *p)
         p->blink < 0 || p->blink > 1 || p->squint < 0 || p->squint > 1 ||
         p->pupil_width < 0 || p->pupil_width > 1 || p->tension < 0 || p->tension > 1)
         return false;
+    bool same_geometry=r->ready && r->pose.blink==p->blink &&
+        r->pose.squint==p->squint && r->pose.tension==p->tension;
+    if(!same_geometry)r->fast_cache_valid=false;
     r->pose = *p;
     r->cy = fixed15(cosf(p->gaze_x*.83f));
     r->sy = fixed15(sinf(p->gaze_x*.83f));
@@ -464,6 +534,7 @@ bool dragon_renderer_prepare(dragon_renderer_t *r, const dragon_pose_t *p)
     r->top_u_scale = fixed16(480.0f/450);
     r->crease_offset = fixed16(-32+7*p->tension);
     r->top_v_scale = fixed16(480/(450*(1+p->blink*.16f)));
+    if(!same_geometry){
     float top_h = 158-p->squint*55-p->tension*7;
     float low_h = 186-p->squint*19;
     float b = p->blink;
@@ -477,6 +548,11 @@ bool dragon_renderer_prepare(dragon_renderer_t *r, const dragon_pose_t *p)
     contour(r->upper,ux,uy); contour(r->lower,lx,ly);
     contour(r->upper_outer,uox,uoy); contour(r->lower_outer,lox,loy);
     normals(r->upper,r->upper_normal); normals(r->lower,r->lower_normal);
+    }
+    /* Changing geometry (blink/NOTICE transitions) uses scalar rendering.
+     * Only a repeated exact geometry earns one cache build, avoiding a full
+     * rebuild on every intermediate blink frame. No pose quantization. */
+    if(r->sample_step==2 && same_geometry && !r->fast_cache_valid)prepare_geometry(r);
     r->ready = true;
     return true;
 }
@@ -503,7 +579,7 @@ bool dragon_renderer_draw(const dragon_renderer_t *r, uint16_t *pixels,
             }
             for(unsigned col=0;col<width;col++){
                 if(((x+col)&1u) && col)out[col]=out[col-1];
-                else out[col]=pack(render_pixel(r,(x+col)|1u,(y+row)|1u));
+                else out[col]=sampled_pixel(r,(x+col)|1u,(y+row)|1u);
             }
         }else{
             for (unsigned col = 0; col < width; ++col)
@@ -513,10 +589,12 @@ bool dragon_renderer_draw(const dragon_renderer_t *r, uint16_t *pixels,
     return true;
 }
 
-size_t dragon_renderer_heap_bytes(void) { return sizeof(dragon_renderer_t)+FIXED_PIXELS*sizeof(dragon_fixed_pixel_t); }
+size_t dragon_renderer_heap_bytes(void) { return sizeof(dragon_renderer_t)+FIXED_PIXELS*sizeof(dragon_fixed_pixel_t)+FAST_PIXELS*sizeof(dragon_fast_pixel_t); }
 size_t dragon_renderer_asset_bytes(void)
 {
     return sizeof(dragon_skin_indices)+sizeof(dragon_iris_indices)+
         sizeof(dragon_skin_palette)+sizeof(dragon_iris_palette)+
         sizeof(dragon_sqrt_q15)+sizeof(dragon_pupil_q15)+sizeof(dragon_sin_q15);
 }
+
+bool dragon_renderer_geometry_cached(const dragon_renderer_t *r){return r && r->fast_cache_valid;}

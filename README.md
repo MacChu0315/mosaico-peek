@@ -25,7 +25,7 @@ python3 tools/control.py status
 python3 tools/stop_preview.py
 ```
 
-`python3 tools/preview.py --view diagnostic` starts the original heatmap/buttons. Cases: empty, motion, multi, gaps, recorded, aging, dragon, idle, live (or indexes0..8). CASE resets and pauses; REPLAY resets source/time/identity/detector/role/random seed while preserving play/pause; STEP pauses and processes the next input event. `advance MS` is a controlled replay operation. EOF pauses. Real acquisition continues monotonic time; firmware defaults to dragon and offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` under “Peek diagnostics” in menuconfig for a diagnostic build. No touchscreen input represents a thermal target.
+`python3 tools/preview.py --view diagnostic` starts the original heatmap/buttons. Cases: empty, motion, multi, gaps, recorded, aging, dragon, idle, live, sleep (or indexes0..9). CASE resets and pauses; REPLAY resets source/time/identity/detector/role/random seed while preserving play/pause; STEP pauses and processes the next input event. `advance MS` is a controlled replay operation. EOF pauses. Real acquisition continues monotonic time; firmware defaults to dragon and offers `CONFIG_PEEK_DIAGNOSTIC_VIEW` under “Peek diagnostics” in menuconfig for a diagnostic build. No touchscreen input represents a thermal target.
 
 Only one preview per working directory is supported. Loopback socket permission is necessary in restricted sandboxes. The launcher uses temporary local listeners and a callback-boundary quit; it never stops another simulator/Gateway. GSP does not physically simulate MLX90640: this project's `.peek` arrays enter the real detector.
 
@@ -33,7 +33,7 @@ Only one preview per working directory is supported. Loopback socket permission 
 
 The user accepted the displayed240-vs480 detail tradeoff on2026-10-21. Device and native startup use `sample_step=2`: evaluate the same C shader at `(x|1,y|1)` and replicate globally aligned2x2 cells into the unchanged480×480 RGB565 Canvas. Sensor32×24 input, detector/role parameters, texture PNGs and geometry remain unchanged. Odd tile origins, padded strides and edge pixels are covered by `render_sampling`; the scalar renderer still defaults to lossless step1 for references. `python3 tools/preview.py --sample-step 1` retains the old native quality. Neither mode changes detector counts.
 
-Firmware version is `1.0.1-peek-dragon240`; build uses isolated `build/sdkconfig.dragon240` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
+Firmware version is `1.0.2-peek-sleep`; build uses isolated `build/sdkconfig.dragon240-sleep` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
 
 ## Complete recorded input / live dragon
 
@@ -41,7 +41,7 @@ Firmware version is `1.0.1-peek-dragon240`; build uses isolated `build/sdkconfig
 
 The renderer retains its full invariant cache of3,225,600 bytes for invariant geometry/static colors in explicit device PSRAM; its workspace+cache total3,237,916 bytes is reported separately from textures and framebuffer memory. [Device rendering investigation](docs/DEVICE_PERFORMANCE.md) retains exact pixel/ownership evidence and actual runtime rates.
 
-The normal firmware build selects `build/sdkconfig.dragon240`, version `1.0.1-peek-dragon240`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
+The normal firmware build selects `build/sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
 
 ## Build / verify
 
@@ -70,7 +70,7 @@ Asset generation requires **Pillow10.4.0** for byte-identical output; this was a
 
 Defaults stay centralized in `peek_default_config`: spatial-median background; enter/keep contrast3/2°C; four-connected area6..300; acquisition3 new consistent frames; release2 valid absent frames; association5 pixels; smoothing0.5; continuity300ms; target hold500ms; data stale750ms. While tracked, nearest qualifying region in the gate wins even over a hotter distant source. Untracked selection maximizes summed temperature excess; ties follow row-major discovery. No identity recognition/classification/distance claim.
 
-`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. The current physical mount uses both flips based on user motion feedback; post-flip physical acceptance remains pending.
+`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks for10s after entry, then closes over450ms and stays shut. A newly acquired production target wakes it over150ms; faults or pending candidates do not wake it. Ordinary blinks resume after waking (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. The current physical mount uses both flips based on user motion feedback; post-flip physical acceptance remains pending.
 
 Draw reads a prepared pose only. Open-eye dirty updates request the tested `(16,80)..(464,416)` union; blink transitions request the full textured hood. Native GSP currently still supplies full draw surfaces, so this request produced no substantial measured throughput gain. The full-frame parity test prevents stale pixels from being hidden by partial updates.
 
@@ -114,3 +114,11 @@ If an existing incremental build rejects missing new Kconfig selectors, trigger
 local CMake reconfiguration with `touch projects/peek/CMakeLists.txt`, then rerun
 `python3 tools/build_idf.py`. This changes only the local file timestamp, does
 not fullclean or upgrade dependencies, and leaves the config checks enabled.
+
+The exact240 prepared-geometry cache adds691,200B explicit PSRAM. It is keyed
+only by exact blink/squint/tension; moving gaze and pupil are always fresh.
+Pixels near contours use the scalar compositor. Changing geometry invalidates
+the cache; a repeated geometry builds it once in prepare. Draw remains read-only.
+No additional downsampling or pose quantization. Run
+`python3 tools/control.py case sleep` then `play` for the new synthetic scenario,
+or `python3 tests/test_sleep_gsp.py` for actual native dynamic acceptance.
