@@ -139,3 +139,11 @@ target_compile_options(test_eye_projection PRIVATE -UNDEBUG -Wall -Wextra -Werro
 target_link_libraries(test_eye_projection PRIVATE m)
 add_test(NAME wide_eye_projection COMMAND test_eye_projection)
 add_test(NAME wide_eye_assets COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_eye_motion_assets.py" "${CMAKE_BINARY_DIR}")
+
+add_test(NAME mechanical_c_reference COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_mechanical_c.py" "${CMAKE_BINARY_DIR}")
+add_executable(test_rotating_shutter tests/test_rotating_shutter.c)
+add_dependencies(test_rotating_shutter peek_eye_assets)
+target_include_directories(test_rotating_shutter PRIVATE src "${PEEK_EYE_GENERATED_DIR}")
+target_compile_options(test_rotating_shutter PRIVATE -UNDEBUG -Wall -Wextra -Werror -ffp-contract=off)
+target_link_libraries(test_rotating_shutter PRIVATE ZLIB::ZLIB m)
+add_test(NAME rotating_shutter_lifetime COMMAND test_rotating_shutter)

@@ -1,0 +1,29 @@
+{
+  "kind": "actual HTML JavaScript renderer in Node with PNG/ImageData adapter",
+  "checks": {
+    "center": {
+      "lit_pixels": 154817,
+      "opaque_pixels": 230400
+    },
+    "diagonal": {
+      "lit_pixels": 165742,
+      "opaque_pixels": 230400
+    },
+    "nearest_frame_050_051_identical": true,
+    "inactive": {
+      "lit_pixels": 0,
+      "opaque_pixels": 230400
+    },
+    "returned": {
+      "lit_pixels": 165742,
+      "opaque_pixels": 230400
+    }
+  },
+  "timeline_checks": "passed",
+  "javascript_syntax": true,
+  "embedded_png_count": 11,
+  "browser_runtime_verified": false,
+  "browser_blocker": "Chromium executable and system browsers absent; no installation performed.",
+  "native_verified": false,
+  "device_verified": false
+}

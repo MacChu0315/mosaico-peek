@@ -1,5 +1,9 @@
 # Three additional eye UIs — native integration
 
+Mechanical was replaced by the user-selected C globe/central shutter on2026-10-22.
+See [current mechanical contract](MECHANICAL_C.md); the original mechanical
+fixed-lid/neutral details below describe the prior version. Owl/sea are unchanged.
+
 Appended `night_owl`, `deep_sea`, `mechanical`; `dragon` and `diagnostic` remain.
 Started from reviewed9a25653 on an independent local branch. The initial review
 was followed by a user-authorized installation of the exact reviewed artifact;
@@ -38,7 +42,7 @@ No browser animation is used by the native preview.
 
 Firmware uses the same `eye_pack.c`, `peek_ui.c`, `dragon.c`, `peek.c`.
 `python3 tools/build_idf.py` builds isolated `build/sdkconfig.eye-motion`, version
-`1.0.6-peek-motion`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
+`1.0.7-peek-mechanical`, default dragon, `CONFIG_PEEK_CHARACTER=0`. Values1/2/3 select
 night owl/deep sea/mechanical at startup using Kconfig. The baseline
 `sdkconfig.dragon240-sleep` is separate. The wrapper asserts the default-dragon
 review configuration; a deliberately configured alternative needs its own

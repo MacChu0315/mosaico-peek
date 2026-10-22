@@ -13,12 +13,14 @@
 #include <zlib.h>
 #endif
 typedef struct {const unsigned char *data;size_t bytes;unsigned w,h;} eye_stream_t;
-typedef struct {const char *name;int x,y,amp_x,amp_y,eye_x,eye_y,cx,cy;eye_stream_t layers[11];} eye_theme_t;
+typedef struct {const char *name;int x,y,amp_x,amp_y,eye_x,eye_y,cx,cy,rotating_shutter;eye_stream_t layers[11];} eye_theme_t;
 #include "eye_pack.inc"
 /* Allocate the same capacity for each theme; no allocation during blink/draw. */
 #define FRAME_BYTES (480u*480u*4u)
 #define EYE_BYTES EYE_PACK_EYE_BYTES
 #define LAYER_BYTES (507u*272u*4u)
+#define SHUTTER_RGB_BYTES (240u*240u*3u*sizeof(float))
+_Static_assert(SHUTTER_RGB_BYTES+240u*240u*4u<=2*LAYER_BYTES,"Shutter workspace capacity");
 struct eye_pack {
     unsigned char *storage,*frame,*eye,*lid[2];
     unsigned theme,lo,hi;float dx,dy,mix;bool selected,prepared;
@@ -69,9 +71,41 @@ bool eye_pack_select(eye_pack_t *r,unsigned theme){
     for(int y=0;y<480;y++)for(int x=0;x<480;x++)r->nz[y*480+x]=eye_depth(r->nx[x],r->ny[y]);
     r->theme=theme;r->lo=r->hi=99;r->selected=true;return true;
 }
+/* Reuse the two old lid buffers: HDR RGB composite then RGBA decode scratch.
+ * Base eye stays immutable. No cumulative blend, allocation or rounding to8bit. */
+static bool prepare_shutter(eye_pack_t *r,unsigned index){
+    const eye_theme_t *t=&eye_themes[r->theme];
+    if(r->lo==index)return true;
+    unsigned char *layer=r->lid[0]+SHUTTER_RGB_BYTES;
+    if(!decode(r,layer,&t->layers[2+index]))return false;
+    float *composite=(float *)r->lid[0];
+    for(unsigned y=0;y<240;y++)for(unsigned x=0;x<240;x++){
+        unsigned i=y*240+x;
+        const unsigned char *src=layer+i*4,*base=r->eye+((y+t->y)*480+x+t->x)*4;
+        float alpha=src[3]/255.f;
+        for(unsigned c=0;c<3;c++)composite[i*3+c]=src[c]*alpha+base[c]*(1-alpha);
+    }
+    r->lo=index;return true;
+}
+static void shutter_texel(const eye_pack_t *r,int x,int y,float *c){
+    const eye_theme_t *t=&eye_themes[r->theme];int lx=x-t->x,ly=y-t->y;
+    if(lx>=0&&ly>=0&&lx<240&&ly<240){
+        const float *p=(const float *)r->lid[0]+(ly*240+lx)*3;
+        c[0]=p[0];c[1]=p[1];c[2]=p[2];
+    }else{
+        const unsigned char *p=r->eye+(y*480+x)*4;c[0]=p[0];c[1]=p[1];c[2]=p[2];
+    }
+    c[3]=1;
+}
 bool eye_pack_prepare(eye_pack_t *r,const dragon_pose_t *p){
     if(!r||!r->selected||!p||!isfinite(p->gaze_x)||!isfinite(p->gaze_y)||!isfinite(p->blink)||fabsf(p->gaze_x)>.78001f||fabsf(p->gaze_y)>.58001f||p->blink<0||p->blink>1)return false;
     const eye_theme_t *t=&eye_themes[r->theme];
+    if(t->rotating_shutter){
+        r->prepared=false;
+        if(!prepare_shutter(r,(unsigned)floorf(p->blink*8+.5f)))return false;
+        r->projection=eye_projection(p->gaze_x,p->gaze_y,t->amp_x,t->amp_y,t->cx,t->cy);
+        r->prepared=true;return true;
+    }
     float lid=p->blink*8;unsigned lo=(unsigned)floorf(lid),hi=lo<8?lo+1:8;
     r->prepared=false;
     if(lo!=r->lo && !decode(r,r->lid[0],&t->layers[2+lo]))return false;
@@ -100,8 +134,15 @@ bool eye_pack_draw(const eye_pack_t *r,void *pixels,size_t stride,int x,int y,in
             const unsigned char *fp=r->frame+((size_t)py*480+px)*4;
             if(fp[3]==255){c[0]=fp[0];c[1]=fp[1];c[2]=fp[2];}
             else {
-                float u,v;eye_project(&r->projection,r->nx[px],r->ny[py],r->nz[py*480+px],px,py,&u,&v);sample(r->eye,ew,eh,u-t->eye_x,v-t->eye_y,c);
-                if(lx>=0&&ly>=0&&lx<(int)lw&&ly<(int)lh){
+                float u,v;eye_project(&r->projection,r->nx[px],r->ny[py],r->nz[py*480+px],px,py,&u,&v);if(t->rotating_shutter){
+                    int ix=(int)floorf(u),iy=(int)floorf(v);float fx=u-ix,fy=v-iy;memset(c,0,sizeof(c));
+                    for(int j=0;j<2;j++)for(int i=0;i<2;i++){
+                        int xx=ix+i,yy=iy+j;if(xx<0||yy<0||xx>=480||yy>=480)continue;
+                        float q[4],weight=(i?fx:1-fx)*(j?fy:1-fy);shutter_texel(r,xx,yy,q);
+                        for(unsigned k=0;k<4;k++)c[k]+=q[k]*weight;
+                    }
+                }else sample(r->eye,ew,eh,u-t->eye_x,v-t->eye_y,c);
+                if(!t->rotating_shutter&&lx>=0&&ly>=0&&lx<(int)lw&&ly<(int)lh){
                     size_t off=((size_t)ly*lw+lx)*4;rgba(r->lid[0]+off,a);rgba(r->lid[1]+off,b);
                     for(unsigned k=0;k<4;k++)a[k]+=r->mix*(b[k]-a[k]);
                     over(c,a);

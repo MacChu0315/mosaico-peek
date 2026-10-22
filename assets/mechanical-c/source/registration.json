@@ -1,0 +1,36 @@
+{
+  "reference_board": "../assets/originals/concept-C-triptych.png",
+  "source_size": [
+    1942,
+    809
+  ],
+  "target_size": [
+    480,
+    480
+  ],
+  "target_center": [
+    240,
+    245
+  ],
+  "scale": 0.7516129032258064,
+  "states": {
+    "open": {
+      "source_center": [
+        325,
+        395
+      ]
+    },
+    "contracted": {
+      "source_center": [
+        971,
+        395
+      ]
+    },
+    "closed": {
+      "source_center": [
+        1618,
+        395
+      ]
+    }
+  }
+}

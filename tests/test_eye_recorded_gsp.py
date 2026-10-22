@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Complete recorded arrays through native detector while switching views."""
-import json,sys,time,subprocess
+import json,sys,time,subprocess,os
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/eye-ui/recorded';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui/recorded'));OUT.mkdir(parents=True,exist_ok=True)
 def main():
     expected=list(map(json.loads,subprocess.check_output([str(ROOT/'build-host/peek_role_replay'),str(ROOT/'data/live.peek')],text=True).splitlines()))
     def verify():

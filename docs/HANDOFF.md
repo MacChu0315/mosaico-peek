@@ -1,3 +1,28 @@
+# Mechanical C continuation (2026-10-22)
+
+The user approved native adaptation of mechanical-c-assets-v1 after source
+review. Candidate1.0.7-peek-mechanical replaces only mechanical art: opaque globe,
+rotating central shutter and fixed round mount. Source/gaze range, both confirmed
+false flip flags, shared detector/behavior/sleep timing and switching remain.
+[Implementation, sources, resources and commands](MECHANICAL_C.md).
+
+Host Debug/Release25/25 pass;81 independent direction/shutter references and16
+nearest-frame boundaries pass;384 full frames match scalar C. New HDR composite
+reuses existing workspace; bitmap explicit PSRAM remains3418224B. Initial exact
+IDF build passes. Native real-time/recorded evidence and final installation are
+being completed; do not interpret this candidate note as an installed version.
+Device remains known1.0.6 until the separately recorded official update succeeds.
+
+Old1.0.6 direction/range acceptance remains valid. Mechanical C intentionally
+changes the old neutral picture; the former fixed-lid/locked-mask policy does not
+apply to its new artwork. The supplied extreme-diagonal texture stretch remains
+a visual limit. Its larger visible sphere area needs actual device timing; prior
+7.095Hz mechanical result is not a prediction for this new renderer.
+
+The following2026-10-21 history is retained for exact prior results/restores.
+
+---
+
 # Peek handoff — direction and motion correction (2026-10-21)
 
 Current source targets1.0.6-peek-motion, default dragon. Latest user feedback

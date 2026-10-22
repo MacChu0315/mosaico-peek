@@ -7,6 +7,7 @@ import PIL
 ROOT=Path(__file__).resolve().parents[1]
 PACK=ROOT/'assets/eye-pack'
 MOTION=ROOT/'assets/eye_motion.json'
+MECHANICAL=ROOT/'assets/mechanical-c'
 def expanded_eye(theme,recipe):
     folder=PACK/'assets/processed'/theme['id']
     neutral=Image.open(folder/'neutral.png').convert('RGBA')
@@ -54,6 +55,9 @@ def bake(output):
         if name.startswith('evidence/'):continue
         p=PACK/name
         if hashlib.sha256(p.read_bytes()).hexdigest()!=digest:raise ValueError('Source checksum mismatch: '+name)
+    for line in (MECHANICAL/'CHECKSUMS.sha256').read_text().splitlines():
+        digest,name=line.split(None,1);name=name.lstrip('* ')
+        if hashlib.sha256((MECHANICAL/name).read_bytes()).hexdigest()!=digest:raise ValueError('Mechanical source checksum mismatch: '+name)
     if ROOT==output.resolve() or ROOT not in output.resolve().parents:raise ValueError('Output must be inside a project build directory')
     rel=output.resolve().relative_to(ROOT)
     if not rel.parts[0].startswith('build') and not (rel.parts[0]=='projects' and 'build' in rel.parts):raise ValueError('Generated output belongs in a build directory')
@@ -61,22 +65,26 @@ def bake(output):
     if len(amp)!=2 or any(type(v) is not int or not 0<v<=160 for v in amp) or guard!=2 or recipe.get('guard_blur_radius_px')!=2 or recipe.get('sphere_radius_px')!=233:raise ValueError('Unsupported motion recipe')
     manifest=json.loads((PACK/'assets/manifest.json').read_text());chunks=['/* Generated lossless RGBA streams; do not edit. */'];themes=[];report=[]
     for theme in manifest['themes']:
-        entries=[];sizes=[];backing,eye_origin=expanded_eye(theme,recipe)
+        entries=[];sizes=[];rotating=theme['id']=='mechanical'
+        backing,eye_origin=(Image.open(MECHANICAL/'assets/processed/eye_surface.png').convert('RGBA'),(0,0)) if rotating else expanded_eye(theme,recipe)
         output.parent.mkdir(parents=True,exist_ok=True);backing.save(output.parent/(theme['id']+'-wide-eye.png'))
         for name in ['frame','eye']+[f'lid_{i:02}' for i in range(9)]:
             path=PACK/'assets/processed'/theme['id']/(name+'.png')
+            if rotating:path=MECHANICAL/'assets/processed'/('eye_surface.png' if name=='eye' else ('shutter/shutter_'+name[4:]+'.png' if name.startswith('lid_') else 'frame.png'))
             with Image.open(path) as im:
                 if im.mode!='RGBA':raise ValueError(str(path)+' must be RGBA')
                 if name=='eye':im=backing
+                if rotating and im.size!=((240,240) if name.startswith('lid_') else (480,480)):raise ValueError('Mechanical C layer size')
+                if rotating and name=='eye' and im.getchannel('A').getextrema()!=(255,255):raise ValueError('Mechanical C eye must be opaque')
                 raw=im.tobytes();w,h=im.size
             blob=zlib.compress(raw,9);symbol='eye_'+theme['id']+'_'+name
             chunks.append('static const unsigned char '+symbol+'[] = {\n'+ '\n'.join(','.join(str(b) for b in blob[i:i+32])+',' for i in range(0,len(blob),32))+'\n};')
             entries.append('{'+symbol+f',sizeof({symbol}),{w},{h}'+'}');sizes.append(len(blob))
-        origin=theme['lid_origin']
+        origin=[120,125] if rotating else theme['lid_origin']
         if theme['eye_origin']!=theme['lid_origin']:raise ValueError('This adapter requires shared eye/lid origins')
         if theme['layer_bbox']['w']>507 or theme['layer_bbox']['h']>272:raise ValueError('Layer exceeds renderer capacity')
-        themes.append('{"'+theme['id']+'",'+','.join(map(str,origin+amp+list(eye_origin)+theme['eye_center']))+',{'+','.join(entries)+'}}')
-        report.append(dict(theme=theme['id'],eye_origin=list(eye_origin),lid_origin=origin,eye_size=list(backing.size),max_gaze_translation_px=amp,eye_center=theme['eye_center'],sphere_radius_px=recipe['sphere_radius_px'],derived_eye_bytes=backing.width*backing.height*4,compressed_bytes=sum(sizes),png_bytes=sum((PACK/'assets/processed'/theme['id']/(n+'.png')).stat().st_size for n in ['frame','eye']+[f'lid_{i:02}' for i in range(9)]),max_resident_rgba=480*480*4+backing.width*backing.height*4+2*theme['layer_bbox']['w']*theme['layer_bbox']['h']*4))
+        themes.append('{"'+theme['id']+'",'+','.join(map(str,origin+amp+list(eye_origin)+theme['eye_center']+[int(rotating)]))+',{'+','.join(entries)+'}}')
+        report.append(dict(theme=theme['id'],eye_origin=list(eye_origin),lid_origin=origin,eye_size=list(backing.size),max_gaze_translation_px=amp,eye_center=theme['eye_center'],sphere_radius_px=recipe['sphere_radius_px'],rotating_shutter=rotating,layer_size=([240,240] if rotating else [theme['layer_bbox']['w'],theme['layer_bbox']['h']]),derived_eye_bytes=backing.width*backing.height*4,compressed_bytes=sum(sizes),png_bytes=(sum(p.stat().st_size for p in (MECHANICAL/'assets/processed').rglob('*.png')) if rotating else sum((PACK/'assets/processed'/theme['id']/(n+'.png')).stat().st_size for n in ['frame','eye']+[f'lid_{i:02}' for i in range(9)])),max_resident_rgba=(None if rotating else 480*480*4+backing.width*backing.height*4+2*theme['layer_bbox']['w']*theme['layer_bbox']['h']*4),shutter_float_RGB_bytes=(240*240*3*4 if rotating else 0),shutter_RGBA_decode_bytes=(240*240*4 if rotating else 0),shared_two_layer_capacity_bytes=2*507*272*4))
     chunks.insert(0,'#define EYE_PACK_EYE_BYTES '+str(max(t['derived_eye_bytes'] for t in report)))
     chunks.append('static const eye_theme_t eye_themes[] = {\n'+',\n'.join(themes)+'\n};')
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text('\n'.join(chunks)+'\n')

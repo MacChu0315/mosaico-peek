@@ -1,0 +1,56 @@
+[
+  {
+    "file": "scenario-reference.mp4",
+    "frames": 336,
+    "encoded_fps": 12,
+    "duration_seconds": 28.0,
+    "dimensions": [
+      480,
+      520
+    ],
+    "character_region": [
+      0,
+      0,
+      480,
+      480
+    ],
+    "input_csv": "input-timeline.csv",
+    "source": "Python simulated reference; not device or C/GSP recording"
+  },
+  {
+    "file": "rotation-reference.mp4",
+    "frames": 96,
+    "encoded_fps": 12,
+    "duration_seconds": 8.0,
+    "dimensions": [
+      480,
+      520
+    ],
+    "character_region": [
+      0,
+      0,
+      480,
+      480
+    ],
+    "input_csv": "rotation-reference-inputs.csv",
+    "source": "Python simulated reference; not device or C/GSP recording"
+  },
+  {
+    "file": "aperture-cycle.mp4",
+    "frames": 48,
+    "encoded_fps": 12,
+    "duration_seconds": 4.0,
+    "dimensions": [
+      480,
+      520
+    ],
+    "character_region": [
+      0,
+      0,
+      480,
+      480
+    ],
+    "input_csv": "aperture-cycle-inputs.csv",
+    "source": "Python simulated reference; not device or C/GSP recording"
+  }
+]

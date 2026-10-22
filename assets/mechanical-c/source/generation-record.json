@@ -1,0 +1,34 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "model_version": "not disclosed",
+  "seed": "not disclosed",
+  "ai_generated": true,
+  "concept": {
+    "date": "2026-10-21",
+    "raw": "assets/originals/concept-C-triptych.png",
+    "size": [
+      1942,
+      809
+    ],
+    "references": [
+      "assets/originals/c-reference-eye-v3.png",
+      "assets/originals/c-reference-with-old-frame.png"
+    ],
+    "generation_brief": "source/concept-C-generation-prompt.txt",
+    "note": "Brief normalized from retained conversation call; raw generated pixels are authoritative.",
+    "sha256": "b82b166d8164acf61753b210c23f1b980b6fc38f1bf7232d93f44080d0b29584"
+  },
+  "metal_backing": {
+    "date": "2026-10-22",
+    "raw": "assets/originals/generated-metal-backing.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "reference": "source/registered_states/concept-open-480.png",
+    "actual_prompt": "source/backing-generation-prompt.txt",
+    "use": "Peripheral metal sampling surface only; selected concept center restored exactly.",
+    "sha256": "343e04ce8a0f7a923ee1e252383cbcd4cc4da9172ce587d042441ba7787faa44"
+  },
+  "reproducibility": "Deterministic processing begins from the included source PNG files; no re-generation reproducibility claim."
+}

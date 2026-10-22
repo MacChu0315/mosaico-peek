@@ -1,0 +1,299 @@
+{
+  "validation_date": "2026-10-22",
+  "asset_dimensions_alpha": "passed",
+  "processed_asset_count": 11,
+  "all_packaged_PNG_CRCs_verified": 36,
+  "protected_C_concept_pixels": 106353,
+  "protected_changed_pixels": 0,
+  "open_composite_identical_to_eye_surface": true,
+  "outside_radius_111_unchanged_across_shutter_frames": true,
+  "shutter_model_hole_areas": [
+    9955.0,
+    7616.125,
+    5601.0,
+    3909.625,
+    2542.0,
+    1429.875,
+    635.5,
+    158.875,
+    0.0
+  ],
+  "visible_bilinear_footprints_outside_texture_17x17_gazes": 0,
+  "timeline_checks": {
+    "0": {
+      "t_ms": 0,
+      "state": "IDLE",
+      "active": true,
+      "valid": true,
+      "confirmed": false,
+      "candidate": false,
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "shutter": 0,
+      "interp": "step",
+      "note": "无明确目标。默认睁眼，固定模拟姿态。"
+    },
+    "1000": {
+      "t_ms": 1000,
+      "state": "IDLE",
+      "active": true,
+      "valid": true,
+      "confirmed": false,
+      "candidate": true,
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "shutter": 0,
+      "interp": "step",
+      "note": "只有待确认候选，未触发 NOTICE 或跟随。"
+    },
+    "16000": {
+      "t_ms": 16000,
+      "state": "sleeping",
+      "active": true,
+      "valid": true,
+      "confirmed": false,
+      "candidate": true,
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "shutter": 1,
+      "interp": "step",
+      "note": "休眠中出现待确认候选；快门保持关闭，不唤醒。"
+    },
+    "17175": {
+      "t_ms": 17175,
+      "state": "waking",
+      "active": true,
+      "valid": true,
+      "confirmed": true,
+      "candidate": false,
+      "gaze_x": -0.225,
+      "gaze_y": 0.06,
+      "shutter": 0.5,
+      "interp": "smoothstep",
+      "note": "新目标已确认，注入 waking 并快速打开快门。"
+    },
+    "18600": {
+      "t_ms": 18600,
+      "state": "TRACKING",
+      "active": false,
+      "valid": true,
+      "confirmed": true,
+      "candidate": false,
+      "gaze_x": 0.43906705539358604,
+      "gaze_y": -0.2124198250728863,
+      "shutter": 0.10364431486880467,
+      "interp": "smoothstep",
+      "note": "模拟全局切出：画布清黑，停止本 UI 绘制。"
+    },
+    "20400": {
+      "t_ms": 20400,
+      "state": "TRACKING",
+      "active": true,
+      "valid": true,
+      "confirmed": true,
+      "candidate": false,
+      "gaze_x": -0.23703703703703702,
+      "gaze_y": 0.28148148148148144,
+      "shutter": 0.32407407407407407,
+      "interp": "smoothstep",
+      "note": "模拟切回：直接呈现当前注入的共享状态。"
+    },
+    "21800": {
+      "t_ms": 21800,
+      "state": "TRACKING",
+      "active": true,
+      "valid": false,
+      "confirmed": false,
+      "candidate": false,
+      "gaze_x": 0.55,
+      "gaze_y": 0.05,
+      "shutter": 0,
+      "interp": "step",
+      "note": "注入无效数据；演示保持最后可靠姿态，保持时长不是检测规则。"
+    },
+    "23500": {
+      "t_ms": 23500,
+      "state": "IDLE",
+      "active": true,
+      "valid": false,
+      "confirmed": false,
+      "candidate": false,
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "shutter": 0.0,
+      "interp": "step",
+      "note": "数据持续中断，保持默认姿态；没有伪造目标移动。"
+    },
+    "28000": {
+      "t_ms": 28000,
+      "state": "IDLE",
+      "active": true,
+      "valid": true,
+      "confirmed": false,
+      "candidate": false,
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "shutter": 0,
+      "interp": "step",
+      "note": "固定时间线结束。"
+    }
+  },
+  "video_probes": [
+    {
+      "path": "evidence/aperture-cycle.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "width": 480,
+          "height": 520,
+          "r_frame_rate": "12/1",
+          "nb_frames": "48"
+        }
+      ],
+      "format": {
+        "duration": "4.000000",
+        "size": "201751"
+      }
+    },
+    {
+      "path": "evidence/rotation-reference.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "width": 480,
+          "height": 520,
+          "r_frame_rate": "12/1",
+          "nb_frames": "96"
+        }
+      ],
+      "format": {
+        "duration": "8.000000",
+        "size": "1373986"
+      }
+    },
+    {
+      "path": "evidence/scenario-reference.mp4",
+      "programs": [],
+      "streams": [
+        {
+          "width": 480,
+          "height": 520,
+          "r_frame_rate": "12/1",
+          "nb_frames": "336"
+        }
+      ],
+      "format": {
+        "duration": "28.000000",
+        "size": "2525158"
+      }
+    }
+  ],
+  "editable_sources": {
+    "PSD_layer_sizes": [
+      [
+        480,
+        480
+      ],
+      [
+        480,
+        480
+      ],
+      [
+        480,
+        480
+      ],
+      [
+        480,
+        480
+      ]
+    ],
+    "PSD_recomposite_max_channel_difference": 0,
+    "PSD_recomposite_changed_pixels": 0,
+    "PSD_merged_preview_matches": true,
+    "ORA_crc_error": null,
+    "ORA_merged_matches": true,
+    "ORA_entries": 15
+  },
+  "shutter_rebuild": {
+    "shutter_00.png": true,
+    "shutter_01.png": true,
+    "shutter_02.png": true,
+    "shutter_03.png": true,
+    "shutter_04.png": true,
+    "shutter_05.png": true,
+    "shutter_06.png": true,
+    "shutter_07.png": true,
+    "shutter_08.png": true,
+    "shutter-rig.json": true,
+    "shutter-rig.svg": true
+  },
+  "python_js_comparison": {
+    "center": {
+      "pose": [
+        0,
+        0,
+        0
+      ],
+      "max_channel_difference": 0,
+      "mean_absolute_difference": 0.0,
+      "changed_pixels": 0
+    },
+    "diagonal": {
+      "pose": [
+        0.78,
+        -0.58,
+        0.5
+      ],
+      "max_channel_difference": 9,
+      "mean_absolute_difference": 0.0021730324074074074,
+      "changed_pixels": 259
+    }
+  },
+  "node_render_checks": {
+    "kind": "actual HTML JavaScript renderer in Node with PNG/ImageData adapter",
+    "checks": {
+      "center": {
+        "lit_pixels": 154817,
+        "opaque_pixels": 230400
+      },
+      "diagonal": {
+        "lit_pixels": 165742,
+        "opaque_pixels": 230400
+      },
+      "nearest_frame_050_051_identical": true,
+      "inactive": {
+        "lit_pixels": 0,
+        "opaque_pixels": 230400
+      },
+      "returned": {
+        "lit_pixels": 165742,
+        "opaque_pixels": 230400
+      }
+    },
+    "timeline_checks": "passed",
+    "javascript_syntax": true,
+    "embedded_png_count": 11,
+    "browser_runtime_verified": false,
+    "browser_blocker": "Chromium executable and system browsers absent; no installation performed.",
+    "native_verified": false,
+    "device_verified": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0",
+    "numpy": "2.3.5",
+    "ImageMagick": "Version: ImageMagick 6.9.12-98 Q16 x86_64 18038 https://legacy.imagemagick.org",
+    "FFmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "visual_approved": false,
+  "native_C_GSP_verified": false,
+  "hardware_verified": false,
+  "browser_UI_verified": false,
+  "known_limits": [
+    "Nine discrete visually morphed shutter frames, not physical rigid iris kinematics.",
+    "Peripheral texture stretches at extreme gaze under the inherited front-projection sphere mapping.",
+    "No real browser executable available; Node execution does not verify layout or browser interaction.",
+    "Photoshop/Krita/GIMP GUI roundtrip not verified.",
+    "Main project newest AGENTS/README/HANDOFF not provided."
+  ]
+}

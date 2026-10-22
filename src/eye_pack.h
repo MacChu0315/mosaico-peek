@@ -9,8 +9,9 @@ typedef struct eye_pack eye_pack_t;
  * select/prepare on the UI owner; draw reads prepared data, never samples/time.
  * Gaze uses existing bounded +/-0.78, +/-0.58 pose after physical mapping.
  * Full-resolution bilinear sphere rotation (+/-120px horizontal, +/-80px
- * vertical center travel on pure axes); lid is [0,1] weighted premultiplied
- * RGBA, then source-over black/eye/lid/frame; RGB565 rounded only at output. */
+ * vertical center travel on pure axes). Owl/sea mix premultiplied screen lids.
+ * Mechanical C selects nearest shutter of9, composites HDR RGB in texture
+ * space before rotation, then overlays the fixed mount. RGB565 rounds at output. */
 eye_pack_t *eye_pack_create(void);
 void eye_pack_destroy(eye_pack_t *r);
 bool eye_pack_select(eye_pack_t *r,unsigned theme);
