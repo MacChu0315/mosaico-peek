@@ -1,0 +1,113 @@
+{
+  "candidates": [
+    {
+      "candidate": "A",
+      "source": "assets/eye-pack/assets/processed/mechanical/frame.png",
+      "source_size": [
+        480,
+        480
+      ],
+      "source_sha256": "b92d67820a8c049ccefc04a26aed62481fcecf54ab9a147efccc42147c64d4d4",
+      "render_canvas": [
+        480,
+        480
+      ],
+      "normalization": "none"
+    },
+    {
+      "candidate": "B",
+      "source": "assets/mechanical-candidates/frame-b-original.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "faccb61c2c0d20f2d6def6beeba06fe7c79b6cbe22c0abdc37039448b3d7274a",
+      "render_canvas": [
+        480,
+        480
+      ],
+      "normalization": "Pillow10.4.0 RGBA Lanczos build-only resize"
+    },
+    {
+      "candidate": "current",
+      "source": "assets/eye-pack/assets/processed/mechanical/frame.png",
+      "source_size": [
+        480,
+        480
+      ],
+      "source_sha256": "b92d67820a8c049ccefc04a26aed62481fcecf54ab9a147efccc42147c64d4d4",
+      "render_canvas": [
+        480,
+        480
+      ],
+      "normalization": "none"
+    }
+  ],
+  "poses": [
+    [
+      "center",
+      0,
+      0,
+      0
+    ],
+    [
+      "right",
+      0.78,
+      0,
+      0
+    ],
+    [
+      "diagonal",
+      0.78,
+      0.58,
+      0
+    ],
+    [
+      "sleep-center",
+      0,
+      0,
+      1
+    ],
+    [
+      "left",
+      -0.78,
+      0,
+      0
+    ],
+    [
+      "up",
+      0,
+      -0.58,
+      0
+    ],
+    [
+      "down",
+      0,
+      0.58,
+      0
+    ],
+    [
+      "left-up",
+      -0.78,
+      -0.58,
+      0
+    ],
+    [
+      "right-up",
+      0.78,
+      -0.58,
+      0
+    ],
+    [
+      "left-down",
+      -0.78,
+      0.58,
+      0
+    ]
+  ],
+  "shader": "Production eye_pack.c; only fixed frame substituted in review-only executable",
+  "device_installed": false,
+  "selected_candidate": "A",
+  "visual_approved": true,
+  "scope": "A reuses original fixed metal socket; B uses new generated housing. Both preserve new eye/shutter,480 detail and120/80 gaze range. Current-frame substitution matches original snapshot byte-for-byte."
+}

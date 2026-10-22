@@ -1,0 +1,8 @@
+{
+  "checkpoints": 11,
+  "wall_s": 4.445272955112159,
+  "movie_s": 4.48,
+  "source_unchanged_across_switch": true,
+  "closed_center_pixels_identical": true,
+  "note": "Native C/GSP synthetic-temperature flow. Movie retains wall intervals; not device FPS. Role pose is distinct from mechanical render_pose."
+}

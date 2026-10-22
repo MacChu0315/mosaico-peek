@@ -1,0 +1,28 @@
+{
+  "checkpoints": 22,
+  "movies": [
+    {
+      "theme": "mechanical",
+      "case": "dragon",
+      "wall_s": 30.07639460777864,
+      "movie_s": 30.16,
+      "frames": 114,
+      "file": "mechanical-dragon-realtime.mp4"
+    },
+    {
+      "theme": "mechanical",
+      "case": "sleep",
+      "wall_s": 34.05053854500875,
+      "movie_s": 34.08,
+      "frames": 128,
+      "file": "mechanical-sleep-realtime.mp4"
+    }
+  ],
+  "artifacts": {
+    "build-sim/peek_backend": "fd09fb373cf0bd817c7dc150720753f01d73f70053a24c4c479fd8960d3cf6af",
+    "build-sim/peek_backend_assets/app.gspb": "d98d721136a5fb8f4533a69e0e1a2f34f02857e1a60ecc9f06e311cdf965111b",
+    "build-sim/peek_backend_assets/bundle_gsp.api.json": "07d17add42fd3da714a66607e3749e1a230dbe080a99af11a9e34cead8c48d93"
+  },
+  "physical_device_operated": false,
+  "note": "Actual native C/GSP; all synthetic complete temperature arrays pass unchanged production detector. Screenshot sampling is not display FPS."
+}

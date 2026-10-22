@@ -1,0 +1,1 @@
+Independent read-only integration review: no blocking findings. Calibrated IMU model/adapter, source processing, canvas rotation/touch paths retained. Centering and inverse gaze each applied once; original source pose never mutated. Six production tests and diff checks passed. Final target config/build separately verified by main thread.

@@ -1,0 +1,135 @@
+{
+  "note": "Explicit synthetic pose diagnostic, not thermal input or physical acceptance. Same yellow/orange pixel threshold for both C rasters; socket occlusion biases centroid but signs remain measurable.",
+  "measurements": [
+    {
+      "theme": "dragon",
+      "pose": [
+        0,
+        0
+      ],
+      "label": "center",
+      "colored_iris_pixels": 37985,
+      "centroid": [
+        229.4216927734632,
+        256.383756746084
+      ]
+    },
+    {
+      "theme": "dragon",
+      "pose": [
+        -0.55,
+        0
+      ],
+      "label": "xminus",
+      "colored_iris_pixels": 30993,
+      "centroid": [
+        190.02490885038557,
+        260.409124641048
+      ]
+    },
+    {
+      "theme": "dragon",
+      "pose": [
+        0.55,
+        0
+      ],
+      "label": "xplus",
+      "colored_iris_pixels": 30332,
+      "centroid": [
+        277.7712317024924,
+        247.19873401028616
+      ]
+    },
+    {
+      "theme": "dragon",
+      "pose": [
+        0,
+        -0.4
+      ],
+      "label": "yminus",
+      "colored_iris_pixels": 31258,
+      "centroid": [
+        226.86253119201484,
+        242.9424467336362
+      ]
+    },
+    {
+      "theme": "dragon",
+      "pose": [
+        0,
+        0.4
+      ],
+      "label": "yplus",
+      "colored_iris_pixels": 39167,
+      "centroid": [
+        232.38177547425127,
+        265.22641509433964
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "pose": [
+        0,
+        0
+      ],
+      "label": "center",
+      "colored_iris_pixels": 7778,
+      "centroid": [
+        225.84109025456416,
+        247.84507585497556
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "pose": [
+        -0.55,
+        0
+      ],
+      "label": "xminus",
+      "colored_iris_pixels": 5589,
+      "centroid": [
+        201.17444981213097,
+        259.00697799248525
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "pose": [
+        0.55,
+        0
+      ],
+      "label": "xplus",
+      "colored_iris_pixels": 6808,
+      "centroid": [
+        264.7015276145711,
+        235.66642185663926
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "pose": [
+        0,
+        -0.4
+      ],
+      "label": "yminus",
+      "colored_iris_pixels": 6768,
+      "centroid": [
+        244.26521867612294,
+        238.09766548463358
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "pose": [
+        0,
+        0.4
+      ],
+      "label": "yplus",
+      "colored_iris_pixels": 6247,
+      "centroid": [
+        211.7296302225068,
+        254.11765647510805
+      ]
+    }
+  ]
+}

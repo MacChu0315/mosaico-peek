@@ -1,6 +1,6 @@
 # Mechanical C — rotating central shutter
 
-Current1.0.10 integrated source combines user-selected fixed metal socket A with the new C
+Installed1.0.11 source combines user-selected fixed metal socket A with the new C
 eye/shutter, and centers the mechanical presentation during sleep closure.
 [A/B comparison and exact sources](../evidence/mechanical-c/frame-candidates/comparison.png).
 The original thin round mount remains in the immutable input package, but is
@@ -9,7 +9,8 @@ not selected by the current adapter. See assets/mechanical-c-adaptation.json.
 The user approved continuing with the supplied C artwork after the source review
 on2026-10-22. This deliberately replaces the old mechanical-eye appearance and
 fixed eyelids. Dragon/night_owl/deep_sea artwork and paths remain unchanged;
-confirmed physical mapping stays flip_x=false, flip_y=false. No detector or
+latest same-placement feedback requires flip_x=true, flip_y=true; physical
+retest after1.0.11 confirmed both axes correct for dragon and mechanical. No detector or
 behavior deadline changes. Default startup remains dragon; select mechanical
 through the existing tap/left-swipe/AI single click cycle, or right swipe back.
 
@@ -191,9 +192,37 @@ uninstalled backup; never install it over the integrated/orientation versions.
 
 Integrated1.0.10 was installed. User then reported both mechanical and dragon
 following in the opposite direction on both axes in unchanged placement.
-Runtime orientation0 and both gaze flipsfalse were recorded. Current1.0.11
-candidate enables both shared mounting flips; it does not change artwork, IMU,
+Runtime orientation0 and both gaze flipsfalse were recorded. Installed1.0.11
+enables both shared mounting flips; it does not change artwork, IMU,
 raw temperature coordinates, detector timing or centering. Previous physical
 acceptance is historical and conflicts with this observation; cause of that
 conflict remains unknown. See HANDOFF for physical retest and installed identity.
 Device-equivalent native startup now adds --flip-x --flip-y.
+
+After installation, the user confirmed "两张的两个方向都正确" for dragon and
+mechanical in the same placement (observed orientation0). Other physical angles
+remain outside this1.0.11 retest; native four-way parity passes separately.
+
+## Installed1.0.11 device check
+
+Selected socket A and mechanical centered sleep are installed. At orientation0,
+actual closed-device RGB565 pixels exactly match the native C renderer; display
+gaze is(0,0), raw source gaze(-0.05,0.035). Before/after capture were closed and
+in the same orientation. User confirmed correct tracking in dragon/mechanical.
+
+A55-second read-only observation yielded54.87 device seconds:430 new thermal
+samples,0 faults. Active-open6.124 complete GSP frames/s; sleeping6.617.
+Canvas callbacks91.580/s are tile work, not complete frames or panel FPS.
+Active/transition raster120.675ms/frame, submit33.197ms/frame; closed raster
+110.429ms/frame, submit32.261ms/frame. Physical panel FPS is not measured.
+Free internal RAM243799B, free PSRAM4740416B; lifetime minima192100B/3707896B,
+not allocation-peak attribution. Asset-linked RODATA4987500B, bitmap explicit
+PSRAM3418224B, renderer internal2004B, shared UI10312B. App7016336B, GSP94480B.
+This direction correction adds no new render cache or art. Current frame A is
+faster in this observation than historical thin-frame1.0.7 (~3.9Hz), but live
+scenes differ and no controlled percentage improvement or15Hz claim is made.
+Other physical orientations were not retested in1.0.11; native four-way passes.
+
+Current evidence: evidence/mechanical-c/direction/. The initial centering probe
+expired before any stable closed mechanical window; its failure is retained in
+device-center/. The later device-center-confirmed/ check passed.

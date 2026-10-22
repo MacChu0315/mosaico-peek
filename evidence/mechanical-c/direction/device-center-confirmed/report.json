@@ -1,0 +1,18 @@
+{
+  "version": "1.0.11-peek-direction",
+  "boot_id": "6092061336953637827",
+  "ELF": "7f6f4904a770952878e8cd4557341956154e0b8589a8d1f48fbd4f11b92d1aea",
+  "orientation": 0,
+  "closed_render_gaze": [
+    0,
+    0
+  ],
+  "source_gaze": [
+    -0.05,
+    0.035
+  ],
+  "RGB565_pixels_exact": true,
+  "observations": 3,
+  "wall_s": 5.4546549753285944,
+  "note": "Actual device framebuffer, stable closed state before/after capture. Same production C globe/shutter/frame with independent quarter-turn. Not physical panel FPS or calibrated latency."
+}

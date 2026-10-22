@@ -1,0 +1,47 @@
+[
+  {
+    "file": "projects/peek/main/device_orientation.c",
+    "sha256": "2de51ae77c788a2d63672f4ec4a620a0c21c76ee3afea6f59c3c72c21e99e1b8",
+    "unchanged_from": "fca4114"
+  },
+  {
+    "file": "src/peek_orientation.c",
+    "sha256": "29060e8049137292fa2ada8e76f93a73dd54f87343b3d9fea96e3cee1c5b4ca6",
+    "unchanged_from": "fca4114"
+  },
+  {
+    "file": "src/peek_orientation.h",
+    "sha256": "5d1940eb0adcceed754fb0bda02578fbc00f8628f92e7d04ae31b2f0c3b642cc",
+    "unchanged_from": "fca4114"
+  },
+  {
+    "file": "projects/peek/main/device_thermal.c",
+    "sha256": "369b1cee74d744775cc099f4db443323b33b1ba71cd0fa3ae742018ead918d78",
+    "unchanged_from": "fca4114"
+  },
+  {
+    "file": "projects/peek/main/main.c",
+    "sha256": "773680c74ccd2bf5e9f63be1a6258bc48e6ce361dfdb1928eaa2aa8d0d12588b",
+    "unchanged_from": "fca4114"
+  },
+  {
+    "file": "src/dragon.c",
+    "sha256": "7d49316d6c0c572da0b154b229b71c3bea48f64c9ac6e95390bca2664624aa43",
+    "unchanged_from": "e0e9f76"
+  },
+  {
+    "file": "src/peek.c",
+    "sha256": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
+    "unchanged_from": "e0e9f76"
+  },
+  {
+    "file": "src/peek_live.c",
+    "sha256": "362b729b368faf36ac0a5a08eaf515dc38c9f8bb98b11da37480870cc4ddc082",
+    "unchanged_from": "e0e9f76"
+  },
+  {
+    "file": "src/eye_pack.c",
+    "sha256": "120968d700148b1a88045120fcd9ca21b539f1526a3d4abecb8b47d7ca4baf93",
+    "unchanged_from": "e0e9f76"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "checks": 40,
+  "detector_results_identical": true,
+  "before_flips": [
+    false,
+    false
+  ],
+  "after_flips": [
+    true,
+    true
+  ],
+  "note": "Same native thermal input scenarios, all four artworks/rotations. Pose signs change only through existing source mapping; physical acceptance separate."
+}

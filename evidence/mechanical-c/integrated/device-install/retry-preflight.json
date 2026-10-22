@@ -1,0 +1,10 @@
+{
+  "failed_operation": "96e41e35-46f1-4307-bf3a-ea9aaff27cf4",
+  "failed_writer_boot": "15432836297741921106",
+  "new_idle_recovery_boot": "11666790200493690736",
+  "prior_job_absent": true,
+  "queue_empty": true,
+  "old_core_mismatch": true,
+  "reconciliation_outcome": "outcome_unknown",
+  "same_bundle": true
+}

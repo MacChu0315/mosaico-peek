@@ -18,13 +18,18 @@ retained unselected image-generation candidate. The supplied C package is intact
 
 ## Current device versus candidate
 
-Installed1.0.10-peek-integrated, source7d897f6,
-ELF3dc84c29223f08681d8472ad3601d8e053b0e991de9c55a9875a9e7bb28b955f,
-Boot13998171743381255122. Official update retry succeeded as operation
-7e9e5d4b-bc8d-40e3-8a04-4c25cb99692f. The first update outcome remained unknown
-following a Recovery writer reset; read-only reconciliation, a new healthy idle
-Recovery boot, empty queue and absent job preceded the same-bundle retry.
-Evidence: evidence/mechanical-c/integrated/device-install/.
+Installed1.0.11-peek-direction, sourcee5d8629,
+ELF7f6f4904a770952878e8cd4557341956154e0b8589a8d1f48fbd4f11b92d1aea,
+Boot6092061336953637827. Official System Update succeeded on the first attempt:
+40570b75-6459-4810-834c-cf6f4af53666. Post-boot runtime confirms both mounting
+flips enabled, orientation0/autoenabled, VALID capture, application/IMU error0,
+crash_count0. User now confirms BOTH axes correct for dragon AND mechanical in this placement.
+Evidence: evidence/mechanical-c/direction/device-install/.
+
+The previous integrated1.0.10 was source7d897f6. Its first update outcome remained
+unknown following a Recovery writer reset; read-only reconciliation, new healthy
+idle Recovery, empty queue and absent job preceded a successful same-bundle retry.
+Exact evidence/restore: evidence/mechanical-c/integrated/device-install/.
 
 Latest user feedback rejects BOTH tracking axes in mechanical AND dragon in
 unchanged placement. Device reports orientation0, flipsfalse/false. Both actual
@@ -34,10 +39,12 @@ Earlier1.0.6 and1.0.9 physical acceptance remains historical; why those reports
 contradict the latest observation has not been established. Do not claim it was
 caused by this merge: shared source mapping and IMU code were retained exactly.
 
-Current candidate1.0.11-peek-direction enables BOTH existing source mapping flips
+Installed1.0.11-peek-direction enables BOTH existing source mapping flips
 using isolated sdkconfig.integrated-direction. Raw768 arrays, detector results,
 IMU gravity(-ax,+ay), mount quarters0, centering and renderers remain unchanged.
-Device-equivalent preview requires --flip-x --flip-y. Physical retest is pending.
+Device-equivalent preview requires --flip-x --flip-y. User confirmed both axes
+correct on dragon and mechanical after the update (observed orientation0).
+Other physical rotations have not been re-tested with1.0.11.
 The failed-before/passing-after config regression prevents silent restoration of
 old defaults; adapter tests cover both configurations and mailbox inheritance.
 New evidence: evidence/mechanical-c/direction/; failed1.0.10 direction feedback:
@@ -46,15 +53,30 @@ evidence/mechanical-c/integrated/direction-feedback/.
 Integrated1.0.10 had29/29 Debug/Release and40 native four-way pixel checks.
 A/centering had11 native close/wake checks and a real-time close clip. These are
 software parity evidence, not proof of physical heat-direction correctness.
-The1.0.11 checks are recorded separately; no physical direction pass yet.
+1.0.11: Debug/Release30/30 plus new mounted-adapter and affected IMU tests pass;
+40 native orientation frames,11 native centered-sleep frames/real-time clip,
+5 replay cases and511 real arrays/655 events pass. Pinning current mounting
+defaults failed before the fix. IDF build and package/installed ELF checks pass.
+Physical direction pass is user-confirmed for dragon/mechanical in the current
+placement; other placements are native-tested only in this update.
 
 ## Performance and known limits
 
 Historical1.0.7 thin-mount measurements:3.935 active-open complete GSP frames/s,
 3.879 sleeping frames/s; raster212..214ms, submit32ms.74.41s mechanical segments,
 583 fresh thermal samples, zero faults. This was slower than1.0.6's7.095Hz.
-Frame A reduces visible sphere area to the original socket's footprint; new
-integrated performance must be measured, not inferred. Physical panel FPS, touch
+Frame A reduces visible sphere area to the original socket's footprint.
+Current1.0.11 mechanical: active-open6.124 complete GSP frames/s, sleeping6.617;
+canvas callback91.580Hz. The54.87s window accepted430 fresh thermal samples with
+0 faults. Active/transition raster120.675ms, sleeping110.429ms; submit33.197/32.261ms.
+These are different live scenes from1.0.7, not a controlled speedup percentage.
+Device closed framebuffer exactly matches production C at centered(0,0), while
+source gaze stays(-0.05,0.035). First60s centering probe ended before a stable
+closed mechanical window; retained as NOT VERIFIED, followed by successful
+post-measurement check. Evidence: direction/device-performance/mechanical-a/
+and direction/device-center-confirmed/. The first1.0.11 observation stayed
+on dragon for54.39 device seconds:426 fresh samples,0 faults, active-open9.483
+complete GSP frames/s;93.308 canvas callbacks/s. This is not mechanical data. Physical panel FPS, touch
 latency, largest allocator block and complete memory peaks remain unmeasured.
 Extreme-direction peripheral texture stretching still exists in the supplied
 surface. No smaller gaze range, downsampling or palette was added to hide it.
@@ -76,6 +98,8 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 
 ## Retained restore and review material
 
+-1.0.10: evidence/mechanical-c/integrated/device-install/peek-integrated.irisfw.
+-1.0.9: evidence/mechanical-c/integrated/restore-1.0.9/orientation-calibrated.irisfw.
 -1.0.7: evidence/mechanical-c/device-install/mechanical-c.irisfw (sourcedf6f6da).
 -1.0.6: evidence/eye-ui/motion/device-install/eye-motion.irisfw (sourcefd637cc).
 -Earlier1.0.5/1.0.4/1.0.3/1.0.2 packages and detailed original dragon records

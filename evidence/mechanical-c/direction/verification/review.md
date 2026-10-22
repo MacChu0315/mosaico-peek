@@ -1,0 +1,1 @@
+Independent read-only review: shared mapping config is the minimal correction supported by latest physical feedback; no added per-character/IMU flip. Added both-config adapter tests after review, covering producer, initial UI copy and mailbox update. Historical acceptance remains intact; contradictory physical reports remain unexplained.

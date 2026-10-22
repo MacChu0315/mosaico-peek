@@ -1,0 +1,5 @@
+{
+  "expected_version": "1.0.7-peek-mechanical",
+  "observed_version": "1.0.9-peek-orient",
+  "action": "Stopped before any1.0.8 write; reconcile concurrent newer firmware source first"
+}

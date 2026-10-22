@@ -1,0 +1,10 @@
+{
+  "source": "7d897f669683dc4a7b587342c4be77ce6cd8dddf",
+  "bundle_sha256": "6d9f57610ed260e2a1e6c3e0ee0fab6766343ca7c4664973d25c28e1872ad59a",
+  "elf_sha256": "3dc84c29223f08681d8472ad3601d8e053b0e991de9c55a9875a9e7bb28b955f",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false,
+  "integrated_orientation": "fca41148e1b3e1103bc03a2931dce18595f4ab41",
+  "installed_orientation_source": "74a0f44c3279ecea6d3cbc4cad7d39fb4583b5b5"
+}

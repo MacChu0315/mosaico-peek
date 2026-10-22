@@ -1,0 +1,13 @@
+{
+  "source": "e5d8629c14bfa08bf7b0fbbca646966063ec9b46",
+  "bundle_sha256": "272de67b41955d4dd3b4db288cee6855911022fbf6a1e9a88e1832f075e89bc1",
+  "elf_sha256": "7f6f4904a770952878e8cd4557341956154e0b8589a8d1f48fbd4f11b92d1aea",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false,
+  "version": "1.0.11-peek-direction",
+  "mount_flips": [
+    true,
+    true
+  ]
+}

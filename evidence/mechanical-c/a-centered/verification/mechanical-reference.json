@@ -1,0 +1,731 @@
+[
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      -0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      -0.78,
+      0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      -0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0,
+      0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      -0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 1,
+    "different_channels": 1
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 0,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 1,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 2,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 3,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 4,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 5,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 6,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 7,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  },
+  {
+    "gaze": [
+      0.78,
+      0.58
+    ],
+    "stage": 8,
+    "max_channel_difference": 0,
+    "different_channels": 0
+  }
+]

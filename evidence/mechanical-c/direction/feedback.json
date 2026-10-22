@@ -1,0 +1,24 @@
+{
+  "installed_version": "1.0.10-peek-integrated",
+  "runtime_orientation": 0,
+  "runtime_flip_x": false,
+  "runtime_flip_y": false,
+  "mechanical_feedback": "追踪热源时，上下左右是反的",
+  "same_placement_dragon_feedback": "怪物眼两个方向也反了",
+  "correction": "Enable both existing mounting flips before acquisition; raw arrays/detector/IMU/artwork unchanged",
+  "historical_conflict": "Earlier1.0.6/1.0.9 acceptance preserved as historical; reason for conflicting reports unknown",
+  "new_physical_acceptance": {
+    "version": "1.0.11-peek-direction",
+    "user_response": "两张的两个方向都正确",
+    "views": [
+      "dragon",
+      "mechanical"
+    ],
+    "axes": [
+      "left/right",
+      "up/down"
+    ],
+    "placement": "same placement as failed1.0.10; observed orientation0",
+    "other_physical_rotations": "not retested in this session"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "canvas_callback_hz": 93.30759330759331,
+  "physical_panel_FPS": null,
+  "version": "1.0.11-peek-direction",
+  "ELF_sha256": "7f6f4904a770952878e8cd4557341956154e0b8589a8d1f48fbd4f11b92d1aea",
+  "boot_id": "6092061336953637827",
+  "views": [
+    "dragon"
+  ],
+  "samples": 49,
+  "groups": [
+    {
+      "view": "dragon",
+      "condition": "active-or-transition",
+      "orientation": 0,
+      "ms": 54390,
+      "frames": 488,
+      "draw_us": 32698825,
+      "raster_us": 33172365,
+      "submit_us": 15093299,
+      "prepare_us": 1141757,
+      "prepares": 488,
+      "samples": 426,
+      "faults": 0,
+      "open_frames": 411,
+      "open_ms": 43340,
+      "open_raster_us": 25351369,
+      "open_submit_us": 12681951,
+      "engine_hz": 8.972237543666115,
+      "raster_ms_frame": 67.97615778688525,
+      "submit_ms_frame": 30.928891393442623,
+      "prepare_ms_mean": 2.339665983606557,
+      "active_open_hz": 9.483156437471159
+    }
+  ],
+  "heap": {
+    "free_internal": 233271,
+    "min_free_internal": 192100,
+    "free_spiram": 4186436,
+    "min_free_spiram": 4186436
+  },
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+}

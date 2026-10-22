@@ -15,9 +15,9 @@ with a rotating central shutter and user-selected original metal socket A.
 During sleep closure it centers and remains still; owl/sea remain unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Device was updated to integrated1.0.10 with calibrated automatic orientation,
-selected socket A and centered sleep. The1.0.11 mapping correction is being
-validated; see HANDOFF for current installation and physical acceptance. The prior1.0.5 improved
+Device now runs1.0.11 with calibrated automatic orientation, selected socket A,
+centered sleep and corrected shared mounting signs. The user confirmed both
+axes correct for dragon and mechanical; see HANDOFF for acceptance limits. The prior1.0.5 improved
 observed mechanical active-open engine rate
 from2.009 to8.333Hz in separate live scenes; current installation status is in
 [handoff](docs/HANDOFF.md). Physical panel FPS is not measured.

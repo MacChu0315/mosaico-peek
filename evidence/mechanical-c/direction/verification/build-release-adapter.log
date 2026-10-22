@@ -1,0 +1,83 @@
+Start testing: Oct 22 12:06 CST
+----------------------------------------------------------
+2/31 Testing: device_adapter
+2/31 Test: device_adapter
+Command: "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release/test_device_adapter"
+Directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+"device_adapter" start time: Oct 22 12:06 CST
+Output:
+----------------------------------------------------------
+PASS device adapter: acquisition/clock interleaving, partial init teardown, failed flush retains contexts
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"device_adapter" end time: Oct 22 12:06 CST
+"device_adapter" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/31 Testing: device_imu_orientation
+25/31 Test: device_imu_orientation
+Command: "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release/test_device_orientation"
+Directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+"device_imu_orientation" start time: Oct 22 12:06 CST
+Output:
+----------------------------------------------------------
+PASS IMU startup cleanup, sampled mounting transform, error/fallback telemetry
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"device_imu_orientation" end time: Oct 22 12:06 CST
+"device_imu_orientation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/31 Testing: fixed_orientation_no_imu
+26/31 Test: fixed_orientation_no_imu
+Command: "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release/test_orientation_fixed"
+Directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+"fixed_orientation_no_imu" start time: Oct 22 12:06 CST
+Output:
+----------------------------------------------------------
+PASS fixed orientation without any IMU/task dependency
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"fixed_orientation_no_imu" end time: Oct 22 12:06 CST
+"fixed_orientation_no_imu" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/31 Testing: device_mounting_defaults
+30/31 Test: device_mounting_defaults
+Command: "/home/zhuzhengming/anaconda3/envs/py310/bin/python3.10" "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_device_mapping_config.py"
+Directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+"device_mounting_defaults" start time: Oct 22 12:06 CST
+Output:
+----------------------------------------------------------
+PASS current device mounting defaults; physical retest remains required
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"device_mounting_defaults" end time: Oct 22 12:06 CST
+"device_mounting_defaults" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/31 Testing: device_adapter_mounted
+31/31 Test: device_adapter_mounted
+Command: "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release/test_device_adapter_mounted"
+Directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-release
+"device_adapter_mounted" start time: Oct 22 12:06 CST
+Output:
+----------------------------------------------------------
+PASS device adapter: acquisition/clock interleaving, partial init teardown, failed flush retains contexts
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"device_adapter_mounted" end time: Oct 22 12:06 CST
+"device_adapter_mounted" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 22 12:06 CST
