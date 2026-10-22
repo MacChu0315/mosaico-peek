@@ -1,0 +1,38 @@
+Generation brief retained from the 2026-10-21 C concept exploration.
+This is a normalized record of the original request, not a claim that an
+undisclosed random seed or exact model version can be replayed.
+
+Use case: precise-object-edit / mechanical character concept.
+Primary reference: the approved complete mechanical eyeball (c-reference-eye-v3.png).
+Secondary reference: the prior frame composition (c-reference-with-old-frame.png),
+used only for the previous dark-steel context; redesign the old heavy eyelids.
+
+Keep the warm amber optical lens, dark central camera-shutter blades, aged silver/
+titanium spherical body, subtle machining texture and warm upper-left reflection.
+Create a wide three-panel concept board with identical front view, scale, optical
+center and near-black backdrop. State labels remain outside the character crops.
+
+DIRECTION C — ROUND OPTICAL MOUNT + THE EXISTING INTERNAL CAMERA SHUTTER.
+Remove the biological-shaped outer eyelids. Use a simple circular dark-metal
+optical mount without thick armor, brows or a humanoid face. Keep the complete
+amber lens and silver sphere visible in every state, and hold the outer design
+consistent between panels.
+
+All expression comes from the existing CENTRAL camera shutter. Use only one
+aperture mechanism. Do not add another iris outside the amber annulus or around
+the sphere. Preserve the amber optical rings, using dark aged-metal blades in
+the pupil.
+
+LEFT / OPEN: visibly open the existing shutter to a clearly round/polygonal black
+aperture, requested about 70–85px at 480px eye scale. Amber annulus stays visible.
+MIDDLE / CONTRACTED: rotate the same blades inward to a much smaller aperture,
+requested about 20–30px at 480px scale. Keep the surrounding lens and sphere.
+RIGHT / SLEEP: blades meet with no opening, readable overlapping metal and radial
+seams. The outer amber annulus remains present; darkness alone is not closure.
+
+Exact title requested: C · 圆形镜座与内部快门
+Exact state labels requested: 睁眼 / 收拢 / 休眠
+
+The delivered source PNG is the actual generated result. Its aperture sizes and
+details are not asserted to match every requested number. Asset dimensions and
+animation geometry are separately measured in shutter-rig.json.

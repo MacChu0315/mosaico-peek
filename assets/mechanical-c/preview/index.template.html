@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>机械眼 C · 离线参考预览</title>
+<style>
+:root{color-scheme:dark;--bg:#111414;--panel:#191e1e;--line:#323b3a;--text:#e9e8df;--muted:#a4aeaa;--accent:#e4ae5a;--accent-bg:#30291d;--radius:15px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button,select{color:var(--text);border:1px solid var(--line);background:#232a29;border-radius:8px;padding:9px 13px}button{cursor:pointer}button:hover{border-color:#758079}button:disabled{opacity:.45;cursor:default}button.primary{background:var(--accent);color:#201b13;border-color:var(--accent);font-weight:650}input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0}input[type=checkbox],input[type=radio]{accent-color:var(--accent)}select{max-width:100%}main{max-width:1120px;margin:0 auto;padding:32px 24px 26px}.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent)}h1{font-weight:620;letter-spacing:.015em;font-size:25px;margin:7px 0}p{margin:0;color:var(--muted)}header{margin-bottom:25px}.layout{display:grid;grid-template-columns:minmax(300px,480px) minmax(300px,1fr);gap:28px;align-items:start}.screen-wrap{width:100%;padding:0;border:1px solid var(--line);border-radius:8px;background:#000;overflow:hidden;line-height:0}canvas{display:block;width:100%;height:auto;aspect-ratio:1;image-rendering:auto}.under-screen{margin-top:12px;display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:12px}.under-screen b{color:var(--text);font-weight:500}.card{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:18px;margin-bottom:14px}.card h2{font-size:14px;font-weight:600;margin:0 0 13px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.case-select{width:100%;margin-bottom:12px}.time-row{display:flex;justify-content:space-between;font:12px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}.mode-row{display:flex;gap:18px;margin-bottom:14px}.mode-row label,.loop{display:inline-flex;gap:7px;align-items:center;cursor:pointer}.loop{font-size:12px;color:var(--muted);margin-left:auto}.monitor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}.metric{display:flex;flex-direction:column;gap:3px}.metric small{font-size:11px;color:var(--muted)}.metric output{font:13px ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.state-line{display:flex;gap:9px;align-items:center;margin-bottom:13px}.state{padding:4px 9px;background:var(--accent-bg);border:1px solid #55452b;color:#efc68a;border-radius:6px;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.status{color:var(--muted);font-size:12px}.note{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);min-height:56px;color:#c4cdc7;font-size:12px}.slider-label{display:flex;justify-content:space-between;gap:12px;color:#cbd1cd;font-size:12px}.slider-label output{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.slider-block{margin-bottom:12px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;color:var(--muted);margin:13px 0}.checks label{display:flex;align-items:center;gap:7px}.hint{font-size:11px;color:var(--muted);margin-top:10px}.manual-state{width:100%;margin-top:3px}fieldset{border:0;margin:0;padding:0;min-width:0}fieldset:disabled{opacity:.45}.footer{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;font-size:12px;color:var(--muted)}.error{background:#3b2421;color:#f5c5b8;padding:14px;border-radius:10px;margin-bottom:16px;white-space:pre-wrap}[hidden]{display:none!important}details{margin-top:14px;color:var(--muted);font-size:12px}summary{cursor:pointer}details p{margin:8px 0}code{font:12px ui-monospace,SFMono-Regular,Consolas,monospace;color:#d3d9d4}@media(max-width:850px){main{padding:22px 16px}.layout{grid-template-columns:1fr;max-width:560px;margin:auto;gap:20px}header{max-width:560px;margin:0 auto 20px}h1{font-size:23px}.footer{max-width:560px;margin-left:auto;margin-right:auto}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">MECHANICAL C / REFERENCE</div>
+    <h1>机械眼 · 中央快门</h1>
+    <p>离线参考预览 · 固定模拟输入 · 非 C/GSP 或设备运行证据</p>
+  </header>
+  <div id="error" class="error" role="alert" hidden></div>
+  <div class="layout">
+    <section aria-label="角色参考画面">
+      <div class="screen-wrap"><canvas id="screen" width="480" height="480" aria-label="480×480 机械眼角色参考画面"></canvas></div>
+      <div class="under-screen"><span><b>480 × 480</b> 角色画面</span><span id="drawStatus">正在载入素材…</span></div>
+      <details>
+        <summary>这份预览如何工作</summary>
+        <p>快门从九张精灵中选择最近一帧，先在贴图坐标中覆盖眼球底图，再用参考 Q15 球面映射取样，最后叠加固定镜座。快门帧间不做淡化。色彩采用 RGB565 最近码量化后扩回 8 位。</p>
+        <p>时间线中的目标、状态和位置均为模拟注入。没有读取传感器、确认候选或实现检测算法。画布不处理点击、滑动或 AI 按键切换。</p>
+        <p>动画按时间推进，参考绘制节奏设为 12 次/秒；这不是设备 FPS 或性能测量。静态与动态结果仍需主工程共享 C/GSP 和实机验证。</p>
+      </details>
+    </section>
+    <section aria-label="画面外参考预览控制">
+      <div class="card">
+        <h2>模拟输入</h2>
+        <div class="mode-row">
+          <label><input type="radio" name="mode" value="timeline" checked>固定时间线</label>
+          <label><input type="radio" name="mode" value="manual">手动模拟</label>
+        </div>
+        <select id="case" class="case-select" aria-label="演示案例"></select>
+        <div class="row">
+          <button id="play" class="primary" disabled>播放</button>
+          <button id="restart" disabled>回到开头</button>
+          <label class="loop"><input id="loop" type="checkbox" checked>循环当前案例</label>
+        </div>
+        <input id="progress" type="range" min="0" max="28000" step="10" value="0" aria-label="模拟时间线进度" disabled>
+        <div class="time-row"><output id="time">0.000 s</output><span id="endTime">28.000 s</span></div>
+      </div>
+      <div class="card">
+        <div class="state-line"><span id="state" class="state">IDLE</span><span id="activeStatus" class="status">等待素材</span></div>
+        <div class="monitor">
+          <div class="metric"><small>gaze_x / gaze_y</small><output id="gaze">0.000 / 0.000</output></div>
+          <div class="metric"><small>shutter（0 开 / 1 闭）</small><output id="shutterValue">0.000</output></div>
+          <div class="metric"><small>数据 valid</small><output id="valid">true</output></div>
+          <div class="metric"><small>目标 confirmed / candidate</small><output id="target">false / false</output></div>
+        </div>
+        <p id="note" class="note">无明确目标。默认睁眼，固定模拟姿态。</p>
+      </div>
+      <div class="card">
+        <h2>手动姿态 <span class="status">/ 明确标注的模拟值</span></h2>
+        <fieldset id="manual" disabled>
+          <div class="slider-block"><label class="slider-label" for="gx">水平 gaze_x <output id="gxValue">0.000</output></label><input id="gx" type="range" min="-0.78" max="0.78" step="0.005" value="0"></div>
+          <div class="slider-block"><label class="slider-label" for="gy">垂直 gaze_y <output id="gyValue">0.000</output></label><input id="gy" type="range" min="-0.58" max="0.58" step="0.005" value="0"></div>
+          <div class="slider-block"><label class="slider-label" for="sh">快门 shutter <output id="shValue">0.000</output></label><input id="sh" type="range" min="0" max="1" step="0.005" value="0"></div>
+          <select id="manualState" class="manual-state" aria-label="手动注入的角色状态"><option>IDLE</option><option>NOTICE</option><option>TRACKING</option><option>HOLD</option><option>LEAVE</option><option>sleeping</option><option>waking</option></select>
+          <div class="checks">
+            <label><input id="manualActive" type="checkbox" checked>UI 已激活</label>
+            <label><input id="manualValid" type="checkbox" checked>数据有效</label>
+            <label><input id="manualConfirmed" type="checkbox">已确认目标</label>
+            <label><input id="manualCandidate" type="checkbox">待确认候选</label>
+          </div>
+          <button id="center">回中并打开快门</button>
+        </fieldset>
+        <p class="hint">各字段独立注入；控件不会自行判定角色状态。“候选”不会自动触发唤醒。正式状态与时长由主工程提供。</p>
+      </div>
+    </section>
+  </div>
+  <footer class="footer">这是 C 方向的素材与动作参考。包内 <code>timeline.json</code> 定义模拟时间点；分类值按阶跃取样，姿态与快门按指定插值。所有演示时长均非产品规则。</footer>
+</main>
+<script>
+"use strict";
+const ASSET_DATA = /*__ASSET_DATA__*/ {};
+const TIMELINE = /*__TIMELINE_DATA__*/ {duration_ms:28000,cases:[],frames:[]};
+const W=480,H=480,R=233,CX=240,CY=245,SW=240,SH=240,SOX=120,SOY=125;
+const f32=Math.fround,clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const cRound=x=>x<0?-Math.floor(-x+.5):Math.floor(x+.5);
+const $=id=>document.getElementById(id);
+const ctx=$("screen").getContext("2d",{alpha:false});
+let ready=false,playing=false,mode="timeline",tMs=0,clockStart=0,playStart=0,lastPaint=-Infinity;
+let currentCase=TIMELINE.cases[0],lastDrawKey="",lastShutter=-1,lastActive=null;
+let base,frame,shutters,texture;
+const nx=new Int16Array(W*H),ny=new Int16Array(W*H),nz=new Int16Array(W*H);
+const pixels=ctx.createImageData(W,H);
+for(let p=0;p<W*H;p++)pixels.data[p*4+3]=255;
+const q5=new Uint8Array(256),q6=new Uint8Array(256);
+for(let c=0;c<256;c++){q5[c]=Math.round(Math.floor(c*31/255+.5)*255/31);q6[c]=Math.round(Math.floor(c*63/255+.5)*255/63);}
+function sampleTimeline(time){
+  const frames=TIMELINE.frames;
+  if(!frames.length)throw Error("时间线没有帧。");
+  const t=clamp(time,frames[0].t_ms,TIMELINE.duration_ms);
+  let i=0;while(i+1<frames.length&&frames[i+1].t_ms<=t)i++;
+  const a=frames[i],b=frames[Math.min(i+1,frames.length-1)];
+  let u=b.t_ms===a.t_ms?0:(t-a.t_ms)/(b.t_ms-a.t_ms);
+  if(a.interp==="step")u=0;else if(a.interp==="smoothstep")u=u*u*(3-2*u);
+  const out={...a,t_ms:t};
+  for(const k of ["gaze_x","gaze_y","shutter"])out[k]=a[k]+(b[k]-a[k])*u;
+  return out;
+}
+// Projection equations adapted from the user-provided eye_projection.h
+// (SPDX-License-Identifier: Apache-2.0). This JavaScript is reference-only.
+function coefficients(gx,gy){
+  const yaw=f32(f32(f32(gx)/f32(.78))*f32(Math.asin(f32(120/233))));
+  const pitch=f32(f32(f32(gy)/f32(.58))*f32(Math.asin(f32(80/233))));
+  const q=x=>cRound(f32(f32(x)*f32(32768)));
+  return [q(Math.cos(yaw)),q(Math.sin(yaw)),q(Math.cos(pitch)),q(Math.sin(pitch))];
+}
+function initializeNormals(){
+  const factor=f32(32768/R);
+  for(let y=0,p=0;y<H;y++)for(let x=0;x<W;x++,p++){
+    nx[p]=clamp(cRound(f32(f32(x-CX)*factor)),-32768,32767);
+    ny[p]=clamp(cRound(f32(f32(y-CY)*factor)),-32768,32767);
+    const fx=f32(nx[p]/32768),fy=f32(ny[p]/32768);
+    const z=f32(f32(1-f32(fx*fx))-f32(fy*fy));
+    nz[p]=z<0?-1:Math.trunc(f32(f32(Math.sqrt(z))*f32(32767)));
+  }
+}
+function composeTexture(shutter){
+  const k=Math.floor(clamp(shutter,0,1)*8+.5);
+  if(k===lastShutter)return;
+  lastShutter=k;texture.set(base);
+  const a=shutters[k];
+  for(let y=0;y<SH;y++)for(let x=0;x<SW;x++){
+    const ip=(y*SW+x)*4,op=((y+SOY)*W+x+SOX)*4;
+    const al=a[ip+3]/255;
+    for(let c=0;c<3;c++)texture[op+c]=a[ip+c]*al+base[op+c]*(1-al);
+    texture[op+3]=255;
+  }
+}
+function paint(input){
+  const key=[input.active,input.gaze_x,input.gaze_y,input.shutter].join("|");
+  if(key===lastDrawKey)return;
+  lastDrawKey=key;
+  if(!input.active){ctx.fillStyle="#000";ctx.fillRect(0,0,W,H);lastActive=false;$("drawStatus").textContent="已切出 · 角色停止绘制";return;}
+  lastActive=true;$("drawStatus").textContent=mode==="manual"?"手动模拟 · RGB565 参考":"时间线模拟 · RGB565 参考";
+  composeTexture(input.shutter);
+  const gx=clamp(input.gaze_x,-.78,.78),gy=clamp(input.gaze_y,-.58,.58);
+  const [c,s,cp,sp]=coefficients(gx,gy),neutral=gx===0&&gy===0;
+  for(let y=0,p=0;y<H;y++)for(let x=0;x<W;x++,p++){
+    let u=x,v=y;
+    if(!neutral&&nz[p]>=0){
+      const lx=(c*nx[p]-s*nz[p])>>15,az=(s*nx[p]+c*nz[p])>>15;
+      const ly=(cp*ny[p]-sp*az)>>15;
+      u=f32(f32(CX)+f32(f32(lx)*f32(R/32768)));v=f32(f32(CY)+f32(f32(ly)*f32(R/32768)));
+    }
+    const ix=Math.floor(u),iy=Math.floor(v),fx=u-ix,fy=v-iy;
+    let r=0,g=0,b=0;
+    for(let j=0;j<2;j++)for(let i=0;i<2;i++){
+      const xx=ix+i,yy=iy+j;
+      if(xx<0||xx>=W||yy<0||yy>=H)continue;
+      const k=(yy*W+xx)*4,weight=(i?fx:1-fx)*(j?fy:1-fy);
+      r+=texture[k]*weight;g+=texture[k+1]*weight;b+=texture[k+2]*weight;
+    }
+    const op=p*4,al=frame[op+3]/255,inv=1-al;
+    r=frame[op]*al+r*inv;g=frame[op+1]*al+g*inv;b=frame[op+2]*al+b*inv;
+    pixels.data[op]=Math.round(Math.floor(clamp(r,0,255)*31/255+.5)*255/31);
+    pixels.data[op+1]=Math.round(Math.floor(clamp(g,0,255)*63/255+.5)*255/63);
+    pixels.data[op+2]=Math.round(Math.floor(clamp(b,0,255)*31/255+.5)*255/31);
+  }
+  ctx.putImageData(pixels,0,0);
+}
+function manualInput(){return{t_ms:tMs,state:$("manualState").value,active:$("manualActive").checked,valid:$("manualValid").checked,confirmed:$("manualConfirmed").checked,candidate:$("manualCandidate").checked,gaze_x:Number($("gx").value),gaze_y:Number($("gy").value),shutter:Number($("sh").value),note:"手动模拟注入；没有运行检测算法或角色状态机。请分别设置状态与快门。"};}
+function show(input){
+  $("state").textContent=input.state;$("activeStatus").textContent=input.active?"UI 已激活 / 模拟输入":"UI 已切出 / 模拟输入";
+  $("gaze").textContent=`${input.gaze_x.toFixed(3)} / ${input.gaze_y.toFixed(3)}`;
+  $("shutterValue").textContent=input.shutter.toFixed(3)+" / 帧 "+String(Math.floor(clamp(input.shutter,0,1)*8+.5)).padStart(2,"0");$("valid").textContent=String(input.valid);
+  $("target").textContent=`${input.confirmed} / ${input.candidate}`;$("note").textContent=input.note;
+  $("time").textContent=(input.t_ms/1000).toFixed(3)+" s";$("progress").value=String(input.t_ms);
+  if(ready)paint(input);
+}
+function refresh(){show(mode==="manual"?manualInput():sampleTimeline(tMs));}
+function stop(){playing=false;$("play").textContent="播放";}
+function setPlaying(value){
+  if(!ready||mode!=="timeline")return;
+  if(!value){stop();return;}
+  if(tMs>=currentCase.end_ms)tMs=currentCase.start_ms;
+  playStart=tMs;clockStart=performance.now();playing=true;$("play").textContent="暂停";
+}
+function tick(now){
+  if(playing&&ready&&mode==="timeline"){
+    tMs=playStart+(now-clockStart);
+    if(tMs>=currentCase.end_ms){
+      if($("loop").checked){const span=currentCase.end_ms-currentCase.start_ms;tMs=currentCase.start_ms+(tMs-currentCase.start_ms)%span;playStart=tMs;clockStart=now;}
+      else{tMs=currentCase.end_ms;stop();}
+    }
+    if(now-lastPaint>=1000/12||!playing){lastPaint=now;refresh();}
+  }
+  requestAnimationFrame(tick);
+}
+function chooseCase(){
+  stop();currentCase=TIMELINE.cases.find(c=>c.id===$("case").value)||TIMELINE.cases[0];
+  $("progress").min=currentCase.start_ms;$("progress").max=currentCase.end_ms;
+  $("endTime").textContent=(currentCase.end_ms/1000).toFixed(3)+" s";
+  tMs=currentCase.start_ms;refresh();
+}
+function setMode(next){
+  stop();mode=next;$("manual").disabled=!ready||mode!=="manual";
+  for(const id of ["case","play","restart","progress","loop"])$(id).disabled=!ready||mode!=="timeline";
+  lastDrawKey="";refresh();
+}
+async function loadRaster(url,width,height){
+  return await new Promise((resolve,reject)=>{
+    const im=new Image();im.onload=()=>{
+      try{if(im.width!==width||im.height!==height)throw Error(`素材尺寸不匹配：${im.width}×${im.height}，要求 ${width}×${height}`);
+        const c=document.createElement("canvas");c.width=width;c.height=height;const cx=c.getContext("2d",{willReadFrequently:true});cx.drawImage(im,0,0);resolve(cx.getImageData(0,0,width,height).data);
+      }catch(e){reject(e);}
+    };im.onerror=()=>reject(Error("PNG 素材无法读取。请从完整交接包重新生成本预览。"));im.src=url;
+  });
+}
+async function init(){
+  try{
+    if(!ASSET_DATA.eye_surface||!TIMELINE.frames.length)throw Error("此文件是打包模板。请运行 build_preview.py，把包内 PNG 和 timeline.json 嵌入 index.html 后打开。");
+    for(const c of TIMELINE.cases){const o=document.createElement("option");o.value=c.id;o.textContent=c.label;$("case").appendChild(o);}
+    const data=await Promise.all([loadRaster(ASSET_DATA.eye_surface,W,H),loadRaster(ASSET_DATA.frame,W,H),...ASSET_DATA.shutter.map(url=>loadRaster(url,SW,SH))]);
+    [base,frame]=data;shutters=data.slice(2);texture=new Uint8ClampedArray(base.length);
+    for(let i=3;i<base.length;i+=4)if(base[i]!==255)throw Error("eye_surface 必须完全不透明。");
+    initializeNormals();ready=true;chooseCase();setMode("timeline");
+    $("play").addEventListener("click",()=>setPlaying(!playing));
+    $("restart").addEventListener("click",()=>{stop();tMs=currentCase.start_ms;refresh();});
+    $("case").addEventListener("change",chooseCase);
+    $("progress").addEventListener("input",()=>{stop();tMs=Number($("progress").value);refresh();});
+    document.querySelectorAll("input[name=mode]").forEach(el=>el.addEventListener("change",()=>setMode(el.value)));
+    for(const [id,out] of [["gx","gxValue"],["gy","gyValue"],["sh","shValue"]])$(id).addEventListener("input",()=>{$(out).textContent=Number($(id).value).toFixed(3);refresh();});
+    for(const id of ["manualState","manualActive","manualValid","manualConfirmed","manualCandidate"])$(id).addEventListener("change",refresh);
+    $("center").addEventListener("click",()=>{for(const [id,out] of [["gx","gxValue"],["gy","gyValue"],["sh","shValue"]]){$(id).value="0";$(out).textContent="0.000";}refresh();});
+    requestAnimationFrame(tick);
+  }catch(e){$("error").hidden=false;$("error").textContent=String(e.message||e);$("drawStatus").textContent="未开始绘制";}
+}
+window.__MECHANICAL_C_REFERENCE__={sampleTimeline,coefficients,refresh,get ready(){return ready;},get state(){return mode==="manual"?manualInput():sampleTimeline(tMs);},get timeline(){return TIMELINE;}};
+init();
+</script>
+</body>
+</html>

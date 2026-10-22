@@ -1,0 +1,106 @@
+{
+  "pillow": "10.4.0",
+  "zlib": "1.2.13",
+  "format": "zlib RGBA8888 lossless; no resizing or palette; derived opaque eye backing",
+  "motion_recipe": {
+    "format_version": 1,
+    "max_translation_px": [
+      120,
+      80
+    ],
+    "guard_extra_px": 2,
+    "backing": "occluded sphere texture completed from visible iris at matching radius, original visible pixels restored exactly",
+    "basis": "User requested larger movement approaching the dragon on 2026-10-21; original maximum dragon projection is about139x93 pixels.",
+    "source_policy": "Retained eye-pack files are immutable. Derived backing and compressed data are build outputs only. Fixed frame/lids and neutral visible pixels are preserved.",
+    "guard_blur_radius_px": 2,
+    "motion": "sphere rotation;120x80 projected center excursion on pure axes",
+    "sphere_radius_px": 233
+  },
+  "themes": [
+    {
+      "theme": "night_owl",
+      "eye_origin": [
+        0,
+        0
+      ],
+      "lid_origin": [
+        -7,
+        113
+      ],
+      "eye_size": [
+        480,
+        480
+      ],
+      "max_gaze_translation_px": [
+        120,
+        80
+      ],
+      "eye_center": [
+        240,
+        250
+      ],
+      "sphere_radius_px": 233,
+      "derived_eye_bytes": 921600,
+      "compressed_bytes": 1513118,
+      "png_bytes": 1481930,
+      "max_resident_rgba": 2907264
+    },
+    {
+      "theme": "deep_sea",
+      "eye_origin": [
+        0,
+        0
+      ],
+      "lid_origin": [
+        -13,
+        123
+      ],
+      "eye_size": [
+        480,
+        480
+      ],
+      "max_gaze_translation_px": [
+        120,
+        80
+      ],
+      "eye_center": [
+        240,
+        250
+      ],
+      "sphere_radius_px": 233,
+      "derived_eye_bytes": 921600,
+      "compressed_bytes": 1572586,
+      "png_bytes": 1407515,
+      "max_resident_rgba": 2934264
+    },
+    {
+      "theme": "mechanical",
+      "eye_origin": [
+        0,
+        0
+      ],
+      "lid_origin": [
+        1,
+        109
+      ],
+      "eye_size": [
+        480,
+        480
+      ],
+      "max_gaze_translation_px": [
+        120,
+        80
+      ],
+      "eye_center": [
+        240,
+        245
+      ],
+      "sphere_radius_px": 233,
+      "derived_eye_bytes": 921600,
+      "compressed_bytes": 1548384,
+      "png_bytes": 1510400,
+      "max_resident_rgba": 2894680
+    }
+  ],
+  "total_compressed_bytes": 4634088
+}

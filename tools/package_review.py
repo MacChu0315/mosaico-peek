@@ -6,7 +6,9 @@ ROOT=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT,text=True).strip()
 def main():
     parser=argparse.ArgumentParser();parser.add_argument("--eye-ui",action="store_true",help="compact current eye-UI source and evidence, excluding historical firmware/movies")
+    parser.add_argument("--mechanical-c",action="store_true",help="mechanical C source, current evidence and1.0.6 restore bundle")
     args=parser.parse_args()
+    if args.eye_ui and args.mechanical_c:parser.error("Choose one review scope")
     if git('status','--porcelain'):raise RuntimeError('Commit reviewed task files before packaging; working tree must be clean')
     commit=git('rev-parse','HEAD');paths=git('ls-files','-z').strip('\0').split('\0')
     forbidden={'.git','deps','managed_components','__pycache__','.run','.codex-runs','review-inputs'}
@@ -20,11 +22,12 @@ def main():
         parts=Path(name).parts
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
+        if args.mechanical_c and name.startswith('evidence/') and not name.startswith('evidence/mechanical-c/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl','evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/motion/device-install/README.md','evidence/eye-ui/performance/native/native-checks.json','evidence/eye-ui/motion/native-switch/native-checks.json','evidence/eye-ui/performance/motion-live/summary.json'):continue
         if args.eye_ui and name.startswith('evidence/') and not name.startswith('evidence/eye-ui/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl'):continue
         if args.eye_ui and name.endswith('.irisfw') and name not in ('evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/performance/device-install/eye-fast.irisfw'):continue
         if args.eye_ui and name.startswith('evidence/eye-ui/native/') and name.endswith('.mp4'):continue
         if name.startswith('evidence/gsp/motion/'):continue
-        if name.endswith('.mp4') and not (name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4' or name.startswith('evidence/eye-ui/')):continue
+        if name.startswith('evidence/') and name.endswith('.mp4') and not (name.startswith('evidence/mechanical-c/') or name.startswith('evidence/real-input/') or name=='evidence/sleep-performance/native/sleep-live.mp4' or name.startswith('evidence/eye-ui/')):continue
         if name.endswith('.png') and name.startswith(('evidence/real-input/synthetic-regression/','evidence/device-dragon/cache-native/')):
             digest=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
             if digest in golden:
@@ -32,14 +35,18 @@ def main():
                 continue
         selected.append(name)
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in selected}
-    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'identical_evidence_aliases':aliases,'evidence':('Three-theme shared-C/native-GSP motion correction and separately recorded authorized device installations/performance; physical acceptance limits are in docs/EYE_MOTION.md and docs/HANDOFF.md' if args.eye_ui else 'Live dragon: exact recorded-temperature native replay and separately retained physical-device acceptance; see docs/HANDOFF.md'),'excluded':['.git','build/cache','dependency copies','intermediate screenshots, old historical MP4s, ignored original review input and dependency caches, full local ELF/map/config backup']}
-    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-{"eye-ui" if args.eye_ui else "live-dragon"}-{commit[:8]}.zip'
+    manifest={'commit':commit,'branch':git('branch','--show-current'),'files_sha256':hashes,'identical_evidence_aliases':aliases,'evidence':('Mechanical C integration, native replay and device acceptance; see docs/MECHANICAL_C.md and HANDOFF' if args.mechanical_c else 'Three-theme shared-C/native-GSP motion correction and separately recorded authorized device installations/performance; physical acceptance limits are in docs/EYE_MOTION.md and docs/HANDOFF.md' if args.eye_ui else 'Live dragon: exact recorded-temperature native replay and separately retained physical-device acceptance; see docs/HANDOFF.md'),'excluded':['.git','build/cache','dependency copies','intermediate screenshots, old historical MP4s, ignored original review input and dependency caches, full local ELF/map/config backup']}
+    output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-{"mechanical-c" if args.mechanical_c else "eye-ui" if args.eye_ui else "live-dragon"}-{commit[:8]}.zip'
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in selected:z.write(ROOT/name,'mosaico-peek/'+name)
+        if args.mechanical_c:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Mechanical C native integration; full retained source assets/provenance and current verification. Prior1.0.6 restore retained. Older evidence links may require the full checkout. Build: docs/MECHANICAL_C.md. No .git, dependencies, generated includes or build caches.\n')
         if args.eye_ui:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Current eye UI source, retained source PNG/provenance, data and new evidence. Historical firmware/verification binaries and movies are excluded; historical document links can refer to the full checkout. No generated includes, dependencies or build caches. Build instructions: docs/EYE_UI.md.\n')
         z.writestr('mosaico-peek/REVIEW_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
     with zipfile.ZipFile(archive) as z:
         assert z.testzip() is None
+        if args.mechanical_c:
+            for line in z.read('mosaico-peek/assets/mechanical-c/CHECKSUMS.sha256').decode().splitlines():
+                digest,name=line.split(None,1);assert hashlib.sha256(z.read('mosaico-peek/assets/mechanical-c/'+name.lstrip('* '))).hexdigest()==digest
         for name,digest in hashes.items():assert hashlib.sha256(z.read('mosaico-peek/'+name)).hexdigest()==digest
     for name,alias in aliases.items():assert hashlib.sha256((ROOT/alias['identical_to']).read_bytes()).hexdigest()==alias['sha256']
     checksum=hashlib.sha256(archive.read_bytes()).hexdigest()

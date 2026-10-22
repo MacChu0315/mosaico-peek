@@ -4,7 +4,7 @@ if(CMAKE_SCRIPT_MODE_FILE)
     return()
 endif()
 file(MAKE_DIRECTORY "${PEEK_EYE_GENERATED_DIR}")
-file(GLOB_RECURSE PEEK_EYE_INPUTS "${PEEK_ROOT}/assets/eye-pack/*")
+file(GLOB_RECURSE PEEK_EYE_INPUTS "${PEEK_ROOT}/assets/eye-pack/*" "${PEEK_ROOT}/assets/mechanical-c/*")
 add_custom_command(OUTPUT "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc"
     BYPRODUCTS "${PEEK_EYE_GENERATED_DIR}/eye_pack.json"
     COMMAND "${Python3_EXECUTABLE}" "${PEEK_ROOT}/tools/bake_eye_pack.py"

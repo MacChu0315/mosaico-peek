@@ -32,6 +32,8 @@ def main():
         with zipfile.ZipFile(archive) as z:assert z.testzip() is None
         digest=hashlib.sha256(archive.read_bytes()).hexdigest();archive.with_suffix('.zip.sha256').write_text(digest+'  '+archive.name+'\n')
         print(f'{archive}\n{archive.stat().st_size} bytes; SHA256 {digest}');return
+    geometry=json.loads((GEN/'eye_pack.json').read_text())
+    if any(t.get('rotating_shutter') for t in geometry['themes']):raise RuntimeError('Legacy1.0.6 handoff export requires its retained build; current mechanical C is a different artwork contract. Existing ZIP remains valid.')
     if OUT.exists():raise RuntimeError(f'Refusing to overwrite existing handoff: {OUT}')
     OUT.mkdir(parents=True)
     for name in ['README.md','check_preview.py']:copy(ROOT/'tools/eye_art_handoff'/name,OUT/name)

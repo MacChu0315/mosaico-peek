@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 """Independent float64 PNG compositor vs full-resolution production C pixels."""
-import io,json,subprocess
+import io,json,subprocess,sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
+sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[1]
-PACK=ROOT/'assets/eye-pack';OUT=ROOT/'evidence/eye-ui/motion';GENERATED=ROOT/'build-host/eye-generated'
+PACK=ROOT/'assets/eye-pack';OUT=ROOT/'evidence/mechanical-c/pixels';GENERATED=ROOT/'build-host/eye-generated'
 def source(path):
     a=np.asarray(Image.open(path).convert('RGBA'),dtype=np.float64)/255
     a[...,:3]*=a[...,3:4];return a
 
+_mechanical_reference=None
 def oracle(theme,gx,gy,lid):
+    global _mechanical_reference
+    if theme['id']=='mechanical':
+        if _mechanical_reference is None:
+            sys.path.insert(0,str(ROOT/'assets/mechanical-c/preview'))
+            from reference_render import Renderer
+            _mechanical_reference=Renderer()
+        return np.rint(np.asarray(_mechanical_reference.render(gx,gy,lid))/255*np.array([31,63,31])).astype(int)
     folder=PACK/'assets/processed'/theme['id'];eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
     generated=next(t for t in json.loads((GENERATED/'eye_pack.json').read_text())['themes'] if t['theme']==theme['id'])
     x,y=np.meshgrid(np.arange(480),np.arange(480));amp=generated['max_gaze_translation_px'];ox,oy=generated['eye_origin']
@@ -51,7 +60,7 @@ def main():
             expected=oracle(t,gx,gy,lid);delta=np.abs(actual-expected)
             assert delta.max()<=1,(t['id'],gx,gy,lid,delta.max())
             assert (delta>0).sum()<500,(t['id'],(delta>0).sum())
-            if gx==gy==lid==0:
+            if gx==gy==lid==0 and t['id']!='mechanical':
                 neutral=np.asarray(Image.open(PACK/'assets/processed'/t['id']/'neutral.png'))[...,:3]
                 native=np.floor(neutral/255*np.array([31,63,31])+.5).astype(int)
                 assert np.max(np.abs(actual-native))<=1

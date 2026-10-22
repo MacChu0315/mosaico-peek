@@ -9,6 +9,7 @@ PACK=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else ROOT/'review/eye-surfac
 spec=importlib.util.spec_from_file_location('art_reference',PACK/'reference_renderer.py');renderer=importlib.util.module_from_spec(spec);spec.loader.exec_module(renderer);renderer.GENERATED=PACK/'rejected'
 themes=json.loads((PACK/'reference/source_pack/assets/manifest.json').read_text())['themes'];count=0
 for i,t in enumerate(themes):
+ if t['id']=='mechanical':continue # Replaced by the explicitly accepted C artwork; legacy contract remains separate.
  for gx in [-.78,0,.78]:
   for gy in [-.58,0,.58]:
    pixels=np.asarray(Image.open(io.BytesIO(subprocess.check_output([str(ROOT/'build-host/eye_snapshot'),str(i),str(gx),str(gy),'0']))))
@@ -22,4 +23,4 @@ with tempfile.TemporaryDirectory(prefix='peek-art-contract-') as tmp:
   im.save(folder/'input/mechanical/eye_surface.png')
   r=subprocess.run([sys.executable,str(PACK/'check_preview.py'),'--input',str(folder/'input'),'--output',str(folder/name),'--theme','mechanical'],capture_output=True,text=True)
   assert r.returncode!=0 and {'size':'expected RGBA8','alpha':'fully opaque','locked':'locked pixels changed'}[name] in r.stderr,(name,r.stdout,r.stderr)
-print(f'PASS standalone handoff: {count} direction renders match C within1 RGB565 rounding code; malformed size, alpha and locked-pixel edits rejected. No visual approval claimed.')
+print(f'PASS standalone handoff: {count} unchanged owl/sea direction renders match C within1 RGB565 rounding code; malformed size, alpha and locked-pixel edits rejected. No visual approval claimed.')

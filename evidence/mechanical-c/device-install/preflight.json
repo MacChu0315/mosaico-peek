@@ -1,0 +1,8 @@
+{
+  "source": "df6f6da63613656204ccee052f637494433da2b8",
+  "bundle_sha256": "d0050fb8c6226af9ec57027859ce2f34725f3c24fdb5c6c980964dd33ba75d23",
+  "elf_sha256": "97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false
+}

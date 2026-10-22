@@ -1,0 +1,233 @@
+{
+  "schema": "mechanical-c-art-assets-v1",
+  "not_a_C_API": true,
+  "canvas": [
+    480,
+    480
+  ],
+  "center": [
+    240,
+    245
+  ],
+  "sphere_radius": 233,
+  "gaze_limits": {
+    "x": [
+      -0.78,
+      0.78
+    ],
+    "y": [
+      -0.58,
+      0.58
+    ]
+  },
+  "pure_axis_center_excursion": [
+    120,
+    80
+  ],
+  "shutter_roi": [
+    120,
+    125,
+    240,
+    240
+  ],
+  "shutter_selection": "floor(clamp(closure,0,1)*8+0.5)",
+  "composition_order": [
+    "eye_surface + selected shutter in texture coordinates",
+    "sphere projection",
+    "fixed frame in screen coordinates"
+  ],
+  "assets": [
+    {
+      "path": "assets/processed/eye_surface.png",
+      "dimensions": [
+        480,
+        480
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 574249,
+      "sha256": "070aaa78a0e439d70e6f171f0ecc5b8cbeadc66e53fb820f154bf0f451da78e8",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "origin": [
+        0,
+        0
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/frame.png",
+      "dimensions": [
+        480,
+        480
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 47996,
+      "sha256": "bafbddeee4c2bad4782e58e70749b54b2f96e263c86371bd9ed9aff3a59dfef1",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        0,
+        0
+      ],
+      "space": "screen"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_00.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 76426,
+      "sha256": "0c72dcba9828df6821dc1d3fae16c7359e1ab8742993a763e0b108a58cd6c61a",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_01.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 68826,
+      "sha256": "a4fa991830b2729ab6dd4d3a08fda5829016c5fb842b9916d9e51702be258108",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_02.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 71340,
+      "sha256": "3b659e2fd590912fad956b357a9c9cef36718be82db927fcf2ba956847bdf056",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_03.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 75103,
+      "sha256": "812d719cf76ae13c04867b7c108b2261d2adde54859672d7adb0a7dfc49b27da",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_04.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 92730,
+      "sha256": "8d276c3e964ee84baaa7525f571b93deb056fc023830096a34c9a18595e36ff2",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_05.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 78871,
+      "sha256": "e9137111d86dddc81e633862f06250d38131fb4559eaf90a19a08d8c4595da53",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_06.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 78179,
+      "sha256": "38002aa0144bd4ae3c70ef3e2204b4cffcdf099359784ce79c78a27092e657be",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_07.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 80234,
+      "sha256": "560c6f6292302371d7669b5dcbb5125cab9216178f1223f5c0301611812a3453",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    },
+    {
+      "path": "assets/processed/shutter/shutter_08.png",
+      "dimensions": [
+        240,
+        240
+      ],
+      "format": "RGBA8 straight alpha",
+      "bytes": 84342,
+      "sha256": "7905d2481f593aba8dae382df8afd0524c738be836d1c40d3b3dd50c744bc177",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "origin": [
+        120,
+        125
+      ],
+      "space": "texture"
+    }
+  ],
+  "measured_png_total_bytes": 1328296,
+  "estimated_all_RGBA_resident_bytes": 3916800,
+  "estimated_single_shutter_resident_bytes": 2073600,
+  "estimated_extra_RGBA_work_buffer_bytes": 921600,
+  "estimate_excludes": "decoder/temp allocator, screen buffers, alignment, DMA and GSP internal caches; no device measurement"
+}

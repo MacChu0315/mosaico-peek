@@ -1,0 +1,34 @@
+{
+  "PSD": {
+    "size": [
+      480,
+      480
+    ],
+    "editable_layers_top_to_bottom": [
+      "Fixed mount",
+      "Shutter 00 - open",
+      "Moving eye surface"
+    ],
+    "other_shutter_frames": "See processed PNGs and ORA; Photoshop GUI roundtrip untested"
+  },
+  "ORA": {
+    "layers": 11,
+    "visible": [
+      "Fixed mount",
+      "Shutter 00",
+      "Moving eye surface"
+    ],
+    "hidden": [
+      "Shutter 01",
+      "Shutter 02",
+      "Shutter 03",
+      "Shutter 04",
+      "Shutter 05",
+      "Shutter 06",
+      "Shutter 07",
+      "Shutter 08"
+    ],
+    "Krita_GIMP_GUI_roundtrip_verified": false
+  },
+  "SVG": "shutter/shutter-rig.svg: six clipped raster blade regions in contracted pose, not vector paint or a rigid mechanical CAD rig"
+}

@@ -1,0 +1,26 @@
+{
+  "PSD_layer_sizes": [
+    [
+      480,
+      480
+    ],
+    [
+      480,
+      480
+    ],
+    [
+      480,
+      480
+    ],
+    [
+      480,
+      480
+    ]
+  ],
+  "PSD_recomposite_max_channel_difference": 0,
+  "PSD_recomposite_changed_pixels": 0,
+  "PSD_merged_preview_matches": true,
+  "ORA_crc_error": null,
+  "ORA_merged_matches": true,
+  "ORA_entries": 15
+}

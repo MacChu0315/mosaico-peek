@@ -1,0 +1,50 @@
+{
+  "canvas": [
+    480,
+    480
+  ],
+  "eye_center": [
+    240,
+    245
+  ],
+  "sphere_radius": 233,
+  "generation_registration": {
+    "resize": [
+      500,
+      500
+    ],
+    "crop": [
+      10,
+      1,
+      490,
+      481
+    ]
+  },
+  "original_protection": {
+    "center": [
+      240,
+      245
+    ],
+    "radius": 184,
+    "pixels": 106353,
+    "changed_pixels": 0
+  },
+  "metal_join_annulus": [
+    184,
+    196
+  ],
+  "frame": {
+    "transparent_inside_radius": 221,
+    "inner_antialias_width": 1,
+    "source_ring_outer_fade": [
+      231,
+      232
+    ],
+    "opaque_black_outside_radius": 232
+  },
+  "notes": [
+    "This is a new C layer design, not compatible with the old entire-aperture pixel lock.",
+    "No fixed frame/eyelid or source-board border is baked into the eye surface.",
+    "Native C/GSP and device rendering are not verified."
+  ]
+}

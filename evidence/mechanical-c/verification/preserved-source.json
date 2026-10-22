@@ -1,0 +1,32 @@
+[
+  {
+    "file": "src/dragon.c",
+    "sha256": "7d49316d6c0c572da0b154b229b71c3bea48f64c9ac6e95390bca2664624aa43",
+    "unchanged_from": "b53d861"
+  },
+  {
+    "file": "src/dragon_render.c",
+    "sha256": "16cd6fc7b59c8bc0cf3b5a577ad509751b69efceb16f023ce37eae95d96d2431",
+    "unchanged_from": "b53d861"
+  },
+  {
+    "file": "src/peek.c",
+    "sha256": "e40b8420465b0666d3327b7551b7d73053f172d990a1ab057a63ff9d4a34fe9d",
+    "unchanged_from": "b53d861"
+  },
+  {
+    "file": "src/peek_live.c",
+    "sha256": "362b729b368faf36ac0a5a08eaf515dc38c9f8bb98b11da37480870cc4ddc082",
+    "unchanged_from": "b53d861"
+  },
+  {
+    "file": "src/eye_projection.h",
+    "sha256": "24c217b5ffdc15ef1d78f555639a3d171e41a35034ec625f915e02c0932c70f8",
+    "unchanged_from": "b53d861"
+  },
+  {
+    "file": "src/peek_input.c",
+    "sha256": "986c52a2428ebe1b4fadaa9cc00cf63fbcd01d650b569892d8d5c93174eab2cc",
+    "unchanged_from": "b53d861"
+  }
+]

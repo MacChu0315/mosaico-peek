@@ -1,0 +1,22 @@
+{
+  "center": {
+    "pose": [
+      0,
+      0,
+      0
+    ],
+    "max_channel_difference": 0,
+    "mean_absolute_difference": 0.0,
+    "changed_pixels": 0
+  },
+  "diagonal": {
+    "pose": [
+      0.78,
+      -0.58,
+      0.5
+    ],
+    "max_channel_difference": 9,
+    "mean_absolute_difference": 0.0021730324074074074,
+    "changed_pixels": 259
+  }
+}

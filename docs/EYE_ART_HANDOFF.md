@@ -53,3 +53,12 @@ transparent pixels and any locked-pixel edit. Three8-second synthetic videos
 retain their stated design duration; they are not real input, native rendering,
 device recordings or measured FPS. Pixel-precise native comparison and physical
 appearance/performance remain main-project responsibilities after adaptation.
+
+## Subsequent mechanical C adoption
+
+On2026-10-22 the user supplied and approved continuing with a new C mechanical
+structure. See MECHANICAL_C.md. Existing art-handoff-v1 ZIP remains unchanged;
+its mechanical locked-mask contract is historical. The exporter now refuses to
+mix current C globe textures with old mechanical-frame references; regenerating
+that legacy package requires the retained1.0.6 source/build. Owl/sea remain on
+the previous artwork contract.

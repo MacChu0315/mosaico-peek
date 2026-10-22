@@ -3,15 +3,15 @@
 ## Scope and status
 
 Local implementation on `feat/auto-orientation` in `mosaico-peek-orientation`,
-based on `b53d861`. Four cardinal placements keep artwork upright after settling.
+originally based on `b53d861`, now integrating main UI commit`5e30025`. Four cardinal placements keep artwork upright after settling.
 Flat, moving, ambiguous and failed IMU samples retain the last orientation.
 No continuous-angle stabilization or compensation for changed thermal field of
 view. Existing characters use the common layer; new artwork must use that same
 layer to inherit orientation.
 
-The main `mosaico-peek` worktree has concurrent mechanical artwork work. None of
+The main `mosaico-peek` worktree continues independently; its committed mechanical C artwork is now included here. None of
 its files, branches, running previews or devices were modified by this task.
-No device installation, dependency upgrade, remote write or main-branch merge.
+No dependency upgrade, remote write or change to the main worktree branch.
 **Hardware acceptance remains pending.** Do not treat the built firmware as a
 physically validated replacement for the main thread's current firmware.
 
@@ -90,9 +90,7 @@ Keep the main thread's current `eye_pack.c/.h`, assets, recipes, eye pack CMake,
 firmware version and build settings. This branch deliberately does not edit them.
 Likely merge overlaps are root/main/PC source lists and shared `peek_ui.c/.h`;
 combine source lists and retain both feature changes. Re-run Host/GSP tests and
-build against the integrated artwork before any device update. This isolated
-build still uses the baseline1.0.6 version identity, so integration must assign
-its own release version rather than confusing it with installed1.0.6.
+build against the integrated artwork before any device update. Integrated device candidate uses distinct1.0.8-peek-orient identity and sdkconfig.orientation. Host28/28 and pinned-IDF build pass. The merge preserved immutable source CSV CRLF and license whitespace despite git diff --check warnings on those imported files; feature-owned source checks are clean.
 
 After the main thread releases the test device, verify:
 
