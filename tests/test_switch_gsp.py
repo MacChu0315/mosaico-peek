@@ -33,7 +33,7 @@ def main():
             for i in range(1,5):pointer(round(x1+(x2-x1)*i/4),round(y1+(y2-y1)*i/4),True)
             pointer(x2,y2,False)
         def capture(name):
-            s=state();file=OUT/(name+'.png');call('screenshot',dict(path=str(file),format='png'));p=s['role']['pose']
+            s=state();file=OUT/(name+'.png');call('screenshot',dict(path=str(file),format='png'));p=s.get('render_pose',s['role']['pose'])
             if s['view']=='dragon':
                 ppm=subprocess.check_output([str(ROOT/'build-host/dragon_snapshot'),*[str(p[k]) for k in ['gaze_x','gaze_y','blink','squint','pupil_width','tension']]])
                 expected=np.asarray(Image.open(io.BytesIO(ppm)));expected=np.repeat(np.repeat(expected[1::2,1::2],2,axis=0),2,axis=1)

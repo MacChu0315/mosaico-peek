@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[1]
-PACK=ROOT/'assets/eye-pack';OUT=ROOT/'evidence/mechanical-c/pixels';GENERATED=ROOT/'build-host/eye-generated'
+PACK=ROOT/'assets/eye-pack';OUT=ROOT/'evidence/mechanical-c/a-centered/pixels';GENERATED=ROOT/'build-host/eye-generated'
 def source(path):
     a=np.asarray(Image.open(path).convert('RGBA'),dtype=np.float64)/255
     a[...,:3]*=a[...,3:4];return a
@@ -17,8 +17,10 @@ def oracle(theme,gx,gy,lid):
     if theme['id']=='mechanical':
         if _mechanical_reference is None:
             sys.path.insert(0,str(ROOT/'assets/mechanical-c/preview'))
-            from reference_render import Renderer
+            from reference_render import Renderer,premultiplied
             _mechanical_reference=Renderer()
+            adaptation=json.loads((ROOT/'assets/mechanical-c-adaptation.json').read_text())
+            _mechanical_reference.frame=premultiplied(ROOT/adaptation['fixed_frame_source'])
         return np.rint(np.asarray(_mechanical_reference.render(gx,gy,lid))/255*np.array([31,63,31])).astype(int)
     folder=PACK/'assets/processed'/theme['id'];eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
     generated=next(t for t in json.loads((GENERATED/'eye_pack.json').read_text())['themes'] if t['theme']==theme['id'])

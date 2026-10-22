@@ -1,5 +1,11 @@
 # Mechanical C — rotating central shutter
 
+Current1.0.8 source combines user-selected fixed metal socket A with the new C
+eye/shutter, and centers the mechanical presentation during sleep closure.
+[A/B comparison and exact sources](../evidence/mechanical-c/frame-candidates/comparison.png).
+The original thin round mount remains in the immutable input package, but is
+not selected by the current adapter. See assets/mechanical-c-adaptation.json.
+
 The user approved continuing with the supplied C artwork after the source review
 on2026-10-22. This deliberately replaces the old mechanical-eye appearance and
 fixed eyelids. Dragon/night_owl/deep_sea artwork and paths remain unchanged;
@@ -16,7 +22,7 @@ checksums and labelled simulated evidence. ZIP SHA256 is retained under
 validated on every build. Builds only write generated streams in build folders;
 they do not run source-rewriting scripts. Prior eye-pack remains immutable.
 
-Use the original480×480 opaque eye,480×480 fixed mount, and nine240×240 RGBA
+Use the supplied480×480 opaque eye, selected480×480 fixed socket A, and nine240×240 RGBA
 shutters at texture origin(120,125). Center(240,245), radius233; existing gaze
 bounds±0.78/±0.58 and pure-axis center travel±120/±80px are unchanged.
 `closure=pose.blink`; nearest shutter index=floor(8*closure+0.5). No crossfade or
@@ -60,7 +66,7 @@ python3 tools/report_eye_budget.py --output-dir evidence/mechanical-c
 
 Native controls: `python3 tools/control.py view mechanical`, `case dragon`,
 `case sleep`, `case live`, `play`, `pause`, `replay`. Do not pass flip flags.
-New build selector`sdkconfig.mechanical-c`, version1.0.7-peek-mechanical;
+Current build selector`sdkconfig.mechanical-center`, version1.0.8-peek-center;
 known1.0.6 restore remains separately retained. Installed sourcedf6f6da is confirmed in
 [device evidence](../evidence/mechanical-c/device-install/README.md). Installation
 used an identical-bundle retry after read-only reconciliation of a retained
@@ -100,7 +106,7 @@ own evidence. Source PNGs total1328296B; zlib RGBA streams1566577B before linked
 metadata/code/alignment. Actual final ELF/app/resource budget is recorded after
 building the exact source commit.
 
-## Installed status
+## Historical1.0.7 installation
 
 Version1.0.7-peek-mechanical, sourcedf6f6da, exact ELF97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e.
 Healthy/validated, crash0/runtime error0, both physical flips false. Bootloader,
@@ -111,7 +117,7 @@ source/asset checksums/current evidence and prior1.0.6 restore, omitting build
 caches/dependencies and unrelated historical evidence. Original84-file mechanical
 source completeness is also checked inside the ZIP.
 
-## Current device performance limitation
+## Historical1.0.7 thin-mount performance limitation
 
 [Actual device windows](../evidence/mechanical-c/device-performance/README.md)
 measure about3.93 active-open complete GSP frames/s and3.88 sleeping frames/s.
@@ -126,3 +132,37 @@ blocks and input-to-screen latency are not established. The next performance
 step is raster profiling/optimization under the same full480 and gaze bounds;
 do not silently reduce quality, change shared behavior or inflate FPS with cheap
 states. Visual acceptance of the new installed artwork remains pending.
+
+## Mechanical sleep centering and frame A
+
+The user reported that the closed mechanical eye still wandered, and selected
+A after comparing both old/new sockets with the same production C globe and
+poses. Source frame is the original mechanical frame.png (480RGBA), verified
+by SHA256 in assets/mechanical-c-adaptation.json. No source image is overwritten;
+new B original/prompt/provenance remains in assets/mechanical-candidates/ only.
+The reference compositor now explicitly overlays selected A for parity checks.
+
+src/eye_character_pose.h is a pure display transform of shared dragon_t: only
+character3 with sleeping or waking applies a follow weight
+max(0,1-blink/(7.5/8)) to gaze. The existing nearest9-stage policy is visually
+fully closed at7.5/8, so gaze is exactly(0,0) from that point onward. This means
+the established front-facing eye center(240,245), not the screen origin.
+The450ms close/150ms wake, detection and raw controller motion remain unchanged.
+Ordinary blinks retain gaze. Partial-close interruption keeps the same
+presentation pose at acquisition and returns to unmodified follow at wake end.
+
+Both peek_ui_set_view and refresh prepare from the copied artwork pose. Host
+status adds render_pose; device telemetry adds render_gaze_x/y while preserving
+existing raw gaze_x/y. These are additive fields and do not modify source state
+or count new samples. CTest includes all449 interior close milliseconds, same-
+time idempotence, wake completion, source immutability, last-frame centering,
+ordinary blinks and other-character behavior. Actual native screenshots verify
+that all closed poses are identical while the raw controller continues moving.
+
+Final1.0.8 results/install/performance are recorded under
+`evidence/mechanical-c/a-centered/`; historical1.0.7 evidence stays separate.
+Candidate source preparation: cmake --build build-host --target frame_candidate_snapshot;
+python3 tools/preview_mechanical_frames.py. The frame preview executable uses
+production eye_pack.c with review-only fixed-frame substitution; it is never
+linked into firmware. B was generated with built-in image_gen, retains original
+1254RGBA, and is resized only in the build folder for comparison.

@@ -40,5 +40,8 @@ int main(void){
         assert(strstr((char *)out,eye_pack_name(character-1)) && strstr((char *)out,"\"sample_step\":1"));
         q.payload_size=1;
     }
+    q.payload_size=0;v.character=3;v.dragon.sleeping=true;v.dragon.pose.blink=1;v.dragon.pose.gaze_x=.6f;v.dragon.pose.gaze_y=-.4f;publish(&v,1200);
+    assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK);
+    assert(strstr((char *)out,"\"gaze_x\":0.60000")&&strstr((char *)out,"\"render_gaze_x\":0.00000")&&strstr((char *)out,"\"render_gaze_y\":0.00000"));
     puts("PASS device telemetry: previous generation classification, sleep/closing excluded, open timing exact,2048B body and RPC purity");
 }

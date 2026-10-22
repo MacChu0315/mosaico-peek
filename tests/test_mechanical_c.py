@@ -7,8 +7,8 @@ from PIL import Image
 sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[1];BUILD=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'build-host'
 sys.path.insert(0,str(ROOT/'assets/mechanical-c/preview'))
-from reference_render import Renderer
-reference=Renderer();checks=[]
+from reference_render import Renderer,premultiplied
+reference=Renderer();adaptation=json.loads((ROOT/'assets/mechanical-c-adaptation.json').read_text());reference.frame=premultiplied(ROOT/adaptation['fixed_frame_source']);checks=[]
 def render(gx,gy,blink):
  raw=subprocess.check_output([str(BUILD/'eye_snapshot'),'2',str(gx),str(gy),str(blink)])
  return np.asarray(Image.open(io.BytesIO(raw)))

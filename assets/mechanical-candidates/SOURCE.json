@@ -1,0 +1,20 @@
+{
+  "kind": "preview-only candidate; not selected/installed",
+  "tool": "built-in image_gen",
+  "generated_date": "2026-10-22",
+  "model_version": "not provided by tool",
+  "seed": "not provided by tool",
+  "source_file": "frame-b-original.png",
+  "sha256": "faccb61c2c0d20f2d6def6beeba06fe7c79b6cbe22c0abdc37039448b3d7274a",
+  "original_size": [
+    1254,
+    1254
+  ],
+  "alpha": "real transparent center; RGBA",
+  "preview_transform": "Pillow10.4.0 RGBA Lanczos resize to480x480 in build-host/frame-candidates only; original retained",
+  "references": [
+    "assets/eye-pack/assets/processed/mechanical/frame.png",
+    "assets/mechanical-c/evidence/gaze-center.png"
+  ],
+  "license": "AI-generated image; no invented CC0 or exclusive ownership claim"
+}

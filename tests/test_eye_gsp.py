@@ -18,7 +18,7 @@ def main():
         def advance(at):
             delta=at-state()['result']['now_ms'];assert delta>=0;command(f'advance {delta}')
         def capture(theme,name):
-            call('wait',{'frames':2});path=OUT/f'{theme}-{name}.png';call('screenshot',dict(path=str(path),format='png'));s=state();assert not s['error'];pose=s['role']['pose']
+            call('wait',{'frames':2});path=OUT/f'{theme}-{name}.png';call('screenshot',dict(path=str(path),format='png'));s=state();assert not s['error'];pose=s.get('render_pose',s['role']['pose'])
             ppm=subprocess.check_output([str(ROOT/'build-host/eye_snapshot'),str(THEMES.index(theme)),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])])
             # Compare RGB565 codes; simulator expands 565 to 8-bit with its own
             # integer convention, so normalize both to the original565 values.
@@ -26,7 +26,8 @@ def main():
                 return [((r*31+127)//255,(g*63+127)//255,(b*31+127)//255) for r,g,b in im.convert('RGB').getdata()]
             assert code(Image.open(io.BytesIO(ppm)))==code(Image.open(path)),(theme,name)
             checks.append(dict(theme=theme,name=name,state=s,pixel_sha256=hashlib.sha256(path.read_bytes()).hexdigest()));return s
-        for theme in THEMES:
+        selected=os.environ.get('PEEK_EYE_THEMES',','.join(THEMES)).split(',');assert selected and all(t in THEMES for t in selected)
+        for theme in selected:
             command('view '+theme);command('case dragon')
             for at,name in [(0,'IDLE'),(2250,'NOTICE'),(3200,'left'),(4800,'right'),(6250,'up'),(8750,'down'),(10750,'HOLD'),(14875,'fresh-still'),(15000,'held'),(15250,'LEAVE'),(15750,'reappear'),(18125,'invalid'),(19875,'recovered'),(22750,'STALE')]:
                 advance(at);s=capture(theme,name)
@@ -74,5 +75,5 @@ def main():
                 length=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(movie)]));assert abs(length-elapsed)<.2,(length,elapsed)
                 (OUT/f'{theme}-{case}-states.jsonl').write_text(''.join(json.dumps(s)+'\n' for s in records));(OUT/f'{theme}-{case}-captures.json').write_text(json.dumps(captures,indent=2)+'\n')
                 movies.append(dict(theme=theme,case=case,wall_s=elapsed,movie_s=length,frames=len(captures),file=movie.name));print('LIVE',theme,case,round(elapsed,2),flush=True)
-    (OUT/'checks.json').write_text(json.dumps(checks,indent=2)+'\n');(OUT/'report.json').write_text(json.dumps(dict(checkpoints=len(checks),movies=movies,artifacts=hashes,physical_device_operated=False,note='Actual native C/GSP; all synthetic complete temperature arrays pass unchanged production detector. Screenshot sampling is not display FPS.'),indent=2)+'\n');print('PASS native trio',len(checks),'pixel checkpoints and six realtime runs',flush=True)
+    (OUT/'checks.json').write_text(json.dumps(checks,indent=2)+'\n');(OUT/'report.json').write_text(json.dumps(dict(checkpoints=len(checks),movies=movies,artifacts=hashes,physical_device_operated=False,note='Actual native C/GSP; all synthetic complete temperature arrays pass unchanged production detector. Screenshot sampling is not display FPS.'),indent=2)+'\n');print('PASS native trio',len(checks),'pixel checkpoints and',len(movies),'realtime runs',flush=True)
 if __name__=='__main__':main()

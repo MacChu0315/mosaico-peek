@@ -1,0 +1,8 @@
+{
+  "selected_candidate": "A",
+  "selected_date": "2026-10-22",
+  "fixed_frame_source": "assets/eye-pack/assets/processed/mechanical/frame.png",
+  "sha256": "b92d67820a8c049ccefc04a26aed62481fcecf54ab9a147efccc42147c64d4d4",
+  "reason": "User selected original fixed metal socket over new B after production-C side-by-side review. Keep new C eye and rotating central shutter; no original asset overwritten.",
+  "unselected_candidate": "assets/mechanical-candidates/frame-b-original.png"
+}

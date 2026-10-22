@@ -5,6 +5,7 @@
 #include "dragon.h"
 #include "dragon_render.h"
 #include "eye_pack.h"
+#include "eye_character_pose.h"
 #include "peek_input.h"
 typedef enum {PEEK_ACTION_CASE,PEEK_ACTION_PLAY,PEEK_ACTION_RESTART} peek_action_t;
 typedef void (*peek_control_fn)(peek_action_t action,void *context);

@@ -7,11 +7,12 @@ dragon and diagnostics. [Current three-theme integration, commands and limits](d
 Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
 `python3 tools/preview.py --view night_owl` starts directly.
 New art remains full480 with lossless RGBA sources and blended lids. Current
-build is1.0.7-peek-mechanical (`sdkconfig.mechanical-c`): both gaze flips disabled per
+build is1.0.8-peek-center (`sdkconfig.mechanical-center`): both gaze flips disabled per
 latest user feedback, new eyes use sphere rotation with120/80px pure-axis center
 travel. [Motion change and validation](docs/EYE_MOTION.md).
 The user accepted direction/range. Mechanical now uses the supplied C artwork
-with a rotating central shutter; owl/sea remain unchanged.
+with a rotating central shutter and user-selected original metal socket A.
+During sleep closure it centers and remains still; owl/sea remain unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
 Installed1.0.7-peek-mechanical adds the new globe/central shutter and retains

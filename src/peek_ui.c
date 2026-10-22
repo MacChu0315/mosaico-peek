@@ -65,18 +65,19 @@ void peek_ui_time(peek_ui_t *s,uint64_t now)
 }
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
 {
+    dragon_pose_t artwork=eye_character_pose(s->character,&s->dragon);
     if(!dragon)peek_input_cancel(&s->input);
     /* UI owner only: release the inactive cache before replacement. Failure
      * propagates to the caller's display error; this is not an atomic rollback. */
     if(dragon && s->character){
         dragon_renderer_destroy(s->renderer);s->renderer=NULL;
         if(!s->eye_pack){s->eye_pack=eye_pack_create();if(!s->eye_pack)return ESP_GSP_ERR_NO_MEM;}
-        if(!eye_pack_select(s->eye_pack,s->character-1)||!eye_pack_prepare(s->eye_pack,&s->dragon.pose))return ESP_GSP_FAIL;
+        if(!eye_pack_select(s->eye_pack,s->character-1)||!eye_pack_prepare(s->eye_pack,&artwork))return ESP_GSP_FAIL;
     }
     if(dragon&&!s->character){eye_pack_destroy(s->eye_pack);s->eye_pack=NULL;}
     if(dragon&&!s->character&&!s->renderer){
         s->renderer=dragon_renderer_create();if(!s->renderer)return ESP_GSP_ERR_NO_MEM;
-        if(!(s->character ? eye_pack_prepare(s->eye_pack,&s->dragon.pose) : dragon_renderer_prepare(s->renderer,&s->dragon.pose)))return ESP_GSP_FAIL;
+        if(!(s->character ? eye_pack_prepare(s->eye_pack,&artwork) : dragon_renderer_prepare(s->renderer,&s->dragon.pose)))return ESP_GSP_FAIL;
     }
     if(dragon && !s->character && !dragon_renderer_set_sample_step(s->renderer,s->sample_step))return ESP_GSP_ERR_INVALID_ARG;
     if(dragon&&!s->dragon_registered){
@@ -118,8 +119,9 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
     peek_ui_time(s,now);
     if(s->error!=ESP_GSP_OK)return;
     if(s->dragon_view){
+        dragon_pose_t artwork=eye_character_pose(s->character,&s->dragon);
         uint64_t start=real_us();
-        if(!(s->character ? eye_pack_prepare(s->eye_pack,&s->dragon.pose) : dragon_renderer_prepare(s->renderer,&s->dragon.pose))){s->error=ESP_GSP_FAIL;return;}
+        if(!(s->character ? eye_pack_prepare(s->eye_pack,&artwork) : dragon_renderer_prepare(s->renderer,&s->dragon.pose))){s->error=ESP_GSP_FAIL;return;}
         uint64_t elapsed=real_us()-start;s->prepare_us_total+=elapsed;s->prepares++;
         if(elapsed>s->prepare_us_max)s->prepare_us_max=elapsed;
         if(!s->character && s->dragon_prepared && s->previous_blink==0 && s->dragon.pose.blink==0){
