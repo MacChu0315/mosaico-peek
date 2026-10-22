@@ -8,6 +8,7 @@
 #include "device_thermal.h"
 #include "device_status.h"
 #include "device_buttons.h"
+#include "device_orientation.h"
 #include "iris_screen_mirror.h"
 #include "iris_ota_support.h"
 #include "nvs_flash.h"
@@ -50,6 +51,8 @@ void app_main(void)
     ESP_ERROR_CHECK(esp_gsp_esp_lcd_start(&app_config, &lcd, &ui));
     ESP_ERROR_CHECK(iris_screen_mirror_attach(ui));
     ESP_ERROR_CHECK(device_status_start());
+    /* IMU failure preserves fixed direction and remains visible in telemetry. */
+    ESP_ERROR_CHECK_WITHOUT_ABORT(device_orientation_start());
     ESP_ERROR_CHECK(device_thermal_start(ui));
     ESP_ERROR_CHECK(device_buttons_start());
 

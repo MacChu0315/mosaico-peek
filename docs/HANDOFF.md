@@ -1,3 +1,15 @@
+# Automatic orientation branch — 2026-10-22
+
+This isolated `feat/auto-orientation` branch adds shared four-direction eye
+rotation with BMI270 settling, inverse gaze/touch mapping and failure hold.
+See [AUTO_ORIENTATION.md](AUTO_ORIENTATION.md) for implementation, validation
+and integration with the concurrent main UI thread. No hardware was accessed
+or updated in this task. Mounting axes and device performance remain unverified.
+The installed-firmware records below are baseline history, not a fresh claim
+about the device currently used by the other thread.
+
+---
+
 # Peek handoff — direction and motion correction (2026-10-21)
 
 Current source targets1.0.6-peek-motion, default dragon. Latest user feedback
