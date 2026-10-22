@@ -16,6 +16,12 @@ Do not center by writing back into the source; thermal mounting signs are a sepa
 A selection is recorded in assets/mechanical-c-adaptation.json. B remains a
 retained unselected image-generation candidate. The supplied C package is intact.
 
+User visually accepted the installed1.0.11 mechanical result on2026-10-22:
+“可以，感觉机械眼的效果还可以”. Treat the C globe/shutter with socket A,
+current motion range and centered closure as the accepted mechanical baseline.
+This acceptance does not expand rendering-detail authorization or imply the
+unmeasured performance/physical-orientation checks below have passed.
+
 ## Current device versus candidate
 
 Installed1.0.11-peek-direction, sourcee5d8629,
@@ -31,8 +37,9 @@ unknown following a Recovery writer reset; read-only reconciliation, new healthy
 idle Recovery, empty queue and absent job preceded a successful same-bundle retry.
 Exact evidence/restore: evidence/mechanical-c/integrated/device-install/.
 
-Latest user feedback rejects BOTH tracking axes in mechanical AND dragon in
-unchanged placement. Device reports orientation0, flipsfalse/false. Both actual
+Before the1.0.11 correction, user feedback rejected BOTH tracking axes in
+mechanical AND dragon in unchanged placement. The1.0.10 device reported
+orientation0, flipsfalse/false. Both actual
 C rasterers independently move positive gaze right/down. This points to shared
 thermal mounting signs, not an artwork-only shader or IMU rotation correction.
 Earlier1.0.6 and1.0.9 physical acceptance remains historical; why those reports
