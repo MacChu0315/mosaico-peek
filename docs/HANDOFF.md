@@ -22,10 +22,17 @@ current motion range and centered closure as the accepted mechanical baseline.
 This acceptance does not expand rendering-detail authorization or imply the
 unmeasured performance/physical-orientation checks below have passed.
 
-Current task: integrate the returned selected dragon sclera C under explicit
+Completed task: integrate the returned selected dragon sclera C under explicit
 user authorization. Installed1.0.12-peek-sclera replaces only procedural sclera
 with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
 remain intact. [Integration](DRAGON_SCLERA.md). The official update and post-boot checks below are complete.
+
+Latest intake: five owl/sea source-recovery ZIPs merged and checked;10 originals
+preserve night_owl V5/deep_sea V3 direction. Final v2 runtime layers and ORA are
+not present. Local HTML/lite artifacts match an older v1 set, whose generated
+input hashes differ. [Intake and missing files](ORGANIC_EYES_RECOVERY.md).
+Reconstruction versus exact-v2 recovery awaits the user's choice; runtime and
+device remain unchanged.
 
 ## Current installed device
 

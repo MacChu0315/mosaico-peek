@@ -1,0 +1,338 @@
+{
+  "status": "Sources retained only; no runtime integration",
+  "archives": [
+    {
+      "file": "/home/zhuzhengming/下载/organic-eyes-01-approved-references-b041407dcd554380a1473b97ce2f4a5f.zip",
+      "bytes": 4815995,
+      "sha256": "7bf89dbdff0a25c5005b1ec855c160497d1fd23ce33c9966a28ad1665a645a39",
+      "zip_crc_pass": true
+    },
+    {
+      "file": "/home/zhuzhengming/下载/organic-eyes-02-eye-surface-sources-23de8082123d4814bf2068ac06a65c58.zip",
+      "bytes": 4807396,
+      "sha256": "5ede3a0ed4949532ef978b98bb0ffe89ac2cf86e34d5998c1222e3176e11ba39",
+      "zip_crc_pass": true
+    },
+    {
+      "file": "/home/zhuzhengming/下载/organic-eyes-03-closed-lid-sources-258fbd40c1f04e68984d4d4ba77ca0d1.zip",
+      "bytes": 5382924,
+      "sha256": "22c61fb97291ff0278746e803fadda9c051f0e6e9e7f70f6a11308c4c305988d",
+      "zip_crc_pass": true
+    },
+    {
+      "file": "/home/zhuzhengming/下载/organic-eyes-04-membrane-textures-196189aaef004790a66e2d5bd6b458b1.zip",
+      "bytes": 4685894,
+      "sha256": "167b5c96bb67cdee2645c91b6e0e7c1be84658301dd726bc924a61bd9ff574ff",
+      "zip_crc_pass": true
+    },
+    {
+      "file": "/home/zhuzhengming/下载/organic-eyes-05-original-portraits-02fa0a8d913a4897b4dc245931c8c6f8.zip",
+      "bytes": 5905014,
+      "sha256": "e6c38f67382758381251b0bfccfb58dabcd8af63e4e888e795d17ff690cfbf59",
+      "zip_crc_pass": true
+    }
+  ],
+  "unique_files": 14,
+  "identical_duplicate_documents": 4,
+  "images": [
+    {
+      "path": "reference/night_owl/membrane_v5.png",
+      "sha256": "0c50fcdefad25e0336fbf19d387f9529d5dd95235f3842f74b86082b00318406",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "reference/deep_sea/membrane_v3.png",
+      "sha256": "0678d74bb5a9711f34597c9f89e54f822545727348bcc6c037552d407e038d14",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/night_owl/expanded_eye_source.png",
+      "sha256": "96ab2b4f67a3c5471b1b77425f2f80ca533ceb8ffcb845dcae73b073aa380cad",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/deep_sea/expanded_eye_source.png",
+      "sha256": "f66f92fde7fdd8e17f25df57ebc6b08615e33ed9446e74b29ab26756ee4b00c6",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/night_owl/closed_lid_source.png",
+      "sha256": "c271b9ad506a8ab2bab16ea68e32cc00959d21dd11bb8319b01f95c36ebe3f2c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/deep_sea/closed_lid_source.png",
+      "sha256": "3b57d5a9c5a20be2aed3ae8b0497dde402627357ca515df18059305758429104",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/night_owl/membrane_texture_source.png",
+      "sha256": "08418f63fb02b96cf25eb5c4b078f6075d7a8b018c76fad90c056c69adf88b44",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "path": "assets/raw/deep_sea/membrane_texture_source.png",
+      "sha256": "c24099fc1e869c52cd864d62eecf21246fab66af8df37eca15dd4e316040c2df",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        190,
+        249
+      ]
+    },
+    {
+      "path": "assets/raw/night_owl/original_portrait.png",
+      "sha256": "555a4fa7e04fda422a0c57ffe9f0890284d6bca36c955fc79df6703cead2b173",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "path": "assets/raw/deep_sea/original_portrait.png",
+      "sha256": "61f282f442abd0f92ff0e8780bc675373338ea5845e36f60c5d053e55a0e309d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    }
+  ],
+  "approved_direction": {
+    "night_owl": "V5",
+    "deep_sea": "V3"
+  },
+  "missing": [
+    "v2 runtime PNGs including rim_restore",
+    "4 editable ORA",
+    "v2 build scripts",
+    "verification.json",
+    "portability-check.json",
+    "v2 preview and timeline"
+  ],
+  "local_older_candidate": {
+    "html": "/home/zhuzhengming/下载/index.html",
+    "html_sha256": "c1c6629caf9d1842e252a8746a6cdffcfb7e462d23a57160b88a70f076ad87d6",
+    "lite": "/home/zhuzhengming/下载/organic-eyes-assets-lite-v1.zip",
+    "lite_sha256": "ec303d7ef99d8390ffa23b00a9c81527191fed5610dd53e5d1663110cd1b9bf2",
+    "embedded_PNGs_matching_lite": [
+      {
+        "path": "assets/processed/night_owl/eye_surface.png",
+        "sha256": "4d90dd1eb7b6d073069bcdbcfa08de9d483b72ddce60f9f6f7dbd0fb478903e9"
+      },
+      {
+        "path": "assets/processed/night_owl/frame.png",
+        "sha256": "ab3d0e1206e43344d192e4c91c1c01ca8e8d511f5434ee36b2c986561f263e39"
+      },
+      {
+        "path": "assets/processed/night_owl/rim_restore.png",
+        "sha256": "1f54b284c595df701988f84b132f3e1f25b6adf95f541759c4f31171dbbd29a9"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_00.png",
+        "sha256": "6feab23e754d63ac57577f3a1bb2e048f61de78a854f6243f49d9c0aec52bfd7"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_01.png",
+        "sha256": "bb139ecb219ff9bd782998c19ee17143d4ed31221eb0667d1e80f9fae7daf079"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_02.png",
+        "sha256": "40ca76d423bc5b7e62627dd79966fe5116735b2e58e0cb55452bfb542b2191fc"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_03.png",
+        "sha256": "8b72502f1ac3b9804b23dbdec7e6f72d05360908dd4ed2dde3f00d7aa4d2b696"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_04.png",
+        "sha256": "32cd95ed3a0396c0b0eeccadb762f5a4fc05e8dd841f44a2b7c335c0348c200b"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_05.png",
+        "sha256": "cbdd09a7506cee2c04a7f4d39291a749f344f1bb884257609db67a8707693373"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_06.png",
+        "sha256": "2dd9aad7dec9e7b6a96b27e38e57e59998585df46a9df8848c28a332dc4b1fbd"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_07.png",
+        "sha256": "b8697cb84824efc382f4fdd4437b61af466833dd5ba7277fe3f2d9ee0b819232"
+      },
+      {
+        "path": "assets/processed/night_owl/membrane/membrane_08.png",
+        "sha256": "b8697cb84824efc382f4fdd4437b61af466833dd5ba7277fe3f2d9ee0b819232"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_00.png",
+        "sha256": "6feab23e754d63ac57577f3a1bb2e048f61de78a854f6243f49d9c0aec52bfd7"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_01.png",
+        "sha256": "13eba07bfdba63bb08f6f312ea89705ec0f5758edfe40a611dfbdad7986bca5d"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_02.png",
+        "sha256": "cd2031cf9b3e4d51acbdf01052c08a4bf830815ff0b6688ebd49735c7e7e3fb8"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_03.png",
+        "sha256": "b5408918e0ac0d5ddbe3ea91f6a2b0528403e28c86dae18ed8bdccfd0176fd71"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_04.png",
+        "sha256": "51997e88e75d59d2f3cab3587b5f73a44a278ff7444838afd80d6d020be35aa0"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_05.png",
+        "sha256": "c290bbb2f33fc0bbad1487e10e59c386195707b63610bfb7fcde3612416b25b0"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_06.png",
+        "sha256": "4afaaf0cef13063272267d7e9e2a8b04b4eca947bc841ed4238066794376aa3a"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_07.png",
+        "sha256": "13b40929cceb3acc616d9f04861139b6f399ce06eaf869e1857dece8e7561d37"
+      },
+      {
+        "path": "assets/processed/night_owl/lids/lid_08.png",
+        "sha256": "a4a4e95cb8f235dd7da4f8fc5e8a1a14f4f830775f767b72e7db747f82bccedd"
+      },
+      {
+        "path": "assets/processed/deep_sea/eye_surface.png",
+        "sha256": "1ebbbb1892d21410822d8e630d1c38b4d7b7cf604144d74da941e8475f57a4f0"
+      },
+      {
+        "path": "assets/processed/deep_sea/frame.png",
+        "sha256": "e01d5c53ccc531bf3cd281451c5ec13c8b800dda615f95d3486a5245cf98cfeb"
+      },
+      {
+        "path": "assets/processed/deep_sea/rim_restore.png",
+        "sha256": "a9f50d09987cd55b8342a5c78a801a88761a38cb5c8e4c816bcfcd89b1b8429f"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_00.png",
+        "sha256": "6feab23e754d63ac57577f3a1bb2e048f61de78a854f6243f49d9c0aec52bfd7"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_01.png",
+        "sha256": "3b8dcafd48c70dd28da2416c6dfbb83832fb8f8994845ada4c00190d944506ca"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_02.png",
+        "sha256": "2989e4d5688649a2dabedf10d20da285d21c11bc4f8246d5cb5afd3481b1cfe0"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_03.png",
+        "sha256": "657c68e726e3cfc70bdba1a7990f82ac80015dc07ac9cdbe7c914a26b652af33"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_04.png",
+        "sha256": "3433a169f9cbd6c3e2b5ab4719103e41a0b82c28c08c64af49bb7661b2a62fcd"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_05.png",
+        "sha256": "f2939950281abc8b3bb2fae2e6e746e93ce1c170d327b83961d65d28989969f6"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_06.png",
+        "sha256": "99c25c1ca9eeedbd12817570379198e88870da6233f0188689aeced354b87926"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_07.png",
+        "sha256": "e92d7b4e88b28689f775aadcf5f59169be284527b6a403fdf05d0f4907c6f29e"
+      },
+      {
+        "path": "assets/processed/deep_sea/membrane/membrane_08.png",
+        "sha256": "e92d7b4e88b28689f775aadcf5f59169be284527b6a403fdf05d0f4907c6f29e"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_00.png",
+        "sha256": "6feab23e754d63ac57577f3a1bb2e048f61de78a854f6243f49d9c0aec52bfd7"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_01.png",
+        "sha256": "742a18a54ba49fd979b663a3f18d4025507c3b0c87a3b8461349030760fe1dab"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_02.png",
+        "sha256": "cf2f683a561ebd8edf917368e202c5a034b7a17f1a904c953c2748b99766be41"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_03.png",
+        "sha256": "c4bd3ac3698878310117fd55cc59009e23c9d93801e5fea6c4481d3a6cbcf285"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_04.png",
+        "sha256": "9155787eeb31af6597c5ef50e867bfc2e7b290c5eec5620d20d110df8ef8fe3b"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_05.png",
+        "sha256": "7caae27b8d100f0e92983a344d08111a84f02e9689b63c85a370a657e1d81131"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_06.png",
+        "sha256": "12ab3ea4546322b2d8f1c72512dc48f3f43bb5ec10ddb0e9f478e586dc67c9cd"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_07.png",
+        "sha256": "0828256e349b50a95259a01617f3d41a7968d721cda2a08c159ba9123c9cc48c"
+      },
+      {
+        "path": "assets/processed/deep_sea/lids/lid_08.png",
+        "sha256": "7ef3f112699bf3b7e9e195539477e4b515ca62a8e6036e2b2c64a4bc287681e3"
+      }
+    ],
+    "generation_inputs_matching_recovered_sources": 0,
+    "generation_input_count": 6,
+    "accepted_as_v2": false
+  },
+  "native_or_device_validation": false,
+  "production_files_modified": false
+}

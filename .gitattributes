@@ -6,3 +6,6 @@ evidence/**/*.log -whitespace
 # Immutable artist package: preserve bytes, including its original CRLF CSV.
 /assets/dragon-sclera-c/** -text
 /assets/dragon-sclera-c/evidence/input-timeline.csv whitespace=cr-at-eol
+
+# Preserve supplied original recovery files without newline conversion.
+/assets/organic-eyes-source-recovery/** -text
