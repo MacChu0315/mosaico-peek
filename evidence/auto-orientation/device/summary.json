@@ -1,0 +1,22 @@
+{
+  "version": "1.0.8-peek-orient",
+  "physical_acceptance": false,
+  "user_result": "All four directions wrong; initial positive answer explicitly withdrawn",
+  "samples": 76,
+  "observed_orientation": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "imu_errors": [
+    0
+  ],
+  "runtime_errors": [
+    0
+  ],
+  "thermal_fault_delta": 0,
+  "operation_id": "862149bf-00bf-4d2a-ace8-1d55d7ed0578",
+  "boot_id": "1100252626072364809",
+  "note": "Observation stopped at76s when conversation was interrupted; no full180s run claimed"
+}

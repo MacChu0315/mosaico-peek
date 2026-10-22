@@ -1,13 +1,31 @@
-# Automatic orientation physical correction — 2026-10-22
+# Automatic orientation accepted on dragon — 2026-10-22
 
-Branch includes main UI commit5e30025 and retains mechanical C. Version1.0.8
-installed successfully (operation862149bf-00bf-4d2a-ace8-1d55d7ed0578,
-Boot1100252626072364809), but user corrected their response to ALL FOUR
-orientations wrong. No physical acceptance. Labelled upright/+Y and clockwise90/-X
-measurements expose an XY handedness error plus the provisional mounting angle.
-Candidate1.0.9-peek-orient converts screen gravity to(-ax,+ay); real measurements
-are regression fixtures. Build config:sdkconfig.orientation-calibrated.
-Retest/install status is recorded in AUTO_ORIENTATION.md and device evidence.
+Installed1.0.9-peek-orient from74a0f44c3279ecea6d3cbc4cad7d39fb4583b5b5,
+ELF47dc46dec991d830c94972b55b89833a56819634d4e6fb79d43736ff7c745c5a.
+Successful official operation8457eb46-23bb-4c1a-ac0c-70314e60e4df was an explicitly
+approved same-bundle retry after a Recovery writer reset/outcome_unknown; the
+first attempt was reconciled read-only before retry. No Recovery/bootloader/layout
+change. The user confirmed all four orientations and gaze following on dragon.
+Main UI commit5e30025 and mechanical C artwork are preserved in this branch.
+
+IMU screen gravity is(-accel_x,+accel_y), optional mounting quarters0. The original
+1.0.8 rotation-only assumption was wrong in all four placements; its positive
+user reply was explicitly withdrawn. Calibrated Host28/28 and pinned-IDF build
+pass. Config:build/sdkconfig.orientation-calibrated. Local exact bundle:
+firmware-local/1.0.9-peek-orient/orientation-calibrated.irisfw.
+
+140 physical RPC samples/138s show all four angles and0 IMU/runtime errors and0
+thermal fault increment. The observation then lost its endpoint; final checks
+show a new power-on Boot11903143034352040053, same version/ELF, crash_count0,
+VALID fresh thermal frames and2 accumulated thermal faults on that new boot.
+Cause of those faults is unverified. No uninterrupted-run, device-FPS, or other
+artwork's physical four-way acceptance claim.
+
+The main worktree source/branch has not been changed. Before its next firmware install,
+merge the orientation branch so it retains this calibrated behavior and version
+configuration. Evidence and remaining limits: AUTO_ORIENTATION.md and
+[evidence/auto-orientation/README.md](../evidence/auto-orientation/README.md).
+The mechanical1.0.7 installation below is prior history, not current device state.
 
 ---
 

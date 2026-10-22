@@ -9,13 +9,16 @@ No continuous-angle stabilization or compensation for changed thermal field of
 view. Existing characters use the common layer; new artwork must use that same
 layer to inherit orientation.
 
-The main `mosaico-peek` worktree continues independently; its committed mechanical C artwork is now included here. None of
-its files, branches, running previews or devices were modified by this task.
+The main `mosaico-peek` source worktree continues independently; its committed
+mechanical C artwork is included here. Its tracked source, branch and previews
+were not changed. Explicitly approved device updates used its existing Gateway.
 No dependency upgrade, remote write or change to the main worktree branch.
-**1.0.8 was installed and failed physical orientation acceptance.** The user
-withdrew an initial positive reply and explicitly reported all four directions
-wrong. Do not cite that withdrawn reply as acceptance. Corrected1.0.9 is being
-prepared from the labelled measurements below; retest remains pending.
+**1.0.9 is installed and the user confirmed upright, clockwise90, inverted and
+counterclockwise90 artwork orientation and hand following in the dragon view.**
+Version1.0.8 failed all four placements; the initial positive answer was explicitly
+withdrawn. Do not cite it as acceptance. Corrected1.0.9 uses measured XY axes.
+[Installation, physical evidence and limits](../evidence/auto-orientation/README.md).
+
 
 ## Implemented
 
@@ -65,13 +68,13 @@ prepared from the labelled measurements below; retest remains pending.
 ## Validation
 
 - `cmake -S . -B build-host && cmake --build build-host -j 4 && ctest --test-dir build-host --output-on-failure`:
-  26/26 pass, including real artwork pixels at all rotations, full480 and the
+  Integrated/calibrated source28/28 pass, including real artwork pixels at all rotations, full480 and the
   approved dragon2x2 sampling, source state invariance, touch rotation, canceled
   gestures, classifier uncertainty/time, IMU startup cleanup and fixed mode.
 - `python3 tests/test_replay.py`: original5 cases, deterministic replay and
   malformed input checks pass.
 - With this worktree's official GSP1.5.1/native preview running:
-  `python3 tests/test_orientation_gsp.py`:32 full-frame comparisons against
+  Before mechanical C integration, `python3 tests/test_orientation_gsp.py`:32 full-frame comparisons against
   native raster with independent inverse-gaze/quarter-turn calculation pass;
   idle/target source state and replay direction remain unchanged. PNGs are local
   under `.run/orientation/`.
@@ -79,7 +82,7 @@ prepared from the labelled measurements below; retest remains pending.
   existing100-check interaction/detection suite passes on the final source.
 - `python3 tools/bootstrap.py`: pinned dependencies verified and prepared only
   in this worktree. `python3 tools/build_idf.py`: doctor and ESP32-S31 build pass
-  on pinned ESP-IDF `7b9cc1a`. App6,662,368B fits unchanged ota_0 (0xcf0000).
+  on pinned ESP-IDF `7b9cc1a`. Current app6,681,344B fits unchanged ota_0 (0xcf0000).
   The existing retained factory capacity warning remains: app is too large for
   factory0x1c0000. Never use the generated whole-flash command for installation.
 - Independent read-only review found the role-transition gaze jump; a failing
@@ -96,7 +99,7 @@ Likely merge overlaps are root/main/PC source lists and shared `peek_ui.c/.h`;
 combine source lists and retain both feature changes. Re-run Host/GSP tests and
 build against the integrated artwork before any device update. Corrected candidate uses distinct1.0.9-peek-orient identity and sdkconfig.orientation-calibrated. Host28/28 and pinned-IDF build pass. The merge preserved immutable source CSV CRLF and license whitespace despite git diff --check warnings on those imported files; feature-owned source checks are clean.
 
-After the main thread releases the test device, verify:
+The user completed the four-direction dragon check. Remaining acceptance for other artwork and controlled performance:
 
 1. Log raw IMU readings upright, left/right side and upside-down; adjust the
    mounting quarter-turn setting if required. Check sign/axis correctness first.
@@ -108,8 +111,9 @@ After the main thread releases the test device, verify:
    scene before/after rotation. Host checks do not establish panel FPS.
 
 Implementation checklist: classifier, shared renderer, IMU adapter/configuration,
-telemetry, native controls and local build checks complete. Physical mounting,
-real interaction/performance acceptance and integration remain outstanding.
+telemetry, native controls and local build checks complete. Physical mounting and four-direction dragon interaction are now accepted. Other
+artwork-specific physical checks, controlled performance/long-term stability and
+merging this branch back into the main UI worktree remain outstanding.
 
 ## Physical finding and correction
 
@@ -124,5 +128,10 @@ clockwise90 eye. Therefore the failure is both the original mounting assumption
 and XY handedness, not a single constant rotation offset. Real raw vectors now
 form the device adapter regression fixtures. They failed before the correction.
 Tests also cover the opposing cardinal vectors, but those tests do not replace
-physical four-way acceptance. A separate follow-up update and user retest are
-required;1.0.8 is not an accepted final firmware.
+physical four-way acceptance. The follow-up1.0.9 update and user retest passed;1.0.8 remains a rejected firmware.
+The first1.0.9 update attempt was outcome_unknown after Recovery reset; a read-only
+reconciliation, absent old job and explicit approval preceded one successful retry.
+Final observation ended on USB endpoint loss after138s; a later power-on boot
+reported expected1.0.9/ELF, crash_count0, application/IMU error0 and VALID fresh
+thermal frames. The new boot had2 cumulative thermal faults; cause unverified.
+Do not claim uninterrupted operation or zero total post-reboot capture faults.

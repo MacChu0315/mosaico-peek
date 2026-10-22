@@ -1,0 +1,44 @@
+{
+  "version": "1.0.9-peek-orient",
+  "source": "74a0f44c3279ecea6d3cbc4cad7d39fb4583b5b5",
+  "operation_id": "8457eb46-23bb-4c1a-ac0c-70314e60e4df",
+  "healthy": true,
+  "validated": true,
+  "user_acceptance": {
+    "upright_and_clockwise90": "both upright",
+    "inverted_and_counterclockwise90": "both upright and gaze follows hand"
+  },
+  "observed_angles": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "samples": 140,
+  "wall_seconds": 138.244,
+  "imu_errors": [
+    0
+  ],
+  "runtime_errors": [
+    0
+  ],
+  "thermal_fault_delta": 0,
+  "observed_views": [
+    "dragon"
+  ],
+  "initial_boot": "16320435194263765134",
+  "final_boot": "11903143034352040053",
+  "final_reset_reason": 1,
+  "final_crash_count": 0,
+  "final_version": "1.0.9-peek-orient",
+  "physical_panel_fps": null,
+  "limitations": [
+    "Physical acceptance is dragon view; other artwork shares tested rotation layer but was not separately rotated on-device here.",
+    "Read-only observation ended on endpoint loss after138s. Final status recovered with a new power-on boot (reset_reason1), expected ELF/version and crash_count0. No uninterrupted-run claim.",
+    "No calibrated end-to-end latency or controlled device rendering performance comparison."
+  ],
+  "final_thermal_faults": 2,
+  "final_data": "VALID",
+  "final_runtime_error": 0,
+  "final_imu_error": 0
+}
