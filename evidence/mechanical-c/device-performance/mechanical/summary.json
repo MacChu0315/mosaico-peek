@@ -1,0 +1,64 @@
+{
+  "canvas_callback_hz": 58.17452357071214,
+  "physical_panel_FPS": null,
+  "version": "1.0.7-peek-mechanical",
+  "ELF_sha256": "97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e",
+  "boot_id": "1088401539410791703",
+  "views": [
+    "mechanical"
+  ],
+  "samples": 54,
+  "groups": [
+    {
+      "view": "mechanical",
+      "condition": "active-or-transition",
+      "ms": 12380,
+      "frames": 48,
+      "draw_us": 10088513,
+      "raster_us": 10152139,
+      "submit_us": 1550056,
+      "prepare_us": 304774,
+      "prepares": 48,
+      "samples": 96,
+      "faults": 0,
+      "open_frames": 23,
+      "open_ms": 5850,
+      "open_raster_us": 4841515,
+      "open_submit_us": 739027,
+      "engine_hz": 3.877221324717286,
+      "raster_ms_frame": 211.50289583333335,
+      "submit_ms_frame": 32.292833333333334,
+      "prepare_ms_mean": 6.349458333333333,
+      "active_open_hz": 3.9316239316239314
+    },
+    {
+      "view": "mechanical",
+      "condition": "sleeping",
+      "ms": 47440,
+      "frames": 184,
+      "draw_us": 39044360,
+      "raster_us": 39287686,
+      "submit_us": 5981883,
+      "prepare_us": 3540,
+      "prepares": 184,
+      "samples": 372,
+      "faults": 0,
+      "open_frames": 0,
+      "open_ms": 0,
+      "open_raster_us": 0,
+      "open_submit_us": 0,
+      "engine_hz": 3.87858347386172,
+      "raster_ms_frame": 213.52003260869566,
+      "submit_ms_frame": 32.510233695652175,
+      "prepare_ms_mean": 0.01923913043478261,
+      "active_open_hz": null
+    }
+  ],
+  "heap": {
+    "free_internal": 247763,
+    "min_free_internal": 196064,
+    "free_spiram": 5096896,
+    "min_free_spiram": 4542336
+  },
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+}

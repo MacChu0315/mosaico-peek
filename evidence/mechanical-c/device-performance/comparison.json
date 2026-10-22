@@ -1,0 +1,13 @@
+{
+  "active_open_frames": 73,
+  "active_open_ms": 18550,
+  "active_open_engine_hz": 3.9353099730458223,
+  "thermal_samples": 583,
+  "faults": 0,
+  "same_view_seconds": 74.41,
+  "focused_canvas_tile_callbacks_hz": 58.17452357071214,
+  "sleeping_observed": true,
+  "waking_intermediate_observed": false,
+  "returned_to_tracking_after_sleep": true,
+  "physical_panel_FPS": null
+}

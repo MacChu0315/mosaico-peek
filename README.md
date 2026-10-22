@@ -14,7 +14,8 @@ The user accepted direction/range. Mechanical now uses the supplied C artwork
 with a rotating central shutter; owl/sea remain unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Installed1.0.6-peek-motion corrects mapping and motion. The prior1.0.5 improved
+Installed1.0.7-peek-mechanical adds the new globe/central shutter and retains
+corrected mapping/range. The prior1.0.5 improved
 observed mechanical active-open engine rate
 from2.009 to8.333Hz in separate live scenes; current installation status is in
 [handoff](docs/HANDOFF.md). Physical panel FPS is not measured.

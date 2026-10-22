@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_mechanical_c.py", line 19, in <module>
+    assert diff.max()<=1 and (diff>0).sum()<500,(gx,gy,stage,int(diff.max()),int((diff>0).sum()))
+AssertionError: (-0.78, -0.58, 0, 63, 628965)

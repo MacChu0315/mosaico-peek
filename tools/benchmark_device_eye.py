@@ -4,9 +4,9 @@ import argparse,sys,json,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 from probe_device import command,payload
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--label',required=True);parser.add_argument('--seconds',type=float,default=35);parser.add_argument('--expected-version');args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--label',required=True);parser.add_argument('--seconds',type=float,default=35);parser.add_argument('--expected-version');parser.add_argument('--output-root',type=Path,default=ROOT/'evidence/eye-ui/performance');args=parser.parse_args()
 if not args.label.replace('-','').isalnum() or not 5<=args.seconds<=300:parser.error('label must be alphanumeric/hyphen; seconds5..300')
-out=ROOT/'evidence/eye-ui/performance'/args.label;out.mkdir(parents=True,exist_ok=False)
+out=args.output_root/args.label;out.mkdir(parents=True,exist_ok=False)
 a=command(['device-status']);assert a['device']['hardware_mac']=='30:ed:a0:f4:52:a0' and a['device']['firmware_mode']=='normal' and not a['device']['stale'];assert not args.expected_version or a['device']['app_version']==args.expected_version;(out/'before.json').write_text(json.dumps(a,indent=2)+'\n');boot=a['boot_id'];start=time.monotonic();rows=[]
 with (out/'samples.jsonl').open('w') as f:
  while time.monotonic()-start<args.seconds:

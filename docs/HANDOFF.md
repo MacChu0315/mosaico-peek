@@ -6,18 +6,49 @@ rotating central shutter and fixed round mount. Source/gaze range, both confirme
 false flip flags, shared detector/behavior/sleep timing and switching remain.
 [Implementation, sources, resources and commands](MECHANICAL_C.md).
 
+Installed1.0.7-peek-mechanical, sourcedf6f6da63613656204ccee052f637494433da2b8,
+ELF97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e.
+Official operation44a14d33-a875-4164-99ef-3f5e9dcfcb2f succeeded, healthy/validated;
+Boot1088401539410791703. Runtime error0/crash0, both flips false, live input.
+[Exact install and first-attempt reconciliation](../evidence/mechanical-c/device-install/README.md).
+
+The first attempt eac7243a-89b3-4067-a22d-31058e02fdad remainedoutcome_unknown
+following a retained Recovery writer reset. Its failed Boot/address/ELF identify
+Recovery, not this candidate app; the retained core dump ELF does not match the
+failed writer. After read-only reconciliation, a new healthy/idle Recovery boot,
+empty queue and absent prior job, one identical-bundle retry succeeded. No ROM
+recover, erase, Recovery replacement, shared SDK change or remote write.
+
 Host Debug/Release25/25 pass;81 independent direction/shutter references and16
-nearest-frame boundaries pass;384 full frames match scalar C. New HDR composite
-reuses existing workspace; bitmap explicit PSRAM remains3418224B. Initial exact
-IDF build passes. Native real-time/recorded evidence and final installation are
-being completed; do not interpret this candidate note as an installed version.
-Device remains known1.0.6 until the separately recorded official update succeeds.
+nearest-frame boundaries pass;384 full frames match scalar C. ASan/UBSan passes
+with the established leak-sanitizer restriction. Native66 pixel checkpoints,
+16 pointer checks, six wall-time movies and all511 real arrays/655 events pass.
+New HDR composite reuses existing workspace; bitmap explicit PSRAM3418224B.
+Final app6660928B fits unchangedota_0; the prior factory-size warning remains.
+Device performance/visual acceptance is tracked separately from these checks.
 
 Old1.0.6 direction/range acceptance remains valid. Mechanical C intentionally
 changes the old neutral picture; the former fixed-lid/locked-mask policy does not
 apply to its new artwork. The supplied extreme-diagonal texture stretch remains
 a visual limit. Its larger visible sphere area needs actual device timing; prior
 7.095Hz mechanical result is not a prediction for this new renderer.
+
+
+## Current device performance limitation
+
+[Actual device windows](../evidence/mechanical-c/device-performance/README.md)
+measure about3.93 active-open complete GSP frames/s and3.88 sleeping frames/s.
+Raster is212..214ms/frame; submit about32ms. Thermal acquisition remains about
+7.8 fresh samples/s with zero faults. Prior1.0.6 mechanical was7.095Hz active-open;
+new full-globe artwork is slower, and this regression is not resolved or called
+fluid. Physical panel-visible FPS remains unmeasured. Closed state and later
+TRACKING were observed; no exact physical wake-duration claim.
+
+Memory before screenshot: internal free247763B, PSRAM free5096896B. Peak/largest
+blocks and input-to-screen latency are not established. The next performance
+step is raster profiling/optimization under the same full480 and gaze bounds;
+do not silently reduce quality, change shared behavior or inflate FPS with cheap
+states. Visual acceptance of the new installed artwork remains pending.
 
 The following2026-10-21 history is retained for exact prior results/restores.
 

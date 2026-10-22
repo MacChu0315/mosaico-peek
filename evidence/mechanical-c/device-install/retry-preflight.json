@@ -1,0 +1,9 @@
+{
+  "new_idle_recovery_boot": "1467388130633976323",
+  "failed_writer_boot": "12671832305804571837",
+  "prior_job_not_found": true,
+  "queue_empty": true,
+  "bundle_unchanged": true,
+  "prior_outcome_remains": "outcome_unknown",
+  "old_core_not_current_diagnosis": true
+}

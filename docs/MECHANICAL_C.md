@@ -61,8 +61,10 @@ python3 tools/report_eye_budget.py --output-dir evidence/mechanical-c
 Native controls: `python3 tools/control.py view mechanical`, `case dragon`,
 `case sleep`, `case live`, `play`, `pause`, `replay`. Do not pass flip flags.
 New build selector`sdkconfig.mechanical-c`, version1.0.7-peek-mechanical;
-known1.0.6 restore remains separately retained. Installation and device evidence
-must be recorded separately; build success alone does not claim installation.
+known1.0.6 restore remains separately retained. Installed sourcedf6f6da is confirmed in
+[device evidence](../evidence/mechanical-c/device-install/README.md). Installation
+used an identical-bundle retry after read-only reconciliation of a retained
+Recovery writer reset; the first operation remains outcome_unknown.
 
 Debug/Release25/25 pass. The new Python reference test first failed against the
 old mechanical artwork; after adaptation81 direction/stage combinations and16
@@ -97,3 +99,30 @@ Physical panel FPS, peak/largest allocations and visual acceptance require their
 own evidence. Source PNGs total1328296B; zlib RGBA streams1566577B before linked
 metadata/code/alignment. Actual final ELF/app/resource budget is recorded after
 building the exact source commit.
+
+## Installed status
+
+Version1.0.7-peek-mechanical, sourcedf6f6da, exact ELF97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e.
+Healthy/validated, crash0/runtime error0, both physical flips false. Bootloader,
+partition table and UI resource image unchanged; Recovery not replaced.
+Physical performance and appearance are separate from native/source verification.
+Review archive: `python3 tools/package_review.py --mechanical-c`; retains current
+source/asset checksums/current evidence and prior1.0.6 restore, omitting build
+caches/dependencies and unrelated historical evidence. Original84-file mechanical
+source completeness is also checked inside the ZIP.
+
+## Current device performance limitation
+
+[Actual device windows](../evidence/mechanical-c/device-performance/README.md)
+measure about3.93 active-open complete GSP frames/s and3.88 sleeping frames/s.
+Raster is212..214ms/frame; submit about32ms. Thermal acquisition remains about
+7.8 fresh samples/s with zero faults. Prior1.0.6 mechanical was7.095Hz active-open;
+new full-globe artwork is slower, and this regression is not resolved or called
+fluid. Physical panel-visible FPS remains unmeasured. Closed state and later
+TRACKING were observed; no exact physical wake-duration claim.
+
+Memory before screenshot: internal free247763B, PSRAM free5096896B. Peak/largest
+blocks and input-to-screen latency are not established. The next performance
+step is raster profiling/optimization under the same full480 and gaze bounds;
+do not silently reduce quality, change shared behavior or inflate FPS with cheap
+states. Visual acceptance of the new installed artwork remains pending.
