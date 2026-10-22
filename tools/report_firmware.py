@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = {
     "dragon_skin_indices", "dragon_skin_palette", "dragon_iris_indices",
-    "dragon_iris_palette", "dragon_sqrt_q15", "dragon_pupil_q15", "dragon_sin_q15",
+    "dragon_iris_palette", "dragon_sqrt_q15", "dragon_pupil_q15", "dragon_sin_q15", "dragon_sclera_rgb",
 }
 # Only these memory/build selectors may leave sdkconfig. Never copy its full text.
 CONFIG_ALLOW = re.compile(
@@ -156,8 +156,9 @@ def main():
     sections = read_sections(readelf, files["peek.elf"])
     symbols = read_symbols(nm, files["peek.elf"], sections)
     assets = [symbol for symbol in symbols if symbol["name"] in ASSETS]
-    if {symbol["name"] for symbol in assets} != ASSETS:
-        raise ValueError("Not all seven dragon texture/palette/LUT symbols are present")
+    required=ASSETS-{"dragon_sin_q15"} # Legacy generated table is now unused and can be link-stripped.
+    if not required.issubset({symbol["name"] for symbol in assets}):
+        raise ValueError("Required dragon texture/palette/LUT symbols are missing")
     if any(symbol["bytes"] is None for symbol in assets):
         raise ValueError("Dragon asset symbols have no nm size")
     partition_path, table = partitions(build)

@@ -1,0 +1,76 @@
+{
+  "surface_sha256": "5775c62ce834c1e3573148241f2589e434d0226a9cea4d88ad78348d2c4c9887",
+  "sample_step": 2,
+  "poses": [
+    [
+      "center",
+      0,
+      0,
+      0
+    ],
+    [
+      "left",
+      -0.78,
+      0,
+      0
+    ],
+    [
+      "right",
+      0.78,
+      0,
+      0
+    ],
+    [
+      "up",
+      0,
+      -0.58,
+      0
+    ],
+    [
+      "down",
+      0,
+      0.58,
+      0
+    ],
+    [
+      "up-left",
+      -0.78,
+      -0.58,
+      0
+    ],
+    [
+      "up-right",
+      0.78,
+      -0.58,
+      0
+    ],
+    [
+      "down-left",
+      -0.78,
+      0.58,
+      0
+    ],
+    [
+      "down-right",
+      0.78,
+      0.58,
+      0
+    ],
+    [
+      "half-closed",
+      0,
+      0,
+      0.5
+    ],
+    [
+      "closed",
+      0,
+      0,
+      1
+    ]
+  ],
+  "movie_seconds": 8,
+  "movie_fps": 25,
+  "input": "Explicit synthetic pose test; not detector input or device performance",
+  "candidate_adapter": "Preview-only rawRGB bilinear sampler; production format not implemented"
+}

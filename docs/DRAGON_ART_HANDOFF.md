@@ -37,3 +37,9 @@ wrong-size/transparent candidates rejected; MP4 is480×480,8s,25fps (not measure
 runtime performance). ZIP CRC and every file hash pass. Extracted ZIP builds
 and renders independently of the main project and SDK. No firmware rebuild or
 installation is required for this material-only export.
+
+## Returned selected C artwork
+
+The user returned dragon-sclera-C-handoff-v1.zip and authorized production
+integration. See DRAGON_SCLERA.md and current HANDOFF. Existing art-handoff-v1
+remains historical; the legacy exporter now rejects current textured source.

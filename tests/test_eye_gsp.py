@@ -19,14 +19,19 @@ def main():
             delta=at-state()['result']['now_ms'];assert delta>=0;command(f'advance {delta}')
         def capture(theme,name):
             call('wait',{'frames':2});path=OUT/f'{theme}-{name}.png';call('screenshot',dict(path=str(path),format='png'));s=state();assert not s['error'];pose=s.get('render_pose',s['role']['pose'])
-            ppm=subprocess.check_output([str(ROOT/'build-host/eye_snapshot'),str(THEMES.index(theme)),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])])
+            if theme=='dragon':
+                args=['dragon_snapshot',*[str(pose[k]) for k in ('gaze_x','gaze_y','blink','squint','pupil_width','tension')]]
+            else:args=['eye_snapshot',str(THEMES.index(theme)),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])]
+            ppm=subprocess.check_output([str(ROOT/'build-host'/args[0]),*args[1:]])
+            expected=Image.open(io.BytesIO(ppm))
+            if theme=='dragon' and s['sample_step']==2:expected=expected.resize((240,240),Image.Resampling.NEAREST).resize((480,480),Image.Resampling.NEAREST)
             # Compare RGB565 codes; simulator expands 565 to 8-bit with its own
             # integer convention, so normalize both to the original565 values.
             def code(im):
                 return [((r*31+127)//255,(g*63+127)//255,(b*31+127)//255) for r,g,b in im.convert('RGB').getdata()]
-            assert code(Image.open(io.BytesIO(ppm)))==code(Image.open(path)),(theme,name)
+            assert code(expected)==code(Image.open(path)),(theme,name)
             checks.append(dict(theme=theme,name=name,state=s,pixel_sha256=hashlib.sha256(path.read_bytes()).hexdigest()));return s
-        selected=os.environ.get('PEEK_EYE_THEMES',','.join(THEMES)).split(',');assert selected and all(t in THEMES for t in selected)
+        selected=os.environ.get('PEEK_EYE_THEMES',','.join(THEMES)).split(',');assert selected and all(t in THEMES+['dragon'] for t in selected)
         for theme in selected:
             command('view '+theme);command('case dragon')
             for at,name in [(0,'IDLE'),(2250,'NOTICE'),(3200,'left'),(4800,'right'),(6250,'up'),(8750,'down'),(10750,'HOLD'),(14875,'fresh-still'),(15000,'held'),(15250,'LEAVE'),(15750,'reappear'),(18125,'invalid'),(19875,'recovered'),(22750,'STALE')]:

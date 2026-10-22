@@ -1,6 +1,6 @@
 # Peek handoff — socket A and centered mechanical sleep (2026-10-22)
 
-Current source targets1.0.11-peek-direction, combining calibrated orientation
+Current source targets1.0.12-peek-sclera, combining calibrated orientation
 (fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
 1.0.8 center bundle was NEVER installed: preflight found the newer orientation
 firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
@@ -22,10 +22,11 @@ current motion range and centered closure as the accepted mechanical baseline.
 This acceptance does not expand rendering-detail authorization or imply the
 unmeasured performance/physical-orientation checks below have passed.
 
-Next art-only task: user requested the original dragon materials for sclera
-improvement. [Standalone material handoff](DRAGON_ART_HANDOFF.md) includes
-originals, procedural-sclera template and tested preview. No new dragon art is
-selected or installed; current firmware and accepted mechanical remain intact.
+Current task: integrate the returned selected dragon sclera C under explicit
+user authorization. Candidate1.0.12-peek-sclera replaces only procedural sclera
+with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
+remain intact. [Integration](DRAGON_SCLERA.md). Device still runs1.0.11 until
+the official update and post-boot checks below are completed.
 
 ## Current device versus candidate
 

@@ -1,0 +1,42 @@
+{
+  "selection": "User chose C in conversation on 2026-10-22 (Asia/Shanghai)",
+  "material": "blackened dark-green sclera with fine fibers",
+  "texture_only": true,
+  "source_archive": "dragon-sclera-art-handoff-v1.zip",
+  "source_archive_sha256": "95ec7ee12c0ec76aa9c037f1a68bbee010f96f2d1791607a6ceb8f981f22c9fc",
+  "source_revision_from_input": "140afe72059181113f74c1fc71b6f46a91979f30",
+  "ai_generator": "ChatGPT built-in imagegen",
+  "model_version": null,
+  "seed": null,
+  "ai_original": "source/layers/01-ai-original.png",
+  "ai_original_sha256": "a3033cd38dffeb06125b6ff7d8081d58eedfe8c66b46d8f67f357a2ece20fd66",
+  "prompt": "source/imagegen-prompt.txt",
+  "submission": "submission/sclera.png",
+  "submission_sha256": "5775c62ce834c1e3573148241f2589e434d0226a9cea4d88ad78348d2c4c9887",
+  "processing": "Original1254x1254 RGB resampled to480x480 using existing sharp lanczos3, removed alpha, PNG. Final selected480 file copied byte-for-byte, not re-exported from PSD/ORA.",
+  "versions": {
+    "python": "Python 3.12.14",
+    "cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "node": "v24.19.0",
+    "Pillow": "12.3.0",
+    "sharp": "0.35.5",
+    "libvips": "8.18.7"
+  },
+  "production_encoding_implemented": false,
+  "native_GSP_or_hardware_verified": false,
+  "reference_inputs": [
+    {
+      "role": "sclera texture to replace",
+      "input_archive_path": "template/current-procedural-sclera.png",
+      "package_path": "source/reference/current-procedural-sclera.png",
+      "sha256": "b367dea2fc99af7d002473d16d4dcb08da8312b39a19dd59af1a84e438365576"
+    },
+    {
+      "role": "character color/style reference only",
+      "input_archive_path": "reference/right.png",
+      "package_path": "evidence/baseline/right.png",
+      "sha256": "d2375a7508e140474b564cd370d4d114b74724ea25ea5219b70963c3268a2cfe"
+    }
+  ]
+}

@@ -8,6 +8,7 @@
 #endif
 
 #include "dragon_assets.inc"
+#include "dragon_sclera.inc"
 
 /* Reproduces review-inputs/peek-phase2-inputs/approved-dragon/render.mjs.
  * Texture quantization, RGB565 output and analytic shadow coverage are the
@@ -115,6 +116,24 @@ static color_t skin(int32_t u, int32_t v)
     return sample(dragon_skin_indices, dragon_skin_palette, 480, u, v);
 }
 
+/* Exact raw-RGB sampler from the selected C art reference. No resource decode,
+ * allocation or mutable cache during draw. Q15 sphere -> Q16 texture uses
+ * 233*65536/32768=466; valid sphere coordinates keep these products in int32. */
+static color_t sclera(int lx,int ly)
+{
+    int u=clamp_int(lx*466+240*Q16,0,479*Q16);
+    int v=clamp_int(ly*466+240*Q16,0,479*Q16);
+    unsigned x=(unsigned)u>>16,y=(unsigned)v>>16;
+    unsigned x1=x+(x<479),y1=y+(y<479);
+    const uint8_t *a=dragon_sclera_rgb+(y*480+x)*3;
+    const uint8_t *b=dragon_sclera_rgb+(y*480+x1)*3;
+    const uint8_t *c=dragon_sclera_rgb+(y1*480+x)*3;
+    const uint8_t *d=dragon_sclera_rgb+(y1*480+x1)*3;
+    color_t top=over((color_t){a[0],a[1],a[2]},(color_t){b[0],b[1],b[2]},(u&65535)>>8);
+    color_t bottom=over((color_t){c[0],c[1],c[2]},(color_t){d[0],d[1],d[2]},(u&65535)>>8);
+    return over(top,bottom,(v&65535)>>8);
+}
+
 static float bezier(float a, float b, float c, float d, float t)
 {
     float s = 1.0f - t;
@@ -178,13 +197,6 @@ static int root_q15(int64_t r2)
     return a + (int)(((int64_t)(b-a)*f) >> 18);
 }
 
-static int sine(int32_t radians_q15)
-{
-    /* 1024/(2*pi), with Q10 coefficient. Unsigned mask wraps negative phase. */
-    int index = (int)(((int64_t)radians_q15 * 166886) >> 25);
-    return dragon_sin_q15[(unsigned)index & 1023U];
-}
-
 static int coverage(int32_t distance_q16)
 {
     return clamp_int((distance_q16 + Q16/2) >> 8, 0, 256);
@@ -235,8 +247,7 @@ static color_t eyeball(const dragon_renderer_t *r, int32_t x, int32_t y, const d
             c.r = c.r*limbus >> 15; c.g = c.g*limbus >> 15; c.b = c.b*limbus >> 15;
         }
     } else {
-        int vein = (sine(lx*75+ly*18)*sine(ly*53-lx*29)) >> 15;
-        c = (color_t){49+(vein*5 >> 15), 63+(vein*7 >> 15), 23+(vein*4 >> 15)};
+        c = sclera(lx,ly);
     }
     int abs_y = ly < 0 ? -ly : ly;
     if (abs_y < PUPIL_HEIGHT_Q15) {
@@ -592,9 +603,12 @@ bool dragon_renderer_draw(const dragon_renderer_t *r, uint16_t *pixels,
 size_t dragon_renderer_heap_bytes(void) { return sizeof(dragon_renderer_t)+FIXED_PIXELS*sizeof(dragon_fixed_pixel_t)+FAST_PIXELS*sizeof(dragon_fast_pixel_t); }
 size_t dragon_renderer_asset_bytes(void)
 {
+    /* Declared arrays, including the legacy generated sine table. Optimized
+     * firmware can discard that unused table; report linked ELF bytes apart. */
     return sizeof(dragon_skin_indices)+sizeof(dragon_iris_indices)+
         sizeof(dragon_skin_palette)+sizeof(dragon_iris_palette)+
-        sizeof(dragon_sqrt_q15)+sizeof(dragon_pupil_q15)+sizeof(dragon_sin_q15);
+        sizeof(dragon_sqrt_q15)+sizeof(dragon_pupil_q15)+sizeof(dragon_sin_q15)+
+        sizeof(dragon_sclera_rgb);
 }
 
 bool dragon_renderer_geometry_cached(const dragon_renderer_t *r){return r && r->fast_cache_valid;}

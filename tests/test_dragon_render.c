@@ -69,8 +69,7 @@ int main(int argc, char **argv)
     assert(renderer);
     assert(dragon_renderer_heap_bytes() > 0);
     assert(dragon_renderer_heap_bytes() < 4*1024*1024);
-    assert(dragon_renderer_asset_bytes() >= 641024);
-    assert(dragon_renderer_asset_bytes() < 700000);
+    assert(dragon_renderer_asset_bytes() == 651780+480*480*3);
     assert(!dragon_renderer_draw(renderer, whole + 1, STRIDE * 2, 0, 0, 480, 480));
     dragon_pose_t pose = rest;
     assert(dragon_renderer_prepare(renderer, &pose));

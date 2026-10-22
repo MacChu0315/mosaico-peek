@@ -1,0 +1,91 @@
+{
+  "format_version": 1,
+  "generator": "tools/bake_dragon.py",
+  "pillow_version": "10.4.0",
+  "provenance": {
+    "reference_readme": "review-inputs/peek-phase2-inputs/approved-dragon/README.txt",
+    "source_readme": "review-inputs/peek-phase2-inputs/approved-dragon/SOURCE_README.md",
+    "basis": "The supplied README.txt identifies this as the user-approved single dragon eye reference. SOURCE_README.md states these textures were generated with imagegen for this project.",
+    "scope": "Records supplied provenance; does not assert additional licenses or permissions."
+  },
+  "textures": {
+    "skin": {
+      "approved_source": {
+        "path": "review-inputs/peek-phase2-inputs/approved-dragon/assets/skin.png",
+        "sha256": "a58698492acd055ec790f35b8424ac7c021dc4b277defd73a39c386e8721249d",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB"
+      },
+      "preprocessed": {
+        "path": "assets/dragon/skin.png",
+        "sha256": "f11d6f24c3b2d99f3eadecb8c55791705c936ca28524af66eae5e0411b8f28f2",
+        "pixel_sha256": "5a0939f1e19e40218f80c6f1cb28e2e22bd6743b2a32453c1be83d95811ec972",
+        "width": 480,
+        "height": 480,
+        "mode": "RGB",
+        "resize_filter": "Pillow LANCZOS"
+      },
+      "quantization": {
+        "method": "Pillow MEDIANCUT",
+        "colors": 256,
+        "dither": "NONE",
+        "indices_sha256": "225c0d0cc17e470cee2f18ffd90cd5420e5ec1ebf95317f5c17b6018025c5b29",
+        "index_bytes": 230400,
+        "palette_format": "RGB565, each channel rounded to nearest",
+        "palette_bytes": 512
+      }
+    },
+    "iris": {
+      "approved_source": {
+        "path": "review-inputs/peek-phase2-inputs/approved-dragon/assets/iris.png",
+        "sha256": "28297890ec25c571868bcda98a21c79fe72bfbc7d2a4873f6ccaca1df46472ed",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA"
+      },
+      "preprocessed": {
+        "path": "assets/dragon/iris.png",
+        "sha256": "d0d69b3b18fa80610238079cd3a8507a3efe6223f41f8c00a630dd8507e6e510",
+        "pixel_sha256": "f9dc8159b8aeb2123d484aa6b5298d5bdd57c98bbc34fa672d6a6da3c7bbfebe",
+        "width": 640,
+        "height": 640,
+        "mode": "RGB",
+        "resize_filter": "Pillow LANCZOS"
+      },
+      "quantization": {
+        "method": "Pillow MEDIANCUT",
+        "colors": 256,
+        "dither": "NONE",
+        "indices_sha256": "f61a14f43abda0a107ddf1e51eefba75a7d324442265773b3d02b25c6925f9c2",
+        "index_bytes": 409600,
+        "palette_format": "RGB565, each channel rounded to nearest",
+        "palette_bytes": 512
+      }
+    }
+  },
+  "lookup_tables": {
+    "dragon_sqrt_q15": {
+      "type": "uint16_t",
+      "entries": 4097,
+      "formula": "round(sqrt(1-i/4096)*32767)"
+    },
+    "dragon_pupil_q15": {
+      "type": "uint16_t",
+      "entries": 257,
+      "formula": "round((1-(i/256)^1.7)^0.76*32767)"
+    },
+    "dragon_sin_q15": {
+      "type": "int16_t",
+      "entries": 1024,
+      "formula": "round(sin(i*2*pi/1024)*32767)"
+    }
+  },
+  "generated_include": {
+    "path": "src/dragon_assets.inc",
+    "sha256": "e0c0a4c5c8fa4d7c2c9feb47d2e51430bb339ccd980e3067bb92e9fb32d1e3e0",
+    "texture_data_bytes": 641024,
+    "lookup_table_bytes": 10756,
+    "total_data_bytes": 651780
+  }
+}

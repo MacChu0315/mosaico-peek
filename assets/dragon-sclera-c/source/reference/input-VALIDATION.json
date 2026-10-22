@@ -1,0 +1,40 @@
+{
+  "source_revision": "140afe72059181113f74c1fc71b6f46a91979f30",
+  "Pillow": "10.4.0",
+  "compiler": "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "ffmpeg": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+  "production_C_baseline_frames_exact": 11,
+  "candidate_changes_only_sclera": {
+    "center": 1428,
+    "left": 20380,
+    "right": 20552,
+    "up": 8588,
+    "down": 3000,
+    "up-left": 27608,
+    "up-right": 27792,
+    "down-left": 22680,
+    "down-right": 23084,
+    "half-closed": 624,
+    "closed": 0
+  },
+  "invalid_inputs_rejected": [
+    "wrong-size",
+    "transparent"
+  ],
+  "original_and_production_sources_hashes_and_mtimes_unchanged": true,
+  "movie": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 480,
+        "height": 480,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "8.000000"
+    }
+  },
+  "physical_or_native_GSP_validation": false,
+  "note": "Art preparation only; no new design or firmware implementation. Candidate sampler is reference-only; preset poses are not thermal inputs."
+}

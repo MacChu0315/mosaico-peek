@@ -1,0 +1,101 @@
+{
+  "kind": "synthetic pose reference, not thermal detector input",
+  "duration_seconds": 8,
+  "frames": 200,
+  "fps": 25,
+  "sample_step": 2,
+  "fixed_pose": {
+    "squint": 0.69,
+    "pupil_width": 0.072,
+    "tension": 0.16
+  },
+  "gaze_segment_seconds": [
+    0,
+    5
+  ],
+  "gaze_points": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      -0.78,
+      0,
+      0
+    ],
+    [
+      0.78,
+      0,
+      0
+    ],
+    [
+      0,
+      -0.58,
+      0
+    ],
+    [
+      0,
+      0.58,
+      0
+    ],
+    [
+      -0.78,
+      -0.58,
+      0
+    ],
+    [
+      0.78,
+      0.58,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "point_time_rule": "t_i=5*i/7, i=0..7",
+  "gaze_interpolation": "u*u*(3-2*u)",
+  "blink_segments": [
+    {
+      "seconds": [
+        5,
+        5.5
+      ],
+      "blink": [
+        0,
+        1
+      ],
+      "interpolation": "smoothstep"
+    },
+    {
+      "seconds": [
+        5.5,
+        6.5
+      ],
+      "blink": 1
+    },
+    {
+      "seconds": [
+        6.5,
+        7
+      ],
+      "blink": [
+        1,
+        0
+      ],
+      "interpolation": "smoothstep"
+    },
+    {
+      "seconds": [
+        7,
+        8
+      ],
+      "blink": 0
+    }
+  ],
+  "source": "preview/tool/preview.py original movie path",
+  "seed": null,
+  "randomness": false
+}

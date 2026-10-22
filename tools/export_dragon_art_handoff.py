@@ -27,6 +27,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=ROOT/'review/dragon-sclera-art-handoff-v1');p.add_argument('--package-existing',action='store_true');a=p.parse_args();out=a.output.resolve()
     if ROOT/'review' not in out.parents:p.error('Output must be inside this project review/')
     if a.package_existing:package(out);return
+    if 'c = sclera(lx,ly);' in (ROOT/'src/dragon_render.c').read_text():
+        p.error('Legacy procedural-sclera exporter requires the retained pre-integration source; existing v1 ZIP remains valid')
     if out.exists():p.error('Refusing to overwrite existing handoff')
     original=ROOT/'review-inputs/peek-phase2-inputs/approved-dragon'
     if not original.is_dir():p.error('Original approved-dragon input package is missing; do not invent originals')

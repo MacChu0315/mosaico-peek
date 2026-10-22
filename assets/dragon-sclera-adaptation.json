@@ -1,0 +1,10 @@
+{
+  "source_package": "assets/dragon-sclera-c",
+  "source": "submission/sclera.png",
+  "sha256": "5775c62ce834c1e3573148241f2589e434d0226a9cea4d88ad78348d2c4c9887",
+  "size": [480, 480],
+  "format": "RGB888, exact source bytes, no palette or downsampling",
+  "center": [240, 240],
+  "radius": 233,
+  "scope": "Only the existing dragon eyeball sclera branch; retain all other geometry, lighting, pose and input semantics"
+}

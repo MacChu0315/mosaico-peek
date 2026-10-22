@@ -1,0 +1,15 @@
+{
+  "tool": "built-in imagegen",
+  "assets": [
+    {
+      "file": "assets/iris.png",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset type: original dragon iris texture for an animated single eye on a small square display. Generate one perfectly circular iris texture, straight on, centered in a square, the disc occupying 96% of the image width. Transparent outside the disc. An ancient feral dragon's rich acid-gold and chartreuse iris: luminous yellow-green near the center, ochre amber fissures, moss-green radial fibres and a thin very dark olive outer limbal ring. Many fine tapered radial streaks with a few broader jagged branching structures, organic and expertly painted, strong tonal depth but coherent at small scale. The entire disk is covered by iris material INCLUDING THE CENTER: no pupil, no central hole, no black center, no eyelids, no surrounding skin, no highlights from lamps, no spherical lighting or shadow, no text. This is a reusable flat surface texture, not a finished eyeball. Small deliberate irregularities, high-quality hand-painted fantasy game art, no cartoon icon or vector wedge spokes. The center remains yellow-green and must not be dark; a separate animated slit pupil will be composited over it."
+    },
+    {
+      "file": "assets/skin.png",
+      "transparent_background": false,
+      "prompt": "Use case: stylized-concept. Asset type: original dragon skin texture for an animated single-eye character. One square opaque image, edge to edge covered by richly hand-painted reptilian scales. Very dark desaturated plum and indigo scales over near-black recesses, with restrained smoky-violet edge accents and occasional muted slate-blue facets. A feral ancient dragon, tactile angular irregular polygon scales with subtle ridges and chips, moderate chunky scales about 25 to 45 across the image width. Dark and dignified, not candy purple. Low-key directional light from upper left, no glossy wet shine. The design should read well on a small display: deliberate clusters of larger scale plates, strong but not noisy. Absolutely no eye, no pupil, no eye socket, no face, no animal silhouette, no holes, no text, no border, no center emblem. Just the full frame skin material. This is a reusable painted texture for procedurally shaped eyelids, not a photograph. Highly crafted fantasy-game illustration with texture and depth, not flat vector hexagon tiling."
+    }
+  ]
+}

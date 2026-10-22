@@ -16,7 +16,7 @@ def main():
             assert (a['role'],a['stationary'],a['observations'])==(e['role'],e['stationary'],e['observations'])
         return actual
     # Every theme must consume all original events through the production path.
-    for theme in ['night_owl','deep_sea','mechanical']:
+    for theme in ['dragon','night_owl','deep_sea','mechanical']:
         command('view '+theme);command('case live');command('advance 69000');verify();s=state();assert s['result']['samples']==511
         command('replay');command('advance 69000');verify();assert s['role']==state()['role'] and s['result']==state()['result']
     command('view night_owl');command('case live');command('play');start=time.monotonic();next_capture=start;records=[];captures=[];switches=[];folder=ROOT/'.run/eye-recorded';folder.mkdir(exist_ok=True)

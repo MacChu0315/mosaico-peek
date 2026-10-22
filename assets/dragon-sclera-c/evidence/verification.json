@@ -1,0 +1,132 @@
+{
+  "scope": "Selected dragon sclera C artwork handoff",
+  "submission_byte_identical_to_selected_C": true,
+  "submission_sha256": "5775c62ce834c1e3573148241f2589e434d0226a9cea4d88ad78348d2c4c9887",
+  "baseline_pose_count": 11,
+  "baseline_pixels_match_input": true,
+  "candidate_pose_count": 11,
+  "candidate_pixels_match_selected_static_C": true,
+  "changes_outside_sclera_mask": 0,
+  "closed_pose_unchanged": true,
+  "original_uploaded_files_unchanged": 56,
+  "original_preview_files_copied_byte_for_byte": 9,
+  "runtime_surface_rebuild_byte_identical": true,
+  "frames_in_input_timeline": 200,
+  "video_seconds": 8,
+  "video_fps_reference_only": 25,
+  "native_GSP_verified": false,
+  "device_verified": false,
+  "production_encoding_implemented": false,
+  "pose_checks": [
+    {
+      "pose": "center",
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 1300,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "left",
+      "gaze_x": -0.78,
+      "gaze_y": 0,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 19960,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "right",
+      "gaze_x": 0.78,
+      "gaze_y": 0,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 20212,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "up",
+      "gaze_x": 0,
+      "gaze_y": -0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 8132,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "down",
+      "gaze_x": 0,
+      "gaze_y": 0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 2872,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "up-left",
+      "gaze_x": -0.78,
+      "gaze_y": -0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 27028,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "up-right",
+      "gaze_x": 0.78,
+      "gaze_y": -0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 27356,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "down-left",
+      "gaze_x": -0.78,
+      "gaze_y": 0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 22192,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "down-right",
+      "gaze_x": 0.78,
+      "gaze_y": 0.58,
+      "blink": 0,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 22612,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "half-closed",
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "blink": 0.5,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 528,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    },
+    {
+      "pose": "closed",
+      "gaze_x": 0,
+      "gaze_y": 0,
+      "blink": 1,
+      "baseline_changed_pixels": 0,
+      "changed_pixels": 0,
+      "changed_outside_sclera": 0,
+      "changed_from_selected_C": 0
+    }
+  ]
+}

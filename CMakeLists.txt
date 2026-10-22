@@ -181,3 +181,5 @@ target_compile_definitions(test_device_adapter_mounted PRIVATE TEST_DEVICE_MOUNT
 target_compile_options(test_device_adapter_mounted PRIVATE -UNDEBUG -Wall -Wextra -Werror)
 target_link_libraries(test_device_adapter_mounted PRIVATE peek dragon eye_pack)
 add_test(NAME device_adapter_mounted COMMAND test_device_adapter_mounted)
+add_test(NAME dragon_sclera_reference COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dragon_sclera.py" "${CMAKE_BINARY_DIR}")
+add_test(NAME dragon_sclera_source_readonly COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dragon_sclera_build.py")

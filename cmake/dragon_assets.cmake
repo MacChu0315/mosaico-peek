@@ -22,4 +22,12 @@ add_custom_command(OUTPUT "${PEEK_ASSETS_INC}"
     DEPENDS "${PEEK_ROOT}/tools/bake_dragon.py" "${PEEK_ROOT}/assets/dragon/skin.png" "${PEEK_ROOT}/assets/dragon/iris.png"
             "${PEEK_ROOT}/assets/dragon/metadata.json"
     VERBATIM)
-add_custom_target(peek_dragon_assets DEPENDS "${PEEK_ASSETS_INC}")
+set(PEEK_SCLERA_INC "${PEEK_GENERATED_DIR}/dragon_sclera.inc")
+file(GLOB_RECURSE PEEK_SCLERA_SOURCES CONFIGURE_DEPENDS "${PEEK_ROOT}/assets/dragon-sclera-c/*")
+add_custom_command(OUTPUT "${PEEK_SCLERA_INC}"
+    BYPRODUCTS "${PEEK_GENERATED_DIR}/dragon_sclera.json"
+    COMMAND "${Python3_EXECUTABLE}" "${PEEK_ROOT}/tools/bake_dragon_sclera.py" --output "${PEEK_SCLERA_INC}"
+    DEPENDS "${PEEK_ROOT}/tools/bake_dragon_sclera.py" "${PEEK_ROOT}/tools/bake_dragon.py"
+            "${PEEK_ROOT}/assets/dragon-sclera-adaptation.json" ${PEEK_SCLERA_SOURCES}
+    VERBATIM)
+add_custom_target(peek_dragon_assets DEPENDS "${PEEK_ASSETS_INC}" "${PEEK_SCLERA_INC}")
