@@ -51,6 +51,8 @@ esp_err_t mosaico_thermal_del(mosaico_thermal_handle_t h){(void)h;return ESP_OK;
 esp_gsp_err_t peek_ui_init(peek_ui_t *s,esp_gsp_handle_t ui,peek_control_fn fn,void *ctx){memset(s,0,sizeof(*s));s->ui=ui;s->control=fn;s->context=ctx;assert(peek_init(&s->detector,NULL));return ui_failure?ESP_FAIL:ESP_OK;}
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon){(void)s;(void)dragon;return ESP_GSP_OK;}
 esp_gsp_err_t peek_ui_set_character(peek_ui_t *s,unsigned character){(void)s;assert(character==0);return ESP_GSP_OK;}
+void device_orientation_read(device_orientation_status_t *out){*out=(device_orientation_status_t){.rotation=90,.automatic=true};}
+esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *s,unsigned q){s->orientation=q;return ESP_GSP_OK;}
 static uint32_t button_presses;static int button_delta;
 uint32_t device_buttons_take_presses(void){uint32_t n=button_presses;button_presses=0;return n;}
 esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){button_delta=delta;s->character=(s->character+delta)%4;return ESP_GSP_OK;}
@@ -67,6 +69,7 @@ int main(void){
     reset_stubs();app=calloc(1,sizeof(*app));assert(peek_init(&app->view.detector,NULL));
     peek_live_t message={0};fake_us=1000000;queue_has_frame=true;refresh((void *)1,&message);
     assert(app->view.detector.result.accepted_samples==1 && app->view.detector.result.data==PEEK_VALID);
+    assert(app->view.orientation==90&&app->view.orientation_auto);
     button_presses=5;button_delta=0;refresh((void *)1,&message);
     assert(button_delta==1 && app->view.character==1 && !button_presses);
     free(app);app=NULL;

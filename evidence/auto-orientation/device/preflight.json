@@ -1,0 +1,8 @@
+{
+  "source": "d01c49cd9d1e76b3337b215bd96b0e617f52ef9d",
+  "bundle_sha256": "788bd08b349d1d1aad0f6dde94b39913f97298452dcf1f6704af4e6b110b51c6",
+  "elf_sha256": "4f3ed546842c0307784dba6728cfb1a40ab5453415c98c56cf39bdb392365ab8",
+  "layout_unchanged": true,
+  "recovery_component": false,
+  "bootloader_component": false
+}

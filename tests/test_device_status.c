@@ -24,12 +24,14 @@ int main(void){
     v.dragon.pose.blink=.5f;publish(&v,400); /* Previous open, next closing. */
     v.dragon.pose.blink=1;v.dragon.sleeping=true;publish(&v,500);
     v.dragon.pose.blink=0;v.dragon.sleeping=false;publish(&v,600); /* Previous asleep excluded. */
+    v.orientation=270;v.orientation_auto=true;v.orientation_error=ESP_FAIL;v.orientation_sampled_ms=650;
     publish(&v,700);
     assert(snapshot.open_frames==3 && snapshot.open_elapsed_ms==300);
     assert(snapshot.open_busy_us==3000 && snapshot.open_raster_us==1800 && snapshot.open_submit_us==1200);
     uint8_t out[2048];size_t n=0;esp_iris_rpc_request_t q={0};struct snapshot before=snapshot;
     assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK && n<sizeof(out));
     assert(strstr((char *)out,"\"open_frames\":3") && strstr((char *)out,"\"sleeping\":false"));
+    assert(strstr((char *)out,"\"orientation\":270")&&strstr((char *)out,"\"imu_error\":-1"));
     assert(!memcmp(&snapshot,&before,sizeof(snapshot)));
     assert(rpc(&q,out,32,&n,NULL)==ESP_ERR_INVALID_SIZE);q.payload_size=1;assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_ERR_INVALID_ARG);
     v.dragon_view=true;

@@ -15,6 +15,10 @@ typedef struct {
     peek_frame_t displayed;
     bool has_frame,paused,live,canvas_registered,event_registered,dragon_registered,dragon_view,dragon_prepared;
     float previous_blink;
+    bool orientation_auto;int orientation_error;
+    uint64_t orientation_sampled_ms;float orientation_accel[3];
+    unsigned orientation; /* clockwise artwork quarter-turn, UI owner only */
+    uint16_t rotation_tile[16*16]; /* bounded scratch, no extra framebuffer */
     unsigned sample_step; /* Eye only:1=480 or2=240 unique samples; output480. */
     dragon_t dragon;dragon_renderer_t *renderer;
     peek_input_t input;bool pointer_registered;
@@ -28,6 +32,7 @@ typedef struct {
     void *context;
 } peek_ui_t;
 esp_gsp_err_t peek_ui_init(peek_ui_t *state,esp_gsp_handle_t ui,peek_control_fn control,void *context);
+esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *state,unsigned rotation);
 void peek_ui_reset(peek_ui_t *state,const char *source);
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *state,bool dragon);
 /* UI owner only. Selection preserves input, role state, mapping and time. */

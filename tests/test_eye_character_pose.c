@@ -33,5 +33,12 @@ int main(void){
     role.sleeping=true;role.pose.blink=7.5f/8.f;dragon_pose_t closed=eye_character_pose(3,&role);assert(closed.gaze_x==0&&closed.gaze_y==0);
     role.sleeping=true;role.waking=false;role.pose.blink=1;
     for(int i=0;i<50;i++){role.pose.gaze_x=i*.01f-.25f;role.pose.gaze_y=.2f-i*.008f;dragon_pose_t p=eye_character_pose(3,&role);assert(p.gaze_x==0&&p.gaze_y==0);}
+    for(unsigned angle=0;angle<360;angle+=90){
+        dragon_pose_t centered=eye_artwork_pose(3,&role,angle);assert(centered.gaze_x==0&&centered.gaze_y==0);
+        for(unsigned c=0;c<3;c++){
+            dragon_pose_t p=eye_artwork_pose(c,&role,angle);float x,y;
+            peek_orientation_gaze(angle,role.pose.gaze_x,role.pose.gaze_y,&x,&y);assert(p.gaze_x==x&&p.gaze_y==y);
+        }
+    }
     puts("PASS mechanical sleep closes to fixed center and wakes to source gaze; ordinary blinks/other characters/source immutable");
 }

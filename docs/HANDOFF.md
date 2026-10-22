@@ -1,6 +1,9 @@
 # Peek handoff — socket A and centered mechanical sleep (2026-10-22)
 
-Current source targets1.0.8-peek-center. User selected A, restoring the original
+Current source targets1.0.10-peek-integrated, combining calibrated orientation
+(fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
+1.0.8 center bundle was NEVER installed: preflight found the newer orientation
+firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
 fixed metal socket around the new C globe/central shutter. On sleep closure,
 only the mechanical display pose smoothly returns to center; the final closed
 shutter frame stays exactly still. Wake resumes existing follow. Ordinary
@@ -15,10 +18,12 @@ retained unselected image-generation candidate. The supplied C package is intact
 
 ## Current device versus candidate
 
-Device currently runs verified1.0.7-peek-mechanical, sourcedf6f6da,
-ELF97d859cb847b3ceeff6956477098a28210dc90ebe50a3f3e6dfdc5f5ac010d2e,
-Boot1088401539410791703. Final1.0.8 build/install verification is in progress;
-do not infer that source changes are already installed.
+Device currently runs verified1.0.9-peek-orient, source74a0f44,
+ELF47dc46dec991d830c94972b55b89833a56819634d4e6fb79d43736ff7c745c5a,
+Boot11903143034352040053. User accepted four physical directions for dragon in
+the completed orientation task. Keep IMU screen gravity(-ax,+ay), mount quarters0,
+auto orientation enabled and both thermal gaze flips false. The integration is
+being re-tested; no integrated firmware has been written yet.
 
 26/26 Debug and Release tests pass for A/centering. Independent81 mechanical
 pose/stage images and16 stage boundaries pass; full480 scalar parity preserved.
@@ -34,7 +39,7 @@ Historical1.0.7 thin-mount measurements:3.935 active-open complete GSP frames/s,
 3.879 sleeping frames/s; raster212..214ms, submit32ms.74.41s mechanical segments,
 583 fresh thermal samples, zero faults. This was slower than1.0.6's7.095Hz.
 Frame A reduces visible sphere area to the original socket's footprint; new
-1.0.8 performance must be measured, not inferred. Physical panel FPS, touch
+integrated performance must be measured, not inferred. Physical panel FPS, touch
 latency, largest allocator block and complete memory peaks remain unmeasured.
 Extreme-direction peripheral texture stretching still exists in the supplied
 surface. No smaller gaze range, downsampling or palette was added to hide it.

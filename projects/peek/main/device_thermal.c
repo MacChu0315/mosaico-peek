@@ -15,6 +15,7 @@
 #include "sdkconfig.h"
 #include "device_status.h"
 #include "device_buttons.h"
+#include "device_orientation.h"
 #endif
 /* Sensor task owns driver, detector and role observation history. Render task
  * owns its independent view/canvas state. Latest-only mailbox drops display
@@ -87,6 +88,12 @@ static void refresh(esp_gsp_handle_t ui,void *ctx)
         app->view.displayed=snapshot->displayed;app->view.has_frame=snapshot->has_frame;
     }
 #ifdef ESP_PLATFORM
+    device_orientation_status_t orientation;device_orientation_read(&orientation);
+    app->view.orientation_auto=orientation.automatic;app->view.orientation_error=orientation.error;
+    app->view.orientation_sampled_ms=orientation.sampled_ms;
+    app->view.orientation_accel[0]=orientation.ax;app->view.orientation_accel[1]=orientation.ay;app->view.orientation_accel[2]=orientation.az;
+    esp_gsp_err_t orient_rc=peek_ui_set_orientation(&app->view,orientation.rotation);
+    if(orient_rc!=ESP_GSP_OK)app->view.error=orient_rc;
     uint32_t presses=device_buttons_take_presses();
     /* Preserve the net result of all presses while avoiding repeated decode
      * during one display step. The sensor owner keeps processing independently. */

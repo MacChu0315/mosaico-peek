@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/mechanical-c/a-centered/sleep-center';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/mechanical-c/integrated/sleep-center';OUT.mkdir(parents=True,exist_ok=True)
 def main():
  checks=[];ready=json.loads((ROOT/'.run/ready.json').read_text())
  with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
@@ -21,7 +21,7 @@ def main():
    code=lambda a:np.rint(a/255*np.array([31,63,31])).astype(int)
    assert np.array_equal(code(actual),code(expected)),name
    checks.append(dict(name=name,state=s,pixels_sha256=hashlib.sha256(actual.tobytes()).hexdigest()));return s,actual
-  command('view mechanical');command('case sleep');command('advance 6180');s,_=shot('ordinary-blink')
+  command('orientation 0');command('view mechanical');command('case sleep');command('advance 6180');s,_=shot('ordinary-blink')
   assert not s['role']['sleeping'] and s['render_pose']==s['role']['pose']
   command('replay');closed=None
   for at,name in [(9950,'before-close'),(10225,'closing-center'),(10400,'last-shutter-frame'),(10450,'closed'),(11400,'closed-later'),(11900,'closed-still'),(12250,'wake-start'),(12325,'waking'),(12400,'awake')]:

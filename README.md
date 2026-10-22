@@ -7,7 +7,7 @@ dragon and diagnostics. [Current three-theme integration, commands and limits](d
 Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
 `python3 tools/preview.py --view night_owl` starts directly.
 New art remains full480 with lossless RGBA sources and blended lids. Current
-build is1.0.8-peek-center (`sdkconfig.mechanical-center`): both gaze flips disabled per
+build is1.0.10-peek-integrated (`sdkconfig.integrated`): both gaze flips disabled per
 latest user feedback, new eyes use sphere rotation with120/80px pure-axis center
 travel. [Motion change and validation](docs/EYE_MOTION.md).
 The user accepted direction/range. Mechanical now uses the supplied C artwork
@@ -15,8 +15,9 @@ with a rotating central shutter and user-selected original metal socket A.
 During sleep closure it centers and remains still; owl/sea remain unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Installed1.0.7-peek-mechanical adds the new globe/central shutter and retains
-corrected mapping/range. The prior1.0.5 improved
+Device was updated by the completed orientation task to1.0.9-peek-orient.
+The current integrated candidate retains its calibrated automatic orientation
+and adds selected socket A plus centered sleep; see HANDOFF for installation. The prior1.0.5 improved
 observed mechanical active-open engine rate
 from2.009 to8.333Hz in separate live scenes; current installation status is in
 [handoff](docs/HANDOFF.md). Physical panel FPS is not measured.

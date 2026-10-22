@@ -17,9 +17,9 @@ if len(rows)<2 or rows[-1]["state"]["now_ms"]<=rows[0]["state"]["now_ms"]:raise 
 groups={}
 for x,y in zip(rows,rows[1:]):
  p,q=x['state'],y['state']
- if p['view']!=q['view']:continue
- key=(p['view'],'sleeping' if p['sleeping'] and q['sleeping'] else 'active-or-transition')
- r=groups.setdefault(key,dict(view=key[0],condition=key[1],ms=0,frames=0,draw_us=0,raster_us=0,submit_us=0,prepare_us=0,prepares=0,samples=0,faults=0,open_frames=0,open_ms=0,open_raster_us=0,open_submit_us=0))
+ if p['view']!=q['view'] or p.get('orientation',0)!=q.get('orientation',0):continue
+ key=(p['view'],'sleeping' if p['sleeping'] and q['sleeping'] else 'active-or-transition',p.get('orientation',0))
+ r=groups.setdefault(key,dict(view=key[0],condition=key[1],orientation=key[2],ms=0,frames=0,draw_us=0,raster_us=0,submit_us=0,prepare_us=0,prepares=0,samples=0,faults=0,open_frames=0,open_ms=0,open_raster_us=0,open_submit_us=0))
  for name,pkey in [('ms','now_ms'),('frames','render_frames'),('draw_us','draw_us'),('raster_us','raster_us'),('submit_us','submit_us'),('prepare_us','prepare_us'),('prepares','prepares'),('samples','samples'),('faults','faults'),('open_frames','open_frames'),('open_ms','open_elapsed_ms'),('open_raster_us','open_raster_us'),('open_submit_us','open_submit_us')]:r[name]+=q[pkey]-p[pkey]
 for r in groups.values():
  r['engine_hz']=r['frames']*1000/r['ms'];r['raster_ms_frame']=r['raster_us']/max(1,r['frames'])/1000;r['submit_ms_frame']=r['submit_us']/max(1,r['frames'])/1000;r['prepare_ms_mean']=r['prepare_us']/max(1,r['prepares'])/1000;r['active_open_hz']=r['open_frames']*1000/r['open_ms'] if r['open_ms'] else None

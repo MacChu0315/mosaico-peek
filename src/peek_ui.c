@@ -1,6 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
 /* SPDX-License-Identifier: Apache-2.0 */
 #include "peek_ui.h"
+#include "peek_orientation.h"
 #define GSP_BUNDLE_ENABLE_LEGACY_NAMES 1
 #include "bundle_gsp.h"
 #include <math.h>
@@ -45,10 +46,42 @@ static void draw(const esp_gsp_canvas_surface_t *surface,void *context)
     }
     s->draws++;
 }
+static dragon_pose_t artwork_pose(const peek_ui_t *s){
+    return eye_artwork_pose(s->character,&s->dragon,s->orientation);
+}
+static bool prepare_eye(peek_ui_t *s){
+    dragon_pose_t pose=artwork_pose(s);
+    return s->character?eye_pack_prepare(s->eye_pack,&pose):dragon_renderer_prepare(s->renderer,&pose);
+}
+static bool draw_region(peek_ui_t *s,void *pixels,size_t stride,int x,int y,int w,int h){
+    return s->character?eye_pack_draw(s->eye_pack,pixels,stride,x,y,w,h):
+        (s->renderer&&dragon_renderer_draw(s->renderer,pixels,stride,x,y,w,h));
+}
+static bool draw_oriented(peek_ui_t *s,const esp_gsp_canvas_surface_t *surface){
+    if(!s->orientation)return draw_region(s,surface->pixels,surface->stride_bytes,surface->x,surface->y,surface->width,surface->height);
+    if(surface->x+surface->width>480||surface->y+surface->height>480)return false;
+    for(unsigned ty=0;ty<surface->height;ty+=16)for(unsigned tx=0;tx<surface->width;tx+=16){
+        unsigned w=surface->width-tx,h=surface->height-ty;if(w>16)w=16;if(h>16)h=16;
+        unsigned x0,y0,x1,y1;
+        peek_orientation_point(s->orientation,surface->x+tx,surface->y+ty,&x0,&y0);
+        peek_orientation_point(s->orientation,surface->x+tx+w-1,surface->y+ty+h-1,&x1,&y1);
+        unsigned left=x0<x1?x0:x1,top=y0<y1?y0:y1;
+        unsigned rw=s->orientation==180?w:h,rh=s->orientation==180?h:w;
+        if(!draw_region(s,s->rotation_tile,rw*2,left,top,rw,rh))return false;
+        for(unsigned y=0;y<h;y++){
+            uint16_t *row=(uint16_t *)((uint8_t *)surface->pixels+(ty+y)*surface->stride_bytes);
+            for(unsigned x=0;x<w;x++){
+                unsigned lx,ly;peek_orientation_point(s->orientation,surface->x+tx+x,surface->y+ty+y,&lx,&ly);
+                row[tx+x]=s->rotation_tile[(ly-top)*rw+lx-left];
+            }
+        }
+    }
+    return true;
+}
 static void draw_eye(const esp_gsp_canvas_surface_t *surface,void *context)
 {
     peek_ui_t *s=context;uint64_t start=real_us();
-    if(surface->pixel_format!=ESP_GSP_CANVAS_PIXEL_RGB565 || !(s->character ? eye_pack_draw(s->eye_pack,surface->pixels,surface->stride_bytes,surface->x,surface->y,surface->width,surface->height) : (s->renderer && dragon_renderer_draw(s->renderer,surface->pixels,surface->stride_bytes,surface->x,surface->y,surface->width,surface->height)))){
+    if(surface->pixel_format!=ESP_GSP_CANVAS_PIXEL_RGB565 || !draw_oriented(s,surface)){
         s->error=ESP_GSP_FAIL;return;
     }
     uint64_t elapsed=real_us()-start;s->render_us_total+=elapsed;
@@ -65,21 +98,20 @@ void peek_ui_time(peek_ui_t *s,uint64_t now)
 }
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
 {
-    dragon_pose_t artwork=eye_character_pose(s->character,&s->dragon);
     if(!dragon)peek_input_cancel(&s->input);
     /* UI owner only: release the inactive cache before replacement. Failure
      * propagates to the caller's display error; this is not an atomic rollback. */
     if(dragon && s->character){
         dragon_renderer_destroy(s->renderer);s->renderer=NULL;
         if(!s->eye_pack){s->eye_pack=eye_pack_create();if(!s->eye_pack)return ESP_GSP_ERR_NO_MEM;}
-        if(!eye_pack_select(s->eye_pack,s->character-1)||!eye_pack_prepare(s->eye_pack,&artwork))return ESP_GSP_FAIL;
+        if(!eye_pack_select(s->eye_pack,s->character-1))return ESP_GSP_FAIL;
     }
     if(dragon&&!s->character){eye_pack_destroy(s->eye_pack);s->eye_pack=NULL;}
     if(dragon&&!s->character&&!s->renderer){
         s->renderer=dragon_renderer_create();if(!s->renderer)return ESP_GSP_ERR_NO_MEM;
-        if(!(s->character ? eye_pack_prepare(s->eye_pack,&artwork) : dragon_renderer_prepare(s->renderer,&s->dragon.pose)))return ESP_GSP_FAIL;
     }
     if(dragon && !s->character && !dragon_renderer_set_sample_step(s->renderer,s->sample_step))return ESP_GSP_ERR_INVALID_ARG;
+    if(dragon && !prepare_eye(s))return ESP_GSP_FAIL;
     if(dragon&&!s->dragon_registered){
         esp_gsp_err_t rc=esp_gsp_canvas_set_draw_cb(s->ui,GSP_BIND_EYE,draw_eye,s);
         if(rc!=ESP_GSP_OK)return rc;
@@ -90,6 +122,16 @@ esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
     rc=gsp_peek_eye_layer_set_visible(s->ui,dragon);
     if(rc!=ESP_GSP_OK)return rc;
     s->dragon_view=dragon;return ESP_GSP_OK;
+}
+esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *s,unsigned q){
+    if(q!=0&&q!=90&&q!=180&&q!=270)return ESP_GSP_ERR_INVALID_ARG;
+    if(s->orientation==q)return ESP_GSP_OK;
+    peek_input_cancel(&s->input);s->orientation=q;s->dragon_prepared=false;
+    if(s->dragon_view){
+        if(!prepare_eye(s)){remember(s,ESP_GSP_FAIL);return ESP_GSP_FAIL;}
+        remember(s,esp_gsp_canvas_invalidate(s->ui,GSP_BIND_EYE));
+    }
+    return s->error;
 }
 const char *peek_ui_character_name(const peek_ui_t *s){return s->character?eye_pack_name(s->character-1):"dragon";}
 esp_gsp_err_t peek_ui_set_character(peek_ui_t *s,unsigned character){
@@ -110,6 +152,10 @@ esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){
 }
 static void pointer(esp_gsp_handle_t ui,int32_t x,int32_t y,bool pressed,void *ctx){
     (void)ui;peek_ui_t *s=ctx;
+    if(s->dragon_view && s->orientation){
+        if(x<0||y<0||x>=480||y>=480){peek_input_cancel(&s->input);return;}
+        unsigned lx,ly;peek_orientation_point(s->orientation,(unsigned)x,(unsigned)y,&lx,&ly);x=(int32_t)lx;y=(int32_t)ly;
+    }
     int delta=peek_input_update(&s->input,x,y,pressed,s->dragon_view,real_us()/1000);
     if(delta)remember(s,peek_ui_cycle_character(s,delta));
 }
@@ -119,15 +165,18 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
     peek_ui_time(s,now);
     if(s->error!=ESP_GSP_OK)return;
     if(s->dragon_view){
-        dragon_pose_t artwork=eye_character_pose(s->character,&s->dragon);
         uint64_t start=real_us();
-        if(!(s->character ? eye_pack_prepare(s->eye_pack,&artwork) : dragon_renderer_prepare(s->renderer,&s->dragon.pose))){s->error=ESP_GSP_FAIL;return;}
+        if(!prepare_eye(s)){s->error=ESP_GSP_FAIL;return;}
         uint64_t elapsed=real_us()-start;s->prepare_us_total+=elapsed;s->prepares++;
         if(elapsed>s->prepare_us_max)s->prepare_us_max=elapsed;
         if(!s->character && s->dragon_prepared && s->previous_blink==0 && s->dragon.pose.blink==0){
             /* Both open poses differ only in this tested eye/crease union.
              * A blink deforms the whole hood, so those transitions repaint all. */
-            remember(s,esp_gsp_canvas_invalidate_dirty(s->ui,GSP_BIND_EYE,(gsp_rect_t){16,80,464,416}));
+            gsp_rect_t rect={16,80,464,416};
+            if(s->orientation==90)rect=(gsp_rect_t){64,16,400,464};
+            if(s->orientation==180)rect=(gsp_rect_t){16,64,464,400};
+            if(s->orientation==270)rect=(gsp_rect_t){80,16,416,464};
+            remember(s,esp_gsp_canvas_invalidate_dirty(s->ui,GSP_BIND_EYE,rect));
         }else remember(s,esp_gsp_canvas_invalidate(s->ui,GSP_BIND_EYE));
         s->previous_blink=s->dragon.pose.blink;s->dragon_prepared=true;return;
     }
