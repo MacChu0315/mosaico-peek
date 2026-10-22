@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Native mechanical presentation centering; source detection/role remain intact."""
-import io,json,subprocess,sys,time,hashlib
+import io,json,os,subprocess,sys,time,hashlib
 from pathlib import Path
 from PIL import Image
 import numpy as np
@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-OUT=ROOT/'evidence/mechanical-c/integrated/sleep-center';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/mechanical-c/integrated/sleep-center'));OUT.mkdir(parents=True,exist_ok=True)
 def main():
  checks=[];ready=json.loads((ROOT/'.run/ready.json').read_text())
  with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:

@@ -1,6 +1,6 @@
 # Peek handoff — socket A and centered mechanical sleep (2026-10-22)
 
-Current source targets1.0.10-peek-integrated, combining calibrated orientation
+Current source targets1.0.11-peek-direction, combining calibrated orientation
 (fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
 1.0.8 center bundle was NEVER installed: preflight found the newer orientation
 firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
@@ -12,26 +12,41 @@ full480 rendering remain unchanged. [Details and commands](MECHANICAL_C.md).
 
 The raw shared controller intentionally retains its previous idle behavior;
 Host render_pose and device render_gaze_x/y describe the mechanical display.
-Do not “fix” this by writing centered gaze into the source or by flipping axes.
+Do not center by writing back into the source; thermal mounting signs are a separate calibration.
 A selection is recorded in assets/mechanical-c-adaptation.json. B remains a
 retained unselected image-generation candidate. The supplied C package is intact.
 
 ## Current device versus candidate
 
-Device currently runs verified1.0.9-peek-orient, source74a0f44,
-ELF47dc46dec991d830c94972b55b89833a56819634d4e6fb79d43736ff7c745c5a,
-Boot11903143034352040053. User accepted four physical directions for dragon in
-the completed orientation task. Keep IMU screen gravity(-ax,+ay), mount quarters0,
-auto orientation enabled and both thermal gaze flips false. The integration is
-being re-tested; no integrated firmware has been written yet.
+Installed1.0.10-peek-integrated, source7d897f6,
+ELF3dc84c29223f08681d8472ad3601d8e053b0e991de9c55a9875a9e7bb28b955f,
+Boot13998171743381255122. Official update retry succeeded as operation
+7e9e5d4b-bc8d-40e3-8a04-4c25cb99692f. The first update outcome remained unknown
+following a Recovery writer reset; read-only reconciliation, a new healthy idle
+Recovery boot, empty queue and absent job preceded the same-bundle retry.
+Evidence: evidence/mechanical-c/integrated/device-install/.
 
-26/26 Debug and Release tests pass for A/centering. Independent81 mechanical
-pose/stage images and16 stage boundaries pass; full480 scalar parity preserved.
-Native A:11 centered-close/wake pixel checkpoints and a real-time close clip,
-16 pointer checks/four artwork captures,22 mechanical motion/sleep checkpoints
-and two full wall-time movies pass. Source role/detector survive switches/replay.
-Final evidence belongs under evidence/mechanical-c/a-centered/; old1.0.7 evidence
-is retained separately. Native dynamic evidence is not physical FPS acceptance.
+Latest user feedback rejects BOTH tracking axes in mechanical AND dragon in
+unchanged placement. Device reports orientation0, flipsfalse/false. Both actual
+C rasterers independently move positive gaze right/down. This points to shared
+thermal mounting signs, not an artwork-only shader or IMU rotation correction.
+Earlier1.0.6 and1.0.9 physical acceptance remains historical; why those reports
+contradict the latest observation has not been established. Do not claim it was
+caused by this merge: shared source mapping and IMU code were retained exactly.
+
+Current candidate1.0.11-peek-direction enables BOTH existing source mapping flips
+using isolated sdkconfig.integrated-direction. Raw768 arrays, detector results,
+IMU gravity(-ax,+ay), mount quarters0, centering and renderers remain unchanged.
+Device-equivalent preview requires --flip-x --flip-y. Physical retest is pending.
+The failed-before/passing-after config regression prevents silent restoration of
+old defaults; adapter tests cover both configurations and mailbox inheritance.
+New evidence: evidence/mechanical-c/direction/; failed1.0.10 direction feedback:
+evidence/mechanical-c/integrated/direction-feedback/.
+
+Integrated1.0.10 had29/29 Debug/Release and40 native four-way pixel checks.
+A/centering had11 native close/wake checks and a real-time close clip. These are
+software parity evidence, not proof of physical heat-direction correctness.
+The1.0.11 checks are recorded separately; no physical direction pass yet.
 
 ## Performance and known limits
 
@@ -69,7 +84,7 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 -Exact local ELF/map/config backups: ignoredfirmware-local/. No full-flash
  readback backup claim. Local branchfeat/eye-ui-trio; no remote configured/written.
 
-Start: python3 tools/preview.py --view mechanical (no flip flags).
+Start: python3 tools/preview.py --view mechanical --flip-x --flip-y.
 Select/replay: tools/control.py view mechanical; case sleep/live/dragon;
 play/pause/replay. Product taps/left swipes/AI single clicks advance, right swipes
 return. Package: python3 tools/package_review.py --mechanical-c, after clean commit.

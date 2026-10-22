@@ -22,7 +22,7 @@ def main():
         parts=Path(name).parts
         if any(p in forbidden or p.startswith('build') for p in parts[:-1]):raise RuntimeError('Unexpected generated/dependency directory tracked: '+name)
         if name=='src/dragon_assets.inc':raise RuntimeError('Generated asset include must not be tracked')
-        if args.mechanical_c and name.startswith('evidence/') and not name.startswith('evidence/mechanical-c/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl','evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/motion/device-install/README.md','evidence/eye-ui/performance/native/native-checks.json','evidence/eye-ui/motion/native-switch/native-checks.json','evidence/eye-ui/performance/motion-live/summary.json'):continue
+        if args.mechanical_c and name.startswith('evidence/') and not name.startswith(('evidence/mechanical-c/','evidence/auto-orientation/')) and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl','evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/motion/device-install/README.md','evidence/eye-ui/performance/native/native-checks.json','evidence/eye-ui/motion/native-switch/native-checks.json','evidence/eye-ui/performance/motion-live/summary.json'):continue
         if args.eye_ui and name.startswith('evidence/') and not name.startswith('evidence/eye-ui/') and name not in ('evidence/real-input/detector-output.jsonl','evidence/real-input/role-output.jsonl'):continue
         if args.eye_ui and name.endswith('.irisfw') and name not in ('evidence/eye-ui/motion/device-install/eye-motion.irisfw','evidence/eye-ui/performance/device-install/eye-fast.irisfw'):continue
         if args.eye_ui and name.startswith('evidence/eye-ui/native/') and name.endswith('.mp4'):continue
@@ -39,7 +39,7 @@ def main():
     output=ROOT/'review';output.mkdir(exist_ok=True);archive=output/f'mosaico-peek-{"mechanical-c" if args.mechanical_c else "eye-ui" if args.eye_ui else "live-dragon"}-{commit[:8]}.zip'
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in selected:z.write(ROOT/name,'mosaico-peek/'+name)
-        if args.mechanical_c:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Mechanical C native integration; full retained source assets/provenance and current verification. Prior1.0.6 restore retained. Older evidence links may require the full checkout. Build: docs/MECHANICAL_C.md. No .git, dependencies, generated includes or build caches.\n')
+        if args.mechanical_c:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Integrated calibrated orientation, mechanical socket A and centered sleep; full retained sources/current verification. Exact1.0.9 restore and older verified packages retained. Standalone1.0.8 center candidate is excluded. Older evidence links may require the full checkout. Build: docs/MECHANICAL_C.md. No .git, dependencies, generated includes or build caches.\n')
         if args.eye_ui:z.writestr('mosaico-peek/REVIEW_SCOPE.txt','Current eye UI source, retained source PNG/provenance, data and new evidence. Historical firmware/verification binaries and movies are excluded; historical document links can refer to the full checkout. No generated includes, dependencies or build caches. Build instructions: docs/EYE_UI.md.\n')
         z.writestr('mosaico-peek/REVIEW_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
     with zipfile.ZipFile(archive) as z:

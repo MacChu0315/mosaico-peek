@@ -1,6 +1,6 @@
 # Mechanical C — rotating central shutter
 
-Current1.0.8 source combines user-selected fixed metal socket A with the new C
+Current1.0.10 integrated source combines user-selected fixed metal socket A with the new C
 eye/shutter, and centers the mechanical presentation during sleep closure.
 [A/B comparison and exact sources](../evidence/mechanical-c/frame-candidates/comparison.png).
 The original thin round mount remains in the immutable input package, but is
@@ -66,7 +66,7 @@ python3 tools/report_eye_budget.py --output-dir evidence/mechanical-c
 
 Native controls: `python3 tools/control.py view mechanical`, `case dragon`,
 `case sleep`, `case live`, `play`, `pause`, `replay`. Do not pass flip flags.
-Current build selector`sdkconfig.mechanical-center`, version1.0.8-peek-center;
+Current build selector`sdkconfig.integrated`, version1.0.10-peek-integrated;
 known1.0.6 restore remains separately retained. Installed sourcedf6f6da is confirmed in
 [device evidence](../evidence/mechanical-c/device-install/README.md). Installation
 used an identical-bundle retry after read-only reconciliation of a retained
@@ -159,10 +159,41 @@ time idempotence, wake completion, source immutability, last-frame centering,
 ordinary blinks and other-character behavior. Actual native screenshots verify
 that all closed poses are identical while the raw controller continues moving.
 
-Final1.0.8 results/install/performance are recorded under
+Standalone1.0.8 native/build results (NEVER installed) are recorded under
 `evidence/mechanical-c/a-centered/`; historical1.0.7 evidence stays separate.
 Candidate source preparation: cmake --build build-host --target frame_candidate_snapshot;
 python3 tools/preview_mechanical_frames.py. The frame preview executable uses
 production eye_pack.c with review-only fixed-frame substitution; it is never
 linked into firmware. B was generated with built-in image_gen, retains original
 1254RGBA, and is resized only in the build folder for comparison.
+
+## Integration with accepted auto orientation
+
+Before standalone1.0.8 installation, a read-only identity check found that the
+completed orientation task had installed1.0.9-peek-orient. No1.0.8 write occurred.
+The user released the device and authorized integration. The local merge retains
+fca4114 (installed calibrated source74a0f44) without modifying its worktree.
+Calibrated gravity(-ax,+ay), automatic orientation and mount quarters0 are retained.
+
+Presentation order is mechanical centering -> inverse orientation gaze -> globe
+and fixed socket drawing -> complete-canvas quarter-turn. Host render_pose and
+device render_gaze_x/y are canonical artwork coordinates before canvas rotation;
+raw gaze_x/y retain source physical-coordinate semantics. Center stays zero in
+all four directions, including wake and theme/rotation changes. Target input is
+not rotated or re-fed. New CTest total29; native40 four-way pixel comparisons
+cover all four artworks plus mechanical centered sleep and partial wake.
+
+Latest evidence belongs under evidence/mechanical-c/integrated/. Exact1.0.9
+restore is retained there. The earlier standalone1.0.8 candidate is only a local
+uninstalled backup; never install it over the integrated/orientation versions.
+
+## Latest physical direction feedback
+
+Integrated1.0.10 was installed. User then reported both mechanical and dragon
+following in the opposite direction on both axes in unchanged placement.
+Runtime orientation0 and both gaze flipsfalse were recorded. Current1.0.11
+candidate enables both shared mounting flips; it does not change artwork, IMU,
+raw temperature coordinates, detector timing or centering. Previous physical
+acceptance is historical and conflicts with this observation; cause of that
+conflict remains unknown. See HANDOFF for physical retest and installed identity.
+Device-equivalent native startup now adds --flip-x --flip-y.

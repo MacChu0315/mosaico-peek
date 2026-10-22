@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "peek_ui.h"
+#ifndef TEST_DEVICE_MOUNT_FLIPS
+#define TEST_DEVICE_MOUNT_FLIPS 0
+#endif
 static unsigned freed,flushes,detached,deleted;
 static int fake_render_core,created_core;
 static unsigned core_queries,waited_ms;
@@ -83,10 +86,12 @@ int main(void){
         reset_stubs();fake_render_core=core;
         assert(device_thermal_start((void *)1)==ESP_OK && created_core==1-core && core_queries==1);
         producer_t *p=producer_context;
-        assert(!p->live.dragon.mapping.flip_x && !p->live.dragon.mapping.flip_y);
-        assert(!app->view.dragon.mapping.flip_x && !app->view.dragon.mapping.flip_y);
+        assert(p->live.dragon.mapping.flip_x==TEST_DEVICE_MOUNT_FLIPS && p->live.dragon.mapping.flip_y==TEST_DEVICE_MOUNT_FLIPS);
+        assert(app->view.dragon.mapping.flip_x==TEST_DEVICE_MOUNT_FLIPS && app->view.dragon.mapping.flip_y==TEST_DEVICE_MOUNT_FLIPS);
         queue_has_frame=true;refresh((void *)1,timer_context);
-        assert(!app->view.dragon.mapping.flip_x && !app->view.dragon.mapping.flip_y);
+        assert(app->view.dragon.mapping.flip_x==TEST_DEVICE_MOUNT_FLIPS && app->view.dragon.mapping.flip_y==TEST_DEVICE_MOUNT_FLIPS);
+        float gx,gy;assert(dragon_map(&app->view.dragon.mapping,31,23,&gx,&gy));
+        assert((gx<0)==TEST_DEVICE_MOUNT_FLIPS && (gy<0)==TEST_DEVICE_MOUNT_FLIPS);
         free(producer_context);free(timer_context);free(app);app=NULL;
     }
     reset_stubs();fake_render_core=-1;
