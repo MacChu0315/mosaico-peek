@@ -22,6 +22,11 @@ current motion range and centered closure as the accepted mechanical baseline.
 This acceptance does not expand rendering-detail authorization or imply the
 unmeasured performance/physical-orientation checks below have passed.
 
+Next art-only task: user requested the original dragon materials for sclera
+improvement. [Standalone material handoff](DRAGON_ART_HANDOFF.md) includes
+originals, procedural-sclera template and tested preview. No new dragon art is
+selected or installed; current firmware and accepted mechanical remain intact.
+
 ## Current device versus candidate
 
 Installed1.0.11-peek-direction, sourcee5d8629,
