@@ -1,10 +1,13 @@
-# Automatic orientation integration — 2026-10-22
+# Automatic orientation physical correction — 2026-10-22
 
-The orientation branch now includes main UI commit5e30025 and retains its
-mechanical C artwork. Candidate1.0.8-peek-orient uses build/sdkconfig.orientation.
-Integrated Host28/28 and pinned-IDF build pass. Hardware validation is being
-prepared under the standing target-specific authorization; installation and
-physical axis acceptance are not yet claimed. See AUTO_ORIENTATION.md.
+Branch includes main UI commit5e30025 and retains mechanical C. Version1.0.8
+installed successfully (operation862149bf-00bf-4d2a-ace8-1d55d7ed0578,
+Boot1100252626072364809), but user corrected their response to ALL FOUR
+orientations wrong. No physical acceptance. Labelled upright/+Y and clockwise90/-X
+measurements expose an XY handedness error plus the provisional mounting angle.
+Candidate1.0.9-peek-orient converts screen gravity to(-ax,+ay); real measurements
+are regression fixtures. Build config:sdkconfig.orientation-calibrated.
+Retest/install status is recorded in AUTO_ORIENTATION.md and device evidence.
 
 ---
 

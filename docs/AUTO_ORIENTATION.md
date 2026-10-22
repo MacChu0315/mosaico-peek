@@ -12,8 +12,10 @@ layer to inherit orientation.
 The main `mosaico-peek` worktree continues independently; its committed mechanical C artwork is now included here. None of
 its files, branches, running previews or devices were modified by this task.
 No dependency upgrade, remote write or change to the main worktree branch.
-**Hardware acceptance remains pending.** Do not treat the built firmware as a
-physically validated replacement for the main thread's current firmware.
+**1.0.8 was installed and failed physical orientation acceptance.** The user
+withdrew an initial positive reply and explicitly reported all four directions
+wrong. Do not cite that withdrawn reply as acceptance. Corrected1.0.9 is being
+prepared from the labelled measurements below; retest remains pending.
 
 ## Implemented
 
@@ -47,9 +49,11 @@ physically validated replacement for the main thread's current firmware.
 - `CONFIG_PEEK_FIXED_ORIENTATION=0..3`: startup/fallback direction, multiplied by90
   degrees clockwise. Disable automatic mode to lock this direction without IMU.
 - `CONFIG_PEEK_IMU_MOUNT_QUARTERS=0..3`: sensor-to-screen mounting quarter-turns.
-  Default1 uses screen gravity-down `(ay,-ax,-az)`. Existing Mosaico IMU app code
-  describes90-degree mounting, but this exact screen/sign relationship is
-  **provisional until verified on the physical board**. An IMU does not identify
+  Default0 now uses measured screen gravity-down `(-ax,+ay,-az)`. The original
+  quarter-turn-only mapping was wrong: screen and sensor XY handedness differ.
+  Upright measured approximately(+0.053,+0.913,+0.385)g; clockwise90 measured
+  (-0.451,+0.234,+0.863)g. Both are user-labelled, with raw RPC evidence retained.
+  Additional quarter-turns apply only after this axis conversion. An IMU does not identify
   which side of a flat screen the viewer occupies; flat placement holds direction.
 - Device RPC0x504c/1 adds `orientation`, `orientation_auto`, `imu_error`, `imu_ms`
   and `imu_accel`. `imu_ms` is the last sampling attempt; raw acceleration retains
@@ -90,7 +94,7 @@ Keep the main thread's current `eye_pack.c/.h`, assets, recipes, eye pack CMake,
 firmware version and build settings. This branch deliberately does not edit them.
 Likely merge overlaps are root/main/PC source lists and shared `peek_ui.c/.h`;
 combine source lists and retain both feature changes. Re-run Host/GSP tests and
-build against the integrated artwork before any device update. Integrated device candidate uses distinct1.0.8-peek-orient identity and sdkconfig.orientation. Host28/28 and pinned-IDF build pass. The merge preserved immutable source CSV CRLF and license whitespace despite git diff --check warnings on those imported files; feature-owned source checks are clean.
+build against the integrated artwork before any device update. Corrected candidate uses distinct1.0.9-peek-orient identity and sdkconfig.orientation-calibrated. Host28/28 and pinned-IDF build pass. The merge preserved immutable source CSV CRLF and license whitespace despite git diff --check warnings on those imported files; feature-owned source checks are clean.
 
 After the main thread releases the test device, verify:
 
@@ -106,3 +110,19 @@ After the main thread releases the test device, verify:
 Implementation checklist: classifier, shared renderer, IMU adapter/configuration,
 telemetry, native controls and local build checks complete. Physical mounting,
 real interaction/performance acceptance and integration remain outstanding.
+
+## Physical finding and correction
+
+Official1.0.8 operation862149bf-00bf-4d2a-ace8-1d55d7ed0578 succeeded,
+healthy/validated, Boot1100252626072364809. No Recovery replacement, partition
+layout change or bootloader write. IMU/thermal/runtime errors stayed0 in the
+recorded window; this did not prove orientation correctness.
+
+User-labelled upright produced orientation270 and a counterclockwise90 eye.
+After physically rotating clockwise90, the device produced orientation0 and a
+clockwise90 eye. Therefore the failure is both the original mounting assumption
+and XY handedness, not a single constant rotation offset. Real raw vectors now
+form the device adapter regression fixtures. They failed before the correction.
+Tests also cover the opposing cardinal vectors, but those tests do not replace
+physical four-way acceptance. A separate follow-up update and user retest are
+required;1.0.8 is not an accepted final firmware.

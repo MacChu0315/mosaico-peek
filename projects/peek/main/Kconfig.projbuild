@@ -43,9 +43,10 @@ config PEEK_IMU_MOUNT_QUARTERS
     int "IMU-to-screen clockwise mounting quarter-turns"
     depends on PEEK_AUTO_ORIENTATION
     range 0 3
-    default 1
+    default 0
     help
-        Convert sensor axes into screen right/down axes. Default1 is a
-        provisional mounting assumption; verify on the actual board before
-        accepting the firmware. Does not alter thermal mounting calibration.
+        Additional clockwise mounting after the measured sensor-to-screen
+        axis conversion (-accel_x,+accel_y). Default0 matches the labelled
+        upright and clockwise90 poses on30:ed:a0:f4:52:a0.
+        Does not alter thermal mounting calibration.
 endmenu

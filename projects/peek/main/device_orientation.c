@@ -24,13 +24,15 @@ static void sample_once(peek_orientation_t *classifier){
     next.error=bsp_imu_get_accel(&ax,&ay,&az);
     if(next.error==ESP_OK)next.error=bsp_imu_get_gyro(&gx,&gy,&gz);
     next.sampled_ms=(uint64_t)esp_timer_get_time()/1000;next.samples++;
-    float x=-ax,y=-ay; /* Specific force is opposite gravity at rest. */
-    /* Quarter-turn mounting correction; provisional90-degree mounting is
-     * corroborated by the existing Mosaico IMU app, not physical acceptance. */
+    /* Board30:ed:a0:f4:52:a0, user-labelled poses: upright accel +Y;
+     * clockwise90 accel -X. Screen axes (+right,+down) have opposite XY
+     * handedness to the sensor, so a mounting rotation alone is insufficient.
+     * Convert to screen gravity-down first, then apply optional mounting. */
+    float x=-ax,y=ay;
     switch(CONFIG_PEEK_IMU_MOUNT_QUARTERS){
-        case 1:x=ay;y=-ax;break;
-        case 2:x=ax;y=ay;break;
-        case 3:x=-ay;y=ax;break;
+        case 1:x=-ay;y=-ax;break;
+        case 2:x=ax;y=-ay;break;
+        case 3:x=ay;y=ax;break;
     }
     peek_orientation_sample(classifier,x,y,-az,sqrtf(gx*gx+gy*gy+gz*gz),next.error==ESP_OK,next.sampled_ms);
     next.rotation=classifier->rotation;
