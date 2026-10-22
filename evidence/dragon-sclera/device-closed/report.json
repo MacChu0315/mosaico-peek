@@ -1,0 +1,10 @@
+{
+  "version": "1.0.12-peek-sclera",
+  "boot_id": "5484327898152195899",
+  "ELF": "dbfbf90c05fb944db80ec0714dbf7f3016d10e8d3dd23e64df722fb13d7edbe5",
+  "orientation": 270,
+  "closed_RGB565_exact": true,
+  "observations": 3,
+  "wall_s": 6.224384082946926,
+  "note": "Actual stable closed-device framebuffer equals production C retained eyelids. No physical screen FPS or moving-frame synchronization claim."
+}

@@ -1,0 +1,12 @@
+{
+  "source": "assets/dragon-sclera-c/submission/sclera.png",
+  "source_sha256": "5775c62ce834c1e3573148241f2589e434d0226a9cea4d88ad78348d2c4c9887",
+  "raw_rgb_sha256": "8ac2ba6ebe88c0645aa901057c62802178bd469492ec802fa8e573052af31f27",
+  "width": 480,
+  "height": 480,
+  "format": "RGB888",
+  "resource_bytes": 691200,
+  "additional_dynamic_allocation_bytes": 0,
+  "generated_include_sha256": "67d8b024261f1787a842aecf3ea3ccb0db72d73ac1e24f1542b7c4e1676b92a4",
+  "note": "Static app RODATA; existing XIP/RODATA-to-PSRAM configuration still incurs residency cost. No PNG decoder at runtime."
+}

@@ -1,0 +1,1 @@
+Before texture integration: test_dragon_sclera.py failed AssertionError ('supplied C reference differs', 'center'). The first implementation build also caught unused old sine() under -Werror; removed it. An initial new test used the wrong mask filename suffix; corrected to actual immutable pack filenames, after which all eleven comparisons passed.

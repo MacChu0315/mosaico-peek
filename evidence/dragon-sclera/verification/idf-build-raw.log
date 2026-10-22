@@ -1,0 +1,458 @@
+[0/1] Re-running CMake...
+-- Minimal build - OFF
+-- esp-idf-configdep will be used for faster recompilation
+-- Compiler launcher chain: esp-idf-configdep
+-- Building ESP-IDF components for target esp32s31
+NOTE: Cannot establish a connection to the component registry. Skipping checks of dependency changes.
+NOTE: Using component placed at /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/esp-mosaico-bsp for dependency "esp-mosaico-bsp", specified in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main/idf_component.yml
+NOTE: Using component placed at /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/ESP-Iris/components/esp_iris for dependency "esp_iris", specified in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main/idf_component.yml
+NOTE: Using component placed at /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_module_mgr for dependency "mosaico_module_mgr", specified in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main/idf_component.yml
+NOTE: Using component placed at /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/deps/mosaico_module_thermal for dependency "mosaico_module_thermal", specified in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main/idf_component.yml
+NOTE: Using component placed at /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_boot_splash for dependency "mosaico_boot_splash" (introduced by component "esp-mosaico-bsp"), specified in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main/idf_component.yml
+NOTE: Processing 32 dependencies:
+NOTE: [1/32] esp-mosaico-bsp (0.2.0) (/home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/esp-mosaico-bsp)
+NOTE: [2/32] esp_iris (0.1.0) (/home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/ESP-Iris/components/esp_iris)
+NOTE: [3/32] espressif/bq27220 (0.1.2)
+NOTE: [4/32] espressif/button (4.2.1)
+NOTE: [5/32] espressif/cmake_utilities (0.5.3)
+NOTE: [6/32] espressif/dhara (1.1.0)
+NOTE: [7/32] espressif/esp-gsp (1.5.1)
+NOTE: [8/32] espressif/esp_codec_dev (1.6.2)
+NOTE: [9/32] espressif/esp_display_present (1.1.1)
+NOTE: [10/32] espressif/esp_lcd_co5300 (2.2.0)
+NOTE: [11/32] espressif/esp_lcd_touch (1.2.1)
+NOTE: [12/32] espressif/esp_lcd_touch_cst9220 (0.1.1)
+NOTE: [13/32] espressif/esp_lv_decoder (0.4.3)
+NOTE: [14/32] espressif/esp_lv_fs (1.0.1)
+NOTE: [15/32] espressif/esp_lvgl_adapter (0.6.2)
+NOTE: [16/32] espressif/esp_mmap_assets (2.0.1)
+NOTE: [17/32] espressif/esp_new_jpeg (1.0.2)
+NOTE: [18/32] espressif/esp_tinyusb (2.4.0)
+NOTE: [19/32] espressif/freetype (2.14.3~1)
+NOTE: [20/32] espressif/i2c_bus (1.5.2)
+NOTE: [21/32] espressif/knob (1.1.0)
+NOTE: [22/32] espressif/libpng (1.6.58~2)
+NOTE: [23/32] espressif/mdns (1.12.0)
+NOTE: [24/32] espressif/spi_nand_flash (1.4.4)
+NOTE: [25/32] espressif/tinyusb (0.21.0~2)
+NOTE: [26/32] espressif/zlib (1.3.2~1)
+NOTE: [27/32] espressif2022/bmi270 (1.1.0~2)
+NOTE: [28/32] lvgl/lvgl (9.5.0)
+NOTE: [29/32] mosaico_module_mgr (0.1.0) (/home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_module_mgr)
+NOTE: [30/32] mosaico_module_thermal (0.1.0) (/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/deps/mosaico_module_thermal)
+NOTE: [31/32] tangyumei3535/bmm150_sensorapi (1.0.0)
+NOTE: [32/32] idf (6.2.0)
+-- KCONFIG_REPORT_VERBOSITY not set, using default
+-- Project sdkconfig file /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/sdkconfig.dragon-sclera
+Loading defaults file /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.defaults...
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_GPIO' assigned to '7' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.defaults
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_DEBOUNCE_MS' assigned to '50' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.defaults
+Loading defaults file /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.application.defaults...
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_GPIO' assigned to '7' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.application.defaults
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_DEBOUNCE_MS' assigned to '50' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.application.defaults
+Loading defaults file /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.eyes.defaults...
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_GPIO' assigned to '7' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.eyes.defaults
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_DEBOUNCE_MS' assigned to '50' in /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/sdkconfig.eyes.defaults
+Loading defaults file /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/esp-mosaico-recovery/components/esp_mosaico_app_recovery/sdkconfig.defaults...
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_GPIO' assigned to '7' in /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/esp-mosaico-recovery/components/esp_mosaico_app_recovery/sdkconfig.defaults
+NOTE: unknown kconfig symbol 'FACTORY_RECOVERY_BOOT_DEBOUNCE_MS' assigned to '50' in /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/esp-mosaico-recovery/components/esp_mosaico_app_recovery/sdkconfig.defaults
+NOTE: Kconfig parser version: 1
+NOTE: Kconfig defaults policy: use sdkconfig
+NOTE: Status: Finished successfully
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/riscv/ld/rom.api.ld
+-- App "peek" version: 1.0.12-peek-sclera
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_wdt/esp32s31/rom.wdt.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_systimer/esp32s31/rom.systimer.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/memory.ld.in
+--   -> Preprocessing .in script: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/memory.ld.in
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/sections.ld.in
+--   -> Preprocessing .in script: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/sections.ld.in
+--   -> Applying ldgen processing: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/esp-idf/esp_system/ld/sections.ld.in
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.api.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.rvfp.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.version.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.phy.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.coexist.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.net80211.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.pp.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.libc.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/heap/port/esp32s31/ld/esp32s31.rom.heap.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/soc/esp32s31/ld/esp32s31.peripherals.ld
+-- Setting up mbedtls configuration
+-- Linkage type is PUBLIC
+-- I2C_BUS: 1.5.2
+-- BUTTON: 4.2.1
+-- Building for target architecture: 
+-- Using standard libconf header: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__libpng/libpng/scripts/pnglibconf.h.prebuilt
+-- LVGL version: 9.5.0
+-- ESP_MMAP_ASSETS: 2.0.1
+-- ESP_LV_FS: 1.0.1
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
+-- KNOB: 1.1.0
+-- BMI270: 1.1.0
+-- ESP_LCD_CO5300: 2.2.0
+-- ESP_LCD_TOUCH_CST9220: 0.1.1
+-- esp-gsp: compiler /home/zhuzhengming/esp/ts/Mosaico/.toolchains/gspc-0.6.1/gspc (GSPC_EXECUTABLE CMake variable); component /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp-gsp
+-- esp-gsp: using gspc 0.6.1 from GSPC_EXECUTABLE CMake variable (/home/zhuzhengming/esp/ts/Mosaico/.toolchains/gspc-0.6.1/gspc)
+-- gsp_add_bundle: 1 JSON scene(s) -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/esp-idf/main/gsp_gen_bundle/bundle.gspb
+-- gsp_add_bundle: application header -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/esp-idf/main/gsp_gen_bundle/bundle_gsp.h
+CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):
+  Private include directory
+  '/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_wifi/wifi_apps/roaming_app/include'
+  belongs to component esp_wifi but is being used by component
+  wpa_supplicant.  It is recommended to define the component dependency for
+  wpa_supplicant on the component esp_wifi, i.e.  'idf_component_register(...
+  PRIV_REQUIRES esp_wifi)' in the CMakeLists.txt of wpa_supplicant, and
+  specify the included directory as idf_component_register(...
+  PRIV_INCLUDE_DIRS <dir relative to component>) in the CMakeLists.txt of
+  component esp_wifi.
+Call Stack (most recent call first):
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:130 (__component_validation_check_include_dirs)
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/CMakeLists.txt:428 (__component_validation_run_checks)
+
+
+CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):
+  Private include directory
+  '/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_wifi/wifi_apps/roaming_app/src'
+  belongs to component esp_wifi but is being used by component
+  wpa_supplicant.  It is recommended to define the component dependency for
+  wpa_supplicant on the component esp_wifi, i.e.  'idf_component_register(...
+  PRIV_REQUIRES esp_wifi)' in the CMakeLists.txt of wpa_supplicant, and
+  specify the included directory as idf_component_register(...
+  PRIV_INCLUDE_DIRS <dir relative to component>) in the CMakeLists.txt of
+  component esp_wifi.
+Call Stack (most recent call first):
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:130 (__component_validation_check_include_dirs)
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/CMakeLists.txt:428 (__component_validation_run_checks)
+
+
+CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):
+  Private include directory
+  '/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_wifi/wifi_apps/include/apps_private'
+  belongs to component esp_wifi but is being used by component
+  wpa_supplicant.  It is recommended to define the component dependency for
+  wpa_supplicant on the component esp_wifi, i.e.  'idf_component_register(...
+  PRIV_REQUIRES esp_wifi)' in the CMakeLists.txt of wpa_supplicant, and
+  specify the included directory as idf_component_register(...
+  PRIV_INCLUDE_DIRS <dir relative to component>) in the CMakeLists.txt of
+  component esp_wifi.
+Call Stack (most recent call first):
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:130 (__component_validation_check_include_dirs)
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/CMakeLists.txt:428 (__component_validation_run_checks)
+
+
+CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):
+  Private include directory
+  '/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/wpa_supplicant/src'
+  belongs to component wpa_supplicant but is being used by component
+  esp_wifi.  It is recommended to define the component dependency for
+  esp_wifi on the component wpa_supplicant, i.e.  'idf_component_register(...
+  PRIV_REQUIRES wpa_supplicant)' in the CMakeLists.txt of esp_wifi, and
+  specify the included directory as idf_component_register(...
+  PRIV_INCLUDE_DIRS <dir relative to component>) in the CMakeLists.txt of
+  component wpa_supplicant.
+Call Stack (most recent call first):
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:130 (__component_validation_check_include_dirs)
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/CMakeLists.txt:428 (__component_validation_run_checks)
+
+
+CMake Warning at /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:106 (message):
+  Private include directory
+  '/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/wpa_supplicant/esp_supplicant/src'
+  belongs to component wpa_supplicant but is being used by component
+  esp_wifi.  It is recommended to define the component dependency for
+  esp_wifi on the component wpa_supplicant, i.e.  'idf_component_register(...
+  PRIV_REQUIRES wpa_supplicant)' in the CMakeLists.txt of esp_wifi, and
+  specify the included directory as idf_component_register(...
+  PRIV_INCLUDE_DIRS <dir relative to component>) in the CMakeLists.txt of
+  component wpa_supplicant.
+Call Stack (most recent call first):
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/tools/cmake/component_validation.cmake:130 (__component_validation_check_include_dirs)
+  /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/CMakeLists.txt:428 (__component_validation_run_checks)
+
+
+-- Component idf::esp_trace will be linked with -Wl,--whole-archive
+-- Linker: /home/zhuzhengming/.espressif/tools/riscv32-esp-elf/esp-16.1.0_20260609/riscv32-esp-elf/bin/riscv32-esp-elf-ld (GNU ld (crosstool-NG esp-16.1.0_20260609) 2.46)
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-mosaico-bsp esp-tls esp_adc esp_app_format esp_asrc_adapter esp_blockdev esp_blockdev_util esp_bootloader_format esp_coex esp_common esp_driver_ana_cmpr esp_driver_bitscrambler esp_driver_cam esp_driver_cordic esp_driver_dac esp_driver_dma esp_driver_gpio esp_driver_gptimer esp_driver_i2c esp_driver_i2s esp_driver_i3c esp_driver_isp esp_driver_jpeg esp_driver_ledc esp_driver_mcpwm esp_driver_parlio esp_driver_pcnt esp_driver_ppa esp_driver_rmt esp_driver_sd_intf esp_driver_sdio esp_driver_sdm esp_driver_sdmmc esp_driver_sdspi esp_driver_spi esp_driver_touch_sens esp_driver_tsens esp_driver_twai esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_gdbstub esp_hal_ana_cmpr esp_hal_ana_conv esp_hal_asrc esp_hal_cam esp_hal_clock esp_hal_cordic esp_hal_debug_assist esp_hal_dma esp_hal_emac esp_hal_gpio esp_hal_gpspi esp_hal_i2c esp_hal_i2s esp_hal_i3c esp_hal_ieee802154 esp_hal_jpeg esp_hal_lcd esp_hal_ledc esp_hal_mcpwm esp_hal_mspi esp_hal_parlio esp_hal_pcnt esp_hal_pmu esp_hal_ppa esp_hal_regi2c esp_hal_rmt esp_hal_rtc_timer esp_hal_sd esp_hal_security esp_hal_systimer esp_hal_timg esp_hal_touch_sens esp_hal_twai esp_hal_uart esp_hal_usb esp_hal_wdt esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_image_verify esp_iris esp_lcd esp_libc esp_local_ctrl esp_mm esp_mosaico_app_recovery esp_mosaico_gsp_bundle esp_mosaico_gsp_iris esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_riscv_trace esp_rom esp_security esp_stdio esp_system esp_timer esp_trace esp_usb_cdc_rom_console esp_wifi espcoredump espressif2022__bmi270 espressif__bq27220 espressif__button espressif__cmake_utilities espressif__dhara espressif__esp-gsp espressif__esp_codec_dev espressif__esp_display_present espressif__esp_lcd_co5300 espressif__esp_lcd_touch espressif__esp_lcd_touch_cst9220 espressif__esp_lv_decoder espressif__esp_lv_fs espressif__esp_lvgl_adapter espressif__esp_mmap_assets espressif__esp_new_jpeg espressif__esp_tinyusb espressif__freetype espressif__i2c_bus espressif__knob espressif__libpng espressif__mdns espressif__spi_nand_flash espressif__tinyusb espressif__zlib esptool_py fatfs freertos hal heap http_parser ieee802154 log lvgl__lvgl lwip main mbedtls mosaico_boot_splash mosaico_module_mgr mosaico_module_thermal nvs_flash nvs_sec_provider openthread partition_table protobuf-c protocomm pthread riscv rt sdmmc soc spi_flash spiffs tangyumei3535__bmm150_sensorapi tcp_transport ulp unity vfs wear_levelling wpa_supplicant
+-- Component paths: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/app_trace /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/app_update /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader_support /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/cmock /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/console /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/cxx /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/driver /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/efuse /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/esp-mosaico-bsp /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp-tls /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_adc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_app_format /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_asrc_adapter /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_blockdev /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_blockdev_util /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_bootloader_format /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_coex /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_common /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_ana_cmpr /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_bitscrambler /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_cam /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_cordic /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_dac /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_dma /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_gpio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_gptimer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_i2c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_i2s /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_i3c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_isp /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_jpeg /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_ledc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_mcpwm /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_parlio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_pcnt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_ppa /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_rmt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_sd_intf /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_sdio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_sdm /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_sdmmc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_sdspi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_spi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_touch_sens /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_tsens /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_twai /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_uart /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_driver_usb_serial_jtag /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_eth /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_event /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_gdbstub /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ana_cmpr /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ana_conv /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_asrc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_cam /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_clock /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_cordic /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_debug_assist /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_dma /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_emac /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_gpio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_gpspi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_i2c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_i2s /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_i3c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ieee802154 /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_jpeg /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_lcd /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ledc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_mcpwm /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_mspi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_parlio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_pcnt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_pmu /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ppa /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_regi2c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_rmt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_rtc_timer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_sd /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_security /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_systimer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_timg /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_touch_sens /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_twai /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_uart /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_usb /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_wdt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hid /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_http_client /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_http_server /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_https_ota /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_https_server /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hw_support /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_image_verify /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/ESP-Iris/components/esp_iris /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_lcd /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_libc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_local_ctrl /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_mm /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/esp-mosaico-recovery/components/esp_mosaico_app_recovery /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/mosaico-tools/components/esp_mosaico_gsp_bundle /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-utils/mosaico-tools/components/esp_mosaico_gsp_iris /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_netif /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_netif_stack /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_partition /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_phy /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_pm /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_psram /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_ringbuf /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_riscv_trace /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_security /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_stdio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_timer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_trace /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_usb_cdc_rom_console /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_wifi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/espcoredump /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif2022__bmi270 /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__bq27220 /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__button /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__cmake_utilities /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__dhara /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp-gsp /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_codec_dev /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_display_present /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lcd_co5300 /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lcd_touch /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lcd_touch_cst9220 /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lv_decoder /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lv_fs /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_lvgl_adapter /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_mmap_assets /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_new_jpeg /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__esp_tinyusb /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__freetype /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__i2c_bus /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__knob /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__libpng /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__mdns /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__spi_nand_flash /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__tinyusb /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/espressif__zlib /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esptool_py /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/fatfs /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/freertos /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/hal /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/heap /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/http_parser /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/ieee802154 /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/log /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/lvgl__lvgl /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/lwip /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/main /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/mbedtls /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_boot_splash /home/zhuzhengming/esp/ts/Mosaico/esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_module_mgr /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/deps/mosaico_module_thermal /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/nvs_flash /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/nvs_sec_provider /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/openthread /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/partition_table /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/protobuf-c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/protocomm /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/pthread /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/riscv /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/rt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/sdmmc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/soc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/spi_flash /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/spiffs /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/managed_components/tangyumei3535__bmm150_sensorapi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/tcp_transport /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/ulp /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/unity /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/vfs /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/wear_levelling /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/wpa_supplicant
+-- ESP-Iris System Update bundle: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/peek-system-update.irisfw
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build
+[0/2] Re-checking globbed directories...
+[1/26] Preprocessing linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/memory.ld.in -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/esp-idf/esp_system/ld/memory.ld
+[2/26] Preprocessing linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/ld/esp32s31/sections.ld.in -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/esp-idf/esp_system/ld/sections.ld.in
+[3/26] Building ASM object esp-idf/freertos/CMakeFiles/__idf_freertos.dir/FreeRTOS-Kernel/portable/riscv/portasm.S.obj
+[4/26] Linking C static library esp-idf/freertos/libfreertos.a
+[5/26] Building ASM object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/lowpower/port/esp32s31/sleep_fpu_asm.S.obj
+[6/26] Building ASM object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/lowpower/port/esp32s31/sleep_cpu_asm.S.obj
+[7/26] Generating ../../dragon-generated/dragon_sclera.inc
+PASS lossless sclera:691200B app RODATA; source checksums preserved; no runtime decode/cache
+[8/26] Linking C static library esp-idf/esp_hw_support/libesp_hw_support.a
+[9/26] Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors_clic.S.obj
+[10/26] Building ASM object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/vectors.S.obj
+[11/26] Building C object esp-idf/espressif__esp-gsp/CMakeFiles/__idf_espressif__esp-gsp.dir/esp_gsp_prebuilt_anchor.c.obj
+[12/26] Building C object esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj
+[13/26] Linking C static library esp-idf/esp_app_format/libesp_app_format.a
+[14/26] Linking C static library esp-idf/riscv/libriscv.a
+[15/26] Linking C static library esp-idf/espressif__esp-gsp/libespressif__esp-gsp.a
+[16/26] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/device_status.c.obj
+[17/26] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/src/dragon_render.c.obj
+[18/26] Linking C static library esp-idf/main/libmain.a
+[19/26] Performing configure step for 'bootloader'
+-- Minimal build - OFF
+-- No compiler launcher chain will be used.
+-- Building ESP-IDF components for target esp32s31
+-- KCONFIG_REPORT_VERBOSITY not set, using default
+-- Project sdkconfig file /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/sdkconfig.dragon-sclera
+Default value for ESP_INT_WDT_TIMEOUT_MS in sdkconfig is 800 but it is 300 according to Kconfig.
+Using default value from sdkconfig (800).
+Default value for FREERTOS_ISR_STACKSIZE in sdkconfig is 2096 but it is 1536 according to Kconfig.
+Using default value from sdkconfig (2096).
+NOTE: Kconfig parser version: 1
+NOTE: Kconfig defaults policy: use sdkconfig
+NOTE: Status: Finished with notifications
+NOTE: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system/Kconfig:281: ESP_INT_WDT_TIMEOUT_MS: Kconfig default value: 300, sdkconfig default value: 800, using 800 from sdkconfig
+NOTE: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/freertos/Kconfig:430: FREERTOS_ISR_STACKSIZE: Kconfig default value: 1536, sdkconfig default value: 2096, using 2096 from sdkconfig
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/riscv/ld/rom.api.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/soc/esp32s31/ld/esp32s31.peripherals.ld
+-- Bootloader project name: "bootloader" version: 1
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_wdt/esp32s31/rom.wdt.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_systimer/esp32s31/rom.systimer.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.api.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.rvfp.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.version.ld
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom/esp32s31/ld/esp32s31.rom.libc.ld
+-- Linker: /home/zhuzhengming/.espressif/tools/riscv32-esp-elf/esp-16.1.0_20260609/riscv32-esp-elf/bin/riscv32-esp-elf-ld (GNU ld (crosstool-NG esp-16.1.0_20260609) 2.46)
+-- Components: bootloader bootloader_support efuse esp_app_format esp_blockdev esp_bootloader_format esp_common esp_hal_ana_conv esp_hal_clock esp_hal_debug_assist esp_hal_dma esp_hal_gpio esp_hal_gpspi esp_hal_mspi esp_hal_pmu esp_hal_regi2c esp_hal_rtc_timer esp_hal_security esp_hal_systimer esp_hal_timg esp_hal_uart esp_hal_usb esp_hal_wdt esp_hw_support esp_image_verify esp_libc esp_rom esp_security esp_stdio esp_system esptool_py freertos hal log main micro-ecc partition_table riscv soc spi_flash
+-- Component paths: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader_support /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/efuse /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_app_format /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_blockdev /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_bootloader_format /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_common /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_ana_conv /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_clock /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_debug_assist /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_dma /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_gpio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_gpspi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_mspi /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_pmu /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_regi2c /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_rtc_timer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_security /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_systimer /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_timg /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_uart /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_usb /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hal_wdt /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_hw_support /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_image_verify /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_libc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_rom /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_security /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_stdio /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esp_system /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/esptool_py /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/freertos /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/hal /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/log /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/components/micro-ecc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/partition_table /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/riscv /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/soc /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/spi_flash
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.memory.ld.in
+--   -> Preprocessing .in script: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.memory.ld.in
+-- Adding linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.sections.ld.in
+--   -> Preprocessing .in script: /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.sections.ld.in
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader
+[20/26] Performing build step for 'bootloader'
+[1/166] Preprocessing linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.sections.ld.in -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader/ld/bootloader.sections.ld
+[2/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_crc.c.obj
+[3/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_efuse.c.obj
+[4/166] Preprocessing linker script /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/bootloader/subproject/main/ld/esp32s31/bootloader.memory.ld.in -> /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader/ld/bootloader.memory.ld
+[5/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_gpio.c.obj
+[6/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_timestamp_common.c.obj
+[7/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_sys.c.obj
+[8/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/util.c.obj
+[9/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_cache_writeback_esp32p4_esp32s31.c.obj
+[10/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_print.c.obj
+[11/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_lock.c.obj
+[12/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_spiflash.c.obj
+[13/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/noos/log_timestamp.c.obj
+[14/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log.c.obj
+[15/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/log_format_text.c.obj
+[16/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_serial_output.c.obj
+[17/166] Building C object esp-idf/log/CMakeFiles/__idf_log.dir/src/buffer/log_buffers.c.obj
+[18/166] Linking C static library esp-idf/log/liblog.a
+[19/166] Building C object esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/patches/esp_rom_print.c.obj
+[20/166] Linking C static library esp-idf/esp_rom/libesp_rom.a
+[21/166] Building C object esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/__/__/esp_err_codes/esp_common_esp_err_codes.c.obj
+[22/166] Building C object esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/src/esp_err_to_name.c.obj
+[23/166] Linking C static library esp-idf/esp_common/libesp_common.a
+[24/166] Building C object esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/esp_err.c.obj
+[25/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_fields.c.obj
+[26/166] Building C object esp-idf/esp_hal_systimer/CMakeFiles/__idf_esp_hal_systimer.dir/rom_patch.c.obj
+[27/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/esp_memory_utils.c.obj
+[28/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/cpu_region_protect.c.obj
+[29/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_table.c.obj
+[30/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/__/__/esp_err_codes/esp_hw_support_esp_err_codes.c.obj
+[31/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/esp_cpu_intr.c.obj
+[32/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/esp32s31/esp_efuse_utility.c.obj
+[33/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/chip_info.c.obj
+[34/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/mspi/esp_mspi_align/esp_mspi_align.c.obj
+[35/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_api.c.obj
+[36/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_fields.c.obj
+[37/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_dump.c.obj
+[38/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/cpu.c.obj
+[39/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_clk_init.c.obj
+[40/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/efuse_controller/keys/with_key_purposes/esp_efuse_api_key.c.obj
+[41/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_time.c.obj
+[42/166] Building C object esp-idf/efuse/CMakeFiles/__idf_efuse.dir/src/esp_efuse_utility.c.obj
+[43/166] Building C object esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/port/esp32s31/rtc_clk.c.obj
+[44/166] Linking C static library esp-idf/esp_hw_support/libesp_hw_support.a
+[45/166] Linking C static library esp-idf/esp_system/libesp_system.a
+[46/166] Linking C static library esp-idf/esp_hal_systimer/libesp_hal_systimer.a
+[47/166] Linking C static library esp-idf/efuse/libefuse.a
+[48/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_efuse.c.obj
+[49/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/secure_boot.c.obj
+[50/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random_esp32s31.c.obj
+[51/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_random.c.obj
+[52/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_encrypt.c.obj
+[53/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_mem.c.obj
+[54/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/flash_partitions.c.obj
+[55/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_init.c.obj
+[56/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_clock_loader.c.obj
+[57/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_reset_common.c.obj
+[58/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console_loader.c.obj
+[59/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/__/__/esp_err_codes/bootloader_support_esp_err_codes.c.obj
+[60/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_panic.c.obj
+[61/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32s31/bootloader_soc.c.obj
+[62/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/flash_qio_mode.c.obj
+[63/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common_loader.c.obj
+[64/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_console.c.obj
+[65/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_common.c.obj
+[66/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_init.c.obj
+[67/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash_config_esp32s31.c.obj
+[68/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/bootloader_flash/src/bootloader_flash.c.obj
+[69/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/bootloader_utility.c.obj
+[70/166] Building C object esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/src/esp32s31/bootloader_esp32s31.c.obj
+[71/166] Linking C static library esp-idf/bootloader_support/libbootloader_support.a
+[72/166] Building C object esp-idf/esp_hal_timg/CMakeFiles/__idf_esp_hal_timg.dir/esp32s31/timer_periph.c.obj
+[73/166] Building C object esp-idf/esp_image_verify/CMakeFiles/__idf_esp_image_verify.dir/src/bootloader_sha.c.obj
+[74/166] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/esp32s31/adc_periph.c.obj
+[75/166] Building C object esp-idf/esp_hal_wdt/CMakeFiles/__idf_esp_hal_wdt.dir/esp32s31/mwdt_periph.c.obj
+[76/166] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_hal_common.c.obj
+[77/166] Building C object esp-idf/esp_hal_security/CMakeFiles/__idf_esp_hal_security.dir/huk_hal.c.obj
+[78/166] Building C object esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/esp_bootloader_desc.c.obj
+[79/166] Building C object esp-idf/esp_hal_timg/CMakeFiles/__idf_esp_hal_timg.dir/timer_hal.c.obj
+[80/166] Building C object esp-idf/esp_hal_security/CMakeFiles/__idf_esp_hal_security.dir/key_mgr_hal.c.obj
+[81/166] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/__/__/esp_err_codes/esp_security_esp_err_codes.c.obj
+[82/166] Building C object esp-idf/esp_hal_wdt/CMakeFiles/__idf_esp_hal_wdt.dir/rom_patch.c.obj
+[83/166] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_lock.c.obj
+[84/166] Building C object esp-idf/esp_image_verify/CMakeFiles/__idf_esp_image_verify.dir/src/bootloader_sha_flash.c.obj
+[85/166] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/temperature_sensor_hal.c.obj
+[86/166] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_oneshot_hal.c.obj
+[87/166] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp32s31/esp_crypto_clk.c.obj
+[88/166] Building C object esp-idf/esp_hal_ana_conv/CMakeFiles/__idf_esp_hal_ana_conv.dir/adc_hal.c.obj
+[89/166] Building C object esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/src/esp_crypto_periph_clk.c.obj
+[90/166] Linking C static library esp-idf/esp_security/libesp_security.a
+[91/166] Linking C static library esp-idf/esp_hal_ana_conv/libesp_hal_ana_conv.a
+[92/166] Linking C static library esp-idf/esp_hal_wdt/libesp_hal_wdt.a
+[93/166] Linking C static library esp-idf/esp_hal_timg/libesp_hal_timg.a
+[94/166] Building C object esp-idf/esp_image_verify/CMakeFiles/__idf_esp_image_verify.dir/src/esp_image_format.c.obj
+[95/166] Linking C static library esp-idf/esp_image_verify/libesp_image_verify.a
+[96/166] Linking C static library esp-idf/esp_hal_security/libesp_hal_security.a
+[97/166] Building C object esp-idf/micro-ecc/CMakeFiles/__idf_micro-ecc.dir/uECC_verify_antifault.c.obj
+[98/166] Linking C static library esp-idf/micro-ecc/libmicro-ecc.a
+[99/166] Linking C static library esp-idf/esp_bootloader_format/libesp_bootloader_format.a
+[100/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/gpio_periph.c.obj
+[101/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/mpi_periph.c.obj
+[102/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/debug_probe_periph.c.obj
+[103/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/interrupts.c.obj
+[104/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/esp32s31/power_supply_periph.c.obj
+[105/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/lldesc.c.obj
+[106/166] Building C object esp-idf/riscv/CMakeFiles/__idf_riscv.dir/rv_utils.c.obj
+[107/166] Building C object esp-idf/soc/CMakeFiles/__idf_soc.dir/dport_access_common.c.obj
+[108/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/dedic_gpio_periph.c.obj
+[109/166] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/esp32s31/efuse_hal.c.obj
+[110/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/rtc_io_periph.c.obj
+[111/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/esp32s31/sdm_periph.c.obj
+[112/166] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/efuse_hal.c.obj
+[113/166] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/hal_utils.c.obj
+[114/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/sdm_hal.c.obj
+[115/166] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/esp32s31/usb_dwc_periph.c.obj
+[116/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/rtc_io_hal.c.obj
+[117/166] Building C object esp-idf/esp_hal_debug_assist/CMakeFiles/__idf_esp_hal_debug_assist.dir/riscv_trace_hal.c.obj
+[118/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_hal.c.obj
+[119/166] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/esp32s31/pmu_hal.c.obj
+[120/166] Building C object esp-idf/esp_hal_regi2c/CMakeFiles/__idf_esp_hal_regi2c.dir/esp32s31/regi2c_impl.c.obj
+[121/166] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_serial_jtag_hal.c.obj
+[122/166] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_utmi_hal.c.obj
+[123/166] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/brownout_hal.c.obj
+[124/166] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/esp32s31/uart_periph.c.obj
+[125/166] Building C object esp-idf/esp_hal_gpio/CMakeFiles/__idf_esp_hal_gpio.dir/gpio_hal.c.obj
+[126/166] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/cache_hal.c.obj
+[127/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/esp32s31/gdma_periph.c.obj
+[128/166] Building C object esp-idf/esp_hal_pmu/CMakeFiles/__idf_esp_hal_pmu.dir/esp32s31/pau_hal.c.obj
+[129/166] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uart_hal_iram.c.obj
+[130/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/esp32s31/spi_periph.c.obj
+[131/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_top.c.obj
+[132/166] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uhci_hal.c.obj
+[133/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/dma2d_hal.c.obj
+[134/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/esp32s31/dma2d_periph.c.obj
+[135/166] Building C object esp-idf/esp_hal_usb/CMakeFiles/__idf_esp_hal_usb.dir/usb_dwc_hal.c.obj
+[136/166] Building C object esp-idf/hal/CMakeFiles/__idf_hal.dir/mmu_hal.c.obj
+[137/166] Building C object esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/__/__/esp_err_codes/spi_flash_esp_err_codes.c.obj
+[138/166] Building C object esp-idf/esp_hal_uart/CMakeFiles/__idf_esp_hal_uart.dir/uart_hal.c.obj
+[139/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_axi.c.obj
+[140/166] Building C object esp-idf/esp_hal_mspi/CMakeFiles/__idf_esp_hal_mspi.dir/esp32s31/mspi_periph.c.obj
+[141/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hal.c.obj
+[142/166] Building C object esp-idf/esp_hal_dma/CMakeFiles/__idf_esp_hal_dma.dir/gdma_hal_ahb_v2.c.obj
+[143/166] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bootloader_start.c.obj
+[144/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hal_iram.c.obj
+[145/166] Building C object esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/spi_flash_wrap.c.obj
+[146/166] Building C object esp-idf/esp_hal_clock/CMakeFiles/__idf_esp_hal_clock.dir/esp32s31/clk_tree_hal.c.obj
+[147/166] Linking C static library esp-idf/spi_flash/libspi_flash.a
+[148/166] Linking C static library esp-idf/esp_hal_mspi/libesp_hal_mspi.a
+[149/166] Linking C static library esp-idf/esp_hal_clock/libesp_hal_clock.a
+[150/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_slave_hd_hal.c.obj
+[151/166] Building C object esp-idf/esp_hal_gpspi/CMakeFiles/__idf_esp_hal_gpspi.dir/spi_hal_iram.c.obj
+[152/166] Linking C static library esp-idf/esp_hal_gpspi/libesp_hal_gpspi.a
+[153/166] Linking C static library esp-idf/esp_hal_dma/libesp_hal_dma.a
+[154/166] Linking C static library esp-idf/esp_hal_uart/libesp_hal_uart.a
+[155/166] Linking C static library esp-idf/esp_hal_pmu/libesp_hal_pmu.a
+[156/166] Linking C static library esp-idf/esp_hal_regi2c/libesp_hal_regi2c.a
+[157/166] Linking C static library esp-idf/esp_hal_usb/libesp_hal_usb.a
+[158/166] Linking C static library esp-idf/esp_hal_gpio/libesp_hal_gpio.a
+[159/166] Linking C static library esp-idf/soc/libsoc.a
+[160/166] Linking C static library esp-idf/riscv/libriscv.a
+[161/166] Linking C static library esp-idf/esp_hal_debug_assist/libesp_hal_debug_assist.a
+[162/166] Linking C static library esp-idf/hal/libhal.a
+[163/166] Linking C static library esp-idf/main/libmain.a
+[164/166] Linking C executable bootloader.elf
+[165/166] Generating binary image from built executable
+esptool v5.4.0
+Creating ESP32-S31 image...
+Merged 2 ELF sections.
+Successfully created ESP32-S31 image.
+Generated /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader/bootloader.bin
+[166/166] cd /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader && /home/zhuzhengming/.espressif/python_env/idf6.2_py3.10_env/bin/python /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/bootloader/bootloader.bin
+Bootloader binary size 0x55b0 bytes. 0xa50 bytes (11%) free.
+[21/25] Completed 'bootloader'
+[22/25] Generating esp-idf/esp_system/ld/sections.ld
+[23/25] Linking CXX executable peek.elf
+[24/25] Generating binary image from built executable
+esptool v5.4.0
+Creating ESP32-S31 image...
+Merged 3 ELF sections.
+Successfully created ESP32-S31 image.
+Generated /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/peek.bin
+[25/25] cd /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build && /home/zhuzhengming/.espressif/python_env/idf6.2_py3.10_env/bin/python /home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-idf-7b9cc1a/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/partition_table/partition-table.bin /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build/peek.bin
+WARNING: 1/2 app partitions are too small for binary peek.bin size 0x759490:
+  - Part 'factory' 0/0 @ 0x20000 size 0x1c0000 (overflow 0x599490)
+Executing action: all (aliases: build)
+Running ninja in directory /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build
+Executing "ninja all"...
+
+Project build complete. To flash, run:
+ idf.py flash
+or
+ idf.py -p PORT flash
+or
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash --flash-mode dio --flash-size 16MB --flash-freq 80m 0x2000 build/bootloader/bootloader.bin 0x8000 build/partition_table/partition-table.bin 0x9000 build/ota_data_initial.bin 0x20000 build/peek.bin
+or from the "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/projects/peek/build" directory
+ python -m esptool --chip esp32s31 -b 460800 --before default-reset --after hard-reset --no-stub write-flash "@flash_args"

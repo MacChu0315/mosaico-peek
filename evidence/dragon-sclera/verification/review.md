@@ -1,0 +1,1 @@
+Independent read-only review: sampler arithmetic/indices and fixed/prepared caches are correct; no new allocation/decode. Requested stricter output directory checks and explicit declared-vs-linked sine-table accounting; both addressed. Host cache/tile/sampling/reference tests passed. Final device performance/ELF still requires main-thread measurement.

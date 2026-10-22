@@ -2,7 +2,7 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Current source candidate1.0.12-peek-sclera adds the selected dragon sclera C
+Installed1.0.12-peek-sclera adds the selected dragon sclera C
 texture through exact RGB888 sampling. [Scope, resources and commands](docs/DRAGON_SCLERA.md).
 Installed identity and physical acceptance remain in [HANDOFF](docs/HANDOFF.md).
 
@@ -19,8 +19,8 @@ with a rotating central shutter and user-selected original metal socket A.
 During sleep closure it centers and remains still; owl/sea remain unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Device now runs1.0.11 with calibrated automatic orientation, selected socket A,
-centered sleep and corrected shared mounting signs. The user confirmed both
+Device now runs1.0.12 with selected dragon sclera C, calibrated automatic
+orientation, selected socket A, centered mechanical sleep and retained mounting signs. The user confirmed both
 axes correct for dragon and mechanical; see HANDOFF for acceptance limits. The prior1.0.5 improved
 observed mechanical active-open engine rate
 from2.009 to8.333Hz in separate live scenes; current installation status is in

@@ -1,0 +1,7 @@
+{
+  "version": "1.0.12-peek-sclera",
+  "feedback": "符合预期",
+  "scope": "Installed first dragon eye selected black-green fiber sclera appearance during movement",
+  "performance_scene_ready": "可以，已在怪物眼",
+  "other_physical_rotations": "Not explicitly retested in this task; calibrated code unchanged"
+}

@@ -23,57 +23,60 @@ This acceptance does not expand rendering-detail authorization or imply the
 unmeasured performance/physical-orientation checks below have passed.
 
 Current task: integrate the returned selected dragon sclera C under explicit
-user authorization. Candidate1.0.12-peek-sclera replaces only procedural sclera
+user authorization. Installed1.0.12-peek-sclera replaces only procedural sclera
 with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
-remain intact. [Integration](DRAGON_SCLERA.md). Device still runs1.0.11 until
-the official update and post-boot checks below are completed.
+remain intact. [Integration](DRAGON_SCLERA.md). The official update and post-boot checks below are complete.
 
-## Current device versus candidate
+## Current installed device
 
-Installed1.0.11-peek-direction, sourcee5d8629,
-ELF7f6f4904a770952878e8cd4557341956154e0b8589a8d1f48fbd4f11b92d1aea,
-Boot6092061336953637827. Official System Update succeeded on the first attempt:
-40570b75-6459-4810-834c-cf6f4af53666. Post-boot runtime confirms both mounting
-flips enabled, orientation0/autoenabled, VALID capture, application/IMU error0,
-crash_count0. User now confirms BOTH axes correct for dragon AND mechanical in this placement.
-Evidence: evidence/mechanical-c/direction/device-install/.
+Installed1.0.12-peek-sclera, sourced7f5af5,
+ELFdbfbf90c05fb944db80ec0714dbf7f3016d10e8d3dd23e64df722fb13d7edbe5,
+Boot5484327898152195899. Official update226bfcca-bf7e-47fc-aead-57dd4b3aaf36
+succeeded on its first attempt. Post-boot identity/hash match, VALID capture,
+application/IMU error0, crash_count0; both mounting flipstrue, autoenabled.
+The user observed the new sclera during movement and answered “符合预期”.
+Evidence: evidence/dragon-sclera/device-install/ and user-acceptance.json.
 
-The previous integrated1.0.10 was source7d897f6. Its first update outcome remained
-unknown following a Recovery writer reset; read-only reconciliation, new healthy
-idle Recovery, empty queue and absent job preceded a successful same-bundle retry.
-Exact evidence/restore: evidence/mechanical-c/integrated/device-install/.
+The current C texture replaces only procedural eye-white coloring. Shared
+controller/detector, physical map, calibrated IMU, original iris/skin/eyelids,
+other artwork, mechanical socket A and its centering are byte-identical to the
+prior source. Native before/after40 controller/detector checkpoints and32
+other-artwork screenshots are identical. All75 supplied checksums are retained.
 
-Before the1.0.11 correction, user feedback rejected BOTH tracking axes in
-mechanical AND dragon in unchanged placement. The1.0.10 device reported
-orientation0, flipsfalse/false. Both actual
-C rasterers independently move positive gaze right/down. This points to shared
-thermal mounting signs, not an artwork-only shader or IMU rotation correction.
-Earlier1.0.6 and1.0.9 physical acceptance remains historical; why those reports
-contradict the latest observation has not been established. Do not claim it was
-caused by this merge: shared source mapping and IMU code were retained exactly.
+Validation: Debug/Release33/33;11 supplied C pose references pixel-exact and
+sclera-only, unchanged full closure; generator deterministic/read-only and rejects
+corruption/non-build output; native40 orientation comparisons,22 motion/sleep
+pixel checks,30.16s/34.16s real-time native clips;511 recorded arrays/655 events
+match production replay, four artwork replay checks and six live switches with
+68.4s real-time recording. Videos are native screenshot evidence, not panel FPS.
 
-Installed1.0.11-peek-direction enables BOTH existing source mapping flips
-using isolated sdkconfig.integrated-direction. Raw768 arrays, detector results,
-IMU gravity(-ax,+ay), mount quarters0, centering and renderers remain unchanged.
-Device-equivalent preview requires --flip-x --flip-y. User confirmed both axes
-correct on dragon and mechanical after the update (observed orientation0).
-Other physical rotations have not been re-tested with1.0.11.
-The failed-before/passing-after config regression prevents silent restoration of
-old defaults; adapter tests cover both configurations and mailbox inheritance.
-New evidence: evidence/mechanical-c/direction/; failed1.0.10 direction feedback:
-evidence/mechanical-c/integrated/direction-feedback/.
-
-Integrated1.0.10 had29/29 Debug/Release and40 native four-way pixel checks.
-A/centering had11 native close/wake checks and a real-time close clip. These are
-software parity evidence, not proof of physical heat-direction correctness.
-1.0.11: Debug/Release30/30 plus new mounted-adapter and affected IMU tests pass;
-40 native orientation frames,11 native centered-sleep frames/real-time clip,
-5 replay cases and511 real arrays/655 events pass. Pinning current mounting
-defaults failed before the fix. IDF build and package/installed ELF checks pass.
-Physical direction pass is user-confirmed for dragon/mechanical in the current
-placement; other placements are native-tested only in this update.
+Current physical map: keep both flips enabled. On1.0.10 the user reported BOTH
+dragon and mechanical reversed in unchanged placement with orientation0 and
+flipsfalse/false. After1.0.11 the user confirmed both axes correct in both views.
+Earlier1.0.6/1.0.9 acceptance remains historical; the conflicting reports' cause
+was not established. This texture update changes no mapping or IMU code.
+Device-equivalent preview uses --flip-x --flip-y. Runtime observed0/270deg and the270deg closed framebuffer matched C. Complete
+four-placement physical tracking acceptance has not been repeated in1.0.12;
+native four-way checks pass separately.
 
 ## Performance and known limits
+
+Current1.0.12 app7705744B (+689408B from1.0.11), GSP94480B unchanged. Exact
+sclera RGB888691200B; linked dragon texture/LUT total1340932B (unused old sine
+2048B removed by linker). Same dragon renderer allocation3929120B and shared
+UI10312B. No new dynamic decode/cache; XIP/RODATA-to-PSRAM is enabled. Post-boot
+free internal233271B unchanged, free PSRAM3497828B versus prior4186436B in dragon.
+Full peak/largest-block and physical panel FPS remain unmeasured.
+Current1.0.12 measured54.04 device seconds,424 new thermal samples,0 faults.
+Orientation0 active-open9.627 complete GSP frames/s (49 frames/5.09s);270 active-
+open7.510 (136/18.11s). Rotation-changed intervals are excluded from groups.
+Orientation0 sleeping19.818 frames/s (short4.39s segment). Canvas callbacks
+102.794/s are tile callbacks, not full frames or physical panel FPS. Active/
+transition raster/submit:0deg62.430/31.555ms per frame;270deg96.208/29.924ms;
+0deg sleeping11.311/31.833ms. Different real scenes, no controlled speedup claim.
+A separate stable closed-device screenshot at270deg matches C RGB565 exactly.
+No device runtime/IMU errors or reboot during these checks. See
+evidence/dragon-sclera/device-performance/dragon-active-closed/ and device-closed/.
 
 Historical1.0.7 thin-mount measurements:3.935 active-open complete GSP frames/s,
 3.879 sleeping frames/s; raster212..214ms, submit32ms.74.41s mechanical segments,
@@ -111,6 +114,7 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 
 ## Retained restore and review material
 
+-1.0.11: evidence/mechanical-c/direction/device-install/peek-direction.irisfw.
 -1.0.10: evidence/mechanical-c/integrated/device-install/peek-integrated.irisfw.
 -1.0.9: evidence/mechanical-c/integrated/restore-1.0.9/orientation-calibrated.irisfw.
 -1.0.7: evidence/mechanical-c/device-install/mechanical-c.irisfw (sourcedf6f6da).
@@ -124,4 +128,4 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 Start: python3 tools/preview.py --view mechanical --flip-x --flip-y.
 Select/replay: tools/control.py view mechanical; case sleep/live/dragon;
 play/pause/replay. Product taps/left swipes/AI single clicks advance, right swipes
-return. Package: python3 tools/package_review.py --mechanical-c, after clean commit.
+return. Current review: python3 tools/package_review.py --dragon-sclera, after clean commit.

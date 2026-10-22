@@ -65,3 +65,25 @@ Offline supplied movies are not native GSP/device evidence or measured FPS.
 
 The old procedural art exporter now refuses to generate a misleading legacy
 handoff from the new renderer. Its existing v1 ZIP remains unchanged and valid.
+
+## Installed verification
+
+Installed1.0.12, sourced7f5af5. User answered “符合预期” after observing the
+new eye-white on-device. App7705744B, UI94480B, linked dragon assets1340932B;
+unused legacy sine table2048B was removed in the final ELF. Explicit renderer
+allocation3929120B unchanged. Initial free internal233271B, free PSRAM3497828B.
+No new internal allocation does not imply no PSRAM residency: XIP/RODATA
+mapping remains enabled. Complete measurements/status are in HANDOFF.
+
+Native40 orientation comparisons and22 motion/sleep checks pass; before/after
+40 detector/controller outputs and32 other-artwork images are identical.
+Recorded511 arrays/655 events pass native replay; six live switches preserve
+source state. The30.16s,34.16s and68.4s movies retain screenshot wall intervals.
+
+Device timing:54.04s,424 new samples,0 faults. Active-open9.627 complete GSP
+frames/s at0deg (5.09s measured open window) and7.510 at270deg (18.11s).
+0deg sleeping19.818 (short4.39s window).102.794/s canvas callbacks are tiles,
+not frames. Orientation-changed intervals were excluded from per-angle rates.
+Separate270deg closed-device pixels exactly match retained C eyelids. No panel
+FPS or controlled same-scene improvement claim; all-four physical tracking
+checks were not repeated. User accepted the installed new eye-white appearance.

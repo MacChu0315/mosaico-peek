@@ -1,0 +1,11 @@
+{
+  "source": "d7f5af531165b36e7b63db80c5391d1036c0dbcd",
+  "version": "1.0.12-peek-sclera",
+  "bundle_sha256": "aa910e6af5b39c67fcc05340a0dc248a04a86581c86a8000dfd330a77393f421",
+  "elf_sha256": "dbfbf90c05fb944db80ec0714dbf7f3016d10e8d3dd23e64df722fb13d7edbe5",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false,
+  "restore": "evidence/mechanical-c/direction/device-install/peek-direction.irisfw",
+  "sclera_raw_bytes": 691200
+}
