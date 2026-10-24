@@ -1,5 +1,5 @@
 # Current four-character build; retained firmware configurations stay separate.
-CONFIG_APP_PROJECT_VER="1.0.12-peek-sclera"
+CONFIG_APP_PROJECT_VER="1.0.13-peek-deepsea"
 CONFIG_PEEK_CHARACTER=0
 CONFIG_PEEK_IMU_MOUNT_QUARTERS=0
 CONFIG_PEEK_GAZE_FLIP_X=y

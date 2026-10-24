@@ -86,12 +86,15 @@ int main(void){
         assert(peek_ui_set_character(&view,character)==ESP_GSP_OK);
         view.dragon.pose=(dragon_pose_t){.39f,.145f,.2f,.69f,.072f,.16f};
         view.dragon.target_active=true;
+        view.dragon.now_ms=6090;view.dragon.next_blink_ms=6020;
+        assert(peek_tick(&view.detector,6090)); /* Keep the synthetic source clock coherent for later pointer refresh. */
         before=view.dragon;detector=view.detector;
         dragon_pose_t upright=view.dragon.pose;
         if(q==90){upright.gaze_x=.195f;upright.gaze_y=-.29f;}
         if(q==180){upright.gaze_x=-.39f;upright.gaze_y=-.145f;}
         if(q==270){upright.gaze_x=-.195f;upright.gaze_y=.29f;}
-        assert(character?eye_pack_prepare(view.eye_pack,&upright):dragon_renderer_prepare(view.renderer,&upright));
+        eye_layers_t layers=eye_character_layers(character,&view.dragon);
+        assert(character==2?eye_pack_prepare_layers(view.eye_pack,&upright,layers.membrane,layers.lid):character?eye_pack_prepare(view.eye_pack,&upright):dragon_renderer_prepare(view.renderer,&upright));
         assert(character?eye_pack_draw(view.eye_pack,reference,960,0,0,480,480):dragon_renderer_draw(view.renderer,reference,960,0,0,480,480));
         /* set_view prepares current pose; orientation prepares its inverse gaze. */
         assert(peek_ui_set_view(&view,true)==ESP_GSP_OK);

@@ -1,0 +1,15 @@
+{
+  "version": "deep-sea-remake-r2-20261024",
+  "scope": "Deep sea only; independent review",
+  "hard_original_pupil_gloss_pixels": 14589,
+  "hard_original_pixels_changed": 0,
+  "iris_detail_note": "Original iris detail is photometrically matched before blending; no whole-neutral pixel-identity claim in R2",
+  "rim_restore_opacity": 0,
+  "membrane_roundtrip_ms": 240,
+  "previous_membrane_roundtrip_ms": 1400,
+  "closed_pixels_unchanged": true,
+  "frame_and_overlay_assets_unchanged": true,
+  "source_hashes_mtimes_unchanged": true,
+  "main_project_or_device_actions": false,
+  "remaining_limit": "Unlit whole original iris is unavailable; low-frequency brightness separation is estimated, not recovered source artwork. Inspect residual joins/glints."
+}

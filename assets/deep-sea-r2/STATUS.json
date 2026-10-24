@@ -1,0 +1,18 @@
+{
+  "version": "deep-sea-remake-r2-20261024",
+  "state": "awaiting visual review",
+  "scope": "deep_sea only",
+  "changes": [
+    "remove aperture-shaped shadow copy",
+    "remove gaze-dependent rim restore",
+    "membrane cycle240ms"
+  ],
+  "unchanged": [
+    "R1 originals and owl",
+    "frame/lids/membrane artwork",
+    "120/80px range",
+    "450/150ms sleep/wake preview"
+  ],
+  "main_project_modified": false,
+  "device_actions": false
+}

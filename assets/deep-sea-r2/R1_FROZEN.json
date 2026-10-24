@@ -1,0 +1,8 @@
+{
+  "directory": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/review/organic-eyes-remake-r1-20261024",
+  "sha256": {
+    "recipe.json": "2e478de543e75250187e5b17bbe0acdeb7192da3a3728ac9a1ebf8839aeb88c0",
+    "scripts/remake.py": "58a724c2c57befab2f51485070a18a6a333dc0e63be369135dd397ee36dee8a4",
+    "review/rotation-and-close.mp4": "cf6d01e09d6ff596a370447e1743fc7d573c615c240fbf8d63f2709bec8dfdd7"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "version": "deep-sea-remake-r2-20261024",
+  "status": "NEW REMAKE / REVIEW ONLY / NOT APPROVED / NOT INTEGRATED",
+  "canvas": [
+    480,
+    480
+  ],
+  "sphere_center": [
+    240,
+    250
+  ],
+  "radius": 233,
+  "axis_travel_px": [
+    120,
+    80
+  ],
+  "gaze_limits": [
+    0.78,
+    0.58
+  ],
+  "sprite_origin": [
+    0,
+    128
+  ],
+  "sprite_size": [
+    480,
+    240
+  ],
+  "themes": {
+    "deep_sea": {
+      "label": "深海 R2 · 独立修订",
+      "eye_shift": [
+        1.759,
+        3.489
+      ],
+      "protected_ellipse": [
+        243.018,
+        249.273,
+        204,
+        162
+      ],
+      "seam": [
+        [
+          0,
+          234
+        ],
+        [
+          100,
+          249
+        ],
+        [
+          240,
+          262
+        ],
+        [
+          380,
+          251
+        ],
+        [
+          479,
+          238
+        ]
+      ],
+      "membrane_direction": "bottom-to-top diagonal",
+      "membrane_slope": 0.31,
+      "membrane_curve": 0.0005,
+      "membrane_opacity_scale": 0.92,
+      "membrane_rgb_gain": 1.0
+    }
+  },
+  "note": "All numeric registration, masks and seam curves are new deterministic reconstruction choices, not recovered v2 values. RGB membrane content comes only from independent RGBA texture originals. Approved composite portraits are visual references only.",
+  "lid_motion": "New reconstruction: each column travels from original aperture boundary to chosen closed seam; two-pixel hidden guard. Not recovered design deformation.",
+  "correction": {
+    "rim_restore": "disabled at all gaze angles",
+    "light_normalization_blur_px": 20,
+    "gain_range": [
+      0.55,
+      2.8
+    ],
+    "iris_patch_ellipse": [
+      243.018,
+      249.273,
+      176,
+      87
+    ],
+    "pupil_lock_ellipse": [
+      243.018,
+      249.273,
+      108,
+      43
+    ],
+    "patch_feather_normalized": [
+      0.65,
+      1.0
+    ],
+    "membrane_sweep_ms": {
+      "cover": 100,
+      "hold": 20,
+      "uncover": 120
+    },
+    "sleep_close_ms": 450,
+    "wake_ms": 150,
+    "scope": "Deep sea only. Old aperture-shaped shadow copy and gaze-dependent rim fade removed. Brightness estimate is a reconstruction, not recovered unlit art."
+  }
+}

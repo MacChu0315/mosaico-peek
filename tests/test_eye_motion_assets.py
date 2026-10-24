@@ -17,6 +17,6 @@ for i,t in enumerate(m['themes']):
    lx=np.cos(yaw)*nx-np.sin(yaw)*nz;az=np.sin(yaw)*nx+np.cos(yaw)*nz;ly=np.cos(pitch)*ny-np.sin(pitch)*az
    u=cx+233*lx;v=cy+233*ly;assert u.min()>1 and v.min()>1 and u.max()<478 and v.max()<478
  ppm=subprocess.check_output([str(BUILD/'eye_snapshot'),str(i),'0','0','0']);pixels=np.asarray(Image.open(io.BytesIO(ppm)))
- if t['theme']!='mechanical':assert np.array_equal(codes(pixels),codes(np.asarray(Image.open(ROOT/'tests/reference/eye-neutral-v105'/(t['theme']+'.png')))))
- checks.append(dict(theme=t['theme'],eye_size=t['eye_size'],eye_origin=t['eye_origin'],projected_center_excursion_px=[120,80],neutral_exact=(t['theme']!='mechanical'),mechanical_reference_test=(t['theme']=='mechanical'),nine_grid_sphere_uv_covered=True))
-out=ROOT/'evidence/mechanical-c/a-centered/pixels';out.mkdir(parents=True,exist_ok=True);(out/'asset-checks.json').write_text(json.dumps(checks,indent=2)+'\n');print('PASS two retained C-neutral frames exact; new mechanical reference covered separately and27 full-aperture sphere coverage bounds')
+ if t['theme']=='night_owl':assert np.array_equal(codes(pixels),codes(np.asarray(Image.open(ROOT/'tests/reference/eye-neutral-v105'/(t['theme']+'.png')))))
+ checks.append(dict(theme=t['theme'],eye_size=t['eye_size'],eye_origin=t['eye_origin'],projected_center_excursion_px=[120,80],neutral_exact=(t['theme']=='night_owl'),deep_sea_R2_reference_test=(t['theme']=='deep_sea'),mechanical_reference_test=(t['theme']=='mechanical'),nine_grid_sphere_uv_covered=True))
+out=BUILD/'eye-motion-checks';out.mkdir(parents=True,exist_ok=True);(out/'asset-checks.json').write_text(json.dumps(checks,indent=2)+'\n');print('PASS retained owl neutral exact; approved sea/mechanical references checked separately;27 full-aperture sphere coverage bounds')

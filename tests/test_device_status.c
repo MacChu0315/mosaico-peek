@@ -17,7 +17,7 @@ const esp_app_desc_t *esp_app_get_description(void){static const esp_app_desc_t 
 esp_err_t esp_iris_rpc_register(uint32_t service,uint16_t method,esp_iris_rpc_fn fn,void *ctx){assert(service==0x504c&&method==1&&fn==rpc&&!ctx);return ESP_OK;}
 static void publish(peek_ui_t *v,unsigned at){completed++;device_status_publish(v,at);}
 int main(void){
-    peek_ui_t v={.ui=(void *)1,.sample_step=2};assert(device_status_start()==ESP_OK);
+    peek_ui_t v={.ui=(void *)1,.sample_step=2,.dragon_view=true};assert(device_status_start()==ESP_OK);
     publish(&v,100); /* Idle completed. */
     v.dragon.target_active=true;publish(&v,200); /* Still classify previous idle. */
     publish(&v,300); /* Previous active open. */
@@ -45,5 +45,17 @@ int main(void){
     q.payload_size=0;v.character=3;v.dragon.sleeping=true;v.dragon.pose.blink=1;v.dragon.pose.gaze_x=.6f;v.dragon.pose.gaze_y=-.4f;publish(&v,1200);
     assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK);
     assert(strstr((char *)out,"\"gaze_x\":0.60000")&&strstr((char *)out,"\"render_gaze_x\":0.00000")&&strstr((char *)out,"\"render_gaze_y\":0.00000"));
+    memset(&snapshot,0,sizeof(snapshot));v.character=2;dragon_reset(&v.dragon,90640);v.dragon.target_active=true;
+    v.dragon.now_ms=6020;v.dragon.pose.blink=.5f;publish(&v,2000);
+    v.dragon.now_ms=6120;publish(&v,2100); /* Previous membrane0 despite raw blink. */
+    v.dragon.now_ms=6260;publish(&v,2200); /* Previous fully covered membrane. */
+    v.dragon.now_ms=6300;publish(&v,2300);
+    assert(snapshot.open_frames==2&&snapshot.membrane_frames==1&&snapshot.membrane_full_frames==1);
+    assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK&&strstr((char *)out,"\"render_membrane\":0.00000"));
+    v.dragon.sleeping=true;v.dragon.now_ms=11000;publish(&v,2400);publish(&v,2500);
+    assert(snapshot.membrane_frames==1&&snapshot.membrane_full_frames==1); /* sleep is separate */
+    v.dragon_view=false;publish(&v,2600);uint64_t previous_open=snapshot.open_frames;
+    v.dragon.sleeping=false;v.dragon.now_ms=6120;publish(&v,2700);publish(&v,2800);
+    assert(snapshot.membrane_frames==1&&snapshot.membrane_full_frames==1&&snapshot.open_frames==previous_open);
     puts("PASS device telemetry: previous generation classification, sleep/closing excluded, open timing exact,2048B body and RPC purity");
 }

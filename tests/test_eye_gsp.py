@@ -22,6 +22,7 @@ def main():
             if theme=='dragon':
                 args=['dragon_snapshot',*[str(pose[k]) for k in ('gaze_x','gaze_y','blink','squint','pupil_width','tension')]]
             else:args=['eye_snapshot',str(THEMES.index(theme)),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])]
+            if theme=='deep_sea':args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
             ppm=subprocess.check_output([str(ROOT/'build-host'/args[0]),*args[1:]])
             expected=Image.open(io.BytesIO(ppm))
             if theme=='dragon' and s['sample_step']==2:expected=expected.resize((240,240),Image.Resampling.NEAREST).resize((480,480),Image.Resampling.NEAREST)

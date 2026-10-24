@@ -1,0 +1,31 @@
+{
+  "version": "remake-r1-20261024",
+  "status": "new reconstruction, visual review only, NOT integration or exact v2 recovery",
+  "source_project_commit": "dd9fe6c3d40b2524642498585225c1cd270b6960",
+  "source_files": {
+    "input/originals/MANIFEST.json": "a6ceeda9363cd89d7d8c9e31e8f4380399688dca3bb97c245fdb36bbd6801808",
+    "input/originals/README.md": "771e6ad595050841aa1f421e52be84ce2a4cf353fa6a25e26b7d5dc006c7bfbc",
+    "input/originals/SOURCES.md": "4bc97dfa13f0869cde91658ed480169161d9dd2ec3fc93d5cc4db906c6ef1345",
+    "input/originals/SHA256SUMS.txt": "31673eeec58413fee3677ce68ddfcf81932bfca6dfb96589b5bf21f0e31df45f",
+    "input/originals/reference/night_owl/membrane_v5.png": "0c50fcdefad25e0336fbf19d387f9529d5dd95235f3842f74b86082b00318406",
+    "input/originals/reference/deep_sea/membrane_v3.png": "0678d74bb5a9711f34597c9f89e54f822545727348bcc6c037552d407e038d14",
+    "input/originals/assets/raw/night_owl/expanded_eye_source.png": "96ab2b4f67a3c5471b1b77425f2f80ca533ceb8ffcb845dcae73b073aa380cad",
+    "input/originals/assets/raw/night_owl/closed_lid_source.png": "c271b9ad506a8ab2bab16ea68e32cc00959d21dd11bb8319b01f95c36ebe3f2c",
+    "input/originals/assets/raw/night_owl/membrane_texture_source.png": "08418f63fb02b96cf25eb5c4b078f6075d7a8b018c76fad90c056c69adf88b44",
+    "input/originals/assets/raw/night_owl/original_portrait.png": "555a4fa7e04fda422a0c57ffe9f0890284d6bca36c955fc79df6703cead2b173",
+    "input/originals/assets/raw/deep_sea/expanded_eye_source.png": "f66f92fde7fdd8e17f25df57ebc6b08615e33ed9446e74b29ab26756ee4b00c6",
+    "input/originals/assets/raw/deep_sea/closed_lid_source.png": "3b57d5a9c5a20be2aed3ae8b0497dde402627357ca515df18059305758429104",
+    "input/originals/assets/raw/deep_sea/membrane_texture_source.png": "c24099fc1e869c52cd864d62eecf21246fab66af8df37eca15dd4e316040c2df",
+    "input/originals/assets/raw/deep_sea/original_portrait.png": "61f282f442abd0f92ff0e8780bc675373338ea5845e36f60c5d053e55a0e309d",
+    "input/engineering/eye_motion.json": "888a7a1a4ac8f8640593dae70e23160bfcf4e266ada5f03ab3ef80d63e0a8dc2",
+    "input/engineering/eye_projection.h": "24c217b5ffdc15ef1d78f555639a3d171e41a35034ec625f915e02c0932c70f8",
+    "input/engineering/original_geometry.json": "33da2614b92a1de09a7000c19c46935493710b89b4b7404cb20d9e460c8b91d6",
+    "input/engineering/night_owl/frame.png": "ab3d0e1206e43344d192e4c91c1c01ca8e8d511f5434ee36b2c986561f263e39",
+    "input/engineering/night_owl/neutral.png": "e99ea8fb720a780597e33c1ed2b1395d4d335833fe5acbb55c1b46bcf82a9ac8",
+    "input/engineering/night_owl/aperture_mask.png": "386ed3ea02d46739039f6f1e561e23fc7af58a1205b915ac89267a89fcc400a7",
+    "input/engineering/deep_sea/frame.png": "e01d5c53ccc531bf3cd281451c5ec13c8b800dda615f95d3486a5245cf98cfeb",
+    "input/engineering/deep_sea/neutral.png": "663e73e119521c30864b29b9d1dc52c6ee260f10fbc7a259859d5ea231ed5fa0",
+    "input/engineering/deep_sea/aperture_mask.png": "c940814e49f91a76753bba6c0506018c0e3cdd66502791ad60f36c57b0e991a2",
+    "input/engineering/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+}

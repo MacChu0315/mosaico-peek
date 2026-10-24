@@ -2,6 +2,10 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
+Current source candidate1.0.13-peek-deepsea integrates the approved deep-sea R2,
+independent240ms membrane and outer eyelid, with no returning rim overlay.
+Owl remains unchanged. [Deep-sea scope and validation](docs/DEEP_SEA_R2.md).
+
 Installed1.0.12-peek-sclera adds the selected dragon sclera C
 texture through exact RGB888 sampling. [Scope, resources and commands](docs/DRAGON_SCLERA.md).
 Installed identity and physical acceptance remain in [HANDOFF](docs/HANDOFF.md).
@@ -11,7 +15,7 @@ dragon and diagnostics. [Current three-theme integration, commands and limits](d
 Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
 `python3 tools/preview.py --view night_owl` starts directly.
 New art remains full480 with lossless RGBA sources and blended lids. Current
-build is1.0.12-peek-sclera (`sdkconfig.dragon-sclera`): both gaze flips enabled per
+build is1.0.13-peek-deepsea (`sdkconfig.deep-sea-r2`): both gaze flips enabled per
 latest same-placement dragon/mechanical feedback, new eyes use sphere rotation with120/80px pure-axis center
 travel. [Motion change and validation](docs/EYE_MOTION.md).
 The user accepted the range; latest1.0.10 physical feedback rejected both tracking axes. Mechanical now uses the supplied C artwork

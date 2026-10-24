@@ -51,6 +51,10 @@ static dragon_pose_t artwork_pose(const peek_ui_t *s){
 }
 static bool prepare_eye(peek_ui_t *s){
     dragon_pose_t pose=artwork_pose(s);
+    if(s->character==2){
+        eye_layers_t layers=eye_character_layers(s->character,&s->dragon);
+        return eye_pack_prepare_layers(s->eye_pack,&pose,layers.membrane,layers.lid);
+    }
     return s->character?eye_pack_prepare(s->eye_pack,&pose):dragon_renderer_prepare(s->renderer,&pose);
 }
 static bool draw_region(peek_ui_t *s,void *pixels,size_t stride,int x,int y,int w,int h){

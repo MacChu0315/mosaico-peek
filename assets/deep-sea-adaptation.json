@@ -1,0 +1,22 @@
+{
+  "source_package": "assets/deep-sea-r2",
+  "surface": "processed/eye_surface.png",
+  "surface_sha256": "1201280f34d31b8b78251bc949d6e81eaccf09b0214d8c52c45d08859c488a45",
+  "approved_direction": "R2 brightness-matched surface; no rim_restore; original frame and18 overlays unchanged",
+  "sprite_origin": [
+    0,
+    128
+  ],
+  "sprite_size": [
+    480,
+    240
+  ],
+  "membrane_ms": [
+    100,
+    20,
+    120
+  ],
+  "sleep_close_ms": 450,
+  "wake_ms": 150,
+  "default_character": 0
+}

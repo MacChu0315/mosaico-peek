@@ -9,3 +9,6 @@ evidence/**/*.log -whitespace
 
 # Preserve supplied original recovery files without newline conversion.
 /assets/organic-eyes-source-recovery/** -text
+
+# Preserve accepted independent R2 review inputs and derived candidate bytes.
+/assets/deep-sea-r2/** -text

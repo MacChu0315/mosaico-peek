@@ -1,6 +1,6 @@
-# Peek handoff — socket A and centered mechanical sleep (2026-10-22)
+# Peek handoff — approved deep-sea R2 (2026-10-24)
 
-Current source targets1.0.12-peek-sclera, combining calibrated orientation
+Current source targets1.0.13-peek-deepsea, combining calibrated orientation
 (fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
 1.0.8 center bundle was NEVER installed: preflight found the newer orientation
 firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
@@ -27,12 +27,22 @@ user authorization. Installed1.0.12-peek-sclera replaces only procedural sclera
 with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
 remain intact. [Integration](DRAGON_SCLERA.md). The official update and post-boot checks below are complete.
 
-Latest intake: five owl/sea source-recovery ZIPs merged and checked;10 originals
-preserve night_owl V5/deep_sea V3 direction. Final v2 runtime layers and ORA are
-not present. Local HTML/lite artifacts match an older v1 set, whose generated
-input hashes differ. [Intake and missing files](ORGANIC_EYES_RECOVERY.md).
-Reconstruction versus exact-v2 recovery awaits the user's choice; runtime and
-device remain unchanged.
+The user selected reconstruction, then accepted deep-sea R2 and requested this
+integration before revisiting owl. Candidate1.0.13 uses the exact accepted eye
+surface, no rim layer,240ms independent membrane and existing450/150ms sleep/
+wake rules. Ordinary blink cadence comes from the unchanged shared controller.
+Owl remains on its existing runtime; no new owl artwork is installed.
+[Deep-sea implementation and commands](DEEP_SEA_R2.md).
+
+Current verification: Debug/Release36/36; seven approved R2 snapshots exact,
+384 full-frame scalar C comparisons,57 independent PNG comparisons,17 native
+phase checkpoints,52 orientation pixel checks,16 switch checks,22 native motion/
+sleep pixel checks and two real-time movies. Recorded511 arrays/655 events and
+six live view switches pass.32 non-sea native frames and22 owl/mechanical
+compressed streams are byte-identical to baseline. Renderer buffers unchanged.
+Initial failed test comparisons and clean preview interruption remain in
+verification/; corrected same-tick replay and bounded native runs passed.
+Device update/physical R2 acceptance are still pending below.
 
 ## Current installed device
 

@@ -2,6 +2,7 @@
 #pragma once
 #include "dragon.h"
 #include "peek_orientation.h"
+#include "eye_layers.h"
 /* Pure presentation transform. Never write back into shared behavior/detection.
  * sleeping includes the450ms close; waking uses the existing150ms open.
  * Ordinary blinks keep their gaze, and other characters retain their pose. */

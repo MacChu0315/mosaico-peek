@@ -1,0 +1,11 @@
+{
+  "repeat_PNG_count": 24,
+  "repeat_hashes_identical": true,
+  "frame_and18_overlays_byte_identical_to_R1": true,
+  "opaque_foreground_pixels_unchanged_in7_cases": true,
+  "R1_frozen_files_unchanged": true,
+  "new_rim_alpha_extrema": [
+    0,
+    0
+  ]
+}

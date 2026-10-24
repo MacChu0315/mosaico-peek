@@ -13,7 +13,7 @@
 #include <zlib.h>
 #endif
 typedef struct {const unsigned char *data;size_t bytes;unsigned w,h;} eye_stream_t;
-typedef struct {const char *name;int x,y,amp_x,amp_y,eye_x,eye_y,cx,cy,rotating_shutter;eye_stream_t layers[11];} eye_theme_t;
+typedef struct {const char *name;int x,y,amp_x,amp_y,eye_x,eye_y,cx,cy,rotating_shutter;eye_stream_t layers[20];} eye_theme_t;
 #include "eye_pack.inc"
 /* Allocate the same capacity for each theme; no allocation during blink/draw. */
 #define FRAME_BYTES (480u*480u*4u)
@@ -97,10 +97,18 @@ static void shutter_texel(const eye_pack_t *r,int x,int y,float *c){
     }
     c[3]=1;
 }
+bool eye_pack_prepare_layers(eye_pack_t *r,const dragon_pose_t *p,float membrane,float lid){
+    if(!r||!r->selected||!p||!isfinite(membrane)||!isfinite(lid)||membrane<0||membrane>1||lid<0||lid>1||eye_themes[r->theme].rotating_shutter!=2)return false;
+    const eye_theme_t *t=&eye_themes[r->theme];unsigned mi=(unsigned)floorf(membrane*8+.5f),li=(unsigned)floorf(lid*8+.5f);
+    r->prepared=false;
+    if(!decode(r,r->lid[0],&t->layers[2+mi])||!decode(r,r->lid[1],&t->layers[11+li]))return false;
+    r->lo=mi;r->hi=li;r->mix=0;r->projection=eye_projection(p->gaze_x,p->gaze_y,t->amp_x,t->amp_y,t->cx,t->cy);r->prepared=true;return true;
+}
 bool eye_pack_prepare(eye_pack_t *r,const dragon_pose_t *p){
     if(!r||!r->selected||!p||!isfinite(p->gaze_x)||!isfinite(p->gaze_y)||!isfinite(p->blink)||fabsf(p->gaze_x)>.78001f||fabsf(p->gaze_y)>.58001f||p->blink<0||p->blink>1)return false;
     const eye_theme_t *t=&eye_themes[r->theme];
-    if(t->rotating_shutter){
+    if(t->rotating_shutter==2)return eye_pack_prepare_layers(r,p,p->blink,p->blink);
+    if(t->rotating_shutter==1){
         r->prepared=false;
         if(!prepare_shutter(r,(unsigned)floorf(p->blink*8+.5f)))return false;
         r->projection=eye_projection(p->gaze_x,p->gaze_y,t->amp_x,t->amp_y,t->cx,t->cy);
@@ -134,7 +142,7 @@ bool eye_pack_draw(const eye_pack_t *r,void *pixels,size_t stride,int x,int y,in
             const unsigned char *fp=r->frame+((size_t)py*480+px)*4;
             if(fp[3]==255){c[0]=fp[0];c[1]=fp[1];c[2]=fp[2];}
             else {
-                float u,v;eye_project(&r->projection,r->nx[px],r->ny[py],r->nz[py*480+px],px,py,&u,&v);if(t->rotating_shutter){
+                float u,v;eye_project(&r->projection,r->nx[px],r->ny[py],r->nz[py*480+px],px,py,&u,&v);if(t->rotating_shutter==1){
                     int ix=(int)floorf(u),iy=(int)floorf(v);float fx=u-ix,fy=v-iy;memset(c,0,sizeof(c));
                     for(int j=0;j<2;j++)for(int i=0;i<2;i++){
                         int xx=ix+i,yy=iy+j;if(xx<0||yy<0||xx>=480||yy>=480)continue;
@@ -142,7 +150,10 @@ bool eye_pack_draw(const eye_pack_t *r,void *pixels,size_t stride,int x,int y,in
                         for(unsigned k=0;k<4;k++)c[k]+=q[k]*weight;
                     }
                 }else sample(r->eye,ew,eh,u-t->eye_x,v-t->eye_y,c);
-                if(!t->rotating_shutter&&lx>=0&&ly>=0&&lx<(int)lw&&ly<(int)lh){
+                if(t->rotating_shutter==2&&lx>=0&&ly>=0&&lx<(int)lw&&ly<(int)lh){
+                    size_t off=((size_t)ly*lw+lx)*4;rgba(r->lid[0]+off,a);over(c,a);rgba(r->lid[1]+off,b);over(c,b);
+                }
+                if(t->rotating_shutter==0&&lx>=0&&ly>=0&&lx<(int)lw&&ly<(int)lh){
                     size_t off=((size_t)ly*lw+lx)*4;rgba(r->lid[0]+off,a);rgba(r->lid[1]+off,b);
                     for(unsigned k=0;k<4;k++)a[k]+=r->mix*(b[k]-a[k]);
                     over(c,a);
@@ -160,5 +171,5 @@ size_t eye_pack_heap_bytes(void){return sizeof(eye_pack_t)+FRAME_BYTES+EYE_BYTES
     +sizeof(tinfl_decompressor)
 #endif
     ;}
-size_t eye_pack_asset_bytes(void){size_t n=sizeof(eye_themes);for(unsigned t=0;t<3;t++)for(unsigned i=0;i<11;i++)n+=eye_themes[t].layers[i].bytes;return n;}
+size_t eye_pack_asset_bytes(void){size_t n=sizeof(eye_themes);for(unsigned t=0;t<3;t++)for(unsigned i=0;i<20;i++)n+=eye_themes[t].layers[i].bytes;return n;}
 const char *eye_pack_name(unsigned theme){return theme<3?eye_themes[theme].name:NULL;}

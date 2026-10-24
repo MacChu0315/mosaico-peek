@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Independent float64 PNG compositor vs full-resolution production C pixels."""
-import io,json,subprocess,sys
+import io,json,os,subprocess,sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
 sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[1]
-PACK=ROOT/'assets/eye-pack';OUT=ROOT/'evidence/mechanical-c/a-centered/pixels';GENERATED=ROOT/'build-host/eye-generated'
+PACK=ROOT/'assets/eye-pack';OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'build-host/eye-pixel-checks'));GENERATED=ROOT/'build-host/eye-generated'
 def source(path):
     a=np.asarray(Image.open(path).convert('RGBA'),dtype=np.float64)/255
     a[...,:3]*=a[...,3:4];return a
@@ -22,7 +22,7 @@ def oracle(theme,gx,gy,lid):
             adaptation=json.loads((ROOT/'assets/mechanical-c-adaptation.json').read_text())
             _mechanical_reference.frame=premultiplied(ROOT/adaptation['fixed_frame_source'])
         return np.rint(np.asarray(_mechanical_reference.render(gx,gy,lid))/255*np.array([31,63,31])).astype(int)
-    folder=PACK/'assets/processed'/theme['id'];eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
+    folder=ROOT/'assets/deep-sea-r2/processed' if theme['id']=='deep_sea' else PACK/'assets/processed'/theme['id'];eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
     generated=next(t for t in json.loads((GENERATED/'eye_pack.json').read_text())['themes'] if t['theme']==theme['id'])
     x,y=np.meshgrid(np.arange(480),np.arange(480));amp=generated['max_gaze_translation_px'];ox,oy=generated['eye_origin']
     cx,cy=generated['eye_center']
@@ -46,10 +46,17 @@ def oracle(theme,gx,gy,lid):
         for i in (0,1):
             xx=ix+i;yy=iy+j;valid=(xx>=0)&(yy>=0)&(xx<eye.shape[1])&(yy<eye.shape[0]);weight=(fx if i else 1-fx)*(fy if j else 1-fy)
             c[valid]+=eye[yy[valid],xx[valid]]*weight[valid,None]
-    n=lid*8;lo=int(n);hi=min(8,lo+1);u=n-lo
-    a=source(folder/f'lid_{lo:02}.png')*(1-u)+source(folder/f'lid_{hi:02}.png')*u
-    lx=x-theme['lid_origin'][0];ly=y-theme['lid_origin'][1];valid=(lx>=0)&(ly>=0)&(lx<a.shape[1])&(ly<a.shape[0]);b=np.zeros_like(c);b[valid]=a[ly[valid],lx[valid]]
-    c[...,:3]=b[...,:3]+c[...,:3]*(1-b[...,3:4]);c[...,:3]=frame[...,:3]+c[...,:3]*(1-frame[...,3:4])
+    if theme['id']=='deep_sea':
+        index=min(8,int(np.float32(lid)*np.float32(8)+np.float32(.5)))
+        layers=[source(folder/'membrane'/f'membrane_{index:02}.png'),source(folder/'lids'/f'lid_{index:02}.png')]
+    else:
+        n=lid*8;lo=int(n);hi=min(8,lo+1);u=n-lo
+        layers=[source(folder/f'lid_{lo:02}.png')*(1-u)+source(folder/f'lid_{hi:02}.png')*u]
+    lx=x-generated['lid_origin'][0];ly=y-generated['lid_origin'][1]
+    for a in layers:
+        valid=(lx>=0)&(ly>=0)&(lx<a.shape[1])&(ly<a.shape[0]);b=np.zeros_like(c);b[valid]=a[ly[valid],lx[valid]]
+        c[...,:3]=b[...,:3]+c[...,:3]*(1-b[...,3:4])
+    c[...,:3]=frame[...,:3]+c[...,:3]*(1-frame[...,3:4])
     bits=np.array([31,63,31]);return np.floor(np.clip(c[...,:3],0,1)*bits+.5).astype(int)
 def main():
     themes=json.loads((PACK/'assets/manifest.json').read_text())['themes'];checks=[]
@@ -62,7 +69,7 @@ def main():
             expected=oracle(t,gx,gy,lid);delta=np.abs(actual-expected)
             assert delta.max()<=1,(t['id'],gx,gy,lid,delta.max())
             assert (delta>0).sum()<500,(t['id'],(delta>0).sum())
-            if gx==gy==lid==0 and t['id']!='mechanical':
+            if gx==gy==lid==0 and t['id']=='night_owl':
                 neutral=np.asarray(Image.open(PACK/'assets/processed'/t['id']/'neutral.png'))[...,:3]
                 native=np.floor(neutral/255*np.array([31,63,31])+.5).astype(int)
                 assert np.max(np.abs(actual-native))<=1

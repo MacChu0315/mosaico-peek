@@ -38,7 +38,9 @@ def main():
                 ppm=subprocess.check_output([str(ROOT/'build-host/dragon_snapshot'),*[str(p[k]) for k in ['gaze_x','gaze_y','blink','squint','pupil_width','tension']]])
                 expected=np.asarray(Image.open(io.BytesIO(ppm)));expected=np.repeat(np.repeat(expected[1::2,1::2],2,axis=0),2,axis=1)
             else:
-                ppm=subprocess.check_output([str(ROOT/'build-host/eye_snapshot'),str(THEMES.index(s['view'])-1),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]);expected=np.asarray(Image.open(io.BytesIO(ppm)))
+                args=[str(ROOT/'build-host/eye_snapshot'),str(THEMES.index(s['view'])-1),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]
+                if s['view']=='deep_sea':args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
+                ppm=subprocess.check_output(args);expected=np.asarray(Image.open(io.BytesIO(ppm)))
             actual=np.asarray(Image.open(file).convert('RGB'));codes=lambda a:np.rint(a.astype(float)/255*np.array([31,63,31])).astype(int)
             assert np.array_equal(codes(expected),codes(actual)),name
         tap(240,240);settle('night_owl','tap advances');capture('night-owl-after-tap')

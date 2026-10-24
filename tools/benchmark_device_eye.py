@@ -18,11 +18,15 @@ groups={}
 for x,y in zip(rows,rows[1:]):
  p,q=x['state'],y['state']
  if p['view']!=q['view'] or p.get('orientation',0)!=q.get('orientation',0):continue
- key=(p['view'],'sleeping' if p['sleeping'] and q['sleeping'] else 'active-or-transition',p.get('orientation',0))
+ def closed(v):
+  level=v.get('render_lid',v['blink'])
+  return v['sleeping'] and (level>=.9375 if v['view'] in ('deep_sea','mechanical') else level==1)
+ key=(p['view'],'sleeping-closed' if closed(p) and closed(q) else 'sleep-transition' if p['sleeping'] and q['sleeping'] else 'active-or-transition',p.get('orientation',0))
  r=groups.setdefault(key,dict(view=key[0],condition=key[1],orientation=key[2],ms=0,frames=0,draw_us=0,raster_us=0,submit_us=0,prepare_us=0,prepares=0,samples=0,faults=0,open_frames=0,open_ms=0,open_raster_us=0,open_submit_us=0))
  for name,pkey in [('ms','now_ms'),('frames','render_frames'),('draw_us','draw_us'),('raster_us','raster_us'),('submit_us','submit_us'),('prepare_us','prepare_us'),('prepares','prepares'),('samples','samples'),('faults','faults'),('open_frames','open_frames'),('open_ms','open_elapsed_ms'),('open_raster_us','open_raster_us'),('open_submit_us','open_submit_us')]:r[name]+=q[pkey]-p[pkey]
 for r in groups.values():
  r['engine_hz']=r['frames']*1000/r['ms'];r['raster_ms_frame']=r['raster_us']/max(1,r['frames'])/1000;r['submit_ms_frame']=r['submit_us']/max(1,r['frames'])/1000;r['prepare_ms_mean']=r['prepare_us']/max(1,r['prepares'])/1000;r['active_open_hz']=r['open_frames']*1000/r['open_ms'] if r['open_ms'] else None
-report=dict(canvas_callback_hz=(rows[-1]['state']['draws']-rows[0]['state']['draws'])*1000/(rows[-1]['state']['now_ms']-rows[0]['state']['now_ms']),physical_panel_FPS=None,version=a['device']['app_version'],ELF_sha256=a['device']['firmware_sha256'],boot_id=str(boot),views=sorted({r['state']['view'] for r in rows}),samples=len(rows),groups=list(groups.values()),heap={k:b['device'][k] for k in ['free_internal','min_free_internal','free_spiram','min_free_spiram']},note='Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison.')
+membrane_delta={k:rows[-1]['state'].get(k,0)-rows[0]['state'].get(k,0) for k in ('membrane_frames','membrane_full_frames')}
+report=dict(membrane_completed_frame_delta=membrane_delta,canvas_callback_hz=(rows[-1]['state']['draws']-rows[0]['state']['draws'])*1000/(rows[-1]['state']['now_ms']-rows[0]['state']['now_ms']),physical_panel_FPS=None,version=a['device']['app_version'],ELF_sha256=a['device']['firmware_sha256'],boot_id=str(boot),views=sorted({r['state']['view'] for r in rows}),samples=len(rows),groups=list(groups.values()),heap={k:b['device'][k] for k in ['free_internal','min_free_internal','free_spiram','min_free_spiram']},note='Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison.')
 (out/'summary.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2),flush=True)
 shot=command(['screenshot',str(out/'screen.png')]);assert shot['boot_id']==boot;(out/'screen.json').write_text(json.dumps(shot,indent=2)+'\n')

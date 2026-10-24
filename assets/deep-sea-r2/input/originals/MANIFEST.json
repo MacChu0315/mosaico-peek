@@ -1,0 +1,169 @@
+{
+  "package": "organic-eyes-source-recovery",
+  "status": "partial source recovery; not the complete final handoff",
+  "native_C_GSP_verified": false,
+  "hardware_verified": false,
+  "runtime_assets_restored": false,
+  "items": [
+    {
+      "part": "01-approved-references",
+      "original_filename": "猫头鹰瞬膜细节.png",
+      "path": "reference/night_owl/membrane_v5.png",
+      "character": "夜枭",
+      "purpose": "最后认可的 V5 瞬膜静态参考；不是独立膜层或运行截图",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2578659,
+      "sha256": "0c50fcdefad25e0336fbf19d387f9529d5dd95235f3842f74b86082b00318406",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "not available in retained record"
+    },
+    {
+      "part": "01-approved-references",
+      "original_filename": "深海之眼，瞬膜半掩.png",
+      "path": "reference/deep_sea/membrane_v3.png",
+      "character": "深海",
+      "purpose": "已认可的 V3 瞬膜静态参考；不是独立膜层或运行截图",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2343978,
+      "sha256": "0678d74bb5a9711f34597c9f89e54f822545727348bcc6c037552d407e038d14",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "not available in retained record"
+    },
+    {
+      "part": "02-eye-surface-sources",
+      "original_filename": "夜枭琥珀眼与深褐巩膜.png",
+      "path": "assets/raw/night_owl/expanded_eye_source.png",
+      "character": "夜枭",
+      "purpose": "V2 扩展眼球表面原图；尚未恢复保护虹膜区域后的成品 eye_surface.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2226321,
+      "sha256": "96ab2b4f67a3c5471b1b77425f2f80ca533ceb8ffcb845dcae73b073aa380cad",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    },
+    {
+      "part": "02-eye-surface-sources",
+      "original_filename": "深海幻兽青蓝眼球纹理.png",
+      "path": "assets/raw/deep_sea/expanded_eye_source.png",
+      "character": "深海",
+      "purpose": "V2 扩展眼球表面原图；尚未恢复保护虹膜区域后的成品 eye_surface.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2698275,
+      "sha256": "f66f92fde7fdd8e17f25df57ebc6b08615e33ed9446e74b29ab26756ee4b00c6",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    },
+    {
+      "part": "03-closed-lid-sources",
+      "original_filename": "熟睡夜枭的柔和闭眼特写.png",
+      "path": "assets/raw/night_owl/closed_lid_source.png",
+      "character": "夜枭",
+      "purpose": "V2 闭眼原图；不是9帧闭眼精灵图层",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 3069076,
+      "sha256": "c271b9ad506a8ab2bab16ea68e32cc00959d21dd11bb8319b01f95c36ebe3f2c",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "not available in retained record"
+    },
+    {
+      "part": "03-closed-lid-sources",
+      "original_filename": "蓝色生物安静合眼.png",
+      "path": "assets/raw/deep_sea/closed_lid_source.png",
+      "character": "深海",
+      "purpose": "V2 采用的第二版闭眼原图；不是9帧闭眼精灵图层",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2426102,
+      "sha256": "3b57d5a9c5a20be2aed3ae8b0497dde402627357ca515df18059305758429104",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    },
+    {
+      "part": "04-membrane-textures",
+      "original_filename": "灰白半透明瞬膜材质.png",
+      "path": "assets/raw/night_owl/membrane_texture_source.png",
+      "character": "夜枭",
+      "purpose": "最终采用的独立瞬膜原始材质，RGBA；不是裁切后的9帧膜层",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 2356646,
+      "sha256": "08418f63fb02b96cf25eb5c4b078f6075d7a8b018c76fad90c056c69adf88b44",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "not available in retained record"
+    },
+    {
+      "part": "04-membrane-textures",
+      "original_filename": "深海蓝绿半透明生物膜.png",
+      "path": "assets/raw/deep_sea/membrane_texture_source.png",
+      "character": "深海",
+      "purpose": "最终采用的独立瞬膜原始材质，RGBA；不是裁切后的9帧膜层",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 2693206,
+      "sha256": "c24099fc1e869c52cd864d62eecf21246fab66af8df37eca15dd4e316040c2df",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    },
+    {
+      "part": "05-original-portraits",
+      "original_filename": "夜枭铜瞳.png",
+      "path": "assets/raw/night_owl/original_portrait.png",
+      "character": "夜枭",
+      "purpose": "最初已认可角色正视原图；不是完整球面素材",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 3244134,
+      "sha256": "555a4fa7e04fda422a0c57ffe9f0890284d6bca36c955fc79df6703cead2b173",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    },
+    {
+      "part": "05-original-portraits",
+      "original_filename": "深海异兽的冰蓝横瞳.png",
+      "path": "assets/raw/deep_sea/original_portrait.png",
+      "character": "深海",
+      "purpose": "最初已认可角色正视原图；不是完整球面素材",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "bytes": 2750590,
+      "sha256": "61f282f442abd0f92ff0e8780bc675373338ea5845e36f60c5d053e55a0e309d",
+      "origin": "Earlier AI image generation; retrieved original PNG bytes, no pixel edits",
+      "prior_hash_comparison": "match"
+    }
+  ]
+}

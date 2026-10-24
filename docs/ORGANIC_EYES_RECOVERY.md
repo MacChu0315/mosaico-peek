@@ -39,10 +39,12 @@ The local eye-surface-redraw-v2.zip also has no membrane/rim layers and no PNG
 hash matches to the recovered source set. No matching final v2 package was
 located in the searched project review/download locations.
 
-Current engineering runtime remains installed1.0.12-peek-sclera. Original dragon
-and accepted mechanical, existing owl/sea runtime and shared input are unchanged.
-No C/GSP implementation, rebuild, device operation or installation occurred for
-this intake. Next direction awaits the user: reconstruct from these10 originals
-and review a newly made preview, recover the exact v2 delivery, or retain sources
-only. Reconstructed frames must be labelled newly made, never byte-identical to
-unavailable final outputs.
+## Subsequent selected reconstruction
+
+The user explicitly chose a new reconstruction, first reviewed both characters,
+then restricted further work to deep_sea. R2 removes the aperture-shaped dark
+patch/rim fade and accelerates the membrane to240ms. The user accepted that
+appearance and authorized demo integration; see DEEP_SEA_R2.md and HANDOFF.
+Owl reconstruction remains deferred pending physical deep-sea confirmation.
+This does not change the intake finding: the exact old v2 delivery was not
+recovered, and R1/R2 must remain labelled new reconstructions.

@@ -18,6 +18,7 @@ static struct snapshot {
     uint64_t render_busy_us,raster_us,submit_us;
     uint32_t frames;
     uint64_t open_frames,open_elapsed_ms,open_busy_us,open_raster_us,open_submit_us;
+    uint64_t membrane_frames,membrane_full_frames;
     peek_result_t result;
     dragon_t role;
     unsigned orientation;bool orientation_auto;int imu_error;uint64_t imu_ms;float ax,ay,az;
@@ -39,7 +40,14 @@ void device_status_publish(const peek_ui_t *v,uint64_t now){
     /* Stats describe the completed previous generation. Classify by that
      * generation's pose, not the newly prepared next pose. Closed/sleep frames
      * must never inflate the reported active-follow render rate. */
-    if(snapshot.now && snapshot.role.target_active && snapshot.role.pose.blink==0 &&
+    eye_layers_t previous=eye_character_layers(snapshot.character,&snapshot.role);
+    bool visible_open=snapshot.character==2?(previous.membrane<.0625f&&previous.lid<.0625f):snapshot.role.pose.blink==0;
+    s.membrane_frames=snapshot.membrane_frames;s.membrane_full_frames=snapshot.membrane_full_frames;
+    if(snapshot.now&&!snapshot.diagnostic&&snapshot.character==2&&!snapshot.role.sleeping&&!snapshot.role.waking&&previous.membrane>=.0625f){
+        s.membrane_frames+=(uint32_t)(s.frames-snapshot.frames);
+        if(previous.membrane>=.9375f)s.membrane_full_frames+=(uint32_t)(s.frames-snapshot.frames);
+    }
+    if(snapshot.now && !snapshot.diagnostic && snapshot.role.target_active && visible_open &&
        !snapshot.role.sleeping && !snapshot.role.waking){
         s.open_frames+=(uint32_t)(s.frames-snapshot.frames);
         s.open_elapsed_ms+=now-snapshot.now;
@@ -54,17 +62,18 @@ static esp_err_t rpc(const esp_iris_rpc_request_t *request,uint8_t *out,size_t c
     struct snapshot s;portENTER_CRITICAL(&lock);s=snapshot;portEXIT_CRITICAL(&lock);
     const peek_result_t *r=&s.result;const dragon_t *c=&s.role;
     dragon_pose_t artwork=eye_artwork_pose(s.character,c,s.orientation);
+    eye_layers_t layers=eye_character_layers(s.character,c);
     int n=snprintf((char *)out,capacity,
         "{\"schema\":1,\"source_revision\":\"%s\",\"version\":\"%s\",\"source\":\"LIVE MLX90640\",\"view\":\"%s\",\"now_ms\":%"PRIu64","
         "\"orientation\":%u,\"orientation_auto\":%s,\"imu_error\":%d,\"imu_ms\":%"PRIu64",\"imu_accel\":[%.4f,%.4f,%.4f],"
         "\"sample_step\":%u,\"flip_x\":%s,\"flip_y\":%s,\"sleeping\":%s,\"waking\":%s,\"geometry_cached\":%s,\"render_core\":%d,\"sensor_core\":%d,\"captures\":%"PRIu32",\"faults\":%"PRIu32",\"callbacks\":%"PRIu64",\"draws\":%"PRIu64",\"draw_us\":%"PRIu64",\"draw_max_us\":%"PRIu64",\"pixels\":%"PRIu64","
         "\"prepares\":%"PRIu64",\"prepare_us\":%"PRIu64",\"render_frames\":%"PRIu32",\"render_busy_us\":%"PRIu64",\"raster_us\":%"PRIu64",\"submit_us\":%"PRIu64",\"error\":%d,\"open_frames\":%"PRIu64",\"open_elapsed_ms\":%"PRIu64",\"open_busy_us\":%"PRIu64",\"open_raster_us\":%"PRIu64",\"open_submit_us\":%"PRIu64","
         "\"sequence\":%"PRIu64",\"samples\":%"PRIu64",\"last_valid_ms\":%"PRIu64",\"data\":\"%s\",\"target\":%s,\"held\":%s,\"x\":%.5f,\"y\":%.5f,"
-        "\"role\":\"%s\",\"stationary\":%s,\"observations\":%"PRIu64",\"gaze_x\":%.5f,\"gaze_y\":%.5f,\"blink\":%.5f,\"speed_px_s\":%.5f,\"render_gaze_x\":%.5f,\"render_gaze_y\":%.5f}",
+        "\"role\":\"%s\",\"stationary\":%s,\"observations\":%"PRIu64",\"gaze_x\":%.5f,\"gaze_y\":%.5f,\"blink\":%.5f,\"speed_px_s\":%.5f,\"render_gaze_x\":%.5f,\"render_gaze_y\":%.5f,\"render_membrane\":%.5f,\"render_lid\":%.5f,\"membrane_frames\":%"PRIu64",\"membrane_full_frames\":%"PRIu64"}",
         PEEK_SOURCE_REVISION,esp_app_get_description()->version,s.diagnostic?"diagnostic":s.character?eye_pack_name(s.character-1):"dragon",s.now,s.orientation,s.orientation_auto?"true":"false",s.imu_error,s.imu_ms,s.ax,s.ay,s.az,s.sample_step,c->mapping.flip_x?"true":"false",c->mapping.flip_y?"true":"false",c->sleeping?"true":"false",c->waking?"true":"false",s.geometry_cached?"true":"false",atomic_load(&render_core),atomic_load(&sensor_core),
         (uint32_t)atomic_load(&captures),(uint32_t)atomic_load(&faults),s.callbacks,s.draws,s.draw_us,s.draw_max,s.pixels,s.prepares,s.prepare_us,s.frames,s.render_busy_us,s.raster_us,s.submit_us,s.error,s.open_frames,s.open_elapsed_ms,s.open_busy_us,s.open_raster_us,s.open_submit_us,
         r->sequence,r->accepted_samples,r->last_valid_ms,peek_data_name(r->data),r->has_target?"true":"false",r->held?"true":"false",r->x,r->y,
-        dragon_mode_name(c->mode),c->stationary?"true":"false",c->observations,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->speed_px_s,artwork.gaze_x,artwork.gaze_y);
+        dragon_mode_name(c->mode),c->stationary?"true":"false",c->observations,c->pose.gaze_x,c->pose.gaze_y,c->pose.blink,c->speed_px_s,artwork.gaze_x,artwork.gaze_y,layers.membrane,layers.lid,s.membrane_frames,s.membrane_full_frames);
     if(n<0||(size_t)n>=capacity)return ESP_ERR_INVALID_SIZE;
     *size=(size_t)n;return ESP_OK;
 }
