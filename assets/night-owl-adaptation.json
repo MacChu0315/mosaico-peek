@@ -1,0 +1,22 @@
+{
+  "source_package": "assets/night-owl-r2",
+  "surface": "processed/eye_surface.png",
+  "surface_sha256": "e4577b075a70097fc40de184bbbe161d3c1f29f23f1dd21ac738eb6410ec4cd5",
+  "approved_direction": "User requested same R2 optimization for owl; round pupil and source highlights locked, smooth catchlight registration, no returning rim",
+  "sprite_origin": [
+    0,
+    128
+  ],
+  "sprite_size": [
+    480,
+    240
+  ],
+  "membrane_ms": [
+    100,
+    20,
+    120
+  ],
+  "sleep_close_ms": 450,
+  "wake_ms": 150,
+  "default_character": 0
+}

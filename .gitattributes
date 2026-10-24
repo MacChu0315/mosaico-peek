@@ -12,3 +12,4 @@ evidence/**/*.log -whitespace
 
 # Preserve accepted independent R2 review inputs and derived candidate bytes.
 /assets/deep-sea-r2/** -text
+/assets/night-owl-r2/** -text

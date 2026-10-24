@@ -27,7 +27,7 @@ int main(void){
             p.blink=i%4?0:random_unit();
             if(i<27){p.gaze_x=((int)(i%3)-1)*.78f;p.gaze_y=((int)(i/3%3)-1)*.58f;p.blink=(i/9)*.5f;}
             if(i>=27 && i<44)p.blink=(i-27)/16.f;
-            if(theme==1){
+            if(theme<2){
                 float membrane=i%4==3?random_unit():p.blink,lid=i%4==2?random_unit():p.blink;
                 assert(eye_pack_prepare_layers(fast,&p,membrane,lid)&&eye_ref_prepare_layers(ref,&p,membrane,lid));
             }else assert(eye_pack_prepare(fast,&p)&&eye_ref_prepare(ref,&p));

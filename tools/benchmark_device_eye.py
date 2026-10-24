@@ -20,7 +20,7 @@ for x,y in zip(rows,rows[1:]):
  if p['view']!=q['view'] or p.get('orientation',0)!=q.get('orientation',0):continue
  def closed(v):
   level=v.get('render_lid',v['blink'])
-  return v['sleeping'] and (level>=.9375 if v['view'] in ('deep_sea','mechanical') else level==1)
+  return v['sleeping'] and (level>=.9375 if v['view'] in ('night_owl','deep_sea','mechanical') else level==1)
  key=(p['view'],'sleeping-closed' if closed(p) and closed(q) else 'sleep-transition' if p['sleeping'] and q['sleeping'] else 'active-or-transition',p.get('orientation',0))
  r=groups.setdefault(key,dict(view=key[0],condition=key[1],orientation=key[2],ms=0,frames=0,draw_us=0,raster_us=0,submit_us=0,prepare_us=0,prepares=0,samples=0,faults=0,open_frames=0,open_ms=0,open_raster_us=0,open_submit_us=0))
  for name,pkey in [('ms','now_ms'),('frames','render_frames'),('draw_us','draw_us'),('raster_us','raster_us'),('submit_us','submit_us'),('prepare_us','prepare_us'),('prepares','prepares'),('samples','samples'),('faults','faults'),('open_frames','open_frames'),('open_ms','open_elapsed_ms'),('open_raster_us','open_raster_us'),('open_submit_us','open_submit_us')]:r[name]+=q[pkey]-p[pkey]

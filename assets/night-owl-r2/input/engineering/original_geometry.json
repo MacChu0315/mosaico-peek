@@ -1,0 +1,964 @@
+{
+  "format_version": 1,
+  "package_version": "1.0.0",
+  "built_at": "2026-10-21",
+  "screen": {
+    "width": 480,
+    "height": 480,
+    "origin": "top-left",
+    "x_positive": "right",
+    "y_positive": "down"
+  },
+  "status": "DESIGN_AND_CANVAS_REFERENCE_ONLY_NOT_C_GSP_VALIDATED",
+  "alpha": "straight/unassociated PNG RGBA; converter must verify native premultiplied-alpha expectations",
+  "compositing": [
+    "opaque near-black fill",
+    "translated eye.png",
+    "lid_00..08.png in place",
+    "stationary frame.png"
+  ],
+  "source_of_truth": "The main project AGENTS.md, README and docs/HANDOFF.md were not available.",
+  "themes": [
+    {
+      "id": "night_owl",
+      "name": "夜枭眼",
+      "coordinate_space": [
+        480,
+        480
+      ],
+      "eye_origin": [
+        -7,
+        113
+      ],
+      "lid_origin": [
+        -7,
+        113
+      ],
+      "layer_bbox": {
+        "x": -7,
+        "y": 113,
+        "w": 489,
+        "h": 272
+      },
+      "eye_center": [
+        240,
+        250
+      ],
+      "max_gaze_translation_px": [
+        18,
+        12
+      ],
+      "eye_path": "M 20 247 C 44 205 94 168 157 147 C 242 128 348 151 432 207 C 444 215 451 223 454 230 C 435 280 396 319 341 341 C 254 375 151 353 86 316 C 51 294 28 271 20 247 Z",
+      "seam_y": 262,
+      "seam_curve": 7,
+      "guard_overlap_px": 25,
+      "edge_extension": "clamped source edge pixels outside 480x480; only eye guard, never the foreground",
+      "palette": {
+        "surround": "#2b1d15",
+        "iris": "#d87919",
+        "pupil": "#030303"
+      },
+      "runtime_estimates": {
+        "rgba8888_frame_bytes": 921600,
+        "rgba8888_eye_bytes": 532032,
+        "rgba8888_one_lid_bytes": 532032,
+        "minimal_resident_texture_bytes": 1985664,
+        "blended_resident_texture_bytes": 2517696,
+        "all_nine_lid_resident_texture_bytes": 6241920,
+        "rgba8888_framebuffer_bytes": 921600,
+        "rgb565_framebuffer_bytes": 460800,
+        "note": "calculated tightly packed pixel memory, not measured; excludes allocator, decoder, conversion, alignment, staging and queues"
+      },
+      "files": [
+        {
+          "file": "assets/originals/night_owl.png",
+          "usage": "AI-generated approved original; preserved bytes",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 3244134,
+          "sha256": "555a4fa7e04fda422a0c57ffe9f0890284d6bca36c955fc79df6703cead2b173",
+          "width": 1254,
+          "height": 1254,
+          "kind": "raw-original"
+        },
+        {
+          "file": "assets/design-reference/night_owl_closed_generated.png",
+          "usage": "AI edited closed-eye material reference; not an actual runtime screenshot",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 3280784,
+          "sha256": "32ad6d0e7d41659da238b543f8eb22eeb1f058cf382312f740daaa3c0946a05f",
+          "width": 1254,
+          "height": 1254,
+          "kind": "design-reference"
+        },
+        {
+          "file": "assets/processed/night_owl/neutral.png",
+          "usage": "480x480 neutral reference; not needed at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 546665,
+          "sha256": "e99ea8fb720a780597e33c1ed2b1395d4d335833fe5acbb55c1b46bcf82a9ac8",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-reference"
+        },
+        {
+          "file": "assets/processed/night_owl/frame.png",
+          "usage": "stationary foreground; eye hole has alpha",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 397280,
+          "sha256": "ab3d0e1206e43344d192e4c91c1c01ca8e8d511f5434ee36b2c986561f263e39",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/night_owl/eye.png",
+          "usage": "movable original eye pixels; expanded guard and source-edge extrusion",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 236584,
+          "sha256": "970b10c88cb1701e6cda0755133d4ffa6f8d820243c54205c56825cf0962ee11",
+          "width": 489,
+          "height": 272,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/night_owl/aperture_mask.png",
+          "usage": "build/check mask; not required at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 6287,
+          "sha256": "386ed3ea02d46739039f6f1e561e23fc7af58a1205b915ac89267a89fcc400a7",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-build"
+        }
+      ],
+      "lid_frames": [
+        {
+          "closure": 0,
+          "file": "assets/processed/night_owl/lid_00.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 625,
+          "sha256": "7c1b61954c7ba29325d8a67e0724241e50a77f7d8722f5cd12b973755ee0bc2e"
+        },
+        {
+          "closure": 0.125,
+          "file": "assets/processed/night_owl/lid_01.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 28282,
+          "sha256": "82ebbff81c5a4752fcb3cc2568c9814ba8e56bb470605936accbf0c6e348f166"
+        },
+        {
+          "closure": 0.25,
+          "file": "assets/processed/night_owl/lid_02.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 49555,
+          "sha256": "7a16bac86a75a9ce4b44f4ccb1091aa40687aad821eb01b81249fb5c7eef2a2a"
+        },
+        {
+          "closure": 0.375,
+          "file": "assets/processed/night_owl/lid_03.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 71168,
+          "sha256": "3e930a0a74da181642754ee94c7e28bc1f62363e76520650da10caad4180b504"
+        },
+        {
+          "closure": 0.5,
+          "file": "assets/processed/night_owl/lid_04.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 94254,
+          "sha256": "3b52aad8ceaed70df9b9e0f9ea225423633c59c139b54a241e9720e613f56a53"
+        },
+        {
+          "closure": 0.625,
+          "file": "assets/processed/night_owl/lid_05.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 117520,
+          "sha256": "8833c0ed4f8820589469874d0f241d8f29d736ab954f4cd6a02cfbaa27004108"
+        },
+        {
+          "closure": 0.75,
+          "file": "assets/processed/night_owl/lid_06.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 140618,
+          "sha256": "6a4566f0d10defe2bd03f6afc1a4009b82d41f1708d7c896e907bdfbaf13e822"
+        },
+        {
+          "closure": 0.875,
+          "file": "assets/processed/night_owl/lid_07.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 163695,
+          "sha256": "1b77da6c3802fba1cfb0708281d064bc2a298141a49a1dd9d40b98aa4abc6722"
+        },
+        {
+          "closure": 1,
+          "file": "assets/processed/night_owl/lid_08.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -7,
+            113
+          ],
+          "bytes": 182349,
+          "sha256": "f2942c38b19310290a7d174a1540aab99f36c2ce7fc95a62e15e15dd50885692"
+        }
+      ]
+    },
+    {
+      "id": "deep_sea",
+      "name": "深海眼",
+      "coordinate_space": [
+        480,
+        480
+      ],
+      "eye_origin": [
+        -13,
+        123
+      ],
+      "lid_origin": [
+        -13,
+        123
+      ],
+      "layer_bbox": {
+        "x": -13,
+        "y": 123,
+        "w": 507,
+        "h": 269
+      },
+      "eye_center": [
+        240,
+        250
+      ],
+      "max_gaze_translation_px": [
+        20,
+        12
+      ],
+      "eye_path": "M 17 255 C 61 201 124 168 191 155 C 289 143 382 177 465 244 C 430 309 373 343 310 355 C 206 379 94 341 39 291 C 27 279 20 267 17 255 Z",
+      "seam_y": 264,
+      "seam_curve": 3,
+      "guard_overlap_px": 27,
+      "edge_extension": "clamped source edge pixels outside 480x480; only eye guard, never the foreground",
+      "palette": {
+        "surround": "#111e37",
+        "iris": "#318c9e",
+        "pupil": "#01080c"
+      },
+      "runtime_estimates": {
+        "rgba8888_frame_bytes": 921600,
+        "rgba8888_eye_bytes": 545532,
+        "rgba8888_one_lid_bytes": 545532,
+        "minimal_resident_texture_bytes": 2012664,
+        "blended_resident_texture_bytes": 2558196,
+        "all_nine_lid_resident_texture_bytes": 6376920,
+        "rgba8888_framebuffer_bytes": 921600,
+        "rgb565_framebuffer_bytes": 460800,
+        "note": "calculated tightly packed pixel memory, not measured; excludes allocator, decoder, conversion, alignment, staging and queues"
+      },
+      "files": [
+        {
+          "file": "assets/originals/deep_sea.png",
+          "usage": "AI-generated approved original; preserved bytes",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 2750590,
+          "sha256": "61f282f442abd0f92ff0e8780bc675373338ea5845e36f60c5d053e55a0e309d",
+          "width": 1254,
+          "height": 1254,
+          "kind": "raw-original"
+        },
+        {
+          "file": "assets/design-reference/deep_sea_closed_generated.png",
+          "usage": "AI edited closed-eye material reference; not an actual runtime screenshot",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 2649945,
+          "sha256": "cc385e84b45d39f8a3b6ba124bdecda7cb7c62250df238136b89ff259ea8cdd3",
+          "width": 1254,
+          "height": 1254,
+          "kind": "design-reference"
+        },
+        {
+          "file": "assets/processed/deep_sea/neutral.png",
+          "usage": "480x480 neutral reference; not needed at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 508649,
+          "sha256": "663e73e119521c30864b29b9d1dc52c6ee260f10fbc7a259859d5ea231ed5fa0",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-reference"
+        },
+        {
+          "file": "assets/processed/deep_sea/frame.png",
+          "usage": "stationary foreground; eye hole has alpha",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 358185,
+          "sha256": "e01d5c53ccc531bf3cd281451c5ec13c8b800dda615f95d3486a5245cf98cfeb",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/deep_sea/eye.png",
+          "usage": "movable original eye pixels; expanded guard and source-edge extrusion",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 236244,
+          "sha256": "f7ec4d8e87203cb719a4d8f0ffc8e7ba73d837a98193e7b5a0496ceb6a81bcbd",
+          "width": 507,
+          "height": 269,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/deep_sea/aperture_mask.png",
+          "usage": "build/check mask; not required at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 6336,
+          "sha256": "c940814e49f91a76753bba6c0506018c0e3cdd66502791ad60f36c57b0e991a2",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-build"
+        }
+      ],
+      "lid_frames": [
+        {
+          "closure": 0,
+          "file": "assets/processed/deep_sea/lid_00.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 638,
+          "sha256": "12fb6f3206f00c2f347648540098ce06ee2234fac3d96a2bd4f79e163d9f0525"
+        },
+        {
+          "closure": 0.125,
+          "file": "assets/processed/deep_sea/lid_01.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 30062,
+          "sha256": "88ea747f1dd8e8d5d64dc100e37a7f487f2bb0813c41757d8d33e84c682e2187"
+        },
+        {
+          "closure": 0.25,
+          "file": "assets/processed/deep_sea/lid_02.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 51542,
+          "sha256": "300f2358de4cb53e38bd8337741d875a3ff0230ff6ea38de5bc5e01ec625765e"
+        },
+        {
+          "closure": 0.375,
+          "file": "assets/processed/deep_sea/lid_03.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 72709,
+          "sha256": "f6a67a9d7b93494e845ec478e1b9bf4bdce4d6feffe375756284e9ceacc17650"
+        },
+        {
+          "closure": 0.5,
+          "file": "assets/processed/deep_sea/lid_04.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 93289,
+          "sha256": "edbc7f9363e7170d660d6263da776c85b2de830032c6d8c459028c4f250fe50c"
+        },
+        {
+          "closure": 0.625,
+          "file": "assets/processed/deep_sea/lid_05.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 113161,
+          "sha256": "626e9c64a16305a68a0ec538103bcf06f2402937299cf3dff28f9947b9ae92a1"
+        },
+        {
+          "closure": 0.75,
+          "file": "assets/processed/deep_sea/lid_06.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 132925,
+          "sha256": "f7c30782454068401f6c34c8a5fa061459d5522172853186154d55f6d35bdbcc"
+        },
+        {
+          "closure": 0.875,
+          "file": "assets/processed/deep_sea/lid_07.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 152427,
+          "sha256": "6d9089dba2b26d8b47b26aeebcbb54d049aea0f2c251954204b8e8c80bf3350a"
+        },
+        {
+          "closure": 1,
+          "file": "assets/processed/deep_sea/lid_08.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            -13,
+            123
+          ],
+          "bytes": 166333,
+          "sha256": "a0981976409a6caa972bc57a168670b8c42daae5942fc34fe30a58f82feb17ce"
+        }
+      ]
+    },
+    {
+      "id": "mechanical",
+      "name": "机械眼",
+      "coordinate_space": [
+        480,
+        480
+      ],
+      "eye_origin": [
+        1,
+        109
+      ],
+      "lid_origin": [
+        1,
+        109
+      ],
+      "layer_bbox": {
+        "x": 1,
+        "y": 109,
+        "w": 485,
+        "h": 271
+      },
+      "eye_center": [
+        240,
+        245
+      ],
+      "max_gaze_translation_px": [
+        10,
+        8
+      ],
+      "eye_path": "M 19 236 C 57 184 113 151 181 135 C 279 113 378 141 457 215 C 466 225 469 233 467 241 C 438 291 376 337 313 354 C 214 378 112 343 53 289 C 36 272 25 254 19 236 Z",
+      "seam_y": 247,
+      "seam_curve": 5,
+      "guard_overlap_px": 16,
+      "edge_extension": "clamped source edge pixels outside 480x480; only eye guard, never the foreground",
+      "palette": {
+        "surround": "#242324",
+        "iris": "#b8791c",
+        "pupil": "#090908"
+      },
+      "runtime_estimates": {
+        "rgba8888_frame_bytes": 921600,
+        "rgba8888_eye_bytes": 525740,
+        "rgba8888_one_lid_bytes": 525740,
+        "minimal_resident_texture_bytes": 1973080,
+        "blended_resident_texture_bytes": 2498820,
+        "all_nine_lid_resident_texture_bytes": 6179000,
+        "rgba8888_framebuffer_bytes": 921600,
+        "rgb565_framebuffer_bytes": 460800,
+        "note": "calculated tightly packed pixel memory, not measured; excludes allocator, decoder, conversion, alignment, staging and queues"
+      },
+      "files": [
+        {
+          "file": "assets/originals/mechanical.png",
+          "usage": "AI-generated approved original; preserved bytes",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 3302690,
+          "sha256": "3eba1f5c3fe7ac4b23fce090b75248d464a2a9f66f362bd5097b920da67eaede",
+          "width": 1254,
+          "height": 1254,
+          "kind": "raw-original"
+        },
+        {
+          "file": "assets/design-reference/mechanical_closed_generated.png",
+          "usage": "AI edited closed-eye material reference; not an actual runtime screenshot",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 3257220,
+          "sha256": "81d77ffd667662fd0f8a59bcbc859e45d7315ac919699de8c5553d951685d494",
+          "width": 1254,
+          "height": 1254,
+          "kind": "design-reference"
+        },
+        {
+          "file": "assets/processed/mechanical/neutral.png",
+          "usage": "480x480 neutral reference; not needed at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 554136,
+          "sha256": "ceff6b86353a8e8d5b458e05358140dc546a47888562c2fb40763724ea2935b0",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-reference"
+        },
+        {
+          "file": "assets/processed/mechanical/frame.png",
+          "usage": "stationary foreground; eye hole has alpha",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 390900,
+          "sha256": "b92d67820a8c049ccefc04a26aed62481fcecf54ab9a147efccc42147c64d4d4",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/mechanical/eye.png",
+          "usage": "movable original eye pixels; expanded guard and source-edge extrusion",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 224912,
+          "sha256": "a6a9f6ed026b586f2b33de7a02c2b3ca2071d13304f3f553f9c2a84744c76314",
+          "width": 485,
+          "height": 271,
+          "kind": "processed-runtime"
+        },
+        {
+          "file": "assets/processed/mechanical/aperture_mask.png",
+          "usage": "build/check mask; not required at runtime",
+          "origin": [
+            0,
+            0
+          ],
+          "bytes": 6642,
+          "sha256": "d78a1857d8f3df12cac6a10e23d5ff2a21f7fea585f99703c63cc3973556302c",
+          "width": 480,
+          "height": 480,
+          "kind": "processed-build"
+        }
+      ],
+      "lid_frames": [
+        {
+          "closure": 0,
+          "file": "assets/processed/mechanical/lid_00.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 618,
+          "sha256": "e0831a703d6c1703c5b097d41bab58d985219a87b67c1a979a3816213fba2c09"
+        },
+        {
+          "closure": 0.125,
+          "file": "assets/processed/mechanical/lid_01.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 27078,
+          "sha256": "c465d3624dd072ea5ad998936fb735bd8fecd0466fb4ce3b36a5a4c6de61ef2e"
+        },
+        {
+          "closure": 0.25,
+          "file": "assets/processed/mechanical/lid_02.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 50345,
+          "sha256": "d0939446860e57a0f403ada6601bc949d744baaa3dff668026d610ed1ae37531"
+        },
+        {
+          "closure": 0.375,
+          "file": "assets/processed/mechanical/lid_03.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 74491,
+          "sha256": "6e18c8a820b8ee2a6fdcf29111644e50b69d171fb4eb719fbc25bc144ec19a3d"
+        },
+        {
+          "closure": 0.5,
+          "file": "assets/processed/mechanical/lid_04.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 99025,
+          "sha256": "4ca9752debef3739005ecb4f58bdc0be36638cc51893d602a90e19f46affcd9f"
+        },
+        {
+          "closure": 0.625,
+          "file": "assets/processed/mechanical/lid_05.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 124086,
+          "sha256": "664129a11ea629e7c062ffcd1696af7f31ae4c7b795108330344e00bdc614a32"
+        },
+        {
+          "closure": 0.75,
+          "file": "assets/processed/mechanical/lid_06.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 149038,
+          "sha256": "4c357e37c2f7b56f2cb3ed5007c9a4188a06c39cdd2df6d9559001356d5385a5"
+        },
+        {
+          "closure": 0.875,
+          "file": "assets/processed/mechanical/lid_07.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 173896,
+          "sha256": "50507161c49240eab007e53f044cbcc651d6c599ec5d9f3e91c1e2a88d5f2401"
+        },
+        {
+          "closure": 1,
+          "file": "assets/processed/mechanical/lid_08.png",
+          "usage": "precomposed lid cover; zero=fully open, one=fully closed",
+          "origin": [
+            1,
+            109
+          ],
+          "bytes": 196011,
+          "sha256": "2035f439cd694f9c1f1c83ed82442b738b8fbf5a56fcddc9f545f3afdfef30ec"
+        }
+      ]
+    }
+  ],
+  "build_checks": [
+    {
+      "theme": "night_owl",
+      "neutral_max_channel_delta": 0,
+      "neutral_mean_abs_channel_delta": 0,
+      "pixels_with_delta_gt_1": 0,
+      "passed": true,
+      "translation_coverage": [
+        {
+          "gaze": [
+            -1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        }
+      ]
+    },
+    {
+      "theme": "deep_sea",
+      "neutral_max_channel_delta": 0,
+      "neutral_mean_abs_channel_delta": 0,
+      "pixels_with_delta_gt_1": 0,
+      "passed": true,
+      "translation_coverage": [
+        {
+          "gaze": [
+            -1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        }
+      ]
+    },
+    {
+      "theme": "mechanical",
+      "neutral_max_channel_delta": 0,
+      "neutral_mean_abs_channel_delta": 0,
+      "pixels_with_delta_gt_1": 0,
+      "passed": true,
+      "translation_coverage": [
+        {
+          "gaze": [
+            -1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            -1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            0,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            -1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            0
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        },
+        {
+          "gaze": [
+            1,
+            1
+          ],
+          "pixels_alpha_below_254": 0,
+          "min_alpha": 255
+        }
+      ]
+    }
+  ]
+}

@@ -4,10 +4,10 @@ if(CMAKE_SCRIPT_MODE_FILE)
     return()
 endif()
 file(MAKE_DIRECTORY "${PEEK_EYE_GENERATED_DIR}")
-file(GLOB_RECURSE PEEK_EYE_INPUTS "${PEEK_ROOT}/assets/eye-pack/*" "${PEEK_ROOT}/assets/mechanical-c/*" "${PEEK_ROOT}/assets/deep-sea-r2/*")
+file(GLOB_RECURSE PEEK_EYE_INPUTS "${PEEK_ROOT}/assets/eye-pack/*" "${PEEK_ROOT}/assets/mechanical-c/*" "${PEEK_ROOT}/assets/deep-sea-r2/*" "${PEEK_ROOT}/assets/night-owl-r2/*")
 add_custom_command(OUTPUT "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc"
     BYPRODUCTS "${PEEK_EYE_GENERATED_DIR}/eye_pack.json"
     COMMAND "${Python3_EXECUTABLE}" "${PEEK_ROOT}/tools/bake_eye_pack.py"
         --output "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc"
-    DEPENDS "${PEEK_ROOT}/tools/bake_eye_pack.py" "${PEEK_ROOT}/assets/eye_motion.json" "${PEEK_ROOT}/assets/mechanical-c-adaptation.json" "${PEEK_ROOT}/assets/deep-sea-adaptation.json" ${PEEK_EYE_INPUTS} VERBATIM)
+    DEPENDS "${PEEK_ROOT}/tools/bake_eye_pack.py" "${PEEK_ROOT}/assets/eye_motion.json" "${PEEK_ROOT}/assets/mechanical-c-adaptation.json" "${PEEK_ROOT}/assets/deep-sea-adaptation.json" "${PEEK_ROOT}/assets/night-owl-adaptation.json" ${PEEK_EYE_INPUTS} VERBATIM)
 add_custom_target(peek_eye_assets DEPENDS "${PEEK_EYE_GENERATED_DIR}/eye_pack.inc")

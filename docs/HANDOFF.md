@@ -1,6 +1,6 @@
-# Peek handoff — approved deep-sea R2 (2026-10-24)
+# Peek handoff — owl R2 demo update (2026-10-24)
 
-Current source targets1.0.13-peek-deepsea, combining calibrated orientation
+Current source targets1.0.14-peek-organic, combining calibrated orientation
 (fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
 1.0.8 center bundle was NEVER installed: preflight found the newer orientation
 firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
@@ -43,6 +43,13 @@ compressed streams are byte-identical to baseline. Renderer buffers unchanged.
 Initial failed test comparisons and clean preview interruption remain in
 verification/; corrected same-tick replay and bounded native runs passed.
 Official update completed; user accepted the physical appearance, with an intermittent incomplete membrane movement limitation recorded below.
+
+The user has now requested the same optimization for owl. Candidate1.0.14
+adds night-owl R2, preserves its circular pupil/highlight regions and original
+frame/18 overlays, removes the aperture-shaped patch/rim fade, and reuses the
+existing240ms dual-layer presentation. Deep-sea/dragon/mechanical remain intact.
+[Owl implementation and verification](NIGHT_OWL_R2.md). Physical owl acceptance
+and update are pending; current installed baseline remains1.0.13 below.
 
 ## Current installed device
 

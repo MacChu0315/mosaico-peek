@@ -11,10 +11,11 @@ int main(void){
         role.now_ms=role.next_blink_ms+age;dragon_t before=role;
         eye_layers_t a=eye_character_layers(2,&role),b=eye_character_layers(2,&role);
         assert(a.membrane==b.membrane&&a.lid==0&&!memcmp(&role,&before,sizeof(role)));
+        eye_layers_t owl=eye_character_layers(1,&role);assert(owl.membrane==a.membrane&&owl.lid==a.lid);
         assert(a.membrane>=0&&a.membrane<=1);
         if(age==0||age>=240)assert(a.membrane==0);
         if(age>=100&&age<=120)assert(a.membrane==1);
-        for(unsigned c=0;c<4;c++)if(c!=2){eye_layers_t p=eye_character_layers(c,&role);assert(p.membrane==0&&p.lid==role.pose.blink);}
+        for(unsigned c=0;c<4;c++)if(!eye_character_dual_layers(c)){eye_layers_t p=eye_character_layers(c,&role);assert(p.membrane==0&&p.lid==role.pose.blink);}
     }
     /* Every integer interrupted-close time must preserve the visible frame,
      * then complete150ms wake. Source result/role are never mutated by draw. */

@@ -94,7 +94,7 @@ int main(void){
         if(q==180){upright.gaze_x=-.39f;upright.gaze_y=-.145f;}
         if(q==270){upright.gaze_x=-.195f;upright.gaze_y=.29f;}
         eye_layers_t layers=eye_character_layers(character,&view.dragon);
-        assert(character==2?eye_pack_prepare_layers(view.eye_pack,&upright,layers.membrane,layers.lid):character?eye_pack_prepare(view.eye_pack,&upright):dragon_renderer_prepare(view.renderer,&upright));
+        assert(eye_character_dual_layers(character)?eye_pack_prepare_layers(view.eye_pack,&upright,layers.membrane,layers.lid):character?eye_pack_prepare(view.eye_pack,&upright):dragon_renderer_prepare(view.renderer,&upright));
         assert(character?eye_pack_draw(view.eye_pack,reference,960,0,0,480,480):dragon_renderer_draw(view.renderer,reference,960,0,0,480,480));
         /* set_view prepares current pose; orientation prepares its inverse gaze. */
         assert(peek_ui_set_view(&view,true)==ESP_GSP_OK);

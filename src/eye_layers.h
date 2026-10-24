@@ -16,19 +16,20 @@ static inline float eye_close_elapsed(float fraction){
     }
     return (lo+hi)*225;
 }
-static inline eye_layers_t eye_sea_close(float elapsed){
+static inline bool eye_character_dual_layers(unsigned character){return character==1||character==2;}
+static inline eye_layers_t eye_organic_close(float elapsed){
     return (eye_layers_t){eye_layer_clamp(elapsed/100),eye_layer_clamp((elapsed-100)/350)};
 }
-/* Pure presentation. UI character2 is deep_sea; all other source poses/timing
+/* Pure presentation. UI characters1/2 are organic R2; other source poses/timing
  * retain their existing path. Nearest9 selection happens in renderer prepare. */
 static inline eye_layers_t eye_character_layers(unsigned character,const dragon_t *role){
-    if(character!=2)return (eye_layers_t){0,role->pose.blink};
+    if(!eye_character_dual_layers(character))return (eye_layers_t){0,role->pose.blink};
     if(role->sleeping){
         uint64_t age=role->now_ms>=role->phase_ms?role->now_ms-role->phase_ms:0;
-        return eye_sea_close(age>10000?(float)(age-10000):0);
+        return eye_organic_close(age>10000?(float)(age-10000):0);
     }
     if(role->waking){
-        eye_layers_t start=eye_sea_close(eye_close_elapsed(role->wake_blink));
+        eye_layers_t start=eye_organic_close(eye_close_elapsed(role->wake_blink));
         float age=role->now_ms>=role->wake_ms?(float)(role->now_ms-role->wake_ms):0;
         /* Partial closure opens proportionally, avoiding a discontinuous
          *97.5ms membrane delay from inverse-ease noise near zero lid. */

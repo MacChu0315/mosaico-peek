@@ -41,9 +41,9 @@ void device_status_publish(const peek_ui_t *v,uint64_t now){
      * generation's pose, not the newly prepared next pose. Closed/sleep frames
      * must never inflate the reported active-follow render rate. */
     eye_layers_t previous=eye_character_layers(snapshot.character,&snapshot.role);
-    bool visible_open=snapshot.character==2?(previous.membrane<.0625f&&previous.lid<.0625f):snapshot.role.pose.blink==0;
+    bool visible_open=eye_character_dual_layers(snapshot.character)?(previous.membrane<.0625f&&previous.lid<.0625f):snapshot.role.pose.blink==0;
     s.membrane_frames=snapshot.membrane_frames;s.membrane_full_frames=snapshot.membrane_full_frames;
-    if(snapshot.now&&!snapshot.diagnostic&&snapshot.character==2&&!snapshot.role.sleeping&&!snapshot.role.waking&&previous.membrane>=.0625f){
+    if(snapshot.now&&!snapshot.diagnostic&&eye_character_dual_layers(snapshot.character)&&!snapshot.role.sleeping&&!snapshot.role.waking&&previous.membrane>=.0625f){
         s.membrane_frames+=(uint32_t)(s.frames-snapshot.frames);
         if(previous.membrane>=.9375f)s.membrane_full_frames+=(uint32_t)(s.frames-snapshot.frames);
     }

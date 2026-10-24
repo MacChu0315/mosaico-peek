@@ -1,0 +1,14 @@
+{
+  "format_version": 1,
+  "max_translation_px": [
+    120,
+    80
+  ],
+  "guard_extra_px": 2,
+  "backing": "occluded sphere texture completed from visible iris at matching radius, original visible pixels restored exactly",
+  "basis": "User requested larger movement approaching the dragon on 2026-10-21; original maximum dragon projection is about139x93 pixels.",
+  "source_policy": "Retained eye-pack files are immutable. Derived backing and compressed data are build outputs only. Fixed frame/lids and neutral visible pixels are preserved.",
+  "guard_blur_radius_px": 2,
+  "motion": "sphere rotation;120x80 projected center excursion on pure axes",
+  "sphere_radius_px": 233
+}
