@@ -1,0 +1,11 @@
+{
+  "source": "735fbe7d9df2d3a88a4b3cc1ffeb1f9d4cda3454",
+  "version": "1.0.14-peek-organic",
+  "bundle_sha256": "05d45aeb34d651821af00debf1c8e801b6e4ff794faef89d4ea01dba04e2468f",
+  "elf_sha256": "391287d2cb275c6d2726e4fe45059678cded097e58c38fe91c4cb3772d7805fb",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false,
+  "restore": "evidence/deep-sea-r2/device-install/deep-sea-r2.irisfw",
+  "restore_sha256": "fe7fb4847717ca9e0d30eb31b55760fb19e925d4303b7a3facff826fdeef41e3"
+}

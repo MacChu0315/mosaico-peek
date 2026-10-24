@@ -1,0 +1,45 @@
+{
+  "version": "night-owl-remake-r2-20261024",
+  "scope": "Night owl only; independent review",
+  "hard_original_pupil_gloss_pixels": 9841,
+  "hard_original_pixels_changed": 0,
+  "original_highlight_locked_pixels": 1780,
+  "highlight_warp_jacobian_min": 0.40912988781929016,
+  "iris_detail_note": "Original iris detail is photometrically matched before blending; no whole-neutral pixel-identity claim in R2",
+  "rim_restore_opacity": 0,
+  "membrane_roundtrip_ms": 240,
+  "previous_membrane_roundtrip_ms": 1400,
+  "closed_pixels_unchanged": true,
+  "frame_and_overlay_assets_unchanged": true,
+  "source_hashes_mtimes_unchanged": true,
+  "main_project_or_device_actions": false,
+  "remaining_limit": "Unlit whole original iris is unavailable; low-frequency brightness separation is estimated, not recovered source artwork. Inspect residual joins/glints."
+}
+{
+  "approved_PNGs_byte_identical": 21,
+  "files": [
+    "frame.png",
+    "rim_restore_disabled.png",
+    "eye_surface.png",
+    "lids/lid_03.png",
+    "lids/lid_07.png",
+    "lids/lid_01.png",
+    "lids/lid_02.png",
+    "lids/lid_04.png",
+    "lids/lid_08.png",
+    "lids/lid_06.png",
+    "lids/lid_00.png",
+    "lids/lid_05.png",
+    "membrane/membrane_07.png",
+    "membrane/membrane_06.png",
+    "membrane/membrane_08.png",
+    "membrane/membrane_01.png",
+    "membrane/membrane_02.png",
+    "membrane/membrane_00.png",
+    "membrane/membrane_03.png",
+    "membrane/membrane_04.png",
+    "membrane/membrane_05.png"
+  ],
+  "source_unchanged": true,
+  "output": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-host/night-owl-reproduce"
+}

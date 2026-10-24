@@ -2,13 +2,13 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Current candidate1.0.14-peek-organic also brings the same R2 correction to owl,
+Installed1.0.14-peek-organic also brings the same R2 correction to owl,
 with original round-pupil/highlight locks and240ms membrane.
 [Owl source, checks and commands](docs/NIGHT_OWL_R2.md).
 
 Installed1.0.13-peek-deepsea integrates the approved deep-sea R2,
 independent240ms membrane and outer eyelid, with no returning rim overlay.
-Owl remains unchanged. [Deep-sea scope and validation](docs/DEEP_SEA_R2.md).
+Deep-sea is preserved in the owl update. [Deep-sea scope and validation](docs/DEEP_SEA_R2.md).
 
 Installed1.0.12-peek-sclera adds the selected dragon sclera C
 texture through exact RGB888 sampling. [Scope, resources and commands](docs/DRAGON_SCLERA.md).
@@ -24,11 +24,10 @@ latest same-placement dragon/mechanical feedback, new eyes use sphere rotation w
 travel. [Motion change and validation](docs/EYE_MOTION.md).
 The user accepted the range; latest1.0.10 physical feedback rejected both tracking axes. Mechanical now uses the supplied C artwork
 with a rotating central shutter and user-selected original metal socket A.
-During sleep closure the mechanical eye centers and remains still. Owl remains
-on its original artwork; deep-sea now uses the approved independent R2 layers.
+During sleep closure the mechanical eye centers and remains still. Owl and deep-sea use independent R2 layers; mechanical centering remains unchanged.
 [Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
 [Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Device now runs1.0.13 with approved deep-sea R2, selected dragon sclera C, calibrated automatic
+Device now runs1.0.14 with night-owl R2 and approved deep-sea R2, selected dragon sclera C, calibrated automatic
 orientation, selected socket A, centered mechanical sleep and retained mounting signs. The user confirmed both
 axes correct for dragon and mechanical; see HANDOFF for acceptance limits. The prior1.0.5 improved
 observed mechanical active-open engine rate

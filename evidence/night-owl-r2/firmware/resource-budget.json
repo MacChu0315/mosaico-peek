@@ -1,0 +1,437 @@
+{
+  "source_revision": "735fbe7d9df2d3a88a4b3cc1ffeb1f9d4cda3454",
+  "version": "1.0.14-peek-organic",
+  "sdkconfig": "sdkconfig.organic-r2",
+  "flash": {
+    "images": {
+      "peek.bin": {
+        "bytes": 9509712,
+        "sha256": "0c4a74a8cebf64acb6fa4d479cc9b5a873bc51163e61108c457c812b5f39eb90"
+      },
+      "ui_apps.bin": {
+        "bytes": 94480,
+        "sha256": "97d48a61cfbe44182b6794e6d0a74dc6a8a5406e0f8670dbd58c081cab6bc8e7"
+      },
+      "peek.elf": {
+        "bytes": 23816684,
+        "sha256": "391287d2cb275c6d2726e4fe45059678cded097e58c38fe91c4cb3772d7805fb"
+      },
+      "peek.map": {
+        "bytes": 7311787,
+        "sha256": "f0041982d2ece03730d4ccf16847701b7ab2485eb39755fc6e70869069098221"
+      }
+    },
+    "ota_0_bytes": 13565952,
+    "ota_0_free_bytes": 4056240,
+    "retained_factory_bytes": 1835008,
+    "fits_retained_factory": false,
+    "ui_partition_bytes": 1048576,
+    "linked_eye_RODATA_symbols": [
+      {
+        "symbol": "eye_deep_sea_lid_00",
+        "bytes": 469
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_00",
+        "bytes": 469
+      },
+      {
+        "symbol": "eye_night_owl_lid_00",
+        "bytes": 469
+      },
+      {
+        "symbol": "eye_night_owl_membrane_00",
+        "bytes": 469
+      },
+      {
+        "symbol": "eye_themes",
+        "bytes": 1080
+      },
+      {
+        "symbol": "eye_night_owl_membrane_01",
+        "bytes": 12783
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_01",
+        "bytes": 13061
+      },
+      {
+        "symbol": "eye_night_owl_membrane_02",
+        "bytes": 29174
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_02",
+        "bytes": 33355
+      },
+      {
+        "symbol": "eye_deep_sea_lid_01",
+        "bytes": 35674
+      },
+      {
+        "symbol": "eye_night_owl_lid_01",
+        "bytes": 39077
+      },
+      {
+        "symbol": "eye_night_owl_membrane_03",
+        "bytes": 46400
+      },
+      {
+        "symbol": "eye_deep_sea_lid_02",
+        "bytes": 54082
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_03",
+        "bytes": 59404
+      },
+      {
+        "symbol": "eye_night_owl_lid_02",
+        "bytes": 60537
+      },
+      {
+        "symbol": "eye_night_owl_membrane_04",
+        "bytes": 62910
+      },
+      {
+        "symbol": "eye_deep_sea_lid_03",
+        "bytes": 72814
+      },
+      {
+        "symbol": "eye_night_owl_membrane_05",
+        "bytes": 78412
+      },
+      {
+        "symbol": "eye_night_owl_lid_03",
+        "bytes": 81453
+      },
+      {
+        "symbol": "eye_mechanical_lid_00",
+        "bytes": 86800
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_04",
+        "bytes": 88445
+      },
+      {
+        "symbol": "eye_mechanical_lid_01",
+        "bytes": 88476
+      },
+      {
+        "symbol": "eye_night_owl_membrane_06",
+        "bytes": 91803
+      },
+      {
+        "symbol": "eye_mechanical_lid_02",
+        "bytes": 92896
+      },
+      {
+        "symbol": "eye_deep_sea_lid_04",
+        "bytes": 93686
+      },
+      {
+        "symbol": "eye_mechanical_lid_03",
+        "bytes": 96774
+      },
+      {
+        "symbol": "eye_mechanical_lid_05",
+        "bytes": 101369
+      },
+      {
+        "symbol": "eye_night_owl_lid_04",
+        "bytes": 101536
+      },
+      {
+        "symbol": "eye_mechanical_lid_06",
+        "bytes": 102143
+      },
+      {
+        "symbol": "eye_night_owl_membrane_07",
+        "bytes": 102364
+      },
+      {
+        "symbol": "eye_mechanical_lid_07",
+        "bytes": 103669
+      },
+      {
+        "symbol": "eye_mechanical_lid_04",
+        "bytes": 105423
+      },
+      {
+        "symbol": "eye_mechanical_lid_08",
+        "bytes": 106138
+      },
+      {
+        "symbol": "eye_night_owl_membrane_08",
+        "bytes": 108294
+      },
+      {
+        "symbol": "eye_deep_sea_lid_05",
+        "bytes": 113735
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_05",
+        "bytes": 116512
+      },
+      {
+        "symbol": "eye_night_owl_lid_05",
+        "bytes": 120966
+      },
+      {
+        "symbol": "eye_deep_sea_lid_06",
+        "bytes": 132668
+      },
+      {
+        "symbol": "eye_night_owl_lid_06",
+        "bytes": 138916
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_06",
+        "bytes": 142483
+      },
+      {
+        "symbol": "eye_deep_sea_lid_07",
+        "bytes": 150519
+      },
+      {
+        "symbol": "eye_night_owl_lid_07",
+        "bytes": 155374
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_07",
+        "bytes": 164339
+      },
+      {
+        "symbol": "eye_deep_sea_lid_08",
+        "bytes": 168537
+      },
+      {
+        "symbol": "eye_night_owl_lid_08",
+        "bytes": 172305
+      },
+      {
+        "symbol": "eye_deep_sea_membrane_08",
+        "bytes": 176670
+      },
+      {
+        "symbol": "eye_mechanical_frame",
+        "bytes": 385439
+      },
+      {
+        "symbol": "eye_night_owl_frame",
+        "bytes": 391632
+      },
+      {
+        "symbol": "eye_deep_sea_frame",
+        "bytes": 402157
+      },
+      {
+        "symbol": "eye_night_owl_eye",
+        "bytes": 496340
+      },
+      {
+        "symbol": "eye_deep_sea_eye",
+        "bytes": 575612
+      },
+      {
+        "symbol": "eye_mechanical_eye",
+        "bytes": 632021
+      }
+    ],
+    "linked_eye_RODATA_bytes": 6788133,
+    "lossless_streams": {
+      "pillow": "10.4.0",
+      "zlib": "1.2.13",
+      "format": "zlib RGBA8888; sources immutable; organic alpha0 RGB normalized in build output; no visible color/alpha loss, resizing or palette",
+      "motion_recipe": {
+        "format_version": 1,
+        "max_translation_px": [
+          120,
+          80
+        ],
+        "guard_extra_px": 2,
+        "backing": "occluded sphere texture completed from visible iris at matching radius, original visible pixels restored exactly",
+        "basis": "User requested larger movement approaching the dragon on 2026-10-21; original maximum dragon projection is about139x93 pixels.",
+        "source_policy": "Retained eye-pack files are immutable. Derived backing and compressed data are build outputs only. Fixed frame/lids and neutral visible pixels are preserved.",
+        "guard_blur_radius_px": 2,
+        "motion": "sphere rotation;120x80 projected center excursion on pure axes",
+        "sphere_radius_px": 233
+      },
+      "themes": [
+        {
+          "theme": "night_owl",
+          "eye_origin": [
+            0,
+            0
+          ],
+          "lid_origin": [
+            0,
+            128
+          ],
+          "eye_size": [
+            480,
+            480
+          ],
+          "max_gaze_translation_px": [
+            120,
+            80
+          ],
+          "eye_center": [
+            240,
+            250
+          ],
+          "sphere_radius_px": 233,
+          "fixed_frame_source": "assets/night-owl-r2/processed/frame.png",
+          "rotating_shutter": false,
+          "dual_layers": true,
+          "transparent_RGB_normalized": true,
+          "layer_count": 20,
+          "layer_size": [
+            480,
+            240
+          ],
+          "derived_eye_bytes": 921600,
+          "compressed_bytes": 2291214,
+          "png_bytes": 3946256,
+          "max_resident_rgba": 2764800,
+          "shutter_float_RGB_bytes": 0,
+          "shutter_RGBA_decode_bytes": 0,
+          "shared_two_layer_capacity_bytes": 1103232
+        },
+        {
+          "theme": "deep_sea",
+          "eye_origin": [
+            0,
+            0
+          ],
+          "lid_origin": [
+            0,
+            128
+          ],
+          "eye_size": [
+            480,
+            480
+          ],
+          "max_gaze_translation_px": [
+            120,
+            80
+          ],
+          "eye_center": [
+            240,
+            250
+          ],
+          "sphere_radius_px": 233,
+          "fixed_frame_source": "assets/deep-sea-r2/processed/frame.png",
+          "rotating_shutter": false,
+          "dual_layers": true,
+          "transparent_RGB_normalized": true,
+          "layer_count": 20,
+          "layer_size": [
+            480,
+            240
+          ],
+          "derived_eye_bytes": 921600,
+          "compressed_bytes": 2594691,
+          "png_bytes": 4347612,
+          "max_resident_rgba": 2764800,
+          "shutter_float_RGB_bytes": 0,
+          "shutter_RGBA_decode_bytes": 0,
+          "shared_two_layer_capacity_bytes": 1103232
+        },
+        {
+          "theme": "mechanical",
+          "eye_origin": [
+            0,
+            0
+          ],
+          "lid_origin": [
+            120,
+            125
+          ],
+          "eye_size": [
+            480,
+            480
+          ],
+          "max_gaze_translation_px": [
+            120,
+            80
+          ],
+          "eye_center": [
+            240,
+            245
+          ],
+          "sphere_radius_px": 233,
+          "fixed_frame_source": "assets/eye-pack/assets/processed/mechanical/frame.png",
+          "rotating_shutter": true,
+          "dual_layers": false,
+          "transparent_RGB_normalized": false,
+          "layer_count": 11,
+          "layer_size": [
+            240,
+            240
+          ],
+          "derived_eye_bytes": 921600,
+          "compressed_bytes": 1901148,
+          "png_bytes": 1671200,
+          "max_resident_rgba": null,
+          "shutter_float_RGB_bytes": 691200,
+          "shutter_RGBA_decode_bytes": 230400,
+          "shared_two_layer_capacity_bytes": 1103232
+        }
+      ],
+      "total_compressed_bytes": 6787053
+    },
+    "partition_changed": false
+  },
+  "ram": {
+    "target_abi": "ESP32-S31 GCC16.1.0, actual source/compile command; compile only",
+    "sizes": {
+      "renderer_internal_struct": 2004,
+      "ROM_inflater_explicit_PSRAM": 10992,
+      "frame_RGBA_explicit_PSRAM": 921600,
+      "eye_plus_two_lids_capacity_explicit_PSRAM": 2024832,
+      "shared_UI_struct": 10312,
+      "texture_descriptors_RODATA": 1080,
+      "sphere_depth_cache_explicit_PSRAM": 460800
+    },
+    "shared_UI_growth_from_9a25653_bytes": 600,
+    "new_renderer_explicit_PSRAM": 3418224,
+    "dragon_renderer_when_active_bytes": 3929120,
+    "framebuffer_RGB565_one_plane": 460800,
+    "notes": [
+      "Only current theme owns frame/eye/workspace; all themes compressed in app RODATA. Mechanical C reuses two-lid capacity for691200B float RGB and230400B RGBA scratch.",
+      "Existing XIP_FROM_PSRAM includes Flash text/RODATA mapping/copy budget; decoded renderer PSRAM is additional. See ELF sections and actual sdkconfig.",
+      "Renderer allocations use explicit SPIRAM without internal fallback. C state uses internal calloc.",
+      "Only the active artwork renderer owns large caches. Switching between dragon and bitmap eyes releases the old renderer before allocating its replacement.",
+      "GSP scene/framebuffers, SDK stacks/heaps/queue and switching allocation peaks are additional; no device allocator/free/largest-block or peak-runtime measurement.",
+      "Full480 sphere shader. Owl/deep-sea select independent nearest9 membrane/outer-lid using the same two buffers; mechanical selects nearest shutter and composites before projection without8bit intermediate rounding."
+    ]
+  },
+  "config": [
+    "CONFIG_APP_PROJECT_VER_FROM_CONFIG=y",
+    "CONFIG_APP_PROJECT_VER=\"1.0.14-peek-organic\"",
+    "# CONFIG_PEEK_DIAGNOSTIC_VIEW is not set",
+    "CONFIG_PEEK_CHARACTER=0",
+    "CONFIG_PEEK_EYE_SAMPLE_STEP=2",
+    "CONFIG_PEEK_GAZE_FLIP_X=y",
+    "CONFIG_PEEK_GAZE_FLIP_Y=y",
+    "CONFIG_PEEK_AUTO_ORIENTATION=y",
+    "CONFIG_PEEK_FIXED_ORIENTATION=0",
+    "CONFIG_PEEK_IMU_MOUNT_QUARTERS=0",
+    "CONFIG_SPIRAM_MODE_OCT=y",
+    "CONFIG_SPIRAM_SPEED_250M=y",
+    "CONFIG_SPIRAM_SPEED=250",
+    "CONFIG_SPIRAM_FETCH_INSTRUCTIONS=y",
+    "CONFIG_SPIRAM_RODATA=y",
+    "CONFIG_SPIRAM_XIP_FROM_PSRAM=y",
+    "CONFIG_SPIRAM_FLASH_LOAD_TO_PSRAM=y",
+    "CONFIG_SPIRAM_BOOT_HW_INIT=y",
+    "CONFIG_SPIRAM_BOOT_INIT=y",
+    "CONFIG_SPIRAM_PRE_CONFIGURE_MEMORY_PROTECTION=y",
+    "CONFIG_SPIRAM_USE_MALLOC=y",
+    "CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL=16384",
+    "CONFIG_SPIRAM_MALLOC_RESERVE_INTERNAL=32768",
+    "CONFIG_SPIRAM_ALLOW_BSS_SEG_EXTERNAL_MEMORY=y",
+    "CONFIG_ESP_MAIN_TASK_STACK_SIZE=20480",
+    "CONFIG_SPIRAM_ALLOW_STACK_EXTERNAL_MEMORY=y"
+  ],
+  "physical_runtime_measured": false
+}

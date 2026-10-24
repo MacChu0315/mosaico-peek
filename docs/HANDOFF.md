@@ -44,28 +44,29 @@ Initial failed test comparisons and clean preview interruption remain in
 verification/; corrected same-tick replay and bounded native runs passed.
 Official update completed; user accepted the physical appearance, with an intermittent incomplete membrane movement limitation recorded below.
 
-The user has now requested the same optimization for owl. Candidate1.0.14
+The user has now requested the same optimization for owl. Installed1.0.14
 adds night-owl R2, preserves its circular pupil/highlight regions and original
 frame/18 overlays, removes the aperture-shaped patch/rim fade, and reuses the
 existing240ms dual-layer presentation. Deep-sea/dragon/mechanical remain intact.
-[Owl implementation and verification](NIGHT_OWL_R2.md). Physical owl acceptance
-and update are pending; current installed baseline remains1.0.13 below.
+[Owl implementation and verification](NIGHT_OWL_R2.md). Update completed; physical owl acceptance is pending below.
 
 ## Current installed device
 
-Installed1.0.13-peek-deepsea, sourcea5ef0ce,
-ELFcfe4193455b214a91af5f459ade917e2e3f955114582e0251ea6145e0cb570e8,
-Boot7372257207006649198. Official update0a782167-fd69-4ec6-949d-ce17589203cb
-succeeded on its first attempt. Actual ELF/version verified, VALID capture,
-application/IMU error0, crash_count0, both flips true and auto orientation intact.
-User feedback: “我看过了，我挺满意的。除了可能是因为帧率低，有时不能完整看到瞬膜的开合”.
-Keep the accepted240ms timing; no hidden stretching or frame-hold policy added.
-Evidence: evidence/deep-sea-r2/device-install/ and user-device-feedback.json.
-Owl remains unchanged pending the user's next work decision.
+Installed1.0.14-peek-organic, source735fbe7,
+ELF391287d2cb275c6d2726e4fe45059678cded097e58c38fe91c4cb3772d7805fb,
+Boot934720684676756858. Official update succeeded on its first attempt; actual
+ELF/version verified, VALID input, runtime/IMU error0, crash_count0, both flips
+true and calibrated auto orientation retained. Default startup remains dragon;
+next view is the new night owl. Physical owl visual/performance checks pending: latest read-only observation
+remained on dragon, so no other-view counters are presented as owl measurements.
+Evidence: evidence/night-owl-r2/device-install/.
 
-Previous1.0.12-peek-sclera, sourced7f5af5, remains the exact restore bundle at
-evidence/dragon-sclera/device-install/dragon-sclera.irisfw. Its dragon sclera
-appearance was accepted and is unchanged in1.0.13.
+Previous1.0.13-peek-deepsea, sourcea5ef0ce, is the exact restore at
+evidence/deep-sea-r2/device-install/deep-sea-r2.irisfw. User accepted its look,
+with intermittent incomplete visible240ms membrane motion at low frame rate.
+Keep approved timing without silent stretching; membrane counters now count
+ordinary frames from whichever organic view is active. Deep-sea was preserved
+in this update, not restyled.
 
 The retained dragon C texture replaces only procedural eye-white coloring. Shared
 controller/detector, physical map, calibrated IMU, original iris/skin/eyelids,
@@ -91,7 +92,15 @@ native four-way checks pass separately.
 
 ## Performance and known limits
 
-Current1.0.13 app8731600B (+1025856B from1.0.12), UI94480B unchanged. Bitmap
+Current1.0.14 app9509712B (+778112B), UI94480B unchanged; linked bitmap
+resources6788133B. Explicit bitmap PSRAM3418224B/internal renderer2004B unchanged.
+Initial dragon free internal233271B/free PSRAM1693128B; actual owl-state memory,
+active/closed rates and physical acceptance remain to be measured. Other-artwork
+native44 frames and deep-sea/mechanical31 compressed streams are unchanged.
+
+Historical1.0.13 figures below are not1.0.14 measurements.
+
+Historical1.0.13 app8731600B (+1025856B from1.0.12), UI94480B unchanged. Bitmap
 resources6010037B linked; explicit renderer PSRAM3418224B and internal struct
 2004B unchanged. Only deep-sea transparent RGB was normalized in build streams.
 Device deep-sea free internal243799B/free PSRAM3025464B; lifetime minima
@@ -178,7 +187,7 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 -Exact local ELF/map/config backups: ignoredfirmware-local/. No full-flash
  readback backup claim. Local branchfeat/eye-ui-trio; no remote configured/written.
 
-Start: python3 tools/preview.py --view deep_sea --flip-x --flip-y.
-Select/replay: tools/control.py view deep_sea; case sleep/live/dragon;
+Start: python3 tools/preview.py --view night_owl --flip-x --flip-y.
+Select/replay: tools/control.py view night_owl; case sleep/live/dragon;
 play/pause/replay. Product taps/left swipes/AI single clicks advance, right swipes
-return. Current review: python3 tools/package_review.py --deep-sea-r2, after clean commit.
+return. Current compact delta review: python3 tools/package_review.py --night-owl-r2, after clean commit.

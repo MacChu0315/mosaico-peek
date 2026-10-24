@@ -1,0 +1,13 @@
+{
+  "baseline": "30a2d64",
+  "sea_mechanical_compressed_streams_unchanged": 31,
+  "unchanged_source_files": [
+    "src/dragon.c",
+    "src/peek.c",
+    "src/peek_live.c",
+    "src/peek_orientation.c",
+    "src/dragon_render.c",
+    "projects/peek/main/device_thermal.c",
+    "projects/peek/main/device_orientation.c"
+  ]
+}

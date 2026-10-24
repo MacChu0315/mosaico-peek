@@ -2,7 +2,7 @@
 
 The user requested the same R2 optimization for owl after accepting the installed
 deep-sea demo. Keep deep-sea, dragon sclera C and mechanical socket A unchanged.
-Target candidate1.0.14-peek-organic; installed identity/physical acceptance are
+Installed1.0.14-peek-organic; installed identity/physical acceptance are
 tracked in HANDOFF.
 
 ## Artwork and scope
@@ -64,3 +64,15 @@ Run retained art scripts only after copying into a build directory, never in
 assets/. Frame-rate limits from deep-sea still apply:240ms does not guarantee
 all intermediate or maximum-coverage frames appear at low device FPS. This
 update does not silently lengthen the approved timing to mask that limitation.
+
+## Installation/resource checkpoint
+
+Official1.0.14 installed on first attempt. Source735fbe7 and ELF391287d2...
+match device identity. App9509712B, UI94480B unchanged, linked bitmap resources
+6788133B. Existing renderer buffers3418224B PSRAM and2004B internal struct stay
+unchanged; XIP/RODATA residency increases. Initial dragon free internal233271B,
+free PSRAM1693128B. Physical owl review/performance are pending in HANDOFF.
+
+The review ZIP is a compact delta over30a2d64/installed1.0.13: changed source,
+new owl materials and current evidence. It requires the baseline checkout and
+is not a standalone clone. Existing unchanged artwork/SDK are not duplicated.
