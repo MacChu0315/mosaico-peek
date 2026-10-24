@@ -1,0 +1,12 @@
+{
+  "events": 655,
+  "samples": 511,
+  "all_three_theme_replays": true,
+  "zero_core_role_mode_mismatches": true,
+  "switches": 6,
+  "wall_s": 68.35858208406717,
+  "movie_s": 68.4,
+  "frames": 215,
+  "hold_observed": false,
+  "note": "Recorded unlabelled thermal scene, original capture/receive/fault events unchanged. All arrays pass production C detector. Six live view switches preserve epoch; no physical device operation. Video retains capture wall times and is not screen FPS."
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.0.13-peek-deepsea",
+  "boot_id": "7372257207006649198",
+  "ELF": "cfe4193455b214a91af5f459ade917e2e3f955114582e0251ea6145e0cb570e8",
+  "orientation": 270,
+  "closed_RGB565_exact": true,
+  "observations": 3,
+  "wall_s": 5.663664809893817,
+  "note": "Actual stable closed-device framebuffer equals production C approved R2 eyelids. No physical screen FPS or moving-frame synchronization claim."
+}

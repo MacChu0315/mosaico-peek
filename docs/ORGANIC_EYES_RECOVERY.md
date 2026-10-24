@@ -44,7 +44,8 @@ located in the searched project review/download locations.
 The user explicitly chose a new reconstruction, first reviewed both characters,
 then restricted further work to deep_sea. R2 removes the aperture-shaped dark
 patch/rim fade and accelerates the membrane to240ms. The user accepted that
-appearance and authorized demo integration; see DEEP_SEA_R2.md and HANDOFF.
+appearance, authorized demo integration, and accepted the installed1.0.13 look
+with a noted fast-membrane frame-rate limitation; see DEEP_SEA_R2.md and HANDOFF.
 Owl reconstruction remains deferred pending physical deep-sea confirmation.
 This does not change the intake finding: the exact old v2 delivery was not
 recovered, and R1/R2 must remain labelled new reconstructions.

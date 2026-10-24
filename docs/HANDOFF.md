@@ -28,7 +28,7 @@ with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
 remain intact. [Integration](DRAGON_SCLERA.md). The official update and post-boot checks below are complete.
 
 The user selected reconstruction, then accepted deep-sea R2 and requested this
-integration before revisiting owl. Candidate1.0.13 uses the exact accepted eye
+integration before revisiting owl. Installed1.0.13 uses the exact accepted eye
 surface, no rim layer,240ms independent membrane and existing450/150ms sleep/
 wake rules. Ordinary blink cadence comes from the unchanged shared controller.
 Owl remains on its existing runtime; no new owl artwork is installed.
@@ -42,19 +42,25 @@ six live view switches pass.32 non-sea native frames and22 owl/mechanical
 compressed streams are byte-identical to baseline. Renderer buffers unchanged.
 Initial failed test comparisons and clean preview interruption remain in
 verification/; corrected same-tick replay and bounded native runs passed.
-Device update/physical R2 acceptance are still pending below.
+Official update completed; user accepted the physical appearance, with an intermittent incomplete membrane movement limitation recorded below.
 
 ## Current installed device
 
-Installed1.0.12-peek-sclera, sourced7f5af5,
-ELFdbfbf90c05fb944db80ec0714dbf7f3016d10e8d3dd23e64df722fb13d7edbe5,
-Boot5484327898152195899. Official update226bfcca-bf7e-47fc-aead-57dd4b3aaf36
-succeeded on its first attempt. Post-boot identity/hash match, VALID capture,
-application/IMU error0, crash_count0; both mounting flipstrue, autoenabled.
-The user observed the new sclera during movement and answered “符合预期”.
-Evidence: evidence/dragon-sclera/device-install/ and user-acceptance.json.
+Installed1.0.13-peek-deepsea, sourcea5ef0ce,
+ELFcfe4193455b214a91af5f459ade917e2e3f955114582e0251ea6145e0cb570e8,
+Boot7372257207006649198. Official update0a782167-fd69-4ec6-949d-ce17589203cb
+succeeded on its first attempt. Actual ELF/version verified, VALID capture,
+application/IMU error0, crash_count0, both flips true and auto orientation intact.
+User feedback: “我看过了，我挺满意的。除了可能是因为帧率低，有时不能完整看到瞬膜的开合”.
+Keep the accepted240ms timing; no hidden stretching or frame-hold policy added.
+Evidence: evidence/deep-sea-r2/device-install/ and user-device-feedback.json.
+Owl remains unchanged pending the user's next work decision.
 
-The current C texture replaces only procedural eye-white coloring. Shared
+Previous1.0.12-peek-sclera, sourced7f5af5, remains the exact restore bundle at
+evidence/dragon-sclera/device-install/dragon-sclera.irisfw. Its dragon sclera
+appearance was accepted and is unchanged in1.0.13.
+
+The retained dragon C texture replaces only procedural eye-white coloring. Shared
 controller/detector, physical map, calibrated IMU, original iris/skin/eyelids,
 other artwork, mechanical socket A and its centering are byte-identical to the
 prior source. Native before/after40 controller/detector checkpoints and32
@@ -78,13 +84,36 @@ native four-way checks pass separately.
 
 ## Performance and known limits
 
-Current1.0.12 app7705744B (+689408B from1.0.11), GSP94480B unchanged. Exact
+Current1.0.13 app8731600B (+1025856B from1.0.12), UI94480B unchanged. Bitmap
+resources6010037B linked; explicit renderer PSRAM3418224B and internal struct
+2004B unchanged. Only deep-sea transparent RGB was normalized in build streams.
+Device deep-sea free internal243799B/free PSRAM3025464B; lifetime minima
+192100B/2467060B after the closed check (not attributed allocator peaks/largest-block measurements).
+
+Measured54.94 device seconds at270deg,431 fresh thermal samples,0 faults:
+active-open5.751 complete GSP frames/s, overall5.679; raster132.044ms/frame,
+submit33.535ms/frame, prepare1.501ms/prepare. Canvas callbacks85.184/s are tiles.
+Nine completed ordinary-membrane frames, including three full-coverage frames,
+were observed. At roughly174ms per active frame, a240ms pulse is represented
+by only1–2 frames; the nearest-stage8 coverage window is about53ms. This supports
+the user's report that some phases are not fully seen. No guarantee of every
+membrane phase or physical panel FPS. Current logic/time is retained, limitation
+unresolved; different scenes/orientations are not a controlled speed comparison.
+A separate18.95s closed window at270deg completed141 frames (7.441Hz),
+148 new samples and0 faults; raster90.297ms, submit34.095ms, prepare0.027ms.
+Stable closed-device pixels exactly match production C. Native closed pixels
+and all four rotations also passed. Full four-placement physical tracking retest,
+largest memory block and end-to-end touch/visual latency remain unmeasured.
+
+Historical preceding version measurements follow; do not cite them as1.0.13.
+
+Historical1.0.12 app7705744B (+689408B from1.0.11), GSP94480B unchanged. Exact
 sclera RGB888691200B; linked dragon texture/LUT total1340932B (unused old sine
 2048B removed by linker). Same dragon renderer allocation3929120B and shared
 UI10312B. No new dynamic decode/cache; XIP/RODATA-to-PSRAM is enabled. Post-boot
 free internal233271B unchanged, free PSRAM3497828B versus prior4186436B in dragon.
 Full peak/largest-block and physical panel FPS remain unmeasured.
-Current1.0.12 measured54.04 device seconds,424 new thermal samples,0 faults.
+Historical1.0.12 measured54.04 device seconds,424 new thermal samples,0 faults.
 Orientation0 active-open9.627 complete GSP frames/s (49 frames/5.09s);270 active-
 open7.510 (136/18.11s). Rotation-changed intervals are excluded from groups.
 Orientation0 sleeping19.818 frames/s (short4.39s segment). Canvas callbacks
@@ -99,7 +128,7 @@ Historical1.0.7 thin-mount measurements:3.935 active-open complete GSP frames/s,
 3.879 sleeping frames/s; raster212..214ms, submit32ms.74.41s mechanical segments,
 583 fresh thermal samples, zero faults. This was slower than1.0.6's7.095Hz.
 Frame A reduces visible sphere area to the original socket's footprint.
-Current1.0.11 mechanical: active-open6.124 complete GSP frames/s, sleeping6.617;
+Historical1.0.11 mechanical: active-open6.124 complete GSP frames/s, sleeping6.617;
 canvas callback91.580Hz. The54.87s window accepted430 fresh thermal samples with
 0 faults. Active/transition raster120.675ms, sleeping110.429ms; submit33.197/32.261ms.
 These are different live scenes from1.0.7, not a controlled speedup percentage.
@@ -142,7 +171,7 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 -Exact local ELF/map/config backups: ignoredfirmware-local/. No full-flash
  readback backup claim. Local branchfeat/eye-ui-trio; no remote configured/written.
 
-Start: python3 tools/preview.py --view mechanical --flip-x --flip-y.
-Select/replay: tools/control.py view mechanical; case sleep/live/dragon;
+Start: python3 tools/preview.py --view deep_sea --flip-x --flip-y.
+Select/replay: tools/control.py view deep_sea; case sleep/live/dragon;
 play/pause/replay. Product taps/left swipes/AI single clicks advance, right swipes
-return. Current review: python3 tools/package_review.py --dragon-sclera, after clean commit.
+return. Current review: python3 tools/package_review.py --deep-sea-r2, after clean commit.

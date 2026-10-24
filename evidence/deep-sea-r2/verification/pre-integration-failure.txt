@@ -1,0 +1,1 @@
+Before implementation, test_deep_sea_r2.py failed neutral RGB565 code delta56. Reviewer-found99/100/101ms partial-wake boundary failed before proportional opening fix, then passed. No source detector/controller parameters were changed.

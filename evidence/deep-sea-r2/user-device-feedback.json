@@ -1,0 +1,8 @@
+{
+  "version": "1.0.13-peek-deepsea",
+  "feedback": "我看过了，我挺满意的。除了可能是因为帧率低，有时不能完整看到瞬膜的开合",
+  "appearance_accepted": true,
+  "limitation": "Intermittent incomplete visible membrane movement; measuring completed-frame counters",
+  "timing_policy": "Keep approved240ms until a separate behavior decision; no silent stretch",
+  "owl": "deferred"
+}

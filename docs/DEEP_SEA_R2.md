@@ -84,3 +84,27 @@ Standalone art reproduction copies retained scripts/inputs into the requested
 new build directory. Never run the retained reconstruction scripts in-place in
 assets/. Existing timing/appearance acceptance is distinct from final physical
 demo acceptance. Owl reconstruction remains deferred until user confirmation.
+
+## Installed result and observed limit
+
+1.0.13, sourcea5ef0ce, installed successfully on the first official update. User
+accepted its appearance, but sometimes cannot see the entire membrane motion.
+At270deg,54.94s observation gave431 new samples/0 faults, active-open5.751
+complete GSP frames/s. Nine ordinary membrane frames reached the engine, three
+at full stage8. The240ms pulse can only occupy1–2 frames at this rate; stage8
+has about53ms of logical visibility. The physical panel scan rate is unmeasured.
+Do not report every pulse fully presented, or silently stretch the approved
+timing. The observation is a performance limitation, not an appearance rejection.
+
+App8731600B, UI94480B; linked bitmap assets6010037B. Explicit bitmap PSRAM
+3418224B/internal renderer2004B unchanged; global XIP/RODATA residency grows.
+Observed free internal243799B/free PSRAM3025464B, lifetime minima192100B/2471228B.
+Preserved1.0.12 restore and exact local ELF/map/config remain separate. See
+HANDOFF for final closed-state/device acceptance and review archive status.
+
+Closed-state device follow-up:18.95s at270deg,141 completed frames=7.441Hz,
+148 fresh samples,0 faults. Raster90.297ms, submit34.095ms, prepare0.027ms.
+Three stable closed readings bracketed a screenshot; all RGB565 pixels match
+production C. Final lifetime min PSRAM2467060B. No device restart/errors during
+these measurements. User can resume normal operation. Fast-membrane visibility
+remains a known frame-rate limitation; no duration change was installed.

@@ -1,0 +1,47 @@
+{
+  "membrane_completed_frame_delta": {
+    "membrane_frames": 9,
+    "membrane_full_frames": 3
+  },
+  "canvas_callback_hz": 85.183836912996,
+  "physical_panel_FPS": null,
+  "version": "1.0.13-peek-deepsea",
+  "ELF_sha256": "cfe4193455b214a91af5f459ade917e2e3f955114582e0251ea6145e0cb570e8",
+  "boot_id": "7372257207006649198",
+  "views": [
+    "deep_sea"
+  ],
+  "samples": 49,
+  "groups": [
+    {
+      "view": "deep_sea",
+      "condition": "active-or-transition",
+      "orientation": 270,
+      "ms": 54940,
+      "frames": 312,
+      "draw_us": 40763790,
+      "raster_us": 41197755,
+      "submit_us": 10462906,
+      "prepare_us": 468182,
+      "prepares": 312,
+      "samples": 431,
+      "faults": 0,
+      "open_frames": 303,
+      "open_ms": 52690,
+      "open_raster_us": 39645483,
+      "open_submit_us": 10165766,
+      "engine_hz": 5.678922460866399,
+      "raster_ms_frame": 132.04408653846153,
+      "submit_ms_frame": 33.53495512820513,
+      "prepare_ms_mean": 1.5005833333333332,
+      "active_open_hz": 5.750616815334978
+    }
+  ],
+  "heap": {
+    "free_internal": 243799,
+    "min_free_internal": 192100,
+    "free_spiram": 3025464,
+    "min_free_spiram": 2471228
+  },
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+}

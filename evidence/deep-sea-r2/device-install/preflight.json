@@ -1,0 +1,11 @@
+{
+  "source": "a5ef0ce291b312abbc3b33c10cb47ca467be5b44",
+  "version": "1.0.13-peek-deepsea",
+  "bundle_sha256": "fe7fb4847717ca9e0d30eb31b55760fb19e925d4303b7a3facff826fdeef41e3",
+  "elf_sha256": "cfe4193455b214a91af5f459ade917e2e3f955114582e0251ea6145e0cb570e8",
+  "layout_unchanged": true,
+  "UI_image_unchanged": true,
+  "recovery_component": false,
+  "restore": "evidence/dragon-sclera/device-install/dragon-sclera.irisfw",
+  "restore_sha256": "aa910e6af5b39c67fcc05340a0dc248a04a86581c86a8000dfd330a77393f421"
+}
