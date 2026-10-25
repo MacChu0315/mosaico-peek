@@ -20,6 +20,8 @@ bool eye_pack_prepare(eye_pack_t *r,const dragon_pose_t *p);
 /* Organic R2 modes: independently selected nearest9 screen overlays. The
  * UI supplies shared-source presentation phases; this API owns no clock. */
 bool eye_pack_prepare_layers(eye_pack_t *r,const dragon_pose_t *p,float membrane,float lid);
+/* Prepared immutable frame/outer-lid coverage hides every sphere pixel. */
+bool eye_pack_eye_occluded(const eye_pack_t *r);
 bool eye_pack_draw(const eye_pack_t *r,void *pixels,size_t stride,int x,int y,int w,int h);
 size_t eye_pack_heap_bytes(void);
 size_t eye_pack_asset_bytes(void);

@@ -1,0 +1,27 @@
+-- sim_bridge: using gspc 0.6.1 from GSPC_EXECUTABLE CMake variable
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-sim
+Consolidate compiler generated dependencies of target gsp_sim_bridge
+[ 10%] Built target peek_dragon_assets
+[ 15%] Built target peek_eye_assets
+[ 45%] Built target gsp_sim_bridge
+gspc: resource-usage bundle_bytes=94416 bundle=92.2KiB scenes=1 animation_frame_peak_bytes=0 animation_frame_peak=0B animation_frame_budget_bytes=2097152 image_cache_default=enabled image_cache_budget_bytes=0 reports=/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-sim/peek_backend_assets output=/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-sim/peek_backend_assets/app.gspb
+[ 45%] Built target peek_backend_bundle
+Consolidate compiler generated dependencies of target peek_backend
+[ 60%] Building C object CMakeFiles/peek_backend.dir/platform_pc.c.o
+[ 60%] Building C object CMakeFiles/peek_backend.dir/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/src/peek_ui.c.o
+[ 60%] Building C object CMakeFiles/peek_backend.dir/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/src/eye_pack.c.o
+[ 65%] Linking C executable peek_backend
+[100%] Built target peek_backend
+{
+  "version": 1,
+  "component_root": "/home/zhuzhengming/esp/ts/Mosaico/.toolchains/esp-gsp-1.5.1/esp-gsp",
+  "executable": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-sim/peek_backend",
+  "bundle": "/home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-sim/peek_backend_assets/app.gspb"
+}
+GSP preview: http://127.0.0.1:3222/
+State/logs: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/.run
+PASS native GSP: 16 input checks; three exact-pixel artwork captures; detector/role/time unchanged
+PASS GSP: 44 image comparisons; four-way idle/target/centered-sleep/wake; source unchanged and render telemetry exact
+PASS17 real GSP layer checkpoints;240ms pulse,450/150ms close/wake,paused redraw,switch/replay source invariance

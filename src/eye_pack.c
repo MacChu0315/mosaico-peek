@@ -22,7 +22,7 @@ typedef struct {const char *name;int x,y,amp_x,amp_y,eye_x,eye_y,cx,cy,rotating_
 _Static_assert(SHUTTER_RGB_BYTES+240u*240u*4u<=2*LAYER_BYTES,"Shutter workspace capacity");
 struct eye_pack {
     unsigned char *storage,*frame,*eye,*lid[2];
-    unsigned theme,lo,hi;float dx,dy,mix;bool selected,prepared,open;
+    unsigned theme,lo,hi;float dx,dy,mix;bool selected,prepared,open,occluded;
     /* Immutable Q15 sphere normals, prepared at theme selection. */
     int16_t nx[480],ny[480],*nz;eye_projection_t projection;
 #ifdef ESP_PLATFORM
@@ -66,7 +66,7 @@ static bool decode(eye_pack_t *r,unsigned char *out,const eye_stream_t *s){
 bool eye_pack_select(eye_pack_t *r,unsigned theme){
     if(!r||theme>=3||!eye_themes[theme].name)return false;
     if(r->selected && r->theme==theme)return true;
-    r->prepared=false;r->selected=false;const eye_theme_t *t=&eye_themes[theme];
+    r->prepared=false;r->selected=false;r->occluded=false;const eye_theme_t *t=&eye_themes[theme];
     if(!decode(r,r->frame,&t->layers[0])||!decode(r,r->eye,&t->layers[1]))return false;
     /* Opaque fixed pixels need only their final RGB565. Keep alpha and all
      * partial-alpha RGBA bytes intact; the frame is never spatially sampled. */
@@ -112,13 +112,29 @@ static void shutter_texel(const eye_pack_t *r,int x,int y,float *c){
 static bool valid_pose(const eye_pack_t *r,const dragon_pose_t *p){
     return r&&r->selected&&p&&isfinite(p->gaze_x)&&isfinite(p->gaze_y)&&isfinite(p->blink)&&fabsf(p->gaze_x)<=.78001f&&fabsf(p->gaze_y)<=.58001f&&p->blink>=0&&p->blink<=1;
 }
+/* A replacement artwork need not have a fully opaque closed lid. Derive this
+ * property from the actual decoded pixels, once per lid change, not its name
+ * or stage number. The static frame is composited after the outer lid. */
+static bool lid_covers_eye(const eye_pack_t *r){
+    const eye_theme_t *t=&eye_themes[r->theme];
+    int w=(int)t->layers[11+r->hi].w,h=(int)t->layers[11+r->hi].h;
+    for(int y=0;y<480;y++)for(int x=0;x<480;x++){
+        if(r->frame[(y*480+x)*4+3]==255)continue;
+        int lx=x-t->x,ly=y-t->y;
+        if(lx<0||ly<0||lx>=w||ly>=h||r->lid[1][(ly*w+lx)*4+3]!=255)return false;
+    }
+    return true;
+}
+bool eye_pack_eye_occluded(const eye_pack_t *r){
+    return r&&r->prepared&&eye_themes[r->theme].rotating_shutter==2&&r->occluded;
+}
 bool eye_pack_prepare_layers(eye_pack_t *r,const dragon_pose_t *p,float membrane,float lid){
     if(!valid_pose(r,p)||eye_themes[r->theme].rotating_shutter!=2||!isfinite(membrane)||!isfinite(lid)||membrane<0||membrane>1||lid<0||lid>1)return false;
     const eye_theme_t *t=&eye_themes[r->theme];
     unsigned mi=(unsigned)floorf(membrane*8+.5f),li=(unsigned)floorf(lid*8+.5f);
     r->prepared=false;
     if(mi!=r->lo){if(!decode(r,r->lid[0],&t->layers[2+mi]))return false;r->lo=mi;}
-    if(li!=r->hi){if(!decode(r,r->lid[1],&t->layers[11+li]))return false;r->hi=li;}
+    if(li!=r->hi){if(!decode(r,r->lid[1],&t->layers[11+li]))return false;r->hi=li;r->occluded=lid_covers_eye(r);}
     r->open=mi==0&&li==0;r->mix=0;
     r->projection=eye_projection(p->gaze_x,p->gaze_y,t->amp_x,t->amp_y,t->cx,t->cy);
     r->prepared=true;return true;
@@ -157,8 +173,19 @@ static void sample(const unsigned char *pixels,unsigned w,unsigned h,float x,flo
 }
 static void over(float *dst,const float *src){for(unsigned k=0;k<3;k++)dst[k]=src[k]+dst[k]*(1-src[3]);}
 static void sample_prepared(const eye_pack_t *r,unsigned w,unsigned h,int px,int py,float *c){
+    const eye_theme_t *t=&eye_themes[r->theme];
+    /* Neutral projection lands on exact integer texels: weights(1,0,0,0).
+     * Skip sphere-cache reads as well as interpolation. Keep alpha/HDR until
+     * final RGB565, and retain scalar handling beyond the texture boundary. */
+    if(r->projection.neutral){
+        int x=px-t->eye_x,y=py-t->eye_y;
+        if(x<0||y<0||x>=(int)w||y>=(int)h)sample(r->eye,w,h,(float)x,(float)y,c);
+        else if(t->rotating_shutter==1)shutter_texel(r,x,y,c);
+        else rgba(r->eye+((size_t)y*w+x)*4,c);
+        return;
+    }
     float u,v;eye_project(&r->projection,r->nx[px],r->ny[py],r->nz[py*480+px],px,py,&u,&v);
-    const eye_theme_t *t=&eye_themes[r->theme];u-=t->eye_x;v-=t->eye_y;
+    u-=t->eye_x;v-=t->eye_y;
     if(u<0||v<0||u>=w-1||v>=h-1){sample(r->eye,w,h,u,v,c);return;}
     int x=(int)u,y=(int)v;
     if(t->rotating_shutter==1&&x>=t->x-1&&y>=t->y-1&&x<t->x+240&&y<t->y+240){

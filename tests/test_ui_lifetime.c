@@ -8,7 +8,7 @@
 #include "bundle_gsp.h"
 static peek_ui_t view;
 static bool fail_canvas,fail_event,fail_stop,fail_unregister,fail_text;
-static unsigned stops,unregisters;
+static unsigned stops,unregisters,invalidations;
 static esp_gsp_canvas_draw_cb_t eye_draw;
 static esp_gsp_pointer_observer_cb_t pointer_callback;
 static bool fail_pointer,fail_pointer_stop;
@@ -18,7 +18,7 @@ esp_gsp_err_t esp_gsp_set_pointer_observer(esp_gsp_handle_t ui,esp_gsp_pointer_o
 }
 esp_gsp_err_t mock_text(esp_gsp_handle_t ui,const char *text){(void)ui;(void)text;return fail_text?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_set_draw_cb(esp_gsp_handle_t ui,uint16_t bind,esp_gsp_canvas_draw_cb_t cb,void *ctx){(void)ui;if(bind==GSP_BIND_EYE)eye_draw=cb;assert(ctx==&view);return fail_canvas?ESP_GSP_FAIL:ESP_GSP_OK;}
-esp_gsp_err_t esp_gsp_canvas_invalidate(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(void)bind;return ESP_GSP_OK;}
+esp_gsp_err_t esp_gsp_canvas_invalidate(esp_gsp_handle_t ui,uint16_t bind){(void)ui;if(bind==GSP_BIND_EYE)invalidations++;return ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_canvas_stop(esp_gsp_handle_t ui,uint16_t bind){(void)ui;(void)bind;stops++;return fail_stop?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t esp_gsp_on_event(esp_gsp_handle_t ui,esp_gsp_event_cb_t cb,void *ctx){(void)ui;(void)ctx;if(!cb){unregisters++;return fail_unregister?ESP_GSP_FAIL:ESP_GSP_OK;}return fail_event?ESP_GSP_FAIL:ESP_GSP_OK;}
 esp_gsp_err_t mock_visible(esp_gsp_handle_t ui,bool visible){(void)ui;(void)visible;return ESP_GSP_OK;}
@@ -117,6 +117,13 @@ int main(void){
             esp_gsp_canvas_surface_t surface={.pixels=output+y*480,.stride_bytes=960,.x=0,.y=y,.width=480,.height=y+17>480?480-y:17,.pixel_format=ESP_GSP_CANVAS_PIXEL_RGB565};
             eye_draw(&surface,&view);assert(view.error==ESP_GSP_OK);
         }
+        uint16_t odd[25*19];memset(odd,0xa5,sizeof(odd));
+        esp_gsp_canvas_surface_t part={.pixels=odd,.stride_bytes=50,.x=17,.y=119,.width=23,.height=19,.pixel_format=ESP_GSP_CANVAS_PIXEL_RGB565};
+        eye_draw(&part,&view);assert(view.error==ESP_GSP_OK);
+        for(unsigned y=0;y<19;y++){
+            for(unsigned x=0;x<23;x++)assert(odd[y*25+x]==output[(119+y)*480+17+x]);
+            assert(odd[y*25+23]==0xa5a5&&odd[y*25+24]==0xa5a5);
+        }
         for(unsigned y=0;y<480;y++)for(unsigned x=0;x<480;x++){
             unsigned a=x,b=y;
             if(q==90){a=y;b=479-x;}if(q==180){a=479-x;b=479-y;}if(q==270){a=479-y;b=x;}
@@ -152,5 +159,34 @@ int main(void){
     assert(peek_ui_set_orientation(&view,180)==ESP_GSP_OK);
     pointer_callback(view.ui,200,200,false,&view);assert(view.character==2);
     free(reference);free(output);assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);
+    /* Exact retained pictures stop requesting frames, but source time still ages.
+     * Re-entry, orientation and newly visible motion must request a fresh frame. */
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
+    for(unsigned c=0;c<4;c++){
+        if(!peek_character_valid(c))continue;
+        peek_ui_reset(&view,"fixture");assert(peek_ui_set_character(&view,c)==ESP_GSP_OK);
+        peek_ui_refresh(&view,12000);unsigned requests=invalidations;
+        before=view.dragon;detector=view.detector;
+        peek_ui_refresh(&view,12000);assert(invalidations==requests);
+        assert(!memcmp(&before,&view.dragon,sizeof(before))&&!memcmp(&detector,&view.detector,sizeof(detector)));
+        if(c){
+            for(unsigned t=12033;t<13000;t+=33)peek_ui_refresh(&view,t);
+            assert(invalidations==requests);assert(view.detector.now_ms>12000);
+        }
+        assert(peek_ui_set_orientation(&view,view.orientation?0:270)==ESP_GSP_OK);
+        peek_ui_refresh(&view,view.detector.now_ms);assert(invalidations>requests);
+        requests=invalidations;
+        assert(peek_ui_set_view(&view,false)==ESP_GSP_OK);
+        assert(peek_ui_set_view(&view,true)==ESP_GSP_OK);
+        peek_ui_refresh(&view,view.detector.now_ms);assert(invalidations>requests);
+        /* Same-time manually prepared render fixture, never a fake sensor sample. */
+        requests=invalidations;view.dragon.sleeping=false;view.dragon.waking=false;
+        view.dragon.phase_ms=view.dragon.now_ms;
+        view.dragon.pose.blink=0;view.dragon.next_blink_ms=view.dragon.now_ms+1000;
+        peek_ui_refresh(&view,view.detector.now_ms);assert(invalidations>requests);
+        requests=invalidations;view.dragon.pose.gaze_x+=.01f;
+        peek_ui_refresh(&view,view.detector.now_ms);assert(invalidations>requests);
+    }
+    assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);
     puts("PASS actual UI: partial registration, teardown errors retain ownership, retry detaches");
 }

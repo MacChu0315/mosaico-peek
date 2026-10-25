@@ -1,0 +1,93 @@
+{
+  "membrane_completed_frame_delta": {
+    "membrane_frames": 1,
+    "membrane_full_frames": 0
+  },
+  "canvas_callback_hz": 104.44126074498567,
+  "physical_panel_FPS": null,
+  "version": "1.1.0",
+  "ELF_sha256": "569d0f7cb67dfea246410b770b3572ce36acb5d60749db73778989abcc0c98ed",
+  "boot_id": "5038377117570898161",
+  "views": [
+    "deep_sea"
+  ],
+  "samples": 32,
+  "groups": [
+    {
+      "view": "deep_sea",
+      "condition": "active-or-transition",
+      "orientation": 270,
+      "ms": 8780,
+      "frames": 50,
+      "draw_us": 6517407,
+      "raster_us": 6586312,
+      "submit_us": 1686111,
+      "prepare_us": 76337,
+      "prepares": 50,
+      "samples": 69,
+      "faults": 0,
+      "open_frames": 0,
+      "open_ms": 0,
+      "open_raster_us": 0,
+      "open_submit_us": 0,
+      "engine_hz": 5.694760820045558,
+      "raster_ms_frame": 131.72624,
+      "submit_ms_frame": 33.72222,
+      "prepare_ms_mean": 1.52674,
+      "active_open_hz": null
+    },
+    {
+      "view": "deep_sea",
+      "condition": "sleep-transition",
+      "orientation": 270,
+      "ms": 1190,
+      "frames": 7,
+      "draw_us": 756811,
+      "raster_us": 766424,
+      "submit_us": 227553,
+      "prepare_us": 108677,
+      "prepares": 7,
+      "samples": 9,
+      "faults": 0,
+      "open_frames": 0,
+      "open_ms": 0,
+      "open_raster_us": 0,
+      "open_submit_us": 0,
+      "engine_hz": 5.882352941176471,
+      "raster_ms_frame": 109.48914285714285,
+      "submit_ms_frame": 32.507571428571424,
+      "prepare_ms_mean": 15.525285714285713,
+      "active_open_hz": null
+    },
+    {
+      "view": "deep_sea",
+      "condition": "sleeping-closed",
+      "orientation": 270,
+      "ms": 24930,
+      "frames": 186,
+      "draw_us": 16547000,
+      "raster_us": 16802268,
+      "submit_us": 6311253,
+      "prepare_us": 4986,
+      "prepares": 186,
+      "samples": 196,
+      "faults": 0,
+      "open_frames": 0,
+      "open_ms": 0,
+      "open_raster_us": 0,
+      "open_submit_us": 0,
+      "engine_hz": 7.460890493381468,
+      "raster_ms_frame": 90.3347741935484,
+      "submit_ms_frame": 33.931467741935485,
+      "prepare_ms_mean": 0.026806451612903223,
+      "active_open_hz": null
+    }
+  ],
+  "heap": {
+    "free_internal": 243799,
+    "min_free_internal": 192100,
+    "free_spiram": 4538048,
+    "min_free_spiram": 3505528
+  },
+  "note": "Physical-device engine/raster/submit counters. No screenshot within window. RPC polling and real unlabelled scene; not physical panel FPS or a controlled same-scene percentage comparison."
+}

@@ -60,5 +60,13 @@ int main(void){
     v.dragon_view=true;v.character=2;publish(&v,2900);publish(&v,3000);
     assert(snapshot.membrane_frames==2&&snapshot.membrane_full_frames==2);
     assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK&&strstr((char *)out,"deep_sea")&&strstr((char *)out,"\"render_membrane\":1.00000"));
+    /* No new image is required for an exact retained picture. Timer/source
+     * time continues, while completed-frame and phase counters stay put. */
+    memset(&snapshot,0,sizeof(snapshot));v.character=3;v.dragon_view=true;
+    dragon_reset(&v.dragon,90640);v.dragon.target_active=true;publish(&v,100);
+    device_status_publish(&v,200);device_status_publish(&v,300);
+    assert(snapshot.open_elapsed_ms==200&&snapshot.open_frames==0);
+    assert(snapshot.open_raster_us==0&&snapshot.open_submit_us==0&&snapshot.open_busy_us==0);
+    assert(snapshot.callbacks==3&&snapshot.frames==completed);
     puts("PASS device telemetry: previous generation classification, sleep/closing excluded, open timing exact,2048B body and RPC purity");
 }

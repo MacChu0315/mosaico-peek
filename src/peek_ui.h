@@ -16,6 +16,7 @@ typedef struct {
     peek_frame_t displayed;
     bool has_frame,paused,live,canvas_registered,event_registered,dragon_registered,dragon_view,dragon_prepared;
     float previous_blink;
+    dragon_pose_t previous_picture; /* Exact render dependencies, UI owner only. */
     bool orientation_auto;int orientation_error;
     uint64_t orientation_sampled_ms;float orientation_accel[3];
     unsigned orientation; /* clockwise artwork quarter-turn, UI owner only */

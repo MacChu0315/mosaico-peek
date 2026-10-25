@@ -57,6 +57,24 @@ static bool prepare_eye(peek_ui_t *s){
     }
     return s->character?eye_pack_prepare(s->eye_pack,&pose):dragon_renderer_prepare(s->renderer,&pose);
 }
+static dragon_pose_t picture_key(const peek_ui_t *s){
+    dragon_pose_t pose=artwork_pose(s);
+    if(!s->character)return pose;
+    dragon_pose_t key={.gaze_x=pose.gaze_x,.gaze_y=pose.gaze_y};
+    if(eye_character_dual_layers(s->character)){
+        eye_layers_t layers=eye_character_layers(s->character,&s->dragon);
+        key.blink=floorf(layers.membrane*8+.5f);
+        key.squint=floorf(layers.lid*8+.5f);
+        if(eye_pack_eye_occluded(s->eye_pack)){
+            key.gaze_x=key.gaze_y=0;key.blink=0;
+        }
+    }else key.blink=floorf(pose.blink*8+.5f);
+    return key;
+}
+static bool same_picture(dragon_pose_t a,dragon_pose_t b){
+    return a.gaze_x==b.gaze_x&&a.gaze_y==b.gaze_y&&a.blink==b.blink&&
+        a.squint==b.squint&&a.pupil_width==b.pupil_width&&a.tension==b.tension;
+}
 static bool draw_region(peek_ui_t *s,void *pixels,size_t stride,int x,int y,int w,int h){
     return s->character?eye_pack_draw(s->eye_pack,pixels,stride,x,y,w,h):
         (s->renderer&&dragon_renderer_draw(s->renderer,pixels,stride,x,y,w,h));
@@ -72,11 +90,18 @@ static bool draw_oriented(peek_ui_t *s,const esp_gsp_canvas_surface_t *surface){
         unsigned left=x0<x1?x0:x1,top=y0<y1?y0:y1;
         unsigned rw=s->orientation==180?w:h,rh=s->orientation==180?h:w;
         if(!draw_region(s,s->rotation_tile,rw*2,left,top,rw,rh))return false;
+        /* Quarter-turn indices are affine within a tile. Resolve the direction
+         * once, then walk signed integer indices; never form an out-of-array
+         * pointer after the final pixel. This also handles odd edge tiles. */
+        int origin,dx,dy;
+        if(s->orientation==90){origin=(int)(rh-1)*rw;dx=-(int)rw;dy=1;}
+        else if(s->orientation==180){origin=(int)(rw*rh)-1;dx=-1;dy=-(int)rw;}
+        else {origin=(int)rw-1;dx=(int)rw;dy=-1;}
         for(unsigned y=0;y<h;y++){
             uint16_t *row=(uint16_t *)((uint8_t *)surface->pixels+(ty+y)*surface->stride_bytes);
+            int index=origin+(int)y*dy;
             for(unsigned x=0;x<w;x++){
-                unsigned lx,ly;peek_orientation_point(s->orientation,surface->x+tx+x,surface->y+ty+y,&lx,&ly);
-                row[tx+x]=s->rotation_tile[(ly-top)*rw+lx-left];
+                row[tx+x]=s->rotation_tile[index];index+=dx;
             }
         }
     }
@@ -125,7 +150,7 @@ esp_gsp_err_t peek_ui_set_view(peek_ui_t *s,bool dragon)
     if(rc!=ESP_GSP_OK)return rc;
     rc=gsp_peek_eye_layer_set_visible(s->ui,dragon);
     if(rc!=ESP_GSP_OK)return rc;
-    s->dragon_view=dragon;return ESP_GSP_OK;
+    s->dragon_view=dragon;s->dragon_prepared=false;return ESP_GSP_OK;
 }
 esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *s,unsigned q){
     if(q!=0&&q!=90&&q!=180&&q!=270)return ESP_GSP_ERR_INVALID_ARG;
@@ -174,6 +199,10 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
         if(!prepare_eye(s)){s->error=ESP_GSP_FAIL;return;}
         uint64_t elapsed=real_us()-start;s->prepare_us_total+=elapsed;s->prepares++;
         if(elapsed>s->prepare_us_max)s->prepare_us_max=elapsed;
+        dragon_pose_t key=picture_key(s);
+        /* Keep aging/controller/prepare and input timers alive. Only suppress
+         * an identical picture request, not source observations or wake work. */
+        if(s->dragon_prepared&&same_picture(key,s->previous_picture))return;
         if(!s->character && s->dragon_prepared && s->previous_blink==0 && s->dragon.pose.blink==0){
             /* Both open poses differ only in this tested eye/crease union.
              * A blink deforms the whole hood, so those transitions repaint all. */
@@ -183,7 +212,8 @@ void peek_ui_refresh(peek_ui_t *s,uint64_t now)
             if(s->orientation==270)rect=(gsp_rect_t){80,16,416,464};
             remember(s,esp_gsp_canvas_invalidate_dirty(s->ui,GSP_BIND_EYE,rect));
         }else remember(s,esp_gsp_canvas_invalidate(s->ui,GSP_BIND_EYE));
-        s->previous_blink=s->dragon.pose.blink;s->dragon_prepared=true;return;
+        if(s->error==ESP_GSP_OK){s->previous_picture=key;s->previous_blink=s->dragon.pose.blink;s->dragon_prepared=true;}
+        return;
     }
     const peek_result_t *r=&s->detector.result;char text[160];
     if(r->has_target)snprintf(text,sizeof(text),"%s / TARGET %.1f,%.1f%s",peek_data_name(r->data),r->x,r->y,r->held?" HOLD":"");

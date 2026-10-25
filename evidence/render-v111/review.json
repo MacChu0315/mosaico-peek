@@ -1,0 +1,9 @@
+{
+  "base": "fa34821",
+  "required_fixes": [],
+  "added_checks": [
+    "offset23x19 padded rotation tiles",
+    "zero-completion telemetry"
+  ],
+  "native_counter_fixture_correction": "Counters publish before pending draw in backend tick; wait for next acknowledged callback before measuring retention. Initial test failure was stale publication, retained source/role were identical."
+}

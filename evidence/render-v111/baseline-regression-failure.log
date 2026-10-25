@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-host
+Test project /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/build-host
+    Start 3: ui_lifetime
+1/1 Test #3: ui_lifetime ......................Subprocess aborted***Exception:   1.18 sec
+test_ui_lifetime: /home/zhuzhengming/esp/ts/Mosaico/mosaico-peek/tests/test_ui_lifetime.c:163: main: Assertion `invalidations==requests' failed.
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   1.19 sec
+
+The following tests FAILED:
+	  3 - ui_lifetime (Subprocess aborted)
+Errors while running CTest

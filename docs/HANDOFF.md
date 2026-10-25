@@ -1,3 +1,7 @@
+> Development candidate1.1.1 is being validated on perf/three-eye-render. Installed
+> identity below remains the frozen1.1.0 until the new receipt is recorded.
+> Exact-output rendering changes and test scope: [RENDER_V111.md](RENDER_V111.md).
+
 # Peek handoff — frozen v1.1.0 (2026-10-25)
 
 User explicitly rejected night owl and requested removal from firmware. Installed
@@ -71,7 +75,7 @@ artwork, but earlier rates must remain labelled by their original versions.
 python3 tools/preview.py --view deep_sea --flip-x --flip-y
 python3 tools/control.py next / previous
 python3 tools/control.py case live; python3 tools/control.py play / pause / replay
-python3 tools/build_idf.py uses build/sdkconfig.three-eyes.
+python3 tools/build_idf.py now builds development1.1.1 with build/sdkconfig.v1.1.1.
 
 Evidence: evidence/remove-owl/. Compact delta review uses
 python3 tools/package_review.py --remove-owl (requires49648e4/1.0.14 baseline).

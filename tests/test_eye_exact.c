@@ -22,11 +22,12 @@ int main(void){
     unsigned count=0;double fast_s=0,ref_s=0;
     for(unsigned theme=1;theme<3;theme++){
         assert(eye_pack_select(fast,theme)&&eye_ref_select(ref,theme));
-        for(unsigned i=0;i<128;i++){
+        for(unsigned i=0;i<144;i++){
             dragon_pose_t p={0};p.gaze_x=(random_unit()*2-1)*.78f;p.gaze_y=(random_unit()*2-1)*.58f;
             p.blink=i%4?0:random_unit();
             if(i<27){p.gaze_x=((int)(i%3)-1)*.78f;p.gaze_y=((int)(i/3%3)-1)*.58f;p.blink=(i/9)*.5f;}
             if(i>=27 && i<44)p.blink=(i-27)/16.f;
+            if(i>=128){p.gaze_x=0;p.gaze_y=0;p.blink=(i-128)%9/8.f;}
             if(theme<2){
                 float membrane=i%4==3?random_unit():p.blink,lid=i%4==2?random_unit():p.blink;
                 assert(eye_pack_prepare_layers(fast,&p,membrane,lid)&&eye_ref_prepare_layers(ref,&p,membrane,lid));
