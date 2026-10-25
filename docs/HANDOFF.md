@@ -1,3 +1,5 @@
+> Release labeling in progress: user froze this unchanged three-eye baseline as v1.1.0. The following installed1.0.15 identity is the pre-release baseline until the release receipt is added. See docs/releases/v1.1.0.md.
+
 # Peek handoff — three retained eyes (2026-10-25)
 
 User explicitly rejected night owl and requested removal from firmware. Installed

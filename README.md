@@ -2,10 +2,11 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Installed1.0.15-peek-three: **dragon / deep_sea / mechanical**.
+Frozen release **v1.1.0** (firmware reports `1.1.0`), based on the accepted1.0.15 demo: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
 Historical owl material remains archived; it is not part of the active demo.
+[Release scope, exact artifact and local tag](docs/releases/v1.1.0.md).
 
 Deep-sea R2 keeps its240ms membrane and no returning rim; mechanical keeps socket
 A and centered sleep; dragon keeps selected sclera C and approved240 sampling.
@@ -45,7 +46,7 @@ Only one preview per working directory is supported. Loopback socket permission 
 
 The user accepted the displayed240-vs480 detail tradeoff on2026-10-21. Device and native startup use `sample_step=2`: evaluate the same C shader at `(x|1,y|1)` and replicate globally aligned2x2 cells into the unchanged480×480 RGB565 Canvas. Sensor32×24 input, detector/role parameters, texture PNGs and geometry remain unchanged. Odd tile origins, padded strides and edge pixels are covered by `render_sampling`; the scalar renderer still defaults to lossless step1 for references. `python3 tools/preview.py --sample-step 1` retains the old native quality. Neither mode changes detector counts.
 
-Retained installed baseline firmware version is `1.0.2-peek-sleep`; its build uses isolated `build/sdkconfig.dragon240-sleep` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
+Historical retained baseline firmware version is `1.0.2-peek-sleep`; its build uses isolated `build/sdkconfig.dragon240-sleep` with `CONFIG_PEEK_EYE_SAMPLE_STEP=2`. Read-only RPC/status records the actual step. The fixed-pixel cache remains full-sized; reducing shader work does not claim reduced cache RAM. Retained480 firmware: `evidence/sampling240/restore-480/dragon480.irisfw`; diagnostic restore remains separately retained. Install only through the official workflow and the authorized MAC.
 
 ## Complete recorded input / live dragon
 
@@ -53,7 +54,7 @@ Retained installed baseline firmware version is `1.0.2-peek-sleep`; its build us
 
 The renderer retains its full invariant cache of3,225,600 bytes for invariant geometry/static colors in explicit device PSRAM; its workspace plus both caches total3,929,120 bytes is reported separately from textures and framebuffer memory. [Device rendering investigation](docs/DEVICE_PERFORMANCE.md) retains exact pixel/ownership evidence and actual runtime rates.
 
-The retained installed dragon build selected `build/sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
+The historical retained dragon build selected `build/sdkconfig.dragon240-sleep`, version `1.0.2-peek-sleep`, approved art and existing detector, with a small read-only acceptance RPC instead of the diagnostic full-array recorder. See [target, telemetry, installation and exact diagnostic restore bundle](docs/DEVICE_DRAGON.md). Host30Hz remains unmet and is not investigated further here. Real replay and physical acceptance are reported separately in [handoff](docs/HANDOFF.md).
 
 ## Build / verify
 
@@ -82,7 +83,7 @@ Asset generation requires **Pillow10.4.0** for byte-identical output; this was a
 
 Defaults stay centralized in `peek_default_config`: spatial-median background; enter/keep contrast3/2°C; four-connected area6..300; acquisition3 new consistent frames; release2 valid absent frames; association5 pixels; smoothing0.5; continuity300ms; target hold500ms; data stale750ms. While tracked, nearest qualifying region in the gate wins even over a hotter distant source. Untracked selection maximizes summed temperature excess; ties follow row-major discovery. No identity recognition/classification/distance claim.
 
-`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks for10s after entry, then closes over450ms and stays shut. A newly acquired production target wakes it over150ms; faults or pending candidates do not wake it. Ordinary blinks resume after waking (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. Latest user feedback confirmed both axes reversed with both flips enabled;1.0.6 disables both. The user confirmed both physical directions correct on1.0.6.
+`dragon.c` consumes the core result at the same injected time. It distinguishes observation-held from stationary, estimates speed only between fresh capture timestamps, and requires900ms of fresh quiet observations below0.8 sensor pixel/s for HOLD. Gaps beyond300ms break stillness before the core's finite target hold ends. Repeated rendering never adds observations. NOTICE is a single320ms response; LEAVE returns gaze over1200ms. A reappearing target gets one light NOTICE without resetting gaze/velocity. IDLE retains the approved calm holds and seeded irregular blinks for10s after entry, then closes over450ms and stays shut. A newly acquired production target wakes it over150ms; faults or pending candidates do not wake it. Ordinary blinks resume after waking (140ms close,40ms shut,230ms reopen). Mapping uses pixel centers: `2*(x+.5)/32-1`, `2*(y+.5)/24-1`, then centralized rotation/flips and bounded eye amplitudes0.78/0.58. The current accepted mounting uses both flips enabled, as confirmed after1.0.11; the earlier1.0.6 feedback is historical and must not override the current mapping.
 
 Draw reads a prepared pose only. Open-eye dirty updates request the tested `(16,80)..(464,416)` union; blink transitions request the full textured hood. Native GSP currently still supplies full draw surfaces, so this request produced no substantial measured throughput gain. The full-frame parity test prevents stale pixels from being hidden by partial updates.
 
@@ -135,6 +136,6 @@ No additional downsampling or pose quantization. Run
 `python3 tools/control.py case sleep` then `play` for the new synthetic scenario,
 or `python3 tests/test_sleep_gsp.py` for actual native dynamic acceptance.
 
-Current device trial: source f8845c5, version1.0.2-peek-sleep; active-open engine
+Historical device trial: source f8845c5, version1.0.2-peek-sleep; active-open engine
 rate10.336Hz. The roughly15Hz goal remains unmet; user chose to stop at this
 version. See HANDOFF for hardware/native distinctions and exact restore bundle.
