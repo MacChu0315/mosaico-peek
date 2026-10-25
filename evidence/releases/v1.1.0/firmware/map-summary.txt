@@ -1,0 +1,92 @@
+# Existing ELF/map memory summary (bytes; not measured runtime RAM)
+# ELF/map/sdkconfig SHA-256 and sizes are in firmware-budget.json.
+# .flash.rodata names do not imply flash-only runtime residency with PSRAM XIP.
+.rtc.force_slow: address=0x2e000000 bytes=36 type=PROGBITS flags=WA
+.rtc_reserved: address=0x2e007fe8 bytes=24 type=NOBITS flags=WA
+.iram0.text: address=0x2f000000 bytes=85426 type=PROGBITS flags=AX
+.iram0.text_end: address=0x2f014db2 bytes=78 type=NOBITS flags=WA
+.dram0.data: address=0x2f014e00 bytes=25232 type=PROGBITS flags=WA
+.noinit: address=0x2f01b090 bytes=0 type=NOBITS flags=WA
+.dram0.bss: address=0x2f01b0c0 bytes=22296 type=NOBITS flags=WA
+.flash.text: address=0x50000020 bytes=1059552 type=PROGBITS flags=AX
+.flash_rodata_dummy: address=0x50000020 bytes=1114112 type=NOBITS flags=WA
+.flash.appdesc: address=0x50110020 bytes=256 type=PROGBITS flags=A
+.flash.rodata: address=0x50110120 bytes=6047900 type=PROGBITS flags=WA
+.flash.init_array: address=0x506d49bc bytes=68 type=INIT_ARRAY flags=WA
+.flash.tdata: address=0x506d4a00 bytes=16 type=PROGBITS flags=WAT
+.flash.rodata_noload: address=0x506d4a10 bytes=112 type=NOBITS flags=WA
+.ext_ram.dummy: address=0x50000020 bytes=7208928 type=NOBITS flags=WA
+.ext_ram.bss: address=0x506e0000 bytes=6428 type=NOBITS flags=WA
+.dram0.heap_start: address=0x2f0207d8 bytes=8 type=NOBITS flags=WA
+
+# Dragon textures/palettes/LUTs (local static symbols included by nm -a -S)
+dragon_iris_indices: address=0x5062b90c bytes=409600 sections=.flash.rodata
+dragon_iris_palette: address=0x5062b70c bytes=512 sections=.flash.rodata
+dragon_pupil_q15: address=0x50629504 bytes=514 sections=.flash.rodata
+dragon_sclera_rgb: address=0x50580904 bytes=691200 sections=.flash.rodata
+dragon_skin_indices: address=0x5068fb0c bytes=230400 sections=.flash.rodata
+dragon_skin_palette: address=0x5068f90c bytes=512 sections=.flash.rodata
+dragon_sqrt_q15: address=0x50629708 bytes=8194 sections=.flash.rodata
+
+# Selected actual linker map lines
+.rtc.text       0x2e000000        0x0
+.rtc.force_fast
+                0x2e000000        0x0
+.rtc.data       0x2e000000        0x0
+.rtc.bss        0x2e000000        0x0
+.rtc_noinit     0x2e000000        0x0
+.rtc.force_slow
+                0x2e000000       0x24
+.rtc_reserved   0x2e007fe8       0x18
+.iram0.text     0x2f000000    0x14db2
+.iram0.text_end
+                0x2f014db2       0x4e
+.iram0.data     0x2f014e00        0x0
+.iram0.bss      0x2f014e00        0x0
+.iram0.end      0x2f014e00        0x0
+.dram0.dummy    0x2f014e00        0x0
+.dram0.data_start
+                0x2f014e00        0x0
+.dram0.data     0x2f014e00     0x6290
+.noinit         0x2f01b090        0x0
+.dram0.bss      0x2f01b0c0     0x5718
+.flash.text     0x50000020   0x102ae0
+                0x50000020                        _instruction_reserved_start = ABSOLUTE (.)
+                0x50102b00                        _instruction_reserved_end = ABSOLUTE (.)
+.flash_rodata_dummy
+                0x50000020   0x110000
+.flash.appdesc  0x50110020      0x100
+                0x50110020                        _rodata_reserved_start = ABSOLUTE (.)
+                0x50110020                        _rodata_start = ABSOLUTE (.)
+.flash.rodata   0x50110120   0x5c489c
+ .rodata.dragon_mode_name.str1.4
+                0x50580875        0x0 esp-idf/main/libmain.a(dragon.c.obj)
+ .rodata.dragon_sclera_rgb
+                0x50580904    0xa8c00 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_pupil_q15
+                0x50629504      0x202 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_sqrt_q15
+                0x50629708     0x2002 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_iris_palette
+                0x5062b70c      0x200 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_iris_indices
+                0x5062b90c    0x64000 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_skin_palette
+                0x5068f90c      0x200 esp-idf/main/libmain.a(dragon_render.c.obj)
+ .rodata.dragon_skin_indices
+                0x5068fb0c    0x38400 esp-idf/main/libmain.a(dragon_render.c.obj)
+.flash.init_array
+                0x506d49bc       0x44
+                0x506d4a00                        _rodata_end = ABSOLUTE (.)
+.flash.tdata    0x506d4a00       0x10
+.flash.tbss     0x506d4a10        0x0
+.flash.rodata_noload
+                0x506d4a10       0x70
+                0x506d4a80                        _rodata_reserved_end = .
+.ext_ram.dummy  0x50000020   0x6dffe0
+                0x50000021                        _ext_ram_on_same_bus = (ORIGIN (ext_ram_seg) == ORIGIN (flash_rodata_seg))
+.ext_ram.bss    0x506e0000     0x191c
+                0x506e0000                        _ext_ram_bss_start = ABSOLUTE (.)
+                0x506e191c                        _ext_ram_bss_end = ABSOLUTE (.)
+.dram0.heap_start
+                0x2f0207d8        0x8

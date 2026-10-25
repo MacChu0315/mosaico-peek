@@ -1,0 +1,9 @@
+{
+  "archive": "releases/mosaico-peek-v1.1.0.zip",
+  "bytes": 11939624,
+  "sha256": "b2b92577010cde8f500ba94b49241b2df8798d386ae8459064daebe50935a63a",
+  "zip_integrity": "passed",
+  "all_manifest_checksums": "passed",
+  "source_tag": "082c7830d8f2b130f284999063b078385dc33eb8",
+  "standalone_rebuild_kit": false
+}

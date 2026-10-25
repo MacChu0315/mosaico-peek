@@ -1,0 +1,51 @@
+{
+  "release": "v1.1.0",
+  "firmware_version": "1.1.0",
+  "source_revision": "082c7830d8f2b130f284999063b078385dc33eb8",
+  "tag": "v1.1.0",
+  "tag_object": "fd20611df0c4309cd64f8696d394400a2aa36b71",
+  "baseline": "4a52dc2",
+  "bundle": {
+    "file": "mosaico-peek-v1.1.0.irisfw",
+    "bytes": 6281003,
+    "sha256": "9adf749c03c3e9d7aa6bac8f80cc7082c672d60f1f2658f67bf533792aa98ee0"
+  },
+  "elf_sha256": "569d0f7cb67dfea246410b770b3572ce36acb5d60749db73778989abcc0c98ed",
+  "application_bytes": 7218608,
+  "active_roles": [
+    "dragon",
+    "deep_sea",
+    "mechanical"
+  ],
+  "installation": {
+    "operation_id": "554e1190-5f11-49ea-84a1-5985bc7d0bb9",
+    "status": "succeeded",
+    "device_id": "4553502d49524953010030eda0f452a0",
+    "hardware_mac": "30:ed:a0:f4:52:a0",
+    "boot_id": "5038377117570898161",
+    "version": "1.1.0",
+    "firmware_mode": "normal",
+    "crash_count": 0,
+    "data": "VALID",
+    "runtime_error": 0,
+    "imu_error": 0,
+    "flip_x": true,
+    "flip_y": true
+  },
+  "verification": {
+    "host_ctest": "37/37 passed",
+    "idf_build": "passed",
+    "runtime_art_dependencies_unchanged": true,
+    "effective_config_change": "APP_PROJECT_VER only",
+    "bitmap_resources_identical": true,
+    "ui_binary_identical": true,
+    "physical_visual_acceptance_repeated": false,
+    "physical_panel_fps_measured": false
+  },
+  "limitations": [
+    "Known low-FPS membrane stage omission retained",
+    "Long-term runtime and full four-placement physical acceptance not repeated"
+  ],
+  "source_archive": "Code/config/docs from exact tag; artwork/evidence retained in full local checkout, not duplicated. Not a standalone rebuild kit.",
+  "remote_publication": false
+}

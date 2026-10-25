@@ -1,21 +1,32 @@
-> Release labeling in progress: user froze this unchanged three-eye baseline as v1.1.0. The following installed1.0.15 identity is the pre-release baseline until the release receipt is added. See docs/releases/v1.1.0.md.
-
-# Peek handoff — three retained eyes (2026-10-25)
+# Peek handoff — frozen v1.1.0 (2026-10-25)
 
 User explicitly rejected night owl and requested removal from firmware. Installed
-1.0.15-peek-three contains only dragon, deep_sea and mechanical. Owl original
+1.1.0 contains only dragon, deep_sea and mechanical. The user froze this accepted
+three-eye baseline as local tagv1.1.0; do not move the tag or overwrite its bundle. Owl original
 sources, standalone reconstruction and old firmware remain historical archives;
 they are not encoded, selectable or restored automatically. [Removal details](OWL_REMOVAL.md).
 
 ## Installed identity
 
-Source db16ee02fc2642f30f12982e1f34b8f9502f02ae.
-ELF930c78593c4e1690a1f34890523099916c754398faf1b88733bdc071ff04275e.
-Boot372463084054451689; official updatefe74ffdd-6eb8-4f7c-83fb-a94b0b6242c0
-succeeded on first attempt. Matching version/ELF, normal mode, VALID thermal
-samples, runtime/IMU error0, crash_count0. Startup viewdragon; auto orientation
-and both gaze flips remain enabled. Only authorized MAC30:ed:a0:f4:52:a0 /
-Device ID4553502d49524953010030eda0f452a0 was updated.
+Source/tag target082c7830d8f2b130f284999063b078385dc33eb8.
+ELF569d0f7cb67dfea246410b770b3572ce36acb5d60749db73778989abcc0c98ed.
+Boot5038377117570898161; official update554e1190-5f11-49ea-84a1-5985bc7d0bb9
+succeeded on first attempt. Version1.1.0, matching ELF/source, normal mode, VALID
+thermal data, runtime/IMU error0, crash_count0. Both gaze flips remain enabled.
+Only authorized MAC30:ed:a0:f4:52:a0 / Device ID4553502d49524953010030eda0f452a0
+was updated. Prior1.0.15 restore bundle remains in evidence/remove-owl/device-install.
+
+Release: [v1.1.0 scope](releases/v1.1.0.md). Exact local bundle/manifest/receipts
+are in releases/v1.1.0; compact review package is releases/mosaico-peek-v1.1.0.zip.
+Tracked receipt: evidence/releases/v1.1.0/manifest.json. Source tag matches the
+embedded firmware revision; later receipt-only commits do not move the tag.
+No remote publication. Future functional/art/config changes require a new version.
+
+Release verification: ctest37/37 and tools/build_idf.py pass. Runtime/art/dependency
+paths exactly match4a52dc2; effective config differs only in APP_PROJECT_VER. UI
+binary and31 bitmap streams match1.0.15; app size and renderer allocations unchanged.
+Existing SDK component include/factory-size warnings remain; app fits ota_0.
+No new physical visual/button/FPS or long-term acceptance is claimed.
 
 ## Active behavior
 
@@ -37,7 +48,7 @@ and mechanical after1.0.11. Earlier contradictory1.0.6/1.0.9 acceptance stays
 historical. IMU screen gravity remains(-ax,+ay). Do not flip source arrays or
 reintroduce a removed role based on older archive instructions.
 
-## Validation and resource result
+## Inherited three-eye validation and resource result
 
 Debug/Release ctest37/37. Generated inventory has only sea/mechanical streams;
 final application/ELF contains no owl runtime name or eye_night_owl symbol.

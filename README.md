@@ -139,3 +139,5 @@ or `python3 tests/test_sleep_gsp.py` for actual native dynamic acceptance.
 Historical device trial: source f8845c5, version1.0.2-peek-sleep; active-open engine
 rate10.336Hz. The roughly15Hz goal remains unmet; user chose to stop at this
 version. See HANDOFF for hardware/native distinctions and exact restore bundle.
+
+Frozen v1.1.0 source tag: `082c783`; same-device installation verified. Exact bundle and checksums: `releases/v1.1.0/`; compact package: `releases/mosaico-peek-v1.1.0.zip`. See [release record](docs/releases/v1.1.0.md).
