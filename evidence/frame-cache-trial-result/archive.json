@@ -1,0 +1,9 @@
+{
+  "trial_branch": "perf/eye-frame-cache",
+  "trial_commit": "74edf8750ad80cd0223ef6b67e6a6fec1c8628e1",
+  "archive": "review/mosaico-peek-frame-cache-trial.zip",
+  "bytes": 29113916,
+  "sha256": "be7fdf7934965dfc16d15e024d48df7a4b712b7b95766aa14b37a6a352c2890e",
+  "zip_integrity": "passed",
+  "checksums": "all pass"
+}

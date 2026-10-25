@@ -1,0 +1,12 @@
+{
+  "source": "7d1d4aedb23f5e7851c9e049da153560d1b4155f",
+  "baseline": "3797ff9",
+  "version": "1.1.2-cache-trial",
+  "frame_cache_bytes": 460800,
+  "UI_growth_bytes": 56,
+  "application_growth_bytes": 1280,
+  "ELF": "c222f86f00c68d309ecfb4a337f657cfaab0df003fd6b3cb69ddd65d1be354b8",
+  "restore_bundle": "evidence/render-v111/device-install/render-v111.irisfw",
+  "restore_sha256": "6a7b64cc95a623b61060ee0f387d57493ef33908968dea07f8e149a6b323a53a",
+  "trial_bundle_sha256": "07edb8a949a7cd3b907c707bf6fe4b0174714517fabd9e3bd085eac6a4c47d48"
+}

@@ -1,0 +1,30 @@
+{
+  "mechanical": [
+    {
+      "label": "stable1.1.1",
+      "orientation": 270,
+      "open_frames": 90,
+      "open_seconds": 18.48,
+      "active_hz": 4.87012987012987,
+      "prepare_ms_per_frame": 2.806042105263158,
+      "raster_ms_per_frame": 162.73361052631577,
+      "submit_ms_per_frame": 32.661157894736846,
+      "mixed_window_seconds": 19.71
+    },
+    {
+      "label": "cache-trial",
+      "orientation": 270,
+      "open_frames": 103,
+      "open_seconds": 20.89,
+      "active_hz": 4.9305887984681664,
+      "prepare_ms_per_frame": 151.90107272727272,
+      "raster_ms_per_frame": 9.800381818181819,
+      "submit_ms_per_frame": 33.35477272727273,
+      "mixed_window_seconds": 22.58
+    }
+  ],
+  "decision": "User stopped further trial and requested exact stable1.1.1 restore. No convincing mechanical whole-frame gain; deep-sea not measured.",
+  "interpretation": "Preparing full image moves raster cost from GSP callback to UI timer. The observed4.87->4.93Hz difference is small versus manual-input variability, not a controlled speedup. Extra450KiB is not justified by this observation.",
+  "other_views": "The last1.52s group in trial observation was dragon and is excluded from the mechanical comparison.",
+  "physical_panel_FPS": null
+}

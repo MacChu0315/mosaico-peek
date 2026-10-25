@@ -8,11 +8,19 @@ unchanged; never move that tag or overwrite releases/v1.1.0.
 
 Sourceeffb682e2a35a6b6a4e862f990d6eb5219831a9d.
 ELFfad83dba1a8e4628b70dd82efbd4520d63b11006bdf12f70bd2b780442d5e33b.
-Boot11328770680449269444; official update58511ef0-5c8a-4065-a38b-3cf3c1439577
-succeeded first attempt. Matching version/source/ELF, normal mode, VALID,
+Boot6106931637066069584; restore update58042a78-c12c-4f0b-85a7-4cf00216f5d4
+succeeded first attempt, restoring the exact retained1.1.1 after the cache trial. Matching version/source/ELF, normal mode, VALID,
 runtime/IMU error0 and crash_count0. Both flips enabled; orientation270 observed.
 Only authorized MAC30:ed:a0:f4:52:a0 / Device ID4553502d49524953010030eda0f452a0
 was updated. Restore: releases/v1.1.0/mosaico-peek-v1.1.0.irisfw.
+
+
+Full-frame cache trial was stopped at user request: mechanical4.870->4.931Hz
+was not a convincing gain and cost450KiB PSRAM; deep-sea trial was not measured.
+Stable code and device are restored. [Trial result](FRAME_CACHE_TRIAL_RESULT.md)
+links the separate trial branch/archive and current restore receipt. The ignored
+IDF build directory still holds trial binaries; use firmware-local/1.1.1 for
+exact installed artifacts or rebuild normally before treating build/ as current.
 
 ## Rendering changes and validation
 

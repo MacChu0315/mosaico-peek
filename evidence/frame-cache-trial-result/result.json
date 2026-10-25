@@ -1,0 +1,17 @@
+{
+  "decision": "Trial not retained; user requested exact stable1.1.1 restore without deep-sea measurement.",
+  "restored_version": "1.1.1",
+  "restored_ELF": "fad83dba1a8e4628b70dd82efbd4520d63b11006bdf12f70bd2b780442d5e33b",
+  "restored_source": "effb682e2a35a6b6a4e862f990d6eb5219831a9d",
+  "boot_id": "6106931637066069584",
+  "operation_id": "58042a78-c12c-4f0b-85a7-4cf00216f5d4",
+  "mode": "normal",
+  "data": "VALID",
+  "runtime_error": 0,
+  "imu_error": 0,
+  "crash_count": 0,
+  "baseline_active_hz": 4.87012987012987,
+  "trial_active_hz": 4.9305887984681664,
+  "extra_cache_bytes": 460800,
+  "deep_sea_trial_measured": false
+}
