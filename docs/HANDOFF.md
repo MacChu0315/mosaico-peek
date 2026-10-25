@@ -1,54 +1,16 @@
-# Peek handoff — owl R2 demo update (2026-10-24)
+# Peek handoff — night owl removal (2026-10-25)
 
-Current source targets1.0.14-peek-organic, combining calibrated orientation
-(fca4114/installed source74a0f44) with frame A and centered sleep. The standalone
-1.0.8 center bundle was NEVER installed: preflight found the newer orientation
-firmware and stopped. User then authorized this integration after releasing the device. User selected A, restoring the original
-fixed metal socket around the new C globe/central shutter. On sleep closure,
-only the mechanical display pose smoothly returns to center; the final closed
-shutter frame stays exactly still. Wake resumes existing follow. Ordinary
-blinks, other characters, detector/source state, timing, physical mapping and
-full480 rendering remain unchanged. [Details and commands](MECHANICAL_C.md).
+The user explicitly rejected night owl and requested removal from firmware.
+Candidate1.0.15-peek-three has only dragon, deep_sea and mechanical. UI IDs0/2/3
+remain stable; ID1 is invalid. Three-entry cycling is shared by touch/swipe/AI.
+Host selectors reject owl, and no owl texture is generated. Source artwork and
+historical evidence are archived, not deleted or linked into current firmware.
+[Details and commands](OWL_REMOVAL.md).
 
-The raw shared controller intentionally retains its previous idle behavior;
-Host render_pose and device render_gaze_x/y describe the mechanical display.
-Do not center by writing back into the source; thermal mounting signs are a separate calibration.
-A selection is recorded in assets/mechanical-c-adaptation.json. B remains a
-retained unselected image-generation candidate. The supplied C package is intact.
-
-User visually accepted the installed1.0.11 mechanical result on2026-10-22:
-“可以，感觉机械眼的效果还可以”. Treat the C globe/shutter with socket A,
-current motion range and centered closure as the accepted mechanical baseline.
-This acceptance does not expand rendering-detail authorization or imply the
-unmeasured performance/physical-orientation checks below have passed.
-
-Completed task: integrate the returned selected dragon sclera C under explicit
-user authorization. Installed1.0.12-peek-sclera replaces only procedural sclera
-with exact RGB888 sampling; original iris/lids/lighting and accepted mechanical
-remain intact. [Integration](DRAGON_SCLERA.md). The official update and post-boot checks below are complete.
-
-The user selected reconstruction, then accepted deep-sea R2 and requested this
-integration before revisiting owl. Installed1.0.13 uses the exact accepted eye
-surface, no rim layer,240ms independent membrane and existing450/150ms sleep/
-wake rules. Ordinary blink cadence comes from the unchanged shared controller.
-Owl remains on its existing runtime; no new owl artwork is installed.
-[Deep-sea implementation and commands](DEEP_SEA_R2.md).
-
-Current verification: Debug/Release36/36; seven approved R2 snapshots exact,
-384 full-frame scalar C comparisons,57 independent PNG comparisons,17 native
-phase checkpoints,52 orientation pixel checks,16 switch checks,22 native motion/
-sleep pixel checks and two real-time movies. Recorded511 arrays/655 events and
-six live view switches pass.32 non-sea native frames and22 owl/mechanical
-compressed streams are byte-identical to baseline. Renderer buffers unchanged.
-Initial failed test comparisons and clean preview interruption remain in
-verification/; corrected same-tick replay and bounded native runs passed.
-Official update completed; user accepted the physical appearance, with an intermittent incomplete membrane movement limitation recorded below.
-
-The user has now requested the same optimization for owl. Installed1.0.14
-adds night-owl R2, preserves its circular pupil/highlight regions and original
-frame/18 overlays, removes the aperture-shaped patch/rim fade, and reuses the
-existing240ms dual-layer presentation. Deep-sea/dragon/mechanical remain intact.
-[Owl implementation and verification](NIGHT_OWL_R2.md). Update completed; physical owl acceptance is pending below.
+Host/Release37 tests pass. Retained31 bitmap streams and detector/controller,
+dragon renderer and calibrated orientation files are unchanged. Native and final
+firmware/install checks are being completed. Device is still1.0.14 until the
+new official update is confirmed below.
 
 ## Current installed device
 
@@ -187,7 +149,7 @@ core dump ELF did not match the failed writer; it is not a source diagnosis.
 -Exact local ELF/map/config backups: ignoredfirmware-local/. No full-flash
  readback backup claim. Local branchfeat/eye-ui-trio; no remote configured/written.
 
-Start: python3 tools/preview.py --view night_owl --flip-x --flip-y.
+Start: python3 tools/preview.py --view deep_sea --flip-x --flip-y.
 Select/replay: tools/control.py view night_owl; case sleep/live/dragon;
 play/pause/replay. Product taps/left swipes/AI single clicks advance, right swipes
 return. Current compact delta review: python3 tools/package_review.py --night-owl-r2, after clean commit.

@@ -195,4 +195,4 @@ target_compile_options(test_deep_sea_cache PRIVATE -UNDEBUG -Wall -Wextra -Werro
 target_link_libraries(test_deep_sea_cache PRIVATE ZLIB::ZLIB m)
 add_test(NAME deep_sea_layer_cache COMMAND test_deep_sea_cache)
 
-add_test(NAME night_owl_r2_reference COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_night_owl_r2.py" "${CMAKE_BINARY_DIR}")
+add_test(NAME active_character_inventory COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_character_inventory.py" "${CMAKE_BINARY_DIR}")

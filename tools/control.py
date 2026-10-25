@@ -8,6 +8,7 @@ def command(text):
     fields=text.split()
     cases=['empty','motion','multi','gaps','recorded','aging','dragon','idle','live','sleep']
     if len(fields)==2 and fields[0]=='case' and fields[1] in cases:text='case '+str(cases.index(fields[1]))
+    if fields and fields[0]=='view' and (len(fields)!=2 or fields[1] not in ('dragon','deep_sea','mechanical','diagnostic')):raise ValueError('Unknown or retired view')
     serial=time.time_ns()%((1<<53)-1)
     with socket.socket(socket.AF_UNIX,socket.SOCK_DGRAM) as sock:sock.sendto(f'{serial} {text}'.encode(),str(ROOT/'.run/control.sock'))
     deadline=time.monotonic()+3
@@ -19,6 +20,8 @@ def command(text):
         time.sleep(.01)
     raise TimeoutError(text)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('command',nargs='+',help='case NAME/0..9 | view dragon/night_owl/deep_sea/mechanical/diagnostic | next | previous | pause | play | step | replay | advance MS | draw | status');a=p.parse_args()
-    print(json.dumps(state() if a.command==['status'] else command(' '.join(a.command)),indent=2))
+    p=argparse.ArgumentParser();p.add_argument('command',nargs='+',help='case NAME/0..9 | view dragon/deep_sea/mechanical/diagnostic | next | previous | pause | play | step | replay | advance MS | draw | status');a=p.parse_args()
+    try:result=state() if a.command==['status'] else command(' '.join(a.command))
+    except ValueError as error:p.error(str(error))
+    print(json.dumps(result,indent=2))
 if __name__=='__main__':main()

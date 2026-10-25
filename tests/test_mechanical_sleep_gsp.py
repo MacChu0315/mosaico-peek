@@ -34,7 +34,7 @@ def main():
    else:
     for k in ['gaze_x','gaze_y']:assert abs(p[k]-raw[k]*max(0,1-raw['blink']/(7.5/8)))<1e-7
   command('replay');command('advance 11900');original=state()
-  for theme in ['dragon','night_owl','deep_sea','mechanical']:
+  for theme in ['dragon','deep_sea','mechanical']:
    command('view '+theme);call('wait',{'frames':2});s=state();assert s['role']==original['role'] and s['result']==original['result']
    if theme!='mechanical':assert s['render_pose']==s['role']['pose']
    else:assert s['render_pose']['gaze_x']==s['render_pose']['gaze_y']==0

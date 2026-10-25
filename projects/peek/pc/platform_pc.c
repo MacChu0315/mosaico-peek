@@ -107,8 +107,8 @@ static void tick(esp_gsp_handle_t ui,void *ctx)
         else if(!strcmp(verb,"step")){app.view.paused=true;if(app.replay.ready&&!pump(app.replay.due_ms))app.view.error=ESP_GSP_FAIL;}
         else if(!strcmp(verb,"view")){
             char which[20];
-            if(sscanf(msg,"%llu %19s %19s",&id,verb,which)!=3 || (strcmp(which,"dragon")&&strcmp(which,"night_owl")&&strcmp(which,"deep_sea")&&strcmp(which,"mechanical")&&strcmp(which,"diagnostic")))accepted=false;
-            else {unsigned character=!strcmp(which,"night_owl")?1:!strcmp(which,"deep_sea")?2:!strcmp(which,"mechanical")?3:0;
+            if(sscanf(msg,"%llu %19s %19s",&id,verb,which)!=3 || (strcmp(which,"dragon")&&strcmp(which,"deep_sea")&&strcmp(which,"mechanical")&&strcmp(which,"diagnostic")))accepted=false;
+            else {unsigned character=!strcmp(which,"deep_sea")?2:!strcmp(which,"mechanical")?3:0;
                 esp_gsp_err_t rc=!strcmp(which,"diagnostic")?peek_ui_set_view(&app.view,false):peek_ui_set_character(&app.view,character);if(rc!=ESP_GSP_OK)app.view.error=rc;peek_ui_refresh(&app.view,app.logical_ms);}
         }
         else if(!strcmp(verb,"orientation")&&sscanf(msg,"%llu %19s %u",&id,verb,&index)==3){
@@ -153,7 +153,8 @@ esp_gsp_err_t gsp_bridge_app_init(esp_gsp_handle_t ui)
     if((fx&&strcmp(fx,"0")&&strcmp(fx,"1"))||(fy&&strcmp(fy,"0")&&strcmp(fy,"1")))return ESP_GSP_ERR_INVALID_ARG;
     app.mapping=(dragon_mapping_t){.flip_x=fx&&!strcmp(fx,"1"),.flip_y=fy&&!strcmp(fy,"1")};
     const char *view=getenv("PEEK_VIEW");bool dragon=!view||strcmp(view,"diagnostic");
-    unsigned character=view&&!strcmp(view,"night_owl")?1:view&&!strcmp(view,"deep_sea")?2:view&&!strcmp(view,"mechanical")?3:0;
+    if(view&&strcmp(view,"dragon")&&strcmp(view,"deep_sea")&&strcmp(view,"mechanical")&&strcmp(view,"diagnostic"))return ESP_GSP_ERR_INVALID_ARG;
+    unsigned character=view&&!strcmp(view,"deep_sea")?2:view&&!strcmp(view,"mechanical")?3:0;
     rc=dragon?peek_ui_set_character(&app.view,character):peek_ui_set_view(&app.view,false);if(rc!=ESP_GSP_OK)return rc;
     app.view.paused=true;app.case_index=dragon?6:1;if(!load_case())return ESP_GSP_FAIL;
     app.timer=esp_gsp_timer_create(ui,33,tick,NULL);if(!app.timer)return ESP_GSP_ERR_NO_MEM;

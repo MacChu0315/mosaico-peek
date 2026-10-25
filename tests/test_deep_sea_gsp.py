@@ -8,7 +8,7 @@ sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-g
 from control import command,state
 from rpc_client import connect
 OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/deep-sea-r2/native-phases'));OUT.mkdir(parents=True,exist_ok=True)
-THEME=os.environ.get('PEEK_LAYER_THEME','deep_sea');assert THEME in ('night_owl','deep_sea');INDEX='0' if THEME=='night_owl' else '1'
+THEME='deep_sea';INDEX='1'
 ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[]
 with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
     def call(name,args=None):
@@ -25,7 +25,7 @@ with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         if at==6260:assert s['role']['pose']['blink']>0 and s['render_layers']=={'membrane':0,'lid':0}
         if at==6120:
             before=state();command('draw');call('wait',{'frames':3});after=state();assert before['result']==after['result'] and before['role']==after['role'] and before['render_layers']==after['render_layers']
-            for name in ('night_owl','deep_sea','mechanical','dragon',THEME):command('view '+name);assert before['result']==state()['result'] and before['role']==state()['role']
+            for name in ('deep_sea','mechanical','dragon',THEME):command('view '+name);assert before['result']==state()['result'] and before['role']==state()['role']
             assert state()['render_layers']==before['render_layers']
     (OUT/'checks.json').write_text(json.dumps(checks,indent=2)+'\n')
     # Repeat the same injected animation ticks as well as the same sensor events.

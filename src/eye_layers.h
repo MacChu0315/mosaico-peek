@@ -16,11 +16,11 @@ static inline float eye_close_elapsed(float fraction){
     }
     return (lo+hi)*225;
 }
-static inline bool eye_character_dual_layers(unsigned character){return character==1||character==2;}
+static inline bool eye_character_dual_layers(unsigned character){return character==2;}
 static inline eye_layers_t eye_organic_close(float elapsed){
     return (eye_layers_t){eye_layer_clamp(elapsed/100),eye_layer_clamp((elapsed-100)/350)};
 }
-/* Pure presentation. UI characters1/2 are organic R2; other source poses/timing
+/* Pure presentation. UI character2 is deep-sea R2; other source poses/timing
  * retain their existing path. Nearest9 selection happens in renderer prepare. */
 static inline eye_layers_t eye_character_layers(unsigned character,const dragon_t *role){
     if(!eye_character_dual_layers(character))return (eye_layers_t){0,role->pose.blink};

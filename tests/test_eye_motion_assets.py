@@ -7,7 +7,8 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[1];BUILD=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'build-host';GEN=BUILD/'eye-generated';PACK=ROOT/'assets/eye-pack/assets/processed'
 m=json.loads((GEN/'eye_pack.json').read_text());checks=[]
 def codes(a):return np.rint(a.astype(float)/255*np.array([31,63,31])).astype(int)
-for i,t in enumerate(m['themes']):
+for t in m['themes']:
+ i=t['theme_index']
  eye=np.asarray(Image.open(GEN/(t['theme']+'-wide-eye.png')));assert eye.shape==(480,480,4) and (eye[:,:,3]==255).all()
  frame=np.asarray(Image.open(ROOT/json.loads((ROOT/'assets/mechanical-c-adaptation.json').read_text())['fixed_frame_source'] if t['theme']=='mechanical' else PACK/t['theme']/'frame.png'));ys,xs=np.nonzero(frame[:,:,3]<255);cx,cy=t['eye_center'];nx=(xs-cx)/233;ny=(ys-cy)/233
  assert (1-nx*nx-ny*ny>=0).all();nz=np.sqrt(1-nx*nx-ny*ny)

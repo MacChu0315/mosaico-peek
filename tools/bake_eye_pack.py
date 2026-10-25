@@ -11,8 +11,6 @@ MECHANICAL=ROOT/'assets/mechanical-c'
 ADAPTATION=ROOT/'assets/mechanical-c-adaptation.json'
 DEEP=ROOT/'assets/deep-sea-r2'
 DEEP_ADAPTATION=ROOT/'assets/deep-sea-adaptation.json'
-OWL=ROOT/'assets/night-owl-r2'
-OWL_ADAPTATION=ROOT/'assets/night-owl-adaptation.json'
 def expanded_eye(theme,recipe):
     folder=PACK/'assets/processed'/theme['id']
     neutral=Image.open(folder/'neutral.png').convert('RGBA')
@@ -63,7 +61,7 @@ def bake(output):
     for line in (MECHANICAL/'CHECKSUMS.sha256').read_text().splitlines():
         digest,name=line.split(None,1);name=name.lstrip('* ')
         if hashlib.sha256((MECHANICAL/name).read_bytes()).hexdigest()!=digest:raise ValueError('Mechanical source checksum mismatch: '+name)
-    for organic,recipe_path in ((DEEP,DEEP_ADAPTATION),(OWL,OWL_ADAPTATION)):
+    for organic,recipe_path in ((DEEP,DEEP_ADAPTATION),):
         for line in (organic/'CHECKSUMS.sha256').read_text().splitlines():
             digest,name=line.split(None,1);name=name.lstrip('* ')
             if hashlib.sha256((organic/name).read_bytes()).hexdigest()!=digest:raise ValueError('Organic R2 source checksum mismatch: '+str(organic/name))
@@ -78,8 +76,9 @@ def bake(output):
     recipe=json.loads(MOTION.read_text());amp=recipe['max_translation_px'];guard=recipe['guard_extra_px']
     if len(amp)!=2 or any(type(v) is not int or not 0<v<=160 for v in amp) or guard!=2 or recipe.get('guard_blur_radius_px')!=2 or recipe.get('sphere_radius_px')!=233:raise ValueError('Unsupported motion recipe')
     manifest=json.loads((PACK/'assets/manifest.json').read_text());chunks=['/* Generated lossless RGBA streams; do not edit. */'];themes=[];report=[]
-    for theme in manifest['themes']:
-        entries=[];sizes=[];rotating=theme['id']=='mechanical';dual=theme['id'] in ('night_owl','deep_sea');organic=OWL if theme['id']=='night_owl' else DEEP
+    for theme_index,theme in enumerate(manifest['themes']):
+        if theme['id']=='night_owl':continue # archived sources, no firmware resources
+        entries=[];sizes=[];rotating=theme['id']=='mechanical';dual=theme['id']=='deep_sea';organic=DEEP
         if rotating:backing,eye_origin=Image.open(MECHANICAL/'assets/processed/eye_surface.png').convert('RGBA'),(0,0)
         elif dual:backing,eye_origin=Image.open(organic/'processed/eye_surface.png').convert('RGBA'),(0,0)
         else:backing,eye_origin=expanded_eye(theme,recipe)
@@ -109,8 +108,8 @@ def bake(output):
         origin=[0,128] if dual else [120,125] if rotating else theme['lid_origin']
         if theme['eye_origin']!=theme['lid_origin']:raise ValueError('This adapter requires shared eye/lid origins')
         if theme['layer_bbox']['w']>507 or theme['layer_bbox']['h']>272:raise ValueError('Layer exceeds renderer capacity')
-        themes.append('{"'+theme['id']+'",'+','.join(map(str,origin+amp+list(eye_origin)+theme['eye_center']+[2 if dual else int(rotating)]))+',{'+','.join(entries)+'}}')
-        report.append(dict(theme=theme['id'],eye_origin=list(eye_origin),lid_origin=origin,eye_size=list(backing.size),max_gaze_translation_px=amp,eye_center=theme['eye_center'],sphere_radius_px=recipe['sphere_radius_px'],fixed_frame_source=(str((organic/'processed/frame.png').relative_to(ROOT)) if dual else adaptation['fixed_frame_source'] if rotating else str((PACK/'assets/processed'/theme['id']/'frame.png').relative_to(ROOT))),rotating_shutter=rotating,dual_layers=dual,transparent_RGB_normalized=dual,layer_count=len(names),layer_size=([480,240] if dual else [240,240] if rotating else [theme['layer_bbox']['w'],theme['layer_bbox']['h']]),derived_eye_bytes=backing.width*backing.height*4,compressed_bytes=sum(sizes),png_bytes=(sum(p.stat().st_size for p in (organic/'processed').rglob('*.png') if p.name!='rim_restore_disabled.png') if dual else sum(p.stat().st_size for p in (MECHANICAL/'assets/processed').rglob('*.png'))-(MECHANICAL/'assets/processed/frame.png').stat().st_size+frame_source.stat().st_size if rotating else sum((PACK/'assets/processed'/theme['id']/(n+'.png')).stat().st_size for n in ['frame','eye']+[f'lid_{i:02}' for i in range(9)])),max_resident_rgba=(None if rotating else 480*480*4+backing.width*backing.height*4+2*(480*240 if dual else theme['layer_bbox']['w']*theme['layer_bbox']['h'])*4),shutter_float_RGB_bytes=(240*240*3*4 if rotating else 0),shutter_RGBA_decode_bytes=(240*240*4 if rotating else 0),shared_two_layer_capacity_bytes=2*507*272*4))
+        themes.append('['+str(theme_index)+']={"'+theme['id']+'",'+','.join(map(str,origin+amp+list(eye_origin)+theme['eye_center']+[2 if dual else int(rotating)]))+',{'+','.join(entries)+'}}')
+        report.append(dict(theme_index=theme_index,theme=theme['id'],eye_origin=list(eye_origin),lid_origin=origin,eye_size=list(backing.size),max_gaze_translation_px=amp,eye_center=theme['eye_center'],sphere_radius_px=recipe['sphere_radius_px'],fixed_frame_source=(str((organic/'processed/frame.png').relative_to(ROOT)) if dual else adaptation['fixed_frame_source'] if rotating else str((PACK/'assets/processed'/theme['id']/'frame.png').relative_to(ROOT))),rotating_shutter=rotating,dual_layers=dual,transparent_RGB_normalized=dual,layer_count=len(names),layer_size=([480,240] if dual else [240,240] if rotating else [theme['layer_bbox']['w'],theme['layer_bbox']['h']]),derived_eye_bytes=backing.width*backing.height*4,compressed_bytes=sum(sizes),png_bytes=(sum(p.stat().st_size for p in (organic/'processed').rglob('*.png') if p.name!='rim_restore_disabled.png') if dual else sum(p.stat().st_size for p in (MECHANICAL/'assets/processed').rglob('*.png'))-(MECHANICAL/'assets/processed/frame.png').stat().st_size+frame_source.stat().st_size if rotating else sum((PACK/'assets/processed'/theme['id']/(n+'.png')).stat().st_size for n in ['frame','eye']+[f'lid_{i:02}' for i in range(9)])),max_resident_rgba=(None if rotating else 480*480*4+backing.width*backing.height*4+2*(480*240 if dual else theme['layer_bbox']['w']*theme['layer_bbox']['h'])*4),shutter_float_RGB_bytes=(240*240*3*4 if rotating else 0),shutter_RGBA_decode_bytes=(240*240*4 if rotating else 0),shared_two_layer_capacity_bytes=2*507*272*4))
     chunks.insert(0,'#define EYE_PACK_EYE_BYTES '+str(max(t['derived_eye_bytes'] for t in report)))
     chunks.append('static const eye_theme_t eye_themes[] = {\n'+',\n'.join(themes)+'\n};')
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text('\n'.join(chunks)+'\n')

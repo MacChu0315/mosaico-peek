@@ -35,7 +35,7 @@ int main(void){
     assert(!memcmp(&snapshot,&before,sizeof(snapshot)));
     assert(rpc(&q,out,32,&n,NULL)==ESP_ERR_INVALID_SIZE);q.payload_size=1;assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_ERR_INVALID_ARG);
     v.dragon_view=true;
-    for(unsigned character=1;character<=3;character++){
+    for(unsigned character=2;character<=3;character++){
         v.character=character;publish(&v,700+100*character);
         assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_ERR_INVALID_ARG);q.payload_size=0;
         assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK);
@@ -57,8 +57,8 @@ int main(void){
     v.dragon_view=false;publish(&v,2600);uint64_t previous_open=snapshot.open_frames;
     v.dragon.sleeping=false;v.dragon.now_ms=6120;publish(&v,2700);publish(&v,2800);
     assert(snapshot.membrane_frames==1&&snapshot.membrane_full_frames==1&&snapshot.open_frames==previous_open);
-    v.dragon_view=true;v.character=1;publish(&v,2900);publish(&v,3000);
+    v.dragon_view=true;v.character=2;publish(&v,2900);publish(&v,3000);
     assert(snapshot.membrane_frames==2&&snapshot.membrane_full_frames==2);
-    assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK&&strstr((char *)out,"night_owl")&&strstr((char *)out,"\"render_membrane\":1.00000"));
+    assert(rpc(&q,out,sizeof(out),&n,NULL)==ESP_OK&&strstr((char *)out,"deep_sea")&&strstr((char *)out,"\"render_membrane\":1.00000"));
     puts("PASS device telemetry: previous generation classification, sleep/closing excluded, open timing exact,2048B body and RPC purity");
 }

@@ -6,6 +6,7 @@
 #include "dragon_render.h"
 #include "eye_pack.h"
 #include "eye_character_pose.h"
+#include "peek_characters.h"
 #include "peek_input.h"
 typedef enum {PEEK_ACTION_CASE,PEEK_ACTION_PLAY,PEEK_ACTION_RESTART} peek_action_t;
 typedef void (*peek_control_fn)(peek_action_t action,void *context);
@@ -22,7 +23,7 @@ typedef struct {
     unsigned sample_step; /* Eye only:1=480 or2=240 unique samples; output480. */
     dragon_t dragon;dragon_renderer_t *renderer;
     peek_input_t input;bool pointer_registered;
-    eye_pack_t *eye_pack;unsigned character; /* 0=dragon,1=owl,2=sea,3=mechanical */
+    eye_pack_t *eye_pack;unsigned character; /* 0=dragon,2=sea,3=mechanical;1 retired */
     uint64_t draw_pixels,render_us_total,render_us_max,prepare_us_total,prepares,prepare_us_max;
     uint16_t surface_w_min,surface_w_max,surface_h_min,surface_h_max;
     const char *source;
@@ -37,7 +38,7 @@ void peek_ui_reset(peek_ui_t *state,const char *source);
 esp_gsp_err_t peek_ui_set_view(peek_ui_t *state,bool dragon);
 /* UI owner only. Selection preserves input, role state, mapping and time. */
 esp_gsp_err_t peek_ui_set_character(peek_ui_t *state,unsigned character);
-/* UI owner only: cycle four artworks, retaining all detector/role/time state. */
+/* UI owner only: cycle three active artworks, retaining source state. */
 esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *state,int delta);
 const char *peek_ui_character_name(const peek_ui_t *state);
 /* Only call after callbacks are detached and the device flush has succeeded. */

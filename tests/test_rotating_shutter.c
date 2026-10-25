@@ -16,7 +16,7 @@ int main(void){
         assert(eye_pack_draw(r,frame,960,0,0,480,480));assert(!memcmp(prepared,r->storage,FRAME_BYTES+EYE_BYTES+2*LAYER_BYTES));
         if(!index)assert(!memcmp(open,frame,480*480*2));
     }
-    assert(eye_pack_select(r,0));p.blink=.5f;assert(eye_pack_prepare(r,&p));
+    assert(!eye_pack_select(r,0));assert(eye_pack_select(r,1));p.blink=.5f;assert(eye_pack_prepare(r,&p));
     assert(eye_pack_select(r,2));p.blink=0;assert(eye_pack_prepare(r,&p)&&eye_pack_draw(r,frame,960,0,0,480,480));assert(!memcmp(open,frame,480*480*2));
     free(base);free(prepared);free(open);free(frame);eye_pack_destroy(r);puts("PASS shutter full open-close-open and theme reentry; base/draw immutable");
 }

@@ -139,14 +139,15 @@ esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *s,unsigned q){
 }
 const char *peek_ui_character_name(const peek_ui_t *s){return s->character?eye_pack_name(s->character-1):"dragon";}
 esp_gsp_err_t peek_ui_set_character(peek_ui_t *s,unsigned character){
-    if(character>3)return ESP_GSP_ERR_INVALID_ARG;
+    if(!peek_character_valid(character))return ESP_GSP_ERR_INVALID_ARG;
     unsigned previous=s->character;s->character=character;
     esp_gsp_err_t rc=peek_ui_set_view(s,true);
     if(rc!=ESP_GSP_OK){s->character=previous;return rc;}
     s->dragon_prepared=false;peek_input_cancel(&s->input);return ESP_GSP_OK;
 }
 esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){
-    unsigned next=(unsigned)((int)s->character+4+delta%4)%4;
+    if(!peek_character_valid(s->character))return ESP_GSP_ERR_INVALID_ARG;
+    unsigned next=peek_character_cycle(s->character,delta);
     if(!delta)return ESP_GSP_OK;
     esp_gsp_err_t rc=peek_ui_set_character(s,next);
     if(rc!=ESP_GSP_OK){remember(s,rc);return rc;}

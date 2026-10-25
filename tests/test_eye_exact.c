@@ -20,7 +20,7 @@ int main(void){
     eye_pack_t *fast=eye_pack_create();eye_ref_t *ref=eye_ref_create();assert(fast&&ref);
     uint16_t *a=malloc(480*480*2),*b=malloc(480*480*2);assert(a&&b);
     unsigned count=0;double fast_s=0,ref_s=0;
-    for(unsigned theme=0;theme<3;theme++){
+    for(unsigned theme=1;theme<3;theme++){
         assert(eye_pack_select(fast,theme)&&eye_ref_select(ref,theme));
         for(unsigned i=0;i<128;i++){
             dragon_pose_t p={0};p.gaze_x=(random_unit()*2-1)*.78f;p.gaze_y=(random_unit()*2-1)*.58f;

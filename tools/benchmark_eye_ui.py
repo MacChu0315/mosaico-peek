@@ -13,7 +13,7 @@ def main():
     with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         def info():
             r=api.call('frame_info');assert 'result' in r;return r['result']
-        for theme in ['night_owl','deep_sea','mechanical']:
+        for theme in ['deep_sea','mechanical']:
             command('view '+theme)
             for scene in ['active','sleeping']:
                 command('case '+('dragon' if scene=='active' else 'idle'));command('advance '+('3000' if scene=='active' else '12000'));api.call('wait',{'frames':3})

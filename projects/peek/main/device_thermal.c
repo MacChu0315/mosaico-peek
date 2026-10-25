@@ -13,6 +13,9 @@
 #include <inttypes.h>
 #ifdef ESP_PLATFORM
 #include "sdkconfig.h"
+#if CONFIG_PEEK_CHARACTER == 1
+#error "Startup character ID1 is retired; choose0,2 or3"
+#endif
 #include "device_status.h"
 #include "device_buttons.h"
 #include "device_orientation.h"
@@ -97,7 +100,7 @@ static void refresh(esp_gsp_handle_t ui,void *ctx)
     uint32_t presses=device_buttons_take_presses();
     /* Preserve the net result of all presses while avoiding repeated decode
      * during one display step. The sensor owner keeps processing independently. */
-    if(presses){esp_gsp_err_t rc=peek_ui_cycle_character(&app->view,(int)(presses%4));if(rc!=ESP_GSP_OK)app->view.error=rc;}
+    if(presses){esp_gsp_err_t rc=peek_ui_cycle_character(&app->view,(int)(presses%PEEK_CHARACTER_COUNT));if(rc!=ESP_GSP_OK)app->view.error=rc;}
 #endif
     peek_ui_refresh(&app->view,now);
 #ifdef ESP_PLATFORM

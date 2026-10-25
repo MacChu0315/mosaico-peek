@@ -2,43 +2,17 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Installed1.0.14-peek-organic also brings the same R2 correction to owl,
-with original round-pupil/highlight locks and240ms membrane.
-[Owl source, checks and commands](docs/NIGHT_OWL_R2.md).
+Current source targets1.0.15-peek-three: **dragon / deep_sea / mechanical**.
+Night owl was retired at the user's request and is absent from firmware resources
+and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
+Historical owl material remains archived; it is not part of the active demo.
 
-Installed1.0.13-peek-deepsea integrates the approved deep-sea R2,
-independent240ms membrane and outer eyelid, with no returning rim overlay.
-Deep-sea is preserved in the owl update. [Deep-sea scope and validation](docs/DEEP_SEA_R2.md).
-
-Installed1.0.12-peek-sclera adds the selected dragon sclera C
-texture through exact RGB888 sampling. [Scope, resources and commands](docs/DRAGON_SCLERA.md).
-Installed identity and physical acceptance remain in [HANDOFF](docs/HANDOFF.md).
-
-New native views: **night_owl / deep_sea / mechanical**, alongside the retained
-dragon and diagnostics. [Current three-theme integration, commands and limits](docs/EYE_UI.md).
-Use `python3 tools/control.py view night_owl` (or deep_sea/mechanical/dragon);
-`python3 tools/preview.py --view night_owl` starts directly.
-New art remains full480 with lossless RGBA sources and blended lids. Current
-build is1.0.14-peek-organic (`sdkconfig.organic-r2`): both gaze flips enabled per
-latest same-placement dragon/mechanical feedback, new eyes use sphere rotation with120/80px pure-axis center
-travel. [Motion change and validation](docs/EYE_MOTION.md).
-The user accepted the range; latest1.0.10 physical feedback rejected both tracking axes. Mechanical now uses the supplied C artwork
-with a rotating central shutter and user-selected original metal socket A.
-During sleep closure the mechanical eye centers and remains still. Owl and deep-sea use independent R2 layers; mechanical centering remains unchanged.
-[Mechanical C adaptation and verification](docs/MECHANICAL_C.md).
-[Original artwork handoff](docs/EYE_ART_HANDOFF.md) remains historical.
-Device now runs1.0.14 with night-owl R2 and approved deep-sea R2, selected dragon sclera C, calibrated automatic
-orientation, selected socket A, centered mechanical sleep and retained mounting signs. The user confirmed both
-axes correct for dragon and mechanical; see HANDOFF for acceptance limits. The prior1.0.5 improved
-observed mechanical active-open engine rate
-from2.009 to8.333Hz in separate live scenes; current installation status is in
-[handoff](docs/HANDOFF.md). Physical panel FPS is not measured.
-
- Phase2 keeps the approved purple-black scales, yellow/green/gold iris, vertical slit and heavy textured eyelids. Gemini is motion reference only. The live-dragon continuation reuses the diagnostic recording and targets only MAC `30:ed:a0:f4:52:a0`; [installation/recovery and telemetry](docs/DEVICE_DRAGON.md). Historical phase2/follow-up evidence remains separate.
-
-[Tap/swipe/AI switching and verification](docs/CHARACTER_SWITCHING.md): tap or left
-swipe advances, right swipe goes back, AI single click advances. Switching is installed in1.0.4. [Full480 rendering optimization](docs/EYE_PERFORMANCE.md)
-was installed as1.0.5; subsequent same-device firmware updates are authorized.
+Deep-sea R2 keeps its240ms membrane and no returning rim; mechanical keeps socket
+A and centered sleep; dragon keeps selected sclera C and approved240 sampling.
+Both physical gaze flips remain enabled and calibrated auto orientation stays.
+Tap/left swipe/AI click cycles dragon -> deep_sea -> mechanical; right swipe
+reverses. Stable internal IDs0/2/3 avoid reinterpreting existing configuration.
+[Current installation, validation and limits](docs/HANDOFF.md).
 
 ## Start
 

@@ -20,7 +20,8 @@ int main(void){
     assert(!memcmp(copy,r->storage,size)&&!memcmp(&before,r,sizeof(before)));
     assert(!eye_pack_prepare_layers(r,&p,NAN,0)&&!eye_pack_prepare_layers(r,&p,0,1.1f));
     assert(decodes==6&&r->prepared);
-    assert(eye_pack_select(r,0)&&eye_pack_prepare_layers(r,&p,0,0));
+    assert(!eye_pack_select(r,0));assert(eye_pack_name(0)==NULL);
+    assert(eye_pack_draw(r,pixels,960,0,0,480,480));
     assert(eye_pack_select(r,2)&&!eye_pack_prepare_layers(r,&p,0,0));
     free(copy);free(pixels);eye_pack_destroy(r);
     puts("PASS deep-sea independent decode keys, unchanged-stage/gaze reuse, draw-readonly and invalid-phase preservation");

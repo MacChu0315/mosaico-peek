@@ -58,7 +58,7 @@ void device_orientation_read(device_orientation_status_t *out){*out=(device_orie
 esp_gsp_err_t peek_ui_set_orientation(peek_ui_t *s,unsigned q){s->orientation=q;return ESP_GSP_OK;}
 static uint32_t button_presses;static int button_delta;
 uint32_t device_buttons_take_presses(void){uint32_t n=button_presses;button_presses=0;return n;}
-esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){button_delta=delta;s->character=(s->character+delta)%4;return ESP_GSP_OK;}
+esp_gsp_err_t peek_ui_cycle_character(peek_ui_t *s,int delta){button_delta=delta;s->character=peek_character_cycle(s->character,delta);return ESP_GSP_OK;}
 void peek_ui_release(peek_ui_t *s){(void)s;}
 void peek_ui_reset(peek_ui_t *s,const char *name){(void)name;peek_reset(&s->detector);}
 peek_submit_t peek_ui_submit(peek_ui_t *s,const peek_frame_t *f,uint64_t now){return peek_submit(&s->detector,f,now);}
@@ -74,7 +74,7 @@ int main(void){
     assert(app->view.detector.result.accepted_samples==1 && app->view.detector.result.data==PEEK_VALID);
     assert(app->view.orientation==90&&app->view.orientation_auto);
     button_presses=5;button_delta=0;refresh((void *)1,&message);
-    assert(button_delta==1 && app->view.character==1 && !button_presses);
+    assert(button_delta==2 && app->view.character==3 && !button_presses);
     free(app);app=NULL;
     for(unsigned failure=0;failure<3;failure++){
         reset_stubs();ui_failure=failure==0;timer_failure=failure==1;task_failure=failure==2;

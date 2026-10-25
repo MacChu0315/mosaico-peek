@@ -11,7 +11,7 @@ int main(void){
         role.now_ms=role.next_blink_ms+age;dragon_t before=role;
         eye_layers_t a=eye_character_layers(2,&role),b=eye_character_layers(2,&role);
         assert(a.membrane==b.membrane&&a.lid==0&&!memcmp(&role,&before,sizeof(role)));
-        eye_layers_t owl=eye_character_layers(1,&role);assert(owl.membrane==a.membrane&&owl.lid==a.lid);
+        assert(!eye_character_dual_layers(1));
         assert(a.membrane>=0&&a.membrane<=1);
         if(age==0||age>=240)assert(a.membrane==0);
         if(age>=100&&age<=120)assert(a.membrane==1);

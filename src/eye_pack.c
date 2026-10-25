@@ -64,7 +64,7 @@ static bool decode(eye_pack_t *r,unsigned char *out,const eye_stream_t *s){
 #endif
 }
 bool eye_pack_select(eye_pack_t *r,unsigned theme){
-    if(!r||theme>=3)return false;
+    if(!r||theme>=3||!eye_themes[theme].name)return false;
     if(r->selected && r->theme==theme)return true;
     r->prepared=false;r->selected=false;const eye_theme_t *t=&eye_themes[theme];
     if(!decode(r,r->frame,&t->layers[0])||!decode(r,r->eye,&t->layers[1]))return false;

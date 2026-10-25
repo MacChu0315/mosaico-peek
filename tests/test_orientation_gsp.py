@@ -31,8 +31,8 @@ with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         assert f32(s['render_pose']['gaze_x'])==p['gaze_x'] and f32(s['render_pose']['gaze_y'])==p['gaze_y'],('presentation telemetry',theme,angle)
         if theme=='dragon':
             args=['dragon_snapshot',*[str(p[k]) for k in ('gaze_x','gaze_y','blink','squint','pupil_width','tension')]]
-        else:args=['eye_snapshot',str(['night_owl','deep_sea','mechanical'].index(theme)),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]
-        if theme in ('night_owl','deep_sea'):args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
+        else:args=['eye_snapshot',str({'deep_sea':1,'mechanical':2}[theme]),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]
+        if theme=='deep_sea':args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
         ppm=subprocess.check_output([str(ROOT/'build-host'/args[0]),*args[1:]])
         reference=Image.open(io.BytesIO(ppm)).convert('RGB')
         if theme=='dragon' and s['sample_step']==2:
@@ -41,7 +41,7 @@ with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         lut=[(i*maximum+127)//255 for maximum in (31,63,31) for i in range(256)]
         assert ImageChops.difference(reference.point(lut),actual.point(lut)).getbbox() is None,(theme,angle,s['role']['mode'])
         checks.append(dict(theme=theme,angle=angle,state=s))
-    for theme in ['dragon','night_owl','deep_sea','mechanical']:
+    for theme in ['dragon','deep_sea','mechanical']:
         command('orientation 0');command('view '+theme);command('case idle');command('advance 1200')
         baseline=state();verify_pixels(theme,0,capture(theme+'-0'),baseline)
         for angle,transpose in [(90,Image.Transpose.ROTATE_270),(180,Image.Transpose.ROTATE_180),(270,Image.Transpose.ROTATE_90)]:
@@ -67,12 +67,6 @@ with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         command('advance '+str(at-state()['result']['now_ms']));baseline=state()
         for angle in (0,90,180,270):
             command('orientation '+str(angle));actual=capture('deep-sea-layers-'+str(at)+'-'+str(angle));after=state();verify_pixels('deep_sea',angle,actual,after)
-            assert after['role']==baseline['role'] and after['result']==baseline['result'] and after['render_layers']==baseline['render_layers']
-    command('view night_owl');command('case sleep')
-    for at in (6090,10450,12325):
-        command('advance '+str(at-state()['result']['now_ms']));baseline=state()
-        for angle in (0,90,180,270):
-            command('orientation '+str(angle));actual=capture('night-owl-layers-'+str(at)+'-'+str(angle));after=state();verify_pixels('night_owl',angle,actual,after)
             assert after['role']==baseline['role'] and after['result']==baseline['result'] and after['render_layers']==baseline['render_layers']
     command('orientation 0');command('view dragon')
 (out/'checks.json').write_text(json.dumps(checks,indent=2)+'\n')

@@ -22,7 +22,7 @@ def oracle(theme,gx,gy,lid):
             adaptation=json.loads((ROOT/'assets/mechanical-c-adaptation.json').read_text())
             _mechanical_reference.frame=premultiplied(ROOT/adaptation['fixed_frame_source'])
         return np.rint(np.asarray(_mechanical_reference.render(gx,gy,lid))/255*np.array([31,63,31])).astype(int)
-    folder=ROOT/'assets/night-owl-r2/processed' if theme['id']=='night_owl' else ROOT/'assets/deep-sea-r2/processed';eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
+    folder=ROOT/'assets/deep-sea-r2/processed';eye=source(GENERATED/(theme['id']+'-wide-eye.png'));frame=source(folder/'frame.png')
     generated=next(t for t in json.loads((GENERATED/'eye_pack.json').read_text())['themes'] if t['theme']==theme['id'])
     x,y=np.meshgrid(np.arange(480),np.arange(480));amp=generated['max_gaze_translation_px'];ox,oy=generated['eye_origin']
     cx,cy=generated['eye_center']
@@ -46,7 +46,7 @@ def oracle(theme,gx,gy,lid):
         for i in (0,1):
             xx=ix+i;yy=iy+j;valid=(xx>=0)&(yy>=0)&(xx<eye.shape[1])&(yy<eye.shape[0]);weight=(fx if i else 1-fx)*(fy if j else 1-fy)
             c[valid]+=eye[yy[valid],xx[valid]]*weight[valid,None]
-    if theme['id'] in ('night_owl','deep_sea'):
+    if theme['id']=='deep_sea':
         index=min(8,int(np.float32(lid)*np.float32(8)+np.float32(.5)))
         layers=[source(folder/'membrane'/f'membrane_{index:02}.png'),source(folder/'lids'/f'lid_{index:02}.png')]
     else:
@@ -61,6 +61,7 @@ def oracle(theme,gx,gy,lid):
 def main():
     themes=json.loads((PACK/'assets/manifest.json').read_text())['themes'];checks=[]
     for i,t in enumerate(themes):
+        if t['id']=='night_owl':continue
         poses=[(0,0,0)]+[(x*.78,y*.58,0) for x in (-1,0,1) for y in (-1,0,1)]+[(.253,-.217,b) for b in (0,.0625,.13,.25,.49,.5,.75,.93,1)]
         for gx,gy,lid in poses:
             ppm=subprocess.check_output([str(ROOT/'build-host/eye_snapshot'),str(i),str(gx),str(gy),str(lid)])

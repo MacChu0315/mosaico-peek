@@ -1,3 +1,5 @@
+> RETIRED2026-10-25: user rejected night owl. This document is historical; current firmware excludes it. See OWL_REMOVAL.md.
+
 # Night owl R2 demo update
 
 The user requested the same R2 optimization for owl after accepting the installed

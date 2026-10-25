@@ -16,15 +16,15 @@ def main():
             assert (a['role'],a['stationary'],a['observations'])==(e['role'],e['stationary'],e['observations'])
         return actual
     # Every theme must consume all original events through the production path.
-    for theme in ['dragon','night_owl','deep_sea','mechanical']:
+    for theme in ['dragon','deep_sea','mechanical']:
         command('view '+theme);command('case live');command('advance 69000');verify();s=state();assert s['result']['samples']==511
         command('replay');command('advance 69000');verify();assert s['role']==state()['role'] and s['result']==state()['result']
-    command('view night_owl');command('case live');command('play');start=time.monotonic();next_capture=start;records=[];captures=[];switches=[];folder=ROOT/'.run/eye-recorded';folder.mkdir(exist_ok=True)
+    command('view deep_sea');command('case live');command('play');start=time.monotonic();next_capture=start;records=[];captures=[];switches=[];folder=ROOT/'.run/eye-recorded';folder.mkdir(exist_ok=True)
     ready=json.loads((ROOT/'.run/ready.json').read_text())
     with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
         while time.monotonic()-start<75:
             elapsed=time.monotonic()-start;s=state();assert not s['error'];records.append(dict(wall_s=elapsed,**s))
-            for at,view in [(8,'diagnostic'),(9,'night_owl'),(22,'deep_sea'),(40,'mechanical'),(55,'dragon'),(58,'mechanical')]:
+            for at,view in [(8,'diagnostic'),(9,'deep_sea'),(22,'dragon'),(40,'mechanical'),(55,'dragon'),(58,'mechanical')]:
                 if elapsed>=at and at not in [x['at'] for x in switches]:
                     before=s;after=command('view '+view);assert after['result']['samples']>=before['result']['samples'];assert after['result']['now_ms']>=before['result']['now_ms'];switches.append(dict(at=at,view=view,before=before,after=after))
             if time.monotonic()>=next_capture:
@@ -42,7 +42,7 @@ def main():
     lines.append("file '"+str(folder/captures[-1]['file'])+"'");concat=folder/'timeline.ffconcat';concat.write_text('\n'.join(lines)+'\n');movie=OUT/'recorded-switches-realtime.mp4'
     subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(concat),'-vsync','vfr','-c:v','libx264','-crf','24','-pix_fmt','yuv420p','-movflags','+faststart',str(movie)],check=True)
     length=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(movie)]));assert abs(length-elapsed)<.2
-    report=dict(events=655,samples=511,all_three_theme_replays=True,zero_core_role_mode_mismatches=True,switches=len(switches),wall_s=elapsed,movie_s=length,frames=len(captures),hold_observed=any(x['role']=='HOLD' for x in actual),note='Recorded unlabelled thermal scene, original capture/receive/fault events unchanged. All arrays pass production C detector. Six live view switches preserve epoch; no physical device operation. Video retains capture wall times and is not screen FPS.')
+    report=dict(events=655,samples=511,all_active_view_replays=['dragon','deep_sea','mechanical'],zero_core_role_mode_mismatches=True,switches=len(switches),wall_s=elapsed,movie_s=length,frames=len(captures),hold_observed=any(x['role']=='HOLD' for x in actual),note='Recorded unlabelled thermal scene, original capture/receive/fault events unchanged. All arrays pass production C detector. Six live view switches preserve epoch; no physical device operation. Video retains capture wall times and is not screen FPS.')
     for name,value in [('report.json',report),('captures.json',captures),('switches.json',switches)]: (OUT/name).write_text(json.dumps(value,indent=2)+'\n')
     for name,rows in [('events.jsonl',actual),('states.jsonl',records)]: (OUT/name).write_text(''.join(json.dumps(r)+'\n' for r in rows))
     print(json.dumps(report,indent=2),flush=True)

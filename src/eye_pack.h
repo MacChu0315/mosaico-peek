@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 typedef struct eye_pack eye_pack_t;
-/* Three retained themes, ordered night_owl, deep_sea, mechanical. Only call
+/* Stable bitmap IDs:0 retired,1 deep_sea,2 mechanical. Only call
  * select/prepare on the UI owner; draw reads prepared data, never samples/time.
  * Gaze uses existing bounded +/-0.78, +/-0.58 pose after physical mapping.
  * Full-resolution bilinear sphere rotation (+/-120px horizontal, +/-80px

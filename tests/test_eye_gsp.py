@@ -8,7 +8,7 @@ sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-g
 from control import command,state
 from rpc_client import connect
 OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui/native'));OUT.mkdir(parents=True,exist_ok=True)
-THEMES=['night_owl','deep_sea','mechanical']
+THEMES=['deep_sea','mechanical'];INDEX={'deep_sea':1,'mechanical':2}
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[];movies=[]
     hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'build-sim/peek_backend',ROOT/'build-sim/peek_backend_assets/app.gspb',ROOT/'build-sim/peek_backend_assets/bundle_gsp.api.json'] if p.exists()}
@@ -21,8 +21,8 @@ def main():
             call('wait',{'frames':2});path=OUT/f'{theme}-{name}.png';call('screenshot',dict(path=str(path),format='png'));s=state();assert not s['error'];pose=s.get('render_pose',s['role']['pose'])
             if theme=='dragon':
                 args=['dragon_snapshot',*[str(pose[k]) for k in ('gaze_x','gaze_y','blink','squint','pupil_width','tension')]]
-            else:args=['eye_snapshot',str(THEMES.index(theme)),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])]
-            if theme in ('night_owl','deep_sea'):args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
+            else:args=['eye_snapshot',str(INDEX[theme]),str(pose['gaze_x']),str(pose['gaze_y']),str(pose['blink'])]
+            if theme=='deep_sea':args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
             ppm=subprocess.check_output([str(ROOT/'build-host'/args[0]),*args[1:]])
             expected=Image.open(io.BytesIO(ppm))
             if theme=='dragon' and s['sample_step']==2:expected=expected.resize((240,240),Image.Resampling.NEAREST).resize((480,480),Image.Resampling.NEAREST)

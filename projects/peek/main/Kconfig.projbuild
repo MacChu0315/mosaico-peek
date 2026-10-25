@@ -7,10 +7,11 @@ config PEEK_DIAGNOSTIC_VIEW
         thermal diagnostic screen instead of the approved single dragon eye.
         Host preview selects its view separately with --view diagnostic.
 config PEEK_CHARACTER
-    int "Startup character (0=dragon,1=night owl,2=deep sea,3=mechanical)"
+    int "Startup character (0=dragon,2=deep sea,3=mechanical)"
     range 0 3
     default 0
     help
+        ID1 is retired and rejected by the build; existing IDs are retained.
         All characters use the same source-owned detector and behavior. New
         bitmap eyes retain full480 detail; sample step applies to dragon only.
 config PEEK_EYE_SAMPLE_STEP

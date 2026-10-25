@@ -52,6 +52,7 @@ int main(void){
     view.dragon.mapping.flip_x=true;view.dragon.mapping.flip_y=true;
     peek_ui_time(&view,12000);dragon_t before=view.dragon;peek_detector_t detector=view.detector;
     for(unsigned pass=0;pass<2;pass++)for(unsigned c=0;c<4;c++){
+        if(!peek_character_valid(c))continue;
         assert(peek_ui_set_character(&view,c)==ESP_GSP_OK);
         peek_ui_refresh(&view,12000);
         assert(!memcmp(&before,&view.dragon,sizeof(before)));
@@ -67,8 +68,8 @@ int main(void){
     assert(peek_ui_set_character(&view,0)==ESP_GSP_OK);
     before=view.dragon;detector=view.detector;
     pointer_callback(view.ui,300,200,true,&view);pointer_callback(view.ui,100,200,true,&view);
-    assert(view.character==0);pointer_callback(view.ui,100,200,false,&view);assert(view.character==1);
-    pointer_callback(view.ui,100,200,false,&view);assert(view.character==1);
+    assert(view.character==0);pointer_callback(view.ui,100,200,false,&view);assert(view.character==2);
+    pointer_callback(view.ui,100,200,false,&view);assert(view.character==2);
     assert(!memcmp(&before,&view.dragon,sizeof(before)) && !memcmp(&detector,&view.detector,sizeof(detector)));
     pointer_callback(view.ui,200,200,true,&view);assert(peek_ui_set_character(&view,3)==ESP_GSP_OK);
     pointer_callback(view.ui,200,200,false,&view);assert(view.character==3);
@@ -77,10 +78,20 @@ int main(void){
     fail_pointer_stop=true;assert(peek_ui_deinit(&view)!=ESP_GSP_OK && view.pointer_registered);
     fail_pointer_stop=false;assert(peek_ui_deinit(&view)==ESP_GSP_OK && !view.pointer_registered);
     peek_ui_release(&view);
+    reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
+    assert(peek_ui_set_character(&view,2)==ESP_GSP_OK);before=view.dragon;detector=view.detector;
+    assert(peek_ui_set_character(&view,1)==ESP_GSP_ERR_INVALID_ARG&&view.character==2);
+    assert(!memcmp(&before,&view.dragon,sizeof(before))&&!memcmp(&detector,&view.detector,sizeof(detector)));
+    assert(peek_ui_cycle_character(&view,1)==ESP_GSP_OK&&view.character==3);
+    assert(peek_ui_cycle_character(&view,1)==ESP_GSP_OK&&view.character==0);
+    assert(peek_ui_cycle_character(&view,1)==ESP_GSP_OK&&view.character==2);
+    assert(peek_ui_cycle_character(&view,-1)==ESP_GSP_OK&&view.character==0);
+    assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);
     /* Rotation must preserve every artwork pixel and source-owned state. */
     reset();assert(peek_ui_init(&view,(void *)1,NULL,NULL)==ESP_GSP_OK);
     uint16_t *reference=malloc(480*480*2),*output=malloc(480*480*2);assert(reference&&output);
     for(unsigned step=1;step<=2;step++)for(unsigned character=0;character<4;character++)for(unsigned q=0;q<360;q+=90){
+        if(!peek_character_valid(character))continue;
         view.sample_step=step;
         assert(peek_ui_set_orientation(&view,0)==ESP_GSP_OK);
         assert(peek_ui_set_character(&view,character)==ESP_GSP_OK);
@@ -116,6 +127,7 @@ int main(void){
      * This catches changing gaze coordinate frames at IDLE/NOTICE/LEAVE edges. */
     assert(peek_ui_set_orientation(&view,180)==ESP_GSP_OK);
     for(unsigned c=0;c<4;c++){
+        if(!peek_character_valid(c))continue;
         assert(peek_ui_set_character(&view,c)==ESP_GSP_OK);
         view.dragon.pose=(dragon_pose_t){-.32f,-.045f,0,.69f,.072f,.16f};
         view.dragon.mode=DRAGON_IDLE;view.dragon.target_active=false;
@@ -135,10 +147,10 @@ int main(void){
     assert(peek_ui_set_orientation(&view,90)==ESP_GSP_OK);
     assert(peek_ui_set_character(&view,0)==ESP_GSP_OK);
     pointer_callback(view.ui,279,300,true,&view);pointer_callback(view.ui,279,100,false,&view);
-    assert(view.character==1); /* physical upward swipe is upright left at90 */
+    assert(view.character==2); /* physical upward swipe is upright left at90 */
     pointer_callback(view.ui,200,200,true,&view);
     assert(peek_ui_set_orientation(&view,180)==ESP_GSP_OK);
-    pointer_callback(view.ui,200,200,false,&view);assert(view.character==1);
+    pointer_callback(view.ui,200,200,false,&view);assert(view.character==2);
     free(reference);free(output);assert(peek_ui_deinit(&view)==ESP_GSP_OK);peek_ui_release(&view);
     puts("PASS actual UI: partial registration, teardown errors retain ownership, retry detaches");
 }

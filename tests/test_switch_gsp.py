@@ -9,7 +9,7 @@ sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-g
 from control import command,state
 from rpc_client import connect
 OUT=Path(os.environ.get('PEEK_EVIDENCE_DIR',ROOT/'evidence/eye-ui/switching'));OUT.mkdir(parents=True,exist_ok=True)
-THEMES=['dragon','night_owl','deep_sea','mechanical']
+THEMES=['dragon','deep_sea','mechanical'];INDEX={'deep_sea':1,'mechanical':2}
 def main():
     ready=json.loads((ROOT/'.run/ready.json').read_text());checks=[]
     with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
@@ -38,29 +38,29 @@ def main():
                 ppm=subprocess.check_output([str(ROOT/'build-host/dragon_snapshot'),*[str(p[k]) for k in ['gaze_x','gaze_y','blink','squint','pupil_width','tension']]])
                 expected=np.asarray(Image.open(io.BytesIO(ppm)));expected=np.repeat(np.repeat(expected[1::2,1::2],2,axis=0),2,axis=1)
             else:
-                args=[str(ROOT/'build-host/eye_snapshot'),str(THEMES.index(s['view'])-1),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]
-                if s['view'] in ('night_owl','deep_sea'):args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
+                args=[str(ROOT/'build-host/eye_snapshot'),str(INDEX[s['view']]),str(p['gaze_x']),str(p['gaze_y']),str(p['blink'])]
+                if s['view']=='deep_sea':args += [str(s['render_layers']['membrane']),str(s['render_layers']['lid'])]
                 ppm=subprocess.check_output(args);expected=np.asarray(Image.open(io.BytesIO(ppm)))
             actual=np.asarray(Image.open(file).convert('RGB'));codes=lambda a:np.rint(a.astype(float)/255*np.array([31,63,31])).astype(int)
             assert np.array_equal(codes(expected),codes(actual)),name
-        tap(240,240);settle('night_owl','tap advances');capture('night-owl-after-tap')
-        pointer(240,240,True);pointer(246,245,True);pointer(246,245,False);settle('deep_sea','tap jitter advances');capture('deep-sea-after-tap')
-        before=state()['actions'];pointer(400,240,True);pointer(200,240,True);assert state()['view']=='deep_sea';pointer(80,240,False)
-        s=settle('mechanical','left swipe advances once');assert s['actions']==before+1;capture('mechanical-after-swipe')
-        pointer(80,240,False);assert settle('mechanical','duplicate up ignored')['actions']==before+1
-        drag(80,240,400,240);settle('deep_sea','right swipe goes back')
-        tap(240,240);settle('mechanical','tap3');tap(240,240);settle('dragon','forward wrap');capture('dragon-after-wrap')
-        drag(80,240,400,240);settle('mechanical','backward wrap')
-        pointer(240,100,True);pointer(240,300,False);settle('mechanical','vertical drag ignored')
-        pointer(240,240,True);pointer(340,240,True);pointer(240,240,False);settle('mechanical','drag return is not tap')
-        pointer(240,240,True);time.sleep(.7);pointer(240,240,False);settle('mechanical','long hold ignored')
+        tap(240,240);settle('deep_sea','tap skips retired ID');capture('deep-sea-after-tap')
+        pointer(240,240,True);pointer(246,245,True);pointer(246,245,False);settle('mechanical','tap jitter advances');capture('mechanical-after-tap')
+        before=state()['actions'];pointer(400,240,True);pointer(200,240,True);assert state()['view']=='mechanical';pointer(80,240,False)
+        s=settle('dragon','left swipe wraps three views once');assert s['actions']==before+1;capture('dragon-after-wrap')
+        pointer(80,240,False);assert settle('dragon','duplicate up ignored')['actions']==before+1
+        drag(80,240,400,240);settle('mechanical','right swipe wraps backward')
+        tap(240,240);settle('dragon','tap wrap');tap(240,240);settle('deep_sea','tap skips reserved slot')
+        drag(80,240,400,240);settle('dragon','backward to dragon')
+        pointer(240,100,True);pointer(240,300,False);settle('dragon','vertical drag ignored')
+        pointer(240,240,True);pointer(340,240,True);pointer(240,240,False);settle('dragon','drag return is not tap')
+        pointer(240,240,True);time.sleep(.7);pointer(240,240,False);settle('dragon','long hold ignored')
         pointer(240,240,True);command('view deep_sea');pointer(240,240,False);settle('deep_sea','view change cancels old touch')
         command('view diagnostic');pointer(88,454,True);command('view dragon');pointer(88,454,False);settle('dragon','hidden diagnostic click cannot reset source')
-        command('next');settle('night_owl','shared next command');command('previous');settle('dragon','shared previous command')
+        command('next');settle('deep_sea','shared next skips retired ID');command('previous');settle('dragon','shared previous')
         command('case sleep');command('advance 10450');asleep=state();assert asleep['role']['sleeping']
-        tap(240,240);call('wait',{'frames':3});s=state();assert s['view']=='night_owl' and s['role']==asleep['role'] and s['result']==asleep['result']
+        tap(240,240);call('wait',{'frames':3});s=state();assert s['view']=='deep_sea' and s['role']==asleep['role'] and s['result']==asleep['result']
         checks.append(dict(label='tap changes artwork without waking sleep',state=s))
         command('replay');command('advance 10450');assert state()['role']==asleep['role'] and state()['result']==asleep['result']
     artifacts={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'build-sim/peek_backend',ROOT/'build-sim/peek_backend_assets/app.gspb',ROOT/'build-sim/peek_backend_assets/bundle_gsp.api.json']}
-    (OUT/'native-checks.json').write_text(json.dumps(checks,indent=2)+'\n');(OUT/'native-report.json').write_text(json.dumps(dict(checks=len(checks),capabilities=caps,artifacts=artifacts,note='Actual official GSP native pointer routing. BSP AI binding/concurrent handoff is covered by production-code Host fixtures; hardware inputs untested until installation.'),indent=2)+'\n');print('PASS native GSP:',len(checks),'input checks; four exact-pixel artwork captures; detector/role/time unchanged')
+    (OUT/'native-checks.json').write_text(json.dumps(checks,indent=2)+'\n');(OUT/'native-report.json').write_text(json.dumps(dict(checks=len(checks),capabilities=caps,artifacts=artifacts,note='Actual official GSP native pointer routing. BSP AI binding/concurrent handoff is covered by production-code Host fixtures; hardware inputs untested until installation.'),indent=2)+'\n');print('PASS native GSP:',len(checks),'input checks; three exact-pixel artwork captures; detector/role/time unchanged')
 if __name__=='__main__':main()
