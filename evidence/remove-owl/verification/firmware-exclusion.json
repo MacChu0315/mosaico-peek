@@ -1,0 +1,15 @@
+{
+  "no_owl_texture_symbols": true,
+  "no_owl_runtime_name_in_application": true,
+  "active_bitmap_streams": 31,
+  "bitmap_ids": [
+    1,
+    2
+  ],
+  "UI_ids": [
+    0,
+    2,
+    3
+  ],
+  "application_bytes": 7218608
+}

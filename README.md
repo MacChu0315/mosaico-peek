@@ -2,7 +2,7 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Current source targets1.0.15-peek-three: **dragon / deep_sea / mechanical**.
+Installed1.0.15-peek-three: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
 Historical owl material remains archived; it is not part of the active demo.

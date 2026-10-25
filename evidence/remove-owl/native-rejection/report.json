@@ -1,0 +1,16 @@
+{
+  "retired_backend_command_error": 258,
+  "source_state_preserved": true,
+  "CLI_entries_reject": true,
+  "forward_cycles": [
+    "mechanical",
+    "dragon",
+    "deep_sea",
+    "mechanical",
+    "dragon",
+    "deep_sea",
+    "mechanical",
+    "dragon",
+    "deep_sea"
+  ]
+}

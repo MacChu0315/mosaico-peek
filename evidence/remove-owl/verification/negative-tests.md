@@ -1,0 +1,1 @@
+Before implementation, generated-inventory regression failed because owl was present. The initial raw Host rejection test incorrectly expected error0; the existing protocol deliberately records INVALID_ARG258 on any rejected command. The test now checks that exact error, preserves detector/role/active view, and runs last. No production error policy was relaxed.

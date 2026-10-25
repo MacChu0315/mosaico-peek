@@ -1,0 +1,1 @@
+Independent read-only review passed:stable0/2/3 IDs, three-entry cycles andAI%3 agree; bitmap slot0 empty/rejected; no owl symbols in generated include or Host ELF;31 retained streams; core/renderer/IMU unchanged. UI/device adapter,256 scalar frames, cache/status and CLI rejection passed. Final target ELF checked separately.

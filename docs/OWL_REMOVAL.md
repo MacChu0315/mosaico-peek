@@ -1,7 +1,7 @@
 # Night owl retired from firmware
 
 On2026-10-25 the user rejected night owl and requested its removal from firmware.
-Current target1.0.15-peek-three retains only dragon, deep_sea and mechanical.
+Installed1.0.15-peek-three retains only dragon, deep_sea and mechanical.
 Owl original sources and historical evidence remain archived, not built into the
 application. This is removal of runtime resources and selection, not secure erase
 of historical backups or the entire device flash.
@@ -54,3 +54,12 @@ python3 tools/build_idf.py
 See HANDOFF and evidence/remove-owl for final identity, resource deltas and
 installation. Existing exact1.0.14 restore is retained; no ROM recover, erase,
 shared dependency upgrade or remote write is authorized by this removal.
+
+## Installed outcome
+
+Official update completed on first attempt, source db16ee0, matching actual ELF,
+normal/VALID/error0/IMU0/crash0. App7218608B (2291104B smaller), UI94480B
+unchanged. Final ELF/application contain no owl resources/name. Initial free
+PSRAM3984068B versus1693128B in the prior dragon startup observation. Hardware
+button sequence was not separately exercised; production/native routing checks
+passed. No physical FPS improvement is claimed from resource removal alone.
