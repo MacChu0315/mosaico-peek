@@ -1,0 +1,32 @@
+{
+  "version": "1.1.1",
+  "source_revision": "effb682e2a35a6b6a4e862f990d6eb5219831a9d",
+  "branch": "perf/three-eye-render",
+  "base": "fa34821",
+  "ELF_sha256": "fad83dba1a8e4628b70dd82efbd4520d63b11006bdf12f70bd2b780442d5e33b",
+  "bundle_sha256": "6a7b64cc95a623b61060ee0f387d57493ef33908968dea07f8e149a6b323a53a",
+  "frozen_release_unchanged": true,
+  "flash_growth_bytes": 1152,
+  "UI_state_growth_bytes": 24,
+  "explicit_PSRAM_growth_bytes": 0,
+  "tests": {
+    "debug": "37/37",
+    "release": "37/37",
+    "scalar_full_frames": 288,
+    "native_orientation_images": 44,
+    "native_pointer_cases": 16,
+    "native_sea_phases": 17,
+    "native_retention_and_recorded_replay": "passed",
+    "physical_closed_pixels": [
+      "deep_sea",
+      "mechanical"
+    ]
+  },
+  "limits": [
+    "Different hand-played activity windows; not controlled percentage speedup",
+    "No same-angle mechanical baseline",
+    "New dragon active performance not measured",
+    "Physical panel FPS and long-term behavior not measured",
+    "Fast membrane stage visibility not guaranteed"
+  ]
+}

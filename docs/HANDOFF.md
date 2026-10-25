@@ -1,36 +1,44 @@
-> Development candidate1.1.1 is being validated on perf/three-eye-render. Installed
-> identity below remains the frozen1.1.0 until the new receipt is recorded.
-> Exact-output rendering changes and test scope: [RENDER_V111.md](RENDER_V111.md).
+# Peek handoff — exact-output rendering1.1.1 (2026-10-25)
 
-# Peek handoff — frozen v1.1.0 (2026-10-25)
-
-User explicitly rejected night owl and requested removal from firmware. Installed
-1.1.0 contains only dragon, deep_sea and mechanical. The user froze this accepted
-three-eye baseline as local tagv1.1.0; do not move the tag or overwrite its bundle. Owl original
-sources, standalone reconstruction and old firmware remain historical archives;
-they are not encoded, selectable or restored automatically. [Removal details](OWL_REMOVAL.md).
+Installed1.1.1 on perf/three-eye-render contains dragon, deep_sea and mechanical.
+Night owl stays retired. Frozen v1.1.0 source tag082c783 and exact bundle remain
+unchanged; never move that tag or overwrite releases/v1.1.0.
 
 ## Installed identity
 
-Source/tag target082c7830d8f2b130f284999063b078385dc33eb8.
-ELF569d0f7cb67dfea246410b770b3572ce36acb5d60749db73778989abcc0c98ed.
-Boot5038377117570898161; official update554e1190-5f11-49ea-84a1-5985bc7d0bb9
-succeeded on first attempt. Version1.1.0, matching ELF/source, normal mode, VALID
-thermal data, runtime/IMU error0, crash_count0. Both gaze flips remain enabled.
+Sourceeffb682e2a35a6b6a4e862f990d6eb5219831a9d.
+ELFfad83dba1a8e4628b70dd82efbd4520d63b11006bdf12f70bd2b780442d5e33b.
+Boot11328770680449269444; official update58511ef0-5c8a-4065-a38b-3cf3c1439577
+succeeded first attempt. Matching version/source/ELF, normal mode, VALID,
+runtime/IMU error0 and crash_count0. Both flips enabled; orientation270 observed.
 Only authorized MAC30:ed:a0:f4:52:a0 / Device ID4553502d49524953010030eda0f452a0
-was updated. Prior1.0.15 restore bundle remains in evidence/remove-owl/device-install.
+was updated. Restore: releases/v1.1.0/mosaico-peek-v1.1.0.irisfw.
 
-Release: [v1.1.0 scope](releases/v1.1.0.md). Exact local bundle/manifest/receipts
-are in releases/v1.1.0; compact review package is releases/mosaico-peek-v1.1.0.zip.
-Tracked receipt: evidence/releases/v1.1.0/manifest.json. Source tag matches the
-embedded firmware revision; later receipt-only commits do not move the tag.
-No remote publication. Future functional/art/config changes require a new version.
+## Rendering changes and validation
 
-Release verification: ctest37/37 and tools/build_idf.py pass. Runtime/art/dependency
-paths exactly match4a52dc2; effective config differs only in APP_PROJECT_VER. UI
-binary and31 bitmap streams match1.0.15; app size and renderer allocations unchanged.
-Existing SDK component include/factory-size warnings remain; app fits ota_0.
-No new physical visual/button/FPS or long-term acceptance is claimed.
+[RENDER_V111.md](RENDER_V111.md) records the three approved exact-output changes:
+affine quarter-turn tile traversal; neutral exact texel sampling preserving HDR;
+identical-picture retention while acquisition, source ticks and wake checks stay
+live. Actual outer-lid/frame alpha establishes deep-sea occlusion. No gaze,
+artwork, timing, source detector/controller, orientation or dependency change.
+
+Debug/Release37/37;288 full480 scalar comparisons; four-angle odd tiles; static
+invalidation/zero-completion status checks. Native16 pointer checks,44 orientation
+images,17 sea phase checkpoints and retained-picture source/wake/replay checks
+pass;511 recorded arrays/655 events preserve results. Three native8s movies use
+actual capture intervals. No physical panel-FPS claim.
+
+App7219760B (+1152 over1.1.0), UI94480B and all bitmap streams unchanged. Shared
+UI10336B (+24), renderer internal2004B, explicit bitmap PSRAM3418224B unchanged.
+No added framebuffer. Existing SDK include/factory-size warnings remain; ota_0 fits.
+Measured270deg deep-sea active-open6.598Hz versus baseline5.769Hz, short different
+hand-played windows (6.82s/4.16s), not controlled percentage speedup. Closed24.55s
+has0 redraws with193 samples. Mechanical270deg active-open4.737Hz lacks a same-angle
+baseline; closed16.74s has0 redraws with131 samples. Both stable closed device
+RGB565 captures match C; mechanical stays centered.0 sample faults/runtime errors.
+Current dragon activity, panel FPS and long-term runtime remain unmeasured.
+See evidence/render-v111/device-after and RENDER_V111.md for limits. Review delta:
+review/mosaico-peek-render-v1.1.1.zip (requires complete v1.1.0/fa34821 baseline).
 
 ## Active behavior
 
@@ -87,5 +95,5 @@ Local exact ELF/map/config backups remain in ignoredfirmware-local/.
 Standing authorization covers official updates on this same device and required
 reboots/retained-Recovery transitions. No ROM recover, full erase, dependency
 upgrade, remote repository write or default-branch mutation occurred. Main work
-branch remainsfeat/eye-ui-trio. Historical docs/evidence do not override the
+branch isperf/three-eye-render. Historical docs/evidence do not override the
 current three-role roster.

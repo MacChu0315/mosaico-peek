@@ -1,0 +1,9 @@
+{
+  "frozen_tag": "082c7830d8f2b130f284999063b078385dc33eb8",
+  "frozen_bundle_sha256": "9adf749c03c3e9d7aa6bac8f80cc7082c672d60f1f2658f67bf533792aa98ee0",
+  "source_behavior_assets_dependencies_unchanged": true,
+  "retired_owl_absent": true,
+  "PSRAM_added": 0,
+  "shared_UI_bytes_added": 24,
+  "application_bytes_added": 1152
+}

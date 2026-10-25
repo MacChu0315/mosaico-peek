@@ -2,11 +2,12 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Frozen release **v1.1.0** (firmware reports `1.1.0`), based on the accepted1.0.15 demo: **dragon / deep_sea / mechanical**.
+Current demo **v1.1.1** adds exact-output rendering optimization; frozen release **v1.1.0** remains unchanged. Active artwork: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
 Historical owl material remains archived; it is not part of the active demo.
-[Release scope, exact artifact and local tag](docs/releases/v1.1.0.md).
+[Frozen release scope, exact artifact and local tag](docs/releases/v1.1.0.md).
+[Current rendering changes, verification and performance limits](docs/RENDER_V111.md).
 
 Deep-sea R2 keeps its240ms membrane and no returning rim; mechanical keeps socket
 A and centered sleep; dragon keeps selected sclera C and approved240 sampling.

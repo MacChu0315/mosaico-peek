@@ -1,0 +1,21 @@
+{
+  "note": "Same -O2 strict-math host microbenchmark and generated assets; not native throughput, PSRAM timing or device FPS. state0=neutral open,1=off-center open,2=neutral closed.",
+  "runs": [
+    {
+      "version": "baseline",
+      "output": "deep_sea fixed_frame_opaque=163159 partial=1151 total=230400\nstate=0 sphere_pixels=67241 integer_uv=67241 prepare_initial_ms=0.755 prepare_cached_ms=0.000031 draw_host_ms=1.051\nstate=1 sphere_pixels=67241 integer_uv=0 prepare_initial_ms=0.005 prepare_cached_ms=0.000045 draw_host_ms=1.380\nstate=2 sphere_pixels=0 integer_uv=0 prepare_initial_ms=3.213 prepare_cached_ms=0.000031 draw_host_ms=1.202\nmechanical fixed_frame_opaque=154524 partial=1240 total=230400\nstate=0 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.105 prepare_cached_ms=0.000038 draw_host_ms=1.562\nstate=1 sphere_pixels=75876 integer_uv=0 prepare_initial_ms=0.002 prepare_cached_ms=0.000037 draw_host_ms=1.895\nstate=2 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.228 prepare_cached_ms=0.000028 draw_host_ms=1.523\n"
+    },
+    {
+      "version": "candidate",
+      "output": "deep_sea fixed_frame_opaque=163159 partial=1151 total=230400\nstate=0 sphere_pixels=67241 integer_uv=67241 prepare_initial_ms=1.197 prepare_cached_ms=0.000048 draw_host_ms=0.602\nstate=1 sphere_pixels=67241 integer_uv=0 prepare_initial_ms=0.005 prepare_cached_ms=0.000044 draw_host_ms=1.343\nstate=2 sphere_pixels=0 integer_uv=0 prepare_initial_ms=3.270 prepare_cached_ms=0.000031 draw_host_ms=1.261\nmechanical fixed_frame_opaque=154524 partial=1240 total=230400\nstate=0 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.119 prepare_cached_ms=0.000026 draw_host_ms=0.551\nstate=1 sphere_pixels=75876 integer_uv=0 prepare_initial_ms=0.003 prepare_cached_ms=0.000038 draw_host_ms=1.927\nstate=2 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.521 prepare_cached_ms=0.000039 draw_host_ms=0.760\n"
+    },
+    {
+      "version": "baseline",
+      "output": "deep_sea fixed_frame_opaque=163159 partial=1151 total=230400\nstate=0 sphere_pixels=67241 integer_uv=67241 prepare_initial_ms=0.919 prepare_cached_ms=0.000031 draw_host_ms=1.327\nstate=1 sphere_pixels=67241 integer_uv=0 prepare_initial_ms=0.008 prepare_cached_ms=0.000052 draw_host_ms=1.303\nstate=2 sphere_pixels=0 integer_uv=0 prepare_initial_ms=3.074 prepare_cached_ms=0.000031 draw_host_ms=1.185\nmechanical fixed_frame_opaque=154524 partial=1240 total=230400\nstate=0 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=0.915 prepare_cached_ms=0.000027 draw_host_ms=1.269\nstate=1 sphere_pixels=75876 integer_uv=0 prepare_initial_ms=0.002 prepare_cached_ms=0.000037 draw_host_ms=1.553\nstate=2 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.193 prepare_cached_ms=0.000026 draw_host_ms=1.515\n"
+    },
+    {
+      "version": "candidate",
+      "output": "deep_sea fixed_frame_opaque=163159 partial=1151 total=230400\nstate=0 sphere_pixels=67241 integer_uv=67241 prepare_initial_ms=0.906 prepare_cached_ms=0.000036 draw_host_ms=0.555\nstate=1 sphere_pixels=67241 integer_uv=0 prepare_initial_ms=0.030 prepare_cached_ms=0.000044 draw_host_ms=1.289\nstate=2 sphere_pixels=0 integer_uv=0 prepare_initial_ms=3.316 prepare_cached_ms=0.000031 draw_host_ms=1.186\nmechanical fixed_frame_opaque=154524 partial=1240 total=230400\nstate=0 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=0.929 prepare_cached_ms=0.000026 draw_host_ms=0.561\nstate=1 sphere_pixels=75876 integer_uv=0 prepare_initial_ms=0.002 prepare_cached_ms=0.000038 draw_host_ms=1.664\nstate=2 sphere_pixels=75876 integer_uv=75876 prepare_initial_ms=1.093 prepare_cached_ms=0.000027 draw_host_ms=0.531\n"
+    }
+  ]
+}

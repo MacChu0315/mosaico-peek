@@ -1,0 +1,10 @@
+{
+  "version": "1.1.1",
+  "boot_id": "11328770680449269444",
+  "ELF": "fad83dba1a8e4628b70dd82efbd4520d63b11006bdf12f70bd2b780442d5e33b",
+  "orientation": 270,
+  "closed_RGB565_exact": true,
+  "observations": 3,
+  "wall_s": 5.6628106902353466,
+  "note": "Actual stable closed-device framebuffer equals production C approved R2 eyelids. No physical screen FPS or moving-frame synchronization claim."
+}

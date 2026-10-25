@@ -1,0 +1,23 @@
+{
+  "active_windows": [
+    {
+      "version": "v1.1.0",
+      "orientation": 270,
+      "active_seconds": 4.16,
+      "active_frames": 24,
+      "GSP_active_hz": 5.769230769230769,
+      "raster_ms": 130.66954166666667,
+      "submit_ms": 33.652458333333335
+    },
+    {
+      "version": "v1.1.1",
+      "orientation": 270,
+      "active_seconds": 6.82,
+      "active_frames": 45,
+      "GSP_active_hz": 6.5982404692082115,
+      "raster_ms": 108.75168888888889,
+      "submit_ms": 32.78893333333333
+    }
+  ],
+  "method": "Live hand-played inputs, same270deg orientation, different short windows; observed rate difference, not controlled percentage speedup. Closed retention reported separately; physical FPS unmeasured."
+}

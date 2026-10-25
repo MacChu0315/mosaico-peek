@@ -1,0 +1,23 @@
+[
+  {
+    "theme": "deep_sea",
+    "video_seconds": 7.96,
+    "capture_seconds": 7.889011489693075,
+    "sleep_seen": true,
+    "wake_seen": true
+  },
+  {
+    "theme": "dragon",
+    "video_seconds": 8.04,
+    "capture_seconds": 7.979547219816595,
+    "sleep_seen": true,
+    "wake_seen": true
+  },
+  {
+    "theme": "mechanical",
+    "video_seconds": 8.0,
+    "capture_seconds": 7.932745238766074,
+    "sleep_seen": true,
+    "wake_seen": true
+  }
+]

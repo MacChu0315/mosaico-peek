@@ -6,10 +6,10 @@ from PIL import Image, ImageChops
 from probe_device import command,payload
 ROOT=Path(__file__).resolve().parents[1]
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--seconds',type=float,default=30);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--seconds',type=float,default=30);p.add_argument('--expected-version',default='1.0.13-peek-deepsea');a=p.parse_args()
     if not 5<=a.seconds<=60:p.error('seconds must be5..60')
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=False)
-    initial=command(['device-status']);d=initial['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version']=='1.0.13-peek-deepsea' and d['firmware_mode']=='normal' and not d['stale'];boot=initial['boot_id']
+    initial=command(['device-status']);d=initial['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version']==a.expected_version and d['firmware_mode']=='normal' and not d['stale'];boot=initial['boot_id']
     (out/'before.json').write_text(json.dumps(initial,indent=2)+'\n');start=time.monotonic();stable=0;previous=None;rows=[]
     def eligible(s):return s['view']=='deep_sea' and s['role']=='IDLE' and s['sleeping'] and s['render_lid']>=.9375
     while time.monotonic()-start<a.seconds:
