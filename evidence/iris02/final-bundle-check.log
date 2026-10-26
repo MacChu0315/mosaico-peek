@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "release": "1.2.0",
+  "schema": "esp-iris-system-update/0.2",
+  "minimum_recovery_version": "0.2.0",
+  "source_revision": "b672117486d65ab76893fb833103594b019636f8",
+  "source_matches_HEAD": true,
+  "source_worktree_clean": true,
+  "ELF_sha256": "d99572ee4ee4322d1575aa2ca16d1b2617aa470ae3f430a3f4162e3008c85d04",
+  "bundle_sha256": "b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59",
+  "bundle_bytes": 6301404,
+  "partitions": {
+    "otadata": [
+      1,
+      0,
+      36864,
+      8192,
+      0
+    ],
+    "phy_init": [
+      1,
+      1,
+      45056,
+      4096,
+      0
+    ],
+    "sysmeta": [
+      1,
+      2,
+      49152,
+      81920,
+      0
+    ],
+    "vibe_mode": [
+      0,
+      32,
+      131072,
+      1835008,
+      0
+    ],
+    "coredump": [
+      1,
+      3,
+      1966080,
+      131072,
+      0
+    ],
+    "nvs": [
+      1,
+      2,
+      2097152,
+      65536,
+      0
+    ],
+    "main_app": [
+      0,
+      16,
+      2162688,
+      13565952,
+      0
+    ],
+    "ui_apps": [
+      1,
+      64,
+      15728640,
+      1048576,
+      0
+    ]
+  },
+  "components": [
+    {
+      "kind": "partition_table",
+      "bytes": 4096,
+      "offset": 32768,
+      "sha256": "3c26b245870110b955f490e07fe047309b44b098c5adce18a449b1010bb2fd12"
+    },
+    {
+      "kind": "application",
+      "bytes": 7258864,
+      "offset": 2162688,
+      "sha256": "edd08d9530e1f7de4c5703dbd4fe57c8101225b71390307a82257dfd36815ca0"
+    },
+    {
+      "kind": "data",
+      "bytes": 94480,
+      "offset": 15728640,
+      "sha256": "97d48a61cfbe44182b6794e6d0a74dc6a8a5406e0f8670dbd58c081cab6bc8e7"
+    }
+  ],
+  "visual_resources_identical_to_1_1_1": true,
+  "scope": "Official0.2 parser, actual images/config/layout/resources; no device or server acceptance claimed"
+}
+

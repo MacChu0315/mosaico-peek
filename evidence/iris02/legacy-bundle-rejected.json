@@ -1,0 +1,6 @@
+{
+  "expected_rejection": true,
+  "exit_code": 2,
+  "stdout": "",
+  "stderr": "esp_iris.py: error: unsupported system-update manifest schema\n"
+}

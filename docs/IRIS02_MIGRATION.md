@@ -70,3 +70,34 @@ python3 tools/build_idf.py --bundle
 python tools/check_iris02_bundle.py --bundle projects/peek/build/peek-system-update.irisfw --require-clean-source --output evidence/iris02/bundle-check.json
 
 This is the requested native .irisfw route. No legacy download ZIP is produced.
+
+## Locally validated delivery artifact
+
+Source commitb672117486d65ab76893fb833103594b019636f8 was rebuilt with clean source.
+Exact file: releases/v1.2.0/mosaico-peek-v1.2.0.irisfw (6301404B).
+SHA256b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59.
+ELFd99572ee4ee4322d1575aa2ca16d1b2617aa470ae3f430a3f4162e3008c85d04.
+App7258864B, UI94480B; explicit bitmap PSRAM3418224B unchanged. Actual free/peak
+memory is not established until hardware validation. Official0.2 parser and
+clean-source/config/image/partition checks pass; the old ABI1 bundle is rejected
+by that parser as expected. No schema relabeling or legacy ZIP workaround.
+
+Debug/Release37/37 and the native checks above pass. IMU error-cleanup regression
+fails on the old adapter and passes after the migration fix. Official recover
+--dry-run checked the reviewed base environment but reported no ROM Download Mode
+interface; this is not successful device migration and no Flash writes occurred.
+The user has been asked for specific base-migration authorization; no dependent
+write may start before a reply. Candidate may be handed off for local review,
+but server upload/review and physical behavior are still explicitly unverified.
+
+## Current device gate
+
+Both legacy and0.2 read-only identity checks failed to validate the selected
+4553502d49524953010030eda0f452a0 device. USB descriptors currently belong to an
+Echoy device, not the selected Peek identity; no substitute device was claimed
+for writes. Reconnect the original Peek MAC30:ed:a0:f4:52:a0 before proceeding.
+Specific ROM base-migration approval remains pending. No device writes, base
+updates, website uploads or subsequent GitHub pushes occurred in this migration.
+Final bundle validation was run at source commitb672117; receipt-only commits
+may follow. To audit that exact artifact using --require-clean-source, check out
+its recorded source commit; normal subsequent builds embed their own HEAD.

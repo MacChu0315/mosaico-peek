@@ -2,8 +2,13 @@
 
 User requested native .irisfw adaptation for the website's Vibe Mode0.2 route.
 Current source branchfeat/vibe-02-migration, matching independent dependency set;
-app1.2.0 builds and official0.2 bundle parsing pass. No device or cloud operation
-has been performed in this migration yet. ABI1 installed1.1.1 below is the last
+app1.2.0 builds and official0.2 bundle parsing pass. Final locally validated
+artifact: releases/v1.2.0/mosaico-peek-v1.2.0.irisfw, sourceb672117;
+SHA256b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59. No device write or cloud upload
+has been performed in this migration yet. Read-only checks did not validate the
+selected original Peek device; the currently discovered device is different.
+Reconnect the original board and obtain specific ROM base-migration approval
+before hardware acceptance. ABI1 installed1.1.1 below is the last
 verified hardware state, not a compatible target for the new app bundle.
 See [IRIS02_MIGRATION.md](IRIS02_MIGRATION.md) for contract, pins and base-write
 scope requiring specific authorization. Frozen1.1.0 and exact1.1.1 remain intact.

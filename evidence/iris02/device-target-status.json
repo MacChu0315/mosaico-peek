@@ -1,0 +1,11 @@
+{
+  "expected_hardware_mac": "30:ed:a0:f4:52:a0",
+  "expected_device_id": "4553502d49524953010030eda0f452a0",
+  "legacy_live_handshake": "selected identity not verified",
+  "iris02_live_handshake": "selected identity not verified; discovered USB descriptors belong to another application/device",
+  "rom_dry_run": "No ROM Download Mode interface detected",
+  "device_writes_performed": false,
+  "base_migration_authorization": "awaiting specific user reply",
+  "hardware_acceptance": "not performed",
+  "cloud_upload": "not performed"
+}
