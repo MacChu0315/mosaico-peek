@@ -1,0 +1,10 @@
+{
+  "command": "crash",
+  "ok": true,
+  "status": "succeeded",
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "archive_status": "preserved",
+  "historical_retained_core_preserved": true,
+  "raw_diagnostic_metadata": "firmware-local/1.2.0-iris02/legacy-crash-metadata.json (ignored, local only)",
+  "note": "The retained legacy core was archived before migration; installed1.2.0 has no new crash count. Raw diagnostic artifacts remain private/generated."
+}

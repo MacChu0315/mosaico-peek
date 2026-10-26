@@ -2,7 +2,7 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Current migration candidate **v1.2.0** targets Vibe Mode0.2 / Recovery ABI2. Installed stable1.1.1 and frozen release **v1.1.0** remain separate until hardware migration is authorized and verified. Active artwork: **dragon / deep_sea / mechanical**.
+Current firmware **v1.2.0** runs on Vibe Mode0.2 / Recovery ABI2 and has been installed and functionally checked on the original Peek device. Frozen **v1.1.0** and ABI1 **v1.1.1** remain archival versions. Active artwork: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
 Historical owl material remains archived; it is not part of the active demo.

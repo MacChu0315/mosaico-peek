@@ -1,0 +1,64 @@
+{
+  "version": "1.2.0",
+  "source_revision": "b672117486d65ab76893fb833103594b019636f8",
+  "bundle_sha256": "b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59",
+  "ELF_sha256": "d99572ee4ee4322d1575aa2ca16d1b2617aa470ae3f430a3f4162e3008c85d04",
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "hardware_mac": "30:ed:a0:f4:52:a0",
+  "recovery_abi": 2,
+  "layout": "mosaico-retained-test-2m-v2",
+  "base_version": "0.2.0",
+  "base_operation": "c6878691-daa8-418a-a741-8f328154f521",
+  "application_operation": "140379a2-5291-4058-80fd-2fbcaab75883",
+  "final_boot_id": "3927091703191660807",
+  "final_mode": "normal",
+  "crash_count": 0,
+  "smoke": {
+    "seconds": 74.97,
+    "samples": 588,
+    "faults": 0,
+    "views": [
+      "deep_sea",
+      "dragon",
+      "mechanical"
+    ],
+    "orientations": [
+      0,
+      270
+    ],
+    "view_transitions": [
+      {
+        "now_ms": 438241,
+        "before": "mechanical",
+        "after": "dragon",
+        "samples": 3411
+      },
+      {
+        "now_ms": 449131,
+        "before": "dragon",
+        "after": "deep_sea",
+        "samples": 3496
+      }
+    ],
+    "source_sequence_equals_accepted_samples": true,
+    "source_samples_monotonic": true,
+    "sleep_observed": true,
+    "wake_transient_observed": false,
+    "runtime_errors": 0,
+    "imu_errors": 0
+  },
+  "physical_user_feedback": "都正常，能重新睁开",
+  "pixel_checks": [
+    "dragon closed RGB565 exact",
+    "deep_sea closed RGB565 exact"
+  ],
+  "maintenance_roundtrip": "normal1.2.0 -> VibeMode0.2.0 -> normal1.2.0; same DeviceID, distinct BootIDs",
+  "limitations": [
+    "Physical angles90/180 not newly sampled",
+    "150ms wake transient not captured at RPC polling rate; user confirmed reopening",
+    "Task-level memory command unsupported (HTTP501); status heap values available",
+    "No physical panel FPS, allocator fragmentation, prolonged soak, forced-crash recovery or physical AI-power-on maintenance-entry test",
+    "Website upload/review and GitHub push not performed in this task"
+  ],
+  "install_issue": "First application operation failed before transfer: independent data link absent. Held own iris run client, checked both bound links and terminal failed operation/empty queue, then same bundle retry succeeded. Explicit data-endpoint claim returned a selector error while aggregate links were verified ready; this is not counted as claim success."
+}

@@ -1,0 +1,9 @@
+{
+  "role": "dragon",
+  "state": "closed idle",
+  "orientation": 270,
+  "sample_step": 2,
+  "RGB565_exact": true,
+  "method": "Stable closed state before and after direct framebuffer capture; production C reference, approved240 sampling and canvas quarter-turn",
+  "physical_panel_FPS": null
+}

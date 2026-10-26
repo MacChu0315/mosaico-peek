@@ -33,71 +33,71 @@ Build wrapper checks clean pinned Vibe/BSP/utils/IDF and uses their matching hos
 Python; tools/check_iris02_bundle.py compares actual images, partition bytes,
 ELF/source identity, configuration and unchanged UI/art resources.
 
-## Validation and current limits
+## Validation and installation result
 
-Initial build was blocked by sandbox registry access; retry with official registry
-access succeeded. Unrelated libpng/zlib resolver upgrades were pinned back before
-delivery. Host37/37 and native44 orientation images,16 pointer cases,17 sea phases,
-511 recorded arrays/655 events and retained-picture wake/replay checks pass.
-Final committed-source rebuild and delivery hashes are recorded in evidence/iris02.
+Clean sourceb672117486d65ab76893fb833103594b019636f8 was rebuilt and checked with
+the official0.2 parser. Exact native attachment:
+releases/v1.2.0/mosaico-peek-v1.2.0.irisfw,6301404B,
+SHA256b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59,
+ELFd99572ee4ee4322d1575aa2ca16d1b2617aa470ae3f430a3f4162e3008c85d04.
+App7258864B, UI94480B, explicit bitmap PSRAM3418224B. UI/art streams equal1.1.1.
+Debug/Release37/37 and native44 image/16 pointer/17 phase/511-array replay checks
+pass. The failed-init cleanup regression fails on the former adapter, passes now.
+Initial sandbox registry access failed; authorized official registry resolution
+succeeded. Unrelated libpng/zlib updates were pinned back before delivery.
 
-New BSP changes display SPI batching to8 lines and disables psram_dma_direct.
-Do not reuse old device performance/RAM figures as new-version measurements.
-Device startup, active drawing, switching, IMU orientations, memory and normal/
-Vibe Mode transitions remain unverified until hardware migration and acceptance.
-Local parsing does not prove platform upload/review acceptance.
+The first device inspection found another device and did not write it. User then
+reconnected the original Peek and explicitly requested actual flashing/test after
+the concrete ROM migration question. This authorizes this one same-device base
+migration, not other hardware or future whole-flash erase. Legacy identity was
+verified and existing crash evidence preserved. Old owner had already exited;
+release reported owner=none, verified by passive status (not forced takeover).
 
-## Device-base migration gate
+The official recover request found no ROM interface. User performed the documented
+Boot+power-on entry. Reviewed0.2.0 base operation
+c6878691-daa8-418a-a741-8f328154f521 succeeded onMAC30:ed:a0:f4:52:a0, with four
+base images at0x2000/0x8000/0x9000/0x20000. No full erase or unlisted partition
+write. Exact ABI1 bundles are retained but cannot provide ordinary ABI2 rollback.
 
-The last verified device is still ABI1. The official0.2 guide requires ROM
-Download Mode plus mosaico.py recover for an incompatible base; cross-generation
-Iris update/relabeling is unsupported. Standing authorization only covered normal
-System Updates and explicitly excluded ROM recover. Do not perform it silently.
+The first app operation13638cfa-4966-47f1-8c42-dc1c7b2af377 failed at plan
+validation before transfer: independent data link absent. Keeping an official
+iris run client and inspecting both same-ID/same-Boot links established readiness.
+The explicit data-endpoint claim itself reported a selector error because the
+active primary endpoint was control; subsequent aggregate state, not that error,
+proved both links ready. The terminal failed operation and empty queue were
+checked before the same-package retry. Retry140379a2-5291-4058-80fd-2fbcaab75883
+succeeded. No host dependency was edited to bypass checks.
 
-Reviewed0.2.0 base images/hashes and intended offsets are inspected locally:
-bootloader0x2000, partition table0x8000, otadata0x9000, vibe_mode0x20000. The official
-flow preserves sysmeta/NVS/coredump and regions not declared for writing; no full
-flash erase. The old1.1.1 app bundle cannot directly undo an ABI2 base migration.
-Prepare the app, validate the base plan, then ask specifically about that same
-MAC30:ed:a0:f4:52:a0 migration if device verification is to proceed. Only official
-mosaico.py operations, ownership handoff and live identity checks are allowed.
+Actual smoke:74.97s,588 accepted temperature samples,0 faults/runtime/IMU errors,
+all three characters,0/270deg and sleeping observed. User confirmed clicking,
+left/right swipes,AI key,gaze direction and reopening. The brief waking flag was
+not sampled; its physical acceptance is the user's observation. Closed dragon
+and deep-sea screenshots match C RGB565. Software maintenance roundtrip passed
+normal1.2.0 -> VibeMode0.2.0 -> normal1.2.0 with distinct BootIDs and the same
+DeviceID. Final Boot3927091703191660807, VALID, error0/crash0.
 
-## Commands
+## Measured boundaries
+
+New BSP display batches8 lines and disables psram_dma_direct; old resource/FPS
+claims were not assumed. In mixed manual270deg windows, active GSP rates were
+7.246Hz dragon,6.600Hz sea,4.738Hz mechanical; not controlled improvement or
+physical panel FPS. Smoke-end free internal171155B/free PSRAM4480380B; lifetime
+minima119456B/3458840B. The task-memory query returned HTTP501 not_supported;
+BootID/health stayed unchanged, and status heap values remained available.
+No new90/180deg physical acceptance, prolonged soak, allocator fragmentation,
+forced-crash recovery or physical AI-held power-on maintenance test is claimed.
+Website submission/review and a new remote Git push remain unperformed.
+
+## Reproduce and update
 
 python3 tools/bootstrap.py
 python3 tools/build_idf.py --bundle
-# Run final check with the matching isolated Iris Python:
-python tools/check_iris02_bundle.py --bundle projects/peek/build/peek-system-update.irisfw --require-clean-source --output evidence/iris02/bundle-check.json
+# With the matching isolated Iris Python, at the recorded source commit:
+python tools/check_iris02_bundle.py --bundle releases/v1.2.0/mosaico-peek-v1.2.0.irisfw --require-clean-source
 
-This is the requested native .irisfw route. No legacy download ZIP is produced.
-
-## Locally validated delivery artifact
-
-Source commitb672117486d65ab76893fb833103594b019636f8 was rebuilt with clean source.
-Exact file: releases/v1.2.0/mosaico-peek-v1.2.0.irisfw (6301404B).
-SHA256b881507941bbbfffc7d1603ad4196db4f38e194e614e582c60e051f049068d59.
-ELFd99572ee4ee4322d1575aa2ca16d1b2617aa470ae3f430a3f4162e3008c85d04.
-App7258864B, UI94480B; explicit bitmap PSRAM3418224B unchanged. Actual free/peak
-memory is not established until hardware validation. Official0.2 parser and
-clean-source/config/image/partition checks pass; the old ABI1 bundle is rejected
-by that parser as expected. No schema relabeling or legacy ZIP workaround.
-
-Debug/Release37/37 and the native checks above pass. IMU error-cleanup regression
-fails on the old adapter and passes after the migration fix. Official recover
---dry-run checked the reviewed base environment but reported no ROM Download Mode
-interface; this is not successful device migration and no Flash writes occurred.
-The user has been asked for specific base-migration authorization; no dependent
-write may start before a reply. Candidate may be handed off for local review,
-but server upload/review and physical behavior are still explicitly unverified.
-
-## Current device gate
-
-Both legacy and0.2 read-only identity checks failed to validate the selected
-4553502d49524953010030eda0f452a0 device. USB descriptors currently belong to an
-Echoy device, not the selected Peek identity; no substitute device was claimed
-for writes. Reconnect the original Peek MAC30:ed:a0:f4:52:a0 before proceeding.
-Specific ROM base-migration approval remains pending. No device writes, base
-updates, website uploads or subsequent GitHub pushes occurred in this migration.
-Final bundle validation was run at source commitb672117; receipt-only commits
-may follow. To audit that exact artifact using --require-clean-source, check out
-its recorded source commit; normal subsequent builds embed their own HEAD.
+The source guard compares current HEAD; receipt-only documentation commits do not
+change the already verified firmware identity. Fresh builds embed their own HEAD.
+For installation use only the matching0.2 mosaico.py, keep the project client alive
+and verify independently connected control/data links before system-update.
+No legacy ZIP workaround or schema relabeling was used. Evidence and current
+acceptance summary: evidence/iris02/DEVICE_ACCEPTANCE.json.

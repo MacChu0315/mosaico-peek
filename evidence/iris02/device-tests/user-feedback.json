@@ -1,0 +1,7 @@
+{
+  "question": "刚才点击、左右滑动、AI键切换，以及眼睛追踪方向是否都正常？请再放回热源，确认闭眼后能重新睁开。",
+  "answer": "都正常，能重新睁开",
+  "scope": "User physical acceptance;150ms waking transient was not captured by periodic telemetry",
+  "device": "30:ed:a0:f4:52:a0",
+  "firmware": "1.2.0"
+}

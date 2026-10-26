@@ -1,0 +1,8 @@
+{
+  "result": "not_supported",
+  "http_status": 501,
+  "reason": "task memory observation is unavailable in this normal application",
+  "boot_unchanged": true,
+  "normal_status_heap_values_available": true,
+  "not_a_device_crash": true
+}

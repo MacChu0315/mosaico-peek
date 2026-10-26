@@ -1,0 +1,13 @@
+{
+  "scope": "One-time official migration of the previously selected Peek hardware to reviewed Vibe Mode0.2.0, followed by Peek1.2.0 install/test",
+  "hardware_mac": "30:ed:a0:f4:52:a0",
+  "device_id": "4553502d49524953010030eda0f452a0",
+  "user_instruction": "你再检查下，电脑街上原先的 mosaico 了。实际烧录测试一下",
+  "context": "User instruction follows the explicit question describing ROM recover, four base image writes, preserved data and loss of ordinary ABI1 rollback. Reuses this task authorization; not standing permission for other devices or future base writes.",
+  "exclusions": [
+    "whole-flash erase",
+    "other hardware",
+    "cloud upload",
+    "remote git writes"
+  ]
+}
