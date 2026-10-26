@@ -125,3 +125,20 @@ evidence/promo-assets-20261026/package-verification.json. No physical-camera
 footage or high-FPS/doubled-performance claim. Source guide lives in docs/promo/;
 regenerate with tools/package_promo.py. Existing capture helper now accepts an
 optional --orientation (default270 unchanged); the publicity clips use0.
+
+## GitHub publication target (2026-10-26)
+
+User created https://github.com/MacChu0315/mosaico-peek and explicitly requested
+publishing the current progress to master. Origin is configured to that repository;
+the prepared tip contains stable1.1.1 plus the latest publicity asset curation.
+The rejected full-frame-cache implementation remains on its separate local trial
+branch. Publication targets only master; local release tags are not included.
+
+Normal Git exclusions remain: review/ ZIPs, releases/, build caches, SDK/dependency
+copies and exact local ELF/config backups are not uploaded. Tracked artwork,
+source, native/device evidence, publicity guides and packaging tools are included.
+The publicity ZIPs referenced above remain local artifacts, not GitHub downloads;
+tools/package_promo.py also needs the retained original dragon textures in ignored
+review-inputs/ to regenerate those complete packs. Normal firmware/Host asset
+builds use the retained assets/ inputs as before. This request does not grant
+standing authorization for later pushes, remote releases or repository settings.
