@@ -86,7 +86,9 @@ minima119456B/3458840B. The task-memory query returned HTTP501 not_supported;
 BootID/health stayed unchanged, and status heap values remained available.
 No new90/180deg physical acceptance, prolonged soak, allocator fragmentation,
 forced-crash recovery or physical AI-held power-on maintenance test is claimed.
-Website submission/review and a new remote Git push remain unperformed.
+Website submission/review remains unperformed. User authorized a subsequent GitHub
+master push of the migration and physical acceptance on2026-10-26; local releases/
+artifacts are still excluded from Git.
 
 ## Reproduce and update
 

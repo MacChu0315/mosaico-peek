@@ -76,8 +76,10 @@ retry an uncertain write without operation reconciliation. Use only mosaico.py.
 The exact delivered bundle is unchanged since its source-commit clean check.
 Receipt-only commits do not relabel the firmware source; checking that exact
 artifact against HEAD requires checking out its recorded source commit.
-Website upload/review and a further GitHub push have not been performed.
-Remote master remains the earlier authorized14cf7f8 publication.
+Website upload/review has not been performed. User explicitly authorized publishing
+the completed migration and hardware acceptance (b672117/c17b8c3) to GitHub master
+on2026-10-26. Exact local releases/ attachments remain ignored by Git; the native
+.irisfw path and hash above identify the separately retained software attachment.
 
 Frozen v1.1.0 and exact ABI1 v1.1.1 remain archival sources/bundles; they cannot be
 installed as ordinary rollback packages on this ABI2 base. Rejected full-frame
