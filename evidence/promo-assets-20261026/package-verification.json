@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "roles": [
+    "dragon",
+    "deep_sea",
+    "mechanical"
+  ],
+  "static_images": 33,
+  "video_clips": [
+    {
+      "role": "dragon",
+      "seconds": 8.04,
+      "capture_seconds": 7.971375273074955,
+      "codec": "h264"
+    },
+    {
+      "role": "deep_sea",
+      "seconds": 8.04,
+      "capture_seconds": 7.954357738606632,
+      "codec": "h264"
+    },
+    {
+      "role": "mechanical",
+      "seconds": 8.0,
+      "capture_seconds": 7.902490999083966,
+      "codec": "h264"
+    }
+  ],
+  "source_copies_byte_identical": true,
+  "approved_texture_hashes_match": true,
+  "selected_current_layers_match": true,
+  "HTML_relative_links_resolve": 78,
+  "ZIP_checksums_pass": true,
+  "device_access_this_task": false,
+  "firmware_or_runtime_code_changed": false,
+  "versions": {
+    "python": "3.10.14",
+    "pillow": "10.4.0",
+    "cc": "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "ffmpeg": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers"
+  },
+  "archives": [
+    {
+      "file": "review/mosaico-peek-promo-v111-20261026.zip",
+      "bytes": 47036695,
+      "sha256": "de3c7ddba5af7c24edbf57bdf06591a1288f6b2c803c9d6d12905daa65583d5a",
+      "files": 116
+    },
+    {
+      "file": "review/mosaico-peek-promo-v111-20261026-editable.zip",
+      "bytes": 14603658,
+      "sha256": "5e371a18020d36324e406bdfd5dc35e2508f5b9199598a4123435a6ceffa1c6c",
+      "files": 29
+    }
+  ]
+}

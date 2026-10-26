@@ -6,19 +6,19 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'tools'),str(ROOT.parent/'.toolchains/esp-gsp-1.5.1/esp-gsp/tools/sim_bridge')]
 from control import command,state
 from rpc_client import connect
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);args=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--orientation',type=int,choices=[0,90,180,270],default=270);args=p.parse_args()
 out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
 ready=json.loads((ROOT/'.run/ready.json').read_text())
 with connect(port=int(ready['api'].rsplit(':',1)[1])) as api:
     for theme in ('dragon','deep_sea','mechanical'):
         frames=ROOT/'.run/render-trial'/theme;frames.mkdir(parents=True,exist_ok=True)
-        command('view '+theme);command('orientation 270');command('case sleep');command('advance 9400');command('play')
+        command('view '+theme);command('orientation '+str(args.orientation));command('case sleep');command('advance 9400');command('play')
         begin=time.monotonic();rows=[]
         while time.monotonic()-begin<8:
             path=frames/f'{len(rows):04d}.png';reply=api.call('screenshot',{'path':str(path),'format':'png'});assert 'result' in reply,reply
             rows.append(dict(file=str(path),wall_s=time.monotonic()-begin,state=state()));time.sleep(.06)
         command('pause')
-        report=dict(source='SYNTHETIC complete temperature arrays through production detector/controller',orientation=270,logical_start_ms=9400,capture_wall_seconds=rows[-1]['wall_s']-rows[0]['wall_s'],timing='VFR durations from actual screenshot completion intervals; screenshot sampling is not device FPS',ffmpeg=subprocess.check_output(['ffmpeg','-version'],text=True).splitlines()[0],frames=rows)
+        report=dict(source='SYNTHETIC complete temperature arrays through production detector/controller',orientation=args.orientation,logical_start_ms=9400,capture_wall_seconds=rows[-1]['wall_s']-rows[0]['wall_s'],timing='VFR durations from actual screenshot completion intervals; screenshot sampling is not device FPS',ffmpeg=subprocess.check_output(['ffmpeg','-version'],text=True).splitlines()[0],frames=rows)
         (out/(theme+'.json')).write_text(json.dumps(report,indent=2)+'\n')
         lines=[]
         for i,row in enumerate(rows):

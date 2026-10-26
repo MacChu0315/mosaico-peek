@@ -105,3 +105,23 @@ reboots/retained-Recovery transitions. No ROM recover, full erase, dependency
 upgrade, remote repository write or default-branch mutation occurred. Main work
 branch isperf/three-eye-render. Historical docs/evidence do not override the
 current three-role roster.
+
+## Publicity asset handoff (2026-10-26)
+
+Current approved three-role artwork was curated for another agent's publicity
+preparation, without device access or runtime/firmware changes. Main package:
+review/mosaico-peek-promo-v111-20261026.zip (47036695B). Optional archived PSD/ORA
+supplement: review/mosaico-peek-promo-v111-20261026-editable.zip (14603658B).
+Start with index.html / START_HERE.md / AGENT_BRIEF.md.33 production-C controlled
+pose PNGs, three~8s upright native GSP clips (synthetic full temperature inputs),
+three actual closed framebuffer captures, current alpha layers and high-resolution
+source material. No owl or rejected frame-cache trial content. Historical device
+capture versions and editable-source caveats are explicit (mechanical PSD's mount
+is unselected; use A; dragon PSD is sclera-only; no complete deep-sea R2 ORA).
+
+Provenance/original bytes, selected texture hashes,78 local index links, video
+wall-time durations and both ZIP checksums verified. Receipt:
+evidence/promo-assets-20261026/package-verification.json. No physical-camera
+footage or high-FPS/doubled-performance claim. Source guide lives in docs/promo/;
+regenerate with tools/package_promo.py. Existing capture helper now accepts an
+optional --orientation (default270 unchanged); the publicity clips use0.
