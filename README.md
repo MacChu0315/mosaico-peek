@@ -2,6 +2,10 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
+![Real-device demonstration of the dragon, deep-sea and mechanical eyes](docs/media/eyes-device-demo.gif)
+
+*Real-device footage supplied by the project owner.*
+
 Current firmware **v1.2.0** runs on Vibe Mode0.2 / Recovery ABI2 and has been installed and functionally checked on the original Peek device. Frozen **v1.1.0** and ABI1 **v1.1.1** remain archival versions. Active artwork: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
