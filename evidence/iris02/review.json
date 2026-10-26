@@ -1,0 +1,19 @@
+{
+  "fixes": [
+    "Build validates all pinned clean dependency checkouts",
+    "Final package checker verifies current HEAD and clean source",
+    "BMI270 failed-init cleanup with original error and existing-owner preservation",
+    "Current migration documentation updated"
+  ],
+  "unchanged": [
+    "shared detector/controller/renderers/artwork",
+    "IMU units/axes/ranges and physical mapping",
+    "IDF/GSP/libpng/zlib versions"
+  ],
+  "requires_device_validation": [
+    "New BSP display SPI8-line batching and no psram_dma_direct",
+    "startup/roles/IMU/performance/memory",
+    "Vibe Mode transitions"
+  ],
+  "cloud_upload_performed": false
+}

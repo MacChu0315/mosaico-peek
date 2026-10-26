@@ -1,0 +1,87 @@
+{
+  "pins": {
+    "vibe": "849e3d046b9441409d4ce5754eb249c9495f2db5",
+    "utils": "632adc76c11643cce7147c031ad9583a2bedd17e",
+    "bsp": "5f88b91e1be055d1d3674364123b2779a1758377"
+  },
+  "dependency_changes": [
+    {
+      "component": "esp_iris",
+      "old": "0.1.0",
+      "new": "0.2.0"
+    },
+    {
+      "component": "espressif/bmi270_sensor",
+      "old": null,
+      "new": "0.4.1"
+    },
+    {
+      "component": "espressif/bmm150",
+      "old": null,
+      "new": "1.1.0"
+    },
+    {
+      "component": "espressif2022/bmi270",
+      "old": "1.1.0~2",
+      "new": null
+    },
+    {
+      "component": "mosaico_boot_splash",
+      "old": "0.1.0",
+      "new": null
+    },
+    {
+      "component": "tangyumei3535/bmm150_sensorapi",
+      "old": "1.0.0",
+      "new": null
+    }
+  ],
+  "base_version": "0.2.0",
+  "base_compatibility": {
+    "board_id": "esp-mosaico",
+    "chip_target": "esp32s31",
+    "layout_id": "mosaico-retained-test-2m-v2",
+    "product_contract": "esp-mosaico/v2",
+    "recovery_abi": 2
+  },
+  "base_images": [
+    {
+      "kind": "bootloader",
+      "file": "bootloader.bin",
+      "offset": "0x2000",
+      "sha256": "3e0a6c29c039111a83e0d66f18effcfedc6ecc6b7ef2ac441697562100ac49b1",
+      "size": 21984
+    },
+    {
+      "kind": "ota_data",
+      "file": "ota_data_initial.bin",
+      "offset": "0x9000",
+      "sha256": "5a5d79a1c029da23a3b9cc03c111c5b72f9cbfa386877b0a5d20dc93ab42c7e1",
+      "size": 8192
+    },
+    {
+      "kind": "partition_table",
+      "file": "partition-table.bin",
+      "offset": "0x8000",
+      "sha256": "ff7ac35a4f2e51424150a6ba56172174299baa737230a09792dd46e8f5d0bb99",
+      "size": 3072
+    },
+    {
+      "kind": "recovery",
+      "file": "vibe-mode.bin",
+      "offset": "0x20000",
+      "sha256": "d463c09362c9887b62e81d0e81061d17f18f94af4cf8123ea74a8b3b588fc3f8",
+      "size": 1488608
+    }
+  ],
+  "device_writes_performed": false,
+  "dry_run": "No ROM Download Mode interface detected; no write attempted",
+  "authorization": "Pending specific ROM base migration approval; prior standing permission excluded ROM recover",
+  "immutable_regions_to_preserve": [
+    "sysmeta",
+    "nvs",
+    "coredump",
+    "unlisted application/resource ranges"
+  ],
+  "same_hardware_mac": "30:ed:a0:f4:52:a0"
+}

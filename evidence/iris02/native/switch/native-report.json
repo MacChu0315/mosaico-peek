@@ -1,0 +1,54 @@
+{
+  "checks": 16,
+  "capabilities": {
+    "abi_version": 1,
+    "backend_extensions": {
+      "binary_content_type": "application/vnd.esp-gsp.binary",
+      "binary_uploads": [
+        "image",
+        "row-image",
+        "widget-image",
+        "canvas"
+      ],
+      "image_lifecycle_version": 1,
+      "max_binary_bytes": 16777216,
+      "max_retained_images": 128,
+      "reverse_notifications": [
+        "pointer",
+        "list_bind",
+        "list_bind_overflow",
+        "image_complete",
+        "image_release"
+      ],
+      "version": 1
+    },
+    "bridge_api_version": 3,
+    "bridge_canvas_patch_version": 1,
+    "bridge_fence_version": 1,
+    "bridge_image_version": 1,
+    "bridge_media_version": 1,
+    "bridge_pointer_version": 1,
+    "bridge_version": 1,
+    "bridge_widget_version": 1,
+    "browser_input_allowed": true,
+    "browser_scene_control_allowed": false,
+    "capabilities": 255,
+    "component_events_version": 1,
+    "component_motion_version": 1,
+    "current_scene": 0,
+    "height": 480,
+    "input_mode": "shared",
+    "named_api": false,
+    "named_bounds_source": "compiled",
+    "runtime_version": "1.5.1",
+    "scene_count": 1,
+    "wait_component_version": 1,
+    "width": 480
+  },
+  "artifacts": {
+    "build-sim/peek_backend": "5329bb456d885bfc7ff0ef4980af566c57a47d992c2dfb65c93f87fdb8288403",
+    "build-sim/peek_backend_assets/app.gspb": "d98d721136a5fb8f4533a69e0e1a2f34f02857e1a60ecc9f06e311cdf965111b",
+    "build-sim/peek_backend_assets/bundle_gsp.api.json": "07d17add42fd3da714a66607e3749e1a230dbe080a99af11a9e34cead8c48d93"
+  },
+  "note": "Actual official GSP native pointer routing. BSP AI binding/concurrent handoff is covered by production-code Host fixtures; hardware inputs untested until installation."
+}

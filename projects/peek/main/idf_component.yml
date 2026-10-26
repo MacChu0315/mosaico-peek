@@ -2,17 +2,20 @@ dependencies:
   idf: ">=6.2"
   esp-mosaico-bsp:
     version: "*"
-    override_path: "../../../../esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/esp-mosaico-bsp"
+    override_path: "../../../../esp-mosaico-vibe-iris02/submodule/esp-mosaico-bsp/components/esp-mosaico-bsp"
   esp_iris:
     version: "*"
-    override_path: "../../../../esp-mosaico-vibe/submodule/esp-mosaico-utils/ESP-Iris/components/esp_iris"
+    override_path: "../../../../esp-mosaico-vibe-iris02/submodule/esp-mosaico-utils/ESP-Iris/components/esp_iris"
   espressif/esp-gsp: "==1.5.1"
   # The BSP display adapter uses headers deprecated by LVGL 9.6.
   lvgl/lvgl: "==9.5.0"
   mosaico_module_thermal:
     path: ../../../deps/mosaico_module_thermal
   mosaico_module_mgr:
-    path: ../../../../esp-mosaico-vibe/submodule/esp-mosaico-bsp/components/mosaico_module_mgr
+    path: ../../../../esp-mosaico-vibe-iris02/submodule/esp-mosaico-bsp/components/mosaico_module_mgr
   espressif/bq27220: "==0.1.2"
   espressif/button: "==4.2.1"
   espressif/esp_display_present: "==1.1.1"
+  # Preserve unrelated image/compression dependencies during Iris migration.
+  espressif/libpng: "==1.6.58~2"
+  espressif/zlib: "==1.3.2~1"

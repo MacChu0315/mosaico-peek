@@ -1,3 +1,15 @@
+# Peek1.2.0 Iris0.2 migration in progress (2026-10-26)
+
+User requested native .irisfw adaptation for the website's Vibe Mode0.2 route.
+Current source branchfeat/vibe-02-migration, matching independent dependency set;
+app1.2.0 builds and official0.2 bundle parsing pass. No device or cloud operation
+has been performed in this migration yet. ABI1 installed1.1.1 below is the last
+verified hardware state, not a compatible target for the new app bundle.
+See [IRIS02_MIGRATION.md](IRIS02_MIGRATION.md) for contract, pins and base-write
+scope requiring specific authorization. Frozen1.1.0 and exact1.1.1 remain intact.
+
+The following stable1.1.1 and promotional records are historical baselines:
+
 # Peek handoff — exact-output rendering1.1.1 (2026-10-25)
 
 Installed1.1.1 on perf/three-eye-render contains dragon, deep_sea and mechanical.

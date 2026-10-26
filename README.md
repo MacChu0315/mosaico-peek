@@ -2,12 +2,12 @@
 
 Shared C thermal detection → shared C behavior/pose → native 480×480 GSP artwork.
 
-Current demo **v1.1.1** adds exact-output rendering optimization; frozen release **v1.1.0** remains unchanged. Active artwork: **dragon / deep_sea / mechanical**.
+Current migration candidate **v1.2.0** targets Vibe Mode0.2 / Recovery ABI2. Installed stable1.1.1 and frozen release **v1.1.0** remain separate until hardware migration is authorized and verified. Active artwork: **dragon / deep_sea / mechanical**.
 Night owl was retired at the user's request and is absent from firmware resources
 and all runtime selectors. [Removal and compatibility](docs/OWL_REMOVAL.md).
 Historical owl material remains archived; it is not part of the active demo.
 [Frozen release scope, exact artifact and local tag](docs/releases/v1.1.0.md).
-[Current rendering changes, verification and performance limits](docs/RENDER_V111.md).
+[Preserved rendering behavior](docs/RENDER_V111.md). [Iris0.2 migration and verification](docs/IRIS02_MIGRATION.md).
 
 Deep-sea R2 keeps its240ms membrane and no returning rim; mechanical keeps socket
 A and centered sleep; dragon keeps selected sclera C and approved240 sampling.
@@ -67,12 +67,12 @@ cmake -S . -B build-release -DCMAKE_BUILD_TYPE=Release
 cmake --build build-release
 ctest --test-dir build-release --output-on-failure
 python3 tests/test_replay.py
-python3 tools/build_idf.py
+python3 tools/build_idf.py --bundle
 ```
 
 With preview running, `python3 tests/test_gsp.py` verifies original diagnostics and core/native equivalence. `python3 tests/test_dragon_gsp.py` performs controlled native checks plus61s idle and30.5s live full-flow observation. `tools/verify_pixels.py` checks five retained diagnostic PNGs and actual cross coordinates; `tools/verify_dragon_pixels.py` checks retained dragon PNGs against a full C raster and independent Bézier aperture geometry. Both work from the ZIP after Host build, without excluded intermediate movie frames. `tools/encode_live.py` recreates movies only when live screenshot intermediates are available in `.run/`.
 
-Dependencies are unchanged: ESP-IDF commit `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe`, target `esp32s31`; CMake version6.2.0 satisfies >=6.2 while git describes this development SDK as `v6.1-dev-7333-g7b9cc1ac79f`. ESP-GSP1.5.1 (`472207a3…`), GSPC0.6.1, simulator1.5.1, RISC-V GCC16.1.0, BSP `a2c985ad…`, utils `fc63d43f…`, Vibe `95469e63…`. The separately pinned official thermal driver is BSP `5f88b91e…`, unmodified C. Exact source hashes and versions: `dependencies.json` and `projects/peek/dependencies.lock`; [source/licensing](THIRD_PARTY.md).
+Dependencies are unchanged: ESP-IDF commit `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe`, target `esp32s31`; CMake version6.2.0 satisfies >=6.2 while git describes this development SDK as `v6.1-dev-7333-g7b9cc1ac79f`. ESP-GSP1.5.1 (`472207a3…`), GSPC0.6.1, simulator1.5.1, RISC-V GCC16.1.0, BSP `5f88b91e…`, utils `632adc76…`, Vibe `849e3d04…` in the separate `esp-mosaico-vibe-iris02` checkout. The separately pinned official thermal driver is BSP `5f88b91e…`, unmodified C. Exact source hashes and versions: `dependencies.json` and `projects/peek/dependencies.lock`; [source/licensing](THIRD_PARTY.md).
 
 Asset generation requires **Pillow10.4.0** for byte-identical output; this was already available in the Host Python. CMake only reads/verifies retained assets and provenance, and writes the include plus generation information inside each build tree. Source PNG/metadata updates require explicit `python3 tools/bake_dragon.py --update-assets`; ordinary builds never rescale source art or rewrite its Pillow provenance. The build wrapper supplies that existing interpreter separately from ESP-IDF Python, without installing into/upgrading the shared SDK environment. `python3 tools/bake_dragon.py --check --output build-host/dragon-generated/dragon_assets.inc` verifies it. Retained source PNGs + provenance reproduce the assets even without `review-inputs/`. GSP tool paths can be overridden with `ESP_GSP_COMPONENT_DIR`, `GSPC_EXECUTABLE`, `GSP_SIM_EXECUTABLE`; the SDK revision remains checked.
 

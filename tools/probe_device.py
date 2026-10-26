@@ -4,7 +4,7 @@ import argparse,base64,json,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 DEVICE='4553502d49524953010030eda0f452a0'
-CLI=ROOT.parent/'esp-mosaico-vibe/mosaico.py'
+CLI=ROOT.parent/'esp-mosaico-vibe-iris02/mosaico.py'
 def command(parts):
     args=[sys.executable,str(CLI),'iris',*parts,'--workspace',str(ROOT),'--project',str(ROOT/'projects/peek'),'--device-id',DEVICE,'--json']
     run=subprocess.run(args,cwd=ROOT,capture_output=True,text=True,timeout=30)
@@ -22,10 +22,10 @@ def payload(value):
     return None
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=35);p.add_argument('--label',default='live');p.add_argument('--no-screens',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=35);p.add_argument('--label',default='live');p.add_argument('--no-screens',action='store_true');p.add_argument('--expected-version',default='1.2.0');a=p.parse_args()
     if not a.label.replace('-','').isalnum() or not 0<a.seconds<=300:p.error('invalid bounded probe')
     out=ROOT/'evidence/device-dragon'/a.label;out.mkdir(exist_ok=False)
-    before=command(['device-status']);d=before['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version'] in ('1.0.0-peek-dragon','1.0.1-peek-dragon240','1.0.2-peek-sleep') and d['firmware_mode']=='normal' and not d['stale']
+    before=command(['device-status']);d=before['device'];assert d['hardware_mac']=='30:ed:a0:f4:52:a0' and d['app_version']==a.expected_version and d['firmware_mode']=='normal' and not d['stale']
     (out/'before.json').write_text(json.dumps(before,indent=2)+'\n');boot=before['boot_id'];begin=time.monotonic();samples=[];next_screen=0
     with (out/'samples.jsonl').open('w') as f:
         while time.monotonic()-begin<a.seconds:

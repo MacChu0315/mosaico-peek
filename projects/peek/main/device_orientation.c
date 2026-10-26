@@ -51,6 +51,12 @@ esp_err_t device_orientation_start(void){
 #ifdef CONFIG_PEEK_AUTO_ORIENTATION
     next.automatic=true;
     next.error=bsp_imu_init();
+    /* The0.2 driver can retain a cleanup-only handle after failed init.
+     * INVALID_STATE denotes an existing owner; do not tear that owner down. */
+    if(next.error!=ESP_OK&&next.error!=ESP_ERR_INVALID_STATE){
+        esp_err_t cleanup=bsp_imu_deinit();
+        if(cleanup!=ESP_OK)ESP_LOGE("peek_orientation","IMU init cleanup failed: %d",cleanup);
+    }
     if(next.error==ESP_OK){
         const bsp_imu_config_t config=BSP_IMU_CONFIG_DEFAULT();
         next.error=bsp_imu_start(&config);

@@ -102,7 +102,7 @@ def partitions(build):
         name = label.rstrip(b"\0").decode("ascii")
         result[name] = {"offset": address, "bytes": size, "type": kind,
                         "subtype": subtype, "flags": flags}
-    for name in ("ota_0", "ui_apps", "factory"):
+    for name in ("main_app", "ui_apps", "vibe_mode"):
         if name not in result:
             raise ValueError(f"Missing {name} in built partition table")
     return path, result
@@ -163,7 +163,7 @@ def main():
         raise ValueError("Dragon asset symbols have no nm size")
     partition_path, table = partitions(build)
     artifacts["partition-table.bin"] = fingerprint(partition_path)
-    ota, ui, factory = (table[name]["bytes"] for name in ("ota_0", "ui_apps", "factory"))
+    ota, ui, factory = (table[name]["bytes"] for name in ("main_app", "ui_apps", "vibe_mode"))
     fits_ota = artifacts["peek.bin"]["bytes"] <= ota
     fits_ui = artifacts["ui_apps.bin"]["bytes"] <= ui
     map_text = files["peek.map"].read_text(errors="replace")
@@ -204,11 +204,11 @@ def main():
         "flash": {"partitions_from_built_binary": table, "ui_apps_partition_bytes": ui,
                   "ui_apps_partition_is_1MiB": ui == 0x100000,
                   "ui_apps_free_bytes": ui - artifacts["ui_apps.bin"]["bytes"],
-                  "normal_app_fits_ota_0": fits_ota, "ota_0_partition_bytes": ota,
-                  "ota_0_free_bytes": ota - artifacts["peek.bin"]["bytes"],
-                  "retained_factory_partition_bytes": factory,
-                  "normal_app_fits_retained_factory": artifacts["peek.bin"]["bytes"] <= factory,
-                  "retained_factory_warning": "App may exceed the retained factory slot; normal application update targets ota_0. "
+                  "normal_app_fits_main_app": fits_ota, "main_app_partition_bytes": ota,
+                  "main_app_free_bytes": ota - artifacts["peek.bin"]["bytes"],
+                  "retained_vibe_mode_partition_bytes": factory,
+                  "normal_app_fits_retained_vibe_mode": artifacts["peek.bin"]["bytes"] <= factory,
+                  "retained_vibe_mode_note": "Normal app targets main_app/ota_0; the retained vibe_mode/test image is separate. "
                                               "This tool does not change partitions or authorize flashing.",
                   "indexed_textures_palettes_LUT_bytes_in_app": sum(s["bytes"] for s in assets),
                   "texture_cost_is_included_in_peek_bin": True},
